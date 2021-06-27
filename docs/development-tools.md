@@ -2,6 +2,8 @@
 
 ## Code Editor
 
+### Visual Studio Code
+
 Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software development tools.
 
 [Visual Studio Code](https://code.visualstudio.com/) and its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery)
@@ -25,7 +27,7 @@ Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software
 ## TFTP tool
 
 - [tftp64](http://tftpd32.jounin.net/tftpd32_download.html)
-- [tftpd-hpa]
+- [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git)
 
 ## Wi-Fi Tool
 
@@ -34,24 +36,21 @@ Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software
 - [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
 - [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
 
-### Code Comparer
+## Code Comparer
 
 - [Code Compare](https://www.devart.com/codecompare/): a free compare tool designed to compare and merge differing files and folders.
 
-### Coding Convention
+## Coding Convention
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
 - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
 - AStyle
 
-### Lint
 
-- Global
-- [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
-- [CPPCheck](http://cppcheck.sourceforge.net/)
-- [CodeQL](https://securitylab.github.com/tools/codeql/)
+## Source Code Tagging System
 
+### GNU Global
 ### Doxygen
 
 An example for `dem` to generate Doxygen document
@@ -61,3 +60,14 @@ $ cd dlink/Apps/dem
 $ doxygen Doxygen
 ```
 
+## Static Code Analysis Tools
+
+### Lint
+
+- [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
+- [CPPCheck](http://cppcheck.sourceforge.net/)
+- [CodeQL](https://securitylab.github.com/tools/codeql/)
+
+## Dynamic Code Analysis Tools 
+
+### Valgrind

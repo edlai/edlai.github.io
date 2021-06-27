@@ -1,4 +1,4 @@
-site_name: Ed's Docs
+site_name: Ed's Personal Wiki
 site_url: https://edlai.github.io/
 nav:
     - Home: 'index.md'
@@ -6,9 +6,9 @@ nav:
         - 'Linux Distribution': 'linux-distribution.md'
         - 'Development Tools': 'development-tools.md'
         - 'Embedded Linux': 'embedded-linux.md'
-        - 'Computer Networks': 'computer-networks.md'
-        - 'Digital Signal Processing': 'digital-signal-processing.md'
-        - 'Operating Systems': 'operating-systems.md'
+        - 'Computer Networks': 'Computer-Networks/'
+        - 'Digital Signal Processing': 'Digital-Signal-Processing/'
+        - 'Operating Systems': 'Operating-System/'
     - 'Education':
         - 'Qualitative Research': 'qualitative-research.md'
         - 'Quantitative Research': 'quantitative-research.md'

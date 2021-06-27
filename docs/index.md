@@ -1,4 +1,4 @@
-# Welcome to Ed's Docs
+# Welcome to Ed's Personal Wiki
 
 ## Academic Background
 
