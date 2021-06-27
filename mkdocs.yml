@@ -6,9 +6,20 @@ nav:
         - 'Linux Distribution': 'linux-distribution.md'
         - 'Development Tools': 'development-tools.md'
         - 'Embedded Linux': 'embedded-linux.md'
-        - 'Computer Networks': 'Computer-Networks/'
-        - 'Digital Signal Processing': 'Digital-Signal-Processing/'
-        - 'Operating Systems': 'Operating-System/'
+        - 'Computer Networks':
+          - 'Application Layer':
+            - 'Hypertext Transfer Protocol(HTTP)': 'Computer-Networks/hypertext-transfer-protocol/'
+            - 'File Transfer Protocol (FTP)': 'Computer-Networks/file-transfer-protocol/'
+            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'Computer-Networks/simple-mail-transfer-protocol-and-post-office-protocol/'
+        - 'Digital Signal Processing':
+          - 'Voice Processing':
+            - 'Discrete-Time Processing' : 'Digital-Signal-Processing/discrete-time-processing/'
+            - 'Moving Average and Backward System' : 'Digital-Signal-Processing/moving-average-and-backward-system/'
+          - 'Spectrum Analysis':
+            - 'Window Size and the Spectrogram' : 'Digital-Signal-Processing/window-size-and-the-spectrogram/'
+        - 'Operating Systems': 
+          - 'Compiler':
+            - 'An Assembler Compiler': 'Operating-System/assembler-compiler/'
     - 'Education':
         - 'Qualitative Research': 'qualitative-research.md'
         - 'Quantitative Research': 'quantitative-research.md'
