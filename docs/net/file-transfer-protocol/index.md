@@ -1,27 +1,9 @@
-# Computer Networks
-
 # File Transfer Protocol (FTP)
-
-```
-$author:   Jin-Wen (Ed) Lai
-$date:     Oct. 2001
-$revised:  Mar. 2018
-$keywords: computer, networks, network, http, RFC.
-```
 
 Find and read RFC959 for FTP (Key idea has been discussed in the class) and list all of the client commands that are supported by the RFC. 
 - List all of the FTP client commands
 - Interactive with FTP Server
 - Get RFC 959 by Archive and Ftp
-
-## Content
-
-* [Concept](#concept)
-* [Requirements](#requirements)
-* [FTP](#ftp)
-* [Download The File](#download-the-file)
-* [Debug Mode](#debug-mode)
-* [RFC 959](#rfc-959)
 
 ## Concept
 
@@ -188,3 +170,10 @@ but we will not use any client-side applications to access above Services. inste
 
 - FTP Code `226`
   - Closing data connection. Requested file action successful (file transfer, abort, etc.).
+
+```
+$author:   Jin-Wen (Ed) Lai
+$date:     Oct. 2001
+$revised:  Mar. 2018
+$keywords: computer, networks, network, http, RFC.
+```

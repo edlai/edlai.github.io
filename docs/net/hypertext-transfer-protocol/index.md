@@ -1,29 +1,9 @@
-# Computer Networks
+# HyperText Transfer Protocol (HTTP)
 
-## HyperText Transfer Protocol (HTTP)
-
-```
-$author:   Jin-Wen (Ed) Lai
-$date:     Oct. 2001
-$revised:  Mar. 2018
-$keywords: computer, networks, network, http, RFC.
-```
 
 Do the HTTP experiment as explained in the lecture.
 - At last try to get a html file, show your process and partial result (no need to print all stuff you get to hand in).
 - You are welcome and hand them in for grading (refer to `RFC2068` if you want).
-
-## Content
-
-* [Concept](#concept)
-* [Requirements](#requirements)
-* [Telnet](#telnet)
-  * ​[Step-by-Step by telnet](#step-by-step-by-telnet)
-  * [Screenshot of running telnet](#screenshot-of-running-telnet)
-* [A Tiny Browser](#a-tiny-browse)
-  * [Proposal](#proposal)
-  * [Programming](#programming)
-* [Advanced](#advanced)
 
 ## Concept
 
@@ -256,3 +236,10 @@ sub show_page {
 - User can press <kbd>F12</kbd> to observative how Chrome works step-by-step.
     
   ![r](chrome.png)
+
+```
+$author:   Jin-Wen (Ed) Lai
+$date:     Oct. 2001
+$revised:  Mar. 2018
+$keywords: computer, networks, network, http, RFC.
+```

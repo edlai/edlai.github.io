@@ -8,18 +8,18 @@ nav:
         - 'Embedded Linux': 'embedded-linux.md'
         - 'Computer Networks':
           - 'Application Layer':
-            - 'Hypertext Transfer Protocol(HTTP)': 'Computer-Networks/hypertext-transfer-protocol/'
-            - 'File Transfer Protocol (FTP)': 'Computer-Networks/file-transfer-protocol/'
-            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'Computer-Networks/simple-mail-transfer-protocol-and-post-office-protocol/'
+            - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
+            - 'File Transfer Protocol (FTP)': 'net/file-transfer-protocol/index.md'
+            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
         - 'Digital Signal Processing':
           - 'Voice Processing':
-            - 'Discrete-Time Processing' : 'Digital-Signal-Processing/discrete-time-processing/'
-            - 'Moving Average and Backward System' : 'Digital-Signal-Processing/moving-average-and-backward-system/'
+            - 'Discrete-Time Processing' : 'dsp/discrete-time-processing/index.md'
+            - 'Moving Average and Backward System' : 'dsp/moving-average-and-backward-system/index.md'
           - 'Spectrum Analysis':
-            - 'Window Size and the Spectrogram' : 'Digital-Signal-Processing/window-size-and-the-spectrogram/'
+            - 'Window Size and the Spectrogram' : 'dsp/window-size-and-the-spectrogram/index.md'
         - 'Operating Systems': 
           - 'Compiler':
-            - 'An Assembler Compiler': 'Operating-System/assembler-compiler/'
+            - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
     - 'Education':
         - 'Qualitative Research': 'qualitative-research.md'
         - 'Quantitative Research': 'quantitative-research.md'

@@ -1,35 +1,10 @@
-# [DSP (Digital Signal Processing)]((../))
+# Moving Average and Backward System
 
-## Voice Processing - Moving Average and Backward System
-
-```
-$author:   Jing-Wen (Ed) Lai 
-$initial:  Nov. 2002           
-$revised:  Mar. 2018
-$keywords: dsp, digital, signal, processing, voice, moving average, backward system, matlab, speech
-```
 
 An implementation of using below methods to process human voice and comparing their output results
 
 - Backward System (High-Pass Filter)
 - Moving Average (Low-Pass Filter)
-
-## Content
-
-* [Requirements](#requirements)
-* [Backward System](#backward-system)
-  * [Programming](#programming)
-  * [Screenshot](#screenshot)    
-  * [Step-by-Step](#step-by-step)
-* [Moving Average](#moving-average)
-  * [Programming](#programming-1)
-  * [Screenshot](#screenshot-1)    
-  * [Step-by-Step](#step-by-step-1)
-* [Analysis](#analysis)
-* [Conclusion](#conclusion)
-* [Advanced](#advanced)
-* [Comment](#comment)
-* [Reference](#reference)
 
 ## Requirements
 
@@ -215,3 +190,11 @@ shg
   - author: Alan V. Oppenheim,Ronald W.Schafer and John R.Buck,
   - publisher: Prentice Hall
   - isbn: 0-13-0834443-2
+
+
+```
+$author:   Jing-Wen (Ed) Lai 
+$initial:  Nov. 2002           
+$revised:  Mar. 2018
+$keywords: dsp, digital, signal, processing, voice, moving average, backward system, matlab, speech
+```

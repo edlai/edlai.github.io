@@ -1,33 +1,8 @@
----
-bookToC: false
-title: "Simple Mail Transfer Protocol and Post Office Protocol - Version 3"
----
-
-# Computer Networks
-
-## Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (SMTP and POP3)
-
-```
-$author:   Ching-Wen (Ed) Lai
-$date:     Oct. 2001
-$revised:  Mar. 2018
-$keywords: computer, networks, network, http, RFC.
-```
+# Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (SMTP and POP3)
 
 Read the E-mail materials, do the experiments: 
 Send an E-mail without using application S/W.
 Connect to your POP3 server (not the POP3 client which is yourself) and experience the POP3 commands (e.g. message retrivel ).
-
-## Content
-
-* [Concept](#concept)
-* [Requirements](#requirements)
-* [SMTP](#smtp)
-  * ​[Step-by-Step](#step-by-step)
-  * [Screenshot](#screenshot)
-* [POP3](#pop3)
-  * ​[Step-by-Step](#step-by-step-1)
-  * [Screenshot](#screenshot-1)
 
 ## Concept
 
@@ -99,3 +74,11 @@ Following above step. After waiting around 10 minutes (depends on setting of Mai
 
 - Screenshot      
   ![result](m2.gif)
+
+
+```
+$author:   Ching-Wen (Ed) Lai
+$date:     Oct. 2001
+$revised:  Mar. 2018
+$keywords: computer, networks, network, http, RFC.
+```

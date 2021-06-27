@@ -1,13 +1,4 @@
-# [DSP (Digital Signal Processing)]((../))
-
-## Spectrum Analysis - Window Size and the Spectrogram
-
-```
-$author:   Jing-Wen (Ed) Lai 
-$initial:  Dec. 2002           
-$revised:  Mar. 2018
-$keywords: dsp, digital, signal, processing, spectrogram, matlab, windows, overlap
-```
+# Window Size and the Spectrogram
 
 生成以下兩筆訊號, 兩筆訊號混合後, 觀察其在頻域之性質。
 
@@ -18,20 +9,6 @@ $keywords: dsp, digital, signal, processing, spectrogram, matlab, windows, overl
   - f2= 1500, t = 0.4s~0.54s
   - f2= 2000, t = 0.54s~0.7s
   - f2= 2500, t = 0.7s~0.83s
-
-## Content
-
-* [Requirements](#requirements)
-* [Programming](#programming)
-* [Running](#running)
-  * [Screenshot](#screenshot)
-  * [Step-by-Step](#step-by-step)
-  * [Result](#result) 
-  * [Analysis](#analysis)
-  * [Conclusion](#conclusion)
-* [Advanced](#advanced)
-* [Comment](#comment)
-* [Reference](#reference)
 
 ## Requirements
 
@@ -159,7 +136,15 @@ title('SPECGRAM (1024 points FFT, Blackman window & 512 points overlap');
 
 
 - [Discrete-Time Signal Processing](https://books.google.com.tw/books/about/Discrete_Time_Signal_Processing.html?id=geTn5W47KEsC&redir_esc=y) 
-  - author: Alan V. Oppenheim,Ronald W.Schafer and John R.Buck,
-  - publisher: Prentice Hall
-  - isbn: 0-13-0834443-2
+  - Author: Alan V. Oppenheim,Ronald W.Schafer and John R.Buck,
+  - Publisher: Prentice Hall
+  - ISBN: 0-13-0834443-2
   - sample code in cdrom: `Text Book\CHAPTERS\9SPECTA\DEMOS\SPECGRAM\INDEX.HTM`
+
+
+```
+$author:   Jing-Wen (Ed) Lai 
+$initial:  Dec. 2002           
+$revised:  Mar. 2018
+$keywords: dsp, digital, signal, processing, spectrogram, matlab, windows, overlap
+```

@@ -1,31 +1,6 @@
----
-bookCollapseSection: true
-weight: 20
-title: "An Assembler Compiler"
----
-
-# Operating Systems
-
-## An Assembler Compiler
-
-```
-$author:   Jin-Wen (Ed) Lai  
-$date:     May. 2001
-$revised:  Mar. 2018
-$keywords: operating, systems, assembler, compiler, perl
-```
+# An Assembler Compiler
 
 An implementation of an Assembler Compiler.
-
-## Content
-
-* [Concept](#concept)
-* [Requirements](#requirements)
-* [Demonstration](#demonstration)
-  * [Online Edition](#online-edition)
-  * [Stand-alone Edition](#stand-alone-edition)
-* [Advanced](#advanced)
-* [Reference](#reference)
 
 ## Concept
 
@@ -153,3 +128,10 @@ There are two versions of this Assembler Compiler
 <!--
 - [MPLAB® Xpress Cloud-based IDE](https://mplabxpress.microchip.com/mplabcloud/ide)
 -->
+
+```
+$author:   Jin-Wen (Ed) Lai  
+$date:     May. 2001
+$revised:  Mar. 2018
+$keywords: operating, systems, assembler, compiler, perl
+```
