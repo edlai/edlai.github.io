@@ -8,6 +8,7 @@ nav:
         - 'Development Tools':
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
+          - 'Equipments': 'dev/equipments/index.md'
         - 'Embedded Linux': 
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'

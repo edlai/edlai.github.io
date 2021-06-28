@@ -17,6 +17,7 @@ Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software
 - [XML (Red Hat)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml)
 - [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format)
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+- [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 
 ## Terminal Tools
 
