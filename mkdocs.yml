@@ -3,9 +3,14 @@ site_url: https://edlai.github.io/
 nav:
     - Home: 'index.md'
     - 'Engineering':
-        - 'Linux Distribution': 'linux-distribution.md'
-        - 'Development Tools': 'development-tools.md'
-        - 'Embedded Linux': 'embedded-linux.md'
+        - 'Linux Distribution':
+          - 'Debian': 'distro/debian/index.md'
+        - 'Development Tools':
+          - 'Softwares': 'dev/software/index.md'
+          - 'Accessories': 'dev/accessories/index.md'
+        - 'Embedded Linux': 
+          - 'Buildroot': 'embedded/buildroot/index.md'
+          - 'OpenWRT': 'embedded/openwrt/index.md'
         - 'Computer Networks':
           - 'Application Layer':
             - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
@@ -20,6 +25,8 @@ nav:
         - 'Operating Systems': 
           - 'Compiler':
             - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
+        - 'Miscellaneous':
+          - 'Misc': 'misc/index.md'
     - 'Education':
         - 'Qualitative Research': 'qualitative-research.md'
         - 'Quantitative Research': 'quantitative-research.md'

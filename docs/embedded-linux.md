@@ -1,5 +1,0 @@
-# Embedded Linux
-
-## Buildroot
-
-## OpenWRT

@@ -1,4 +1,4 @@
-# Development Tools
+# Software Development Tools
 
 ## Code Editor
 
@@ -29,12 +29,6 @@ Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software
 - [tftp64](http://tftpd32.jounin.net/tftpd32_download.html)
 - [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git)
 
-## Wi-Fi Tool
-
-- [Wireshark](https://www.wireshark.org/)
-- [InSSIDer 5](https://www.metageek.com/products/inssider/)
-- [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
-- [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
 
 ## Code Comparer
 
@@ -71,3 +65,11 @@ $ doxygen Doxygen
 ## Dynamic Code Analysis Tools 
 
 ### Valgrind
+
+## Wi-Fi Tool
+
+- [Wireshark](https://www.wireshark.org/)
+- [InSSIDer 5](https://www.metageek.com/products/inssider/)
+- [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
+- [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
+
