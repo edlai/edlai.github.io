@@ -6,7 +6,7 @@ nav:
         - 'Linux Distribution':
           - 'Debian': 'distro/debian/index.md'
         - 'Development Tools':
-          - 'Softwares': 'dev/software/index.md'
+          - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
         - 'Embedded Linux': 
           - 'Buildroot': 'embedded/buildroot/index.md'

@@ -18,4 +18,9 @@
 
 better to have Port Mirroring function for the Network Switch.
 
-- DGS-1210-10P
+- [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)
+- [VigorSwitch G1080](https://www.draytek.com/products/vigorswitch-g1080/)
+
+## Ethernet Router
+
+- [MikroTik RB750Gr3 hEX](https://mikrotik.com/product/RB750Gr3)
