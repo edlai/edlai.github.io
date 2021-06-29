@@ -1,6 +1,11 @@
 # Equipments
 
-## Network Switch or Network Hub (Optional)
+## Network Hub (Optional)
+
+- D-Link DE-805TP 10Mbps Ethernet Mini Hub 5-Port
+- LINKSYS EW5HUB Instant Ethernet Workgroup 10M 5-port Hub
+
+## Network Switch
 
 better to have Port Mirroring function for the Network Switch.
 
@@ -13,6 +18,7 @@ better to have Port Mirroring function for the Network Switch.
 ## Ethernet Router
 
 ### [MikroTik RB750Gr3 hEX](https://mikrotik.com/product/RB750Gr3)
+
 
 #### Config PPPoE server with VLAN support
 
