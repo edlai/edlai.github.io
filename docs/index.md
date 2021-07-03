@@ -1,4 +1,27 @@
+---
+title: Welcome to Ed's Personal Wiki
+---
+
 # Welcome to Ed's Personal Wiki
+
+I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time. (Update: 2021/07/03)
+
+## There are around four sections of this Wiki.
+
+### [Engineering](distro/debian/index.md)
+There are some of my reports and homeworks when I was a BSEE undergraduate student in university and my career.
+
+### [Education](qualitative-research/index.md)
+ 
+There are some of the reports and homeworks when I was a MSMIE graduate student .
+
+### [Collection](collections/index.md)
+
+My collection from Internet. Something like how to write your CV using TEX files (LaTeX), how to capture wireless packets from Wireshark and so on.
+
+### [Motivation](painting/index.md)
+
+Motivations for my life and career.
 
 ## Academic Background
 
@@ -26,5 +49,7 @@ diverse certification and Licenses from [Skill Evaluation Center of Workforce De
 ## Technician Training
 
 - Microsoft Windows Rally Technology Summit, 5-day intensive courses in Redmond, Washington, Jul.30,2007 - Aug.03,2007.
+<!--
 - SoC & IC Design Courses, 251-hour, National Tsing Hua University, Hsinchu City, Aug.27,2002 - Jan.12,2003.
+-->
 - Computer Programming and Database Management, 500-hour with labor-Insurance, National Cheng Kung University, Tainan City, Mar.08,1999 - Jun.25,1999.

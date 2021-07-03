@@ -31,6 +31,8 @@ nav:
     - 'Education':
         - 'Qualitative Research': 'qualitative-research.md'
         - 'Quantitative Research': 'quantitative-research.md'
+    - 'Collection':
+        - 'Collections': 'collections/index.md'
     - 'Motivation':
         - 'Painting': 'painting.md'
         - 'Traveling': 'traveling.md'
