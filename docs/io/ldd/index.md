@@ -6,8 +6,6 @@
 
 ```
 $author:   Jin-Wen (Ed) Lai, s9360511[at]ntut[dot]org[dot]tw
-           Chris Chou 
-	   Justin Deng
 $date:     May. 2003
 $revised:  Mar. 2018
 $keywords: man, machine, interface

@@ -1,16 +1,15 @@
-# Software Development Tools
+# Software Tools for Firmware Development
 
 ## Code Editor
 
 ### Visual Studio Code
 
-Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software development tools.
-
-[Visual Studio Code](https://code.visualstudio.com/) and its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery)
+Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development tools. First of all, just install
+[Visual Studio Code](https://code.visualstudio.com/) as a foundation of code editor then don't forget to install its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery) as following as well.
 
 - [Visual Studio Code Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) (Highly Recommended)
 - [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (Highly Recommended)
-- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens): easy to check git history and so on.
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 - [Indent one space](https://marketplace.visualstudio.com/items?itemName=usernamehw.indent-one-space)
@@ -39,19 +38,20 @@ Instead of `vi`, highly recommended to use VSC(Visual Studio Code) as a software
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
-- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
-- AStyle
+- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+- [AStyle](http://astyle.sourceforge.net/)
 
 
 ## Source Code Tagging System
 
-### GNU Global
-### Doxygen
+### [GNU Global](https://www.gnu.org/software/global/)
+### [CScope](http://cscope.sourceforge.net/): I used to use it long time ago.
+### [Doxygen](https://www.doxygen.nl/index.html)
 
 An example for `dem` to generate Doxygen document
 
 ```console
-$ cd dlink/Apps/dem
+$ cd ${code_path}
 $ doxygen Doxygen
 ```
 
@@ -62,10 +62,14 @@ $ doxygen Doxygen
 - [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
 - [CPPCheck](http://cppcheck.sourceforge.net/)
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
+- [splint](https://splint.org/)
+```
+$ sudo apt-get update -y; sudo apt-get install -y splint
+```
 
 ## Dynamic Code Analysis Tools 
 
-### Valgrind
+### [Valgrind](https://www.valgrind.org/)
 
 ## Wi-Fi Tool
 
@@ -73,4 +77,3 @@ $ doxygen Doxygen
 - [InSSIDer 5](https://www.metageek.com/products/inssider/)
 - [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
 - [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
-

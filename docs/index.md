@@ -4,16 +4,16 @@ title: Welcome to Ed's Personal Wiki
 
 # Welcome to Ed's Personal Wiki
 
-I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time. (Update: 2021/07/03)
+I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time. (Updated: 2021/07/03)
 
-## There are around four sections of this Wiki.
+## There are several parts of this Wiki.
 
 ### [Engineering](distro/debian/index.md)
-There are some of my reports and homeworks when I was a BSEE undergraduate student in university and my career.
+There are some of my reports and homeworks when I was a BSEE undergraduate student in university or in my career.
 
 ### [Education](qualitative-research/index.md)
  
-There are some of the reports and homeworks when I was a MSMIE graduate student .
+There are some of the reports and homeworks when I was a MSMIE graduate student. But it's still under construction now. 
 
 ### [Collection](collections/index.md)
 

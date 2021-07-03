@@ -9,6 +9,8 @@ nav:
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
           - 'Equipments': 'dev/equipments/index.md'
+          - 'Gitlab and Build Machine': 'dev/gitlab/index.md'
+          - 'Docker and Macvlan': 'dev/docker/index.md'
         - 'Embedded Linux': 
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
@@ -52,3 +54,13 @@ theme:
     text: Roboto
   features:
     - navigation.tabs
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+  - javascripts/config.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
