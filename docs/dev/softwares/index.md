@@ -18,6 +18,12 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 
+There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) and it userful shortcuts as following
+
+- Deleting tabs when using tabs as spaces: <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
+- Switch to next Tab: <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
+- Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>
+
 ## Terminal Tools
 
 - [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for Windows with X11 server, tabbed SSH client, network tools and so on.
