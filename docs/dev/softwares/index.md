@@ -26,9 +26,9 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 
 ## Terminal Tools
 
-- [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for Windows with X11 server, tabbed SSH client, network tools and so on.
-- [Xshell](https://www.netsarang.com/en/xshell/): The Industry's Most Powerful SSH Client.
 - [ZOC](https://www.emtec.com/zoc/): SSH Client and Terminal Emulator for Windows and macOS.
+- [Xshell](https://www.netsarang.com/en/xshell/): The Industry's Most Powerful SSH Client.
+- [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for Windows with X11 server, tabbed SSH client, network tools and so on.
 
 ## TFTP tool
 
@@ -44,14 +44,15 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
-- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
 - [AStyle](http://astyle.sourceforge.net/)
+- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+
 
 
 ## Source Code Tagging System
 
-### [GNU Global](https://www.gnu.org/software/global/)
 ### [CScope](http://cscope.sourceforge.net/): I used to use it long time ago.
+### [GNU Global](https://www.gnu.org/software/global/)
 ### [Doxygen](https://www.doxygen.nl/index.html)
 
 An example for `dem` to generate Doxygen document
@@ -83,3 +84,7 @@ $ sudo apt-get update -y; sudo apt-get install -y splint
 - [InSSIDer 5](https://www.metageek.com/products/inssider/)
 - [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
 - [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
+
+## Web Debugging Proxy
+
+- [Fiddler](https://www.telerik.com/fiddler)

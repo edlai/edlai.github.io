@@ -1,4 +1,4 @@
-# Voice Processing - Discrete-Time Processing
+# Discrete-Time Processing
 
 An implementation of changing the 10K sampling-rate-voice to
 
