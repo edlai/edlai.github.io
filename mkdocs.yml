@@ -8,12 +8,12 @@ nav:
         - 'Development Tools':
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
-          - 'Equipments': 'dev/equipments/index.md'
+          - 'Networking Equipments': 'dev/equipments/index.md'
           - 'Gitlab and Build Machine': 'dev/gitlab/index.md'
           - 'Docker and Macvlan': 'dev/docker/index.md'
-          - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
-          - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
-          - 'SDR and CMW500': 'dev/bss/index.md'
+#         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
+#         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
+#         - 'SDR and CMW500': 'dev/bss/index.md'
         - 'Embedded Linux': 
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
