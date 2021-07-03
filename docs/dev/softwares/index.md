@@ -51,9 +51,9 @@ Suggest to use default coding configuration by `clang-format` of Visual Studio C
 
 ## Source Code Tagging System
 
-### [CScope](http://cscope.sourceforge.net/): I used to use it long time ago.
-### [GNU Global](https://www.gnu.org/software/global/)
-### [Doxygen](https://www.doxygen.nl/index.html)
+- [CScope](http://cscope.sourceforge.net/): I used to use it long time ago.
+- [GNU Global](https://www.gnu.org/software/global/)
+- [Doxygen](https://www.doxygen.nl/index.html)
 
 An example for `dem` to generate Doxygen document
 
