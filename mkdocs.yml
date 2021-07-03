@@ -3,8 +3,8 @@ site_url: https://edlai.github.io/
 nav:
     - Home: 'index.md'
     - 'Engineering':
-        - 'Linux Distribution':
-          - 'Debian': 'distro/debian/index.md'
+        #- 'Linux Distribution':
+        #  - 'Debian': 'distro/debian/index.md'
         - 'Development Tools':
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
