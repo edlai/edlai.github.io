@@ -24,8 +24,17 @@ nav:
           - 'Spectrum Analysis':
             - 'Window Size and the Spectrogram' : 'dsp/window-size-and-the-spectrogram/index.md'
         - 'Operating Systems': 
-          - 'Compiler':
-            - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
+          - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
+        - 'Man-Machine Interfaces': 
+          - 'Industry Standard Architecture (ISA)': 'io/isa/index.md'
+          - 'Peripheral Component Interconnect (PCI)': 'io/pci/index.md'
+          - 'Parallel Port Device (LPT) and Linux Device Driver': 'io/ldd/index.md'
+          - 'General Purpose Input Output (GPIO)': 'io/gpio/index.md'
+          - 'Inter-Integrated Circuit (I2C)': 'io/i2c/index.md'
+        - 'Television Engineering': 
+          - 'Multimedia Player': 'tv/player/index.md'
+          - 'Digital Vedio Conversion - MPEG-1': 'tv/mpeg1/index.md'
+#         - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
         - 'Miscellaneous':
           - 'Misc': 'misc/index.md'
     - 'Education':
@@ -34,8 +43,9 @@ nav:
     - 'Collection':
         - 'Collections': 'collections/index.md'
     - 'Motivation':
-        - 'Painting': 'painting.md'
         - 'Traveling': 'traveling.md'
+        - 'Painting': 'painting.md'
+
 theme:
   name: material
   font:
