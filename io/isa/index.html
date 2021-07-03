@@ -1,0 +1,3972 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://edlai.github.io/io/isa/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Industry Standard Architecture (ISA) - Ed's Personal Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#man-machine-interfaces" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ed's Personal Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Industry Standard Architecture (ISA)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dev/softwares/" class="md-tabs__link md-tabs__link--active">
+        Engineering
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../qualitative-research/" class="md-tabs__link">
+        Education
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../collections/" class="md-tabs__link">
+        Collection
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../traveling/" class="md-tabs__link">
+        Motivation
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Ed's Personal Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/softwares/" class="md-nav__link">
+        Softwares Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/accessories/" class="md-nav__link">
+        Accessories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/equipments/" class="md-nav__link">
+        Equipments
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/gitlab/" class="md-nav__link">
+        Gitlab and Build Machine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/docker/" class="md-nav__link">
+        Docker and Macvlan
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/buildroot/" class="md-nav__link">
+        Buildroot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/openwrt/" class="md-nav__link">
+        OpenWRT
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" type="checkbox" id="__nav_2_3_1" >
+      
+      <label class="md-nav__link" for="__nav_2_3_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/hypertext-transfer-protocol/" class="md-nav__link">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/file-transfer-protocol/" class="md-nav__link">
+        File Transfer Protocol (FTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      <label class="md-nav__link" for="__nav_2_4_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/discrete-time-processing/" class="md-nav__link">
+        Discrete-Time Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/moving-average-and-backward-system/" class="md-nav__link">
+        Moving Average and Backward System
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      <label class="md-nav__link" for="__nav_2_4_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/window-size-and-the-spectrogram/" class="md-nav__link">
+        Window Size and the Spectrogram
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      <label class="md-nav__link" for="__nav_2_5">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/assembler-compiler/" class="md-nav__link">
+        An Assembler Compiler
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+      
+      <label class="md-nav__link" for="__nav_2_6">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Industry Standard Architecture (ISA)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Industry Standard Architecture (ISA)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#industry-standard-architecture-isa" class="md-nav__link">
+    Industry Standard Architecture (ISA)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hareware" class="md-nav__link">
+    Hareware
+  </a>
+  
+    <nav class="md-nav" aria-label="Hareware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    Schematic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soldering" class="md-nav__link">
+    Soldering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hand-tools" class="md-nav__link">
+    Hand Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-first" class="md-nav__link">
+    Safety First
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demonstration" class="md-nav__link">
+    Demonstration
+  </a>
+  
+    <nav class="md-nav" aria-label="Demonstration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    DOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-linux" class="md-nav__link">
+    Red Hat Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C
+  </a>
+  
+    <nav class="md-nav" aria-label="C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    C++
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#turbo-c" class="md-nav__link">
+    Turbo C
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-device-driver" class="md-nav__link">
+    Linux Device Driver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qt" class="md-nav__link">
+    QT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-a-pc-at-interface-pinout" class="md-nav__link">
+    Appendix A - PC AT Interface Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout" class="md-nav__link">
+    Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-c-intel-8254-programmable-interval-timer-pinout" class="md-nav__link">
+    Appendix C - Intel 8254 Programmable Interval Timer Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-d-remote-access-by-vnc" class="md-nav__link">
+    Appendix D - Remote Access by VNC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pci/" class="md-nav__link">
+        Peripheral Component Interconnect (PCI)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ldd/" class="md-nav__link">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        General Purpose Input Output (GPIO)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c/" class="md-nav__link">
+        Inter-Integrated Circuit (I2C)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      <label class="md-nav__link" for="__nav_2_7">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/player/" class="md-nav__link">
+        Multimedia Player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/mpeg1/" class="md-nav__link">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      <label class="md-nav__link" for="__nav_2_8">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Education" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qualitative-research/" class="md-nav__link">
+        Qualitative Research
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantitative-research/" class="md-nav__link">
+        Quantitative Research
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Collection" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collections/" class="md-nav__link">
+        Collections
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Motivation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Motivation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../traveling/" class="md-nav__link">
+        Traveling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../painting/" class="md-nav__link">
+        Painting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#industry-standard-architecture-isa" class="md-nav__link">
+    Industry Standard Architecture (ISA)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hareware" class="md-nav__link">
+    Hareware
+  </a>
+  
+    <nav class="md-nav" aria-label="Hareware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    Schematic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soldering" class="md-nav__link">
+    Soldering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hand-tools" class="md-nav__link">
+    Hand Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-first" class="md-nav__link">
+    Safety First
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demonstration" class="md-nav__link">
+    Demonstration
+  </a>
+  
+    <nav class="md-nav" aria-label="Demonstration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    DOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-linux" class="md-nav__link">
+    Red Hat Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C
+  </a>
+  
+    <nav class="md-nav" aria-label="C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    C++
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#turbo-c" class="md-nav__link">
+    Turbo C
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-device-driver" class="md-nav__link">
+    Linux Device Driver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qt" class="md-nav__link">
+    QT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-a-pc-at-interface-pinout" class="md-nav__link">
+    Appendix A - PC AT Interface Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout" class="md-nav__link">
+    Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-c-intel-8254-programmable-interval-timer-pinout" class="md-nav__link">
+    Appendix C - Intel 8254 Programmable Interval Timer Pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-d-remote-access-by-vnc" class="md-nav__link">
+    Appendix D - Remote Access by VNC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
+<h2 id="industry-standard-architecture-isa">Industry Standard Architecture (ISA)</h2>
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
+$date:     May. 2003
+$revised:  Mar. 2018
+$keywords: man, machine, interface, industry standard architecture, isa
+</code></pre></div>
+<p>An exercise of Intel 8255 PIO (Programmable Peripheral Interface, PPI) control via ISA interface. Blinking LED on Red Hat Linux. </p>
+<ol>
+<li>Doing <code>circuit design work</code> by using <code>OrCAD</code> </li>
+<li><code>Soldering</code> circuit board by using <code>Hand Tools</code></li>
+<li>Verifying circuit board by using <code>debug</code> command on DOS</li>
+<li>Blinking LED by using  Linux <code>C</code> and <code>C++</code> on Linux </li>
+</ol>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#hardware">Hardware</a><ul>
+<li><a href="#schematic">Schematic</a></li>
+<li><a href="#components">Components</a></li>
+<li><a href="#soldering">Soldering</a></li>
+<li><a href="#hand-tools">Hand Tools</a></li>
+<li><a href="#safety-first">Safety First</a></li>
+</ul>
+</li>
+<li><a href="#software">Software</a></li>
+<li><a href="#demonstration">Demonstration</a></li>
+<li><a href="#dos">DOS</a><ul>
+<li><a href="#debug">Debug</a></li>
+</ul>
+</li>
+<li><a href="#linux">Linux</a><ul>
+<li><a href="#c">C</a></li>
+<li><a href="#c-1">C++</a></li>
+</ul>
+</li>
+<li><a href="#windows">Windows</a><ul>
+<li><a href="#turbo-c">Turbo C</a></li>
+</ul>
+</li>
+<li><a href="#advanced">Advanced</a><ul>
+<li><a href="#qt">Qt</a></li>
+</ul>
+</li>
+<li><a href="#reference">References</a></li>
+<li><a href="#appendix">Appendix</a></li>
+<li><a href="#appendix-a---pc-at-interface-pinout">Appendix A - PC AT Interface Pinout</a></li>
+<li><a href="#appendix-b---intel-82c55a-programmable-peripheral-interface-pinout">Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout</a></li>
+<li><a href="#appendix-c---intel-8254-programmable-interval-timer-pinout">Appendix C - Intel 8254 Programmable Interval Timer Pinout</a></li>
+<li><a href="#appendix-d---remote-Access-by-vnc">Appendix D - Remote Access by VNC</a>  </li>
+</ul>
+<h2 id="concept">Concept</h2>
+<p>基本 I/O 控制實驗，設計一塊 ISA 電路板，利用 Intel 8255 擴充電腦 IO port, 並控制 LED 閃爍. </p>
+<h2 id="requirements">Requirements</h2>
+<h3 id="hareware">Hareware</h3>
+<h4 id="schematic">Schematic</h4>
+<ul>
+<li>
+<p>Electronic Schematic  <br />
+<img alt="circuit" src="circuit.jpg" /></p>
+</li>
+<li>
+<p>I/O Address mapping of Intel 8255:    </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>8255A (Selects)</th>
+<th>A1</th>
+<th>A0</th>
+<th>I/O Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port A</td>
+<td>0</td>
+<td>0</td>
+<td>300H</td>
+</tr>
+<tr>
+<td>Port B</td>
+<td>0</td>
+<td>1</td>
+<td>301H</td>
+</tr>
+<tr>
+<td>Port C</td>
+<td>1</td>
+<td>0</td>
+<td>302H</td>
+</tr>
+<tr>
+<td>Control Word Register</td>
+<td>1</td>
+<td>1</td>
+<td>303H</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>I/O Address mapping for Intel  8254:    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>8254 (Selects)</th>
+<th>A1</th>
+<th>A0</th>
+<th>I/O Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counter 0</td>
+<td>0</td>
+<td>0</td>
+<td>320H</td>
+</tr>
+<tr>
+<td>Counter 1</td>
+<td>0</td>
+<td>1</td>
+<td>321H</td>
+</tr>
+<tr>
+<td>Counter 2</td>
+<td>1</td>
+<td>0</td>
+<td>322H</td>
+</tr>
+<tr>
+<td>Control Word Register</td>
+<td>1</td>
+<td>1</td>
+<td>323H</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Power Source Pin Number:    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>TTL</th>
+<th>8255</th>
+<th>8254</th>
+<th>74LS138 (3-8 Decode)</th>
+<th>74LS00 (NAND)</th>
+<th>74LS244 (Locker)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+5V</td>
+<td>26</td>
+<td>24</td>
+<td>16</td>
+<td>14</td>
+<td>20</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>7</td>
+<td>12</td>
+<td>8</td>
+<td>7</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h4 id="soldering">Soldering</h4>
+<ul>
+<li>Good    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Front View</th>
+<th>Inserting Board into ISA slot on PC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="r" src="cir.jpg" /></td>
+<td><img alt="r" src="action_4.gif" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="hand-tools">Hand Tools</h4>
+<ul>
+<li>準備一般的焊接工具即可, 另有 可有可無的 防靜電用躡子、一號起子、十號起子…不再贅述.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>手工具名稱</th>
+<th>數量</th>
+<th>單位</th>
+<th>品牌/規格</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>電烙鐵</td>
+<td>1</td>
+<td>支</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>尖嘴鉗</td>
+<td>1</td>
+<td>支</td>
+<td>/PN-2005</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>斜口鉗</td>
+<td>1</td>
+<td>支</td>
+<td>/TR-25-P</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>吸錫器</td>
+<td>1</td>
+<td>支</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>銲錫</td>
+<td>1</td>
+<td>捲</td>
+<td></td>
+<td>Consumables</td>
+</tr>
+<tr>
+<td>6</td>
+<td>鍍銀線</td>
+<td>1</td>
+<td>捲</td>
+<td>OK / R26-500</td>
+<td>Consumables; Optional</td>
+</tr>
+<tr>
+<td>7</td>
+<td>錫油(錫膏 )</td>
+<td>1</td>
+<td>罐</td>
+<td>goot / BS-10</td>
+<td>Consumables; Optional</td>
+</tr>
+<tr>
+<td>8</td>
+<td>三用電錶</td>
+<td>1</td>
+<td>台</td>
+<td></td>
+<td>用於測焊接完後的電路版是否有短路</td>
+</tr>
+</tbody>
+</table>
+<h4 id="components">Components</h4>
+<ul>
+<li>Electronic Components    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>零件名稱</th>
+<th>數量</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>82C55</td>
+<td>1</td>
+<td>可程式規劃邏輯介面 ; PPI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8254 ( 或 D71054C )</td>
+<td>1</td>
+<td>可程式規劃計數(時)介面 / 最高輸入時序 8 MHz</td>
+</tr>
+<tr>
+<td>3</td>
+<td>74LS138</td>
+<td>1</td>
+<td>解碼致能 8255 與 8254 用</td>
+</tr>
+<tr>
+<td>4</td>
+<td>74LS00</td>
+<td>1</td>
+<td>解碼致能 74LS138 與 喇叭電路</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5K 可調式電阻</td>
+<td>1</td>
+<td>喇叭電路用</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C1815</td>
+<td>1</td>
+<td>喇叭電路用 , 編號面 接腳 ECB</td>
+</tr>
+<tr>
+<td>7</td>
+<td>喇叭</td>
+<td>1</td>
+<td>喇叭電路用, 使用 PC 上的喇叭即可</td>
+</tr>
+<tr>
+<td>8</td>
+<td>LED</td>
+<td>8</td>
+<td>檢視8255 portA 輸出用 <!--(十顆包裝型 LED 有時無法動作)--></td>
+</tr>
+<tr>
+<td>9</td>
+<td>PC ISA 空版</td>
+<td>1</td>
+<td>金手指 AT 介面電路板</td>
+</tr>
+<tr>
+<td>10</td>
+<td>IC 腳座</td>
+<td>N/A</td>
+<td>上述 IC 所需腳座</td>
+</tr>
+</tbody>
+</table>
+<p>PS. 排針座可視需要準備.</p>
+<ul>
+<li>Orcad Family Release 9.2 Lite Edition    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Orcad 零件庫</th>
+<th>零件名稱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MISC</td>
+<td>82C55A, 8254</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MUX DECODER GATE</td>
+<td>74LS138</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BUSDRIVER TRANSCEIVER</td>
+<td>74LS00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DISCRETE</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>CONNECTOR</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>電路改良    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>項目</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>旁路電容</td>
+<td>每顆 IC 旁靠近電源處可加上</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LED 的限流電阻</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>DIP SWITCH 的光藕合電晶體</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="safety-first">Safety First</h4>
+<ul>
+<li><strong>Short Circuit</strong>: 當電路焊接完畢後, 需使用三用電表，確定電路板的正負電源沒有短路.</li>
+</ul>
+<h3 id="software">Software</h3>
+<ul>
+<li>MicroSoft DOS (Disk Operating System) 6.0</li>
+<li><code>debug</code> </li>
+<li>Red Hat Linux 8.0</li>
+<li>GCC (C compiler)</li>
+<li>G++ (C++ compiler)</li>
+<li>Windows 98</li>
+<li>Turbo C</li>
+</ul>
+<h2 id="demonstration">Demonstration</h2>
+<h3 id="dos">DOS</h3>
+<ul>
+<li>DOS系統在硬碟上的開機速度快, 且內部的 Debug 指令，在電路板剛焊好, 要驗證其功能時，非常方便.</li>
+<li>使用我的桌上型電腦。在 CONNER CP30254H( 252M ) 硬碟上安裝以下的系統.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>軟體名稱</th>
+<th>說明</th>
+<th>必要性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DOS 6.00</td>
+<td>用於電腦開機，與 <code>debug</code> 指令</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PCTOOLS9</td>
+<td>類似 NU8 的系統管理與修護工具</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Turbo C++ 3.0</td>
+<td>C 程式 編譯器</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Macro Assembler 6.11</td>
+<td>組合語言編譯器</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<h3 id="debug">Debug</h3>
+<ul>
+<li>由於我們只是要用來測試 8255 I/O 實驗版，故只需要 DOS 6.00 就可以了，其它視需要再安裝.</li>
+<li>將 8255 I/O 實驗版 插入 ISA 槽，電腦開機後，鍵入以下指令.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>C:/><code>cd dos60</code></td>
+<td>切到 debug 所在的那個資料夾 (Optional)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>C:/><code>debug</code></td>
+<td>進入 <code>debug</code>模式，此時會出現命令提示字元 <code>-</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>- <code>o 303 80</code></td>
+<td>設定 8255 的 Port A 、Port B、Port C 皆為模式 0 輸出</td>
+</tr>
+<tr>
+<td>3</td>
+<td>- <code>o 300 ff</code></td>
+<td>令 8255 的 Port A 輸出 <code>11111111</code> ( LED 全部 點亮 )</td>
+</tr>
+<tr>
+<td>4</td>
+<td>- <code>o 300 00</code></td>
+<td>令 8255 的 Port A 輸出 <code>00000000</code> ( LED 全  暗 )</td>
+</tr>
+<tr>
+<td>5</td>
+<td>- <code>o 300 55</code></td>
+<td>令 8255 的 Port A 輸出 <code>10101010</code> ( LED 0、2、4、6 點亮 )</td>
+</tr>
+<tr>
+<td>6</td>
+<td>- <code>o 300 aa</code></td>
+<td>令 8255 的 Port A 輸出 <code>01010101</code> ( LED 1、3、4、5 點亮 )</td>
+</tr>
+<tr>
+<td>7</td>
+<td>- <code>q</code></td>
+<td>最後下 q 命令 離開 debug 模式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>當然可多加幾項測試 8255 I/O 實驗版，若測試項目眾多，可以考慮寫 應用程式語言 ( Turbo C++、Macro Assembler ) 加以測試。</li>
+</ul>
+<h3 id="red-hat-linux">Red Hat Linux</h3>
+<ul>
+<li>在 Red Hat Linux 8.0 平台上 ，使用 root 權限 ，以 C 與 C++ 來驅動  8255 I/O 實驗板。</li>
+<li>硬碟使用 Quantum Fireball Ex( 6449M ) 並安裝以下的系統.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>軟體名稱</th>
+<th>說明</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RedHat Linux 8.0</td>
+<td>含 X window( X 11 ；視窗環境 )</td>
+<td>Linux 作業平台</td>
+</tr>
+<tr>
+<td>2</td>
+<td>gcc 3.2 (20020903)</td>
+<td>C 語言(GNU C) 組譯器</td>
+<td>下 gcc -v 指令 可查看 gcc 版本</td>
+</tr>
+<tr>
+<td>3</td>
+<td>g++</td>
+<td>C++ 語言組譯器</td>
+<td>組譯器</td>
+</tr>
+<tr>
+<td>4</td>
+<td>QT</td>
+<td>KDE UI 工具組</td>
+<td>需使用 g++ 編譯器. QT  參考手冊 <a href="http://www.qiliang.net:81/qt/">簡體</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kate</td>
+<td>編輯 C/C++ 語言用</td>
+<td>編輯器</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>使用 C 語言 與 C++ 語言來控制 I/O 所需 include 的標頭檔.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>使用語言</th>
+<th>所需 INCLUDE 的檔案與語法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>C  語言</td>
+<td>#include <asm/io.h></td>
+</tr>
+<tr>
+<td>2</td>
+<td>C++語言</td>
+<td>#include <sys/io.h></td>
+</tr>
+</tbody>
+</table>
+<h3 id="c">C</h3>
+<ul>
+<li>There are some programs which can help us to verify the hardware and software.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>程式名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>hello.c</td>
+<td>Linux C  的基本測試，印出 <code>Hello, world</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>kb.c</td>
+<td>類似 DOS 上 的 <code>kbhit</code>  函式(偵測鍵盤是否被按下)功能</td>
+</tr>
+<tr>
+<td>3</td>
+<td>io.c</td>
+<td>以 Linux C 控制 閃爍 8255 I/O 實驗板上的 LED</td>
+</tr>
+<tr>
+<td>4</td>
+<td>blink.c</td>
+<td>結合kb.c與io.c.讓實驗板上的LED不停閃爍，直到按下q鍵才離開</td>
+</tr>
+<tr>
+<td>5</td>
+<td>pili_testing.c</td>
+<td>跑馬燈模擬程式。由1計數至128,128計數至1,來回列印20 次</td>
+</tr>
+<tr>
+<td>6</td>
+<td>pili.c</td>
+<td>LED 跑馬燈。讓實驗板上的 LED來回閃爍，直到按下<code>q</code>才離開</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>由最後的跑馬燈程式，最後確定 可控制 8255 I/O 實驗板.</li>
+</ul>
+<h4 id="programming">Programming</h4>
+<ul>
+<li>hello.c    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  hello.c</span>
+<span class="cm">Compiler:  gcc -O -o hello hello.c</span>
+<span class="cm">Author  :  Jing-Wen.Lai</span>
+<span class="cm">Function:  Linux C  的基本測試，印出 Hello, world。 </span>
+<span class="cm">Date:      3/22 2003</span>
+<span class="cm">****************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="hello.jpg" /></p>
+<ul>
+<li>kb.c</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename: kb.c</span>
+<span class="cm">Compiler: gcc -O -o kb kb.c</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 平常執行 Loop 印出 計數 訊息 ，除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">Date:     03/22 2003</span>
+<span class="cm">Reference: 參考以下網路文件改寫</span>
+<span class="cm">      http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>                           <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>                     <span class="cm">/*  Loop 用 計數器  */</span>
+
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;looping %d time(s) </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Input %c ==</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   SUB Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+  <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+  <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="kbhit.jpg" /></p>
+<ul>
+<li>io.c</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">      --  io.c  &lt;Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用&gt;  --</span>
+<span class="cm">Author:    Jing-Wen.Lai</span>
+<span class="cm">Function:  以 Linux C 控制 8255 I/O 實驗板上的 LED,</span>
+<span class="cm">Compiler:  使用 `gcc -O2 -o io io.c&#39;,</span>
+<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
+<span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+  <span class="cm">/* LED   交互 閃爍 10 次 ，每次 1000 ms */</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="cm">/* 結束 io.c */</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="io.jpg" /></p>
+<ul>
+<li>blink.c    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  blink.c</span>
+<span class="cm">Compiler:  gcc -O -o blink blink.c</span>
+<span class="cm">Author:    Jing-Wen.Lai</span>
+<span class="cm">Function:  平常執行 Loop 印出 計數 訊息 ， 8255 I/O 實驗板上的 LED 亦隨之閃爍</span>
+<span class="cm">            除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">Date:      May. 22/2003</span>
+<span class="cm">******************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>          <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>    <span class="cm">/*  Loop 用 計數器   */</span>
+
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
+
+  <span class="cm">/*  LED  交互 閃爍  */</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//printf(&quot;looping %d times \n&quot;,loopCount);</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">loopCount</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span> 
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
+
+  <span class="c1">//  LED 不亮 </span>
+  <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   sub Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+    <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+    <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+        <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="blink.jpg" /></p>
+<ul>
+<li>pili_test.c    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  pili_test.c</span>
+<span class="cm">Compiler:  gcc -O -o pili_test pili_test.c</span>
+<span class="cm">Author   : Jing-Wen.Lai</span>
+<span class="cm">Function : 由 1 計數至 128 ， 128 計數至 1，來回列印 </span>
+<span class="cm">Date     : 3/23 2003</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> </span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>    
+  <span class="kt">int</span> <span class="n">LED_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>         <span class="cm">/*   初始化資料     */</span>    
+  <span class="kt">int</span> <span class="n">directionFlag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>       <span class="cm">/* 1: LED 向左點亮 ; 0:LED 向右點亮    */</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>    
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">LED_Data</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">128</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="pili_test.jpg" /></p>
+<ul>
+<li>pili.c    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename: blink.c</span>
+<span class="cm">Compiler: gcc -O -o blink blink.c</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 目的 :: LED 走馬燈。除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。</span>
+<span class="cm">Date:     3/22 2003</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>                           <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                     <span class="cm">/*  Loop 用 計數器   */</span>
+
+  <span class="kt">int</span> <span class="n">LED_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>                   <span class="cm">/* 初始化資料    */</span>    
+  <span class="kt">int</span> <span class="n">directionFlag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>                 <span class="cm">/* 1: LED 向左點亮 ; 0:LED 向右點亮    */</span>
+
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
+
+  <span class="cm">/*  LED  交互 閃爍  */</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> 
+    <span class="n">outb</span><span class="p">(</span> <span class="n">LED_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pili Lamp is Running and The 8255-Port-A&#39;s outData is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">LED_Data</span><span class="p">);</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+      <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>            
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">128</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
+
+  <span class="c1">//  LED 不亮 </span>
+  <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   sub Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+  <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+  <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="pili.jpg" /></p>
+<h3 id="c_1">C++</h3>
+<ul>
+<li>There are some programs which can help us to verify the hardware and software.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>程式名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>hello.cpp</td>
+<td>Linux C++  的基本測試，印出 Hello C++ !</td>
+</tr>
+<tr>
+<td>2</td>
+<td>io.cpp</td>
+<td>Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>class_io.cpp</td>
+<td>LED 跑馬燈。全暗, 全亮, 左移, 右移 測試</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>hello.cpp      </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  hello.cpp</span>
+<span class="cm">Compiler:  g++  -Wno-deprecated -ohello hello.cpp</span>
+<span class="cm">Function:  C++ 的基本測試，印出 Hello C++!。</span>
+<span class="cm">Date:      3/23 2003</span>
+<span class="cm">Reference:</span>
+<span class="cm">******************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>    
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello C++ !&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="hello_cpp.jpg" /></p>
+<ul>
+<li>io.cpp      </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  io.cpp</span>
+<span class="cm">Function:  Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用</span>
+<span class="cm">Compiler:  使用 `g++ -O -o io io.cpp&#39;,</span>
+<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
+<span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
+<span class="cm">******************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/io.h&gt;</span><span class="cp"></span>
+
+  <span class="cp">#define CCW 0x303                     </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+  <span class="cp">#define PA  0x300                     </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+  <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="cm">/* 取得埠位址的存取權限 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+
+    <span class="cm">/* 定義 8255 工作模式 */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+
+    <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+    <span class="cm">/* PILI 燈  (1000 ms) 交互 閃爍 */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
+
+    <span class="cm">/* 我們不再需要這些埠位址 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="cpp_io.png" /></p>
+<ul>
+<li>class_io.cpp    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+
+<span class="cm">Filename: class_io.cpp     </span>
+<span class="cm">Compiler: g++ -Wno-deprecated -oclass_io  class_io.cpp</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 控制 8255 I/O 卡上的 LED , 使之能夠 向系統申請 8255卡所需的位置,</span>
+<span class="cm">                      將 8255卡所需的位置還給系統,與</span>
+<span class="cm">                      (1) LED 全部點亮,</span>
+<span class="cm">                      (2) LED 全部熄滅,</span>
+<span class="cm">                      (3) LED 由左往右跑,</span>
+<span class="cm">                      (4) LED 由右往左跑.</span>
+<span class="cm">******************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/io.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CCW  0x303                               </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA   0x300                               </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">ClassForPio8255Card</span>                        <span class="c1">// 類別Person宣告</span>
+  <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span> 
+      <span class="kt">int</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>                  
+      <span class="kt">int</span> <span class="n">initAndApplySystemAddrFor8255Card</span><span class="p">();</span>   <span class="c1">// 向系統申請 8255卡所需的位置</span>
+      <span class="kt">int</span> <span class="nf">releaseSystemAddrFor8255Card</span><span class="p">();</span>    <span class="c1">// 將 8255卡所佔用的位置還給系統</span>
+      <span class="kt">void</span> <span class="nf">piliLampFromMSBtoLSB</span><span class="p">();</span>       <span class="c1">// 8255卡上的LED 會由高位元點亮到低位元</span>
+      <span class="kt">void</span> <span class="nf">piliLampFromLSBtoMSB</span><span class="p">();</span>       <span class="c1">// 8255卡上的LED 會由低位元點亮到高位元  </span>
+      <span class="kt">void</span> <span class="nf">brightAllLedOn8255Card</span><span class="p">();</span>             <span class="c1">// 點亮 8255卡上的 LED</span>
+      <span class="kt">void</span> <span class="nf">darkAllLedOn8255Card</span><span class="p">();</span>       <span class="c1">// 熄掉 8255卡上的 LED  </span>
+  <span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                            <span class="cm">/*  鍵盤所按下的字元 */</span>
+    <span class="n">ClassForPio8255Card</span> <span class="n">pio8255Card</span><span class="p">;</span>   
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">initAndApplySystemAddrFor8255Card</span><span class="p">();</span>       <span class="c1">// 初始化 8255 卡</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="o">!=</span><span class="mi">5</span><span class="p">){</span>
+      <span class="n">cout</span>  <span class="o">&lt;&lt;</span><span class="s">&quot;1:Brighting all LED 2:Darking all LED 3:PILI LED(MSB-&gt;LSB)  4:PILI LED(LSB-&gt;MSB)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">ch</span><span class="p">;</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Selected Function is :&quot;</span><span class="o">&lt;&lt;</span><span class="n">ch</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="k">switch</span><span class="p">(</span><span class="n">ch</span><span class="p">){</span>    
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">brightAllLedOn8255Card</span><span class="p">();</span>           
+    <span class="k">break</span><span class="p">;</span>  
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+          <span class="n">pio8255Card</span><span class="p">.</span><span class="n">darkAllLedOn8255Card</span><span class="p">();</span>
+          <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">piliLampFromMSBtoLSB</span><span class="p">();</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+          <span class="n">pio8255Card</span><span class="p">.</span><span class="n">piliLampFromLSBtoMSB</span><span class="p">();</span>   
+          <span class="k">break</span><span class="p">;</span>    
+  <span class="k">default</span><span class="o">:</span>
+          <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;undefine Function ,try again please!</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">releaseSystemAddrFor8255Card</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">ClassForPio8255Card::initAndApplySystemAddrFor8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;initAndApplySystemAddrFor8255Card\n&quot;;</span>
+    <span class="cm">/* 取得埠位址的存取權限 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+
+    <span class="cm">/* 定義 8255 工作模式 */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+    <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>    
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::brightAllLedOn8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;brightAllLedOn8255Card\n&quot;;</span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span> 
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::darkAllLedOn8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;darkAllLedOn8255Card\n&quot;;</span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::piliLampFromLSBtoMSB</span><span class="p">(){</span>
+    <span class="n">pio8255CardPort_A_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+      <span class="n">pio8255CardPort_A_Data</span><span class="o">*=</span><span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::piliLampFromMSBtoLSB</span><span class="p">(){</span>
+    <span class="n">pio8255CardPort_A_Data</span><span class="o">=</span><span class="mh">0x80</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+      <span class="n">pio8255CardPort_A_Data</span><span class="o">/=</span><span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">ClassForPio8255Card::releaseSystemAddrFor8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;releaseSystemAddrFor8255Card\n&quot;;</span>
+    <span class="c1">//  LED 暗 </span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+
+    <span class="cm">/* 我們不再需要這些埠位址 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+
+  <span class="p">}</span>
+</code></pre></div>
+<p><img alt="r" src="class_io.png" /></p>
+<h2 id="windows">Windows</h2>
+<h3 id="turbo-c">Turbo C</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//**********************************************************************************</span>
+<span class="c1">//-- PC上介面實習 8255 與 8254 測試  </span>
+<span class="c1">//-- 版本:     v0.1 6/6/2001 </span>
+<span class="c1">//-- 說明:     測試 組裝 完畢 的 8255 與 8254 是否可動作    </span>
+<span class="c1">//-- 使用方式: 隨意按任一按鍵,   螢幕上 顯示 &quot;O&quot;, 此時 LED 1,2,5,6 亮, 並且喇叭發出聲音</span>
+<span class="c1">//--           再隨意按任一按鍵, 螢幕上 顯示 &quot;X&quot;, 此時 LED 全部  不亮, 並且喇叭不發出聲音                              </span>
+<span class="c1">//--           按 &quot;Esc&quot; 鍵 可 離開本程式</span>
+<span class="c1">//--================================================================================</span>
+<span class="c1">//-- IO 位址  :  請 參考 下面 #define 的定義</span>
+<span class="c1">//-- 配合硬體 :  參考 下面  參考文件 </span>
+<span class="c1">//-- 元件列表 :  8255           X 1 ( 可程式規劃邏輯介面 ; PPI)</span>
+<span class="c1">//--             8254           X 1 ( 可程式規劃計數(時)介面 / 最高輸入時序 8 MHz )</span>
+<span class="c1">//--                                ( 日本 NEC 編號的 8254 為 D71054C )</span>
+<span class="c1">//--</span>
+<span class="c1">//--             74LS138        X 1 ( 解碼致能 8255 與 8254 用 )</span>
+<span class="c1">//--             74LS00         X 1 ( 解碼致能 74LS138 與 喇叭電路 )</span>
+<span class="c1">//--</span>
+<span class="c1">//--             5K 可調式電阻  X 1 ( 喇叭電路用 )</span>
+<span class="c1">//--             C1815          X 1 ( 喇叭電路用 , 編號面 接腳 ECB)</span>
+<span class="c1">//--             喇叭           X 1 (  喇叭電路用, 使用 PC 上的喇叭即可)  </span>
+<span class="c1">//--             LED            X 8 ( 檢視8255 portA 輸出用(十顆包裝型 LED 有時無法動作))</span>
+<span class="c1">//--  </span>
+<span class="c1">//--             金手指 AT 介面電路板</span>
+<span class="c1">//--             上述 IC 所需腳座 及 一般焊接工具 </span>
+<span class="c1">//--================================================================================  </span>
+<span class="c1">//-- 編輯器   :  Jext  ( http://www.jext.org/ )</span>
+<span class="c1">//-- 組譯器   :  Turbo C++</span>
+<span class="c1">//-- 參考文件 :  PC XT/AT 介面設計與應用 Visual Basic 6.0 版(ISBN:957-499-229-2) / 儒林 </span>
+<span class="c1">//--             8254 電路圖 P 5-57 </span>
+<span class="c1">//--             8255 電路圖 P 3-49 (位址選取方式 改用 8255 選取方式)</span>
+<span class="c1">//--             原書錯誤更正 : </span>
+<span class="c1">//                      p5-62 DEBUG 內的 倒數第八個指令為 -O 303 00</span>
+<span class="c1">//--                                             應改為   -O 302 00</span>
+<span class="c1">//--                                     倒數第七個指令為 -O 303 02</span>
+<span class="c1">//--                                             應改為   -O 302 02   </span>
+<span class="c1">//--                                     倒數第三個指令為 -O 303 01</span>
+<span class="c1">//--                                             應改為   -O 302 01 </span>
+<span class="c1">//--                                     倒數第二個指令為 -O 323 03</span>
+<span class="c1">//--                                             應改為   -O 302 03</span>
+<span class="c1">//--                                     倒數第一個指令為 -O 303 02  註解處為 禁能 蜂鳴器</span>
+<span class="c1">//--                                             應改為   -O 302 02  應改為 禁能 第二計數器</span>
+<span class="c1">//--                    p5-65 程式碼內作者把 PPI_PC 和 PPI_CW 的位址 有時弄混ㄋ </span>
+<span class="c1">//--                   ( 錯誤蠻多的 改的有點 眼花ㄋ ,不過依作者的錯誤程式碼卻可以執行,真令人訝異) </span>
+<span class="c1">//-- 備註:    無法在 我的 P-II 上測試(或許需調整 安邁 ROM 內 CLK 的設定,但與可以測試的 P-I 主機 ROM 設定內無法發現相同的 Function)</span>
+<span class="c1">//--         ,改成於 檢來的 P-I 上測試 ,由於 P-I 的配備較陽春 故將程式碼 改成用 Turbo C++ 寫</span>
+<span class="c1">//-- 注意:    在 #define 後的 註解 需以 &quot; // &quot; 開頭 不能使用 &quot; ; &quot;</span>
+<span class="c1">//-- 更新Log:</span>
+<span class="c1">//</span>
+<span class="c1">//**********************************************************************************</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="c1">//#include &lt;bios.h&gt;</span>
+<span class="c1">//#include &lt;dos.h&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;conio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_CW        0x3f3         </span><span class="c1">// 8255 內的 控制字組 位址</span>
+<span class="cp">#define PPI_8255_CW_STATE  0x80          </span><span class="c1">// 設定 8255 為 MODE0 全部 PORT 皆為輸出</span>
+
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255 portA LED 顯示 用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_PA        0X3f0         </span><span class="c1">// 8255 內的 PORT A   位址</span>
+<span class="cp">#define ledEnable          0x00          </span><span class="c1">// 8255 port A 輸出至 LED  1,2,5,6  亮</span>
+<span class="cp">#define ledDisable         0xff          </span><span class="c1">// 8255 port A 輸出至 LED  全部     不亮</span>
+
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8254  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPC_8254_CW        0x323         </span><span class="c1">// 8254 內的  控制字組 位址</span>
+<span class="cp">#define PPC_8254_CW_STATE  0XB6          </span><span class="c1">// 設定 8254 第二計數器 為 模式三 ,讀寫 高低位元組 , HEX</span>
+
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    蜂鳴器 用    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_PC        0X3f2         </span><span class="c1">// 8255 內的 PORT C     位址 , PC 0 控制  8254 第二計數器 用 ,  PC 1 控制  蜂鳴器 用</span>
+<span class="cp">#define PPC_8254_C2        0X322         </span><span class="c1">// 8254 內的 第二計數器 位址</span>
+<span class="cp">#define PPC_8254_C2_STATE  0XFF          </span><span class="c1">// 8254 內的 第二計數器 的高低位元組計數值</span>
+
+<span class="cp">#define bellDisable        0x00          </span><span class="c1">// 禁能 第二計數器 ,禁能揚聲器</span>
+<span class="cp">#define bellEnable         0xff          </span><span class="c1">// 致能 第二計數器 ,致能揚聲器</span>
+
+<span class="kt">void</span> <span class="nf">out</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ioAddr</span> <span class="p">,</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">ioData</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">asm</span><span class="p">{</span>
+    <span class="n">mov</span> <span class="n">dx</span><span class="p">,</span><span class="n">ioAddr</span>
+    <span class="n">mov</span> <span class="n">al</span><span class="p">,</span><span class="n">ioData</span>
+    <span class="n">out</span> <span class="n">dx</span><span class="p">,</span><span class="n">al</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>   
+  <span class="n">clrscr</span><span class="p">();</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;push Esc to exit&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   8255 初始化   &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_CW</span><span class="p">,</span> <span class="n">PPI_8255_CW_STATE</span><span class="p">);</span>        <span class="c1">// 設定 8255</span>
+  <span class="c1">//outportb(PPI_8255_CW, PPI_8255_CW_STATE);        // 設定 8255</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PC</span><span class="p">,</span> <span class="n">bellDisable</span><span class="p">);</span>              <span class="c1">// 先禁能 蜂鳴器及 8254</span>
+
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_CW</span><span class="p">,</span> <span class="n">PPC_8254_CW_STATE</span><span class="p">);</span>        <span class="c1">// 設定 8254 第二計數器</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_C2</span><span class="p">,</span> <span class="n">PPC_8254_C2_STATE</span><span class="p">);</span>        <span class="c1">// 計數值寫入 第二計數器的 低位元組</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_C2</span><span class="p">,</span> <span class="n">PPC_8254_C2_STATE</span><span class="p">);</span>        <span class="c1">// 計數值寫入 第二計數器的 高位元組</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">while</span><span class="p">(</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;O&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledEnable</span><span class="p">);</span>         <span class="c1">// 致能 LED</span>
+<span class="c1">//  out(PPI_8255_PC ,bellEnable);        // 致能 蜂鳴器</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;X&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledDisable</span><span class="p">);</span>      <span class="c1">// 禁能 LED</span>
+<span class="c1">//  out(PPI_8255_PC ,bellDisable);       // 禁能 蜂鳴器</span>
+      <span class="p">}</span> <span class="c1">// -- if 迴圈 結束</span>
+      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span> <span class="c1">//-- while 迴圈 結束</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="advanced">Advanced</h2>
+<p>FIXME: It could be more friendly if there is any GUI interface to manipulate the LED.</p>
+<h3 id="linux-device-driver">Linux Device Driver</h3>
+<ul>
+<li>Linux 在 <code>user-space</code> 由於都需以 <code>root</code> 權限驅動硬體，</li>
+<li>若需讓一般使用者也能驅動硬體，需考慮撰寫使用 <code>kernal-space</code> 的Linux Device Driver`.</li>
+</ul>
+<h3 id="qt">QT</h3>
+<ul>
+<li>hello_qt.cpp  <br />
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  hello_qt.cpp</span>
+<span class="cm">Compiler:  g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o hello_qt hello_qt.cpp</span>
+<span class="cm">Running:   ./hello_qt&amp; ( 丟到背景執行 )</span>
+<span class="cm">Function:  Linux GUI 視窗程式 的基本測試，建立一個 Hello QT! 的基本視窗</span>
+<span class="cm">Date:      3/23 2003</span>
+<span class="cm">Reference: http://doc.trolltech.com/3.1/tutorial1-01.html</span>
+<span class="cm">****************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;qapplication.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qpushbutton.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span> <span class="p">){</span>
+  <span class="n">QApplication</span> <span class="n">a</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
+
+  <span class="n">QPushButton</span> <span class="n">hello</span><span class="p">(</span> <span class="s">&quot;Hello QT!&quot;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
+  <span class="n">hello</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
+
+  <span class="n">a</span><span class="p">.</span><span class="n">setMainWidget</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">hello</span> <span class="p">);</span>
+  <span class="n">hello</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<p><img alt="r" src="hello_qt_comm.png" />  <br />
+<img alt="r" src="hello_qt_exec.png" />    </p>
+<ul>
+<li>frame: moc 使用訊號 與╱或 溝槽的類別的一般骨架 <br />
+(摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming</a> with Qt  p.32)    </li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Qobject</span> 
+<span class="p">{</span> 
+  <span class="n">Q_OBJECT</span> 
+  <span class="p">...</span> 
+  <span class="nl">signals</span><span class="p">:</span>  
+    <span class="c1">// 將你的 訊號 放在這裡,如    </span>
+    <span class="kt">void</span> <span class="n">somethingDone</span><span class="p">();</span> 
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="nl">slots</span><span class="p">:</span>   
+    <span class="c1">// 將你 公開的溝槽 放在這裡,如  </span>
+    <span class="n">viod</span> <span class="n">soltDoSomething</span><span class="p">();</span>  
+
+    <span class="k">private</span> <span class="nl">slots</span><span class="p">:</span>  
+    <span class="c1">// 將你 私有的溝槽 放在這裡,如  </span>
+    <span class="kt">void</span> <span class="n">slotDoSomethingInternal</span><span class="p">();</span>     
+
+    <span class="c1">// 當然, 你可以加入其他的宣告 </span>
+<span class="p">};</span>  
+</code></pre></div>
+訊號 與╱或 溝槽的 類別 (摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with Qt</a>  p.35 )</p>
+<ul>
+<li>mocDemo2.cpp    </li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:   mocDemo2.cpp</span>
+<span class="cm">Compiler:   g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o mocDemo2 mocDemo2.cpp</span>
+<span class="cm">Running:    ./mocDemo2&amp; ( 丟到背景執行 )</span>
+<span class="cm">Function:   了解 moc 的用法 。 </span>
+<span class="cm">Reference:  出自 Programming with QT , exercise-2-4-1.cpp (p35 的 練習題 )</span>
+<span class="cm">Date:       03/24 2003</span>
+<span class="cm">Comment:    並沒有 用 Programming with QT 書中以 </span>
+<span class="cm">            moc (moc -o moc_file.cpp myfile.h) 來處理 包含類別宣告的檔案亦可動作</span>
+<span class="cm">            所以並不確定 qt3 以後的做法</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;qapplication.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qpushbutton.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qslider.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qlcdnumber.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">QApplication</span> <span class="n">myapp</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
+
+  <span class="n">QWidget</span><span class="o">*</span> <span class="n">mywidget</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QWidget</span><span class="p">();</span>
+  <span class="n">mywidget</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">150</span> <span class="p">);</span>
+
+
+  <span class="n">QSlider</span><span class="o">*</span> <span class="n">myslider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSlider</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span>                   <span class="c1">// minimum value</span>
+                                    <span class="mi">9</span><span class="p">,</span>                   <span class="c1">// maximum value</span>
+                                    <span class="mi">1</span><span class="p">,</span>                   <span class="c1">// step</span>
+                                    <span class="mi">1</span><span class="p">,</span>                   <span class="c1">// initial value</span>
+                                    <span class="n">QSlider</span><span class="o">::</span><span class="n">Horizontal</span><span class="p">,</span> <span class="c1">// orientation</span>
+                                    <span class="n">mywidget</span>            <span class="c1">// parent</span>
+                                    <span class="p">);</span>
+  <span class="n">myslider</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
+
+  <span class="n">QLCDNumber</span><span class="o">*</span> <span class="n">mylcdnum</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QLCDNumber</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>        <span class="c1">// number of digits </span>
+                                          <span class="n">mywidget</span> <span class="c1">// parent</span>
+                                        <span class="p">);</span>
+  <span class="n">mylcdnum</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span> <span class="p">);</span>
+  <span class="n">mylcdnum</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">(</span> <span class="mi">1</span> <span class="p">);</span> <span class="c1">// display initial value</span>
+
+  <span class="c1">// connect slider and number display</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">myslider</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">valueChanged</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">),</span> 
+                    <span class="n">mylcdnum</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">display</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">)</span> <span class="p">);</span>
+
+  <span class="c1">// create two push buttons for decrementing and </span>
+  <span class="c1">// incrementing the slider values</span>
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">decrement</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">decrement</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
+
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">increment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">increment</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
+
+  <span class="c1">// connect the clicked() signal of the buttons to the slots that </span>
+  <span class="c1">// increment and decrement the slider value</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">decrement</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">clicked</span><span class="p">()</span> <span class="p">),</span>
+                    <span class="n">myslider</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">subtractStep</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">increment</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">clicked</span><span class="p">()</span> <span class="p">),</span>
+                    <span class="n">myslider</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">addStep</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+
+  <span class="n">myapp</span><span class="p">.</span><span class="n">setMainWidget</span><span class="p">(</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">mywidget</span><span class="o">-&gt;</span><span class="n">show</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">myapp</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+- QT socket   <br />
+<img alt="r" src="mocDemo1_arch.jpg" />  </p>
+<ul>
+<li>Running    <br />
+<img alt="r" src="mocDemo1_comm.png" /><br />
+<img alt="r" src="mocDemo1_exec.png" /></li>
+</ul>
+<h2 id="reference">Reference</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>參考資料</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="http://forum.vclxx.org/">Programmer 深度論壇</a></td>
+<td>程式寫作討論區</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="http://vcl.vclxx.org/DELPHI/DEFAULT.HTM">32 Bit Delphi 深度歷險</a></td>
+<td>可以下載 DLPORT 元件( 在 XP 平台上控制 I/O )</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="http://www.ti.com/">德州儀器</a></td>
+<td>可以搜尋 IC 格資料</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://www.sinter.com.tw/">興德資訊</a></td>
+<td>商業版驅動程式</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://isite.tw/2016/06/13/16013">電腦達人養成計畫 4-3：歷代擴充介面卡標準 (上)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://tw.answers.yahoo.com/question/index?qid=20060104000014KK04628">Welding、brazing、soldering三種差別</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix">Appendix</h2>
+<h3 id="appendix-a-pc-at-interface-pinout">Appendix A - PC AT Interface Pinout</h3>
+<ul>
+<li>A1~A31 and B1~B31 (8-Bit XT-Bus)    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Description</th>
+<th>Pin</th>
+<th>Pin</th>
+<th>Description</th>
+<th>Input/Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GROUND</td>
+<td>GND</td>
+<td><strong>B1</strong></td>
+<td><strong>A1</strong></td>
+<td>-I/O CH CK</td>
+<td>I</td>
+</tr>
+<tr>
+<td>O</td>
+<td>RESET DRV</td>
+<td><strong>B2</strong></td>
+<td><strong>A2</strong></td>
+<td>SD7</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>+5V DC</td>
+<td><strong>B3</strong></td>
+<td><strong>A3</strong></td>
+<td>SD6</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ9</td>
+<td><strong>B4</strong></td>
+<td><strong>A4</strong></td>
+<td>SD5</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>-5V DC</td>
+<td><strong>B5</strong></td>
+<td><strong>A5</strong></td>
+<td>SD4</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ2</td>
+<td><strong>B6</strong></td>
+<td><strong>A6</strong></td>
+<td>SD3</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>-12V DC</td>
+<td><strong>B7</strong></td>
+<td><strong>A7</strong></td>
+<td>SD2</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>OWS</td>
+<td><strong>B8</strong></td>
+<td><strong>A8</strong></td>
+<td>SD1</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>+12V DC</td>
+<td><strong>B9</strong></td>
+<td><strong>A9</strong></td>
+<td>SD0</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>GROUND</td>
+<td>GND</td>
+<td><strong>B10</strong></td>
+<td><strong>A10</strong></td>
+<td>-I/O CH RDY</td>
+<td>I</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-SMEMW</td>
+<td><strong>B11</strong></td>
+<td><strong>A11</strong></td>
+<td>AEN</td>
+<td>O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-SMEMR</td>
+<td><strong>B12</strong></td>
+<td><strong>A12</strong></td>
+<td>SA19</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I/O</td>
+<td>-IOW</td>
+<td><strong>B13</strong></td>
+<td><strong>A13</strong></td>
+<td>SA18</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I/O</td>
+<td>-IOR</td>
+<td><strong>B14</strong></td>
+<td><strong>A14</strong></td>
+<td>SA17</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK3</td>
+<td><strong>B15</strong></td>
+<td><strong>A15</strong></td>
+<td>SA16</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ3</td>
+<td><strong>B16</strong></td>
+<td><strong>A16</strong></td>
+<td>SA15</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK1</td>
+<td><strong>B17</strong></td>
+<td><strong>A17</strong></td>
+<td>SA14</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ1</td>
+<td><strong>B18</strong></td>
+<td><strong>A18</strong></td>
+<td>SA13</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I/O</td>
+<td>-REFRESH</td>
+<td><strong>B19</strong></td>
+<td><strong>A19</strong></td>
+<td>SA12</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>CLK</td>
+<td><strong>B20</strong></td>
+<td><strong>A20</strong></td>
+<td>SA11</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ7</td>
+<td><strong>B21</strong></td>
+<td><strong>A21</strong></td>
+<td>SA10</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ6</td>
+<td><strong>B22</strong></td>
+<td><strong>A22</strong></td>
+<td>SA9</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ5</td>
+<td><strong>B23</strong></td>
+<td><strong>A23</strong></td>
+<td>SA8</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ4</td>
+<td><strong>B24</strong></td>
+<td><strong>A24</strong></td>
+<td>SA7</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ3</td>
+<td><strong>B25</strong></td>
+<td><strong>A25</strong></td>
+<td>SA6</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK2</td>
+<td><strong>B26</strong></td>
+<td><strong>A26</strong></td>
+<td>SA5</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>T/C</td>
+<td><strong>B27</strong></td>
+<td><strong>A27</strong></td>
+<td>SA4</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>BALE</td>
+<td><strong>B28</strong></td>
+<td><strong>A28</strong></td>
+<td>SA3</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>+5V DC</td>
+<td><strong>B29</strong></td>
+<td><strong>A29</strong></td>
+<td>SA2</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>OSC</td>
+<td><strong>B30</strong></td>
+<td><strong>A30</strong></td>
+<td>SA1</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>GROUND</td>
+<td>GND</td>
+<td><strong>B31</strong></td>
+<td><strong>A31</strong></td>
+<td>SA0</td>
+<td>I/O</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>C1~C18 and D1~D18    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Description</th>
+<th>Pin</th>
+<th>Pin</th>
+<th>Description</th>
+<th>Input/Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td>-MEM CS16</td>
+<td><strong>D1</strong></td>
+<td><strong>C1</strong></td>
+<td>SBHE</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>-I/O CS16</td>
+<td><strong>D2</strong></td>
+<td><strong>C2</strong></td>
+<td>LA23</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ10</td>
+<td><strong>D3</strong></td>
+<td><strong>C3</strong></td>
+<td>LA22</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ11</td>
+<td><strong>D4</strong></td>
+<td><strong>C4</strong></td>
+<td>LA21</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ12</td>
+<td><strong>D5</strong></td>
+<td><strong>C5</strong></td>
+<td>LA20</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ15</td>
+<td><strong>D6</strong></td>
+<td><strong>C6</strong></td>
+<td>LA19</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ14</td>
+<td><strong>D7</strong></td>
+<td><strong>C7</strong></td>
+<td>LA18</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK0</td>
+<td><strong>D8</strong></td>
+<td><strong>C8</strong></td>
+<td>LA17</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ0</td>
+<td><strong>D9</strong></td>
+<td><strong>C9</strong></td>
+<td>-MEMR</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK5</td>
+<td><strong>D10</strong></td>
+<td><strong>C10</strong></td>
+<td>-MEMW</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ5</td>
+<td><strong>D11</strong></td>
+<td><strong>C11</strong></td>
+<td>SD8</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK6</td>
+<td><strong>D12</strong></td>
+<td><strong>C12</strong></td>
+<td>SD9</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ6</td>
+<td><strong>D13</strong></td>
+<td><strong>C13</strong></td>
+<td>SD10</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>-DACK7</td>
+<td><strong>D14</strong></td>
+<td><strong>C14</strong></td>
+<td>SD11</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>DRQ7</td>
+<td><strong>D15</strong></td>
+<td><strong>C15</strong></td>
+<td>SD12</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>POWER</td>
+<td>+5V DC</td>
+<td><strong>D16</strong></td>
+<td><strong>C16</strong></td>
+<td>SD13</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>I</td>
+<td>MASTER</td>
+<td><strong>D17</strong></td>
+<td><strong>C17</strong></td>
+<td>SD14</td>
+<td>I/O</td>
+</tr>
+<tr>
+<td>GROUND</td>
+<td>GND</td>
+<td><strong>D18</strong></td>
+<td><strong>C18</strong></td>
+<td>SD15</td>
+<td>I/O</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-b-intel-82c55a-programmable-peripheral-interface-pinout">Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout</h3>
+<ul>
+<li>Intel 82C55A PINOUT    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Pin</th>
+<th>Pin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA3</td>
+<td><strong>1</strong></td>
+<td><strong>40</strong></td>
+<td>PA4</td>
+</tr>
+<tr>
+<td>PA2</td>
+<td><strong>2</strong></td>
+<td><strong>39</strong></td>
+<td>PA5</td>
+</tr>
+<tr>
+<td>PA1</td>
+<td><strong>3</strong></td>
+<td><strong>38</strong></td>
+<td>PA6</td>
+</tr>
+<tr>
+<td>PA0</td>
+<td><strong>4</strong></td>
+<td><strong>37</strong></td>
+<td>PA7</td>
+</tr>
+<tr>
+<td>-RD</td>
+<td><strong>5</strong></td>
+<td><strong>36</strong></td>
+<td>-WR</td>
+</tr>
+<tr>
+<td>-CS</td>
+<td><strong>6</strong></td>
+<td><strong>35</strong></td>
+<td>RESET</td>
+</tr>
+<tr>
+<td>GND</td>
+<td><strong>7</strong></td>
+<td><strong>34</strong></td>
+<td>D0</td>
+</tr>
+<tr>
+<td>A1</td>
+<td><strong>8</strong></td>
+<td><strong>33</strong></td>
+<td>D1</td>
+</tr>
+<tr>
+<td>A2</td>
+<td><strong>9</strong></td>
+<td><strong>32</strong></td>
+<td>D2</td>
+</tr>
+<tr>
+<td>PC7</td>
+<td><strong>10</strong></td>
+<td><strong>31</strong></td>
+<td>D3</td>
+</tr>
+<tr>
+<td>PC6</td>
+<td><strong>11</strong></td>
+<td><strong>30</strong></td>
+<td>D4</td>
+</tr>
+<tr>
+<td>PC5</td>
+<td><strong>12</strong></td>
+<td><strong>29</strong></td>
+<td>D5</td>
+</tr>
+<tr>
+<td>PC4</td>
+<td><strong>13</strong></td>
+<td><strong>28</strong></td>
+<td>D6</td>
+</tr>
+<tr>
+<td>PC0</td>
+<td><strong>14</strong></td>
+<td><strong>27</strong></td>
+<td>D7</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td><strong>15</strong></td>
+<td><strong>26</strong></td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td><strong>16</strong></td>
+<td><strong>25</strong></td>
+<td>PB7</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td><strong>17</strong></td>
+<td><strong>24</strong></td>
+<td>PB6</td>
+</tr>
+<tr>
+<td>PB0</td>
+<td><strong>18</strong></td>
+<td><strong>23</strong></td>
+<td>PB5</td>
+</tr>
+<tr>
+<td>PB1</td>
+<td><strong>19</strong></td>
+<td><strong>22</strong></td>
+<td>PB4</td>
+</tr>
+<tr>
+<td>PB2</td>
+<td><strong>20</strong></td>
+<td><strong>21</strong></td>
+<td>PB3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-c-intel-8254-programmable-interval-timer-pinout">Appendix C - Intel 8254 Programmable Interval Timer Pinout</h3>
+<ul>
+<li>Intel 82C54 PINOUT    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Pin</th>
+<th>Pin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D7</td>
+<td><strong>1</strong></td>
+<td><strong>24</strong></td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>D6</td>
+<td><strong>2</strong></td>
+<td><strong>23</strong></td>
+<td>-WR</td>
+</tr>
+<tr>
+<td>D5</td>
+<td><strong>3</strong></td>
+<td><strong>22</strong></td>
+<td>-RD</td>
+</tr>
+<tr>
+<td>D4</td>
+<td><strong>4</strong></td>
+<td><strong>21</strong></td>
+<td>-CS</td>
+</tr>
+<tr>
+<td>D3</td>
+<td><strong>5</strong></td>
+<td><strong>20</strong></td>
+<td>A1</td>
+</tr>
+<tr>
+<td>D2</td>
+<td><strong>6</strong></td>
+<td><strong>19</strong></td>
+<td>A0</td>
+</tr>
+<tr>
+<td>D1</td>
+<td><strong>7</strong></td>
+<td><strong>18</strong></td>
+<td>CLK2</td>
+</tr>
+<tr>
+<td>D0</td>
+<td><strong>8</strong></td>
+<td><strong>17</strong></td>
+<td>OUT2</td>
+</tr>
+<tr>
+<td>CLK0</td>
+<td><strong>9</strong></td>
+<td><strong>16</strong></td>
+<td>GATE2</td>
+</tr>
+<tr>
+<td>OUT0</td>
+<td><strong>10</strong></td>
+<td><strong>15</strong></td>
+<td>CLK1</td>
+</tr>
+<tr>
+<td>GATE0</td>
+<td><strong>11</strong></td>
+<td><strong>14</strong></td>
+<td>GATE1</td>
+</tr>
+<tr>
+<td>GND</td>
+<td><strong>12</strong></td>
+<td><strong>13</strong></td>
+<td>OUT1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-d-remote-access-by-vnc">Appendix D - Remote Access by VNC</h3>
+<p>以下列出 C 語言程式碼 與執行結果。 為了方便 撰寫程式碼、測試結果，撰寫此份說明文件，上網聽串流音樂，…
+在主機端架設了 FTP Server ( 將 Win-XP 下編寫的程式碼上傳至 RedHat Linux ) 與 VNC Server( 遠端遙控 RedHat Linux )，
+使用 VNC 軟體，由 Win-XP 遠端連線到 RedHat Linux 8.0 執行程式，在  Win-XP 執行結果。</p>
+<ul>
+<li>VNC Server 連線步驟.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>RedHat Linux 8.0</th>
+<th>Win-XP</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step.0</td>
+<td></td>
+<td></td>
+<td>進入 終端機 ─ 超級使用者模式, 並輸入以下命令</td>
+</tr>
+<tr>
+<td>Step.1</td>
+<td># adsl-start</td>
+<td></td>
+<td>RedHat Linux 主機連線至網際網路</td>
+</tr>
+<tr>
+<td>Step.2</td>
+<td># vncserver</td>
+<td></td>
+<td>啟動 vncserver</td>
+</tr>
+<tr>
+<td>Step.3</td>
+<td># ifconfig</td>
+<td></td>
+<td>查看 dhcp 所分配到的 IP</td>
+</tr>
+<tr>
+<td>Step.4</td>
+<td></td>
+<td>Run VNC Viewer <img alt="r" src="vnc_client_1.jpg" /></td>
+<td>啟動 VNC client 端, 輸入主機 IP</td>
+</tr>
+<tr>
+<td>Step.5</td>
+<td></td>
+<td><img alt="r" src="vnc_client_2.jpg" /></td>
+<td>輸入登入的密碼</td>
+</tr>
+<tr>
+<td>Step.6</td>
+<td></td>
+<td><img alt="r" src="vnc_client_3.jpg" /></td>
+<td>登入完畢</td>
+</tr>
+</tbody>
+</table>
+<!--
+//
+//                |\_/|         |\__/|         |\_/|      |\﹏/|
+//               = O.O =       = ⊙⊙ =       = >.< =    ~ @.@ ~
+//                (m_m)~        (﹋﹋)﹏       (m_m)﹏    (m_m)∫
+-->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../os/assembler-compiler/" class="md-footer__link md-footer__link--prev" aria-label="Previous: An Assembler Compiler" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              An Assembler Compiler
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../pci/" class="md-footer__link md-footer__link--next" aria-label="Next: Peripheral Component Interconnect (PCI)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Peripheral Component Interconnect (PCI)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>

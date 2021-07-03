@@ -1,0 +1,1543 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://edlai.github.io/tv/mpeg1/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Digital Vedio Conversion - MPEG-1 - Ed's Personal Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#television-engineering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ed's Personal Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Digital Vedio Conversion - MPEG-1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dev/softwares/" class="md-tabs__link md-tabs__link--active">
+        Engineering
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../qualitative-research/" class="md-tabs__link">
+        Education
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../collections/" class="md-tabs__link">
+        Collection
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../traveling/" class="md-tabs__link">
+        Motivation
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Ed's Personal Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/softwares/" class="md-nav__link">
+        Softwares Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/accessories/" class="md-nav__link">
+        Accessories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/equipments/" class="md-nav__link">
+        Equipments
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/gitlab/" class="md-nav__link">
+        Gitlab and Build Machine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/docker/" class="md-nav__link">
+        Docker and Macvlan
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/buildroot/" class="md-nav__link">
+        Buildroot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/openwrt/" class="md-nav__link">
+        OpenWRT
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" type="checkbox" id="__nav_2_3_1" >
+      
+      <label class="md-nav__link" for="__nav_2_3_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/hypertext-transfer-protocol/" class="md-nav__link">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/file-transfer-protocol/" class="md-nav__link">
+        File Transfer Protocol (FTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      <label class="md-nav__link" for="__nav_2_4_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/discrete-time-processing/" class="md-nav__link">
+        Discrete-Time Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/moving-average-and-backward-system/" class="md-nav__link">
+        Moving Average and Backward System
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      <label class="md-nav__link" for="__nav_2_4_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/window-size-and-the-spectrogram/" class="md-nav__link">
+        Window Size and the Spectrogram
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      <label class="md-nav__link" for="__nav_2_5">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/assembler-compiler/" class="md-nav__link">
+        An Assembler Compiler
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      <label class="md-nav__link" for="__nav_2_6">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/isa/" class="md-nav__link">
+        Industry Standard Architecture (ISA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/pci/" class="md-nav__link">
+        Peripheral Component Interconnect (PCI)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/ldd/" class="md-nav__link">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/gpio/" class="md-nav__link">
+        General Purpose Input Output (GPIO)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/i2c/" class="md-nav__link">
+        Inter-Integrated Circuit (I2C)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      <label class="md-nav__link" for="__nav_2_7">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../player/" class="md-nav__link">
+        Multimedia Player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Digital Vedio Conversion - MPEG-1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-video-conversion-mpeg-1" class="md-nav__link">
+    Digital Video Conversion -- MPEG-1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media-file" class="md-nav__link">
+    Media File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    Running
+  </a>
+  
+    <nav class="md-nav" aria-label="Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extracting-mpeg-1-file-from-standard-vcd" class="md-nav__link">
+    1. Extracting MPEG-1 file from Standard VCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cutting-and-joining-mpeg-1-file" class="md-nav__link">
+    2. Cutting and Joining MPEG-1 file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mpeg-4-compression" class="md-nav__link">
+    3. MPEG-4 Compression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compare-picture-quality-and-file-size" class="md-nav__link">
+    4. Compare Picture Quality and File Size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observation" class="md-nav__link">
+    Observation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      <label class="md-nav__link" for="__nav_2_8">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Education" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qualitative-research/" class="md-nav__link">
+        Qualitative Research
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantitative-research/" class="md-nav__link">
+        Quantitative Research
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Collection" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collections/" class="md-nav__link">
+        Collections
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Motivation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Motivation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../traveling/" class="md-nav__link">
+        Traveling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../painting/" class="md-nav__link">
+        Painting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-video-conversion-mpeg-1" class="md-nav__link">
+    Digital Video Conversion -- MPEG-1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media-file" class="md-nav__link">
+    Media File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    Running
+  </a>
+  
+    <nav class="md-nav" aria-label="Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extracting-mpeg-1-file-from-standard-vcd" class="md-nav__link">
+    1. Extracting MPEG-1 file from Standard VCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cutting-and-joining-mpeg-1-file" class="md-nav__link">
+    2. Cutting and Joining MPEG-1 file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mpeg-4-compression" class="md-nav__link">
+    3. MPEG-4 Compression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compare-picture-quality-and-file-size" class="md-nav__link">
+    4. Compare Picture Quality and File Size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observation" class="md-nav__link">
+    Observation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="television-engineering">Television Engineering</h1>
+<h2 id="digital-video-conversion-mpeg-1">Digital Video Conversion -- MPEG-1</h2>
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
+$date:     May. 2003
+$revised:  Mar. 2018
+$Keywords: digital, video, conversion, mpeg1
+</code></pre></div>
+<p>An exercise of Digital Video Conversion for below cases</p>
+<ol>
+<li>Extracting MPEG-1 file from Standard VCD</li>
+<li>Cutting and Joining MPEG-1 file</li>
+<li>MPEG-4 Compression</li>
+<li>Compare Picture Quality and File Size in Step 3</li>
+</ol>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#running">Running</a></li>
+<li><a href="#1-extracting-mpeg-1-file-from-standard-vcd">Extracting MPEG-1 file from Standard VCD</a></li>
+<li><a href="#2-cutting-and-joining-mpeg-1-file">Cutting and Joining MPEG-1 file</a></li>
+<li><a href="#3-mpeg-4-compression">MPEG-4 Compression</a></li>
+<li><a href="#4-compare-picture-quality-and-file-size">Compare Picture Quality and File Size</a></li>
+<li><a href="#observation">Observation</a></li>
+<li><a href="#advanced">Advanced</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<h3 id="software">Software</h3>
+<ul>
+<li>VCDGear</li>
+<li>TMPGEnc</li>
+<li>FlaskMPEG </li>
+</ul>
+<h3 id="media-file">Media File</h3>
+<ul>
+<li>Mulan (<code>.DAT</code> Format)</li>
+</ul>
+<h2 id="running">Running</h2>
+<h3 id="1-extracting-mpeg-1-file-from-standard-vcd">1. Extracting MPEG-1 file from Standard VCD</h3>
+<p>將 VCD 內所使用的<code>.DAT</code> 的檔案格式 轉換成影像處理軟體所能處理的影片檔 <code>.MPG</code> 格式，</p>
+<ol>
+<li>Download and Install VCDGear</li>
+<li>由 VCDGear 官方網站<a href="http://www.vcdgear.com/">下載</a>，下面以 3.50a 板進行操作。</li>
+<li>解壓縮後，直接點選 <code>vcdgear.exe</code> 檔案後，進入 <code>VCDGear</code> 。</li>
+<li>Using VCDGear to convert AVSEQ01 data file to MPEG-1 format file</li>
+<li>定義<code>Extraction / Conversion</code>為  <code>dat - &gt; mpeg</code> </li>
+<li>按下 <code>load</code> 指定欲處理的 <code>.dat</code> 檔。(<code>C:\Documents and Settings\Sam\桌面\花木蘭\AVSEQ01.DAT</code>)</li>
+<li>與 轉換後儲存的檔名。(<code>C:\Documents and Settings\Sam\桌面\花木蘭\AVSEQ01.mpg</code>)
+    <img alt="" src="vcdgear-1.gif" /></li>
+<li>按下<code>start</code>開始進行轉換。  <br />
+<img alt="r" src="vcdgear-2.gif" /></li>
+<li>如果有 <code>Fix MPEG Errors</code>，轉換後會回報錯誤修正數目。在本檔案中有 <code>266</code> 個已修正 ( <code>Fixes : 226</code> )  <br />
+<img alt="r" src="vcdgear-3.gif" /></li>
+</ol>
+<h3 id="2-cutting-and-joining-mpeg-1-file">2. Cutting and Joining MPEG-1 file</h3>
+<ol>
+<li>Download and Install <code>TMPGEnc</code></li>
+<li>由 <code>TMPGEnc</code> 官方網站<a href="http://www.tmpgenc.net/">下載</a>。 </li>
+<li>或直接下載<a href="ftp://ftp.ntust.edu.tw/vendor/slime/Cpatch/high-q/TMPGEnc(2.50.32.120CT).exe">中文化後版本</a> (以下由此中文化後版本軟體進行操作 )。</li>
+<li>直接按下 <code>TMPGEnc(2.50.32.120CT).exe</code> 檔案進行安裝 。</li>
+<li>Cut and Join 5-minutes vedio clip from MPEG-1 file</li>
+<li>開啟 <code>TMPGEnc</code> ，進入 <code>檔案 / MPEG 工具 / 合併及剪下</code>, 適當的加入你所要剪輯的檔案。並將選定剪輯與合併的區段, 適當的加入清單中。選定輸出檔案名稱。  <br />
+<img alt="r" src="tmpgenc-6.gif" /></li>
+<li>按下 <code>執行</code> 即可開始執行。  <br />
+<img alt="r" src="tmpgenc-7.gif" /></li>
+</ol>
+<h3 id="3-mpeg-4-compression">3. MPEG-4 Compression</h3>
+<ol>
+<li>Download and Install FlaskMPEG</li>
+<li>由<code>FlaskMPEG</code>官方網站<a href="http://www.flaskmpeg.net/">下載</a>。</li>
+<li>Using different in <code>FlashMPEG</code> to convert <code>MPEG-1</code> video clip to <code>DivX</code></li>
+<li>點選 <code>FlasKMPEG.exe</code> 啟動<code>FlaskMPEG</code> 。  <br />
+<img alt="r" src="flaskmpeg-0.gif" /></li>
+<li>選擇 <code>File / Open Media</code>, 打開欲處理的檔案  <br />
+     (例如 <code>C:\Documents and Settings\Sam\桌面\花木蘭\3. mpeg  5 分鐘剪接\AVSEQ01_Cutting&amp;Joining .mpg</code>). 選定後會將該 mpeg 檔的屬性顯示於<code>Control Panel</code> Window。  <br />
+<img alt="r" src="flaskmpeg-1.gif" /></li>
+<li>選擇<code>Options/ Advanced Options</code>，檢視設定<ul>
+<li><strong>Video</strong> : 將 <code>Deinterlace output (slow)</code> 打勾，取得較高的輸出品質。  <br />
+<img alt="r" src="flaskmpeg-2.gif" /></li>
+<li><strong>Post Processing</strong> : 選 <code>HQ Bicubic Fultering</code> 。  <br />
+<img alt="r" src="flaskmpeg-2a.gif" /></li>
+<li><strong>Files</strong> : 輸出檔案按系統內定放於 <code>C:\flaskOut</code> 。
+   <img alt="r" src="flaskmpeg-2b.gif" /></li>
+</ul>
+</li>
+<li>選擇 <code>Options/ Select Output Format</code>，將 <code>AVI Output</code> 打勾。使輸出為 <code>AVI</code> 格式。</li>
+<li>選擇 <code>Options/ Output Format Options</code>，打開 <code>Flask MPEG AVI Output Options</code>Window。</li>
+<li>此片 ( 花木蘭 )不算是愛情文藝片，偶有些較快的場景，故將<ul>
+<li><strong>Video Codecs.Double Click to configure</strong> :  設為 <code>Dix ;-) MPEG-4 Fast-Motion</code>. 
+   <img alt="r" src="flaskmpeg-3.gif" />    </li>
+<li>按下 <code>Configure</code>進行以下設定，將 <strong>Keyframe</strong> 調成每秒 <code>12</code>；<strong>Smoothness</strong> 最佳化 <code>100 %</code>；<strong>Data Rate</strong> 為 <code>600</code>  <br />
+<img alt="r" src="flaskmpeg-4.gif" /></li>
+<li><strong>Audio Codecs</strong> 設成 <code>MPEG Layer-3 Codec (professional)</code>,
+   <strong>Available formats for audio codec</strong> 設為 <code>MPEG Layer-3 - 112 kBit/s, 44,100 Hz, Stereo</code>, 調整完設定後按下 <code>OK</code>。</li>
+</ul>
+</li>
+<li>在<code>Control Panel</code> Window  按下 <code>Flask it!</code>進行 轉成 <code>MPEG 4</code> 壓縮。  <br />
+     ▼壓縮中畫面  <br />
+<img alt="r" src="flaskmpeg-5.gif" />   </li>
+<li>最後的壓縮結果會存於內定的 <code>C:\flaskOut.avi</code> 檔案內。</li>
+</ol>
+<h3 id="4-compare-picture-quality-and-file-size">4. Compare Picture Quality and File Size</h3>
+<ul>
+<li>
+<p>右圖為原本壓縮前( MPEG-1 規格 ) 的畫面，檔案大小為 51,821 KB.  <br />
+<img alt="r" src="flaskmpeg-6a-1.jpg" />  <br />
+<img alt="r" src="flaskmpeg-6a.jpg" /></p>
+</li>
+<li>
+<p>經過  <strong>FlaskMPEG</strong> 中 MPEG-4     </p>
+</li>
+<li><strong>Video Codecs.Double Click to configure :</strong>  設為 <code>Dix ;-) MPEG-4 Fast-Motion</code>   </li>
+<li><strong>Audio Codecs</strong>: 設成 <code>MPEG Layer-3 Codec (professional)</code>    </li>
+<li>
+<p><strong>Available formats for audio codec</strong>: 設為 <code>MPEG Layer-3 - 112 kBit/s, 44,100 Hz, Stereo</code> 。  <br />
+    壓縮后的大小為 <code>19,730KB</code>，比原先檔案足足少了 <code>2.62</code> 倍。  <br />
+    但亦可由右圖看出來，畫面品質精細度亦變的較差。  <br />
+<img alt="r" src="flaskmpeg-6b.jpg" />    </p>
+</li>
+<li>
+<p>在 <code>FlaskMPEG</code> 將 <code>Video Codecs</code> 改成  <code>Low-Motion</code> 其他設定維持不變，發現檔案大小變大成 <code>25,535 KB</code>，雖然畫面細緻度增加了，但檔案大小亦增大<code>1.29</code>倍 。  <br />
+<img alt="r" src="flaskmpeg-6c.jpg" /></p>
+</li>
+<li>
+<p>在  <code>FlaskMPEG</code> 將 中</p>
+</li>
+<li><strong>Video Codecs</strong>:  設囘原來的 <code>Dix ;-) MPEG-4 Fast-Motion</code> </li>
+<li><strong>Available formats for audio codec</strong> 改成<code>MPEG Layer-3 - 24 kBit/s, 44,100 Hz, Stereo</code>, 可以發現檔案大小減小 0.21倍 ，但音質亦可以接受。</li>
+<li>再將 <strong>Available formats for audio codec</strong> 改成 <code>MPEG Layer-3 - 18 kBit/s, 44,100 Hz, Stereo</code> ,檔案大小雖減少了，但卻不多，音質也還可以接受。</li>
+<li>但從 <code>24 k</code> 調成 <code>18 k</code> 因其檔案大小減少不多，有時卻也不是很必要。  <br />
+<img alt="r" src="flaskmpeg-6.jpg" /></li>
+</ul>
+<h2 id="observation">Observation</h2>
+<ul>
+<li>檔案大小相關比較 </li>
+</ul>
+<p>| ID  | Description                                           | Filename                     | Runtime    | File Size  |
+  |-----|-------------------------------------------------------|-------------------------------------------|------------|
+  |1    | 原始 AVI 格式                                         | AVSEQ01.DAT                  | 21:45 secs | 224,846KB  |
+  |2    | 轉成 MPEG -1 格式                                     | AVSEQ01.mpg                  | 21:45 secs | 221,611KB  |
+  |3    | 剪接成 5 分鐘左右 MPEG-1 格式影片                     | AVSEQ01_Cutting&amp;Joining .mpg | 5:04 secs  | 54,821KB   |
+  |4    | 將 5 分鐘左右影片轉成 MPEG-4 ( Fast-Motion )格式      | flaskOut_fastMotion.avi      | 5:04 secs  | 19,730KB   |
+  |5    | 將 5 分鐘左右影片轉成 MPEG-4 ( Low-Motion )格式       | flaskOut_lowMotion.avi       | 5:04 secs  | 25,535KB   |
+  |6    | 將 5 分鐘左右影片轉成 MPEG-4 ( Fast-Motion/ 24k )格式 | flaskOut_24k.avi             | 5:04 secs  | 16,256KB   |
+  |7    | 將 5 分鐘左右影片轉成 MPEG-4 ( Fast-Motion/ 18k )格式 | flaskOut_18k.avi             | 5:04 secs  | 16,043KB   |</p>
+<h2 id="advanced">Advanced</h2>
+<ul>
+<li>There is another free Movie <a href="https://peach.blender.org/download/"><code>Big Buck Bunny</code></a>, we can use it to do this test also.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><code>VCDGear</code>軟體說明 </li>
+<li><a href="http://toget.pchome.com.tw/intro/multimedia_transfer/10282.html">Link</a></li>
+<li><code>TMPGEnc</code>軟體操作 </li>
+<li><a href="http://hw-driver.nctu.edu.tw/pub/slime/teach/TMPGEnc-MPEG-t.htm">Link 1</a> </li>
+<li><a href="http://www.hkgolden.com/user_report/TMPGEnc_Plus_25/main.asp">Link 2</a></li>
+<li><code>VCDGear</code>與<code>FlaskMPEG</code>軟體教學</li>
+<li><a href="http://www.geocities.com/movie2u/dvd2mpeg1.htm">Link</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../player/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Multimedia Player" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Multimedia Player
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../misc/" class="md-footer__link md-footer__link--next" aria-label="Next: Misc" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Misc
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>

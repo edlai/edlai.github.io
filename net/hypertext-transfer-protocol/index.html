@@ -1,0 +1,1584 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://edlai.github.io/net/hypertext-transfer-protocol/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Hypertext Transfer Protocol(HTTP) - Ed's Personal Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hypertext-transfer-protocol-http" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ed's Personal Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hypertext Transfer Protocol(HTTP)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dev/softwares/" class="md-tabs__link md-tabs__link--active">
+        Engineering
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../qualitative-research/" class="md-tabs__link">
+        Education
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../collections/" class="md-tabs__link">
+        Collection
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../traveling/" class="md-tabs__link">
+        Motivation
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Ed's Personal Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/softwares/" class="md-nav__link">
+        Softwares Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/accessories/" class="md-nav__link">
+        Accessories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/equipments/" class="md-nav__link">
+        Equipments
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/gitlab/" class="md-nav__link">
+        Gitlab and Build Machine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/docker/" class="md-nav__link">
+        Docker and Macvlan
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/buildroot/" class="md-nav__link">
+        Buildroot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/openwrt/" class="md-nav__link">
+        OpenWRT
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" type="checkbox" id="__nav_2_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_3_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Hypertext Transfer Protocol(HTTP)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telnet" class="md-nav__link">
+    Telnet
+  </a>
+  
+    <nav class="md-nav" aria-label="Telnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-by-telnet" class="md-nav__link">
+    Step-by-Step by telnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshots-of-running-telnet" class="md-nav__link">
+    Screenshots of running telnet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-tiny-browser" class="md-nav__link">
+    A Tiny Browser
+  </a>
+  
+    <nav class="md-nav" aria-label="A Tiny Browser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposal" class="md-nav__link">
+    Proposal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-transfer-protocol/" class="md-nav__link">
+        File Transfer Protocol (FTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      <label class="md-nav__link" for="__nav_2_4_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/discrete-time-processing/" class="md-nav__link">
+        Discrete-Time Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/moving-average-and-backward-system/" class="md-nav__link">
+        Moving Average and Backward System
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      <label class="md-nav__link" for="__nav_2_4_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/window-size-and-the-spectrogram/" class="md-nav__link">
+        Window Size and the Spectrogram
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      <label class="md-nav__link" for="__nav_2_5">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/assembler-compiler/" class="md-nav__link">
+        An Assembler Compiler
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      <label class="md-nav__link" for="__nav_2_6">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/isa/" class="md-nav__link">
+        Industry Standard Architecture (ISA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/pci/" class="md-nav__link">
+        Peripheral Component Interconnect (PCI)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/ldd/" class="md-nav__link">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/gpio/" class="md-nav__link">
+        General Purpose Input Output (GPIO)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../io/i2c/" class="md-nav__link">
+        Inter-Integrated Circuit (I2C)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      <label class="md-nav__link" for="__nav_2_7">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/player/" class="md-nav__link">
+        Multimedia Player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/mpeg1/" class="md-nav__link">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      <label class="md-nav__link" for="__nav_2_8">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Education" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qualitative-research/" class="md-nav__link">
+        Qualitative Research
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantitative-research/" class="md-nav__link">
+        Quantitative Research
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Collection" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collections/" class="md-nav__link">
+        Collections
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Motivation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Motivation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../traveling/" class="md-nav__link">
+        Traveling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../painting/" class="md-nav__link">
+        Painting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telnet" class="md-nav__link">
+    Telnet
+  </a>
+  
+    <nav class="md-nav" aria-label="Telnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-by-telnet" class="md-nav__link">
+    Step-by-Step by telnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshots-of-running-telnet" class="md-nav__link">
+    Screenshots of running telnet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-tiny-browser" class="md-nav__link">
+    A Tiny Browser
+  </a>
+  
+    <nav class="md-nav" aria-label="A Tiny Browser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposal" class="md-nav__link">
+    Proposal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="hypertext-transfer-protocol-http">HyperText Transfer Protocol (HTTP)</h1>
+<p>Do the HTTP experiment as explained in the lecture.
+- At last try to get a html file, show your process and partial result (no need to print all stuff you get to hand in).
+- You are welcome and hand them in for grading (refer to <code>RFC2068</code> if you want).</p>
+<h2 id="concept">Concept</h2>
+<p>Users use below application</p>
+<ul>
+<li>Web Browsers (e.q. Microsoft <code>Internet Explorer</code>; Netscape <code>Navigator</code> and so on) to access the Web Services.</li>
+</ul>
+<p>but we will not use any client-side application to access above HTTP Services, instead of <code>telnet</code>. It will help us to know more detail of HTTP protocol.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Red-Hat Linux 6.2 + KDE/X-window</li>
+<li>Perl/TK</li>
+</ul>
+<h2 id="telnet">Telnet</h2>
+<h3 id="step-by-step-by-telnet">Step-by-Step by telnet</h3>
+<ul>
+<li>Issue below command on Terminal to access Yahoo Website</li>
+</ul>
+<div class="highlight"><pre><span></span><code>telnet www.yahoo.com.tw <span class="m">80</span>
+</code></pre></div>
+<ul>
+<li>Issue below HTTP commands talking with Yahoo Website to fetch Web content <code>index.html</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>PROMPT</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GET /index.html HTTP/1.0                 <kbd>⏎</kbd></td>
+<td>GET <code>index.htm</code> page using HTTP/1.0 property</td>
+</tr>
+<tr>
+<td>2</td>
+<td>USER-agent: Lynx/2.8.4                   <kbd>⏎</kbd></td>
+<td>Tell Yahoo server our client-side application is <code>Lynx</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Accept: text/html, image/gif, image/jpeg <kbd>⏎</kbd></td>
+<td>This client accepts html, gif and jpeg format images</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Accept-language: ch                      <kbd>⏎</kbd></td>
+<td>The http client is able to accept <code>ch</code> language, according to <a href="https://www.ietf.org/rfc/rfc1766.txt"><code>RFC1766</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><kbd>Enter</kbd> <kbd>Enter</kbd>        <kbd>⏎</kbd></td>
+<td>Press two <kbd>Enter</kbd> keys</td>
+</tr>
+</tbody>
+</table>
+<h3 id="screenshots-of-running-telnet">Screenshots of running telnet</h3>
+<ul>
+<li>Initial  the connection to <code>yahoo</code> website, and issue the HTTP commands to grab <code>index.html</code> page  </li>
+</ul>
+<p><img alt="result" src="h1.gif" /></p>
+<ul>
+<li>It'll display the HTML result on Terminal</li>
+</ul>
+<p><img alt="result" src="h2.gif" /></p>
+<ul>
+<li>User can also save <code>index.html</code> to the file <code>yahoo.txt</code> by using Shell command </li>
+</ul>
+<div class="highlight"><pre><span></span><code>telnet <span class="m">140</span>.124.13.2 <span class="m">80</span> &gt;&gt; yahoo.txt<span class="sb">`</span>   
+</code></pre></div>
+<p><img alt="result" src="h3.gif" /></p>
+<ul>
+<li>Check the result by reading file <code>yahoo.txt</code> (the same <code>index.html</code>) by using Shell command also  </li>
+</ul>
+<div class="highlight"><pre><span></span><code>cat yahoo.txt <span class="p">|</span> more
+</code></pre></div>
+<p><img alt="result" src="h4.gif" />   </p>
+<ul>
+<li>Users can read the file <code>yahoo.txt</code> by using Web Browser also  </li>
+</ul>
+<h2 id="a-tiny-browser">A Tiny Browser</h2>
+<h3 id="proposal">Proposal</h3>
+<ul>
+<li><strong>Basic Concept:</strong>    </li>
+<li>使用 Socket 開啟遠端的 http port (80),讀取其 網頁檔案,剖析 其檔案內容的 HTML tag , 並將之轉成 給瀏覽器的所看到的外觀 。</li>
+<li><strong>Current Status:</strong>    </li>
+<li>目前只能剖析基礎的 A tag(超連結 Tag) .</li>
+<li><strong>Languages used:</strong>    </li>
+<li>Perl (GUI framework is Tk) .</li>
+<li><strong>Screenshot:</strong>     </li>
+<li>於網址處輸入欲連結網址即可讀取該網頁檔案，讀取後,游標移到有超連結功能處顏色會改變,按一下後,即可連結到該網頁並開啟。
+  <img alt="result" src="h5.gif" /></li>
+</ul>
+<h3 id="programming">Programming</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/local/bin/perl</span>
+<span class="c1">###################################  webget.pl  ###############################</span>
+<span class="c1"># Proposal:    a tiny browser</span>
+<span class="c1">#</span>
+<span class="c1"># Description: 1. 初級功能  </span>
+<span class="c1">#              2. 連線 HTTP Server 後 </span>
+<span class="c1">#              3. 取得 Html Tag 做出 &lt;A&gt; tag (超連結) 的功能</span>
+<span class="c1">#</span>
+<span class="c1"># Usage:       1.  Unix-like OS</span>
+<span class="c1">#              1.1 install Perl on Unix-like OS (Unix ,Linux ,Free BSD ,Sun..)</span>
+<span class="c1">#              1.2 invoke Terminal mode on Xwindow </span>
+<span class="c1">#                  &lt;s9360511@sun:~/task/ss&gt;[46] chmod 755 webget.pl (chmod to 755)</span>
+<span class="c1">#                  &lt;s9360511@sun:~/task/ss&gt;[48] ./webget.pl        (Running)</span>
+<span class="c1">#</span>
+<span class="c1">#              2.  MS Windows 平台 </span>
+<span class="c1">#              2.1 需先安裝 Perl(www.perl.org)</span>
+<span class="c1">#              2.2 在直接按本檔案啟動或進入 MS-DOS 底下啟動</span>
+<span class="c1">#                  C:\&gt;perl     webget.pl   (以 Perl直譯 本程式檔)</span>
+<span class="c1">#                      ^^^^    ^^^^^^</span>
+<span class="c1">#                      直譯器 本程式</span>
+<span class="c1">#</span>
+<span class="c1"># Limitation:  1. A tag 功能 並不完全</span>
+<span class="c1"># Reference:  </span>
+<span class="c1"># Issue :</span>
+<span class="c1"># History:     n/a</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">use</span> <span class="nn">Tk</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">IO::Socket</span><span class="p">;</span>
+
+<span class="nv">$FONT</span><span class="o">=</span><span class="s">&#39;#a0b7ce&#39;</span><span class="p">;</span>
+<span class="c1">###############################################################################</span>
+<span class="c1">##    GUI Layout                                                      [ Start ]</span>
+<span class="c1">###############################################################################</span>
+
+<span class="nv">$mw</span> <span class="o">=</span> <span class="nn">MainWindow</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">;</span>
+<span class="nv">$mw</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Perl 瀏覽器&quot;</span><span class="p">);</span>
+<span class="nv">$f</span> <span class="o">=</span> <span class="nv">$mw</span><span class="o">-&gt;</span><span class="nn">Frame</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">);</span>
+
+<span class="c1"># IP Address/or URL</span>
+<span class="nv">$f</span><span class="o">-&gt;</span><span class="n">Label</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;網址:&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;left&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">);</span>
+<span class="nv">$f</span><span class="o">-&gt;</span><span class="n">Entry</span><span class="p">(</span><span class="o">-</span><span class="n">textvariable</span> <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$url_name</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;left&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1"># Button</span>
+<span class="nv">$f</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;Exit&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span><span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="k">sub</span> <span class="p">{</span> <span class="nb">exit</span><span class="p">;</span> <span class="p">}</span> <span class="p">)</span><span class="o">-&gt;</span> <span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;right&#39;</span><span class="p">);</span>
+<span class="nv">$f</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;首頁&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span><span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">home_web</span><span class="p">)</span><span class="o">-&gt;</span>  <span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;right&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;e&#39;</span><span class="p">);</span>
+<span class="nv">$f</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;連結&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span><span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">link_web</span><span class="p">)</span><span class="o">-&gt;</span>  <span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;right&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;e&#39;</span><span class="p">);</span>
+
+<span class="c1"># Display Area</span>
+<span class="nv">$t</span> <span class="o">=</span><span class="nv">$mw</span><span class="o">-&gt;</span><span class="n">Scrolled</span><span class="p">(</span><span class="sx">qw/Text -setgrid true -width 60 -height 24 -scrollbars e -wrap word/</span><span class="p">,</span> <span class="o">-</span><span class="n">font</span> <span class="o">=&gt;</span> <span class="nv">$FONT</span><span class="p">);</span>
+<span class="nv">$t</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="sx">qw/-expand yes -fill both/</span><span class="p">);</span>
+
+<span class="c1"># Set up display styles</span>
+    <span class="k">my</span><span class="p">(</span><span class="nv">@bold</span><span class="p">,</span> <span class="nv">@normal</span><span class="p">,</span> <span class="nv">$tag</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$mw</span><span class="o">-&gt;</span><span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">@bold</span>   <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">background</span> <span class="o">=&gt;</span> <span class="s">&#39;#43ce80&#39;</span><span class="p">,</span> <span class="sx">qw/-relief raised -borderwidth 1/</span><span class="p">);</span>
+        <span class="nv">@normal</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">background</span> <span class="o">=&gt;</span> <span class="nb">undef</span><span class="p">,</span> <span class="sx">qw/-relief flat/</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">@bold</span>   <span class="o">=</span> <span class="p">(</span><span class="sx">qw/-foreground white -background black/</span><span class="p">);</span>
+        <span class="nv">@normal</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">foreground</span> <span class="o">=&gt;</span> <span class="nb">undef</span><span class="p">,</span> <span class="o">-</span><span class="n">background</span> <span class="o">=&gt;</span> <span class="nb">undef</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="n">MainLoop</span><span class="p">;</span>
+<span class="c1">###############################################################################</span>
+<span class="c1">##    GUI Layout                                                        [ End ]</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1"># ...................   Access Website ........................................</span>
+<span class="k">sub</span> <span class="nf">link_web</span> <span class="p">{</span> 
+  <span class="nv">@ARGV</span><span class="o">=</span> <span class="nb">split</span> <span class="sr">/\//</span><span class="p">,</span><span class="nv">$url_name</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">show_page</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># ..............   Default Portal Site is &quot;www.yahoo.com.tw&quot;   ................</span>
+<span class="k">sub</span> <span class="nf">home_web</span> <span class="p">{</span> 
+  <span class="nv">@ARGV</span><span class="o">=</span> <span class="sx">qw(www.yahoo.com.tw /index.html)</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">show_page</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">linkSite</span><span class="p">{</span>
+    <span class="nv">@ARGV</span><span class="o">=</span><span class="nv">@_</span><span class="p">;</span>
+    <span class="nv">$_</span><span class="o">=</span><span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>   
+    <span class="n">s</span><span class="c1">#/##;</span>
+    <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="nv">$_</span><span class="p">;</span>
+    <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;/index.html&quot;</span><span class="p">;</span>   
+    <span class="nv">$t</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span> <span class="s">&quot;end&quot;</span><span class="p">);</span>   
+    <span class="o">&amp;</span><span class="n">show_page</span><span class="p">;</span>   
+<span class="p">}</span>
+
+<span class="c1"># ...........    Grab the http pages from http server    ......................</span>
+<span class="k">sub</span> <span class="nf">show_page</span> <span class="p">{</span>
+
+  <span class="c1">## 下方顯示連接網址</span>
+  <span class="nv">$info</span> <span class="o">=</span> <span class="s">&quot;目前連接 &#39;$url_name&#39;&quot;</span><span class="p">;</span>
+
+  <span class="c1">## 清除顯示區</span>
+  <span class="nv">$t</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span> <span class="s">&quot;end&quot;</span><span class="p">);</span>
+
+  <span class="c1">## 檢查網址是否正確</span>
+  <span class="k">unless</span> <span class="p">(</span><span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span> <span class="nb">die</span> <span class="s">&quot;usage: $0 host document ...\n&quot;</span> <span class="p">}</span>
+
+  <span class="nv">$host</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">(</span> <span class="nv">@ARGV</span><span class="p">);</span>  
+  <span class="k">foreach</span> <span class="nv">$document</span> <span class="p">(</span><span class="nv">@ARGV</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">#使用 socket 連接 http server</span>
+    <span class="nv">$remote</span> <span class="o">=</span> <span class="nn">IO::Socket::INET</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span><span class="n">Proto</span> <span class="o">=&gt;</span> <span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="n">PeerAddr</span> <span class="o">=&gt;</span> <span class="nv">$host</span><span class="p">,</span><span class="n">PeerPort</span> <span class="o">=&gt;</span> <span class="s">&quot;http(80)&quot;</span><span class="p">,);</span>
+    <span class="k">unless</span><span class="p">(</span><span class="nv">$remote</span><span class="p">){</span> <span class="nb">die</span> <span class="s">&quot;cannot connect to http daemon on $host&quot;</span><span class="p">}</span>
+    <span class="nv">$remote</span><span class="o">-&gt;</span><span class="n">autoflush</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="c1">## 與 http 交談 抓取網頁</span>
+    <span class="k">print</span> <span class="nv">$remote</span> <span class="s">&quot;GET /$document HTTP/1.0\n\n&quot;</span><span class="p">;</span>
+
+    <span class="nv">$counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="c1">#使 HTML 的 A Tag 作用</span>
+    <span class="k">while</span><span class="p">(</span><span class="sr">&lt;$remote&gt;</span><span class="p">){</span> 
+
+       <span class="c1">#去掉 A Tag 中不用顯示的字元</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nb">index</span><span class="p">(</span><span class="nv">$_</span><span class="p">,</span><span class="s">&quot;&lt;a href=&quot;</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>           
+            <span class="o">~</span><span class="n">s</span><span class="c1">#&lt;a href=&quot;http://##;    </span>
+            <span class="nv">$where</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="nv">$_</span><span class="p">,</span><span class="s">&quot;&gt;&quot;</span><span class="p">);</span>           
+            <span class="nv">$tt1</span><span class="o">=</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$_</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="nv">$where</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>                                       
+            <span class="o">~</span><span class="n">s</span><span class="c1">#$tt1&quot;&gt;##;               </span>
+            <span class="nv">$where</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="nv">$_</span><span class="p">,</span><span class="s">&quot;&lt;/a&gt;&quot;</span><span class="p">);</span>
+            <span class="nv">$tt2</span><span class="o">=</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$_</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nv">$where</span><span class="p">);</span>                       
+            <span class="nv">$counter</span><span class="o">++</span><span class="p">;</span>
+            <span class="nv">$aTag</span><span class="p">{</span><span class="s">&#39;d&#39;</span><span class="o">.</span><span class="nv">$counter</span><span class="p">}</span><span class="o">=</span><span class="nv">$tt1</span><span class="p">;</span>   
+            <span class="nv">$t</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span> <span class="nv">$tt2</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="o">.</span><span class="nv">$counter</span><span class="p">);</span>     
+
+        <span class="p">}</span><span class="c1">#目前其他的 HTML Tag 直接顯示</span>
+        <span class="k">else</span><span class="p">{</span><span class="nv">$t</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&quot;end&quot;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">);}</span>               
+    <span class="p">}</span>   
+    <span class="c1"># ................    Display A tag     ...................................</span>
+    <span class="k">foreach</span> <span class="nv">$tag</span> <span class="p">(</span><span class="nv">%aTag</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">## 顯示 A tag 並且游標移到 A tag 會將 該 A tag 字串背景變成 綠色</span>
+        <span class="nv">$t</span><span class="o">-&gt;</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;bind&#39;</span><span class="p">,</span> <span class="nv">$tag</span><span class="p">,</span> <span class="s">&#39;&lt;Any-Enter&gt;&#39;</span> <span class="o">=&gt;</span><span class="k">sub</span> <span class="p">{</span><span class="nb">shift</span><span class="o">-&gt;</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;configure&#39;</span><span class="p">,</span> <span class="nv">$tag</span><span class="p">,</span> <span class="nv">@bold</span><span class="p">)});</span>
+        <span class="nv">$t</span><span class="o">-&gt;</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;bind&#39;</span><span class="p">,</span> <span class="nv">$tag</span><span class="p">,</span> <span class="s">&#39;&lt;Any-Leave&gt;&#39;</span> <span class="o">=&gt;</span><span class="k">sub</span> <span class="p">{</span><span class="nb">shift</span><span class="o">-&gt;</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;configure&#39;</span><span class="p">,</span> <span class="nv">$tag</span><span class="p">,</span> <span class="nv">@normal</span><span class="p">)});</span>
+
+        <span class="c1">## 使 A tag 超連結 功能生效</span>
+        <span class="nv">$t</span><span class="o">-&gt;</span><span class="n">tag</span><span class="p">(</span><span class="s">&quot;bind&quot;</span><span class="p">,</span><span class="nv">$tag</span><span class="p">,</span><span class="s">&quot;&lt;1&gt;&quot;</span> <span class="o">=&gt;</span> <span class="k">sub</span> <span class="p">{</span><span class="o">&amp;</span><span class="n">linkSite</span><span class="p">(</span><span class="nv">$aTag</span><span class="p">{</span><span class="nv">$tag</span><span class="p">})});</span>     
+    <span class="p">}</span>   
+    <span class="nv">$t</span><span class="o">-&gt;</span><span class="n">mark</span><span class="p">(</span><span class="sx">qw/set insert 0.0/</span><span class="p">);</span>   
+    <span class="nb">close</span> <span class="nv">$remote</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="advanced">Advanced</h2>
+<ul>
+<li>User can press <kbd>F12</kbd> to observative how Chrome works step-by-step.</li>
+</ul>
+<p><img alt="r" src="chrome.png" /></p>
+<div class="highlight"><pre><span></span><code>$author:   Jin-Wen (Ed) Lai
+$date:     Oct. 2001
+$revised:  Mar. 2018
+$keywords: computer, networks, network, http, RFC.
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../embedded/openwrt/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenWRT" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              OpenWRT
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../file-transfer-protocol/" class="md-footer__link md-footer__link--next" aria-label="Next: File Transfer Protocol (FTP)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              File Transfer Protocol (FTP)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>

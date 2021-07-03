@@ -1,0 +1,1594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://edlai.github.io/io/pci/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Peripheral Component Interconnect (PCI) - Ed's Personal Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#man-machine-interfaces" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ed's Personal Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peripheral Component Interconnect (PCI)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dev/softwares/" class="md-tabs__link md-tabs__link--active">
+        Engineering
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../qualitative-research/" class="md-tabs__link">
+        Education
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../collections/" class="md-tabs__link">
+        Collection
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../traveling/" class="md-tabs__link">
+        Motivation
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Ed's Personal Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/softwares/" class="md-nav__link">
+        Softwares Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/accessories/" class="md-nav__link">
+        Accessories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/equipments/" class="md-nav__link">
+        Equipments
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/gitlab/" class="md-nav__link">
+        Gitlab and Build Machine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/docker/" class="md-nav__link">
+        Docker and Macvlan
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/buildroot/" class="md-nav__link">
+        Buildroot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/openwrt/" class="md-nav__link">
+        OpenWRT
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" type="checkbox" id="__nav_2_3_1" >
+      
+      <label class="md-nav__link" for="__nav_2_3_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/hypertext-transfer-protocol/" class="md-nav__link">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/file-transfer-protocol/" class="md-nav__link">
+        File Transfer Protocol (FTP)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      <label class="md-nav__link" for="__nav_2_4_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/discrete-time-processing/" class="md-nav__link">
+        Discrete-Time Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/moving-average-and-backward-system/" class="md-nav__link">
+        Moving Average and Backward System
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      <label class="md-nav__link" for="__nav_2_4_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dsp/window-size-and-the-spectrogram/" class="md-nav__link">
+        Window Size and the Spectrogram
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      <label class="md-nav__link" for="__nav_2_5">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/assembler-compiler/" class="md-nav__link">
+        An Assembler Compiler
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+      
+      <label class="md-nav__link" for="__nav_2_6">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isa/" class="md-nav__link">
+        Industry Standard Architecture (ISA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Peripheral Component Interconnect (PCI)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Peripheral Component Interconnect (PCI)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#peripheral-component-interconnect-pci" class="md-nav__link">
+    Peripheral Component Interconnect (PCI)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    Hardware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    Running
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ldd/" class="md-nav__link">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        General Purpose Input Output (GPIO)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c/" class="md-nav__link">
+        Inter-Integrated Circuit (I2C)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      <label class="md-nav__link" for="__nav_2_7">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/player/" class="md-nav__link">
+        Multimedia Player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tv/mpeg1/" class="md-nav__link">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      <label class="md-nav__link" for="__nav_2_8">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Education" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qualitative-research/" class="md-nav__link">
+        Qualitative Research
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantitative-research/" class="md-nav__link">
+        Quantitative Research
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Collection" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collections/" class="md-nav__link">
+        Collections
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Motivation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Motivation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../traveling/" class="md-nav__link">
+        Traveling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../painting/" class="md-nav__link">
+        Painting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#peripheral-component-interconnect-pci" class="md-nav__link">
+    Peripheral Component Interconnect (PCI)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    Hardware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming" class="md-nav__link">
+    Programming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    Running
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
+<h2 id="peripheral-component-interconnect-pci">Peripheral Component Interconnect (PCI)</h2>
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
+$date:     May. 2003
+$revised:  Mar. 2018
+$keywords: man, machine, interface, peripheral component interconnect, pci
+</code></pre></div>
+<p>An exercise of PCI interface control by <code>Assembly</code>. </p>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#hardware">Hardware</a></li>
+<li><a href="#software">Software</a></li>
+<li><a href="#programming">Programming</a></li>
+<li><a href="#advanced">Advanced</a></li>
+</ul>
+<h2 id="concept">Concept</h2>
+<ul>
+<li><code>ISA</code>的缺點就是可能會發生I/O Port衝突的問題, 最深刻的印象就是在<code>DOS</code>時代, 玩遊戲有時後會出現，<a href="https://zh.wikipedia.org/wiki/Sound_Blaster">聲霸卡</a>與其它ISA卡位址衝突，而需特別手動調整聲霸卡或其它ISA卡的I/O位置.</li>
+<li><code>PCI</code>的出現，而透過電腦自動與PCI卡指定PCI介面卡 <code>I/O</code>或 <code>Memory</code> 位置.</li>
+<li><code>PCI</code>自動指定<code>I/O</code>或 <code>Memory</code> 位置, 主要是透過以下兩個 I/O Port來得到動態 I/O address.    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>I/O Port Address</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0cf8</td>
+<td>PCI CONFIG Address Port</td>
+</tr>
+<tr>
+<td>0x0cfc</td>
+<td>PCI DATA Port</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>但在此次的練習為了方便起見,<code>Leap PCI Target Board</code>還是以固定IO為主.</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Microsoft Windows ME</li>
+<li>Microsoft MASM (Macro Assembler)</li>
+<li>Leap PCI Card and Target Board</li>
+</ul>
+<h2 id="hardware">Hardware</h2>
+<ul>
+<li>
+<p>PCI Card - Front View (Master)<br />
+<img alt="r" src="leapPciCard.jpg" /></p>
+</li>
+<li>
+<p>PCI Card - Rear View (Master)<br />
+<img alt="r" src="leapPciCard_bg.jpg" /></p>
+</li>
+<li>
+<p>Leap PCI Target Board  <br />
+<img alt="r" src="leapPciDevice.jpg" /></p>
+</li>
+</ul>
+<h2 id="software">Software</h2>
+<ul>
+<li>
+<p>安裝</p>
+</li>
+<li>
+<p>將 <code>Leap PCI card</code> 插入 電腦主機的 <code>PCI Solt</code> 內, 重開機後<br />
+OS 會提示已經發現下列硬體 – <code>PCI Early non-VGA Device</code>.  </p>
+</li>
+<li>
+<p>選擇 <code>指定驅動程式的位址(進階)(S)</code> 安裝裝置驅動程式。  <br />
+適當的選擇驅動程式的位址(<code>\Win32\Driver\Wdn</code>),並點選『下一步』。  <br />
+<img alt="r" src="driver.jpg" />    </p>
+</li>
+<li>
+<p>安裝後出現上面視窗,點選 <code>完成</code>,完成安裝驅動程式。  <br />
+<img alt="r" src="driver_finish.jpg" />    </p>
+</li>
+<li>
+<p>開啟 <code>開始/ 設定/ 控制台/ 系統/ 硬體/ 裝置管理員</code>, 點選
+<code>其他裝置/ Custom(OEM) PCI 9050/9052 Board</code> 即可查看該裝置內容。  <br />
+<img alt="r" src="1-ioAddress.gif" />    </p>
+</li>
+<li>
+<p>輸入輸出範圍    <br />
+<img alt="r" src="2-ioAddress.gif" />    </p>
+</li>
+<li>
+<p>每台電腦上的裝置內容不盡相同,我電腦上的裝置內容整理如下    </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>中斷要求</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>記憶體範圍</td>
+<td>EE021000-EE02107F</td>
+</tr>
+<tr>
+<td>記憶體範圍</td>
+<td>EE000000-EE01FFFF</td>
+</tr>
+<tr>
+<td>輸入輸出範圍(最低 I/O)</td>
+<td>E000-E07F</td>
+</tr>
+<tr>
+<td>輸入輸出範圍(次低 I/O)</td>
+<td>E400-E403</td>
+</tr>
+<tr>
+<td>輸入輸出範圍(最高 I/O)</td>
+<td>E800-E8FF</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Leap PCI 裝置可用的 裝置 I/O 定義為    <br />
+<img alt="r" src="leap_io_define_1.png" />  <br />
+<img alt="r" src="leap_io_define_2.png" />     </li>
+</ol>
+<h2 id="programming">Programming</h2>
+<ul>
+<li>以下程式以控制七段顯示器的上數. 七段顯示器位址線位於 IO_Bank_1 IO-8~15, 資料線位於IO_Bank_1 IO-40~47, 透過與 Base 的加權,即可找出相對應的位址。   </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">MODEL</span>  <span class="nv">SMALL</span>                           
+<span class="nf">.386</span>
+<span class="nf">.STACK</span>
+
+<span class="nf">.DATA</span>
+
+<span class="no">IO_PORT0</span><span class="kd">       EQU</span>     <span class="mh">0E811H</span>  <span class="c1">;  io_bank_1 io-8~15</span>
+<span class="no">IO_PORT1</span><span class="kd">       EQU</span>     <span class="mh">0E815H</span>  <span class="c1">;  io_bank_1 io-40~47</span>
+<span class="no">OUT_DISABLED</span><span class="kd">   EQU</span>     <span class="mh">0E808H</span>  <span class="c1">;  io_bank_0</span>
+<span class="no">IO_PORT0D</span><span class="kd">      EQU</span>     <span class="mh">0E800H</span>  <span class="c1">;  io_bank_0</span>
+<span class="no">IO_PORT1D</span><span class="kd">      EQU</span>     <span class="mh">0E804H</span>  <span class="c1">;  io_bank_0</span>
+
+<span class="nf">.CODE</span>
+<span class="nl">BEGIN:</span>
+        <span class="nf">PUSH</span>    <span class="nb">DS</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mi">0</span>
+        <span class="nf">PUSH</span>    <span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="err">@</span><span class="nv">DATA</span>
+        <span class="nf">MOV</span>     <span class="nb">DS</span><span class="p">,</span><span class="nb">AX</span>
+<span class="nl">DISP_BEGIN:</span>                             
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT1</span>            <span class="c1">;第一個七段碼亮</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0005H</span>               <span class="c1">;0000-0005 不同位址輸出</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">CALL</span>    <span class="nv">COUNT_7SEG</span>
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span><span class="mh">0BH</span>                 <span class="c1">;按任意鍵結束程式</span>
+        <span class="nf">INT</span>     <span class="mh">21H</span>                    <span class="c1">;中斷向量21h</span>
+        <span class="nf">CMP</span>     <span class="nb">AL</span><span class="p">,</span><span class="mh">0FFH</span>
+        <span class="nf">JNZ</span>     <span class="nb">DISP</span><span class="nv">_BEGIN</span>
+        <span class="nf">JMP</span>     <span class="nv">EXIT</span>                   <span class="c1">;程式結束</span>
+
+<span class="nl">COUNT_7SEG:</span>                            <span class="c1">;顯示0~9數字</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 O</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">003FH</span>               <span class="c1">;0011_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 1</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0006H</span>               <span class="c1">;0000_0110  </span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 2</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">005BH</span>               <span class="c1">;0101_1011</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 3</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">004FH</span>               <span class="c1">;0100_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 4</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0066H</span>               <span class="c1">;0110_0110</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 5</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">006DH</span>               <span class="c1">;0110_1101</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 6</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">007DH</span>               <span class="c1">;0111_1101</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 7</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0007H</span>               <span class="c1">;0000_0111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 8</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">007FH</span>               <span class="c1">;0111_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 9</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">006FH</span>               <span class="c1">;0110_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
+
+        <span class="nf">RET</span>
+
+<span class="nl">WAIT_1S:</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="mh">0007FH</span>
+<span class="nl">WAIT_LOOP:</span>
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1MS</span>
+        <span class="nf">DEC</span>     <span class="nb">BX</span>
+        <span class="nf">CMP</span>     <span class="nb">BX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">JBE</span>     <span class="nv">WAIT_1S_EXIT</span>
+        <span class="nf">LOOP</span>    <span class="nv">WAIT_LOOP</span>
+<span class="nl">WAIT_1S_EXIT:</span>
+        <span class="nf">RET</span>
+
+<span class="nl">WAIT_1MS:</span>
+        <span class="nf">MOV</span>     <span class="nb">CX</span><span class="p">,</span><span class="mh">03FFFH</span>
+<span class="nl">WAIT_LOOP1:</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">LOOP</span>    <span class="nv">WAIT_LOOP1</span>
+        <span class="nf">RET</span>
+
+<span class="nl">EXIT:</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">OUT_DISABLED</span>                 <span class="c1">;清除所有設定。</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0D</span>
+        <span class="nf">MOV</span>     <span class="nb">EAX</span><span class="p">,</span><span class="mh">00000000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">EAX</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT1D</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span><span class="mh">4CH</span>
+        <span class="nf">INT</span>     <span class="mh">21H</span>
+        <span class="nf">END</span>     <span class="nv">BEGIN</span>
+</code></pre></div>
+<h2 id="running">Running</h2>
+<ol>
+<li>使用<code>MASM</code>編譯程式碼<br />
+<div class="highlight"><pre><span></span><code>C:<span class="se">\M</span>ASM<span class="se">\M</span>L 7SEG-1.TXT
+</code></pre></div></li>
+<li>執行之後產成 OBJ 與 EXE 檔, 直接執行<br />
+<div class="highlight"><pre><span></span><code>C:<span class="se">\M</span>ASM<span class="se">\7</span>SEG-1
+</code></pre></div></li>
+<li>即可看到 7-SEG 群 的左側第一個由 0 開始往上數至9, 並且一直循環.<br />
+<img alt="r" src="leapPciDevice-3.jpg" />  </li>
+</ol>
+<!--
+![r](leapPciDevice-4.jpg) 
+![r](leapPciDevice-2.jpg)
+-->
+
+<h2 id="advanced">Advanced</h2>
+<ul>
+<li>PCI Host</li>
+<li>PCI Bridge</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../isa/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Industry Standard Architecture (ISA)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Industry Standard Architecture (ISA)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ldd/" class="md-footer__link md-footer__link--next" aria-label="Next: Parallel Port Device (LPT) and Linux Device Driver" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Parallel Port Device (LPT) and Linux Device Driver
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>
