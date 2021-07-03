@@ -4,6 +4,9 @@ I always like to see how it works on my hands after I studied some knowledge fro
 
 
 ----
+
+## Introduction
+
 There are several sections of this Wiki.
 
 ### [Engineering](distro/debian/index.md)
