@@ -56,6 +56,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://edlai.github.io/dev/bss/</loc>
+         <lastmod>2021-07-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/dev/diag/</loc>
+         <lastmod>2021-07-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://edlai.github.io/dev/docker/</loc>
          <lastmod>2021-07-03</lastmod>
          <changefreq>daily</changefreq>
@@ -72,6 +82,11 @@
     </url>
     <url>
          <loc>https://edlai.github.io/dev/softwares/</loc>
+         <lastmod>2021-07-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/dev/wifi/</loc>
          <lastmod>2021-07-03</lastmod>
          <changefreq>daily</changefreq>
     </url>

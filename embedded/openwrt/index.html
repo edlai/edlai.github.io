@@ -16,7 +16,7 @@
     
     
       
-        <title>OpenWRT - Ed's Personal Wiki</title>
+        <title>OpenWRT - Lai's Personal Wiki</title>
       
     
     
@@ -76,7 +76,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+    <a href="../.." title="Lai&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Lai's Personal Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -89,7 +89,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Ed's Personal Wiki
+            Lai's Personal Wiki
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -252,13 +252,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+    <a href="../.." title="Lai&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Lai's Personal Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Ed's Personal Wiki
+    Lai's Personal Wiki
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -385,6 +385,42 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/diag/" class="md-nav__link">
+        QCOM QxDM and MTK Catcher
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/wifi/" class="md-nav__link">
+        IxVeriWave and OctoBox
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/bss/" class="md-nav__link">
+        SDR and CMW500
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -440,9 +476,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          OpenWRT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         OpenWRT
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1052,6 +1132,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1064,6 +1173,37 @@
                 
                 
                 <h1 id="openwrt">OpenWRT</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><a href="https://labs.mediatek.com/zh-tw/chipset/MT7688">MT7688</a></li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<p>Clone the repository </p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/openwrt/openwrt
+$ <span class="nb">cd</span> openwrt
+$ cp feeds.conf.default feeds.conf
+$ <span class="nb">echo</span> src-git linkit https://github.com/MediaTek-Labs/linkit-smart-7688-feed.git &gt;&gt; feeds.conf
+$ ./scripts/feeds update
+$ ./scripts/feeds install -a
+$ make menuconfig
+</code></pre></div>
+<p>Select profile as following,</p>
+<ul>
+<li>Target System: <code>MediaTek Ralink MIPS</code></li>
+<li>Subtarget: <code>MT76x8 based board</code></li>
+<li>Target Profile: <code>MediaTek LinkIt Smart 7688</code>  </li>
+</ul>
+<p>make it</p>
+<div class="highlight"><pre><span></span><code>$ make v=99
+</code></pre></div>
+<p>output</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://steward-fu.github.io/website/mcu/mt7688/build_openwrt.htm">LinkIt Smart MT7688</a>
+~~ TBD~~~</li>
+</ul>
                 
               
               
