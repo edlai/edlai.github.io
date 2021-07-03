@@ -1,12 +1,14 @@
 ---
-title: Welcome to Ed's Personal Wiki
+title: Welcome to Lai's Personal Wiki
 ---
 
-# Welcome to Ed's Personal Wiki
+# Welcome to Lai's Personal Wiki
 
 I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time. (Updated: 2021/07/03)
 
-## There are several parts of this Wiki.
+
+----
+There are several sections of this Wiki.
 
 ### [Engineering](distro/debian/index.md)
 There are some of my reports and homeworks when I was a BSEE undergraduate student in university or in my career.
@@ -23,6 +25,8 @@ My collection from Internet. Something like how to write your CV using TEX files
 
 Motivations for my life and career.
 
+----
+
 ## Academic Background
 
 <!-- 大學各系所(組) 授予學位中、英文名稱 參考手冊 -->
@@ -34,6 +38,8 @@ Motivations for my life and career.
 
 - M.S., 2021, National Taipei University of Education, Department of Mathematics and Information Education
 - B.S., 2003, National Taipei University of Technology, Department of Electronic Engineering
+
+----
 
 ## Technician Certificate
 <!--
@@ -53,3 +59,25 @@ diverse certification and Licenses from [Skill Evaluation Center of Workforce De
 - SoC & IC Design Courses, 251-hour, National Tsing Hua University, Hsinchu City, Aug.27,2002 - Jan.12,2003.
 -->
 - Computer Programming and Database Management, 500-hour with labor-Insurance, National Cheng Kung University, Tainan City, Mar.08,1999 - Jun.25,1999.
+
+----
+
+## Portfolio
+
+### WiFi Mesh/EVDO router
+
+The products (Wireless Access Points and Cellular Routers) I developed with my colleagues before
+
+- [Kyocera KR1 EVDO Router ODM](https://wikidevi.com/wiki/Kyocera_KR1) (with 1 colleague in 2005 B.C.) `mips` [`emulator`](http://support.dlink.ca/Emulators/kr1/h_wizard.html)
+- [D-Link DIR-450 EVDO Router ODM](https://wikidevi.com/wiki/D-Link_DIR-450_rev_A1) (with 2 colleagues in 2006 B.C.) `x86`
+   <!--[`emulator`](http://www.support.dlink.ca/emulators/dir450/103/login.htm)-->
+- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86`
+   <!--[`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
+- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips`: The mesh Wi-Fi router that blankets your home with high speed AC1200 Dual-Band Wi-Fi. (handover from HsinChu RD team)
+
+### Web Development 
+
+enhance `MIT Scratch 3.0` (-based programming language) and `Dr.Scratch`.
+
+- [MIT Scratch 3.0](https://github.com/edlai/scratch-gui)
+- [Dr.Scratch](https://github.com/edlai/drScratch):
