@@ -10,6 +10,7 @@ nav:
           - 'Accessories': 'dev/accessories/index.md'
           - 'Networking Equipments': 'dev/equipments/index.md'
           - 'Automation and Crawler': 'dev/auto/index.md'
+          - 'Programmer Skills': 'dev/prog/index.md'
           - 'Diagnostic Tools': 'dev/diag/index.md'
           - 'Performance Measurement': 'dev/perf/index.md'
           - 'Gitlab and Build Machine': 'dev/gitlab/index.md'
