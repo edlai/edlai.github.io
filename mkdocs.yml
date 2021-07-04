@@ -9,6 +9,7 @@ nav:
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
           - 'Networking Equipments': 'dev/equipments/index.md'
+          - 'Debug and Diagnostic Tools': 'dev/diag/index.md'
           - 'Gitlab and Build Machine': 'dev/gitlab/index.md'
           - 'Docker and Macvlan': 'dev/docker/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'

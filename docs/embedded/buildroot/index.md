@@ -1,6 +1,6 @@
 # Buildroot
 
-The current codebase is based on Buildroot project.
+There are some resource for buildroot.
 
 - [Buildroot](https://buildroot.org/): Making Embedded Linux Easy
 - [Buildroot in GitHub](https://github.com/buildroot/buildroot)
@@ -26,11 +26,13 @@ $ ls -lah output/images/sdcard.img
 
 ```
 
-Programming image to SD card. insert to RPI3 and try to power on it. If you uses Windows OS, you can programming image to SD card by using `Rufus`. 
+Programming image to SD card. insert SD card to RPI3 and try to power on RPI3. If you uses Windows OS, you can programming image to SD card by using `Rufus`.
 
-## Try to build one single package manually
+## Package
 
-Use `make <PKG>` to build package, there is an examples to build one single package `tcpdump` 
+### One single package manually
+
+try to build one single package manually. Use `make <PKG>` to build package, there is an examples to build one single package `tcpdump` 
 
 ```bash
 $ make tcodump
@@ -45,7 +47,9 @@ $ make tcpdump-dirclean
 $ make tcpdump-rebuild
 ```
 
-## Add some useful Packages
+### Add some useful Packages
+
+There are some useful packages and its location when pressing `make menuconfig`. Consider to enable them then make the image again.
 
 - wget (Target packages > Networking Applications > wget)
 - tcpdump (Target packages > Networking Applications > tcpdump)
@@ -56,6 +60,8 @@ $ make tcpdump-rebuild
 
 ## Linux Kernel
 
+There are the commands for make linux kerenl. 
+
 ```
 $ make linux-menuconfig
 $ make linux-rebuild
@@ -63,7 +69,7 @@ $ make linux-rebuild
 
 ## Busybox
 
-enable `mkfifo` as an example, select `Coreutils > mkfifo` and rebuild busybox.
+There are the commands to make busybox. Use `mkfifo` as an example, try to step into `Coreutils > mkfifo` and rebuild busybox.
 ```
 $ busybox-menuconfig 
 $ make busybox-rebuild
