@@ -1,5 +1,5 @@
 
-# Debug and Diagnostic Tools
+# Diagnostic Tools
 
 ## Wireshare
 

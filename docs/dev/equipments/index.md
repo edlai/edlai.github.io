@@ -2,8 +2,8 @@
 
 ## Network Hub (Optional)
 
-- D-Link DE-805TP 10Mbps Ethernet Mini Hub 5-Port
 - LINKSYS EW5HUB Instant Ethernet Workgroup 10M 5-port Hub
+- D-Link DE-805TP 10Mbps Ethernet Mini Hub 5-Port
 
 ## Network Switch
 

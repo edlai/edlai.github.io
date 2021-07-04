@@ -7,6 +7,8 @@
 Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development tools. First of all, just install
 [Visual Studio Code](https://code.visualstudio.com/) as a foundation of code editor then don't forget to install its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery) as following as well.
 
+### VSC Extensions
+
 - [Visual Studio Code Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) (Highly Recommended)
 - [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (Highly Recommended)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens): easy to check git history and so on.
@@ -65,10 +67,16 @@ By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://githu
 
 There are some TFTP tool, most of all I use `tftp64` beacuse my development environment is Windows 10.
 
-- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html)
-- [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git)
-- [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver)
+- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): tftp server, client and syslog server.
+- [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git): for Linux OS.
+- [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver): for Mac OS.
 
+
+## HFS
+
+There is HTTP file server which can run in Windows OS.
+
+- [HFS Server](https://www.rejetto.com/hfs/): HTTP file server.
 ## Code Comparer
 
 - [Code Compare](https://www.devart.com/codecompare/): a free compare tool designed to compare and merge differing files and folders.
@@ -77,9 +85,22 @@ There are some TFTP tool, most of all I use `tftp64` beacuse my development envi
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
-- [AStyle](http://astyle.sourceforge.net/): source code indenter, formatter, and beautifier for the C, C++, C​++/CLI, Objective‑C, C# and Java programming languages.
-- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+- [AStyle](http://astyle.sourceforge.net/): code formatter for the C, C++, C​++/CLI, Objective‑C, C# and Java.
 
+Install `astyle` and there is a case for coding convention as following to format `main.c` or `*.c` and `*.h` files
+`style: K&R`, and `Indent: 2`
+
+```cosnole
+$ sudo apt-get install astyle
+$ astyle --style=kr --indent=spaces=2 -p -U -f main.c
+- OR -
+$ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
+```
+- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+```
+$ sudo apt-get install clang-format
+$ clang-format -i main.c
+```
 
 ## Source Code Tagging System
 
@@ -152,10 +173,10 @@ Update
 $ global -u
 ```
 
-HTML
+product HTML file and copy yo 
 ```
-$ htags -fnsa
-$ htags –ffnsa (w/. Searching)
+$ htags -ffnsa   # < = w/. Searching
+$ sudo cp -r HTML/ /var/www/html/hostapd
 ```
 
 - [Doxygen](https://www.doxygen.nl/index.html): Generate documentation from source code.
@@ -173,6 +194,15 @@ $ doxygen Doxygen
 
 - [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
 - [CPPCheck](http://cppcheck.sourceforge.net/)
+```
+# - INSTALL -
+$ sudo apt-get install cppcheck
+# - RUN -
+$ cppcheck -j 3 ~/Project         # < = open 3 threads to check source code from Project folder，--enable==error by default
+$ cppcheck -j 3 --enable=all ~/Project 
+$ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
+
+```
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
 - [splint](https://splint.org/)
 ```
@@ -182,6 +212,39 @@ $ sudo apt-get update -y; sudo apt-get install -y splint
 ## Dynamic Code Analysis Tools 
 
 ### [Valgrind](https://www.valgrind.org/)
+
+## Terminal multiplexer
+
+- [Tmux Terminal](https://github.com/tmux/tmux/wiki)
+```
+# - INSTALL -
+$ sudo apt-get install tmux
+# - USAGE -
+$ tmux
+# - RUN BELOW COMMANDS THEN EXIT -
+$ ping 8.8.8.8
+$ tmux deattach
+# - RUN BELOW COMMAND TO ATTACH AGAIN -
+$ tmux attach
+
+```
+## Documentation
+
+- Markdown
+markdown to pdf
+```
+$ echo "test" > doc.md
+$ pandoc doc.md
+```
+- reStructuredText 
+```
+$ echo "test" > doc.rst
+$ rst2pdf doc.rst 
+```
+
+- [Swagger](https://swagger.io/): API Documentation & Design Tools for Teams
+
+~ TBD ~
 
 ## Wi-Fi Tool
 
