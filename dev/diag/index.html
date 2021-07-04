@@ -16,7 +16,7 @@
     
     
       
-        <title>Qualcomm QxDM and MTK Catcher - Ed's Personal Wiki</title>
+        <title>Debug and Diagnostic Tools - Ed's Personal Wiki</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#qualcomm-qxdm-and-mtk-catcher" class="md-skip">
+        <a href="#debug-and-diagnostic-tools" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Qualcomm QxDM and MTK Catcher
+              Debug and Diagnostic Tools
             
           </span>
         </div>
@@ -162,6 +162,8 @@
         
   
   
+    
+  
 
 
   
@@ -173,7 +175,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../softwares/" class="md-tabs__link">
+      <a href="../softwares/" class="md-tabs__link md-tabs__link--active">
         Engineering
       </a>
     </li>
@@ -282,12 +284,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Engineering
@@ -303,12 +307,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
       
       <label class="md-nav__link" for="__nav_2_1">
         Development Tools
@@ -353,6 +359,147 @@
       <a href="../equipments/" class="md-nav__link">
         Networking Equipments
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Debug and Diagnostic Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Debug and Diagnostic Tools
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wireshare" class="md-nav__link">
+    Wireshare
+  </a>
+  
+    <nav class="md-nav" aria-label="Wireshare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-linux-kernel-to-support-wi-fi-dongle" class="md-nav__link">
+    Upgrade Linux Kernel to support Wi-Fi dongle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-wi-fi-channel-and-so-on" class="md-nav__link">
+    Check Wi-Fi channel and so on
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-monitor-mode" class="md-nav__link">
+    Enable Monitor Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-wireshark-and-set-filter" class="md-nav__link">
+    Run Wireshark and set filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ie-element" class="md-nav__link">
+    IE element
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tshark" class="md-nav__link">
+    tshark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    tcpdump
+  </a>
+  
+    <nav class="md-nav" aria-label="tcpdump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlan-packets" class="md-nav__link">
+    VLAN packets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pppoe-packets" class="md-nav__link">
+    PPPoE packets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qualcomm-qxdm" class="md-nav__link">
+    Qualcomm QxDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtk-catcher" class="md-nav__link">
+    MTK Catcher
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1036,6 +1183,110 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wireshare" class="md-nav__link">
+    Wireshare
+  </a>
+  
+    <nav class="md-nav" aria-label="Wireshare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-linux-kernel-to-support-wi-fi-dongle" class="md-nav__link">
+    Upgrade Linux Kernel to support Wi-Fi dongle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-wi-fi-channel-and-so-on" class="md-nav__link">
+    Check Wi-Fi channel and so on
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-monitor-mode" class="md-nav__link">
+    Enable Monitor Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-wireshark-and-set-filter" class="md-nav__link">
+    Run Wireshark and set filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ie-element" class="md-nav__link">
+    IE element
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tshark" class="md-nav__link">
+    tshark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    tcpdump
+  </a>
+  
+    <nav class="md-nav" aria-label="tcpdump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlan-packets" class="md-nav__link">
+    VLAN packets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pppoe-packets" class="md-nav__link">
+    PPPoE packets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qualcomm-qxdm" class="md-nav__link">
+    Qualcomm QxDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtk-catcher" class="md-nav__link">
+    MTK Catcher
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1047,7 +1298,110 @@
               
                 
                 
-                <h1 id="qualcomm-qxdm-and-mtk-catcher">Qualcomm QxDM and MTK Catcher</h1>
+                <h1 id="debug-and-diagnostic-tools">Debug and Diagnostic Tools</h1>
+<h2 id="wireshare">Wireshare</h2>
+<p>Download and install Wireshark from Internet. If you would like to capture Wireless packets in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, you might consider to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. </p>
+<h3 id="upgrade-linux-kernel-to-support-wi-fi-dongle">Upgrade Linux Kernel to support Wi-Fi dongle</h3>
+<p>In my case, I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
+<ul>
+<li>
+<p>Check the current Linux Kernel version, it's <code>4.19.x</code> now.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo uname -a
+<span class="go">config-4.19.0-17-amd64</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Upgrade the essential packages
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
+<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget
+</code></pre></div></p>
+</li>
+<li>
+<p>Add apt repository to support <code>linux-image-5.10.x</code>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://deb.debian.org/debian buster-backports main&#39;</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
+<span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree <span class="o">(</span>Optional<span class="o">)</span>
+<span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
+</code></pre></div></p>
+</li>
+<li>
+<p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
+<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="check-wi-fi-channel-and-so-on">Check Wi-Fi channel and so on</h3>
+<ul>
+<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.
+<div class="highlight"><pre><span></span><code>$ lsusb
+Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
+
+$ sudo ifconfig
+wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        ether 1e:a4:80:77:09:f3  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre></div></li>
+</ul>
+<p>install <code>aircrack-ng</code> to check Wi-Fi channel. </p>
+<div class="highlight"><pre><span></span><code>$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
+$ tar xvf 1.6.tar.gz 
+$ cd aircrack-ng-1.6
+$ ./autogen.sh 
+$ ./configure 
+$ make
+$ sudo make install
+$ sudo airodump-ng wlx008e86000266
+CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03 
+
+ BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+
+ C4:E9:0A:2F:03:A2  -52        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
+ C4:E9:0A:01:71:FA  -43        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
+
+  BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
+
+ 84:0B:7C:5C:FC:BE  D8:42:AC:08:D3:14  -63    0 - 1e     0        1                                           
+ BE:4F:DA:40:92:33  94:7B:E7:0B:E5:1A  -78    0 - 0e     0        7 
+</code></pre></div>
+<h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
+<ul>
+<li>Enable Monitor Mode </li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ ifconfig wlan0 down
+$ iwconfig wlan0 mond monitor
+$ ifconfig wlan0 up
+$ ifconfig channel 1
+</code></pre></div>
+<h3 id="run-wireshark-and-set-filter">Run Wireshark and set filter</h3>
+<div class="highlight"><pre><span></span><code>wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype &lt;3 || wlan.fc.type ==2)
+</code></pre></div>
+<h3 id="ie-element">IE element</h3>
+<p>try to add new IE element and confirm again</p>
+<p>~~ TBD ~~</p>
+<h2 id="tshark">tshark</h2>
+<p>~~ TBD ~~</p>
+<h2 id="tcpdump">tcpdump</h2>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install tcpdump
+</code></pre></div>
+<h3 id="vlan-packets">VLAN packets</h3>
+<p>VLAN belongs to layer2, use below command to dump VLAN packets</p>
+<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enp0s25 -en -XX
+</code></pre></div>
+<h3 id="pppoe-packets">PPPoE packets</h3>
+<p><code>0x8863</code> and <code>0x8864</code> </p>
+<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enpos25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
+</code></pre></div>
+<h2 id="qualcomm-qxdm">Qualcomm QxDM</h2>
+<p>~~ TBD ~~</p>
+<h2 id="mtk-catcher">MTK Catcher</h2>
 <p>~~ TBD ~~</p>
                 
               
@@ -1064,6 +1418,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../equipments/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Networking Equipments" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Networking Equipments
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../gitlab/" class="md-footer__link md-footer__link--next" aria-label="Next: Gitlab and Build Machine" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Gitlab and Build Machine
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

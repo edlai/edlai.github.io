@@ -362,6 +362,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../dev/diag/" class="md-nav__link">
+        Debug and Diagnostic Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../dev/gitlab/" class="md-nav__link">
         Gitlab and Build Machine
       </a>
@@ -1048,6 +1060,84 @@
                 
                 
                 <h1 id="debian">Debian</h1>
+<h1 id="debug-and-diagnostic-tools">Debug and Diagnostic Tools</h1>
+<h2 id="wireshare-and-tcpdump">Wireshare and tcpdump</h2>
+<p>Download and install Wireshark from Internet. If you would like to capture Wireless packets in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, you might consider to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. </p>
+<h3 id="wireshare">Wireshare</h3>
+<p>Programming Live CD, in my case I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
+<ul>
+<li>
+<p>Check the current Linux Kernel version
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">config-4.19.0-17-amd64</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Upgrade the essential packages for wireless capture
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp"># </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+<span class="gp"># </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp"># </span>sudo apt-get install -y software-properties-common rsync
+<span class="gp"># </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget
+</code></pre></div></p>
+</li>
+<li>
+<p>Add apt repository to support <code>linux-image-5.10.0</code>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>sudo add-apt-repository <span class="s1">&#39;deb http://deb.debian.org/debian buster-backports main&#39;</span>
+<span class="gp"># </span>sudo apt-get update
+<span class="gp"># </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
+<span class="gp"># </span>sudo apt-get install firmware-misc-nonfree <span class="o">(</span>Optional<span class="o">)</span>
+<span class="gp"># </span>sync<span class="p">;</span> sudo reboot
+</code></pre></div></p>
+</li>
+<li>
+<p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
+</code></pre></div>
+<p>&lt;!--
+- Rebuild the kernel </p>
+<h1 id="sudo-apt-cache-search-kernel-grep-source-grep-510">sudo apt-cache search kernel | grep source | grep 5.10</h1>
+<p>linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches</p>
+<h1 id="sudo-apt-get-update">sudo apt-get update</h1>
+<h1 id="sudo-apt-get-upgrade">sudo apt-get upgrade</h1>
+<h1 id="sudo-apt-get-install-linux-source-510">sudo apt-get install linux-source-5.10</h1>
+<h1 id="cd-usrsrc">cd /usr/src/</h1>
+<h1 id="tar-xvf-linux-source-510tarxz">tar xvf linux-source-5.10.tar.xz</h1>
+<h1 id="cd-linux-source-510">cd linux-source-5.10/</h1>
+<h1 id="cp-bootconfig-uname-r-config">cp /boot/config-$(uname -r) .config</h1>
+<h1 id="scriptsconfig-set-str-system_trusted_keys">scripts/config --set-str SYSTEM_TRUSTED_KEYS ""</h1>
+<p>Compile and Install the Kernel
+<div class="highlight"><pre><span></span><code># sudo add-apt-repository &#39;deb http://http.us.debian.org/debian/ buster main contrib non-free&#39;
+# sudo make deb-pkg
+</code></pre></div></p>
+<h1 id="_1"></h1>
+<p>sudo apt-get install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils</p>
+<p>https://onlineconvertfree.com/complete/pdb-pdf/
+https://cloudconvert.com/pdf-to-mobi</p>
+<div class="highlight"><pre><span></span><code>---&gt;
+
+#### Wireless
+
+Enable Monitor Mode 
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>Filter  
+</code></pre></div>
+wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype &lt;3 || wlan.fc.type ==2)
+<div class="highlight"><pre><span></span><code>IE element:
+</code></pre></div></p>
+<p>```</p>
+<p>~~ TBD ~~</p>
+<h3 id="tshark">tshark</h3>
+<p>~~ TBD ~~</p>
+<h3 id="tcpdump">tcpdump</h3>
+<h4 id="pppoe-packets">PPPoE packets</h4>
+<h4 id="vlan-packets">VLAN packets</h4>
+<p>~~ TBD ~~</p>
+<h2 id="qualcomm-qxdm-and-mtk-catcher">Qualcomm QxDM and MTK Catcher</h2>
+<p>~~ TBD ~~</p>
                 
               
               

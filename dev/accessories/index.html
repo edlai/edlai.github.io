@@ -415,6 +415,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../diag/" class="md-nav__link">
+        Debug and Diagnostic Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../gitlab/" class="md-nav__link">
         Gitlab and Build Machine
       </a>
@@ -1129,10 +1141,39 @@
 <li><a href="https://ftdichip.com/drivers/">FTDI chipsets</a></li>
 </ul>
 <h2 id="wi-fi-adaptor-network-packet-capturer">Wi-Fi Adaptor: Network Packet Capturer</h2>
+<p>There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, but MTK chipsets may unable to capture RTS packets.</p>
 <ul>
-<li>MediaTek 7610 (0e8d:7610) chipset</li>
-<li>MediaTek 7612 (0e8d:7612) chipset</li>
+<li>MediaTek 7610 chipset(0e8d:7610)</li>
+<li>MediaTek 7612 chipset(0e8d:7612)</li>
+<li>MediaTek AC-1200 Mbps mt76x2u chipset (0e8d:2870)</li>
+<li><a href="https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1">D-Link DWA-140 rev D1</a> Ralink RT5372 chipset (rt2800usb, 2001:3c20)</li>
 </ul>
+<p>clear syslog using <code>dmesg -c</code> then plug the dongle and run <code>dmesg</code> again to make sure </p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>dmesg -c  
+<span class="gp">$ </span>dmesg
+<span class="go">[ 7355.421533] usb 2-2: new high-speed USB device number 11 using xhci_hcd</span>
+<span class="go">[ 7355.586303] usb 2-2: New USB device found, idVendor=2001, idProduct=3c20, bcdDevice= 1.01</span>
+<span class="go">[ 7355.586309] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3</span>
+<span class="go">[ 7355.586313] usb 2-2: Product: 802.11 n WLAN</span>
+<span class="go">[ 7355.586315] usb 2-2: Manufacturer: Ralink</span>
+<span class="go">[ 7355.586317] usb 2-2: SerialNumber: 1.0</span>
+<span class="go">[ 7355.713930] usb 2-2: reset high-speed USB device number 11 using xhci_hcd</span>
+<span class="go">[ 7355.871253] ieee80211 phy8: rt2x00_set_rt: Info - RT chipset 5392, rev 0222 detected</span>
+<span class="go">[ 7355.884821] ieee80211 phy8: rt2x00_set_rf: Info - RF chipset 5372 detected</span>
+<span class="go">[ 7355.884997] ieee80211 phy8: Selected rate control algorithm &#39;minstrel_ht&#39;</span>
+<span class="go">[ 7355.899487] rt2800usb 2-2:1.0 wlxd8fee3d7ae29: renamed from wlan0</span>
+<span class="go">[ 7355.919436] ieee80211 phy8: rt2x00lib_request_firmware: Info - Loading firmware file &#39;rt2870.bin&#39;</span>
+<span class="go">[ 7355.919471] rt2800usb 2-2:1.0: firmware: direct-loading firmware rt2870.bin</span>
+<span class="go">[ 7355.919475] ieee80211 phy8: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.36</span>
+
+<span class="gp"># </span>sudo ifconfig 
+<span class="go">wlxd8fee3d7ae29: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span>
+<span class="go">        ether 96:4f:c3:ae:3b:c2  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 0  bytes 0 (0.0 B)</span>
+<span class="go">        RX errors 0  dropped 0  overruns 0  frame 0</span>
+<span class="go">        TX packets 0  bytes 0 (0.0 B)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span>
+</code></pre></div>
                 
               
               

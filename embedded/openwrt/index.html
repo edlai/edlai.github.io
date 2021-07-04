@@ -366,6 +366,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../dev/diag/" class="md-nav__link">
+        Debug and Diagnostic Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../dev/gitlab/" class="md-nav__link">
         Gitlab and Build Machine
       </a>
@@ -1158,16 +1170,23 @@ $ make menuconfig
 <li>Target Profile: <code>MediaTek LinkIt Smart 7688</code>  </li>
 </ul>
 <p>make it</p>
-<div class="highlight"><pre><span></span><code>$ make v=99
+<div class="highlight"><pre><span></span><code>$ make V=99 2&gt;&amp;1 | tee build.log | grep -i error
 </code></pre></div>
-<p>output</p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p>Output images. There are in <code>bin/targets/ramips/mt76x8/</code></p>
+<ul>
+<li>bin/targets/ramips/mt76x8/openwrt-ramips-mt76x8-mediatek_mt7628an-eval-board-initramfs-kernel.bin</li>
+<li>bin/targets/ramips/mt76x8/openwrt-ramips-mt76x8-mediatek_mt7628an-eval-board-squashfs-sysupgrade.bin</li>
+</ul>
+<p>For package, There are in <code>targets/ramips/mt76x8/packages/</code>use <code>hostapd</code> as an example.</p>
+<ul>
+<li>targets/ramips/mt76x8/packages/hostapd-common_2021-05-22-b102f19b-17_mipsel_24kc.ipk</li>
+</ul>
 <h2 id="reference">Reference</h2>
 <ul>
-<li><a href="https://steward-fu.github.io/website/mcu/mt7688/build_openwrt.htm">LinkIt Smart MT7688</a>
-~~ TBD~~~</li>
+<li><a href="https://steward-fu.github.io/website/mcu/mt7688/build_openwrt.htm">LinkIt Smart MT7688</a></li>
+<li><a href="https://openwrt.org/zh-tw/doc/howto/build">OpenWrt 建置 – 使用方法</a></li>
 </ul>
+<p>~~ TBD~~~</p>
                 
               
               

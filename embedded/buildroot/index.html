@@ -366,6 +366,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../dev/diag/" class="md-nav__link">
+        Debug and Diagnostic Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../dev/gitlab/" class="md-nav__link">
         Gitlab and Build Machine
       </a>
@@ -466,16 +478,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#try-to-build-one-single-package-manually" class="md-nav__link">
-    Try to build one single package manually
+  <a href="#package" class="md-nav__link">
+    Package
+  </a>
+  
+    <nav class="md-nav" aria-label="Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-single-package-manually" class="md-nav__link">
+    One single package manually
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#add-some-useful-packages" class="md-nav__link">
     Add some useful Packages
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1145,16 +1170,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#try-to-build-one-single-package-manually" class="md-nav__link">
-    Try to build one single package manually
+  <a href="#package" class="md-nav__link">
+    Package
+  </a>
+  
+    <nav class="md-nav" aria-label="Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-single-package-manually" class="md-nav__link">
+    One single package manually
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#add-some-useful-packages" class="md-nav__link">
     Add some useful Packages
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1193,7 +1231,7 @@
                 
                 
                 <h1 id="buildroot">Buildroot</h1>
-<p>The current codebase is based on Buildroot project.</p>
+<p>There are some resource for buildroot.</p>
 <ul>
 <li><a href="https://buildroot.org/">Buildroot</a>: Making Embedded Linux Easy</li>
 <li><a href="https://github.com/buildroot/buildroot">Buildroot in GitHub</a></li>
@@ -1214,9 +1252,10 @@ $ make
 $ ls -lah output/images/sdcard.img
 -rw-r--r-- <span class="m">1</span> ed ed 153M Jul  <span class="m">3</span> <span class="m">20</span>:29 output/images/sdcard.img
 </code></pre></div>
-<p>Programming image to SD card. insert to RPI3 and try to power on it. If you uses Windows OS, you can programming image to SD card by using <code>Rufus</code>. </p>
-<h2 id="try-to-build-one-single-package-manually">Try to build one single package manually</h2>
-<p>Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
+<p>Programming image to SD card. insert SD card to RPI3 and try to power on RPI3. If you uses Windows OS, you can programming image to SD card by using <code>Rufus</code>.</p>
+<h2 id="package">Package</h2>
+<h3 id="one-single-package-manually">One single package manually</h3>
+<p>try to build one single package manually. Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
 <div class="highlight"><pre><span></span><code>$ make tcodump
 $ ls -lah output/target/usr/bin/tcpdump
 -rwxr-xr-x <span class="m">1</span> ed ed <span class="m">1</span>.2M Jul  <span class="m">3</span> <span class="m">20</span>:48 output/target/usr/bin/tcpdump
@@ -1225,7 +1264,8 @@ $ ls -lah output/target/usr/bin/tcpdump
 <div class="highlight"><pre><span></span><code>$ make tcpdump-dirclean
 $ make tcpdump-rebuild
 </code></pre></div>
-<h2 id="add-some-useful-packages">Add some useful Packages</h2>
+<h3 id="add-some-useful-packages">Add some useful Packages</h3>
+<p>There are some useful packages and its location when pressing <code>make menuconfig</code>. Consider to enable them then make the image again.</p>
 <ul>
 <li>wget (Target packages &gt; Networking Applications &gt; wget)</li>
 <li>tcpdump (Target packages &gt; Networking Applications &gt; tcpdump)</li>
@@ -1235,11 +1275,12 @@ $ make tcpdump-rebuild
 <li>libcurl (Libraries &gt; Networking &gt; libcurl)</li>
 </ul>
 <h2 id="linux-kernel">Linux Kernel</h2>
+<p>There are the commands for make linux kerenl. </p>
 <div class="highlight"><pre><span></span><code>$ make linux-menuconfig
 $ make linux-rebuild
 </code></pre></div>
 <h2 id="busybox">Busybox</h2>
-<p>enable <code>mkfifo</code> as an example, select <code>Coreutils &gt; mkfifo</code> and rebuild busybox.
+<p>There are the commands to make busybox. Use <code>mkfifo</code> as an example, try to step into <code>Coreutils &gt; mkfifo</code> and rebuild busybox.
 <div class="highlight"><pre><span></span><code>$ busybox-menuconfig 
 $ make busybox-rebuild
 </code></pre></div></p>
