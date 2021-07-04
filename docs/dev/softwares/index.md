@@ -18,23 +18,56 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 
+better to enlarge `max_user_watches` also.
+
+```console
+$ echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
+$ cat /proc/sys/fs/inotify/max_user_watches
+$ sudo sysctl -p
+```
+
 There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) and it userful shortcuts as following
 
 - Deleting tabs when using tabs as spaces: <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
 - Switch to next Tab: <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
 - Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>
 
+### Code Server
+
+VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.
+```console
+$ wget https://github.com/cdr/code-server/releases/download/v3.5.0/code-server_3.5.0_amd64.deb
+```
+
+Its setting file is in `.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access.
+```console
+Bind-addr: 0.0.0.0:9786   # < = Use 0.0.0.0 to allow external access
+Password: 11111111        # < = define your password
+```
+Now, you can run code server with below command.
+```console
+$ code-server .
+```
+
+### WSL2
+
+By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://github.com/microsoft/WSL2-Linux-Kernel/releases
+) after [Windows 10 Versions 1903 and 1909](https://devblogs.microsoft.com/commandline/wsl-2-support-is-coming-to-windows-10-versions-1903-and-1909/). Install Windows 10 and WSL 2 with [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). You can develop your code in VSC via WSL2 also. 
+
 ## Terminal Tools
 
 - [ZOC](https://www.emtec.com/zoc/): SSH Client and Terminal Emulator for Windows and macOS.
 - [Xshell](https://www.netsarang.com/en/xshell/): The Industry's Most Powerful SSH Client.
-- [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for Windows with X11 server, tabbed SSH client, network tools and so on.
+- [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for tabbed SSH client, network tools and so on.
+
 
 ## TFTP tool
 
+There are some TFTP tool, most of all I use `tftp64` beacuse my development environment is Windows 10.
+
 - [tftp64](http://tftpd32.jounin.net/tftpd32_download.html)
 - [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git)
-
+- [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver)
 
 ## Code Comparer
 
@@ -44,18 +77,90 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
-- [AStyle](http://astyle.sourceforge.net/)
+- [AStyle](http://astyle.sourceforge.net/): source code indenter, formatter, and beautifier for the C, C++, C​++/CLI, Objective‑C, C# and Java programming languages.
 - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
-
 
 
 ## Source Code Tagging System
 
-- [CScope](http://cscope.sourceforge.net/): I used to use it long time ago.
-- [GNU Global](https://www.gnu.org/software/global/)
-- [Doxygen](https://www.doxygen.nl/index.html)
+- [CScope](http://cscope.sourceforge.net/)
+- [GNU Global](https://www.gnu.org/software/global/): source code tagging system.
 
-An example for `dem` to generate Doxygen document
+Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
+```console
+$ wget https://w1.fi/releases/hostapd-2.9.tar.gz
+$ tar xvf hostapd-2.9.tar.gz
+$ cd hostapd-2.9
+```
+Install global
+```console
+$ sudo apt-get install global
+$ sudo ldconfig
+$ global
+Usage: global [-adEFGilMnNqrstTvx][-S dir][-e] pattern
+       global -c[dFiIMoOPrsT] prefix
+       global -f[adlnqrstvx][-L file-list][-S dir] files
+       global -g[aEGilMnoOqtvVx][-L file-list][-S dir][-e] pattern [files]
+       global -I[ailMnqtvx][-S dir][-e] pattern
+       global -P[aEGilMnoOqtvVx][-S dir][-e] pattern
+       global -p[qrv]
+       global -u[qv]
+$ gtags --help
+Usage: gtags [-ciIOqvw][-d tag-file][-f file][dbpath]
+Options:
+--accept-dotfiles
+       Accept files and directories whose names begin with a dot.
+       By default, gtags ignores them.
+-c, --compact
+       Make GTAGS in compact format.
+       This option does not influence GRTAGS,
+       because that is always made in compact format.
+--config[=name]
+       Print the value of config variable name.
+       If name is not specified then print all names and values.
+       In addition to the variables listed in the ENVIRONMENT section,
+       you can refer to install directories by read only variables:
+       bindir, libdir, datadir, localstatedir and sysconfdir.
+...
+```
+
+in short, the usage of `global` is
+```
+$ global (find definition of pattern)
+$ global -r (find references of pattern)
+$ global -x (shows the detail)
+$ global -xg (locates the lines which have specified pattern)
+```
+
+Run gtags, make sure it products `GPATH`, `GRTAGS` and `GTAGS` files.
+```
+$ gtags
+$ ls
+CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src
+```
+
+
+Find definition of pattern
+```
+$ global eloop_sock
+src/utils/eloop.c
+src/utils/eloop_win.c
+```
+
+Update
+```
+$ global -u
+```
+
+HTML
+```
+$ htags -fnsa
+$ htags –ffnsa (w/. Searching)
+```
+
+- [Doxygen](https://www.doxygen.nl/index.html): Generate documentation from source code.
+
+An example for `hostapd` to generate Doxygen document
 
 ```console
 $ cd ${code_path}
