@@ -380,6 +380,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#vsc-extensions" class="md-nav__link">
+    VSC Extensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#code-server" class="md-nav__link">
     Code Server
   </a>
@@ -408,6 +415,13 @@
         <li class="md-nav__item">
   <a href="#tftp-tool" class="md-nav__link">
     TFTP tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hfs" class="md-nav__link">
+    HFS
   </a>
   
 </li>
@@ -474,6 +488,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#terminal-multiplexer" class="md-nav__link">
+    Terminal multiplexer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#wi-fi-tool" class="md-nav__link">
     Wi-Fi Tool
   </a>
@@ -524,8 +552,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../auto/" class="md-nav__link">
+        Automation and Crawler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../diag/" class="md-nav__link">
-        Debug and Diagnostic Tools
+        Diagnostic Tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perf/" class="md-nav__link">
+        Performance Measurement
       </a>
     </li>
   
@@ -1232,6 +1284,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#vsc-extensions" class="md-nav__link">
+    VSC Extensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#code-server" class="md-nav__link">
     Code Server
   </a>
@@ -1260,6 +1319,13 @@
         <li class="md-nav__item">
   <a href="#tftp-tool" class="md-nav__link">
     TFTP tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hfs" class="md-nav__link">
+    HFS
   </a>
   
 </li>
@@ -1326,6 +1392,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#terminal-multiplexer" class="md-nav__link">
+    Terminal multiplexer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#wi-fi-tool" class="md-nav__link">
     Wi-Fi Tool
   </a>
@@ -1357,6 +1437,7 @@
 <h3 id="visual-studio-code">Visual Studio Code</h3>
 <p>Instead of <code>vi</code>, highly recommended to use Visual Studio Code(VSC) as a firmware development tools. First of all, just install
 <a href="https://code.visualstudio.com/">Visual Studio Code</a> as a foundation of code editor then don't forget to install its <a href="https://code.visualstudio.com/docs/editor/extension-gallery">Recommended extensions</a> as following as well.</p>
+<h3 id="vsc-extensions">VSC Extensions</h3>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Visual Studio Code Remote - SSH</a> (Highly Recommended)</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++ for Visual Studio Code</a> (Highly Recommended)</li>
@@ -1402,9 +1483,14 @@ Now, you can run code server with below command.
 <h2 id="tftp-tool">TFTP tool</h2>
 <p>There are some TFTP tool, most of all I use <code>tftp64</code> beacuse my development environment is Windows 10.</p>
 <ul>
-<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a></li>
-<li><a href="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git">tftpd-hpa</a></li>
-<li><a href="https://www.macupdate.com/app/mac/11116/tftpserver">TftpServer for Mac</a></li>
+<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a>: tftp server, client and syslog server.</li>
+<li><a href="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git">tftpd-hpa</a>: for Linux OS.</li>
+<li><a href="https://www.macupdate.com/app/mac/11116/tftpserver">TftpServer for Mac</a>: for Mac OS.</li>
+</ul>
+<h2 id="hfs">HFS</h2>
+<p>There is HTTP file server which can run in Windows OS.</p>
+<ul>
+<li><a href="https://www.rejetto.com/hfs/">HFS Server</a>: HTTP file server.</li>
 </ul>
 <h2 id="code-comparer">Code Comparer</h2>
 <ul>
@@ -1413,9 +1499,19 @@ Now, you can run code server with below command.
 <h2 id="coding-convention">Coding Convention</h2>
 <p>Suggest to use default coding configuration by <code>clang-format</code> of Visual Studio Code.</p>
 <ul>
-<li><a href="http://astyle.sourceforge.net/">AStyle</a>: source code indenter, formatter, and beautifier for the C, C++, C​++/CLI, Objective‑C, C# and Java programming languages.</li>
-<li><a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.</li>
+<li><a href="http://astyle.sourceforge.net/">AStyle</a>: code formatter for the C, C++, C​++/CLI, Objective‑C, C# and Java.</li>
 </ul>
+<p>Install <code>astyle</code> and there is a case for coding convention as following to format <code>main.c</code> or <code>*.c</code> and <code>*.h</code> files
+<code>style: K&amp;R</code>, and <code>Indent: 2</code></p>
+<p><div class="highlight"><pre><span></span><code>$ sudo apt-get install astyle
+$ astyle --style=kr --indent=spaces=2 -p -U -f main.c
+- OR -
+$ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
+</code></pre></div>
+- <a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install clang-format
+$ clang-format -i main.c
+</code></pre></div></p>
 <h2 id="source-code-tagging-system">Source Code Tagging System</h2>
 <ul>
 <li><a href="http://cscope.sourceforge.net/">CScope</a></li>
@@ -1475,9 +1571,9 @@ src/utils/eloop_win.c
 <p>Update
 <div class="highlight"><pre><span></span><code>$ global -u
 </code></pre></div></p>
-<p>HTML
-<div class="highlight"><pre><span></span><code>$ htags -fnsa
-$ htags –ffnsa (w/. Searching)
+<p>product HTML file and copy yo 
+<div class="highlight"><pre><span></span><code>$ htags -ffnsa   # &lt; = w/. Searching
+$ sudo cp -r HTML/ /var/www/html/hostapd
 </code></pre></div></p>
 <ul>
 <li><a href="https://www.doxygen.nl/index.html">Doxygen</a>: Generate documentation from source code.</li>
@@ -1490,7 +1586,14 @@ $ htags –ffnsa (w/. Searching)
 <h3 id="lint">Lint</h3>
 <ul>
 <li><a href="https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160">clang-tidy</a></li>
-<li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a></li>
+<li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a>
+<div class="highlight"><pre><span></span><code># - INSTALL -
+$ sudo apt-get install cppcheck
+# - RUN -
+$ cppcheck -j 3 ~/Project         # &lt; = open 3 threads to check source code from Project folder，--enable==error by default
+$ cppcheck -j 3 --enable=all ~/Project 
+$ cppcheck -j 3 --enable=all --xml 2&gt;err.xml ./   # &lt; = Get Report
+</code></pre></div></li>
 <li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
 <li><a href="https://splint.org/">splint</a>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get update -y; sudo apt-get install -y splint
@@ -1498,6 +1601,38 @@ $ htags –ffnsa (w/. Searching)
 </ul>
 <h2 id="dynamic-code-analysis-tools">Dynamic Code Analysis Tools</h2>
 <h3 id="valgrind"><a href="https://www.valgrind.org/">Valgrind</a></h3>
+<h2 id="terminal-multiplexer">Terminal multiplexer</h2>
+<ul>
+<li><a href="https://github.com/tmux/tmux/wiki">Tmux Terminal</a>
+<div class="highlight"><pre><span></span><code># - INSTALL -
+$ sudo apt-get install tmux
+# - USAGE -
+$ tmux
+# - RUN BELOW COMMANDS THEN EXIT -
+$ ping 8.8.8.8
+$ tmux deattach
+# - RUN BELOW COMMAND TO ATTACH AGAIN -
+$ tmux attach
+</code></pre></div></li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Markdown
+markdown to pdf
+<div class="highlight"><pre><span></span><code>$ echo &quot;test&quot; &gt; doc.md
+$ pandoc doc.md
+</code></pre></div></li>
+<li>
+<p>reStructuredText 
+<div class="highlight"><pre><span></span><code>$ echo &quot;test&quot; &gt; doc.rst
+$ rst2pdf doc.rst 
+</code></pre></div></p>
+</li>
+<li>
+<p><a href="https://swagger.io/">Swagger</a>: API Documentation &amp; Design Tools for Teams</p>
+</li>
+</ul>
+<p>~ TBD ~</p>
 <h2 id="wi-fi-tool">Wi-Fi Tool</h2>
 <ul>
 <li><a href="https://www.wireshark.org/">Wireshark</a></li>

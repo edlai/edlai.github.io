@@ -56,6 +56,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://edlai.github.io/dev/auto/</loc>
+         <lastmod>2021-07-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://edlai.github.io/dev/bss/</loc>
          <lastmod>2021-07-04</lastmod>
          <changefreq>daily</changefreq>
@@ -77,6 +82,11 @@
     </url>
     <url>
          <loc>https://edlai.github.io/dev/gitlab/</loc>
+         <lastmod>2021-07-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/dev/perf/</loc>
          <lastmod>2021-07-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
