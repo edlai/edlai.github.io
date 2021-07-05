@@ -65,18 +65,17 @@ diverse certification and Licenses from [Skill Evaluation Center of Workforce De
 
 ### Firmware Development
 
-The products (Wireless Access Points and Cellular Routers) I developed with my colleagues before
+The products (Wireless Mesh and Cellular Routers) I developed with my colleagues before.
 
 - [Kyocera KR1 EVDO Router ODM](https://wikidevi.com/wiki/Kyocera_KR1) (with 1 colleague in 2005 B.C.) `mips` [`emulator`](http://support.dlink.ca/Emulators/kr1/h_wizard.html) [`user guide`](https://www.192-168-1-1-ip.co/manuals/9902.pdf)
-- [D-Link DIR-450 EVDO Router ODM](https://wikidevi.com/wiki/D-Link_DIR-450_rev_A1) (with 2 colleagues in 2006 B.C.) `x86`
+- [D-Link DIR-45x EVDO/HSPA Router ODM](https://wikidevi.com/wiki/D-Link_DIR-450_rev_A1) (with 2 colleagues in 2006 B.C.) `x86`
    <!--[`emulator`](http://www.support.dlink.ca/emulators/dir450/103/login.htm)-->
-- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86`
-   <!--[`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
-- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips`: The mesh Wi-Fi router. (handover from HsinChu RD team)
+   <!--- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86` [`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
+- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips` [`RTL8197F`](https://www.realtek.com/en/products/communications-network-ics/item/rtl8197f): The mesh Wi-Fi router. (handover from HsinChu RD team)
 
 ### Web Development 
 
 enhance `MIT Scratch 3.0` (block-based programming language) and `Dr.Scratch`.
 
-- [MIT Scratch 3.0](https://github.com/edlai/scratch-gui): Node.js, React, Redux, WebPack
-- [Dr.Scratch](https://github.com/edlai/drScratch): Python, Django
+- [MIT Scratch 3.0](https://github.com/edlai/scratch-gui): [Node.js](https://nodejs.org/), [React](https://reactjs.org/), [Redux](https://redux.js.org/), [WebPack](https://webpack.js.org/)
+- [Dr.Scratch](https://github.com/edlai/drScratch): Python, [Django](https://www.djangoproject.com/)
