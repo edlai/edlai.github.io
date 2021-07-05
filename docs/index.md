@@ -78,5 +78,5 @@ The products (Wireless Access Points and Cellular Routers) I developed with my c
 
 enhance `MIT Scratch 3.0` (block-based programming language) and `Dr.Scratch`.
 
-- [MIT Scratch 3.0](https://github.com/edlai/scratch-gui)
-- [Dr.Scratch](https://github.com/edlai/drScratch):
+- [MIT Scratch 3.0](https://github.com/edlai/scratch-gui): Node.js, React, Redux, WebPack
+- [Dr.Scratch](https://github.com/edlai/drScratch): Python, Django
