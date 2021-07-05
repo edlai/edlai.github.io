@@ -39,16 +39,20 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 ### Code Server
 
 VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.
+
 ```console
 $ wget https://github.com/cdr/code-server/releases/download/v3.5.0/code-server_3.5.0_amd64.deb
 ```
 
 Its setting file is in `.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access.
+
 ```console
-Bind-addr: 0.0.0.0:9786   # < = Use 0.0.0.0 to allow external access
-Password: 11111111        # < = define your password
+Bind-addr: 0.0.0.0:9786   # < = Use IP 0.0.0.0 and port 9786 to allow external access
+Password: 11111111        # < = define your password, this case is 11111111
 ```
+
 Now, you can run code server with below command.
+
 ```console
 $ code-server .
 ```
@@ -98,8 +102,36 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f main.c
 - OR -
 $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 ```
-- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+
+Below script can help use to fomat all `*.c`, `*.h` and `java` files.
+```console
+#!/bin/sh
+
+echo "running this script for doing code convention"
+
+astyle -V
+
+for f in $(find ../ -name '*.c' -or -name '*.cpp' -or -name '*.h' -type f)
+do
+  astyle --style=kr --indent=spaces=2 -p -U -f $f
+done
+
+for f in $(find ../ -name '*.java' -type f)
+do
+  astyle --style=java --indent=spaces=2 -p -U -f $f
+done
+
+# after formate the code,we need to rm '*.orig' file
+for f in $(find ../ -name '*.orig' -type f)
+do
+  rm -rf $f
+done
 ```
+
+- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+
+Below script format `main.c` by `clang-format`.
+```console
 $ sudo apt-get install clang-format
 $ clang-format -i main.c
 ```
@@ -110,12 +142,15 @@ $ clang-format -i main.c
 - [GNU Global](https://www.gnu.org/software/global/): source code tagging system.
 
 Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
+
 ```console
 $ wget https://w1.fi/releases/hostapd-2.9.tar.gz
 $ tar xvf hostapd-2.9.tar.gz
 $ cd hostapd-2.9
 ```
+
 Install global
+
 ```console
 $ sudo apt-get install global
 $ sudo ldconfig
@@ -148,7 +183,8 @@ Options:
 ```
 
 in short, the usage of `global` is
-```
+
+```console
 $ global (find definition of pattern)
 $ global -r (find references of pattern)
 $ global -x (shows the detail)
@@ -156,27 +192,30 @@ $ global -xg (locates the lines which have specified pattern)
 ```
 
 Run gtags, make sure it products `GPATH`, `GRTAGS` and `GTAGS` files.
-```
+
+```console
 $ gtags
 $ ls
 CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src
 ```
 
-
 Find definition of pattern
-```
+
+```console
 $ global eloop_sock
 src/utils/eloop.c
 src/utils/eloop_win.c
 ```
 
-Update
-```
+Update database.
+
+```console
 $ global -u
 ```
 
-product HTML file and copy yo 
-```
+product HTML file and copy to HTTP folder.
+
+```console
 $ htags -ffnsa   # < = w/. Searching
 $ sudo cp -r HTML/ /var/www/html/hostapd
 ```
@@ -196,20 +235,24 @@ $ doxygen Doxygen
 
 - [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
 - [CPPCheck](http://cppcheck.sourceforge.net/)
+
 ```
 # - INSTALL -
-$ sudo apt-get install cppcheck
+$ sudo apt-get update -y; sudo apt-get install cppcheck
 # - RUN -
 $ cppcheck -j 3 ~/Project         # < = open 3 threads to check source code from Project folder，--enable==error by default
 $ cppcheck -j 3 --enable=all ~/Project 
 $ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
+```
+
+- [splint](https://splint.org/)
 
 ```
-- [CodeQL](https://securitylab.github.com/tools/codeql/)
-- [splint](https://splint.org/)
-```
 $ sudo apt-get update -y; sudo apt-get install -y splint
+$ splint test.c +bounds -varuse
 ```
+
+- [CodeQL](https://securitylab.github.com/tools/codeql/)
 
 ## Dynamic Code Analysis Tools 
 
@@ -218,7 +261,8 @@ $ sudo apt-get update -y; sudo apt-get install -y splint
 ## Terminal multiplexer
 
 - [Tmux Terminal](https://github.com/tmux/tmux/wiki)
-```
+
+```console
 # - INSTALL -
 $ sudo apt-get install tmux
 # - USAGE -
@@ -233,13 +277,19 @@ $ tmux attach
 ## Documentation
 
 - Markdown
-markdown to pdf
-```
+
+markdown to pdf.
+
+```console
 $ echo "test" > doc.md
 $ pandoc doc.md
 ```
+
 - reStructuredText 
-```
+
+rst to pdf.
+
+```console
 $ echo "test" > doc.rst
 $ rst2pdf doc.rst 
 ```

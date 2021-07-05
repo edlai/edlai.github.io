@@ -3,9 +3,9 @@
 
 ## Wireshare
 
-Download and install Wireshark from Internet. If you would like to capture Wireless packets in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For `Debian 10.10`, becasue its Linux Kernel version is 4.x, you might consider to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. 
+Download and install Wireshark from Internet. If you would like to capture __Wireless packets__ in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For `Debian 10.10`, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. 
 
-### Upgrade Linux Kernel to support Wi-Fi dongle 
+### Upgrade Linux Kernel
 
 In my case, I choose [`debian-live-10.10.0-amd64-xfce.iso`](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/)
 
@@ -55,7 +55,9 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-install `aircrack-ng` to check Wi-Fi channel. 
+Install `aircrack-ng` and run `airodump-ng` to check Wi-Fi channel. Better to use `aircrack-ng 1.6` to support WPA3-SAE.
+
+Install `aircrack-ng`
 
 ```
 $ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
@@ -65,6 +67,10 @@ $ ./autogen.sh
 $ ./configure 
 $ make
 $ sudo make install
+```
+
+Run `airodump-ng` 
+```
 $ sudo airodump-ng wlx008e86000266
 CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03 
 
@@ -79,21 +85,37 @@ CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03
  BE:4F:DA:40:92:33  94:7B:E7:0B:E5:1A  -78    0 - 0e     0        7 
 ```
 
+as a result, `AccessPoint1` is working on `Channel 6`.
+
 ### Enable Monitor Mode
 
-- Enable Monitor Mode 
+- Enable Monitor Mode, use below script then press `./m.sh wlx008e86000266 6`
+
+m.sh
+
+```console
+#!/bin/sh
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 [DEV_NAME] [CHANNEL]"
+    exit 1
+fi
+
+dev=$1
+ch=$2
+
+sudo ifconfig ${dev} down
+sudo iwconfig ${dev} mode monitor
+sudo ifconfig ${dev} up
+sudo iwconfig ${dev} channel ${ch}
 
 ```
-$ ifconfig wlan0 down
-$ iwconfig wlan0 mond monitor
-$ ifconfig wlan0 up
-$ ifconfig channel 1
-```
 
-### Run Wireshark and set filter  
+### Run Wireshark
+
+Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture Association(wlan.fc.type_subtype <=1), Reassociation(wlan.fc.type_subtype <=3), Probe Responses ((wlan.fc.type_subtype <= 5)) and Four way handshark (wlan.fc.type == 2).
 
 ```
-wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype <3 || wlan.fc.type ==2)
+wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype < 0x0005 || wlan.fc.type == 0x0002)
 ```
 
 ### IE element
@@ -133,3 +155,37 @@ $ sudo tcpdump -i enpos25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 ## MTK Catcher
 
 ~~ TBD ~~
+
+## Appendix
+
+### Wireless Display Filter Reference
+
+- [Wireshark Most Common 802.11 Filters v1.1
+](https://semfionetworks.com/wp-content/uploads/2021/04/wireshark_802.11_filters_-_reference_sheet.pdf)
+
+| Frame Name                 | Field Name                     |
+|----------------------------|--------------------------------|
+| Management frame           | wlan.fc.type == 0              |
+| Control frame              | wlan.fc.type == 1              |
+| Data frame                 | wlan.fc.type == 2              |
+| Association request        | wlan.fc.type_subtype == 0x00   |
+| Association response       | wlan.fc.type_subtype == 0x01   |
+| Reassociation request      | wlan.fc.type_subtype == 0x02   |
+| Reassociation response     | wlan.fc.type_subtype == 0x03   |
+| Probe request              | wlan.fc.type_subtype == 0x04   |
+| Probe response             | wlan.fc.type_subtype == 0x05   |
+| Beacon                     | wlan.fc.type_subtype == 0x08   |
+| Disassociate               | wlan.fc.type_subtype == 0x0A   |
+| Authentication             | wlan.fc.type_subtype == 0x0B   |
+| Deauthentication           | wlan.fc.type_subtype == 0x0C   |
+| Action frame               | wlan.fc.type_subtype == 0x0D   |
+| Block ACK requests         | wlan.fc.type_subtype == 0x18   |
+| Block ACK                  | wlan.fc.type_subtype == 0x19   |
+| Power save poll            | wlan.fc.type_subtype == 0x1A   |
+| Request to send            | wlan.fc.type_subtype == 0x1B   |
+| Clear to send              | wlan.fc.type_subtype == 0x1C   |
+| ACK                        | wlan.fc.type_subtype == 0x1D   |
+| Contention free period end | wlan.fc.type_subtype == 0x1E   |
+| NULL data                  | wlan.fc.type_subtype == 0x24   |
+| QoS data                   | wlan.fc.type_subtype == 0x28   |
+| Null QoS data              | wlan.fc.type_subtype == 0x2C   |
