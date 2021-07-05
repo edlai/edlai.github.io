@@ -1,5 +1,7 @@
 # Software Tools for Firmware Development
 
+This chapter introduces some software development tools.
+
 ## Code Editor
 
 ### Visual Studio Code
@@ -65,7 +67,7 @@ By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://githu
 
 ## TFTP tool
 
-There are some TFTP tool, most of all I use `tftp64` beacuse my development environment is Windows 10.
+There are some TFTP tools, most of all I use `tftp64` beacuse my development environment is Windows 10.
 
 - [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): tftp server, client and syslog server.
 - [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git): for Linux OS.

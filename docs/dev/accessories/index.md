@@ -17,7 +17,7 @@ There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, 
 - MediaTek AC-1200 Mbps mt76x2u chipset (0e8d:2870)
 - [D-Link DWA-140 rev D1](https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1) Ralink RT5372 chipset (rt2800usb, 2001:3c20)
 
-clear syslog using `dmesg -c` then plug the dongle and run `dmesg` again to make sure 
+clear syslog using `dmesg -c` then plug the dongle and run `dmesg` and `ifconfig` to make sure this device is enabled in your machine. 
 
 ```console
 $ dmesg -c  

@@ -13,7 +13,7 @@ nav:
           - 'Programmer Skills': 'dev/prog/index.md'
           - 'Diagnostic Tools': 'dev/diag/index.md'
           - 'Performance Measurement': 'dev/perf/index.md'
-          - 'Gitlab and Build Machine': 'dev/gitlab/index.md'
+          - 'Git and Build Machine': 'dev/git/index.md'
           - 'Docker and Macvlan': 'dev/docker/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
