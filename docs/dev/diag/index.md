@@ -69,29 +69,27 @@ $ make
 $ sudo make install
 ```
 
-Run `airodump-ng` 
+Run `airodump-ng`
 ```
 $ sudo airodump-ng wlx008e86000266
-CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03 
+ CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
 
- C4:E9:0A:2F:03:A2  -52        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
- C4:E9:0A:01:71:FA  -43        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
+ C4:E9:0A:6F:A5:1A  -20       12        0    0  13  270   WPA2 CCMP   PSK  AP1
 
-  BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
+ BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
 
- 84:0B:7C:5C:FC:BE  D8:42:AC:08:D3:14  -63    0 - 1e     0        1                                           
- BE:4F:DA:40:92:33  94:7B:E7:0B:E5:1A  -78    0 - 0e     0        7 
+ C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
 ```
 
-as a result, `AccessPoint1` is working on `Channel 6`.
+as a result, SSID `AP1` works on `Channel 13`.
 
 ### Enable Monitor Mode
 
-- Enable Monitor Mode, use below script then press `./m.sh wlx008e86000266 6`
+- Enable Monitor Mode, use below script then press `./set_mon.sh wlx008e86000266 13`
 
-m.sh
+set_mon.sh
 
 ```console
 #!/bin/sh
@@ -107,46 +105,101 @@ sudo ifconfig ${dev} down
 sudo iwconfig ${dev} mode monitor
 sudo ifconfig ${dev} up
 sudo iwconfig ${dev} channel ${ch}
-
 ```
 
 ### Run Wireshark
 
-Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture Association(wlan.fc.type_subtype <=1), Reassociation(wlan.fc.type_subtype <=3), Probe Responses ((wlan.fc.type_subtype <= 5)) and Four way handshark (wlan.fc.type == 2).
+Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture 
 
+- MAC address: C4:E9:0A:6F:A5:1A,
+- Association,
+- Reassociation,
+- Probe,
+- Beacon ((wlan.fc.type_subtype <= 0x0008)),
+- Four way handshark (wlan.fc.type == 0x0002).
+
+you need to put below combination to the Filter rule.
+
+```console
+wlan.addr[4:2] == A5:1A and (wlan.fc.type_subtype < 0x0005 || wlan.fc.type == 0x0002)
 ```
-wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype < 0x0005 || wlan.fc.type == 0x0002)
+
+### Vendor Specific IEEE 802.11 Information Element
+
+run `./set_ie.sh "000a00" "01234567"` to add new MTK IE element to RTL AP.
+
+set_ie.sh
+
+```console
+#!/bin/sh
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 [OUI] [CONTENT]"
+    exit 1
+fi
+
+oui=$1
+content=$2
+
+echo "set IE"
+echo "  - OUI:      $oui"
+echo "  - CONTENT:  $content"
+
+iwpriv wlan1 setCIE ${oui},${content}
+
+echo "Set WLAN IE done"
 ```
 
-### IE element
+There is what we saw from Wireshark (Click `Packet` → `Copy` → `All Visible Selected Tree Items`)
 
-try to add new IE element and confirm again
+```console
+Tag: Vendor Specific: Mediatek Corp.
+    Tag Number: Vendor Specific (221)
+    Tag length: 10
+    OUI: 00:0a:00 (Mediatek Corp.)
+    Vendor Specific OUI Type: 48
+    Vendor Specific Data: 30313233343536
+```
 
-~~ TBD ~~
 ## tshark
 
+Install
 
-~~ TBD ~~
+```console
+$ sudo apt-get install tshark
+```
+
+Command to capture Beacon frame
+
+```console
+$ sudo tshark -i wlx008e86000266 -f "type mgt subtype beacon"
+```
 
 ## tcpdump
 
-```
+Install tcpdump
+
+```console
 $ sudo apt-get install tcpdump
 ```
 ### VLAN packets
 
 VLAN belongs to layer2, use below command to dump VLAN packets
 
-```
+- `-e`: Prints the link-level header on each dump line.
+- `-n`:	Blocks converting the host addresses, and the port numbers to names.
+- `-X`:	Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.
+
+```console
 $ sudo tcpdump -i enp0s25 -en -XX
 ```
 
 ### PPPoE packets
 
-`0x8863` and `0x8864` 
+- `0x8863`: PPPoE Discovery Stage
+- `0x8864`: PPPoE Session Stage
 
-```
-$ sudo tcpdump -i enpos25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
+```console
+$ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 ```
 
 ## Qualcomm QxDM
@@ -189,3 +242,41 @@ $ sudo tcpdump -i enpos25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 | NULL data                  | wlan.fc.type_subtype == 0x24   |
 | QoS data                   | wlan.fc.type_subtype == 0x28   |
 | Null QoS data              | wlan.fc.type_subtype == 0x2C   |
+
+
+### Promiscuous Mode 
+
+Enable Promiscuous Mode 
+
+```console
+$ sudo ifconfig enp0s25 promisc
+
+$ sudo ifconfig enp0s25
+enp0s25: flags=4419<UP,BROADCAST,RUNNING,PROMISC,MULTICAST>  mtu 1500           # < = PROMISC
+        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255
+        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20<link>
+        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)
+        RX packets 309505  bytes 241920726 (230.7 MiB)
+        RX errors 0  dropped 1  overruns 0  frame 0
+        TX packets 279294  bytes 36722749 (35.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 264
+        device interrupt 20  memory 0xf2600000-f2620000
+```
+
+Disable Promiscuous Mode
+
+```console
+$ sudo ifconfig enp0s25 -promisc
+
+$ sudo ifconfig enp0s25
+enp0s25: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255
+        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20<link>
+        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)
+        RX packets 309890  bytes 241950545 (230.7 MiB)
+        RX errors 0  dropped 1  overruns 0  frame 0
+        TX packets 279816  bytes 36788444 (35.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 266
+        device interrupt 20  memory 0xf2600000-f2620000
+
+```
