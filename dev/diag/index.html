@@ -433,8 +433,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrade-linux-kernel-to-support-wi-fi-dongle" class="md-nav__link">
-    Upgrade Linux Kernel to support Wi-Fi dongle
+  <a href="#upgrade-linux-kernel" class="md-nav__link">
+    Upgrade Linux Kernel
   </a>
   
 </li>
@@ -454,8 +454,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#run-wireshark-and-set-filter" class="md-nav__link">
-    Run Wireshark and set filter
+  <a href="#run-wireshark" class="md-nav__link">
+    Run Wireshark
   </a>
   
 </li>
@@ -517,6 +517,26 @@
   <a href="#mtk-catcher" class="md-nav__link">
     MTK Catcher
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wireless-display-filter-reference" class="md-nav__link">
+    Wireless Display Filter Reference
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1234,8 +1254,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrade-linux-kernel-to-support-wi-fi-dongle" class="md-nav__link">
-    Upgrade Linux Kernel to support Wi-Fi dongle
+  <a href="#upgrade-linux-kernel" class="md-nav__link">
+    Upgrade Linux Kernel
   </a>
   
 </li>
@@ -1255,8 +1275,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#run-wireshark-and-set-filter" class="md-nav__link">
-    Run Wireshark and set filter
+  <a href="#run-wireshark" class="md-nav__link">
+    Run Wireshark
   </a>
   
 </li>
@@ -1321,6 +1341,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wireless-display-filter-reference" class="md-nav__link">
+    Wireless Display Filter Reference
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1336,8 +1376,8 @@
                 
                 <h1 id="diagnostic-tools">Diagnostic Tools</h1>
 <h2 id="wireshare">Wireshare</h2>
-<p>Download and install Wireshark from Internet. If you would like to capture Wireless packets in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, you might consider to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. </p>
-<h3 id="upgrade-linux-kernel-to-support-wi-fi-dongle">Upgrade Linux Kernel to support Wi-Fi dongle</h3>
+<p>Download and install Wireshark from Internet. If you would like to capture <strong>Wireless packets</strong> in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. </p>
+<h3 id="upgrade-linux-kernel">Upgrade Linux Kernel</h3>
 <p>In my case, I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
 <ul>
 <li>
@@ -1386,7 +1426,8 @@ wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 </code></pre></div></li>
 </ul>
-<p>install <code>aircrack-ng</code> to check Wi-Fi channel. </p>
+<p>Install <code>aircrack-ng</code> and run <code>airodump-ng</code> to check Wi-Fi channel. Better to use <code>aircrack-ng 1.6</code> to support WPA3-SAE.</p>
+<p>Install <code>aircrack-ng</code></p>
 <div class="highlight"><pre><span></span><code>$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
 $ tar xvf 1.6.tar.gz 
 $ cd aircrack-ng-1.6
@@ -1394,7 +1435,9 @@ $ ./autogen.sh
 $ ./configure 
 $ make
 $ sudo make install
-$ sudo airodump-ng wlx008e86000266
+</code></pre></div>
+<p>Run <code>airodump-ng</code> 
+<div class="highlight"><pre><span></span><code>$ sudo airodump-ng wlx008e86000266
 CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03 
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
@@ -1406,18 +1449,30 @@ CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03
 
  84:0B:7C:5C:FC:BE  D8:42:AC:08:D3:14  -63    0 - 1e     0        1                                           
  BE:4F:DA:40:92:33  94:7B:E7:0B:E5:1A  -78    0 - 0e     0        7 
-</code></pre></div>
+</code></pre></div></p>
+<p>as a result, <code>AccessPoint1</code> is working on <code>Channel 6</code>.</p>
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
-<li>Enable Monitor Mode </li>
+<li>Enable Monitor Mode, use below script then press <code>./m.sh wlx008e86000266 6</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ ifconfig wlan0 down
-$ iwconfig wlan0 mond monitor
-$ ifconfig wlan0 up
-$ ifconfig channel 1
+<p>m.sh</p>
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+<span class="go">if [ $# -lt 2 ]; then</span>
+<span class="go">    echo &quot;Usage: $0 [DEV_NAME] [CHANNEL]&quot;</span>
+<span class="go">    exit 1</span>
+<span class="go">fi</span>
+
+<span class="go">dev=$1</span>
+<span class="go">ch=$2</span>
+
+<span class="go">sudo ifconfig ${dev} down</span>
+<span class="go">sudo iwconfig ${dev} mode monitor</span>
+<span class="go">sudo ifconfig ${dev} up</span>
+<span class="go">sudo iwconfig ${dev} channel ${ch}</span>
 </code></pre></div>
-<h3 id="run-wireshark-and-set-filter">Run Wireshark and set filter</h3>
-<div class="highlight"><pre><span></span><code>wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype &lt;3 || wlan.fc.type ==2)
+<h3 id="run-wireshark">Run Wireshark</h3>
+<p>Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture Association(wlan.fc.type_subtype &lt;=1), Reassociation(wlan.fc.type_subtype &lt;=3), Probe Responses ((wlan.fc.type_subtype &lt;= 5)) and Four way handshark (wlan.fc.type == 2).</p>
+<div class="highlight"><pre><span></span><code>wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype &lt; 0x0005 || wlan.fc.type == 0x0002)
 </code></pre></div>
 <h3 id="ie-element">IE element</h3>
 <p>try to add new IE element and confirm again</p>
@@ -1439,6 +1494,118 @@ $ ifconfig channel 1
 <p>~~ TBD ~~</p>
 <h2 id="mtk-catcher">MTK Catcher</h2>
 <p>~~ TBD ~~</p>
+<h2 id="appendix">Appendix</h2>
+<h3 id="wireless-display-filter-reference">Wireless Display Filter Reference</h3>
+<ul>
+<li><a href="https://semfionetworks.com/wp-content/uploads/2021/04/wireshark_802.11_filters_-_reference_sheet.pdf">Wireshark Most Common 802.11 Filters v1.1
+</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Frame Name</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management frame</td>
+<td>wlan.fc.type == 0</td>
+</tr>
+<tr>
+<td>Control frame</td>
+<td>wlan.fc.type == 1</td>
+</tr>
+<tr>
+<td>Data frame</td>
+<td>wlan.fc.type == 2</td>
+</tr>
+<tr>
+<td>Association request</td>
+<td>wlan.fc.type_subtype == 0x00</td>
+</tr>
+<tr>
+<td>Association response</td>
+<td>wlan.fc.type_subtype == 0x01</td>
+</tr>
+<tr>
+<td>Reassociation request</td>
+<td>wlan.fc.type_subtype == 0x02</td>
+</tr>
+<tr>
+<td>Reassociation response</td>
+<td>wlan.fc.type_subtype == 0x03</td>
+</tr>
+<tr>
+<td>Probe request</td>
+<td>wlan.fc.type_subtype == 0x04</td>
+</tr>
+<tr>
+<td>Probe response</td>
+<td>wlan.fc.type_subtype == 0x05</td>
+</tr>
+<tr>
+<td>Beacon</td>
+<td>wlan.fc.type_subtype == 0x08</td>
+</tr>
+<tr>
+<td>Disassociate</td>
+<td>wlan.fc.type_subtype == 0x0A</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>wlan.fc.type_subtype == 0x0B</td>
+</tr>
+<tr>
+<td>Deauthentication</td>
+<td>wlan.fc.type_subtype == 0x0C</td>
+</tr>
+<tr>
+<td>Action frame</td>
+<td>wlan.fc.type_subtype == 0x0D</td>
+</tr>
+<tr>
+<td>Block ACK requests</td>
+<td>wlan.fc.type_subtype == 0x18</td>
+</tr>
+<tr>
+<td>Block ACK</td>
+<td>wlan.fc.type_subtype == 0x19</td>
+</tr>
+<tr>
+<td>Power save poll</td>
+<td>wlan.fc.type_subtype == 0x1A</td>
+</tr>
+<tr>
+<td>Request to send</td>
+<td>wlan.fc.type_subtype == 0x1B</td>
+</tr>
+<tr>
+<td>Clear to send</td>
+<td>wlan.fc.type_subtype == 0x1C</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>wlan.fc.type_subtype == 0x1D</td>
+</tr>
+<tr>
+<td>Contention free period end</td>
+<td>wlan.fc.type_subtype == 0x1E</td>
+</tr>
+<tr>
+<td>NULL data</td>
+<td>wlan.fc.type_subtype == 0x24</td>
+</tr>
+<tr>
+<td>QoS data</td>
+<td>wlan.fc.type_subtype == 0x28</td>
+</tr>
+<tr>
+<td>Null QoS data</td>
+<td>wlan.fc.type_subtype == 0x2C</td>
+</tr>
+</tbody>
+</table>
                 
               
               

@@ -1475,16 +1475,16 @@
 <li>Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd></li>
 </ul>
 <h3 id="code-server">Code Server</h3>
-<p>VSC also provides Web IDE called <a href="https://github.com/cdr/code-server/releases">Code Server</a>, use below command to install Code Server.
+<p>VSC also provides Web IDE called <a href="https://github.com/cdr/code-server/releases">Code Server</a>, use below command to install Code Server.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://github.com/cdr/code-server/releases/download/v3.5.0/code-server_3.5.0_amd64.deb
-</code></pre></div></p>
-<p>Its setting file is in <code>.config/code-server/config.yaml</code>. You can revise <code>Bind-addr</code> and <code>Password</code> to allow external access.
-<div class="highlight"><pre><span></span><code><span class="go">Bind-addr: 0.0.0.0:9786   # &lt; = Use 0.0.0.0 to allow external access</span>
-<span class="go">Password: 11111111        # &lt; = define your password</span>
 </code></pre></div>
-Now, you can run code server with below command.
+<p>Its setting file is in <code>.config/code-server/config.yaml</code>. You can revise <code>Bind-addr</code> and <code>Password</code> to allow external access.</p>
+<div class="highlight"><pre><span></span><code><span class="go">Bind-addr: 0.0.0.0:9786   # &lt; = Use IP 0.0.0.0 and port 9786 to allow external access</span>
+<span class="go">Password: 11111111        # &lt; = define your password, this case is 11111111</span>
+</code></pre></div>
+<p>Now, you can run code server with below command.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>code-server .
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="wsl2">WSL2</h3>
 <p>By the way, if you use Windows 10 OS, this OS also provides <a href="https://github.com/microsoft/WSL2-Linux-Kernel/releases">WSL2</a> after <a href="https://devblogs.microsoft.com/commandline/wsl-2-support-is-coming-to-windows-10-versions-1903-and-1909/">Windows 10 Versions 1903 and 1909</a>. Install Windows 10 and WSL 2 with <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote - WSL extension</a>. You can develop your code in VSC via WSL2 also. </p>
 <h2 id="terminal-tools">Terminal Tools</h2>
@@ -1516,26 +1516,52 @@ Now, you can run code server with below command.
 </ul>
 <p>Install <code>astyle</code> and there is a case for coding convention as following to format <code>main.c</code> or <code>*.c</code> and <code>*.h</code> files
 <code>style: K&amp;R</code>, and <code>Indent: 2</code></p>
-<p><div class="highlight"><pre><span></span><code>$ sudo apt-get install astyle
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install astyle
 $ astyle --style=kr --indent=spaces=2 -p -U -f main.c
 - OR -
 $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 </code></pre></div>
-- <a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install clang-format
-$ clang-format -i main.c
+<p>Below script can help use to fomat all <code>*.c</code>, <code>*.h</code> and <code>java</code> files.
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+
+<span class="go">echo &quot;running this script for doing code convention&quot;</span>
+
+<span class="go">astyle -V</span>
+
+<span class="go">for f in $(find ../ -name &#39;*.c&#39; -or -name &#39;*.cpp&#39; -or -name &#39;*.h&#39; -type f)</span>
+<span class="go">do</span>
+<span class="go">  astyle --style=kr --indent=spaces=2 -p -U -f $f</span>
+<span class="go">done</span>
+
+<span class="go">for f in $(find ../ -name &#39;*.java&#39; -type f)</span>
+<span class="go">do</span>
+<span class="go">  astyle --style=java --indent=spaces=2 -p -U -f $f</span>
+<span class="go">done</span>
+
+<span class="gp"># </span>after formate the code,we need to rm <span class="s1">&#39;*.orig&#39;</span> file
+<span class="go">for f in $(find ../ -name &#39;*.orig&#39; -type f)</span>
+<span class="go">do</span>
+<span class="go">  rm -rf $f</span>
+<span class="go">done</span>
+</code></pre></div></p>
+<ul>
+<li><a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.</li>
+</ul>
+<p>Below script format <code>main.c</code> by <code>clang-format</code>.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install clang-format
+<span class="gp">$ </span>clang-format -i main.c
 </code></pre></div></p>
 <h2 id="source-code-tagging-system">Source Code Tagging System</h2>
 <ul>
 <li><a href="http://cscope.sourceforge.net/">CScope</a></li>
 <li><a href="https://www.gnu.org/software/global/">GNU Global</a>: source code tagging system.</li>
 </ul>
-<p>Use <a href="https://w1.fi/hostapd/">hostapd</a> as an example, fetch the code and untar it.
+<p>Use <a href="https://w1.fi/hostapd/">hostapd</a> as an example, fetch the code and untar it.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://w1.fi/releases/hostapd-2.9.tar.gz
 <span class="gp">$ </span>tar xvf hostapd-2.9.tar.gz
 <span class="gp">$ </span><span class="nb">cd</span> hostapd-2.9
 </code></pre></div>
-Install global
+<p>Install global</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install global
 <span class="gp">$ </span>sudo ldconfig
 <span class="gp">$ </span>global
@@ -1564,30 +1590,30 @@ Install global
 <span class="go">       you can refer to install directories by read only variables:</span>
 <span class="go">       bindir, libdir, datadir, localstatedir and sysconfdir.</span>
 <span class="go">...</span>
-</code></pre></div></p>
-<p>in short, the usage of <code>global</code> is
-<div class="highlight"><pre><span></span><code>$ global (find definition of pattern)
-$ global -r (find references of pattern)
-$ global -x (shows the detail)
-$ global -xg (locates the lines which have specified pattern)
-</code></pre></div></p>
-<p>Run gtags, make sure it products <code>GPATH</code>, <code>GRTAGS</code> and <code>GTAGS</code> files.
-<div class="highlight"><pre><span></span><code>$ gtags
-$ ls
-CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src
-</code></pre></div></p>
-<p>Find definition of pattern
-<div class="highlight"><pre><span></span><code>$ global eloop_sock
-src/utils/eloop.c
-src/utils/eloop_win.c
-</code></pre></div></p>
-<p>Update
-<div class="highlight"><pre><span></span><code>$ global -u
-</code></pre></div></p>
-<p>product HTML file and copy yo 
-<div class="highlight"><pre><span></span><code>$ htags -ffnsa   # &lt; = w/. Searching
-$ sudo cp -r HTML/ /var/www/html/hostapd
-</code></pre></div></p>
+</code></pre></div>
+<p>in short, the usage of <code>global</code> is</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>global <span class="o">(</span>find definition of pattern<span class="o">)</span>
+<span class="gp">$ </span>global -r <span class="o">(</span>find references of pattern<span class="o">)</span>
+<span class="gp">$ </span>global -x <span class="o">(</span>shows the detail<span class="o">)</span>
+<span class="gp">$ </span>global -xg <span class="o">(</span>locates the lines which have specified pattern<span class="o">)</span>
+</code></pre></div>
+<p>Run gtags, make sure it products <code>GPATH</code>, <code>GRTAGS</code> and <code>GTAGS</code> files.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>gtags
+<span class="gp">$ </span>ls
+<span class="go">CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src</span>
+</code></pre></div>
+<p>Find definition of pattern</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>global eloop_sock
+<span class="go">src/utils/eloop.c</span>
+<span class="go">src/utils/eloop_win.c</span>
+</code></pre></div>
+<p>Update database.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>global -u
+</code></pre></div>
+<p>product HTML file and copy to HTTP folder.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>htags -ffnsa   <span class="c1"># &lt; = w/. Searching</span>
+<span class="gp">$ </span>sudo cp -r HTML/ /var/www/html/hostapd
+</code></pre></div>
 <ul>
 <li><a href="https://www.doxygen.nl/index.html">Doxygen</a>: Generate documentation from source code.</li>
 </ul>
@@ -1599,51 +1625,57 @@ $ sudo cp -r HTML/ /var/www/html/hostapd
 <h3 id="lint">Lint</h3>
 <ul>
 <li><a href="https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160">clang-tidy</a></li>
-<li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a>
+<li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a></li>
+</ul>
 <div class="highlight"><pre><span></span><code># - INSTALL -
-$ sudo apt-get install cppcheck
+$ sudo apt-get update -y; sudo apt-get install cppcheck
 # - RUN -
 $ cppcheck -j 3 ~/Project         # &lt; = open 3 threads to check source code from Project folder，--enable==error by default
 $ cppcheck -j 3 --enable=all ~/Project 
 $ cppcheck -j 3 --enable=all --xml 2&gt;err.xml ./   # &lt; = Get Report
-</code></pre></div></li>
-<li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
-<li><a href="https://splint.org/">splint</a>
+</code></pre></div>
+<ul>
+<li><a href="https://splint.org/">splint</a></li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get update -y; sudo apt-get install -y splint
-</code></pre></div></li>
+$ splint test.c +bounds -varuse
+</code></pre></div>
+<ul>
+<li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
 </ul>
 <h2 id="dynamic-code-analysis-tools">Dynamic Code Analysis Tools</h2>
 <h3 id="valgrind"><a href="https://www.valgrind.org/">Valgrind</a></h3>
 <h2 id="terminal-multiplexer">Terminal multiplexer</h2>
 <ul>
-<li><a href="https://github.com/tmux/tmux/wiki">Tmux Terminal</a>
-<div class="highlight"><pre><span></span><code># - INSTALL -
-$ sudo apt-get install tmux
-# - USAGE -
-$ tmux
-# - RUN BELOW COMMANDS THEN EXIT -
-$ ping 8.8.8.8
-$ tmux deattach
-# - RUN BELOW COMMAND TO ATTACH AGAIN -
-$ tmux attach
-</code></pre></div></li>
+<li><a href="https://github.com/tmux/tmux/wiki">Tmux Terminal</a></li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>- INSTALL -
+<span class="gp">$ </span>sudo apt-get install tmux
+<span class="gp"># </span>- USAGE -
+<span class="gp">$ </span>tmux
+<span class="gp"># </span>- RUN BELOW COMMANDS THEN EXIT -
+<span class="gp">$ </span>ping <span class="m">8</span>.8.8.8
+<span class="gp">$ </span>tmux deattach
+<span class="gp"># </span>- RUN BELOW COMMAND TO ATTACH AGAIN -
+<span class="gp">$ </span>tmux attach
+</code></pre></div>
 <h2 id="documentation">Documentation</h2>
 <ul>
-<li>Markdown
-markdown to pdf
-<div class="highlight"><pre><span></span><code>$ echo &quot;test&quot; &gt; doc.md
-$ pandoc doc.md
-</code></pre></div></li>
-<li>
-<p>reStructuredText 
-<div class="highlight"><pre><span></span><code>$ echo &quot;test&quot; &gt; doc.rst
-$ rst2pdf doc.rst 
-</code></pre></div></p>
-</li>
-<li>
-<p><a href="https://swagger.io/">Swagger</a>: API Documentation &amp; Design Tools for Teams</p>
-</li>
+<li>Markdown</li>
+</ul>
+<p>markdown to pdf.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s2">&quot;test&quot;</span> &gt; doc.md
+<span class="gp">$ </span>pandoc doc.md
+</code></pre></div>
+<ul>
+<li>reStructuredText </li>
+</ul>
+<p>rst to pdf.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s2">&quot;test&quot;</span> &gt; doc.rst
+<span class="gp">$ </span>rst2pdf doc.rst 
+</code></pre></div>
+<ul>
+<li><a href="https://swagger.io/">Swagger</a>: API Documentation &amp; Design Tools for Teams</li>
 </ul>
 <p>~ TBD ~</p>
 <h2 id="wi-fi-tool">Wi-Fi Tool</h2>
