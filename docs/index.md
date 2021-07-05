@@ -72,7 +72,7 @@ The products (Wireless Access Points and Cellular Routers) I developed with my c
    <!--[`emulator`](http://www.support.dlink.ca/emulators/dir450/103/login.htm)-->
 - D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86`
    <!--[`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
-- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips`: The mesh Wi-Fi router that blankets your home with high speed AC1200 Dual-Band Wi-Fi. (handover from HsinChu RD team)
+- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips`: The mesh Wi-Fi router. (handover from HsinChu RD team)
 
 ### Web Development 
 
