@@ -16,7 +16,7 @@
     
     
       
-        <title>Diagnostic Tools - Ed's Personal Wiki</title>
+        <title>Diagnostic Tools - Ed's Wiki</title>
       
     
     
@@ -76,7 +76,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-header__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+    <a href="../.." title="Ed&#39;s Wiki" class="md-header__button md-logo" aria-label="Ed's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -89,7 +89,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Ed's Personal Wiki
+            Ed's Wiki
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -252,13 +252,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Ed&#39;s Personal Wiki" class="md-nav__button md-logo" aria-label="Ed's Personal Wiki" data-md-component="logo">
+    <a href="../.." title="Ed&#39;s Wiki" class="md-nav__button md-logo" aria-label="Ed's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Ed's Personal Wiki
+    Ed's Wiki
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -461,8 +461,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ie-element" class="md-nav__link">
-    IE element
+  <a href="#vendor-specific-ieee-80211-information-element" class="md-nav__link">
+    Vendor Specific IEEE 802.11 Information Element
   </a>
   
 </li>
@@ -531,6 +531,13 @@
           <li class="md-nav__item">
   <a href="#wireless-display-filter-reference" class="md-nav__link">
     Wireless Display Filter Reference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promiscuous-mode" class="md-nav__link">
+    Promiscuous Mode
   </a>
   
 </li>
@@ -1282,8 +1289,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ie-element" class="md-nav__link">
-    IE element
+  <a href="#vendor-specific-ieee-80211-information-element" class="md-nav__link">
+    Vendor Specific IEEE 802.11 Information Element
   </a>
   
 </li>
@@ -1352,6 +1359,13 @@
           <li class="md-nav__item">
   <a href="#wireless-display-filter-reference" class="md-nav__link">
     Wireless Display Filter Reference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promiscuous-mode" class="md-nav__link">
+    Promiscuous Mode
   </a>
   
 </li>
@@ -1436,26 +1450,24 @@ $ ./configure
 $ make
 $ sudo make install
 </code></pre></div>
-<p>Run <code>airodump-ng</code> 
+<p>Run <code>airodump-ng</code>
 <div class="highlight"><pre><span></span><code>$ sudo airodump-ng wlx008e86000266
-CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03 
+ CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
 
- C4:E9:0A:2F:03:A2  -52        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
- C4:E9:0A:01:71:FA  -43        2        0    0   6  130   WPA2 CCMP   PSK  AccessPoint1                               
+ C4:E9:0A:6F:A5:1A  -20       12        0    0  13  270   WPA2 CCMP   PSK  AP1
 
-  BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
+ BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
 
- 84:0B:7C:5C:FC:BE  D8:42:AC:08:D3:14  -63    0 - 1e     0        1                                           
- BE:4F:DA:40:92:33  94:7B:E7:0B:E5:1A  -78    0 - 0e     0        7 
+ C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
 </code></pre></div></p>
-<p>as a result, <code>AccessPoint1</code> is working on <code>Channel 6</code>.</p>
+<p>as a result, SSID <code>AP1</code> works on <code>Channel 13</code>.</p>
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
-<li>Enable Monitor Mode, use below script then press <code>./m.sh wlx008e86000266 6</code></li>
+<li>Enable Monitor Mode, use below script then press <code>./set_mon.sh wlx008e86000266 13</code></li>
 </ul>
-<p>m.sh</p>
+<p>set_mon.sh</p>
 <div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
 <span class="go">if [ $# -lt 2 ]; then</span>
 <span class="go">    echo &quot;Usage: $0 [DEV_NAME] [CHANNEL]&quot;</span>
@@ -1471,24 +1483,72 @@ CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03
 <span class="go">sudo iwconfig ${dev} channel ${ch}</span>
 </code></pre></div>
 <h3 id="run-wireshark">Run Wireshark</h3>
-<p>Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture Association(wlan.fc.type_subtype &lt;=1), Reassociation(wlan.fc.type_subtype &lt;=3), Probe Responses ((wlan.fc.type_subtype &lt;= 5)) and Four way handshark (wlan.fc.type == 2).</p>
-<div class="highlight"><pre><span></span><code>wlan.addr[4:2] == 8f:c6 and (wlan.fc.type_subtype &lt; 0x0005 || wlan.fc.type == 0x0002)
+<p>Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture </p>
+<ul>
+<li>MAC address: C4:E9:0A:6F:A5:1A,</li>
+<li>Association,</li>
+<li>Reassociation,</li>
+<li>Probe,</li>
+<li>Beacon ((wlan.fc.type_subtype &lt;= 0x0008)),</li>
+<li>Four way handshark (wlan.fc.type == 0x0002).</li>
+</ul>
+<p>you need to put below combination to the Filter rule.</p>
+<div class="highlight"><pre><span></span><code><span class="go">wlan.addr[4:2] == A5:1A and (wlan.fc.type_subtype &lt; 0x0005 || wlan.fc.type == 0x0002)</span>
 </code></pre></div>
-<h3 id="ie-element">IE element</h3>
-<p>try to add new IE element and confirm again</p>
-<p>~~ TBD ~~</p>
+<h3 id="vendor-specific-ieee-80211-information-element">Vendor Specific IEEE 802.11 Information Element</h3>
+<p>run <code>./set_ie.sh "000a00" "01234567"</code> to add new MTK IE element to RTL AP.</p>
+<p>set_ie.sh</p>
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+<span class="go">if [ $# -lt 1 ]; then</span>
+<span class="go">    echo &quot;Usage: $0 [OUI] [CONTENT]&quot;</span>
+<span class="go">    exit 1</span>
+<span class="go">fi</span>
+
+<span class="go">oui=$1</span>
+<span class="go">content=$2</span>
+
+<span class="go">echo &quot;set IE&quot;</span>
+<span class="go">echo &quot;  - OUI:      $oui&quot;</span>
+<span class="go">echo &quot;  - CONTENT:  $content&quot;</span>
+
+<span class="go">iwpriv wlan1 setCIE ${oui},${content}</span>
+
+<span class="go">echo &quot;Set WLAN IE done&quot;</span>
+</code></pre></div>
+<p>There is what we saw from Wireshark (Click <code>Packet</code> → <code>Copy</code> → <code>All Visible Selected Tree Items</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="go">Tag: Vendor Specific: Mediatek Corp.</span>
+<span class="go">    Tag Number: Vendor Specific (221)</span>
+<span class="go">    Tag length: 10</span>
+<span class="go">    OUI: 00:0a:00 (Mediatek Corp.)</span>
+<span class="go">    Vendor Specific OUI Type: 48</span>
+<span class="go">    Vendor Specific Data: 30313233343536</span>
+</code></pre></div>
 <h2 id="tshark">tshark</h2>
-<p>~~ TBD ~~</p>
+<p>Install</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tshark
+</code></pre></div>
+<p>Command to capture Beacon frame</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tshark -i wlx008e86000266 -f <span class="s2">&quot;type mgt subtype beacon&quot;</span>
+</code></pre></div>
 <h2 id="tcpdump">tcpdump</h2>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install tcpdump
+<p>Install tcpdump</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tcpdump
 </code></pre></div>
 <h3 id="vlan-packets">VLAN packets</h3>
 <p>VLAN belongs to layer2, use below command to dump VLAN packets</p>
-<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enp0s25 -en -XX
+<ul>
+<li><code>-e</code>: Prints the link-level header on each dump line.</li>
+<li><code>-n</code>: Blocks converting the host addresses, and the port numbers to names.</li>
+<li><code>-X</code>: Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX
 </code></pre></div>
 <h3 id="pppoe-packets">PPPoE packets</h3>
-<p><code>0x8863</code> and <code>0x8864</code> </p>
-<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enpos25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
+<ul>
+<li><code>0x8863</code>: PPPoE Discovery Stage</li>
+<li><code>0x8864</code>: PPPoE Session Stage</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8863 or ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8864
 </code></pre></div>
 <h2 id="qualcomm-qxdm">Qualcomm QxDM</h2>
 <p>~~ TBD ~~</p>
@@ -1606,6 +1666,35 @@ CH  2 ][ Elapsed: 0 s ][ 2021-07-04 12:03
 </tr>
 </tbody>
 </table>
+<h3 id="promiscuous-mode">Promiscuous Mode</h3>
+<p>Enable Promiscuous Mode </p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 promisc
+
+<span class="gp">$ </span>sudo ifconfig enp0s25
+<span class="go">enp0s25: flags=4419&lt;UP,BROADCAST,RUNNING,PROMISC,MULTICAST&gt;  mtu 1500           # &lt; = PROMISC</span>
+<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
+<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
+<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 309505  bytes 241920726 (230.7 MiB)</span>
+<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
+<span class="go">        TX packets 279294  bytes 36722749 (35.0 MiB)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 264</span>
+<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+</code></pre></div>
+<p>Disable Promiscuous Mode</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 -promisc
+
+<span class="gp">$ </span>sudo ifconfig enp0s25
+<span class="go">enp0s25: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span>
+<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
+<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
+<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 309890  bytes 241950545 (230.7 MiB)</span>
+<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
+<span class="go">        TX packets 279816  bytes 36788444 (35.0 MiB)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 266</span>
+<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+</code></pre></div>
                 
               
               
