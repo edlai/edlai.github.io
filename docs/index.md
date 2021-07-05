@@ -63,7 +63,7 @@ diverse certification and Licenses from [Skill Evaluation Center of Workforce De
 
 ## Portfolio
 
-### WiFi Mesh/EVDO router
+### Firmware Development
 
 The products (Wireless Access Points and Cellular Routers) I developed with my colleagues before
 
