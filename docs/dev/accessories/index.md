@@ -1,16 +1,16 @@
 
-# Accessories
+# Accessories for Firmware Development
 
 ## USB-to-RS232 console cable
 
+Try to buy it from [Taobao](https://www.taobao.com/). It(PL2303 chipset) is not very expensive.
 
 - [PL2303](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41) 
 - [FTDI chipsets](https://ftdichip.com/drivers/)
 
-
 ## Wi-Fi Adaptor: Network Packet Capturer
 
-There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, but MTK chipsets may unable to capture RTS packets.
+There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, but MTK chipsets may have problem to capture `RTS` packets.
 
 - MediaTek 7610 chipset(0e8d:7610)
 - MediaTek 7612 chipset(0e8d:7612)

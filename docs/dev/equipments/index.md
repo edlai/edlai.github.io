@@ -2,24 +2,24 @@
 
 ## Network Hub (Optional)
 
+If you don't to spend your time to set `Port Mirror` to Network Switch, please consider to buy ancient used Hub.  
+
 - LINKSYS EW5HUB Instant Ethernet Workgroup 10M 5-port Hub
 - D-Link DE-805TP 10Mbps Ethernet Mini Hub 5-Port
 
 ## Network Switch
 
-better to have Port Mirroring function for the Network Switch.
+better to have `Port Mirroring` function for the Network Switch.
 
 ### [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)
 
 ### [VigorSwitch G1080](https://www.draytek.com/products/vigorswitch-g1080/)
 
-- Port Mirror
-
 ## Ethernet Router
 
 ### [MikroTik RB750Gr3 hEX](https://mikrotik.com/product/RB750Gr3)
 
-
+RouterOS is the nice operating system which has good cost performance ratio.
 #### Config PPPoE server with VLAN support
 
 ```

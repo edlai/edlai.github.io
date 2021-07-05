@@ -41,6 +41,20 @@ strtol(const char *nptr, char **endptr, int base);
 
 ### snprintf v.s. sprintf
 
+- Memory Leak
 
+### gethostbyname/gethostbyaddr v.s getaddrinfo/getnameinfo
+
+- IPv6
+
+### Memory Overflow v.s. Memory Leak
+
+### Function Point
+
+### Flexible Array
+
+### SQLite
+
+### evhttp/libevent
 
 ~~ TBD ~~
