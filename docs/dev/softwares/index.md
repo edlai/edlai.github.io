@@ -305,6 +305,12 @@ $ rst2pdf doc.rst
 - [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
 - [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
 
+## Services
+
+### Web, Mail, FTP, and Telnet server. (Optional)
+
+- [LiteServe](http://www.cmfperception.com/liteserve.html)
+
 ## Web Debugging Proxy
 
 - [Fiddler](https://www.telerik.com/fiddler)

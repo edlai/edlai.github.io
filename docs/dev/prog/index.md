@@ -57,4 +57,13 @@ strtol(const char *nptr, char **endptr, int base);
 
 ### evhttp/libevent
 
+
+### XOR swap algorithm
+
+- [XOR swap algorithm](https://en.wikipedia.org/wiki/XOR_swap_algorithm)
+- [How does XOR variable swapping work?](https://stackoverflow.com/questions/249423/how-does-xor-variable-swapping-work)
+
+### Reverse an array in C
+
+- [Reverse an array in C]https://www.techiedelight.com/reverse-array-c/
 ~~ TBD ~~
