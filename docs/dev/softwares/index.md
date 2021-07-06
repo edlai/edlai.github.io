@@ -69,11 +69,11 @@ By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://githu
 - [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for tabbed SSH client, network tools and so on.
 
 
-## TFTP tool
+## TFTP Tools
 
 There are some TFTP tools, most of all I use `tftp64` beacuse my development environment is Windows 10.
 
-- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): tftp server, client and syslog server.
+- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): for Windows, tftp server, client and syslog server.
 - [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git): for Linux OS.
 - [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver): for Mac OS.
 

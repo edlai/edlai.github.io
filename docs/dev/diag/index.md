@@ -160,6 +160,11 @@ Tag: Vendor Specific: Mediatek Corp.
     Vendor Specific Data: 30313233343536
 ```
 
+### Reference Books
+
+- Wireshark & Ethereal Network Protocol Analyzer Toolkit/CH6-Wireless Sniffing with Wireshark
+- Network Analysis Using Wireshark Cookbook
+
 ## tshark
 
 Install
@@ -209,9 +214,7 @@ $ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 
 ~~ TBD ~~
 
-### Reference
 
-[Wireless Sniffing with Wireshark](https://cdn.ttgtmedia.com/searchNetworking/downloads/Orebaugh_Wireshark_Chapter_6.pdf)
 ## Appendix
 
 ### Wireless Display Filter Reference
