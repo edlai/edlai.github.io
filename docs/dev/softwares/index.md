@@ -41,7 +41,7 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.
 
 ```console
-$ wget https://github.com/cdr/code-server/releases/download/v3.5.0/code-server_3.5.0_amd64.deb
+$ curl -fsSL https://code-server.dev/install.sh | sh
 ```
 
 Its setting file is in `.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access.
@@ -69,20 +69,25 @@ By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://githu
 - [MobaXterm](https://mobaxterm.mobatek.net/): Enhanced terminal for tabbed SSH client, network tools and so on.
 
 
-## TFTP Tools
+## Services
+
+### TFTP Server
 
 There are some TFTP tools, most of all I use `tftp64` beacuse my development environment is Windows 10.
 
-- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): for Windows, tftp server, client and syslog server.
+- [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): for Windows OS, it includes tftp server, client and syslog server.
 - [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git): for Linux OS.
 - [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver): for Mac OS.
 
-
-## HFS
+### HTTP File Server (Optional)
 
 There is HTTP file server which can run in Windows OS.
 
 - [HFS Server](https://www.rejetto.com/hfs/): HTTP file server.
+### Web, Mail, FTP, and Telnet server (Optional)
+
+- [LiteServe](http://www.cmfperception.com/liteserve.html)
+
 ## Code Comparer
 
 - [Code Compare](https://www.devart.com/codecompare/): a free compare tool designed to compare and merge differing files and folders.
@@ -341,12 +346,6 @@ $ rst2pdf doc.rst
 - [InSSIDer 5](https://www.metageek.com/products/inssider/)
 - [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
 - [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
-
-## Services
-
-### Web, Mail, FTP, and Telnet server. (Optional)
-
-- [LiteServe](http://www.cmfperception.com/liteserve.html)
 
 ## Web Debugging Proxy
 
