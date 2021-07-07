@@ -1510,12 +1510,15 @@
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++ for Visual Studio Code</a> (Highly Recommended)</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a>: easy to check git history and so on.</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">Git Graph</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces">Trailing Space</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks">BookMark</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=usernamehw.indent-one-space">Indent one space</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML (Red Hat)</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format">shell-format</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock">Peacock</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml">PlantUML</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">ToDo Tree</a></li>
 </ul>
 <p>better to enlarge <code>max_user_watches</code> also.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">echo</span> fs.inotify.max_user_watches<span class="o">=</span><span class="m">524288</span> &gt;&gt; /etc/sysctl.conf
@@ -1527,6 +1530,8 @@
 <li>Deleting tabs when using tabs as spaces: <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd></li>
 <li>Switch to next Tab: <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd></li>
 <li>Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd></li>
+<li>BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd></li>
+<li>Toggle BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd></li>
 </ul>
 <h3 id="code-server">Code Server</h3>
 <p>VSC also provides Web IDE called <a href="https://github.com/cdr/code-server/releases">Code Server</a>, use below command to install Code Server.</p>
@@ -1571,6 +1576,18 @@
 <h2 id="coding-convention">Coding Convention</h2>
 <p>Suggest to use default coding configuration by <code>clang-format</code> of Visual Studio Code.</p>
 <ul>
+<li>
+<p><a href="https://code.visualstudio.com/docs/cpp/cpp-ide">VS Code</a>: use <code>clang-format</code> by default.</p>
+</li>
+<li>
+<p><a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.</p>
+</li>
+</ul>
+<p>Below script format <code>main.c</code> by <code>clang-format</code>.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install clang-format
+<span class="gp">$ </span>clang-format -i main.c
+</code></pre></div></p>
+<ul>
 <li><a href="http://astyle.sourceforge.net/">AStyle</a>: code formatter for the C, C++, C​++/CLI, Objective‑C, C# and Java.</li>
 </ul>
 <p>Install <code>astyle</code> and there is a case for coding convention as following to format <code>main.c</code> or <code>*.c</code> and <code>*.h</code> files
@@ -1602,13 +1619,6 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 <span class="go">do</span>
 <span class="go">  rm -rf $f</span>
 <span class="go">done</span>
-</code></pre></div></p>
-<ul>
-<li><a href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>: the default formattering tool in VSC.</li>
-</ul>
-<p>Below script format <code>main.c</code> by <code>clang-format</code>.
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install clang-format
-<span class="gp">$ </span>clang-format -i main.c
 </code></pre></div></p>
 <h2 id="source-code-tagging-system">Source Code Tagging System</h2>
 <p>Use <a href="https://w1.fi/hostapd/">hostapd</a> as an example, fetch the code and untar it.</p>
@@ -1701,7 +1711,7 @@ For more detail, please check <a href="https://blog.longwin.com.tw/2011/04/doxyg
 <div class="highlight"><pre><span></span><code>$ grep -rsni eloop_register_read_sock *
 </code></pre></div>
 <ul>
-<li>ack </li>
+<li>ack</li>
 </ul>
 <p>Install</p>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get install ack-grep
