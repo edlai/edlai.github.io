@@ -138,9 +138,6 @@ $ clang-format -i main.c
 
 ## Source Code Tagging System
 
-- [CScope](http://cscope.sourceforge.net/)
-- [GNU Global](https://www.gnu.org/software/global/): source code tagging system.
-
 Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
 
 ```console
@@ -148,6 +145,9 @@ $ wget https://w1.fi/releases/hostapd-2.9.tar.gz
 $ tar xvf hostapd-2.9.tar.gz
 $ cd hostapd-2.9
 ```
+
+- [CScope](http://cscope.sourceforge.net/)
+- [GNU Global](https://www.gnu.org/software/global/): source code tagging system.
 
 Install global
 
@@ -225,8 +225,45 @@ $ sudo cp -r HTML/ /var/www/html/hostapd
 An example for `hostapd` to generate Doxygen document
 
 ```console
-$ cd ${code_path}
+$ sudo apt-get install doxygen
+$ sudo apt-get install graphviz
+$ sudo ldconfig
+# -- PRODUCT CONFIGURATION --
+$ doxygen -g Doxygen
+# -- REVISE CONFIGURATION --
+# HAVE_DOT = YES
+# CALL_GRAPH = YES
+# CALLER_GRAPH = YES
+# RECURSIVE = YES
+# INLINE_SOURCE = YES
+# --- RUN --
 $ doxygen Doxygen
+# -- MOVE TO HTTPD FILE FOLDER ---
+# sudo mv html/ /var/www/html/hostapd
+```
+For more detail, please check [this blog](https://blog.longwin.com.tw/2011/04/doxygen-document-generator-2011/)
+
+## Searching Tools
+
+- grep
+
+```
+$ grep -rsni eloop_register_read_sock *
+```
+
+- ack 
+
+Install
+
+```
+$ sudo apt-get install ack-grep
+$ sudo ldconfig
+```
+
+Usage
+
+```
+$ ack eloop_register_read_sock
 ```
 
 ## Static Code Analysis Tools
@@ -249,7 +286,7 @@ $ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
 
 ```
 $ sudo apt-get update -y; sudo apt-get install -y splint
-$ splint test.c +bounds -varuse
+$ splint test.c +bounds -varuse   # bounds: check memory leak 
 ```
 
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
