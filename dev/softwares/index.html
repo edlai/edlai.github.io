@@ -225,7 +225,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../traveling/" class="md-tabs__link">
+      <a href="../../motivation/traveling/" class="md-tabs__link">
         Motivation
       </a>
     </li>
@@ -413,8 +413,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tftp-tool" class="md-nav__link">
-    TFTP tool
+  <a href="#tftp-tools" class="md-nav__link">
+    TFTP Tools
   </a>
   
 </li>
@@ -443,6 +443,13 @@
         <li class="md-nav__item">
   <a href="#source-code-tagging-system" class="md-nav__link">
     Source Code Tagging System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching-tools" class="md-nav__link">
+    Searching Tools
   </a>
   
 </li>
@@ -505,6 +512,26 @@
   <a href="#wi-fi-tool" class="md-nav__link">
     Wi-Fi Tool
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
+    Web, Mail, FTP, and Telnet server. (Optional)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1230,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../traveling/" class="md-nav__link">
+      <a href="../../motivation/traveling/" class="md-nav__link">
         Traveling
       </a>
     </li>
@@ -1242,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../painting/" class="md-nav__link">
+      <a href="../../motivation/painting/" class="md-nav__link">
         Painting
       </a>
     </li>
@@ -1329,8 +1356,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tftp-tool" class="md-nav__link">
-    TFTP tool
+  <a href="#tftp-tools" class="md-nav__link">
+    TFTP Tools
   </a>
   
 </li>
@@ -1359,6 +1386,13 @@
         <li class="md-nav__item">
   <a href="#source-code-tagging-system" class="md-nav__link">
     Source Code Tagging System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching-tools" class="md-nav__link">
+    Searching Tools
   </a>
   
 </li>
@@ -1421,6 +1455,26 @@
   <a href="#wi-fi-tool" class="md-nav__link">
     Wi-Fi Tool
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
+    Web, Mail, FTP, and Telnet server. (Optional)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1493,10 +1547,10 @@
 <li><a href="https://www.netsarang.com/en/xshell/">Xshell</a>: The Industry's Most Powerful SSH Client.</li>
 <li><a href="https://mobaxterm.mobatek.net/">MobaXterm</a>: Enhanced terminal for tabbed SSH client, network tools and so on.</li>
 </ul>
-<h2 id="tftp-tool">TFTP tool</h2>
+<h2 id="tftp-tools">TFTP Tools</h2>
 <p>There are some TFTP tools, most of all I use <code>tftp64</code> beacuse my development environment is Windows 10.</p>
 <ul>
-<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a>: tftp server, client and syslog server.</li>
+<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a>: for Windows, tftp server, client and syslog server.</li>
 <li><a href="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git">tftpd-hpa</a>: for Linux OS.</li>
 <li><a href="https://www.macupdate.com/app/mac/11116/tftpserver">TftpServer for Mac</a>: for Mac OS.</li>
 </ul>
@@ -1552,15 +1606,15 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 <span class="gp">$ </span>clang-format -i main.c
 </code></pre></div></p>
 <h2 id="source-code-tagging-system">Source Code Tagging System</h2>
-<ul>
-<li><a href="http://cscope.sourceforge.net/">CScope</a></li>
-<li><a href="https://www.gnu.org/software/global/">GNU Global</a>: source code tagging system.</li>
-</ul>
 <p>Use <a href="https://w1.fi/hostapd/">hostapd</a> as an example, fetch the code and untar it.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://w1.fi/releases/hostapd-2.9.tar.gz
 <span class="gp">$ </span>tar xvf hostapd-2.9.tar.gz
 <span class="gp">$ </span><span class="nb">cd</span> hostapd-2.9
 </code></pre></div>
+<ul>
+<li><a href="http://cscope.sourceforge.net/">CScope</a></li>
+<li><a href="https://www.gnu.org/software/global/">GNU Global</a>: source code tagging system.</li>
+</ul>
 <p>Install global</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install global
 <span class="gp">$ </span>sudo ldconfig
@@ -1618,8 +1672,38 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 <li><a href="https://www.doxygen.nl/index.html">Doxygen</a>: Generate documentation from source code.</li>
 </ul>
 <p>An example for <code>hostapd</code> to generate Doxygen document</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span> <span class="si">${</span><span class="nv">code_path</span><span class="si">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install doxygen
+<span class="gp">$ </span>sudo apt-get install graphviz
+<span class="gp">$ </span>sudo ldconfig
+<span class="gp"># </span>-- PRODUCT CONFIGURATION --
+<span class="gp">$ </span>doxygen -g Doxygen
+<span class="gp"># </span>-- REVISE CONFIGURATION --
+<span class="gp"># </span><span class="nv">HAVE_DOT</span> <span class="o">=</span> YES
+<span class="gp"># </span><span class="nv">CALL_GRAPH</span> <span class="o">=</span> YES
+<span class="gp"># </span><span class="nv">CALLER_GRAPH</span> <span class="o">=</span> YES
+<span class="gp"># </span><span class="nv">RECURSIVE</span> <span class="o">=</span> YES
+<span class="gp"># </span><span class="nv">INLINE_SOURCE</span> <span class="o">=</span> YES
+<span class="gp"># </span>--- RUN --
 <span class="gp">$ </span>doxygen Doxygen
+<span class="gp"># </span>-- MOVE TO HTTPD FILE FOLDER ---
+<span class="gp"># </span>sudo mv html/ /var/www/html/hostapd
+</code></pre></div>
+For more detail, please check <a href="https://blog.longwin.com.tw/2011/04/doxygen-document-generator-2011/">this blog</a></p>
+<h2 id="searching-tools">Searching Tools</h2>
+<ul>
+<li>grep</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ grep -rsni eloop_register_read_sock *
+</code></pre></div>
+<ul>
+<li>ack </li>
+</ul>
+<p>Install</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install ack-grep
+$ sudo ldconfig
+</code></pre></div>
+<p>Usage</p>
+<div class="highlight"><pre><span></span><code>$ ack eloop_register_read_sock
 </code></pre></div>
 <h2 id="static-code-analysis-tools">Static Code Analysis Tools</h2>
 <h3 id="lint">Lint</h3>
@@ -1638,7 +1722,7 @@ $ cppcheck -j 3 --enable=all --xml 2&gt;err.xml ./   # &lt; = Get Report
 <li><a href="https://splint.org/">splint</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get update -y; sudo apt-get install -y splint
-$ splint test.c +bounds -varuse
+$ splint test.c +bounds -varuse   # bounds: check memory leak 
 </code></pre></div>
 <ul>
 <li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
@@ -1684,6 +1768,11 @@ $ splint test.c +bounds -varuse
 <li><a href="https://www.metageek.com/products/inssider/">InSSIDer 5</a></li>
 <li><a href="https://www.nirsoft.net/utils/wifi_information_view.html">wifiinfoview</a></li>
 <li><a href="https://www.aircrack-ng.org/doku.php?id=airodump-ng">airodump-ng</a></li>
+</ul>
+<h2 id="services">Services</h2>
+<h3 id="web-mail-ftp-and-telnet-server-optional">Web, Mail, FTP, and Telnet server. (Optional)</h3>
+<ul>
+<li><a href="http://www.cmfperception.com/liteserve.html">LiteServe</a></li>
 </ul>
 <h2 id="web-debugging-proxy">Web Debugging Proxy</h2>
 <ul>
