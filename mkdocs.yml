@@ -52,8 +52,8 @@ nav:
     - 'Collection':
         - 'Collections': 'collections/index.md'
     - 'Motivation':
-        - 'Traveling': 'traveling.md'
-        - 'Painting': 'painting.md'
+        - 'Traveling': 'motivation/traveling.md'
+        - 'Painting': 'motivation/painting.md'
 
 theme:
   name: material
