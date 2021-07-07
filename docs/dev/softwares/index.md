@@ -15,12 +15,15 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (Highly Recommended)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens): easy to check git history and so on.
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+- [Trailing Space](https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces)
+- [BookMark](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks)
 - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 - [Indent one space](https://marketplace.visualstudio.com/items?itemName=usernamehw.indent-one-space)
 - [XML (Red Hat)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml)
 - [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format)
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+- [ToDo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 
 better to enlarge `max_user_watches` also.
 
@@ -35,7 +38,8 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 - Deleting tabs when using tabs as spaces: <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
 - Switch to next Tab: <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
 - Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>
-
+- BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd>
+- Toggle BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd>
 ### Code Server
 
 VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.
@@ -96,6 +100,16 @@ There is HTTP file server which can run in Windows OS.
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
+- [VS Code](https://code.visualstudio.com/docs/cpp/cpp-ide): use `clang-format` by default.
+
+- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
+
+Below script format `main.c` by `clang-format`.
+```console
+$ sudo apt-get install clang-format
+$ clang-format -i main.c
+```
+
 - [AStyle](http://astyle.sourceforge.net/): code formatter for the C, C++, C​++/CLI, Objective‑C, C# and Java.
 
 Install `astyle` and there is a case for coding convention as following to format `main.c` or `*.c` and `*.h` files
@@ -132,15 +146,6 @@ do
   rm -rf $f
 done
 ```
-
-- [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
-
-Below script format `main.c` by `clang-format`.
-```console
-$ sudo apt-get install clang-format
-$ clang-format -i main.c
-```
-
 ## Source Code Tagging System
 
 Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
@@ -256,7 +261,7 @@ For more detail, please check [this blog](https://blog.longwin.com.tw/2011/04/do
 $ grep -rsni eloop_register_read_sock *
 ```
 
-- ack 
+- ack
 
 Install
 
