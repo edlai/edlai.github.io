@@ -413,16 +413,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tftp-tools" class="md-nav__link">
-    TFTP Tools
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tftp-server" class="md-nav__link">
+    TFTP Server
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#hfs" class="md-nav__link">
-    HFS
+        
+          <li class="md-nav__item">
+  <a href="#http-file-server-optional" class="md-nav__link">
+    HTTP File Server (Optional)
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
+    Web, Mail, FTP, and Telnet server (Optional)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -512,26 +532,6 @@
   <a href="#wi-fi-tool" class="md-nav__link">
     Wi-Fi Tool
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
-    Services
-  </a>
-  
-    <nav class="md-nav" aria-label="Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
-    Web, Mail, FTP, and Telnet server. (Optional)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1356,16 +1356,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tftp-tools" class="md-nav__link">
-    TFTP Tools
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tftp-server" class="md-nav__link">
+    TFTP Server
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#hfs" class="md-nav__link">
-    HFS
+        
+          <li class="md-nav__item">
+  <a href="#http-file-server-optional" class="md-nav__link">
+    HTTP File Server (Optional)
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
+    Web, Mail, FTP, and Telnet server (Optional)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1459,26 +1479,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
-    Services
-  </a>
-  
-    <nav class="md-nav" aria-label="Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web-mail-ftp-and-telnet-server-optional" class="md-nav__link">
-    Web, Mail, FTP, and Telnet server. (Optional)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#web-debugging-proxy" class="md-nav__link">
     Web Debugging Proxy
   </a>
@@ -1530,7 +1530,7 @@
 </ul>
 <h3 id="code-server">Code Server</h3>
 <p>VSC also provides Web IDE called <a href="https://github.com/cdr/code-server/releases">Code Server</a>, use below command to install Code Server.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://github.com/cdr/code-server/releases/download/v3.5.0/code-server_3.5.0_amd64.deb
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -fsSL https://code-server.dev/install.sh <span class="p">|</span> sh
 </code></pre></div>
 <p>Its setting file is in <code>.config/code-server/config.yaml</code>. You can revise <code>Bind-addr</code> and <code>Password</code> to allow external access.</p>
 <div class="highlight"><pre><span></span><code><span class="go">Bind-addr: 0.0.0.0:9786   # &lt; = Use IP 0.0.0.0 and port 9786 to allow external access</span>
@@ -1547,17 +1547,22 @@
 <li><a href="https://www.netsarang.com/en/xshell/">Xshell</a>: The Industry's Most Powerful SSH Client.</li>
 <li><a href="https://mobaxterm.mobatek.net/">MobaXterm</a>: Enhanced terminal for tabbed SSH client, network tools and so on.</li>
 </ul>
-<h2 id="tftp-tools">TFTP Tools</h2>
+<h2 id="services">Services</h2>
+<h3 id="tftp-server">TFTP Server</h3>
 <p>There are some TFTP tools, most of all I use <code>tftp64</code> beacuse my development environment is Windows 10.</p>
 <ul>
-<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a>: for Windows, tftp server, client and syslog server.</li>
+<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftp64</a>: for Windows OS, it includes tftp server, client and syslog server.</li>
 <li><a href="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git">tftpd-hpa</a>: for Linux OS.</li>
 <li><a href="https://www.macupdate.com/app/mac/11116/tftpserver">TftpServer for Mac</a>: for Mac OS.</li>
 </ul>
-<h2 id="hfs">HFS</h2>
+<h3 id="http-file-server-optional">HTTP File Server (Optional)</h3>
 <p>There is HTTP file server which can run in Windows OS.</p>
 <ul>
 <li><a href="https://www.rejetto.com/hfs/">HFS Server</a>: HTTP file server.</li>
+</ul>
+<h3 id="web-mail-ftp-and-telnet-server-optional">Web, Mail, FTP, and Telnet server (Optional)</h3>
+<ul>
+<li><a href="http://www.cmfperception.com/liteserve.html">LiteServe</a></li>
 </ul>
 <h2 id="code-comparer">Code Comparer</h2>
 <ul>
@@ -1768,11 +1773,6 @@ $ splint test.c +bounds -varuse   # bounds: check memory leak
 <li><a href="https://www.metageek.com/products/inssider/">InSSIDer 5</a></li>
 <li><a href="https://www.nirsoft.net/utils/wifi_information_view.html">wifiinfoview</a></li>
 <li><a href="https://www.aircrack-ng.org/doku.php?id=airodump-ng">airodump-ng</a></li>
-</ul>
-<h2 id="services">Services</h2>
-<h3 id="web-mail-ftp-and-telnet-server-optional">Web, Mail, FTP, and Telnet server. (Optional)</h3>
-<ul>
-<li><a href="http://www.cmfperception.com/liteserve.html">LiteServe</a></li>
 </ul>
 <h2 id="web-debugging-proxy">Web Debugging Proxy</h2>
 <ul>
