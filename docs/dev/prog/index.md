@@ -67,9 +67,14 @@ strtol(const char *nptr, char **endptr, int base);
 
 - [Reverse an array in C]https://www.techiedelight.com/reverse-array-c/
 
-## Reference
+
+### LeetCode
 
 - [LeetCode 30 days](https://www.youtube.com/watch?v=Hy1hE0HBR3U&ab_channel=FeisStudio)
+- [LeetCode Note](https://hannahpun.gitbook.io/leetcode-note/)
+
+## Reference
+
 
 
 ~~ TBD ~~

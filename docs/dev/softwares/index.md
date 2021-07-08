@@ -64,7 +64,11 @@ $ code-server .
 ### WSL2
 
 By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://github.com/microsoft/WSL2-Linux-Kernel/releases
-) after [Windows 10 Versions 1903 and 1909](https://devblogs.microsoft.com/commandline/wsl-2-support-is-coming-to-windows-10-versions-1903-and-1909/). Install Windows 10 and WSL 2 with [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). You can develop your code in VSC via WSL2 also. 
+) after [Windows 10 Versions 1903 and 1909](https://devblogs.microsoft.com/commandline/wsl-2-support-is-coming-to-windows-10-versions-1903-and-1909/). Install Windows 10 and WSL 2 with [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). You can develop your code in VSC via WSL2 also.
+
+- [Get started using Python for web development on Windows](https://docs.microsoft.com/en-us/windows/python/web-frameworks)
+- [Install Node.js on Windows Subsystem for Linux (WSL2)](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
+- [Get started with C++ and C](https://docs.microsoft.com/en-us/cpp/?view=msvc-160)
 
 ## Terminal Tools
 
