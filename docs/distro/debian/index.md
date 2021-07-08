@@ -21,7 +21,7 @@ $ sudo apt-get install -y openssh-server vim net-tools usbutils pciutils
 $ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
 $ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
 $ sudo apt-get install -y software-properties-common rsync
-$ sudo apt-get install -y libncurses5-dev gcc grub2 wget
+$ sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves
 $ sudo service sshd restart
 ```
 
@@ -67,6 +67,17 @@ $ cp /boot/config-$(uname -r) .config
 $ scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
 ```
 
+Revise CONFIG_DEBUG_INFO_BTF to avoid build error
+<!--
+BTF: .tmp_vmlinux.btf: pahole version v1.12 is too old, need at least v1.16
+Failed to generate BTF for vmlinux
+Try to disable CONFIG_DEBUG_INFO_BTF
+make: *** [Makefile:1167: vmlinux] Error 1
+-->
+```
+CONFIG_DEBUG_INFO_BTF=n
+```
+
 Compile and Install the Kernel
 
 ```console
@@ -105,6 +116,8 @@ module_exit(hello_exit);
 ```
 cat /proc/modules
 ```
+
+## Coredump
 
 ## Reference
 

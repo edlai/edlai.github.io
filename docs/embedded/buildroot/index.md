@@ -47,6 +47,11 @@ $ make tcpdump-dirclean
 $ make tcpdump-rebuild
 ```
 
+### Hello
+
+
+[Add hello app to buildroot](https://hackmd.io/@c_0KKCwzQE2rsd39mpvNQQ/rklPsoKaI)
+
 ### Add some useful Packages
 
 There are some useful packages and its location when pressing `make menuconfig`. Consider to enable them then make the image again.

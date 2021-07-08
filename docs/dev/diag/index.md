@@ -3,7 +3,7 @@
 
 ## Wireshare
 
-Download and install Wireshark from Internet. If you would like to capture __Wireless Traffice__ in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For `Debian 10.10`, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10. 
+Download and install Wireshark from Internet. If you would like to capture __Wireless Traffice__ in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For `Debian 10.10`, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.
 
 ### Upgrade Linux Kernel
 
