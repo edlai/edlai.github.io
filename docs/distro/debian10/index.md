@@ -121,64 +121,58 @@ $ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
 
 ## Linux Kernel Module
 
-### Hello, world
+### Hello, World
 
-``` python fct_label="Python 2"
-print "Bonjour" 
-```
+=== "C"
 
-``` python fct_label="Python 3"
-print("Bonjour")
-```
+    ``` c
+    #include <linux/init.h>
+    #include <linux/module.h>
 
-``` c fct_label="hello.c"
-#include <linux/init.h>
-#include <linux/module.h>
+    MODULE_LICENSE("Dual BSD/GPL");
 
-MODULE_LICENSE("Dual BSD/GPL");
+    static int hello_init(void)
+    {
+      printk(KERN_INFO "Hello, world\n");
+      return 0;
+    }
 
-static int hello_init(void)
-{
-  printk(KERN_INFO "Hello, world\n");
-  return 0;
-}
+    static void hello_exit(void)
+    {
+      printk(KERN_INFO "Goodbye, Hello world\n");
+    }
 
-static void hello_exit(void)
-{
-  printk(KERN_INFO "Goodbye, Hello world\n");
-}
+    module_init(hello_init);
+    module_exit(hello_exit);
+    ```
 
-module_init(hello_init);
-module_exit(hello_exit);
-```
+=== "Makefile"
 
-Makefile
+    ```makefile
+    PWD := $(shell pwd)
+    KVERSION := $(shell uname -r)
+    KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
 
-```makefile
-PWD := $(shell pwd)
-KVERSION := $(shell uname -r)
-KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
+    MODULE_NAME = hello
+    obj-m := $(MODULE_NAME).o
 
-MODULE_NAME = hello
-obj-m := $(MODULE_NAME).o
+    all:
+      make -C $(KERNEL_DIR) M=$(PWD) modules
 
-all:
-  make -C $(KERNEL_DIR) M=$(PWD) modules
+    test:
+      dmesg -c
+      sudo insmod ./hello.ko
+      sudo lsmod | grep hello
+      cat /proc/modules  | grep hello
+      sudo rmmod hello
 
-test:
-  dmesg -c
-  sudo insmod ./hello.ko
-  sudo lsmod | grep hello
-  cat /proc/modules  | grep hello
-  sudo rmmod hello
+    clean:
+      make -C $(KERNEL_DIR) M=$(PWD) clean
+    ```
 
-clean:
-  make -C $(KERNEL_DIR) M=$(PWD) clean
-```
+Build the module
 
-Make
-
-```console
+``` console
 $ make
 make -C /usr/src/linux-headers-5.10.40/ M=/home/ed/hello  modules
 make[1]: Entering directory '/usr/src/linux-headers-5.10.40'
@@ -208,7 +202,7 @@ $ tree
 
 Verification
 
-```console
+``` console
 $ make test
 [ 5163.936243] hello: loading out-of-tree module taints kernel.
 [ 5163.936708] Hello world !
@@ -220,160 +214,162 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
 [ 5360.557612] Bye !
 ```
 
-### Proc
+### Procfs
 
-hello_proc.c
+=== "C"
 
-```c
-#include <linux/kernel.h> /* We're doing kernel work */
-#include <linux/module.h> /* Specifically, a module */
-#include <linux/proc_fs.h>    /* Necessary because we use the proc fs */
-#include <asm/uaccess.h>  /* for copy_from_user */
-#include <linux/fs.h>
-#include <linux/seq_file.h>
-#include <linux/slab.h>
-
-#include "hello.h"
-
-#define PROCFS_MAX_SIZE     1024
-#define PROCFS_NAME         "hello"
-static char procfs_buffer[PROCFS_MAX_SIZE];
-static unsigned long procfs_buffer_size = 0;
-static struct proc_dir_entry *entry;
-static struct proc_dir_entry *parent;
-
-/**
- * This function is called when the /proc file is read.
- */
-static ssize_t procfile_read(struct file *file, char __user *buffer, size_t count, loff_t *offset)
-{
-    if (*offset > 0 || count < PROCFS_MAX_SIZE) /* we have finished to read, return 0 */
-        return 0;
-
-    /* fill the buffer, return the buffer size */
-    if(copy_to_user(buffer, procfs_buffer, procfs_buffer_size))
-        return -EFAULT;
-    *offset = procfs_buffer_size;
-    return procfs_buffer_size;
-}
-
-/**
- * This function is called when the /proc file is written
- */
-static ssize_t procfile_write(struct file* file,const char __user *buffer,size_t count,loff_t *f_pos){
-    int tlen;
-    char *tmp = kzalloc((count+1),GFP_KERNEL);
-    if(!tmp)return -ENOMEM;
-    if(copy_from_user(tmp,buffer,count)){
+    ``` c
+    #include <linux/kernel.h> /* We're doing kernel work */
+    #include <linux/module.h> /* Specifically, a module */
+    #include <linux/proc_fs.h>    /* Necessary because we use the proc fs */
+    #include <asm/uaccess.h>  /* for copy_from_user */
+    #include <linux/fs.h>
+    #include <linux/seq_file.h>
+    #include <linux/slab.h>
+    
+    #include "hello.h"
+    
+    #define PROCFS_MAX_SIZE     1024
+    #define PROCFS_NAME         "hello"
+    static char procfs_buffer[PROCFS_MAX_SIZE];
+    static unsigned long procfs_buffer_size = 0;
+    static struct proc_dir_entry *entry;
+    static struct proc_dir_entry *parent;
+    
+    /**
+     * This function is called when the /proc file is read.
+     */
+    static ssize_t procfile_read(struct file *file, char __user *buffer, size_t count, loff_t *offset)
+    {
+        if (*offset > 0 || count < PROCFS_MAX_SIZE) /* we have finished to read, return 0 */
+            return 0;
+    
+        /* fill the buffer, return the buffer size */
+        if(copy_to_user(buffer, procfs_buffer, procfs_buffer_size))
+            return -EFAULT;
+        *offset = procfs_buffer_size;
+        return procfs_buffer_size;
+    }
+    
+    /**
+     * This function is called when the /proc file is written
+     */
+    static ssize_t procfile_write(struct file* file,const char __user *buffer,size_t count,loff_t *f_pos){
+        int tlen;
+        char *tmp = kzalloc((count+1),GFP_KERNEL);
+        if(!tmp)return -ENOMEM;
+        if(copy_from_user(tmp,buffer,count)){
+            kfree(tmp);
+            return EFAULT;
+        }
+    
+        tlen = PROCFS_MAX_SIZE;
+        if (count < PROCFS_MAX_SIZE)
+            tlen = count;
+        memcpy(&procfs_buffer,tmp,tlen);
+        procfs_buffer_size = tlen;
         kfree(tmp);
-        return EFAULT;
+        printk("Procfs Input: %s\n", procfs_buffer);
+        return tlen;
     }
-
-    tlen = PROCFS_MAX_SIZE;
-    if (count < PROCFS_MAX_SIZE)
-        tlen = count;
-    memcpy(&procfs_buffer,tmp,tlen);
-    procfs_buffer_size = tlen;
-    kfree(tmp);
-    printk("Procfs Input: %s\n", procfs_buffer);
-    return tlen;
-}
-
-static int procfile_show(struct seq_file *m,void *v){
-    static char *str = NULL;
-    seq_printf(m,"%s\n",str);
-    return 0;
-}
-
-/**
- * Open the procfile
- */
-static int procfile_open(struct inode *inode,struct file *file){
-    return single_open(file,procfile_show,NULL);
-}
-
-static struct proc_ops proc_fops = {
-    .proc_lseek = seq_lseek,
-    .proc_open = procfile_open,
-    .proc_read = procfile_read,
-    .proc_release = single_release,
-    .proc_write = procfile_write,
-};
-
-/**
- *This function is called from main.c when the module is loaded
- */
- int __init my_proc_init(void)
-{
-    parent = proc_mkdir(PROCFS_NAME,NULL);
-    entry = proc_create("system",0777,parent,&proc_fops);
-    if(!entry) {
-        printk(KERN_INFO "unable to create /proc/hello/system");
-        return -1;
+    
+    static int procfile_show(struct seq_file *m,void *v){
+        static char *str = NULL;
+        seq_printf(m,"%s\n",str);
+        return 0;
     }
-    printk(KERN_INFO "/proc/hello/system is created");
-    return 0;
-}
+    
+    /**
+     * Open the procfile
+     */
+    static int procfile_open(struct inode *inode,struct file *file){
+        return single_open(file,procfile_show,NULL);
+    }
+    
+    static struct proc_ops proc_fops = {
+        .proc_lseek = seq_lseek,
+        .proc_open = procfile_open,
+        .proc_read = procfile_read,
+        .proc_release = single_release,
+        .proc_write = procfile_write,
+    };
+    
+    /**
+     *This function is called from main.c when the module is loaded
+     */
+     int __init my_proc_init(void)
+    {
+        parent = proc_mkdir(PROCFS_NAME,NULL);
+        entry = proc_create("system",0777,parent,&proc_fops);
+        if(!entry) {
+            printk(KERN_INFO "unable to create /proc/hello/system");
+            return -1;
+        }
+        printk(KERN_INFO "/proc/hello/system is created");
+        return 0;
+    }
+    
+    /**
+     *This function is called from main.c when the module is unloaded
+     */
+    void __exit my_proc_cleanup(void)
+    {
+        remove_proc_entry("system", parent);
+        remove_proc_entry(PROCFS_NAME, NULL);
+    }
+    
+    static int __init hello_init(void)
+    {
+        int rc;
+        printk(KERN_INFO "Hello, Procfs!\n");
+    
+        /* create the /proc file */
+        rc = my_proc_init();
+        if (rc == -1)
+            return -1;
+    
+        return 0;
+    }
+    
+    static void __exit hello_exit(void)
+    {
+        my_proc_cleanup();
+        printk(KERN_INFO "Goodbye, Procfs!\n");
+    }
+    
+    module_init(hello_init);
+    module_exit(hello_exit);
+    
+    MODULE_LICENSE("GPL");
+    MODULE_DESCRIPTION("Hello Procfs example.");
+    MODULE_SUPPORTED_DEVICE("hello");
+    ```
 
-/**
- *This function is called from main.c when the module is unloaded
- */
-void __exit my_proc_cleanup(void)
-{
-    remove_proc_entry("system", parent);
-    remove_proc_entry(PROCFS_NAME, NULL);
-}
+=== "Makefile"
 
-static int __init hello_init(void)
-{
-    int rc;
-    printk(KERN_INFO "Hello, Procfs!\n");
+    ``` makefile
+    PWD := $(shell pwd)
+    KVERSION := $(shell uname -r)
+    KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
+    
+    MODULE_NAME = hello
+    obj-m := $(MODULE_NAME).o
+    
+    all:
+    	make -C $(KERNEL_DIR) M=$(PWD) modules
+    
+    test:
+    	sudo dmesg -c
+    	sudo insmod ./hello.ko
+    	echo "procfs hello test" >> /proc/hello/system
+    	sudo dmesg -c
+    	sudo rmmod hello.ko
+    
+    clean:
+    	make -C $(KERNEL_DIR) M=$(PWD) clean
+    ```
 
-    /* create the /proc file */
-    rc = my_proc_init();
-    if (rc == -1)
-        return -1;
 
-    return 0;
-}
-
-static void __exit hello_exit(void)
-{
-    my_proc_cleanup();
-    printk(KERN_INFO "Goodbye, Procfs!\n");
-}
-
-module_init(hello_init);
-module_exit(hello_exit);
-
-MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Hello Procfs example.");
-MODULE_SUPPORTED_DEVICE("hello");
-```
-
-Makefile
-
-```makefile
-PWD := $(shell pwd)
-KVERSION := $(shell uname -r)
-KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
-
-MODULE_NAME = hello
-obj-m := $(MODULE_NAME).o
-
-all:
-	make -C $(KERNEL_DIR) M=$(PWD) modules
-
-test:
-	sudo dmesg -c
-	sudo insmod ./hello.ko
-	echo "procfs hello test" >> /proc/hello/system
-	sudo dmesg -c
-	sudo rmmod hello.ko
-
-clean:
-	make -C $(KERNEL_DIR) M=$(PWD) clean
-```
 ### IO Access
 
 ### seq_file interface
