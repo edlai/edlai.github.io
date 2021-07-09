@@ -578,9 +578,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#io-access" class="md-nav__link">
-    IO Access
+  <a href="#io-port" class="md-nav__link">
+    IO Port
   </a>
+  
+    <nav class="md-nav" aria-label="IO Port">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-mapped-io-pmio" class="md-nav__link">
+    Port-mapped I/O (PMIO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-mapped-io-mmio" class="md-nav__link">
+    Memory-mapped I/O (MMIO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framwbuffer" class="md-nav__link">
+    Framwbuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1285,9 +1319,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#io-access" class="md-nav__link">
-    IO Access
+  <a href="#io-port" class="md-nav__link">
+    IO Port
   </a>
+  
+    <nav class="md-nav" aria-label="IO Port">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-mapped-io-pmio" class="md-nav__link">
+    Port-mapped I/O (PMIO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-mapped-io-mmio" class="md-nav__link">
+    Memory-mapped I/O (MMIO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framwbuffer" class="md-nav__link">
+    Framwbuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1671,7 +1739,16 @@ make: *** [Makefile:1167: vmlinux] Error 1
 </code></pre></div>
 </div>
 </div>
-<h3 id="io-access">IO Access</h3>
+<p>~~ TBD ~~</p>
+<h3 id="io-port">IO Port</h3>
+<h4 id="port-mapped-io-pmio">Port-mapped I/O (PMIO)</h4>
+<h4 id="memory-mapped-io-mmio">Memory-mapped I/O (MMIO)</h4>
+<h4 id="framwbuffer">Framwbuffer</h4>
+<h4 id="function">Function</h4>
+<div class="highlight"><pre><span></span><code>#include &lt;linux/ioport.h&gt;
+struct resource *request_region(unsigned long first, unsigned long n, const char *name);
+void release_region(unsigned long start, unsigned long n);
+</code></pre></div>
 <h3 id="seq_file-interface">seq_file interface</h3>
 <h2 id="bpf">BPF</h2>
 <h3 id="precondition">Precondition</h3>
@@ -1694,7 +1771,9 @@ make: *** [Makefile:1167: vmlinux] Error 1
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://www.craftypenguins.net/kernel-module-snippets-part-1-hello-world/">Kernel Module Snippets – Part 1 – Hello World</a></li>
-<li>(https://hackmd.io/@sysprog/linux-ebpf)</li>
+<li><a href="https://hackmd.io/@sysprog/linux-ebpf">Linux 核心設計: 透過 eBPF 觀察作業系統行為</a></li>
+<li><a href="https://linux-kernel-labs.github.io/refs/heads/master/labs/interrupts.html">I/O access and Interrupts</a></li>
+<li><a href="https://lwn.net/Kernel/LDD3/">Linux Device Drivers, Third Edition</a></li>
 </ul>
 <!--
 sudo apt-get install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils
