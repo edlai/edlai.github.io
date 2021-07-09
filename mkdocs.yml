@@ -3,8 +3,6 @@ site_url: https://edlai.github.io/
 nav:
     - Home: 'index.md'
     - 'Engineering':
-        #- 'Linux Distribution':
-        #  - 'Debian': 'distro/debian/index.md'
         - 'Development Tools':
           - 'Softwares Tools': 'dev/softwares/index.md'
           - 'Accessories': 'dev/accessories/index.md'
@@ -18,9 +16,11 @@ nav:
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
-        - 'Embedded Linux': 
+        - 'Embedded Linux':
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
+        - 'Linux Distribution':
+          - 'Debian 10.10': 'distro/debian/index.md'
         - 'Computer Networks':
           - 'Application Layer':
             - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
@@ -32,15 +32,15 @@ nav:
             - 'Moving Average and Backward System' : 'dsp/moving-average-and-backward-system/index.md'
           - 'Spectrum Analysis':
             - 'Window Size and the Spectrogram' : 'dsp/window-size-and-the-spectrogram/index.md'
-        - 'Operating Systems': 
+        - 'Operating Systems':
           - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
-        - 'Man-Machine Interfaces': 
+        - 'Man-Machine Interfaces':
           - 'Industry Standard Architecture (ISA)': 'io/isa/index.md'
           - 'Peripheral Component Interconnect (PCI)': 'io/pci/index.md'
           - 'Parallel Port Device (LPT) and Linux Device Driver': 'io/ldd/index.md'
           - 'General Purpose Input Output (GPIO)': 'io/gpio/index.md'
           - 'Inter-Integrated Circuit (I2C)': 'io/i2c/index.md'
-        - 'Television Engineering': 
+        - 'Television Engineering':
           - 'Multimedia Player': 'tv/player/index.md'
           - 'Digital Vedio Conversion - MPEG-1': 'tv/mpeg1/index.md'
 #         - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'

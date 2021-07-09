@@ -48,7 +48,7 @@ VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-serve
 $ curl -fsSL https://code-server.dev/install.sh | sh
 ```
 
-Its setting file is in `.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access.
+Its setting file is in `~/.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access (user needs to run code-server to product this config file).
 
 ```console
 Bind-addr: 0.0.0.0:9786   # < = Use IP 0.0.0.0 and port 9786 to allow external access
