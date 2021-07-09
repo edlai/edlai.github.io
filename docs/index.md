@@ -8,11 +8,11 @@ I always like to see how it works on my hands after I studied some knowledge fro
 
 There are several sections of this Wiki.
 
-### [Engineering](distro/debian/index.md)
+### [Engineering](dev/softwares/index.md)
 There are some of my reports and homeworks when I was a BSEE undergraduate student in university or in my career.
 
 ### [Education](qualitative-research/index.md)
- 
+
 There are some of the reports and homeworks when I was a MSMIE graduate student. But it's still under construction now. 
 
 ### [Collection](collections/index.md)

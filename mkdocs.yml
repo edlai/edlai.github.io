@@ -20,7 +20,7 @@ nav:
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
         - 'Linux Distribution':
-          - 'Debian 10.10': 'distro/debian/index.md'
+          - 'Debian 10.10': 'distro/debian10/index.md'
         - 'Computer Networks':
           - 'Application Layer':
             - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
@@ -63,11 +63,7 @@ theme:
     - navigation.tabs
 
 markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.superfences
-
-extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
-  - javascripts/config.js
-extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
+  - markdown_fenced_code_tabs:
+      single_block_as_tab: False
+      active_class: 'active'
+      template: 'default'

@@ -1,5 +1,11 @@
 # Debian 10.10
 
+This chapter describes
+
+- how to upgrade and rebuild Linux Kernel in Debian 10.10.
+- how to insert and remove Linux Device Driver.
+
+
 ## Rebuild Linux Kernel
 
 Download and install Wireshark from Internet.For `Debian 10.10`, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.
@@ -117,9 +123,15 @@ $ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
 
 ### Hello, world
 
-hello.c
+``` python fct_label="Python 2"
+print "Bonjour" 
+```
 
-```c
+``` python fct_label="Python 3"
+print("Bonjour")
+```
+
+``` c fct_label="hello.c"
 #include <linux/init.h>
 #include <linux/module.h>
 
@@ -362,6 +374,9 @@ test:
 clean:
 	make -C $(KERNEL_DIR) M=$(PWD) clean
 ```
+### IO Access
+
+### seq_file interface
 
 ## BPF
 
