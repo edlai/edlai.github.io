@@ -430,6 +430,8 @@ $ objcopy -I elf64-little -O binary a.o a.bin  # < = Extract eBPF bytecode
 - [Kernel Module Snippets – Part 1 – Hello World](https://www.craftypenguins.net/kernel-module-snippets-part-1-hello-world/)
 - [Linux 核心設計: 透過 eBPF 觀察作業系統行為](https://hackmd.io/@sysprog/linux-ebpf)
 - [I/O access and Interrupts](https://linux-kernel-labs.github.io/refs/heads/master/labs/interrupts.html)
+- [Linux Device Drivers, Third Edition](https://lwn.net/Kernel/LDD3/)
+
 <!--
 sudo apt-get install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils
 -->
