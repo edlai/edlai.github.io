@@ -1151,11 +1151,11 @@
                 <h1 id="under-construction-now">Under Construction now ...</h1>
 <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
 <h2 id="parallel-port-device-and-linux-device-driver">Parallel Port Device and Linux Device Driver</h2>
-<p> <pre><code class>$author:   Jin-Wen (Ed) Lai, s9360511[at]ntut[dot]org[dot]tw
+<div class="highlight"><pre><span></span><code>$author:   Jin-Wen (Ed) Lai, s9360511[at]ntut[dot]org[dot]tw
 $date:     May. 2003
 $revised:  Mar. 2018
 $keywords: man, machine, interface
-</code></pre></p>
+</code></pre></div>
 <p>An exercise of an implementation of Linux Device Driver. </p>
 <h2 id="content">Content</h2>
 <ul>
@@ -1697,326 +1697,326 @@ $keywords: man, machine, interface
 <li>Borrowed from Specifications</li>
 <li>主程式(Main):     </li>
 </ul>
-<p> <pre><code class=nasm>Main: 
-        CALL    Enter_Configuration_mode 
-        CALL    Check_Chip             ;Don't need in BIOS POST code 
-        JNC     Initial_OK               ;Don't need in BIOS POST code 
-        CALL    Earlyio_Program 
-        CALL    Initialize_All_Device 
-        CALL    Before_Boot 
-        CALL    Exit_Configuration_mode 
-        CALL    Reset_System           ;Don't need in BIOS POST code 
-  Initial_OK: 
-        CALL    Exit_Configuration_mode    ;Don't need in BIOS POST code 
-        MOV   AH, 4Ch 
-        INT     21h
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="nl">Main:</span> 
+        <span class="nf">CALL</span>    <span class="nv">Enter_Configuration_mode</span> 
+        <span class="nf">CALL</span>    <span class="nb">Ch</span><span class="nv">eck_Chip</span>             <span class="c1">;Don&#39;t need in BIOS POST code </span>
+        <span class="nf">JNC</span>     <span class="nv">Initial_OK</span>               <span class="c1">;Don&#39;t need in BIOS POST code </span>
+        <span class="nf">CALL</span>    <span class="nv">Earlyio_Program</span> 
+        <span class="nf">CALL</span>    <span class="nv">Initialize_All_Device</span> 
+        <span class="nf">CALL</span>    <span class="nv">Before_Boot</span> 
+        <span class="nf">CALL</span>    <span class="nv">Exit_Configuration_mode</span> 
+        <span class="nf">CALL</span>    <span class="nv">Reset_System</span>           <span class="c1">;Don&#39;t need in BIOS POST code </span>
+  <span class="nl">Initial_OK:</span> 
+        <span class="nf">CALL</span>    <span class="nv">Exit_Configuration_mode</span>    <span class="c1">;Don&#39;t need in BIOS POST code </span>
+        <span class="nf">MOV</span>   <span class="nb">AH</span><span class="p">,</span> <span class="mh">4Ch</span> 
+        <span class="nf">INT</span>     <span class="mh">21h</span>
+</code></pre></div>
 <ul>
 <li>驅動週邊裝置:     </li>
 </ul>
-<p> <pre><code class=nasm>Initialize_All_Device PROC NEAR 
-APC_PME_Status: 
-KBC_Keyboard_Status: 
-KBC_Mouse_Status: 
-MIDI_Status: 
-Game_Status: 
-CIR_Status: 
-FDC_Status: 
-FDC_Function: 
-Register: 
-Serial1_Status: 
-Serial2_Status: 
-Serial2_Function: 
-ConfigurationRegister2:
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="nf">Initialize_All_Device</span> <span class="nv">PROC</span> <span class="nv">NEAR</span> 
+<span class="nl">APC_PME_Status:</span> 
+<span class="nl">KBC_Keyboard_Status:</span> 
+<span class="nl">KBC_Mouse_Status:</span> 
+<span class="nl">MIDI_Status:</span> 
+<span class="nl">Game_Status:</span> 
+<span class="nl">CIR_Status:</span> 
+<span class="nl">FDC_Status:</span> 
+<span class="nl">FDC_Function:</span> 
+<span class="nl">Register:</span> 
+<span class="nl">Serial1_Status:</span> 
+<span class="nl">Serial2_Status:</span> 
+<span class="nl">Serial2_Function:</span> 
+<span class="nl">ConfigurationRegister2:</span>
+</code></pre></div>
 <ul>
 <li>關於印表機埠的初值設定程式片段:    </li>
 </ul>
-<p> <pre><code class=nasm>Parallel_Status:
-        MOV BH, 03h                  ;LDN=03h -&gt; Parallel port 
-        MOV BL, BYTE PTR CS:[Parallel]      ;Enable/Disable Parallel port 
+<div class="highlight"><pre><span></span><code><span class="nl">Parallel_Status:</span>
+        <span class="nf">MOV</span> <span class="nb">BH</span><span class="p">,</span> <span class="mh">03h</span>                  <span class="c1">;LDN=03h -&gt; Parallel port </span>
+        <span class="nf">MOV</span> <span class="nb">BL</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="p">]</span>      <span class="c1">;Enable/Disable Parallel port </span>
 
-        CALL    Set_Device_Status 
-        MOV BX, WORD PTR CS:[Parallel+01h]  ;Set Parallel portbaseaddress
-        CALL    Set_Device_Port 
-        MOV BL, BYTE PTR CS:[Parallel+03h]  ;Set Parallel port IRQ 
-        CALL    Set_Device_IRQ 
-Parallel_Function:
-        MOV AL, 0F0h                         ;(Index 0F0h) 
-        MOV AH, BYTE PTR CS:[P_Mode]        ;Parallel Port Special 
-ConfigurationRegister:
-        CALL    Write_Configuration_Data         ;P_Mode-&gt;SPP, EPP, ECP... 
-        MOV AH, BYTE PTR CS:[P_Mode] 
-        AND AH, 02h 
-        JZ      No_Set_DMA 
-        MOV AL, 074h 
-        MOV     AH, BYTE PTR CS:[P_DMA]         ;Set Parallel DMA channel 
-        CALL    Write_Configuration_Data         ;P_DMA-&gt;DMA channel 
-No_Set_DMA:
-        RET 
-Initialize_All_Device ENDP
-</code></pre></p>
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_Status</span> 
+        <span class="nf">MOV</span> <span class="nb">BX</span><span class="p">,</span> <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="o">+</span><span class="mh">01h</span><span class="p">]</span>  <span class="c1">;Set Parallel portbaseaddress</span>
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_Port</span> 
+        <span class="nf">MOV</span> <span class="nb">BL</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="o">+</span><span class="mh">03h</span><span class="p">]</span>  <span class="c1">;Set Parallel port IRQ </span>
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_IRQ</span> 
+<span class="nl">Parallel_Function:</span>
+        <span class="nf">MOV</span> <span class="nb">AL</span><span class="p">,</span> <span class="mh">0F0h</span>                         <span class="c1">;(Index 0F0h) </span>
+        <span class="nf">MOV</span> <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_Mode</span><span class="p">]</span>        <span class="c1">;Parallel Port Special </span>
+<span class="nl">ConfigurationRegister:</span>
+        <span class="nf">CALL</span>    <span class="nv">Write_Configuration_Data</span>         <span class="c1">;P_Mode-&gt;SPP, EPP, ECP... </span>
+        <span class="nf">MOV</span> <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_Mode</span><span class="p">]</span> 
+        <span class="nf">AND</span> <span class="nb">AH</span><span class="p">,</span> <span class="mh">02h</span> 
+        <span class="nf">JZ</span>      <span class="nv">No_Set_DMA</span> 
+        <span class="nf">MOV</span> <span class="nb">AL</span><span class="p">,</span> <span class="mh">074h</span> 
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_DMA</span><span class="p">]</span>         <span class="c1">;Set Parallel DMA channel </span>
+        <span class="nf">CALL</span>    <span class="nv">Write_Configuration_Data</span>         <span class="c1">;P_DMA-&gt;DMA channel </span>
+<span class="nl">No_Set_DMA:</span>
+        <span class="nf">RET</span> 
+<span class="nf">Initialize_All_Device</span> <span class="nv">ENDP</span>
+</code></pre></div>
 <ul>
 <li>印表機參數預設值:   </li>
 </ul>
-<p> <pre><code class=nasm>;-------------------------------------------------------------------------------
-Parallel       DB  01h   ;00h-&gt;Disable,  01h-&gt;Enable 
-                DW  378h  ;3BCh-&gt;LPT0,    378h-&gt;LPT1,  278h-&gt;LPT2 
-                DB  07h   ;07h-&gt;IRQ7,     05h-&gt;IRQ5 
-P_Mode         DB  03h   ;00h-&gt;SPP,      01h-&gt;EPP,    02h-&gt;ECP, 03h-&gt;EPP&amp;ECP 
-P_DMA          DB  03h   ;01h-&gt;DMA1,     03h-&gt;DMA3 
-;-------------------------------------------------------------------------------
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="c1">;-------------------------------------------------------------------------------</span>
+<span class="nf">Parallel</span>       <span class="nv">DB</span>  <span class="mh">01h</span>   <span class="c1">;00h-&gt;Disable,  01h-&gt;Enable </span>
+                <span class="kd">DW</span>  <span class="mh">378h</span>  <span class="c1">;3BCh-&gt;LPT0,    378h-&gt;LPT1,  278h-&gt;LPT2 </span>
+                <span class="kd">DB</span>  <span class="mh">07h</span>   <span class="c1">;07h-&gt;IRQ7,     05h-&gt;IRQ5 </span>
+<span class="nf">P_Mode</span>         <span class="nv">DB</span>  <span class="mh">03h</span>   <span class="c1">;00h-&gt;SPP,      01h-&gt;EPP,    02h-&gt;ECP, 03h-&gt;EPP&amp;ECP </span>
+<span class="nf">P_DMA</span>          <span class="nv">DB</span>  <span class="mh">03h</span>   <span class="c1">;01h-&gt;DMA1,     03h-&gt;DMA3 </span>
+<span class="c1">;-------------------------------------------------------------------------------</span>
+</code></pre></div>
 <h2 id="programming">Programming</h2>
 <h3 id="stand-alone-edition">Stand-alone Edition</h3>
 <h4 id="module-code">Module Code</h4>
 <ul>
 <li>Kernel Space Device Driver coding (<code>ldd.c</code>)</li>
 </ul>
-<p> <pre><code class=c>/******************************************************************************
-Linux Device drivers
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Linux Device drivers</span>
 
-Compiler: $ sudo make
-Enable:   $ sudo sdd_load    #&lt;= loading it on your kernel
-Disable:  $ sudo sdd_unload  #&lt;= remove it on you kernel
-Usage:    $ sudo echo -n &quot;12345&quot; &gt; /dev/sddw
-Files:    1. Makefile
-          2. sdd_load
-          3. sdd_unload
-******************************************************************************/
+<span class="cm">Compiler: $ sudo make</span>
+<span class="cm">Enable:   $ sudo sdd_load    #&lt;= loading it on your kernel</span>
+<span class="cm">Disable:  $ sudo sdd_unload  #&lt;= remove it on you kernel</span>
+<span class="cm">Usage:    $ sudo echo -n &quot;12345&quot; &gt; /dev/sddw</span>
+<span class="cm">Files:    1. Makefile</span>
+<span class="cm">          2. sdd_load</span>
+<span class="cm">          3. sdd_unload</span>
+<span class="cm">******************************************************************************/</span>
 
-#if defined(CONFIG_MODVERSIONS) &amp;&amp; ! defined(MODVERSIONS)
-#include &lt;linux/modversions.h&gt;
-#define MODVERSIONS
-#endif
+<span class="cp">#if defined(CONFIG_MODVERSIONS) &amp;&amp; ! defined(MODVERSIONS)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/modversions.h&gt;</span><span class="cp"></span>
+<span class="cp">#define MODVERSIONS</span>
+<span class="cp">#endif</span>
 
-#include &lt;linux/kernel.h&gt;
-#include &lt;linux/module.h&gt;
-#include &lt;linux/fs.h&gt;
-#include &lt;asm/uaccess.h&gt;  // for put_user,
-#include &lt;linux/ioport.h&gt; // for check_region...
-#include &lt;linux/sched.h&gt;  // for request_irq ...
-#include &lt;linux/errno.h&gt;  // for -EIO...
-#include &lt;asm/io.h&gt;       // for inb_p outb_p
-#include &lt;linux/delay.h&gt;  // for u_delay
+<span class="cp">#include</span> <span class="cpf">&lt;linux/kernel.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/uaccess.h&gt;</span><span class="c1">  // for put_user,</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/ioport.h&gt;</span><span class="c1"> // for check_region...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/sched.h&gt;</span><span class="c1">  // for request_irq ...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/errno.h&gt;</span><span class="c1">  // for -EIO...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="c1">       // for inb_p outb_p</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/delay.h&gt;</span><span class="c1">  // for u_delay</span><span class="cp"></span>
 
-/* Sub Proc */
+<span class="cm">/* Sub Proc */</span>
 
-int init_module(void);
-void cleanup_module(void);
-static int sdd_open(struct inode *, struct file *);
-static int sdd_release(struct inode *, struct file *);
-static int sdd_ioctl(struct inode *, struct file *,unsigned int ,unsigned long);
-static int sdd_read(struct file *, const char *, size_t, loff_t *);
-static int sdd_write(struct file *, const char *, size_t, loff_t *);
-static void sdd_irq_handler(int ,void *,struct pt_regs *);
+<span class="kt">int</span> <span class="nf">init_module</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">cleanup_module</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_release</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_ioctl</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">,</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sdd_irq_handler</span><span class="p">(</span><span class="kt">int</span> <span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="nc">pt_regs</span> <span class="o">*</span><span class="p">);</span>
 
-#define DEVICE_NAME &quot;sdd&quot;
+<span class="cp">#define DEVICE_NAME &quot;sdd&quot;</span>
 
-// major device number 
-#define SDD_MAJOR 0          // SDD_MAJOR = 0   表示由系統動態配置
+<span class="c1">// major device number </span>
+<span class="cp">#define SDD_MAJOR 0          </span><span class="c1">// SDD_MAJOR = 0   表示由系統動態配置</span>
 
-// minor device number
-#define SDD_WRITE 0
-#define SDD_READ 1
+<span class="c1">// minor device number</span>
+<span class="cp">#define SDD_WRITE 0</span>
+<span class="cp">#define SDD_READ 1</span>
 
-// ioctl commands
-#define SDD_TRON    _IO('M',0x01)
-#define SDD_TROFF   _IO('M',0x02)
+<span class="c1">// ioctl commands</span>
+<span class="cp">#define SDD_TRON    _IO(&#39;M&#39;,0x01)</span>
+<span class="cp">#define SDD_TROFF   _IO(&#39;M&#39;,0x02)</span>
 
-// I/O ports used by the device
+<span class="c1">// I/O ports used by the device</span>
 
-#define SDD_BASE     0x378       // base port (the First Printer port )
-#define SDD_REGSIZE  3           // size of I/O port regin
+<span class="cp">#define SDD_BASE     0x378       </span><span class="c1">// base port (the First Printer port )</span>
+<span class="cp">#define SDD_REGSIZE  3           </span><span class="c1">// size of I/O port regin</span>
 
-#define SDD_OUT (SDD_BASE + 0)
-#define SDD_IN  (SDD_BASE + 2)
+<span class="cp">#define SDD_OUT (SDD_BASE + 0)</span>
+<span class="cp">#define SDD_IN  (SDD_BASE + 2)</span>
 
-// interrupt line used by the device
-#define SDD_IRQ 0x7
+<span class="c1">// interrupt line used by the device</span>
+<span class="cp">#define SDD_IRQ 0x7</span>
 
-#define TRACE_CHR(chr) \
-    if (sdd_trace) printk(&quot;%c&quot;,(chr));
+<span class="cp">#define TRACE_CHR(chr) \</span>
+<span class="cp">    if (sdd_trace) printk(&quot;%c&quot;,(chr));</span>
 
-#define TRACE_TXT(txt) \
-    if (sdd_trace) printk(KERN_INFO&quot;%s\n&quot;,(txt));
+<span class="cp">#define TRACE_TXT(txt) \</span>
+<span class="cp">    if (sdd_trace) printk(KERN_INFO&quot;%s\n&quot;,(txt));</span>
 
-static int sdd_trace;
-static int read_busy;
-static int write_busy;
+<span class="k">static</span> <span class="kt">int</span> <span class="n">sdd_trace</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">read_busy</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">write_busy</span><span class="p">;</span>
 
-static int Major;                               // Major Device Number
+<span class="k">static</span> <span class="kt">int</span> <span class="n">Major</span><span class="p">;</span>                               <span class="c1">// Major Device Number</span>
 
-static int myint;                               // for delay loop
-MODULE_PARM (myint, &quot;i&quot;);                       // i: integer
+<span class="k">static</span> <span class="kt">int</span> <span class="n">myint</span><span class="p">;</span>                               <span class="c1">// for delay loop</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">myint</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">);</span>                       <span class="c1">// i: integer</span>
 
-static int i;
-MODULE_PARM (i, &quot;i&quot;);
+<span class="k">static</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">);</span>
 
-static char b;          // b: single byte
-MODULE_PARM (b, &quot;b&quot;);
+<span class="k">static</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>          <span class="c1">// b: single byte</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">);</span>
 
-static struct file_operations fops = {
-    .read = sdd_read,
-    .write = sdd_write,
-    .ioctl = sdd_ioctl,
-    .open = sdd_open,
-    .release = sdd_release
-};
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">file_operations</span> <span class="n">fops</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">read</span> <span class="o">=</span> <span class="n">sdd_read</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">write</span> <span class="o">=</span> <span class="n">sdd_write</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">ioctl</span> <span class="o">=</span> <span class="n">sdd_ioctl</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">open</span> <span class="o">=</span> <span class="n">sdd_open</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">release</span> <span class="o">=</span> <span class="n">sdd_release</span>
+<span class="p">};</span>
 
-// .............................. Functions .................................
+<span class="c1">// .............................. Functions .................................</span>
 
-int init_module(void)
-{
+<span class="kt">int</span> <span class="nf">init_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
 
-    Major = register_chrdev(SDD_MAJOR, DEVICE_NAME, &amp;fops);
-    if (Major &lt; 0) {
-        printk (KERN_WARNING&quot;SDD:Registering the character device failed with %d\n&quot;, Major);
-        return Major;
-        return -EIO;
-    }
+    <span class="n">Major</span> <span class="o">=</span> <span class="n">register_chrdev</span><span class="p">(</span><span class="n">SDD_MAJOR</span><span class="p">,</span> <span class="n">DEVICE_NAME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fops</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Major</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">&quot;SDD:Registering the character device failed with %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">Major</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">Major</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    if(check_region(SDD_BASE,SDD_REGSIZE)) {
-          printk (KERN_WARNING&quot;SDD:Cannot Register ports at %04x\n&quot;, SDD_BASE);
-          unregister_chrdev(Major, &quot;sdd&quot;);
-          return -EIO;
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">check_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span><span class="n">SDD_REGSIZE</span><span class="p">))</span> <span class="p">{</span>
+          <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">&quot;SDD:Cannot Register ports at %04x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">SDD_BASE</span><span class="p">);</span>
+          <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="s">&quot;sdd&quot;</span><span class="p">);</span>
+          <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    request_region(SDD_MAJOR, SDD_REGSIZE,&quot;sdd&quot;);
-    if(request_irq(SDD_IRQ,sdd_irq_handler,SA_INTERRUPT,&quot;sdd&quot;,NULL)){
-        printk (KERN_WARNING&quot;SDD:Cannot Register IRQ %d&quot;, SDD_IRQ);
-        release_region(SDD_BASE, SDD_REGSIZE);
-        unregister_chrdev(Major, &quot;sdd&quot;);
-        return -EIO;
-    }
+    <span class="n">request_region</span><span class="p">(</span><span class="n">SDD_MAJOR</span><span class="p">,</span> <span class="n">SDD_REGSIZE</span><span class="p">,</span><span class="s">&quot;sdd&quot;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">request_irq</span><span class="p">(</span><span class="n">SDD_IRQ</span><span class="p">,</span><span class="n">sdd_irq_handler</span><span class="p">,</span><span class="n">SA_INTERRUPT</span><span class="p">,</span><span class="s">&quot;sdd&quot;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">)){</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">&quot;SDD:Cannot Register IRQ %d&quot;</span><span class="p">,</span> <span class="n">SDD_IRQ</span><span class="p">);</span>
+        <span class="n">release_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span> <span class="n">SDD_REGSIZE</span><span class="p">);</span>
+        <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="s">&quot;sdd&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    sdd_trace=0;
-    read_busy=0;
-    write_busy=0;
-    printk(KERN_INFO&quot;\nSDD:Register\n&quot;);
-    return 0;
-}
+    <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">read_busy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">write_busy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">SDD:Register</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-void cleanup_module(void)
-{
-    free_irq(SDD_IRQ,NULL);
-    release_region(SDD_BASE,SDD_REGSIZE);
-    int ret = unregister_chrdev(Major, DEVICE_NAME);
-    if (ret &lt; 0){
-        printk(&quot;Error in unregister_chrdev: %d\n&quot;, ret);
-    }else{
-        printk (KERN_INFO&quot;SDD:unRegistered\n&quot;);
-    }
-}
+<span class="kt">void</span> <span class="nf">cleanup_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">free_irq</span><span class="p">(</span><span class="n">SDD_IRQ</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">release_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span><span class="n">SDD_REGSIZE</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="n">DEVICE_NAME</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">printk</span><span class="p">(</span><span class="s">&quot;Error in unregister_chrdev: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_INFO</span><span class="s">&quot;SDD:unRegistered</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-static int sdd_open(struct inode *inode, struct file *file){
-    TRACE_TXT(&quot;sdd_open&quot;);
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">&quot;sdd_open&quot;</span><span class="p">);</span>
 
-    switch(MINOR(inode-&gt;i_rdev)){
-        case SDD_WRITE:
-            if(write_busy) return -EBUSY;
-            write_busy = 1;
-            break;
-        case SDD_READ:
-            if(read_busy) return -EBUSY;
-            read_busy = 1;
-            break;
-        default:
-            return -ENXIO;
-    }
-    MOD_INC_USE_COUNT;
-    return 0;
-}
+    <span class="k">switch</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)){</span>
+        <span class="k">case</span> <span class="nl">SDD_WRITE</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">write_busy</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="n">EBUSY</span><span class="p">;</span>
+            <span class="n">write_busy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_READ</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">read_busy</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="n">EBUSY</span><span class="p">;</span>
+            <span class="n">read_busy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">ENXIO</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">MOD_INC_USE_COUNT</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-static int sdd_release(struct inode *inode, struct file *file){
-    TRACE_TXT(&quot;RELEASE&quot;);
-    switch(MINOR(inode-&gt;i_rdev)){
-        case SDD_WRITE:
-            write_busy = 0;
-            break;
-        case SDD_READ:
-            read_busy = 0;
-            break;
-        default:
-            return -ENXIO;
-    }
-    MOD_DEC_USE_COUNT;
-    return 0;
-}
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_release</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">&quot;RELEASE&quot;</span><span class="p">);</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)){</span>
+        <span class="k">case</span> <span class="nl">SDD_WRITE</span><span class="p">:</span>
+            <span class="n">write_busy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_READ</span><span class="p">:</span>
+            <span class="n">read_busy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">ENXIO</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">MOD_DEC_USE_COUNT</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-static int sdd_read(struct file *file,const char *buf,size_t count,loff_t *ppos){
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">ppos</span><span class="p">){</span>
 
-    TRACE_TXT(&quot;sdd:read&quot;);
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">&quot;sdd:read&quot;</span><span class="p">);</span>
 
-    if(MINOR(file-&gt;f_dentry-&gt;d_inode-&gt;i_rdev) != SDD_READ){
-        return -EINVAL;
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_dentry</span><span class="o">-&gt;</span><span class="n">d_inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SDD_READ</span><span class="p">){</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    printk(&quot;&lt;1&gt;%d\n&quot;,count);
+    <span class="n">printk</span><span class="p">(</span><span class="s">&quot;&lt;1&gt;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">count</span><span class="p">);</span>
 
-    for(i = 0;i &lt; count;i++){
-        if(put_user(inb_p(SDD_IN),buf+i)){
-            return -EFAULT;
-        }
-        TRACE_CHR('r');
-    }
-    TRACE_CHR('\n');
-    return i;
-}
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">put_user</span><span class="p">(</span><span class="n">inb_p</span><span class="p">(</span><span class="n">SDD_IN</span><span class="p">),</span><span class="n">buf</span><span class="o">+</span><span class="n">i</span><span class="p">)){</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">&#39;r&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
 
-/*  Called when a process writes to dev file: echo &quot;hi&quot; &gt; /dev/hello */
-static int sdd_write(struct file *file,const char *buf,size_t count,loff_t *ppos)
-{
-    TRACE_TXT(&quot;sdd:write&quot;);
-    if(MINOR(file-&gt;f_dentry-&gt;d_inode-&gt;i_rdev) != SDD_WRITE)
-        return -EINVAL;
+<span class="cm">/*  Called when a process writes to dev file: echo &quot;hi&quot; &gt; /dev/hello */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">ppos</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">&quot;sdd:write&quot;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_dentry</span><span class="o">-&gt;</span><span class="n">d_inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SDD_WRITE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
 
-    for(i=0;i&lt; count;i++){
-        if(get_user(b,buf+i)){
-            return -EFAULT;
-        }else{
-            outb_p(b,SDD_OUT);
-            for (myint=1;myint&lt;=1000;myint++){
-                udelay(1000);
-            }
-        }
-        TRACE_CHR('w');
-    }
-    TRACE_CHR('\n');
-    return i;
-}
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">get_user</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">buf</span><span class="o">+</span><span class="n">i</span><span class="p">)){</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">outb_p</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">SDD_OUT</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">myint</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">myint</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">;</span><span class="n">myint</span><span class="o">++</span><span class="p">){</span>
+                <span class="n">udelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">&#39;w&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
 
-static int sdd_ioctl(struct inode *inode,struct file *file,unsigned int cmd, unsigned long arg){
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_ioctl</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">arg</span><span class="p">){</span>
 
-    TRACE_TXT(&quot;sdd:ioctl&quot;);
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">&quot;sdd:ioctl&quot;</span><span class="p">);</span>
 
-    switch(cmd){
-        case SDD_TRON:
-            sdd_trace=1;
-            return 0;
-        case SDD_TROFF:
-            sdd_trace=0;
-            return 0;
-        default:
-            return -EINVAL;
-    }
+    <span class="k">switch</span><span class="p">(</span><span class="n">cmd</span><span class="p">){</span>
+        <span class="k">case</span> <span class="nl">SDD_TRON</span><span class="p">:</span>
+            <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_TROFF</span><span class="p">:</span>
+            <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-}
+<span class="p">}</span>
 
-static void sdd_irq_handler(int irq,void *dev_id,struct pt_regs *regs){
-    sdd_trace = 1- sdd_trace;
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sdd_irq_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="n">dev_id</span><span class="p">,</span><span class="k">struct</span> <span class="nc">pt_regs</span> <span class="o">*</span><span class="n">regs</span><span class="p">){</span>
+    <span class="n">sdd_trace</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span> <span class="n">sdd_trace</span><span class="p">;</span>
 
-}
+<span class="p">}</span>
 
-MODULE_LICENSE(&quot;GPL&quot;);
-MODULE_AUTHOR(&quot;SDD&quot;);
-MODULE_DESCRIPTION(&quot;Smart Device Drivers&quot;);
-MODULE_SUPPORTED_DEVICE(&quot;Smart Device Drivers&quot;);
-</code></pre></p>
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">&quot;SDD&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;Smart Device Drivers&quot;</span><span class="p">);</span>
+<span class="n">MODULE_SUPPORTED_DEVICE</span><span class="p">(</span><span class="s">&quot;Smart Device Drivers&quot;</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li><code>Makefile</code>, 編譯成 <code>obj</code> 檔,使之可載入系統核心.    </li>
 </ul>
-<p> <pre><code class>WARN    := -W -Wall -Wstrict-prototypes -Wmissing-prototypes
+<div class="highlight"><pre><span></span><code>WARN    := -W -Wall -Wstrict-prototypes -Wmissing-prototypes
 INCLUDE := -isystem /lib/modules/`uname -r`/build/include
 CFLAGS  := -O2 -DMODULE -D__KERNEL__ ${WARN} ${INCLUDE}
 CC      := gcc-3.2
@@ -2025,53 +2025,53 @@ all: ${OBJS}
 .PHONY: clean
 clean:
     rm -rf *.o
-</code></pre></p>
+</code></pre></div>
 <h4 id="user-space-utility-for-inputting-value-to-kernel-space">User Space Utility, for inputting value to <code>Kernel Space</code>.</h4>
-<p> <pre><code class=perl>sub echoString {
-    $mainArea-&gt;delete(&quot;1.0&quot;, &quot;end&quot;);
-    unless ($echoString eq &quot;&quot;){
-        $status-&gt;configure(-text=&gt;&quot;echo String &quot;.$echoString.&quot; to SDD.&quot;);
-        $command =&quot;echo -n \&quot;&quot;.$echoString .&quot;\&quot; &gt; /dev/sddw&quot;;
-        system($command);
-        $mainArea-&gt;insert('end',  &quot;Finish Downloaded ASCII Code &quot;.$echoString .&quot; by shell command(echo) &quot;. &quot; ..&quot;);
-        $status-&gt;configure(-text=&gt;&quot;download ok&quot;);
-        $echoString=&quot;&quot;;
-    }else{
-        $status-&gt;configure(-text=&gt;&quot;Empty !! Please make sure again!!&quot;);
-    }
-}
-# ---------------------------------------------------------------------------
-# 下載資料到裝置 ( 經由 Perl Script open/Close Function下載  ): 
-# 同上述 STEP 1 至 STEP 7
-# 輸入欲傳輸的 ASCII Code 輸入 Entry 按下 『 SUMIT  to SDD by open a Device 』 
-# 裝置上的 LED 會將 送到裝置上的 ASCII Code 依序 顯示在  LED 上
-# 使用shell command (echo) 輸出程式碼說明 Perl code
-# 紅色部分即是用 Perl開啟(open)與 關閉(close)裝置的Script
-# ---------------------------------------------------------------------------
-sub writeDevice{
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    unless ($echoString eq &quot;&quot;){
-        $devicepath=&quot;&gt; \/dev\/sddw&quot;;
-        @_=split(//, $echoString);
+<div class="highlight"><pre><span></span><code><span class="k">sub</span> <span class="nf">echoString</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span> <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">){</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;echo String &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; to SDD.&quot;</span><span class="p">);</span>
+        <span class="nv">$command</span> <span class="o">=</span><span class="s">&quot;echo -n \&quot;&quot;</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">&quot;\&quot; &gt; /dev/sddw&quot;</span><span class="p">;</span>
+        <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Finish Downloaded ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">&quot; by shell command(echo) &quot;</span><span class="o">.</span> <span class="s">&quot; ..&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;download ok&quot;</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Empty !! Please make sure again!!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># 下載資料到裝置 ( 經由 Perl Script open/Close Function下載  ): </span>
+<span class="c1"># 同上述 STEP 1 至 STEP 7</span>
+<span class="c1"># 輸入欲傳輸的 ASCII Code 輸入 Entry 按下 『 SUMIT  to SDD by open a Device 』 </span>
+<span class="c1"># 裝置上的 LED 會將 送到裝置上的 ASCII Code 依序 顯示在  LED 上</span>
+<span class="c1"># 使用shell command (echo) 輸出程式碼說明 Perl code</span>
+<span class="c1"># 紅色部分即是用 Perl開啟(open)與 關閉(close)裝置的Script</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="k">sub</span> <span class="nf">writeDevice</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">){</span>
+        <span class="nv">$devicepath</span><span class="o">=</span><span class="s">&quot;&gt; \/dev\/sddw&quot;</span><span class="p">;</span>
+        <span class="nv">@_</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="sr">//</span><span class="p">,</span> <span class="nv">$echoString</span><span class="p">);</span>
 
-        $mainArea-&gt;insert('end',  &quot;Downloading ASCII Code &quot;.$echoString.&quot; now\n&quot;);
-        $status-&gt;configure(-text=&gt;&quot;sending&quot;. $_.&quot; now &quot;);
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Downloading ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; now\n&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;sending&quot;</span><span class="o">.</span> <span class="nv">$_</span><span class="o">.</span><span class="s">&quot; now &quot;</span><span class="p">);</span>
 
-        foreach $_ (@_) {
-              open(FILE, $devicepath);  
-            print &quot;download ASCII code --&gt; &quot;.$_.&quot; now \n&quot;;
-            print FILE $_;
-            close(FILE);
-        }
-        $mainArea-&gt;insert('end',  &quot;Finish Downloaded by ASCII Code &quot;.$echoString.&quot; PERL Script open\/close Function..&quot;);
-        $status-&gt;configure(-text=&gt;&quot;Writing to SDD ok&quot;);
-        $echoString=&quot;&quot;;
-    }else{
+        <span class="k">foreach</span> <span class="nv">$_</span> <span class="p">(</span><span class="nv">@_</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>  
+            <span class="k">print</span> <span class="s">&quot;download ASCII code --&gt; &quot;</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">&quot; now \n&quot;</span><span class="p">;</span>
+            <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$_</span><span class="p">;</span>
+            <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Finish Downloaded by ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; PERL Script open\/close Function..&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Writing to SDD ok&quot;</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
 
-            $status-&gt;configure(-text=&gt;&quot;Empty !! Please make sure again!!&quot;);
-        }
-}
-</code></pre></p>
+            <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Empty !! Please make sure again!!&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="loading-module">Loading module</h4>
 <ul>
 <li>The Steps        </li>
@@ -2087,7 +2087,7 @@ sub writeDevice{
 <p>Shell Script</p>
 </li>
 </ul>
-<p> <pre><code class>#!/bin/sh
+<div class="highlight"><pre><span></span><code>#!/bin/sh
 
 module=&quot;sdd&quot;
 device=&quot;sdd&quot;
@@ -2100,14 +2100,14 @@ mode=&quot;666&quot;
 /sbin/insmod  ${module}.o || exit 1
 
 ###########################################
-# Step &lt;2&gt; Finding Device drivers's major Number
+# Step &lt;2&gt; Finding Device drivers&#39;s major Number
 #          找出裝置的主要代碼
 ###########################################
 
-major=`cat /proc/devices | grep sdd | awk '{ print $1 }'`
+major=`cat /proc/devices | grep sdd | awk &#39;{ print $1 }&#39;`
 
 #####################################################
-# Step &lt;3&gt; Remove Old SDD Device drivers If it's exist ...
+# Step &lt;3&gt; Remove Old SDD Device drivers If it&#39;s exist ...
 #          不管裝置存不存在 安全起見 先移除裝置
 #####################################################
 
@@ -2135,7 +2135,7 @@ ln -sf sdd1 /dev/${device}r
 ##########################################
 
 ls -l /dev | grep sdd
-</code></pre></p>
+</code></pre></div>
 <h4 id="module-unloading-sdd_unload">Module Unloading <code>sdd_unload</code></h4>
 <ul>
 <li>The Steps</li>
@@ -2148,7 +2148,7 @@ ls -l /dev | grep sdd
 <p>Shell Script   </p>
 </li>
 </ul>
-<p> <pre><code class>#!/bin/sh
+<div class="highlight"><pre><span></span><code>#!/bin/sh
 module=&quot;sdd&quot;
 device=&quot;sdd&quot;
 
@@ -2156,20 +2156,22 @@ rm -f /dev/${device}0
 rm -f /dev/${device}1
 rm -f /dev/${device}r
 rm -f /dev/${device}w
-</code></pre></p>
+</code></pre></div>
 <h4 id="running">Running</h4>
 <ul>
-<li>Input</li>
-</ul>
-<p> <pre><code class>$ sudo echo -n &quot;12345&quot; &gt; /dev/sddw
-</code></pre></p>
-<ul>
-<li>Output</li>
-</ul>
-<p> <pre><code class># sudo cat /dev/sddr
-</code></pre></p>
-<ul>
-<li>Running automatically, </li>
+<li>
+<p>Input
+<div class="highlight"><pre><span></span><code>$ sudo echo -n &quot;12345&quot; &gt; /dev/sddw
+</code></pre></div></p>
+</li>
+<li>
+<p>Output
+<div class="highlight"><pre><span></span><code># sudo cat /dev/sddr
+</code></pre></div></p>
+</li>
+<li>
+<p>Running automatically, </p>
+</li>
 <li>user can add the script to <code>/etc/rc.d/rc.local</code></li>
 </ul>
 <h4 id="utility">Utility</h4>
@@ -2185,256 +2187,256 @@ rm -f /dev/${device}w
 <p>Coding    </p>
 </li>
 </ul>
-<p> <pre><code class=perl>#!/usr/bin/perl -w
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/perl -w</span>
 
-use Tk;
+<span class="k">use</span> <span class="nn">Tk</span><span class="p">;</span>
 
-# Create main window.
-my $main = new MainWindow;
-$main-&gt;title(&quot;SDD HELPER&quot;);
+<span class="c1"># Create main window.</span>
+<span class="k">my</span> <span class="nv">$main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MainWindow</span><span class="p">;</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;SDD HELPER&quot;</span><span class="p">);</span>
 
-# A menu bar is really a Frame.
-$menubar = $main-&gt;Frame(-relief=&gt;&quot;raised&quot;, -borderwidth=&gt;2);
+<span class="c1"># A menu bar is really a Frame.</span>
+<span class="nv">$menubar</span> <span class="o">=</span> <span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Frame</span><span class="p">(</span><span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&quot;raised&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">borderwidth</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">);</span>
 
-# Menubuttons appear on the menu bar.
-$filebutton = $menubar-&gt;Menubutton(-text=&gt;&quot;Module&quot;, -underline =&gt; 0, 
-                -menuitems =&gt; [[ 'command' =&gt;&quot;make SDD&quot;, 
-                        -command =&gt; \&amp;make_choice], 
-                        ['command' =&gt;&quot;Load SDD&quot;, 
-                        -command =&gt; \&amp;loadSDD_choice], 
-                        ['command' =&gt;&quot;unload SDD&quot;, 
-                        -command =&gt; \&amp;unloadSDD_choice], 
-                        &quot;-&quot;, 
-                        ['command' =&gt;&quot;lsmod&quot;, 
-                        -command =&gt; \&amp;lsmod_choice], 
-                        ['command' =&gt;&quot;Exit&quot;, 
-                        -command =&gt;\&amp;exit_choice]]);
-$filebutton-&gt;pack(-side=&gt;&quot;left&quot;);
+<span class="c1"># Menubuttons appear on the menu bar.</span>
+<span class="nv">$filebutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Module&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;make SDD&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">make_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Load SDD&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">loadSDD_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;unload SDD&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">unloadSDD_choice</span><span class="p">],</span> 
+                        <span class="s">&quot;-&quot;</span><span class="p">,</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;lsmod&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">lsmod_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Exit&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;\&amp;</span><span class="n">exit_choice</span><span class="p">]]);</span>
+<span class="nv">$filebutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;left&quot;</span><span class="p">);</span>
 
-# Resource menu.
-$resousebutton = $menubar-&gt;Menubutton(-text=&gt;&quot;Resouse&quot;, -underline =&gt; 0, 
-                -menuitems =&gt; [[ 'command' =&gt;&quot;I/O...&quot;, 
-                        -command =&gt; \&amp;ioResouse ], 
-                        ['command' =&gt;&quot;Modules(lsmod)&quot;, 
-                        -command =&gt; \&amp;modulesResouse ], 
-                        ['command' =&gt;&quot;Ksyms&quot;, 
-                        -command =&gt; \&amp;KsymsResouse ], 
-                        ['command' =&gt;&quot;Devices&quot;, 
-                        -command =&gt; \&amp;DevicesResouse ], 
-                        ['command' =&gt;&quot;IRQ&quot;, 
-                        -command =&gt; \&amp;IrqResouse ], 
-                        &quot;-&quot;, 
-                        ['command' =&gt;&quot;Loglevel String&quot;, 
-                        -command =&gt; \&amp;logLevelResouse ], 
-                        ['command' =&gt;&quot;.....&quot;, 
-                        -command =&gt; \&amp;modulesResouse ]]);
-$resousebutton-&gt;pack(-side=&gt;&quot;left&quot;);
+<span class="c1"># Resource menu.</span>
+<span class="nv">$resousebutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Resouse&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;I/O...&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">ioResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Modules(lsmod)&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Ksyms&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">KsymsResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Devices&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">DevicesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;IRQ&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">IrqResouse</span> <span class="p">],</span> 
+                        <span class="s">&quot;-&quot;</span><span class="p">,</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;Loglevel String&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">logLevelResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;.....&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">]]);</span>
+<span class="nv">$resousebutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;left&quot;</span><span class="p">);</span>
 
-# Command menu.
-$commandbutton = $menubar-&gt;Menubutton(-text=&gt;&quot;Command&quot;, -underline =&gt; 0, 
-                -menuitems =&gt; [[ 'command' =&gt;&quot;ps&quot;, 
-                        -command =&gt; \&amp;psCommand ], 
-                        ['command' =&gt;&quot;dmesg&quot;, 
-                        -command =&gt; \&amp;dmesgCommand ], 
-                        ['command' =&gt;&quot;ls -l /dev&quot;, 
-                        -command =&gt; \&amp;lsDevCommand ], 
-                        ['command' =&gt;&quot;--&quot;, 
-                        -command =&gt; \&amp;DevicesResouse ], 
-                        ['command' =&gt;&quot;.....&quot;, 
-                        -command =&gt; \&amp;modulesResouse ]]);
-$commandbutton-&gt;pack(-side=&gt;&quot;left&quot;);
-
-
-
-# Help menu.
-$helpbutton = $menubar-&gt;Menubutton(-text=&gt;&quot;Help&quot;, -underline =&gt; 0, 
-        -menuitems =&gt; [[ 'command' =&gt;&quot;About...&quot;, 
-        -command =&gt; \&amp;about_choice ]]);
-
-# Help menu should appear on the right.
-$helpbutton-&gt;pack(-side=&gt;&quot;right&quot;);
-$menubar-&gt;pack(-side=&gt;&quot;top&quot;,  -fill=&gt;&quot;x&quot;);
-
-$echoString=&quot;&quot;;
-
-#  ........................................
-$main-&gt;Label(-text =&gt; &quot;send String By Echo command Shell / Open Print Port:&quot;)-&gt;pack(-side =&gt; 'top',  -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Entry(-textvariable =&gt; \$echoString)-&gt;pack(-side =&gt; 'top',  -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-
-#  ........................................
-$main-&gt;Button(-text =&gt; &quot;SUMIT to SDD by SHELL (Echo) command&quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;echoString )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Button(-text =&gt; &quot;SUMIT to SDD by OPEN a Device&quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;writeDevice )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Button(-text =&gt; &quot;read the Data From SDD Device&quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;readDevice )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
+<span class="c1"># Command menu.</span>
+<span class="nv">$commandbutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Command&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;ps&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">psCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;dmesg&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">dmesgCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;ls -l /dev&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">lsDevCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;--&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">DevicesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;.....&quot;</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">]]);</span>
+<span class="nv">$commandbutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;left&quot;</span><span class="p">);</span>
 
 
 
-# Create a label widget for the main area.
-$mainArea=$main-&gt;Scrolled(qw/Text -setgrid true -width 100 -height 10 -scrollbars e -wrap word/);
-$mainArea-&gt;pack(qw/-expand yes -fill both  -side top/);
+<span class="c1"># Help menu.</span>
+<span class="nv">$helpbutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Help&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">&#39;command&#39;</span> <span class="o">=&gt;</span><span class="s">&quot;About...&quot;</span><span class="p">,</span> 
+        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">about_choice</span> <span class="p">]]);</span>
 
-$main-&gt;Button(-text =&gt; &quot;makeing SDD &quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;make_choice )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Button(-text =&gt; &quot;Loading SDD &quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;loadSDD_choice )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Button(-text =&gt; &quot;Remove  SDD &quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;unloadSDD_choice )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
-$main-&gt;Button(-text =&gt; &quot;Who am I&quot;,  -relief=&gt;'ridge', -command =&gt; \&amp;whoAmI_choise )-&gt;pack(-side =&gt; 'top', -anchor =&gt; 'w', -fill =&gt; 'x',  -expand =&gt; 1);
+<span class="c1"># Help menu should appear on the right.</span>
+<span class="nv">$helpbutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;right&quot;</span><span class="p">);</span>
+<span class="nv">$menubar</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;top&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">fill</span><span class="o">=&gt;</span><span class="s">&quot;x&quot;</span><span class="p">);</span>
+
+<span class="nv">$echoString</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+
+<span class="c1">#  ........................................</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Label</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;send String By Echo command Shell / Open Print Port:&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Entry</span><span class="p">(</span><span class="o">-</span><span class="n">textvariable</span> <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$echoString</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">#  ........................................</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;SUMIT to SDD by SHELL (Echo) command&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">echoString</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;SUMIT to SDD by OPEN a Device&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">writeDevice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;read the Data From SDD Device&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">readDevice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
 
 
-# Create a status area.
-$status = $main-&gt;Label(-text=&gt;&quot;Status area&quot;, -borderwidth=&gt;2, -anchor=&gt;&quot;w&quot;);
-$status-&gt;pack(-side=&gt;&quot;top&quot;,  -fill=&gt;&quot;x&quot;);
+
+<span class="c1"># Create a label widget for the main area.</span>
+<span class="nv">$mainArea</span><span class="o">=</span><span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Scrolled</span><span class="p">(</span><span class="sx">qw/Text -setgrid true -width 100 -height 10 -scrollbars e -wrap word/</span><span class="p">);</span>
+<span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="sx">qw/-expand yes -fill both  -side top/</span><span class="p">);</span>
+
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;makeing SDD &quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">make_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;Loading SDD &quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">loadSDD_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;Remove  SDD &quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">unloadSDD_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">&quot;Who am I&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">whoAmI_choise</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">&#39;x&#39;</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
 
 
-# Let Perl/Tk handle window events.
-MainLoop;
+<span class="c1"># Create a status area.</span>
+<span class="nv">$status</span> <span class="o">=</span> <span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Label</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Status area&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">borderwidth</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span><span class="o">=&gt;</span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="nv">$status</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">&quot;top&quot;</span><span class="p">,</span>  <span class="o">-</span><span class="n">fill</span><span class="o">=&gt;</span><span class="s">&quot;x&quot;</span><span class="p">);</span>
 
-sub echoString {
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    unless ($echoString eq &quot;&quot;){
-        $status-&gt;configure(-text=&gt;&quot;echo String &quot;.$echoString.&quot; to SDD.&quot;);
-        $command =&quot;echo -n \&quot;&quot;.$echoString .&quot;\&quot; &gt; /dev/sddw&quot;;
-        system($command);
-        $mainArea-&gt;insert('end',  &quot;Finish Downloaded ASCII Code &quot;.$echoString .&quot; by shell command(echo) &quot;. &quot; ..&quot;);
-        $status-&gt;configure(-text=&gt;&quot;download ok&quot;);
-        $echoString=&quot;&quot;;
-    }else{
-        $status-&gt;configure(-text=&gt;&quot;Empty !! Please make sure again!!&quot;);
-    }
-}
 
-# Todo 要有裝置 lock 功能
+<span class="c1"># Let Perl/Tk handle window events.</span>
+<span class="n">MainLoop</span><span class="p">;</span>
 
-sub writeDevice{
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    unless ($echoString eq &quot;&quot;){
-        $devicepath=&quot;&gt; \/dev\/sddw&quot;;
-        @_=split(//, $echoString);
+<span class="k">sub</span> <span class="nf">echoString</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">){</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;echo String &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; to SDD.&quot;</span><span class="p">);</span>
+        <span class="nv">$command</span> <span class="o">=</span><span class="s">&quot;echo -n \&quot;&quot;</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">&quot;\&quot; &gt; /dev/sddw&quot;</span><span class="p">;</span>
+        <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Finish Downloaded ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">&quot; by shell command(echo) &quot;</span><span class="o">.</span> <span class="s">&quot; ..&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;download ok&quot;</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Empty !! Please make sure again!!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-        $mainArea-&gt;insert('end',  &quot;Downloading ASCII Code &quot;.$echoString.&quot; now\n&quot;);
-        $status-&gt;configure(-text=&gt;&quot;sending&quot;. $_.&quot; now &quot;);
+<span class="c1"># Todo 要有裝置 lock 功能</span>
 
-        foreach $_ (@_) {
-              open(FILE, $devicepath);
-            print &quot;download ASCII code --&gt; &quot;.$_.&quot; now \n&quot;;
-            print FILE $_;
-            close(FILE);
-        }
-        $mainArea-&gt;insert('end',  &quot;Finish Downloaded by ASCII Code &quot;.$echoString.&quot; PERL Script open\/close Function..&quot;);
-        $status-&gt;configure(-text=&gt;&quot;Writing to SDD ok&quot;);
-        $echoString=&quot;&quot;;
-    }else{
+<span class="k">sub</span> <span class="nf">writeDevice</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">){</span>
+        <span class="nv">$devicepath</span><span class="o">=</span><span class="s">&quot;&gt; \/dev\/sddw&quot;</span><span class="p">;</span>
+        <span class="nv">@_</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="sr">//</span><span class="p">,</span> <span class="nv">$echoString</span><span class="p">);</span>
 
-            $status-&gt;configure(-text=&gt;&quot;Empty !! Please make sure again!!&quot;);
-        }
-}
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Downloading ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; now\n&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;sending&quot;</span><span class="o">.</span> <span class="nv">$_</span><span class="o">.</span><span class="s">&quot; now &quot;</span><span class="p">);</span>
 
-sub readDevice{
-    $devicepath=&quot;\/dev\/sddr&quot;;
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
+        <span class="k">foreach</span> <span class="nv">$_</span> <span class="p">(</span><span class="nv">@_</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>
+            <span class="k">print</span> <span class="s">&quot;download ASCII code --&gt; &quot;</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">&quot; now \n&quot;</span><span class="p">;</span>
+            <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$_</span><span class="p">;</span>
+            <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;Finish Downloaded by ASCII Code &quot;</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">&quot; PERL Script open\/close Function..&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Writing to SDD ok&quot;</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
 
-    open(FILE, $devicepath);
-        while(&lt;FILE&gt;){
-            print $_.&quot;\n&quot;;
-            ; # next | last | last if ($i == 1)
-        }
-    close(FILE);
-}
+            <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Empty !! Please make sure again!!&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
 
-sub whoAmI_choise{
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    exeCommand(&quot;whoami&quot;);
-        $status-&gt;configure(-text=&gt;&quot;Who are You !!&quot;);
-}
+<span class="k">sub</span> <span class="nf">readDevice</span><span class="p">{</span>
+    <span class="nv">$devicepath</span><span class="o">=</span><span class="s">&quot;\/dev\/sddr&quot;</span><span class="p">;</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
 
-# .................................................
-# Subroutine to handle button click.
-sub exit_choice {
-    print &quot;Bye!\n&quot;;
-    exit;
-}
-sub lsmod_choice {
-    exeCommand(&quot;lsmod&quot;);
-    $status-&gt;configure(-text=&gt;&quot;List Module .&quot;);
-}
-sub make_choice {
-    exeCommand(&quot;make&quot;);
-    $status-&gt;configure(-text=&gt;&quot;making SDD. ok&quot;);
-}
+    <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>
+        <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FILE&gt;</span><span class="p">){</span>
+            <span class="k">print</span> <span class="nv">$_</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+            <span class="p">;</span> <span class="c1"># next | last | last if ($i == 1)</span>
+        <span class="p">}</span>
+    <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+<span class="p">}</span>
 
-sub loadSDD_choice {
-    exeCommand(&quot;./sdd_load&quot;);
-    $status-&gt;configure(-text=&gt;&quot;Loading SDD.&quot;);
-}
+<span class="k">sub</span> <span class="nf">whoAmI_choise</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;whoami&quot;</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Who are You !!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-sub unloadSDD_choice {
+<span class="c1"># .................................................</span>
+<span class="c1"># Subroutine to handle button click.</span>
+<span class="k">sub</span> <span class="nf">exit_choice</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s">&quot;Bye!\n&quot;</span><span class="p">;</span>
+    <span class="nb">exit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">lsmod_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;lsmod&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;List Module .&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">make_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;make&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;making SDD. ok&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-    exeCommand(&quot;./sdd_unload&quot;);
-    $status-&gt;configure(-text=&gt;&quot;unLoad SDD.&quot;);
-}
+<span class="k">sub</span> <span class="nf">loadSDD_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;./sdd_load&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Loading SDD.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-sub about_choice {
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    $mainArea-&gt;insert('end',  &quot;SDD Helper 1.0&quot;);
-    $status-&gt;configure(-text=&gt;&quot;About the SDD.&quot;);
+<span class="k">sub</span> <span class="nf">unloadSDD_choice</span> <span class="p">{</span>
 
-}
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;./sdd_unload&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;unLoad SDD.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-# .................................................
-sub ioResouse{
-    &amp;readFile(&quot;/proc/ioports&quot;);
-    $status-&gt;configure(-text=&gt;&quot;IO port List p.53 &quot;);
-}
+<span class="k">sub</span> <span class="nf">about_choice</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="s">&quot;SDD Helper 1.0&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;About the SDD.&quot;</span><span class="p">);</span>
 
-sub modulesResouse{
-    &amp;readFile(&quot;/proc/modules&quot;);
-    $status-&gt;configure(-text=&gt;&quot;Module Info p.51&quot;);
-}
-sub KsymsResouse{
-    &amp;readFile(&quot;/proc/ksyms&quot;);
-    $status-&gt;configure(-text=&gt;&quot;Kernel Table p.53&quot;);
-}
-sub DevicesResouse{
-    &amp;readFile(&quot;/proc/devices&quot;);
-    $status-&gt;configure(-text=&gt;&quot; Devices p.61&quot;);
-}
-sub IrqResouse{
-    &amp;readFile(&quot;/proc/interrupts&quot;);
-    $status-&gt;configure(-text=&gt;&quot; Devices p.245&quot;);
-}
-sub logLevelResouse{
-    &amp;readFile(&quot;/usr/src/linux-2.4.19-16mdk/include/linux/kernel.h&quot;);
-    $status-&gt;configure(-text=&gt;&quot; logLevel String p.95&quot;);
-}
-# .................................................
-sub psCommand{
-    exeCommand(&quot;ps&quot;);
-    $status-&gt;configure(-text=&gt;&quot;PS OK&quot;);
-}
-sub dmesgCommand{
-    exeCommand(&quot;dmesg&quot;);
-    $status-&gt;configure(-text=&gt;&quot;Dmesg OK&quot;);
-}
+<span class="p">}</span>
 
-sub lsDevCommand{
-    exeCommand(&quot;ls -l /dev&quot;);
-    $status-&gt;configure(-text=&gt;&quot;finding Major and Minor number(c:char node/ b:block node) p.58&quot;);
-}
-# .................................................
-sub exeCommand{
-    $command=$_[0].&quot;&gt;response.txt&quot;;
-    system($command);
-    &amp;readFile(&quot;response.txt&quot;);
-    system(&quot;rm -f response.txt&quot;);
-}
-# .................................................
-sub readFile{
-    $mainArea-&gt;delete(&quot;1.0&quot;,  &quot;end&quot;);
-    open( FILENAME, $_[0] );
-    @context=&lt;FILENAME&gt;;
-    close(FILENAME);
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">ioResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/proc/ioports&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;IO port List p.53 &quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-    foreach $i(@context){
-        $mainArea-&gt;insert('end',  $i);
-    }
-</code></pre></p>
+<span class="k">sub</span> <span class="nf">modulesResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/proc/modules&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Module Info p.51&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">KsymsResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/proc/ksyms&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Kernel Table p.53&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">DevicesResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/proc/devices&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot; Devices p.61&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">IrqResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/proc/interrupts&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot; Devices p.245&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">logLevelResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;/usr/src/linux-2.4.19-16mdk/include/linux/kernel.h&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot; logLevel String p.95&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">psCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;ps&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;PS OK&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">dmesgCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;dmesg&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;Dmesg OK&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">lsDevCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">&quot;ls -l /dev&quot;</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">&quot;finding Major and Minor number(c:char node/ b:block node) p.58&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">exeCommand</span><span class="p">{</span>
+    <span class="nv">$command</span><span class="o">=</span><span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s">&quot;&gt;response.txt&quot;</span><span class="p">;</span>
+    <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">&quot;response.txt&quot;</span><span class="p">);</span>
+    <span class="nb">system</span><span class="p">(</span><span class="s">&quot;rm -f response.txt&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">readFile</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span>  <span class="s">&quot;end&quot;</span><span class="p">);</span>
+    <span class="nb">open</span><span class="p">(</span> <span class="n">FILENAME</span><span class="p">,</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+    <span class="nv">@context</span><span class="o">=</span><span class="sr">&lt;FILENAME&gt;</span><span class="p">;</span>
+    <span class="nb">close</span><span class="p">(</span><span class="n">FILENAME</span><span class="p">);</span>
+
+    <span class="k">foreach</span> <span class="nv">$i</span><span class="p">(</span><span class="nv">@context</span><span class="p">){</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>  <span class="nv">$i</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
 <h2 id="online-edition">Online Edition</h2>
 <ul>
 <li>Topology</li>
@@ -2468,66 +2470,66 @@ sub readFile{
 <p>Static Web page (<code>index.html</code>), providing this web page for user to input the value remotely.</p>
 </li>
 </ul>
-<p> <pre><code class=html>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;downing ascii code to /drv/sddw&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h3&gt; downloading ASCII code to &lt;br&gt;
-    Remote Server's &lt;font color=#0000ff&gt; /dev/sddw &lt;/font&gt;
-&lt;/h3&gt;
-&lt;p&gt;
-&lt;form action=&quot;download.php&quot; method=&quot;GET&quot; target=&quot;_parent&quot;&gt;
-    &lt;table cellpadding=&quot;0&quot;&gt;&lt;tr&gt;
-    &lt;td&gt; &lt;input type=&quot;text&quot; name=downLoadString&gt; &lt;/td&gt;
-    &lt;td&gt;&lt;input name=&quot;sumit&quot; type=&quot;submit&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;&lt;/table&gt;
-&lt;/form&gt;
-&lt;p&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>downing ascii code to /drv/sddw<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span> downloading ASCII code to <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    Remote Server&#39;s <span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">#0000ff</span><span class="p">&gt;</span> /dev/sddw <span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;download.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;GET&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_parent&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">cellpadding</span><span class="o">=</span><span class="s">&quot;0&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">downLoadString</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sumit&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 
-這網頁會將你所鍵入的 ASCII Code &lt;br&gt;
+這網頁會將你所鍵入的 ASCII Code <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 送到遠端主機的 /dev/sddw 裝置
-&lt;p&gt;
-The Page is at /var/www/html ( remote machine )&lt;br&gt;
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+The Page is at /var/www/html ( remote machine )<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 Edited by BuleFish
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></p>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <ul>
 <li>Dynamic Web Pages (<code>download.php</code>), opening the device and feed the value to device driver via <code>PHP</code> code.  </li>
 </ul>
-<p> <pre><code class=php>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Download ASCII code to /drv/sddw&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;?
-echo &quot;&lt;h3&gt; Download ASCII code \&quot;&lt;font color=#ff0000&gt;&quot;. $downLoadString. &quot;&lt;/font&gt;\&quot;  &lt;br&gt; to Remote Server's  /dev/sddw &lt;/h3&gt;&quot;;
-echo &quot;&lt;hr&gt;&lt;p&gt;&lt;p&gt;&quot;;
-if ($downLoadString != &quot;&quot;){
-    echo &quot;The ASCII Code\&quot;&quot; . $downLoadString . &quot;\&quot;download Ok...&quot;;
-    $fp=fopen ( &quot;/dev/sddw&quot;, &quot;w&quot; );
-        fwrite($fp,  $downLoadString);
-    fclose($fp);
-}else{
-    echo &quot; Empty!! Please make sure again  !!&lt;p&gt;&quot;;
-    echo &quot;&lt;a href='download.html'&gt; Try Again &lt;/a&gt;&lt;p&gt;&quot;;
-}
-?&gt;
-&lt;p&gt;
-&lt;p&gt;
-&lt;hr&gt;
-Opening the &lt;font color=#0000ff&gt;&lt;b&gt;/sdd/sddw &lt;/b&gt;&lt;/font&gt;
-by &lt;font color=#0000ff&gt;&lt;b&gt; PHP &lt;/b&gt;&lt;/font&gt; script &lt;br&gt;
-fopen/fwrite function [ download.php ]
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;title&gt;Download ASCII code to /drv/sddw&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="cp">&lt;?</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;h3&gt; Download ASCII code </span><span class="se">\&quot;</span><span class="s2">&lt;font color=#ff0000&gt;&quot;</span><span class="o">.</span> <span class="nv">$downLoadString</span><span class="o">.</span> <span class="s2">&quot;&lt;/font&gt;</span><span class="se">\&quot;</span><span class="s2">  &lt;br&gt; to Remote Server&#39;s  /dev/sddw &lt;/h3&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;hr&gt;&lt;p&gt;&lt;p&gt;&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$downLoadString</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">&quot;The ASCII Code</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="nv">$downLoadString</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">download Ok...&quot;</span><span class="p">;</span>
+    <span class="nv">$fp</span><span class="o">=</span><span class="nb">fopen</span> <span class="p">(</span> <span class="s2">&quot;/dev/sddw&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span> <span class="p">);</span>
+        <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span>  <span class="nv">$downLoadString</span><span class="p">);</span>
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot; Empty!! Please make sure again  !!&lt;p&gt;&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;a href=&#39;download.html&#39;&gt; Try Again &lt;/a&gt;&lt;p&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;p&gt;</span>
+<span class="x">&lt;p&gt;</span>
+<span class="x">&lt;hr&gt;</span>
+<span class="x">Opening the &lt;font color=#0000ff&gt;&lt;b&gt;/sdd/sddw &lt;/b&gt;&lt;/font&gt;</span>
+<span class="x">by &lt;font color=#0000ff&gt;&lt;b&gt; PHP &lt;/b&gt;&lt;/font&gt; script &lt;br&gt;</span>
+<span class="x">fopen/fwrite function [ download.php ]</span>
 
-&lt;p&gt;
-PS. if download speed is too slow,  &lt;br&gt;try to mak a under downloading page
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></p>
+<span class="x">&lt;p&gt;</span>
+<span class="x">PS. if download speed is too slow,  &lt;br&gt;try to mak a under downloading page</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
 <h2 id="application">Application</h2>
 <ul>
 <li>Data Collection  <br />

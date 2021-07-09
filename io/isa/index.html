@@ -1671,11 +1671,11 @@
                 
                 <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
 <h2 id="industry-standard-architecture-isa">Industry Standard Architecture (ISA)</h2>
-<p> <pre><code class>$author:   Ching-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $date:     May. 2003
 $revised:  Mar. 2018
 $keywords: man, machine, interface, industry standard architecture, isa
-</code></pre></p>
+</code></pre></div>
 <p>An exercise of Intel 8255 PIO (Programmable Peripheral Interface, PPI) control via ISA interface. Blinking LED on Red Hat Linux. </p>
 <ol>
 <li>Doing <code>circuit design work</code> by using <code>OrCAD</code> </li>
@@ -2326,423 +2326,423 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <ul>
 <li>hello.c    </li>
 </ul>
-<p> <pre><code class=c>/****************************************************************************
-Filename:  hello.c
-Compiler:  gcc -O -o hello hello.c
-Author  :  Jing-Wen.Lai
-Function:  Linux C  的基本測試，印出 Hello, world。 
-Date:      3/22 2003
-****************************************************************************/
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  hello.c</span>
+<span class="cm">Compiler:  gcc -O -o hello hello.c</span>
+<span class="cm">Author  :  Jing-Wen.Lai</span>
+<span class="cm">Function:  Linux C  的基本測試，印出 Hello, world。 </span>
+<span class="cm">Date:      3/22 2003</span>
+<span class="cm">****************************************************************************/</span>
 
-#include &lt;stdio.h&gt;
-int main(int argc, char *argv[])
-{
-  printf(&quot;Hello, world\n&quot;);
-  return 0;
-}
-</code></pre></p>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="hello.jpg" /></p>
 <ul>
 <li>kb.c</li>
 </ul>
-<p> <pre><code class=c>/****************************************************************************
-Filename: kb.c
-Compiler: gcc -O -o kb kb.c
-Author:   Jing-Wen.Lai
-Function: 平常執行 Loop 印出 計數 訊息 ，除非鍵盤按下 'q' 鍵 則離開計數 Loop 。 
-Date:     03/22 2003
-Reference: 參考以下網路文件改寫
-      http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html
-****************************************************************************/
-#include &lt;stdio.h&gt;
-#include &lt;termios.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename: kb.c</span>
+<span class="cm">Compiler: gcc -O -o kb kb.c</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 平常執行 Loop 印出 計數 訊息 ，除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">Date:     03/22 2003</span>
+<span class="cm">Reference: 參考以下網路文件改寫</span>
+<span class="cm">      http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
 
-static struct termios orig, new;
-static int peek = -1;
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
 
-int main()
-{
-  int ch =0;                           /*  鍵盤所按下的字元 */
-  int loopCount=1;                     /*  Loop 用 計數器  */
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>                           <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>                     <span class="cm">/*  Loop 用 計數器  */</span>
 
-  tcgetattr(0, &amp;orig);
-  new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO; new.c_lflag &amp;= ~ISIG;
-  new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
 
-  /* =========================== */
-  /* [[ 當輸入字元不為 q 時  ]]  */
-  /* =========================== */
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
 
-  while(ch != 'q') {
-    printf(&quot;looping %d time(s) \n&quot;,loopCount);
-    sleep(1); loopCount++;
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;looping %d time(s) </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
 
-    if(kbhit()) {
-      ch = readch();
-      printf(&quot;== Input %c ==\n&quot;,ch);
-    }
-  }
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Input %c ==</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
-  /* ======================== */
-  /* [[  輸入字元 為 q 時  ]] */
-  /* ======================== */
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
 
-  printf(&quot;== Quit == \n&quot;);
-  tcsetattr(0,TCSANOW, &amp;orig);
-  exit(0);
-}
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
 
-/* ======================= */
-/*   SUB Function          */
-/* ======================= */
-int kbhit()
-{
-  char ch;int nread;
-  if(peek != -1) return 1;
-  new.c_cc[VMIN]=0;
-  tcsetattr(0, TCSANOW, &amp;new);
-  nread = read(0,&amp;ch,1);
-  new.c_cc[VMIN]=1;
-  tcsetattr(0, TCSANOW, &amp;new);    
-  if(nread == 1) {
-    peek = ch;
-    return 1;
-  }
-  return 0;
-}
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   SUB Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+  <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+  <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-int readch()
-{
-  char ch;
-  if(peek != -1) {
-    ch = peek;
-    peek = -1;
-    return ch;
-  }
-  read(0,&amp;ch,1);
-  return ch;
-}
-</code></pre></p>
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="kbhit.jpg" /></p>
 <ul>
 <li>io.c</li>
 </ul>
-<p> <pre><code class=c>/****************************************************************************
-      --  io.c  &lt;Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用&gt;  --
-Author:    Jing-Wen.Lai
-Function:  以 Linux C 控制 8255 I/O 實驗板上的 LED,
-Compiler:  使用 `gcc -O2 -o io io.c',
-Running:   以 root 的身份執行 `./io'.
-Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫
-            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html
-****************************************************************************/
-#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;asm/io.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">      --  io.c  &lt;Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用&gt;  --</span>
+<span class="cm">Author:    Jing-Wen.Lai</span>
+<span class="cm">Function:  以 Linux C 控制 8255 I/O 實驗板上的 LED,</span>
+<span class="cm">Compiler:  使用 `gcc -O2 -o io io.c&#39;,</span>
+<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
+<span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
 
-#define CCW 0x303   /* 8255 CCW */
-#define PA  0x300   /* 8255 PORT A */
-int main()
-{
-  int i=0;
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
-  /* 取得埠位址的存取權限 */
-  if (ioperm(CCW, 3, 1)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 1))  {perror(&quot;ioperm&quot;); exit(1);}
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  /* 定義 8255 工作模式 */
-  outb(0x80, CCW);
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
 
-  /* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */
-  outb(0, PA);
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-  /* LED   交互 閃爍 10 次 ，每次 1000 ms */
-  for (i=1; i&lt;=10; i++){
-    usleep(1000000);        
-    if(i%2 == 0){
-      outb( 0x00, PA);
-      printf(&quot;-X-  step: %d\n&quot;,i); 
-    }else{
-      outb( 0xFF, PA);
-      printf(&quot;-O-  step: %d\n&quot;,i);
-    }
-  }
-  /* 我們不再需要這些埠位址 */
-  if (ioperm(CCW, 3, 0)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 0))  {perror(&quot;ioperm&quot;); exit(1);}
-  exit(0);
-  /* 結束 io.c */
-}
-</code></pre></p>
+  <span class="cm">/* LED   交互 閃爍 10 次 ，每次 1000 ms */</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="cm">/* 結束 io.c */</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="io.jpg" /></p>
 <ul>
 <li>blink.c    </li>
 </ul>
-<p> <pre><code class=c>/******************************************************************************
-Filename:  blink.c
-Compiler:  gcc -O -o blink blink.c
-Author:    Jing-Wen.Lai
-Function:  平常執行 Loop 印出 計數 訊息 ， 8255 I/O 實驗板上的 LED 亦隨之閃爍
-            除非鍵盤按下 'q' 鍵 則離開計數 Loop 。 
-Date:      May. 22/2003
-******************************************************************************/
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  blink.c</span>
+<span class="cm">Compiler:  gcc -O -o blink blink.c</span>
+<span class="cm">Author:    Jing-Wen.Lai</span>
+<span class="cm">Function:  平常執行 Loop 印出 計數 訊息 ， 8255 I/O 實驗板上的 LED 亦隨之閃爍</span>
+<span class="cm">            除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">Date:      May. 22/2003</span>
+<span class="cm">******************************************************************************/</span>
 
-#include &lt;stdio.h&gt;
-#include &lt;termios.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;asm/io.h&gt;
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
 
-#define CCW 0x303   /* 8255 CCW */
-#define PA  0x300   /* 8255 PORT A */
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
 
-static struct termios orig, new;
-static int peek = -1;
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
 
-int main()
-{
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
 
-  int ch =0;          /*  鍵盤所按下的字元 */
-  int loopCount=0;    /*  Loop 用 計數器   */
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>          <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>    <span class="cm">/*  Loop 用 計數器   */</span>
 
-  tcgetattr(0, &amp;orig);
-  new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO; new.c_lflag &amp;= ~ISIG;
-  new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
 
-  /* 取得埠位址的存取權限 */
-  if (ioperm(CCW, 3, 1)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 1))  {perror(&quot;ioperm&quot;); exit(1);}
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  /* 定義 8255 工作模式 */
-  outb(0x80, CCW);
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
 
-  /* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */
-  outb(0, PA);
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-  /* =========================== */
-  /* [[ 當輸入字元不為 q 時  ]]  */
-  /* =========================== */
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
 
-  /*  LED  交互 閃爍  */
+  <span class="cm">/*  LED  交互 閃爍  */</span>
 
-  while(ch != 'q') {
-    //printf(&quot;looping %d times \n&quot;,loopCount);
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//printf(&quot;looping %d times \n&quot;,loopCount);</span>
 
-    sleep(1); loopCount++;
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
 
-    if(loopCount %2 == 0){
-          outb( 0x00, PA);
-          printf(&quot;-X-  step: %d\n&quot;,loopCount); 
-    }else{
-          outb( 0xFF, PA);
-          printf(&quot;-O-  step: %d\n&quot;,loopCount);
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">loopCount</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span> 
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    if(kbhit()) {
-        ch = readch();
-    }
-  }
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
-  /* ======================== */
-  /* [[  輸入字元 為 q 時  ]] */
-  /* ======================== */
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
 
-  //  LED 不亮 
-  outb( 0x00, PA);
+  <span class="c1">//  LED 不亮 </span>
+  <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-  /* 我們不再需要這些埠位址 */
-  if (ioperm(CCW, 3, 0)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 0))  {perror(&quot;ioperm&quot;); exit(1);}
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  printf(&quot;== Quit == \n&quot;);
-  tcsetattr(0,TCSANOW, &amp;orig);
-  exit(0);
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
-}
+<span class="p">}</span>
 
-/* ======================= */
-/*   sub Function          */
-/* ======================= */
-int kbhit()
-{
-    char ch;int nread;
-    if(peek != -1) return 1;
-    new.c_cc[VMIN]=0;
-    tcsetattr(0, TCSANOW, &amp;new);
-    nread = read(0,&amp;ch,1);
-    new.c_cc[VMIN]=1;
-    tcsetattr(0, TCSANOW, &amp;new);    
-    if(nread == 1) {
-        peek = ch;
-        return 1;
-    }
-    return 0;
-}
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   sub Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+    <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+    <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-int readch()
-{
-    char ch;
-    if(peek != -1) {
-        ch = peek;
-        peek = -1;
-        return ch;
-    }
-    read(0,&amp;ch,1);
-    return ch;
-}
-</code></pre></p>
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+        <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="blink.jpg" /></p>
 <ul>
 <li>pili_test.c    </li>
 </ul>
-<p> <pre><code class=c>/****************************************************************************
-Filename:  pili_test.c
-Compiler:  gcc -O -o pili_test pili_test.c
-Author   : Jing-Wen.Lai
-Function : 由 1 計數至 128 ， 128 計數至 1，來回列印 
-Date     : 3/23 2003
-****************************************************************************/
-#include &lt;stdio.h&gt; 
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  pili_test.c</span>
+<span class="cm">Compiler:  gcc -O -o pili_test pili_test.c</span>
+<span class="cm">Author   : Jing-Wen.Lai</span>
+<span class="cm">Function : 由 1 計數至 128 ， 128 計數至 1，來回列印 </span>
+<span class="cm">Date     : 3/23 2003</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> </span><span class="cp"></span>
 
-int main(){    
-  int LED_Data=0x01;         /*   初始化資料     */    
-  int directionFlag=1;       /* 1: LED 向左點亮 ; 0:LED 向右點亮    */
-  int i;
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>    
+  <span class="kt">int</span> <span class="n">LED_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>         <span class="cm">/*   初始化資料     */</span>    
+  <span class="kt">int</span> <span class="n">directionFlag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>       <span class="cm">/* 1: LED 向左點亮 ; 0:LED 向右點亮    */</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 
-  for(i=0;i&lt;20;i++){    
-    printf(&quot;%d\n&quot;, LED_Data);
-    if (directionFlag == 1)
-    {
-      LED_Data *= 2;
-      if (LED_Data == 128){
-        directionFlag = 0;
-      }
-    }else{
-      LED_Data /= 2;
-      if (LED_Data == 1){
-        directionFlag = 1;
-      }
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>    
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">LED_Data</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">128</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
 
-    }
-    }
-}
-</code></pre></p>
+    <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="pili_test.jpg" /></p>
 <ul>
 <li>pili.c    </li>
 </ul>
-<p> <pre><code class=c>/****************************************************************************
-Filename: blink.c
-Compiler: gcc -O -o blink blink.c
-Author:   Jing-Wen.Lai
-Function: 目的 :: LED 走馬燈。除非鍵盤按下 'q' 鍵 則離開計數 Loop 。
-Date:     3/22 2003
-****************************************************************************/
-#include &lt;stdio.h&gt;
-#include &lt;termios.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;asm/io.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename: blink.c</span>
+<span class="cm">Compiler: gcc -O -o blink blink.c</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 目的 :: LED 走馬燈。除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。</span>
+<span class="cm">Date:     3/22 2003</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="cp"></span>
 
-#define CCW 0x303   /* 8255 CCW */
-#define PA  0x300   /* 8255 PORT A */
+<span class="cp">#define CCW 0x303   </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA  0x300   </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
 
-static struct termios orig, new;
-static int peek = -1;
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">termios</span> <span class="n">orig</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
 
-int main()
-{
-  int ch =0;                           /*  鍵盤所按下的字元 */
-  int loopCount=0;                     /*  Loop 用 計數器   */
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>                           <span class="cm">/*  鍵盤所按下的字元 */</span>
+  <span class="kt">int</span> <span class="n">loopCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                     <span class="cm">/*  Loop 用 計數器   */</span>
 
-  int LED_Data=0x01;                   /* 初始化資料    */    
-  int directionFlag=1;                 /* 1: LED 向左點亮 ; 0:LED 向右點亮    */
+  <span class="kt">int</span> <span class="n">LED_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>                   <span class="cm">/* 初始化資料    */</span>    
+  <span class="kt">int</span> <span class="n">directionFlag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>                 <span class="cm">/* 1: LED 向左點亮 ; 0:LED 向右點亮    */</span>
 
-  tcgetattr(0, &amp;orig);
-  new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO; new.c_lflag &amp;= ~ISIG;
-  new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);
+  <span class="n">tcgetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">orig</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ICANON</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ECHO</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_lflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">ISIG</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
 
-  /* 取得埠位址的存取權限 */
-  if (ioperm(CCW, 3, 1)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 1))  {perror(&quot;ioperm&quot;); exit(1);}
+  <span class="cm">/* 取得埠位址的存取權限 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  /* 定義 8255 工作模式 */
-  outb(0x80, CCW);
+  <span class="cm">/* 定義 8255 工作模式 */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
 
-  /* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */
-  outb(0, PA);
+  <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+  <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-  /* =========================== */
-  /* [[ 當輸入字元不為 q 時  ]]  */
-  /* =========================== */
+  <span class="cm">/* =========================== */</span>
+  <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
+  <span class="cm">/* =========================== */</span>
 
-  /*  LED  交互 閃爍  */
+  <span class="cm">/*  LED  交互 閃爍  */</span>
 
-  while(ch != 'q') {
-    sleep(1); 
-    outb( LED_Data, PA);
-    printf(&quot;Pili Lamp is Running and The 8255-Port-A's outData is %d\n&quot;,LED_Data); 
-    if (directionFlag == 1){
-      LED_Data *= 2;            
-      if (LED_Data == 128){
-        directionFlag = 0;
-      }
-    }else{
-      LED_Data /= 2;
-      if (LED_Data == 1){
-        directionFlag = 1;
-      }
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> 
+    <span class="n">outb</span><span class="p">(</span> <span class="n">LED_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pili Lamp is Running and The 8255-Port-A&#39;s outData is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">LED_Data</span><span class="p">);</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+      <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>            
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">128</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="n">LED_Data</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">directionFlag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
 
-    }
-    if(kbhit()) {
-      ch = readch();
-    }
-  }
-  /* ======================== */
-  /* [[  輸入字元 為 q 時  ]] */
-  /* ======================== */
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* ======================== */</span>
+  <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
+  <span class="cm">/* ======================== */</span>
 
-  //  LED 不亮 
-  outb( 0x00, PA);
+  <span class="c1">//  LED 不亮 </span>
+  <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-  /* 我們不再需要這些埠位址 */
-  if (ioperm(CCW, 3, 0)) {perror(&quot;ioperm&quot;); exit(1);}
-  if (ioperm(PA, 3, 0))  {perror(&quot;ioperm&quot;); exit(1);}
+  <span class="cm">/* 我們不再需要這些埠位址 */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  printf(&quot;== Quit == \n&quot;);
-  tcsetattr(0,TCSANOW, &amp;orig);
-  exit(0);
-}
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
 
-/* ======================= */
-/*   sub Function          */
-/* ======================= */
-int kbhit()
-{
-  char ch;int nread;
-  if(peek != -1) return 1;
-  new.c_cc[VMIN]=0;
-  tcsetattr(0, TCSANOW, &amp;new);
-  nread = read(0,&amp;ch,1);
-  new.c_cc[VMIN]=1;
-  tcsetattr(0, TCSANOW, &amp;new);    
-  if(nread == 1) {
-    peek = ch;
-    return 1;
-  }
-  return 0;
-}
+<span class="cm">/* ======================= */</span>
+<span class="cm">/*   sub Function          */</span>
+<span class="cm">/* ======================= */</span>
+<span class="kt">int</span> <span class="nf">kbhit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span><span class="kt">int</span> <span class="n">nread</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
+  <span class="n">nread</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>    
+  <span class="k">if</span><span class="p">(</span><span class="n">nread</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-int readch()
-{
-  char ch;
-  if(peek != -1) {
-    ch = peek;
-    peek = -1;
-    return ch;
-  }
-  read(0,&amp;ch,1);
-  return ch;
-}
-</code></pre></p>
+<span class="kt">int</span> <span class="nf">readch</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">peek</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">peek</span><span class="p">;</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="pili.jpg" /></p>
 <h3 id="c_1">C++</h3>
 <ul>
@@ -2777,308 +2777,308 @@ int readch()
 <ul>
 <li>hello.cpp      </li>
 </ul>
-<p> <pre><code class=cpp>/******************************************************************************
-Filename:  hello.cpp
-Compiler:  g++  -Wno-deprecated -ohello hello.cpp
-Function:  C++ 的基本測試，印出 Hello C++!。
-Date:      3/23 2003
-Reference:
-******************************************************************************/
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  hello.cpp</span>
+<span class="cm">Compiler:  g++  -Wno-deprecated -ohello hello.cpp</span>
+<span class="cm">Function:  C++ 的基本測試，印出 Hello C++!。</span>
+<span class="cm">Date:      3/23 2003</span>
+<span class="cm">Reference:</span>
+<span class="cm">******************************************************************************/</span>
 
-#include &lt;iostream.h&gt;
-int main() {    
-    cout &lt;&lt; &quot;Hello C++ !&quot; &lt;&lt; endl;
-    return (0);
-}
-</code></pre></p>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>    
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello C++ !&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="hello_cpp.jpg" /></p>
 <ul>
 <li>io.cpp      </li>
 </ul>
-<p> <pre><code class=cpp>/******************************************************************************
-Filename:  io.cpp
-Function:  Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用
-Compiler:  使用 `g++ -O -o io io.cpp',
-Running:   以 root 的身份執行 `./io'.
-Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫
-            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html
-******************************************************************************/
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Filename:  io.cpp</span>
+<span class="cm">Function:  Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用</span>
+<span class="cm">Compiler:  使用 `g++ -O -o io io.cpp&#39;,</span>
+<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
+<span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
+<span class="cm">******************************************************************************/</span>
 
-#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/io.h&gt;
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/io.h&gt;</span><span class="cp"></span>
 
-  #define CCW 0x303                     /* 8255 CCW */
-  #define PA  0x300                     /* 8255 PORT A */
-  int main()
-  {
-    /* 取得埠位址的存取權限 */
-    if (ioperm(CCW, 3, 1)) {perror(&quot;ioperm&quot;); return (0);}
-    if (ioperm(PA, 3, 1))  {perror(&quot;ioperm&quot;); return (0);}
+  <span class="cp">#define CCW 0x303                     </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+  <span class="cp">#define PA  0x300                     </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
+  <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="cm">/* 取得埠位址的存取權限 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
-    /* 定義 8255 工作模式 */
-    outb(0x80, CCW);
+    <span class="cm">/* 定義 8255 工作模式 */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
 
-    /* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */
-    outb(0, PA);
+    <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-    /* PILI 燈  (1000 ms) 交互 閃爍 */
-    for (int i=1; i&lt;=10; i++){
-    usleep(1000000);        
-        if(i%2 == 0){
-          outb( 0x00, PA);
-          printf(&quot;-X-  step: %d\n&quot;,i); 
-        }else{
-          outb( 0xFF, PA);
-          printf(&quot;-O-  step: %d\n&quot;,i);
-        }
-    } 
+    <span class="cm">/* PILI 燈  (1000 ms) 交互 閃爍 */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+          <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
 
-    /* 我們不再需要這些埠位址 */
-    if (ioperm(CCW, 3, 0)) {perror(&quot;ioperm&quot;); return (0);}
-    if (ioperm(PA, 3, 0))  {perror(&quot;ioperm&quot;); return (0);}
-    return (0);
-  }
-</code></pre></p>
+    <span class="cm">/* 我們不再需要這些埠位址 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="cpp_io.png" /></p>
 <ul>
 <li>class_io.cpp    </li>
 </ul>
-<p> <pre><code class=cpp>/******************************************************************************
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
 
-Filename: class_io.cpp     
-Compiler: g++ -Wno-deprecated -oclass_io  class_io.cpp
-Author:   Jing-Wen.Lai
-Function: 控制 8255 I/O 卡上的 LED , 使之能夠 向系統申請 8255卡所需的位置,
-                      將 8255卡所需的位置還給系統,與
-                      (1) LED 全部點亮,
-                      (2) LED 全部熄滅,
-                      (3) LED 由左往右跑,
-                      (4) LED 由右往左跑.
-******************************************************************************/
+<span class="cm">Filename: class_io.cpp     </span>
+<span class="cm">Compiler: g++ -Wno-deprecated -oclass_io  class_io.cpp</span>
+<span class="cm">Author:   Jing-Wen.Lai</span>
+<span class="cm">Function: 控制 8255 I/O 卡上的 LED , 使之能夠 向系統申請 8255卡所需的位置,</span>
+<span class="cm">                      將 8255卡所需的位置還給系統,與</span>
+<span class="cm">                      (1) LED 全部點亮,</span>
+<span class="cm">                      (2) LED 全部熄滅,</span>
+<span class="cm">                      (3) LED 由左往右跑,</span>
+<span class="cm">                      (4) LED 由右往左跑.</span>
+<span class="cm">******************************************************************************/</span>
 
-#include &lt;iostream.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;termios.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/io.h&gt;
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;termios.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/io.h&gt;</span><span class="cp"></span>
 
-#define CCW  0x303                               /* 8255 CCW */
-#define PA   0x300                               /* 8255 PORT A */
+<span class="cp">#define CCW  0x303                               </span><span class="cm">/* 8255 CCW */</span><span class="cp"></span>
+<span class="cp">#define PA   0x300                               </span><span class="cm">/* 8255 PORT A */</span><span class="cp"></span>
 
-class ClassForPio8255Card                        // 類別Person宣告
-  {
-    private: 
-      int pio8255CardPort_A_Data;
-    public:                  
-      int initAndApplySystemAddrFor8255Card();   // 向系統申請 8255卡所需的位置
-      int releaseSystemAddrFor8255Card();    // 將 8255卡所佔用的位置還給系統
-      void piliLampFromMSBtoLSB();       // 8255卡上的LED 會由高位元點亮到低位元
-      void piliLampFromLSBtoMSB();       // 8255卡上的LED 會由低位元點亮到高位元  
-      void brightAllLedOn8255Card();             // 點亮 8255卡上的 LED
-      void darkAllLedOn8255Card();       // 熄掉 8255卡上的 LED  
-  };
+<span class="k">class</span> <span class="nc">ClassForPio8255Card</span>                        <span class="c1">// 類別Person宣告</span>
+  <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span> 
+      <span class="kt">int</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>                  
+      <span class="kt">int</span> <span class="n">initAndApplySystemAddrFor8255Card</span><span class="p">();</span>   <span class="c1">// 向系統申請 8255卡所需的位置</span>
+      <span class="kt">int</span> <span class="nf">releaseSystemAddrFor8255Card</span><span class="p">();</span>    <span class="c1">// 將 8255卡所佔用的位置還給系統</span>
+      <span class="kt">void</span> <span class="nf">piliLampFromMSBtoLSB</span><span class="p">();</span>       <span class="c1">// 8255卡上的LED 會由高位元點亮到低位元</span>
+      <span class="kt">void</span> <span class="nf">piliLampFromLSBtoMSB</span><span class="p">();</span>       <span class="c1">// 8255卡上的LED 會由低位元點亮到高位元  </span>
+      <span class="kt">void</span> <span class="nf">brightAllLedOn8255Card</span><span class="p">();</span>             <span class="c1">// 點亮 8255卡上的 LED</span>
+      <span class="kt">void</span> <span class="nf">darkAllLedOn8255Card</span><span class="p">();</span>       <span class="c1">// 熄掉 8255卡上的 LED  </span>
+  <span class="p">};</span>
 
-int main()
-{
-    int ch = 0;                            /*  鍵盤所按下的字元 */
-    ClassForPio8255Card pio8255Card;   
-    pio8255Card.initAndApplySystemAddrFor8255Card();       // 初始化 8255 卡
-    while(ch!=5){
-      cout  &lt;&lt;&quot;1:Brighting all LED 2:Darking all LED 3:PILI LED(MSB-&gt;LSB)  4:PILI LED(LSB-&gt;MSB)\n&quot;;
-      cin&gt;&gt;ch;
-      cout&lt;&lt;&quot;Selected Function is :&quot;&lt;&lt;ch&lt;&lt;&quot;\n&quot;;
-      switch(ch){    
-        case 1:
-    pio8255Card.brightAllLedOn8255Card();           
-    break;  
-        case 2:
-          pio8255Card.darkAllLedOn8255Card();
-          break;
-  case 3:
-    pio8255Card.piliLampFromMSBtoLSB();
-          break;
-        case 4:
-          pio8255Card.piliLampFromLSBtoMSB();   
-          break;    
-  default:
-          cout &lt;&lt; &quot;undefine Function ,try again please!\n&quot; ;
-          break;
-      }
-    }
-    pio8255Card.releaseSystemAddrFor8255Card();
-    return (0); 
-}
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                            <span class="cm">/*  鍵盤所按下的字元 */</span>
+    <span class="n">ClassForPio8255Card</span> <span class="n">pio8255Card</span><span class="p">;</span>   
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">initAndApplySystemAddrFor8255Card</span><span class="p">();</span>       <span class="c1">// 初始化 8255 卡</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="o">!=</span><span class="mi">5</span><span class="p">){</span>
+      <span class="n">cout</span>  <span class="o">&lt;&lt;</span><span class="s">&quot;1:Brighting all LED 2:Darking all LED 3:PILI LED(MSB-&gt;LSB)  4:PILI LED(LSB-&gt;MSB)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">ch</span><span class="p">;</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Selected Function is :&quot;</span><span class="o">&lt;&lt;</span><span class="n">ch</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="k">switch</span><span class="p">(</span><span class="n">ch</span><span class="p">){</span>    
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">brightAllLedOn8255Card</span><span class="p">();</span>           
+    <span class="k">break</span><span class="p">;</span>  
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+          <span class="n">pio8255Card</span><span class="p">.</span><span class="n">darkAllLedOn8255Card</span><span class="p">();</span>
+          <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">piliLampFromMSBtoLSB</span><span class="p">();</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+          <span class="n">pio8255Card</span><span class="p">.</span><span class="n">piliLampFromLSBtoMSB</span><span class="p">();</span>   
+          <span class="k">break</span><span class="p">;</span>    
+  <span class="k">default</span><span class="o">:</span>
+          <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;undefine Function ,try again please!</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">pio8255Card</span><span class="p">.</span><span class="n">releaseSystemAddrFor8255Card</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+<span class="p">}</span>
 
-int ClassForPio8255Card::initAndApplySystemAddrFor8255Card(){
-    //cout &lt;&lt; &quot;initAndApplySystemAddrFor8255Card\n&quot;;
-    /* 取得埠位址的存取權限 */
-    if (ioperm(CCW, 3, 1)) {perror(&quot;ioperm&quot;); return (0);}
-    if (ioperm(PA, 3, 1))  {perror(&quot;ioperm&quot;); return (0);}
+<span class="kt">int</span> <span class="nf">ClassForPio8255Card::initAndApplySystemAddrFor8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;initAndApplySystemAddrFor8255Card\n&quot;;</span>
+    <span class="cm">/* 取得埠位址的存取權限 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
-    /* 定義 8255 工作模式 */
-    outb(0x80, CCW);
-    /* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */
-    outb(0, PA);    
-}
+    <span class="cm">/* 定義 8255 工作模式 */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
+    <span class="cm">/* 重置 8255 PORT A 的輸出資料信號 (D0-7) 全為零 (0) */</span>
+    <span class="n">outb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>    
+<span class="p">}</span>
 
-void ClassForPio8255Card::brightAllLedOn8255Card(){
-    //cout &lt;&lt; &quot;brightAllLedOn8255Card\n&quot;;
-    outb( 0xff, PA); 
-}
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::brightAllLedOn8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;brightAllLedOn8255Card\n&quot;;</span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span> 
+<span class="p">}</span>
 
-void ClassForPio8255Card::darkAllLedOn8255Card(){
-    //cout &lt;&lt; &quot;darkAllLedOn8255Card\n&quot;;
-    outb( 0x00, PA);
-}
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::darkAllLedOn8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;darkAllLedOn8255Card\n&quot;;</span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+<span class="p">}</span>
 
-void ClassForPio8255Card::piliLampFromLSBtoMSB(){
-    pio8255CardPort_A_Data=0x01;
-    for(int i=0; i&lt;8; i++){
-      outb( pio8255CardPort_A_Data, PA);
-      usleep(1000000);
-      pio8255CardPort_A_Data*=2;
-  }
-}
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::piliLampFromLSBtoMSB</span><span class="p">(){</span>
+    <span class="n">pio8255CardPort_A_Data</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+      <span class="n">pio8255CardPort_A_Data</span><span class="o">*=</span><span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-void ClassForPio8255Card::piliLampFromMSBtoLSB(){
-    pio8255CardPort_A_Data=0x80;
-    for(int i=0; i&lt;8; i++){
-      outb( pio8255CardPort_A_Data, PA);
-      usleep(1000000);
-      pio8255CardPort_A_Data/=2;
-    }
-}
+<span class="kt">void</span> <span class="nf">ClassForPio8255Card::piliLampFromMSBtoLSB</span><span class="p">(){</span>
+    <span class="n">pio8255CardPort_A_Data</span><span class="o">=</span><span class="mh">0x80</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">outb</span><span class="p">(</span> <span class="n">pio8255CardPort_A_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
+      <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+      <span class="n">pio8255CardPort_A_Data</span><span class="o">/=</span><span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-int ClassForPio8255Card::releaseSystemAddrFor8255Card(){
-    //cout &lt;&lt; &quot;releaseSystemAddrFor8255Card\n&quot;;
-    //  LED 暗 
-    outb( 0x00, PA);
+<span class="kt">int</span> <span class="nf">ClassForPio8255Card::releaseSystemAddrFor8255Card</span><span class="p">(){</span>
+    <span class="c1">//cout &lt;&lt; &quot;releaseSystemAddrFor8255Card\n&quot;;</span>
+    <span class="c1">//  LED 暗 </span>
+    <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
-    /* 我們不再需要這些埠位址 */
-    if (ioperm(CCW, 3, 0)) {perror(&quot;ioperm&quot;); return (0);}
-    if (ioperm(PA, 3, 0))  {perror(&quot;ioperm&quot;); return (0);}
+    <span class="cm">/* 我們不再需要這些埠位址 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
-  }
-</code></pre></p>
+  <span class="p">}</span>
+</code></pre></div>
 <p><img alt="r" src="class_io.png" /></p>
 <h2 id="windows">Windows</h2>
 <h3 id="turbo-c">Turbo C</h3>
-<p> <pre><code class=c>//**********************************************************************************
-//-- PC上介面實習 8255 與 8254 測試  
-//-- 版本:     v0.1 6/6/2001 
-//-- 說明:     測試 組裝 完畢 的 8255 與 8254 是否可動作    
-//-- 使用方式: 隨意按任一按鍵,   螢幕上 顯示 &quot;O&quot;, 此時 LED 1,2,5,6 亮, 並且喇叭發出聲音
-//--           再隨意按任一按鍵, 螢幕上 顯示 &quot;X&quot;, 此時 LED 全部  不亮, 並且喇叭不發出聲音                              
-//--           按 &quot;Esc&quot; 鍵 可 離開本程式
-//--================================================================================
-//-- IO 位址  :  請 參考 下面 #define 的定義
-//-- 配合硬體 :  參考 下面  參考文件 
-//-- 元件列表 :  8255           X 1 ( 可程式規劃邏輯介面 ; PPI)
-//--             8254           X 1 ( 可程式規劃計數(時)介面 / 最高輸入時序 8 MHz )
-//--                                ( 日本 NEC 編號的 8254 為 D71054C )
-//--
-//--             74LS138        X 1 ( 解碼致能 8255 與 8254 用 )
-//--             74LS00         X 1 ( 解碼致能 74LS138 與 喇叭電路 )
-//--
-//--             5K 可調式電阻  X 1 ( 喇叭電路用 )
-//--             C1815          X 1 ( 喇叭電路用 , 編號面 接腳 ECB)
-//--             喇叭           X 1 (  喇叭電路用, 使用 PC 上的喇叭即可)  
-//--             LED            X 8 ( 檢視8255 portA 輸出用(十顆包裝型 LED 有時無法動作))
-//--  
-//--             金手指 AT 介面電路板
-//--             上述 IC 所需腳座 及 一般焊接工具 
-//--================================================================================  
-//-- 編輯器   :  Jext  ( http://www.jext.org/ )
-//-- 組譯器   :  Turbo C++
-//-- 參考文件 :  PC XT/AT 介面設計與應用 Visual Basic 6.0 版(ISBN:957-499-229-2) / 儒林 
-//--             8254 電路圖 P 5-57 
-//--             8255 電路圖 P 3-49 (位址選取方式 改用 8255 選取方式)
-//--             原書錯誤更正 : 
-//                      p5-62 DEBUG 內的 倒數第八個指令為 -O 303 00
-//--                                             應改為   -O 302 00
-//--                                     倒數第七個指令為 -O 303 02
-//--                                             應改為   -O 302 02   
-//--                                     倒數第三個指令為 -O 303 01
-//--                                             應改為   -O 302 01 
-//--                                     倒數第二個指令為 -O 323 03
-//--                                             應改為   -O 302 03
-//--                                     倒數第一個指令為 -O 303 02  註解處為 禁能 蜂鳴器
-//--                                             應改為   -O 302 02  應改為 禁能 第二計數器
-//--                    p5-65 程式碼內作者把 PPI_PC 和 PPI_CW 的位址 有時弄混ㄋ 
-//--                   ( 錯誤蠻多的 改的有點 眼花ㄋ ,不過依作者的錯誤程式碼卻可以執行,真令人訝異) 
-//-- 備註:    無法在 我的 P-II 上測試(或許需調整 安邁 ROM 內 CLK 的設定,但與可以測試的 P-I 主機 ROM 設定內無法發現相同的 Function)
-//--         ,改成於 檢來的 P-I 上測試 ,由於 P-I 的配備較陽春 故將程式碼 改成用 Turbo C++ 寫
-//-- 注意:    在 #define 後的 註解 需以 &quot; // &quot; 開頭 不能使用 &quot; ; &quot;
-//-- 更新Log:
-//
-//**********************************************************************************
+<div class="highlight"><pre><span></span><code><span class="c1">//**********************************************************************************</span>
+<span class="c1">//-- PC上介面實習 8255 與 8254 測試  </span>
+<span class="c1">//-- 版本:     v0.1 6/6/2001 </span>
+<span class="c1">//-- 說明:     測試 組裝 完畢 的 8255 與 8254 是否可動作    </span>
+<span class="c1">//-- 使用方式: 隨意按任一按鍵,   螢幕上 顯示 &quot;O&quot;, 此時 LED 1,2,5,6 亮, 並且喇叭發出聲音</span>
+<span class="c1">//--           再隨意按任一按鍵, 螢幕上 顯示 &quot;X&quot;, 此時 LED 全部  不亮, 並且喇叭不發出聲音                              </span>
+<span class="c1">//--           按 &quot;Esc&quot; 鍵 可 離開本程式</span>
+<span class="c1">//--================================================================================</span>
+<span class="c1">//-- IO 位址  :  請 參考 下面 #define 的定義</span>
+<span class="c1">//-- 配合硬體 :  參考 下面  參考文件 </span>
+<span class="c1">//-- 元件列表 :  8255           X 1 ( 可程式規劃邏輯介面 ; PPI)</span>
+<span class="c1">//--             8254           X 1 ( 可程式規劃計數(時)介面 / 最高輸入時序 8 MHz )</span>
+<span class="c1">//--                                ( 日本 NEC 編號的 8254 為 D71054C )</span>
+<span class="c1">//--</span>
+<span class="c1">//--             74LS138        X 1 ( 解碼致能 8255 與 8254 用 )</span>
+<span class="c1">//--             74LS00         X 1 ( 解碼致能 74LS138 與 喇叭電路 )</span>
+<span class="c1">//--</span>
+<span class="c1">//--             5K 可調式電阻  X 1 ( 喇叭電路用 )</span>
+<span class="c1">//--             C1815          X 1 ( 喇叭電路用 , 編號面 接腳 ECB)</span>
+<span class="c1">//--             喇叭           X 1 (  喇叭電路用, 使用 PC 上的喇叭即可)  </span>
+<span class="c1">//--             LED            X 8 ( 檢視8255 portA 輸出用(十顆包裝型 LED 有時無法動作))</span>
+<span class="c1">//--  </span>
+<span class="c1">//--             金手指 AT 介面電路板</span>
+<span class="c1">//--             上述 IC 所需腳座 及 一般焊接工具 </span>
+<span class="c1">//--================================================================================  </span>
+<span class="c1">//-- 編輯器   :  Jext  ( http://www.jext.org/ )</span>
+<span class="c1">//-- 組譯器   :  Turbo C++</span>
+<span class="c1">//-- 參考文件 :  PC XT/AT 介面設計與應用 Visual Basic 6.0 版(ISBN:957-499-229-2) / 儒林 </span>
+<span class="c1">//--             8254 電路圖 P 5-57 </span>
+<span class="c1">//--             8255 電路圖 P 3-49 (位址選取方式 改用 8255 選取方式)</span>
+<span class="c1">//--             原書錯誤更正 : </span>
+<span class="c1">//                      p5-62 DEBUG 內的 倒數第八個指令為 -O 303 00</span>
+<span class="c1">//--                                             應改為   -O 302 00</span>
+<span class="c1">//--                                     倒數第七個指令為 -O 303 02</span>
+<span class="c1">//--                                             應改為   -O 302 02   </span>
+<span class="c1">//--                                     倒數第三個指令為 -O 303 01</span>
+<span class="c1">//--                                             應改為   -O 302 01 </span>
+<span class="c1">//--                                     倒數第二個指令為 -O 323 03</span>
+<span class="c1">//--                                             應改為   -O 302 03</span>
+<span class="c1">//--                                     倒數第一個指令為 -O 303 02  註解處為 禁能 蜂鳴器</span>
+<span class="c1">//--                                             應改為   -O 302 02  應改為 禁能 第二計數器</span>
+<span class="c1">//--                    p5-65 程式碼內作者把 PPI_PC 和 PPI_CW 的位址 有時弄混ㄋ </span>
+<span class="c1">//--                   ( 錯誤蠻多的 改的有點 眼花ㄋ ,不過依作者的錯誤程式碼卻可以執行,真令人訝異) </span>
+<span class="c1">//-- 備註:    無法在 我的 P-II 上測試(或許需調整 安邁 ROM 內 CLK 的設定,但與可以測試的 P-I 主機 ROM 設定內無法發現相同的 Function)</span>
+<span class="c1">//--         ,改成於 檢來的 P-I 上測試 ,由於 P-I 的配備較陽春 故將程式碼 改成用 Turbo C++ 寫</span>
+<span class="c1">//-- 注意:    在 #define 後的 註解 需以 &quot; // &quot; 開頭 不能使用 &quot; ; &quot;</span>
+<span class="c1">//-- 更新Log:</span>
+<span class="c1">//</span>
+<span class="c1">//**********************************************************************************</span>
 
-#include &lt;iostream.h&gt;
-//#include &lt;bios.h&gt;
-//#include &lt;dos.h&gt;
-#include &lt;conio.h&gt;
+<span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
+<span class="c1">//#include &lt;bios.h&gt;</span>
+<span class="c1">//#include &lt;dos.h&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;conio.h&gt;</span><span class="cp"></span>
 
-//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-#define PPI_8255_CW        0x3f3         // 8255 內的 控制字組 位址
-#define PPI_8255_CW_STATE  0x80          // 設定 8255 為 MODE0 全部 PORT 皆為輸出
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_CW        0x3f3         </span><span class="c1">// 8255 內的 控制字組 位址</span>
+<span class="cp">#define PPI_8255_CW_STATE  0x80          </span><span class="c1">// 設定 8255 為 MODE0 全部 PORT 皆為輸出</span>
 
-//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255 portA LED 顯示 用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-#define PPI_8255_PA        0X3f0         // 8255 內的 PORT A   位址
-#define ledEnable          0x00          // 8255 port A 輸出至 LED  1,2,5,6  亮
-#define ledDisable         0xff          // 8255 port A 輸出至 LED  全部     不亮
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8255 portA LED 顯示 用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_PA        0X3f0         </span><span class="c1">// 8255 內的 PORT A   位址</span>
+<span class="cp">#define ledEnable          0x00          </span><span class="c1">// 8255 port A 輸出至 LED  1,2,5,6  亮</span>
+<span class="cp">#define ledDisable         0xff          </span><span class="c1">// 8255 port A 輸出至 LED  全部     不亮</span>
 
-//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8254  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-#define PPC_8254_CW        0x323         // 8254 內的  控制字組 位址
-#define PPC_8254_CW_STATE  0XB6          // 設定 8254 第二計數器 為 模式三 ,讀寫 高低位元組 , HEX
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  8254  用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPC_8254_CW        0x323         </span><span class="c1">// 8254 內的  控制字組 位址</span>
+<span class="cp">#define PPC_8254_CW_STATE  0XB6          </span><span class="c1">// 設定 8254 第二計數器 為 模式三 ,讀寫 高低位元組 , HEX</span>
 
-//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    蜂鳴器 用    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-#define PPI_8255_PC        0X3f2         // 8255 內的 PORT C     位址 , PC 0 控制  8254 第二計數器 用 ,  PC 1 控制  蜂鳴器 用
-#define PPC_8254_C2        0X322         // 8254 內的 第二計數器 位址
-#define PPC_8254_C2_STATE  0XFF          // 8254 內的 第二計數器 的高低位元組計數值
+<span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    蜂鳴器 用    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="cp">#define PPI_8255_PC        0X3f2         </span><span class="c1">// 8255 內的 PORT C     位址 , PC 0 控制  8254 第二計數器 用 ,  PC 1 控制  蜂鳴器 用</span>
+<span class="cp">#define PPC_8254_C2        0X322         </span><span class="c1">// 8254 內的 第二計數器 位址</span>
+<span class="cp">#define PPC_8254_C2_STATE  0XFF          </span><span class="c1">// 8254 內的 第二計數器 的高低位元組計數值</span>
 
-#define bellDisable        0x00          // 禁能 第二計數器 ,禁能揚聲器
-#define bellEnable         0xff          // 致能 第二計數器 ,致能揚聲器
+<span class="cp">#define bellDisable        0x00          </span><span class="c1">// 禁能 第二計數器 ,禁能揚聲器</span>
+<span class="cp">#define bellEnable         0xff          </span><span class="c1">// 致能 第二計數器 ,致能揚聲器</span>
 
-void out(unsigned int ioAddr ,unsigned char ioData)
-{
-  asm{
-    mov dx,ioAddr
-    mov al,ioData
-    out dx,al
-  };
-}
+<span class="kt">void</span> <span class="nf">out</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ioAddr</span> <span class="p">,</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">ioData</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">asm</span><span class="p">{</span>
+    <span class="n">mov</span> <span class="n">dx</span><span class="p">,</span><span class="n">ioAddr</span>
+    <span class="n">mov</span> <span class="n">al</span><span class="p">,</span><span class="n">ioData</span>
+    <span class="n">out</span> <span class="n">dx</span><span class="p">,</span><span class="n">al</span>
+  <span class="p">};</span>
+<span class="p">}</span>
 
-void main()
-{   
-  clrscr();
-  cout&lt;&lt;&quot;push Esc to exit&quot;&lt;&lt;endl;
-  //&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   8255 初始化   &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-  out(PPI_8255_CW, PPI_8255_CW_STATE);        // 設定 8255
-  //outportb(PPI_8255_CW, PPI_8255_CW_STATE);        // 設定 8255
-  out(PPI_8255_PC, bellDisable);              // 先禁能 蜂鳴器及 8254
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>   
+  <span class="n">clrscr</span><span class="p">();</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;push Esc to exit&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   8255 初始化   &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_CW</span><span class="p">,</span> <span class="n">PPI_8255_CW_STATE</span><span class="p">);</span>        <span class="c1">// 設定 8255</span>
+  <span class="c1">//outportb(PPI_8255_CW, PPI_8255_CW_STATE);        // 設定 8255</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PC</span><span class="p">,</span> <span class="n">bellDisable</span><span class="p">);</span>              <span class="c1">// 先禁能 蜂鳴器及 8254</span>
 
-  out(PPC_8254_CW, PPC_8254_CW_STATE);        // 設定 8254 第二計數器
-  out(PPC_8254_C2, PPC_8254_C2_STATE);        // 計數值寫入 第二計數器的 低位元組
-  out(PPC_8254_C2, PPC_8254_C2_STATE);        // 計數值寫入 第二計數器的 高位元組
-  int i = 0,j=0;
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_CW</span><span class="p">,</span> <span class="n">PPC_8254_CW_STATE</span><span class="p">);</span>        <span class="c1">// 設定 8254 第二計數器</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_C2</span><span class="p">,</span> <span class="n">PPC_8254_C2_STATE</span><span class="p">);</span>        <span class="c1">// 計數值寫入 第二計數器的 低位元組</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPC_8254_C2</span><span class="p">,</span> <span class="n">PPC_8254_C2_STATE</span><span class="p">);</span>        <span class="c1">// 計數值寫入 第二計數器的 高位元組</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
-  while( i&lt;500){
-    if(i%2==0){
-      cout&lt;&lt;&quot;O&quot;&lt;&lt;endl;
-      for (j=0;j&lt;25000;j++)
-        out(PPI_8255_PA ,ledEnable);         // 致能 LED
-//  out(PPI_8255_PC ,bellEnable);        // 致能 蜂鳴器
-    }else{
-  cout&lt;&lt;&quot;X&quot;&lt;&lt;endl;
-  for (j=0;j&lt;25000;j++)
-  out(PPI_8255_PA ,ledDisable);      // 禁能 LED
-//  out(PPI_8255_PC ,bellDisable);       // 禁能 蜂鳴器
-      } // -- if 迴圈 結束
-      i++;
-  } //-- while 迴圈 結束
-}
-</code></pre></p>
+  <span class="k">while</span><span class="p">(</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;O&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledEnable</span><span class="p">);</span>         <span class="c1">// 致能 LED</span>
+<span class="c1">//  out(PPI_8255_PC ,bellEnable);        // 致能 蜂鳴器</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;X&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+  <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledDisable</span><span class="p">);</span>      <span class="c1">// 禁能 LED</span>
+<span class="c1">//  out(PPI_8255_PC ,bellDisable);       // 禁能 蜂鳴器</span>
+      <span class="p">}</span> <span class="c1">// -- if 迴圈 結束</span>
+      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span> <span class="c1">//-- while 迴圈 結束</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="advanced">Advanced</h2>
 <p>FIXME: It could be more friendly if there is any GUI interface to manipulate the LED.</p>
 <h3 id="linux-device-driver">Linux Device Driver</h3>
@@ -3088,133 +3088,129 @@ void main()
 </ul>
 <h3 id="qt">QT</h3>
 <ul>
-<li>hello_qt.cpp    </li>
+<li>hello_qt.cpp  <br />
+<div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:  hello_qt.cpp</span>
+<span class="cm">Compiler:  g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o hello_qt hello_qt.cpp</span>
+<span class="cm">Running:   ./hello_qt&amp; ( 丟到背景執行 )</span>
+<span class="cm">Function:  Linux GUI 視窗程式 的基本測試，建立一個 Hello QT! 的基本視窗</span>
+<span class="cm">Date:      3/23 2003</span>
+<span class="cm">Reference: http://doc.trolltech.com/3.1/tutorial1-01.html</span>
+<span class="cm">****************************************************************************/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;qapplication.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qpushbutton.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span> <span class="p">){</span>
+  <span class="n">QApplication</span> <span class="n">a</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
+
+  <span class="n">QPushButton</span> <span class="n">hello</span><span class="p">(</span> <span class="s">&quot;Hello QT!&quot;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
+  <span class="n">hello</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
+
+  <span class="n">a</span><span class="p">.</span><span class="n">setMainWidget</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">hello</span> <span class="p">);</span>
+  <span class="n">hello</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></li>
 </ul>
-<p> <pre><code class=cpp>/****************************************************************************
-Filename:  hello_qt.cpp
-Compiler:  g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o hello_qt hello_qt.cpp
-Running:   ./hello_qt&amp; ( 丟到背景執行 )
-Function:  Linux GUI 視窗程式 的基本測試，建立一個 Hello QT! 的基本視窗
-Date:      3/23 2003
-Reference: http://doc.trolltech.com/3.1/tutorial1-01.html
-****************************************************************************/
-
-#include &lt;qapplication.h&gt;
-#include &lt;qpushbutton.h&gt;
-
-int main( int argc, char **argv ){
-  QApplication a( argc, argv );
-
-  QPushButton hello( &quot;Hello QT!&quot;, 0 );
-  hello.resize( 100, 30 );
-
-  a.setMainWidget( &amp;hello );
-  hello.show();
-  return a.exec();
-}
-</code></pre></p>
 <p><img alt="r" src="hello_qt_comm.png" />  <br />
 <img alt="r" src="hello_qt_exec.png" />    </p>
 <ul>
 <li>frame: moc 使用訊號 與╱或 溝槽的類別的一般骨架 <br />
 (摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming</a> with Qt  p.32)    </li>
 </ul>
-<p> <pre><code class=cpp>class MyClass : public Qobject 
-{ 
-  Q_OBJECT 
-  ... 
-  signals:  
-    // 將你的 訊號 放在這裡,如    
-    void somethingDone(); 
-    ...
-    public slots:   
-    // 將你 公開的溝槽 放在這裡,如  
-    viod soltDoSomething();  
+<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Qobject</span> 
+<span class="p">{</span> 
+  <span class="n">Q_OBJECT</span> 
+  <span class="p">...</span> 
+  <span class="nl">signals</span><span class="p">:</span>  
+    <span class="c1">// 將你的 訊號 放在這裡,如    </span>
+    <span class="kt">void</span> <span class="n">somethingDone</span><span class="p">();</span> 
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="nl">slots</span><span class="p">:</span>   
+    <span class="c1">// 將你 公開的溝槽 放在這裡,如  </span>
+    <span class="n">viod</span> <span class="n">soltDoSomething</span><span class="p">();</span>  
 
-    private slots:  
-    // 將你 私有的溝槽 放在這裡,如  
-    void slotDoSomethingInternal();     
+    <span class="k">private</span> <span class="nl">slots</span><span class="p">:</span>  
+    <span class="c1">// 將你 私有的溝槽 放在這裡,如  </span>
+    <span class="kt">void</span> <span class="n">slotDoSomethingInternal</span><span class="p">();</span>     
 
-    // 當然, 你可以加入其他的宣告 
-};  
-</code></pre></p>
-<p>訊號 與╱或 溝槽的 類別 (摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with Qt</a>  p.35 )</p>
+    <span class="c1">// 當然, 你可以加入其他的宣告 </span>
+<span class="p">};</span>  
+</code></pre></div>
+訊號 與╱或 溝槽的 類別 (摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with Qt</a>  p.35 )</p>
 <ul>
 <li>mocDemo2.cpp    </li>
 </ul>
-<p> <pre><code class=cpp>/****************************************************************************
-Filename:   mocDemo2.cpp
-Compiler:   g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o mocDemo2 mocDemo2.cpp
-Running:    ./mocDemo2&amp; ( 丟到背景執行 )
-Function:   了解 moc 的用法 。 
-Reference:  出自 Programming with QT , exercise-2-4-1.cpp (p35 的 練習題 )
-Date:       03/24 2003
-Comment:    並沒有 用 Programming with QT 書中以 
-            moc (moc -o moc_file.cpp myfile.h) 來處理 包含類別宣告的檔案亦可動作
-            所以並不確定 qt3 以後的做法
-****************************************************************************/
-#include &lt;qapplication.h&gt;
-#include &lt;qpushbutton.h&gt;
-#include &lt;qslider.h&gt;
-#include &lt;qlcdnumber.h&gt;
+<p><div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
+<span class="cm">Filename:   mocDemo2.cpp</span>
+<span class="cm">Compiler:   g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o mocDemo2 mocDemo2.cpp</span>
+<span class="cm">Running:    ./mocDemo2&amp; ( 丟到背景執行 )</span>
+<span class="cm">Function:   了解 moc 的用法 。 </span>
+<span class="cm">Reference:  出自 Programming with QT , exercise-2-4-1.cpp (p35 的 練習題 )</span>
+<span class="cm">Date:       03/24 2003</span>
+<span class="cm">Comment:    並沒有 用 Programming with QT 書中以 </span>
+<span class="cm">            moc (moc -o moc_file.cpp myfile.h) 來處理 包含類別宣告的檔案亦可動作</span>
+<span class="cm">            所以並不確定 qt3 以後的做法</span>
+<span class="cm">****************************************************************************/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;qapplication.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qpushbutton.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qslider.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;qlcdnumber.h&gt;</span><span class="cp"></span>
 
-int main( int argc, char* argv[] )
-{
-  QApplication myapp( argc, argv );
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">QApplication</span> <span class="n">myapp</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
 
-  QWidget* mywidget = new QWidget();
-  mywidget-&gt;setGeometry( 400, 300, 170, 150 );
+  <span class="n">QWidget</span><span class="o">*</span> <span class="n">mywidget</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QWidget</span><span class="p">();</span>
+  <span class="n">mywidget</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">150</span> <span class="p">);</span>
 
 
-  QSlider* myslider = new QSlider( 0,                   // minimum value
-                                    9,                   // maximum value
-                                    1,                   // step
-                                    1,                   // initial value
-                                    QSlider::Horizontal, // orientation
-                                    mywidget            // parent
-                                    );
-  myslider-&gt;setGeometry( 10, 10, 150, 30 );
+  <span class="n">QSlider</span><span class="o">*</span> <span class="n">myslider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSlider</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span>                   <span class="c1">// minimum value</span>
+                                    <span class="mi">9</span><span class="p">,</span>                   <span class="c1">// maximum value</span>
+                                    <span class="mi">1</span><span class="p">,</span>                   <span class="c1">// step</span>
+                                    <span class="mi">1</span><span class="p">,</span>                   <span class="c1">// initial value</span>
+                                    <span class="n">QSlider</span><span class="o">::</span><span class="n">Horizontal</span><span class="p">,</span> <span class="c1">// orientation</span>
+                                    <span class="n">mywidget</span>            <span class="c1">// parent</span>
+                                    <span class="p">);</span>
+  <span class="n">myslider</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
-  QLCDNumber* mylcdnum = new QLCDNumber( 1,        // number of digits 
-                                          mywidget // parent
-                                        );
-  mylcdnum-&gt;setGeometry( 60, 50, 50, 50 );
-  mylcdnum-&gt;display( 1 ); // display initial value
+  <span class="n">QLCDNumber</span><span class="o">*</span> <span class="n">mylcdnum</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QLCDNumber</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>        <span class="c1">// number of digits </span>
+                                          <span class="n">mywidget</span> <span class="c1">// parent</span>
+                                        <span class="p">);</span>
+  <span class="n">mylcdnum</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span> <span class="p">);</span>
+  <span class="n">mylcdnum</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">(</span> <span class="mi">1</span> <span class="p">);</span> <span class="c1">// display initial value</span>
 
-  // connect slider and number display
-  QObject::connect( myslider, SIGNAL( valueChanged( int ) ), 
-                    mylcdnum, SLOT( display( int ) ) );
+  <span class="c1">// connect slider and number display</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">myslider</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">valueChanged</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">),</span> 
+                    <span class="n">mylcdnum</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">display</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">)</span> <span class="p">);</span>
 
-  // create two push buttons for decrementing and 
-  // incrementing the slider values
-  QPushButton* decrement = new QPushButton( &quot;&lt;&quot;, mywidget );
-  decrement-&gt;setGeometry( 10, 110, 50, 30 );
+  <span class="c1">// create two push buttons for decrementing and </span>
+  <span class="c1">// incrementing the slider values</span>
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">decrement</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">decrement</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
-  QPushButton* increment = new QPushButton( &quot;&gt;&quot;, mywidget );
-  increment-&gt;setGeometry( 110, 110, 50, 30 );
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">increment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">increment</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
-  // connect the clicked() signal of the buttons to the slots that 
-  // increment and decrement the slider value
-  QObject::connect( decrement, SIGNAL( clicked() ),
-                    myslider, SLOT( subtractStep() ) );
-  QObject::connect( increment, SIGNAL( clicked() ),
-                    myslider, SLOT( addStep() ) );
+  <span class="c1">// connect the clicked() signal of the buttons to the slots that </span>
+  <span class="c1">// increment and decrement the slider value</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">decrement</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">clicked</span><span class="p">()</span> <span class="p">),</span>
+                    <span class="n">myslider</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">subtractStep</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+  <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span> <span class="n">increment</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">clicked</span><span class="p">()</span> <span class="p">),</span>
+                    <span class="n">myslider</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">addStep</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
 
-  myapp.setMainWidget( mywidget );
-  mywidget-&gt;show();
-  return myapp.exec();
-}
-</code></pre></p>
-<ul>
-<li>
-<p>QT socket   <br />
+  <span class="n">myapp</span><span class="p">.</span><span class="n">setMainWidget</span><span class="p">(</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">mywidget</span><span class="o">-&gt;</span><span class="n">show</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">myapp</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+- QT socket   <br />
 <img alt="r" src="mocDemo1_arch.jpg" />  </p>
-</li>
-<li>
-<p>Running    <br />
+<ul>
+<li>Running    <br />
 <img alt="r" src="mocDemo1_comm.png" /><br />
-<img alt="r" src="mocDemo1_exec.png" /></p>
-</li>
+<img alt="r" src="mocDemo1_exec.png" /></li>
 </ul>
 <h2 id="reference">Reference</h2>
 <table>

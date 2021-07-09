@@ -1316,28 +1316,27 @@
 </ul>
 <h2 id="quick-start">Quick Start</h2>
 <p>Download source code and set configuration to Raspberry Pi 3, then make it.</p>
-<p> <pre><code class=bash>$ mkdir br2
+<div class="highlight"><pre><span></span><code>$ mkdir br2
 $ wget https://buildroot.org/downloads/buildroot-2021.05.tar.bz2
 $ tar xvf buildroot-2021.05.tar.bz2
-$ cd buildroot-2021.05
+$ <span class="nb">cd</span> buildroot-2021.05
 $ make raspberrypi3_64_defconfig
 $ make
 $ ls -lah output/images/sdcard.img
--rw-r--r-- 1 ed ed 153M Jul  3 20:29 output/images/sdcard.img
-
-</code></pre></p>
+-rw-r--r-- <span class="m">1</span> ed ed 153M Jul  <span class="m">3</span> <span class="m">20</span>:29 output/images/sdcard.img
+</code></pre></div>
 <p>Programming image to SD card. insert SD card to RPI3 and try to power on RPI3. If you uses Windows OS, you can programming image to SD card by using <code>Rufus</code>.</p>
 <h2 id="package">Package</h2>
 <h3 id="one-single-package-manually">One single package manually</h3>
 <p>try to build one single package manually. Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
-<p> <pre><code class=bash>$ make tcodump
+<div class="highlight"><pre><span></span><code>$ make tcodump
 $ ls -lah output/target/usr/bin/tcpdump
--rwxr-xr-x 1 ed ed 1.2M Jul  3 20:48 output/target/usr/bin/tcpdump
-</code></pre></p>
+-rwxr-xr-x <span class="m">1</span> ed ed <span class="m">1</span>.2M Jul  <span class="m">3</span> <span class="m">20</span>:48 output/target/usr/bin/tcpdump
+</code></pre></div>
 <p>If you would like to rebuild it again, press <code>&lt;PKG&gt;-dirclean</code> the <code>&lt;PKG&gt;-rebuild</code></p>
-<p> <pre><code class=bash>$ make tcpdump-dirclean
+<div class="highlight"><pre><span></span><code>$ make tcpdump-dirclean
 $ make tcpdump-rebuild
-</code></pre></p>
+</code></pre></div>
 <h3 id="hello">Hello</h3>
 <p><a href="https://hackmd.io/@c_0KKCwzQE2rsd39mpvNQQ/rklPsoKaI">Add hello app to buildroot</a></p>
 <h3 id="add-some-useful-packages">Add some useful Packages</h3>
@@ -1353,99 +1352,98 @@ $ make tcpdump-rebuild
 <h3 id="add-your-first-package">Add Your first Package</h3>
 <p>(Reference)[https://wiki.t-firefly.com/en/Firefly-RK3399/debug.html]</p>
 <p>hello.c</p>
-<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_console checked=checked class=code-tab data-lang=console aria-controls=tab-group-3-0_console-panel role=tab><label for=tab-group-3-0_console class=code-tab-label data-lang=console id=tab-group-3-0_console-label>Console</label><div class=code-tabpanel role=tabpanel data-lang=console id=tab-group-3-0_console-panel aria-labelledby=tab-group-3-0_console-label><pre><code class=console>#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>include &lt;stdio.h&gt;
 
-int main()
-{
-    printf(&quot;buildroot helloworld\n&quot;);
-    return 0;
-}
-</code></pre></div><input name=tab-group-3 type=radio id=tab-group-3-1_console class=code-tab data-lang=console aria-controls=tab-group-3-1_console-panel role=tab><label for=tab-group-3-1_console class=code-tab-label data-lang=console id=tab-group-3-1_console-label>Console</label><div class=code-tabpanel role=tabpanel data-lang=console id=tab-group-3-1_console-panel aria-labelledby=tab-group-3-1_console-label><pre><code class=console>Makefile:
+<span class="go">int main()</span>
+<span class="go">{</span>
+<span class="go">    printf(&quot;buildroot helloworld\n&quot;);</span>
+<span class="go">    return 0;</span>
+<span class="go">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="go">Makefile:</span>
 
-OPT    = -O2
-DEBUG  = -g
-OTHER  = -Wall -Wno-deprecated
-CFLAGS = $(OPT) $(OTHER)
-INCDIR = -I
-LIBDIR = -L
-LIBS =
-APP=helloworld
-SRCS=hello.c
+<span class="go">OPT    = -O2</span>
+<span class="go">DEBUG  = -g</span>
+<span class="go">OTHER  = -Wall -Wno-deprecated</span>
+<span class="go">CFLAGS = $(OPT) $(OTHER)</span>
+<span class="go">INCDIR = -I</span>
+<span class="go">LIBDIR = -L</span>
+<span class="go">LIBS =</span>
+<span class="go">APP=helloworld</span>
+<span class="go">SRCS=hello.c</span>
 
-all:
-    $(CC) -o $(APP) $(SRCS) $(CFLAGS) $(LIBDIR) $(INCDIR) $(LIBS)
-clean:
-    rm $(APP)
-</code></pre></div></div>
+<span class="go">all:</span>
+<span class="gp">    $</span><span class="o">(</span>CC<span class="o">)</span> -o <span class="k">$(</span>APP<span class="k">)</span> <span class="k">$(</span>SRCS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>LIBDIR<span class="k">)</span> <span class="k">$(</span>INCDIR<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
+<span class="go">clean:</span>
+<span class="go">    rm $(APP)</span>
+</code></pre></div>
 <p>Config.in</p>
-<p> <pre><code class=console>package/Config.in
+<p><div class="highlight"><pre><span></span><code><span class="go">package/Config.in</span>
 
-……
-menu &quot;Text editors and viewers&quot;
-    source &quot;package/ed/Config.in&quot;
-    source &quot;package/joe/Config.in&quot;
-    source &quot;package/less/Config.in&quot;
-    source &quot;package/mc/Config.in&quot;
-    source &quot;package/most/Config.in&quot;
-    source &quot;package/nano/Config.in&quot;
-    source &quot;package/uemacs/Config.in&quot;
-    source &quot;package/vim/Config.in&quot;
-endmenu
+<span class="go">……</span>
+<span class="go">menu &quot;Text editors and viewers&quot;</span>
+<span class="go">    source &quot;package/ed/Config.in&quot;</span>
+<span class="go">    source &quot;package/joe/Config.in&quot;</span>
+<span class="go">    source &quot;package/less/Config.in&quot;</span>
+<span class="go">    source &quot;package/mc/Config.in&quot;</span>
+<span class="go">    source &quot;package/most/Config.in&quot;</span>
+<span class="go">    source &quot;package/nano/Config.in&quot;</span>
+<span class="go">    source &quot;package/uemacs/Config.in&quot;</span>
+<span class="go">    source &quot;package/vim/Config.in&quot;</span>
+<span class="go">endmenu</span>
 
-menu &quot;myown helloworld&quot;
-    source &quot;package/helloworld/Config.in&quot;
-endmenu
+<span class="go">menu &quot;myown helloworld&quot;</span>
+<span class="go">    source &quot;package/helloworld/Config.in&quot;</span>
+<span class="go">endmenu</span>
 
-endmenu
-注意要在最後這個 endmenu 前插入。
+<span class="go">endmenu</span>
+<span class="go">注意要在最後這個 endmenu 前插入。</span>
 
-2. 新建 ～/buildroot-2020.08.1/package/helloworld/Config.in
+<span class="go">2. 新建 ～/buildroot-2020.08.1/package/helloworld/Config.in</span>
 
-config BR2_PACKAGE_HELLOWORLD
-bool &quot;helloworld&quot;
-help
-  This is a demo to add myown helloworld.
-此時menuconfig就有了。
+<span class="go">config BR2_PACKAGE_HELLOWORLD</span>
+<span class="go">bool &quot;helloworld&quot;</span>
+<span class="go">help</span>
+<span class="go">  This is a demo to add myown helloworld.</span>
+<span class="go">此時menuconfig就有了。</span>
 
-3. 新建～/buildroot-2020.08.1/package/helloworld/helloworld.mk
+<span class="go">3. 新建～/buildroot-2020.08.1/package/helloworld/helloworld.mk</span>
 
-################################################################################
-#
-# helloworld
-#
-################################################################################
+<span class="gp">#</span><span class="c1">###############################################################################</span>
+<span class="gp">#</span>
+<span class="gp"># </span>helloworld
+<span class="gp">#</span>
+<span class="gp">#</span><span class="c1">###############################################################################</span>
 
-HELLOWORLD_VERSION:= 1.0.0
-HELLOWORLD_SITE:= $(CURDIR)/dl/helloworld
-HELLOWORLD_SITE_METHOD:=local
-HELLOWORLD_INSTALL_TARGET:=YES
+<span class="go">HELLOWORLD_VERSION:= 1.0.0</span>
+<span class="gp">HELLOWORLD_SITE:= $</span><span class="o">(</span>CURDIR<span class="o">)</span>/dl/helloworld
+<span class="go">HELLOWORLD_SITE_METHOD:=local</span>
+<span class="go">HELLOWORLD_INSTALL_TARGET:=YES</span>
 
-define HELLOWORLD_BUILD_CMDS
-    $(MAKE) CC=&quot;$(TARGET_CC)&quot; LD=&quot;$(TARGET_LD)&quot; -C $(@D) all
-endef
+<span class="go">define HELLOWORLD_BUILD_CMDS</span>
+<span class="gp">    $</span><span class="o">(</span>MAKE<span class="o">)</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_CC<span class="k">)</span><span class="s2">&quot;</span> <span class="nv">LD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_LD<span class="k">)</span><span class="s2">&quot;</span> -C <span class="k">$(</span>@D<span class="k">)</span> all
+<span class="go">endef</span>
 
-define HELLOWORLD_INSTALL_TARGET_CMDS
-    $(INSTALL) -D -m 0755 $(@D)/helloworld $(TARGET_DIR)/bin
-endef
+<span class="go">define HELLOWORLD_INSTALL_TARGET_CMDS</span>
+<span class="gp">    $</span><span class="o">(</span>INSTALL<span class="o">)</span> -D -m <span class="m">0755</span> <span class="k">$(</span>@D<span class="k">)</span>/helloworld <span class="k">$(</span>TARGET_DIR<span class="k">)</span>/bin
+<span class="go">endef</span>
 
-define HELLOWORLD_PERMISSIONS
-    /bin/helloworld f 4755 0 0 - - - - -
-endef
+<span class="go">define HELLOWORLD_PERMISSIONS</span>
+<span class="go">    /bin/helloworld f 4755 0 0 - - - - -</span>
+<span class="go">endef</span>
 
-$(eval $(generic-package))
-## Linux Kernel
+<span class="gp">$</span><span class="o">(</span><span class="nb">eval</span> <span class="k">$(</span>generic-package<span class="k">)</span><span class="o">)</span>
+<span class="gp">#</span><span class="c1"># Linux Kernel</span>
 
-There are the commands for make linux kerenl. 
-
-</code></pre></p>
-<p>$ make linux-menuconfig
-$ make linux-rebuild</p>
-<p> <pre><code class>
-## Busybox
+<span class="go">There are the commands for make linux kerenl. </span>
+</code></pre></div>
+$ make linux-menuconfig
+$ make linux-rebuild
+<div class="highlight"><pre><span></span><code>## Busybox
 
 There are the commands to make busybox. Use `mkfifo` as an example, try to step into `Coreutils &gt; mkfifo` and rebuild busybox.
-</code></pre></p>
-<p>$ busybox-menuconfig 
+</code></pre></div>
+$ busybox-menuconfig 
 $ make busybox-rebuild
 ```</p>
 <h2 id="reference">Reference</h2>

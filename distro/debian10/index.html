@@ -565,14 +565,14 @@
         
           <li class="md-nav__item">
   <a href="#hello-world" class="md-nav__link">
-    Hello, world
+    Hello, World
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#proc" class="md-nav__link">
-    Proc
+  <a href="#procfs" class="md-nav__link">
+    Procfs
   </a>
   
 </li>
@@ -1272,14 +1272,14 @@
         
           <li class="md-nav__item">
   <a href="#hello-world" class="md-nav__link">
-    Hello, world
+    Hello, World
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#proc" class="md-nav__link">
-    Proc
+  <a href="#procfs" class="md-nav__link">
+    Procfs
   </a>
   
 </li>
@@ -1367,47 +1367,47 @@
 <p>Download and install Wireshark from Internet.For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.</p>
 <p>Programming Live CD, in my case I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
 <p>Check the current Linux Kernel version.</p>
-<p> <pre><code class=console># uname -a
-config-4.19.0-17-amd64
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">config-4.19.0-17-amd64</span>
+</code></pre></div>
 <p>Upgrade the essential packages for wireless capture</p>
-<p> <pre><code class=console>$ sudo apt-get update &amp;&amp; sudo apt-get upgrade
-$ sudo apt-get install -y openssh-server vim net-tools usbutils pciutils
-$ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-$ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
-$ sudo apt-get install -y software-properties-common rsync
-$ sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
-$ sudo service sshd restart
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp">$ </span>sudo apt-get install -y openssh-server vim net-tools usbutils pciutils
+<span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
+<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
+<span class="gp">$ </span>sudo service sshd restart
+</code></pre></div>
 <p>Add apt repository to support <code>linux-image-5.10.0</code></p>
-<p> <pre><code class=console>$ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
-$ sudo apt-get update
-$ sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
-$ sync reboot
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://deb.debian.org/debian buster-backports main&#39;</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
+<span class="gp">$ </span>sync reboot
+</code></pre></div>
 <p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code></p>
-<p> <pre><code class=console># uname -a
-Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
+</code></pre></div>
 <p>Add apt repository to support <code>firmware-misc-nonfree</code> (Optional)</p>
-<p> <pre><code class=console>$ sudo add-apt-repository 'deb http://ftp.de.debian.org/debian stretch main non-free'
-$ sudo apt-get update
-$ sudo apt-get install firmware-misc-nonfree
-$ sync; sudo reboot
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://ftp.de.debian.org/debian stretch main non-free&#39;</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree
+<span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
+</code></pre></div>
 <p>Rebuild the kernel</p>
-<p> <pre><code class=console>$ sudo apt-get update ; sudo apt-get upgrade; sudo apt autoremove
-$ sudo apt-cache search kernel | grep source | grep 5.10
-linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches
-$ sudo apt-get install linux-source-5.10
-$ sudo cp /usr/src/linux-source-5.10.tar.xz .
-$ sudo chgrp ed linux-source-5.10.tar.xz
-$ sudo chown ed linux-source-5.10.tar.xz
-$ tar xvf linux-source-5.10.tar.xz
-$ cd linux-source-5.10/
-$ cp /boot/config-$(uname -r) .config
-$ scripts/config --set-str SYSTEM_TRUSTED_KEYS &quot;&quot;
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="p">;</span> sudo apt-get upgrade<span class="p">;</span> sudo apt autoremove
+<span class="gp">$ </span>sudo apt-cache search kernel <span class="p">|</span> grep <span class="nb">source</span> <span class="p">|</span> grep <span class="m">5</span>.10
+<span class="go">linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches</span>
+<span class="gp">$ </span>sudo apt-get install linux-source-5.10
+<span class="gp">$ </span>sudo cp /usr/src/linux-source-5.10.tar.xz .
+<span class="gp">$ </span>sudo chgrp ed linux-source-5.10.tar.xz
+<span class="gp">$ </span>sudo chown ed linux-source-5.10.tar.xz
+<span class="gp">$ </span>tar xvf linux-source-5.10.tar.xz
+<span class="gp">$ </span><span class="nb">cd</span> linux-source-5.10/
+<span class="gp">$ </span>cp /boot/config-<span class="k">$(</span>uname -r<span class="k">)</span> .config
+<span class="gp">$ </span>scripts/config --set-str SYSTEM_TRUSTED_KEYS <span class="s2">&quot;&quot;</span>
+</code></pre></div>
 <p>Revise CONFIG_DEBUG_INFO_BTF to avoid build error</p>
 <!--
 BTF: .tmp_vmlinux.btf: pahole version v1.12 is too old, need at least v1.16
@@ -1415,86 +1415,87 @@ Failed to generate BTF for vmlinux
 Try to disable CONFIG_DEBUG_INFO_BTF
 make: *** [Makefile:1167: vmlinux] Error 1
 -->
-
-<p> <pre><code class>CONFIG_DEBUG_INFO_BTF=n
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>CONFIG_DEBUG_INFO_BTF=n
+</code></pre></div>
 <p>Compile and Install the Kernel</p>
-<p> <pre><code class=console>$ sudo add-apt-repository 'deb http://http.us.debian.org/debian/ buster main contrib non-free'
-$ sudo make -j $(nproc) V=99 deb-pkg
-$ cd ..
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://http.us.debian.org/debian/ buster main contrib non-free&#39;</span>
+<span class="gp">$ </span>sudo make -j <span class="k">$(</span>nproc<span class="k">)</span> <span class="nv">V</span><span class="o">=</span><span class="m">99</span> deb-pkg
+<span class="gp">$ </span><span class="nb">cd</span> ..
+</code></pre></div>
 <p>Result</p>
-<p> <pre><code class=console>$ls -lah | grep deb
--rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb
--rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb
--rw-r--r--  1 ed   ed   893M Jul  9 00:25 linux-image-5.10.40-dbg_5.10.40-5_amd64.deb
--rw-r--r--  1 ed   ed   1.1M Jul  8 23:57 linux-libc-dev_5.10.40-5_amd64.deb
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span>ls -lah <span class="p">|</span> grep deb
+<span class="go">-rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed   893M Jul  9 00:25 linux-image-5.10.40-dbg_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed   1.1M Jul  8 23:57 linux-libc-dev_5.10.40-5_amd64.deb</span>
+</code></pre></div>
 <p>Install</p>
-<p> <pre><code class=console>$ sudo dpkg -i linux-image-5.10.40_5.10.40-5_amd64.deb
-$ sudo dpkg -i linux-headers-5.10.40_5.10.40-5_amd64.deb
-$ sync
-$ sudo reboot
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo dpkg -i linux-image-5.10.40_5.10.40-5_amd64.deb
+<span class="gp">$ </span>sudo dpkg -i linux-headers-5.10.40_5.10.40-5_amd64.deb
+<span class="gp">$ </span>sync
+<span class="gp">$ </span>sudo reboot
+</code></pre></div>
 <p>Verification</p>
-<p> <pre><code class=console>$ uname -a
-$ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
+<span class="gp">$ </span>Linux ed-pc <span class="m">5</span>.10.40 <span class="c1">#5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux</span>
+</code></pre></div>
 <h2 id="linux-kernel-module">Linux Kernel Module</h2>
-<h3 id="hello-world">Hello, world</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-11><input name=tab-group-11 type=radio id=tab-group-11-0_python checked=checked class=code-tab data-lang=python aria-controls=tab-group-11-0_python-panel role=tab><label for=tab-group-11-0_python class=code-tab-label data-lang=python id=tab-group-11-0_python-label>Python 2</label><div class=code-tabpanel role=tabpanel data-lang=python id=tab-group-11-0_python-panel aria-labelledby=tab-group-11-0_python-label><pre><code class=python>print &quot;Bonjour&quot; 
-</code></pre></div><input name=tab-group-11 type=radio id=tab-group-11-1_python class=code-tab data-lang=python aria-controls=tab-group-11-1_python-panel role=tab><label for=tab-group-11-1_python class=code-tab-label data-lang=python id=tab-group-11-1_python-label>Python 3</label><div class=code-tabpanel role=tabpanel data-lang=python id=tab-group-11-1_python-panel aria-labelledby=tab-group-11-1_python-label><pre><code class=python>print(&quot;Bonjour&quot;)
-</code></pre></div><input name=tab-group-11 type=radio id=tab-group-11-2_c class=code-tab data-lang=c aria-controls=tab-group-11-2_c-panel role=tab><label for=tab-group-11-2_c class=code-tab-label data-lang=c id=tab-group-11-2_c-label>hello.c</label><div class=code-tabpanel role=tabpanel data-lang=c id=tab-group-11-2_c-panel aria-labelledby=tab-group-11-2_c-label><pre><code class=c>#include &lt;linux/init.h&gt;
-#include &lt;linux/module.h&gt;
+<h3 id="hello-world">Hello, World</h3>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/init.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
 
-MODULE_LICENSE(&quot;Dual BSD/GPL&quot;);
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;Dual BSD/GPL&quot;</span><span class="p">);</span>
 
-static int hello_init(void)
-{
-  printk(KERN_INFO &quot;Hello, world\n&quot;);
-  return 0;
-}
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">hello_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Hello, world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-static void hello_exit(void)
-{
-  printk(KERN_INFO &quot;Goodbye, Hello world\n&quot;);
-}
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">hello_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Goodbye, Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-module_init(hello_init);
-module_exit(hello_exit);
-</code></pre></div></div>
-<p>Makefile</p>
-<p> <pre><code class=makefile>PWD := $(shell pwd)
-KVERSION := $(shell uname -r)
-KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
+<span class="n">module_init</span><span class="p">(</span><span class="n">hello_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">hello_exit</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Makefile</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nv">PWD</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">KVERSION</span> <span class="o">:=</span> <span class="k">$(</span>shell uname -r<span class="k">)</span>
+<span class="nv">KERNEL_DIR</span> <span class="o">=</span> /usr/src/linux-headers-<span class="k">$(</span>KVERSION<span class="k">)</span>/
 
-MODULE_NAME = hello
-obj-m := $(MODULE_NAME).o
+<span class="nv">MODULE_NAME</span> <span class="o">=</span> hello
+<span class="nv">obj-m</span> <span class="o">:=</span> <span class="k">$(</span>MODULE_NAME<span class="k">)</span>.o
 
-all:
-  make -C $(KERNEL_DIR) M=$(PWD) modules
+<span class="nf">all</span><span class="o">:</span>
+  make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
 
-test:
+<span class="nf">test</span><span class="o">:</span>
   dmesg -c
   sudo insmod ./hello.ko
-  sudo lsmod | grep hello
-  cat /proc/modules  | grep hello
+  sudo lsmod <span class="p">|</span> grep hello
+  cat /proc/modules  <span class="p">|</span> grep hello
   sudo rmmod hello
 
-clean:
-  make -C $(KERNEL_DIR) M=$(PWD) clean
-</code></pre></p>
-<p>Make</p>
-<p> <pre><code class=console>$ make
-make -C /usr/src/linux-headers-5.10.40/ M=/home/ed/hello  modules
-make[1]: Entering directory '/usr/src/linux-headers-5.10.40'
-  CC [M]  /home/ed/hello/hello.o
-  MODPOST /home/ed/hello/Module.symvers
-  LD [M]  /home/ed/hello/hello.ko
-make[1]: Leaving directory '/usr/src/linux-headers-5.10.40'
-</code></pre></p>
+<span class="nf">clean</span><span class="o">:</span>
+  make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+</code></pre></div>
+</div>
+</div>
+<p>Build the module</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make
+<span class="go">make -C /usr/src/linux-headers-5.10.40/ M=/home/ed/hello  modules</span>
+<span class="go">make[1]: Entering directory &#39;/usr/src/linux-headers-5.10.40&#39;</span>
+<span class="go">  CC [M]  /home/ed/hello/hello.o</span>
+<span class="go">  MODPOST /home/ed/hello/Module.symvers</span>
+<span class="go">  LD [M]  /home/ed/hello/hello.ko</span>
+<span class="go">make[1]: Leaving directory &#39;/usr/src/linux-headers-5.10.40&#39;</span>
+</code></pre></div>
 <p>Result</p>
-<p> <pre><code class=bash>$ tree
+<div class="highlight"><pre><span></span><code>$ tree
 .
 ├── hello.c
 ├── hello.ko
@@ -1506,186 +1507,189 @@ make[1]: Leaving directory '/usr/src/linux-headers-5.10.40'
 ├── modules.order
 └── Module.symvers
 
-0 directories, 9 files
-</code></pre></p>
+<span class="m">0</span> directories, <span class="m">9</span> files
+</code></pre></div>
 <p>Verification</p>
-<p> <pre><code class=console>$ make test
-[ 5163.936243] hello: loading out-of-tree module taints kernel.
-[ 5163.936708] Hello world !
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make <span class="nb">test</span>
+<span class="go">[ 5163.936243] hello: loading out-of-tree module taints kernel.</span>
+<span class="go">[ 5163.936708] Hello world !</span>
 
-hello                  16384  0
+<span class="go">hello                  16384  0</span>
 
-hello 16384 0 - Live 0x0000000000000000 (OE)
+<span class="go">hello 16384 0 - Live 0x0000000000000000 (OE)</span>
 
-[ 5360.557612] Bye !
-</code></pre></p>
-<h3 id="proc">Proc</h3>
-<p>hello_proc.c</p>
-<p> <pre><code class=c>#include &lt;linux/kernel.h&gt; /* We're doing kernel work */
-#include &lt;linux/module.h&gt; /* Specifically, a module */
-#include &lt;linux/proc_fs.h&gt;    /* Necessary because we use the proc fs */
-#include &lt;asm/uaccess.h&gt;  /* for copy_from_user */
-#include &lt;linux/fs.h&gt;
-#include &lt;linux/seq_file.h&gt;
-#include &lt;linux/slab.h&gt;
+<span class="go">[ 5360.557612] Bye !</span>
+</code></pre></div>
+<h3 id="procfs">Procfs</h3>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/kernel.h&gt;</span><span class="c1"> /* We&#39;re doing kernel work */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="c1"> /* Specifically, a module */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/proc_fs.h&gt;</span><span class="c1">    /* Necessary because we use the proc fs */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/uaccess.h&gt;</span><span class="c1">  /* for copy_from_user */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/seq_file.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/slab.h&gt;</span><span class="cp"></span>
 
-#include &quot;hello.h&quot;
+<span class="cp">#include</span> <span class="cpf">&quot;hello.h&quot;</span><span class="cp"></span>
 
-#define PROCFS_MAX_SIZE     1024
-#define PROCFS_NAME         &quot;hello&quot;
-static char procfs_buffer[PROCFS_MAX_SIZE];
-static unsigned long procfs_buffer_size = 0;
-static struct proc_dir_entry *entry;
-static struct proc_dir_entry *parent;
+<span class="cp">#define PROCFS_MAX_SIZE     1024</span>
+<span class="cp">#define PROCFS_NAME         &quot;hello&quot;</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">procfs_buffer</span><span class="p">[</span><span class="n">PROCFS_MAX_SIZE</span><span class="p">];</span>
+<span class="k">static</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">procfs_buffer_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_dir_entry</span> <span class="o">*</span><span class="n">entry</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_dir_entry</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
 
-/**
- * This function is called when the /proc file is read.
- */
-static ssize_t procfile_read(struct file *file, char __user *buffer, size_t count, loff_t *offset)
-{
-    if (*offset &gt; 0 || count &lt; PROCFS_MAX_SIZE) /* we have finished to read, return 0 */
-        return 0;
+<span class="cm">/**</span>
+<span class="cm"> * This function is called when the /proc file is read.</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">procfile_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="n">offset</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">offset</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">)</span> <span class="cm">/* we have finished to read, return 0 */</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 
-    /* fill the buffer, return the buffer size */
-    if(copy_to_user(buffer, procfs_buffer, procfs_buffer_size))
-        return -EFAULT;
-    *offset = procfs_buffer_size;
-    return procfs_buffer_size;
-}
+    <span class="cm">/* fill the buffer, return the buffer size */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">copy_to_user</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">procfs_buffer</span><span class="p">,</span> <span class="n">procfs_buffer_size</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">offset</span> <span class="o">=</span> <span class="n">procfs_buffer_size</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">procfs_buffer_size</span><span class="p">;</span>
+<span class="p">}</span>
 
-/**
- * This function is called when the /proc file is written
- */
-static ssize_t procfile_write(struct file* file,const char __user *buffer,size_t count,loff_t *f_pos){
-    int tlen;
-    char *tmp = kzalloc((count+1),GFP_KERNEL);
-    if(!tmp)return -ENOMEM;
-    if(copy_from_user(tmp,buffer,count)){
-        kfree(tmp);
-        return EFAULT;
-    }
+<span class="cm">/**</span>
+<span class="cm"> * This function is called when the /proc file is written</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">procfile_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span><span class="o">*</span> <span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">f_pos</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">tlen</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">((</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">GFP_KERNEL</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">tmp</span><span class="p">)</span><span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">buffer</span><span class="p">,</span><span class="n">count</span><span class="p">)){</span>
+        <span class="n">kfree</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">EFAULT</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    tlen = PROCFS_MAX_SIZE;
-    if (count &lt; PROCFS_MAX_SIZE)
-        tlen = count;
-    memcpy(&amp;procfs_buffer,tmp,tlen);
-    procfs_buffer_size = tlen;
-    kfree(tmp);
-    printk(&quot;Procfs Input: %s\n&quot;, procfs_buffer);
-    return tlen;
-}
+    <span class="n">tlen</span> <span class="o">=</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">)</span>
+        <span class="n">tlen</span> <span class="o">=</span> <span class="n">count</span><span class="p">;</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">procfs_buffer</span><span class="p">,</span><span class="n">tmp</span><span class="p">,</span><span class="n">tlen</span><span class="p">);</span>
+    <span class="n">procfs_buffer_size</span> <span class="o">=</span> <span class="n">tlen</span><span class="p">;</span>
+    <span class="n">kfree</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+    <span class="n">printk</span><span class="p">(</span><span class="s">&quot;Procfs Input: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">procfs_buffer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">tlen</span><span class="p">;</span>
+<span class="p">}</span>
 
-static int procfile_show(struct seq_file *m,void *v){
-    static char *str = NULL;
-    seq_printf(m,&quot;%s\n&quot;,str);
-    return 0;
-}
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">procfile_show</span><span class="p">(</span><span class="k">struct</span> <span class="nc">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="n">v</span><span class="p">){</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">seq_printf</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-/**
- * Open the procfile
- */
-static int procfile_open(struct inode *inode,struct file *file){
-    return single_open(file,procfile_show,NULL);
-}
+<span class="cm">/**</span>
+<span class="cm"> * Open the procfile</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">procfile_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">single_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">procfile_show</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
 
-static struct proc_ops proc_fops = {
-    .proc_lseek = seq_lseek,
-    .proc_open = procfile_open,
-    .proc_read = procfile_read,
-    .proc_release = single_release,
-    .proc_write = procfile_write,
-};
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_ops</span> <span class="n">proc_fops</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">proc_lseek</span> <span class="o">=</span> <span class="n">seq_lseek</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_open</span> <span class="o">=</span> <span class="n">procfile_open</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_read</span> <span class="o">=</span> <span class="n">procfile_read</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_release</span> <span class="o">=</span> <span class="n">single_release</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_write</span> <span class="o">=</span> <span class="n">procfile_write</span><span class="p">,</span>
+<span class="p">};</span>
 
-/**
- *This function is called from main.c when the module is loaded
- */
- int __init my_proc_init(void)
-{
-    parent = proc_mkdir(PROCFS_NAME,NULL);
-    entry = proc_create(&quot;system&quot;,0777,parent,&amp;proc_fops);
-    if(!entry) {
-        printk(KERN_INFO &quot;unable to create /proc/hello/system&quot;);
-        return -1;
-    }
-    printk(KERN_INFO &quot;/proc/hello/system is created&quot;);
-    return 0;
-}
+<span class="cm">/**</span>
+<span class="cm"> *This function is called from main.c when the module is loaded</span>
+<span class="cm"> */</span>
+ <span class="kt">int</span> <span class="n">__init</span> <span class="n">my_proc_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proc_mkdir</span><span class="p">(</span><span class="n">PROCFS_NAME</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">proc_create</span><span class="p">(</span><span class="s">&quot;system&quot;</span><span class="p">,</span><span class="mo">0777</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="o">&amp;</span><span class="n">proc_fops</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">entry</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;unable to create /proc/hello/system&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;/proc/hello/system is created&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-/**
- *This function is called from main.c when the module is unloaded
- */
-void __exit my_proc_cleanup(void)
-{
-    remove_proc_entry(&quot;system&quot;, parent);
-    remove_proc_entry(PROCFS_NAME, NULL);
-}
+<span class="cm">/**</span>
+<span class="cm"> *This function is called from main.c when the module is unloaded</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="n">__exit</span> <span class="n">my_proc_cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">remove_proc_entry</span><span class="p">(</span><span class="s">&quot;system&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">);</span>
+    <span class="n">remove_proc_entry</span><span class="p">(</span><span class="n">PROCFS_NAME</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
 
-static int __init hello_init(void)
-{
-    int rc;
-    printk(KERN_INFO &quot;Hello, Procfs!\n&quot;);
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="n">hello_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Hello, Procfs!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 
-    /* create the /proc file */
-    rc = my_proc_init();
-    if (rc == -1)
-        return -1;
+    <span class="cm">/* create the /proc file */</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">my_proc_init</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
 
-    return 0;
-}
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-static void __exit hello_exit(void)
-{
-    my_proc_cleanup();
-    printk(KERN_INFO &quot;Goodbye, Procfs!\n&quot;);
-}
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="n">hello_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">my_proc_cleanup</span><span class="p">();</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Goodbye, Procfs!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-module_init(hello_init);
-module_exit(hello_exit);
+<span class="n">module_init</span><span class="p">(</span><span class="n">hello_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">hello_exit</span><span class="p">);</span>
 
-MODULE_LICENSE(&quot;GPL&quot;);
-MODULE_DESCRIPTION(&quot;Hello Procfs example.&quot;);
-MODULE_SUPPORTED_DEVICE(&quot;hello&quot;);
-</code></pre></p>
-<p>Makefile</p>
-<p> <pre><code class=makefile>PWD := $(shell pwd)
-KVERSION := $(shell uname -r)
-KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;Hello Procfs example.&quot;</span><span class="p">);</span>
+<span class="n">MODULE_SUPPORTED_DEVICE</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Makefile</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nv">PWD</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">KVERSION</span> <span class="o">:=</span> <span class="k">$(</span>shell uname -r<span class="k">)</span>
+<span class="nv">KERNEL_DIR</span> <span class="o">=</span> /usr/src/linux-headers-<span class="k">$(</span>KVERSION<span class="k">)</span>/
 
-MODULE_NAME = hello
-obj-m := $(MODULE_NAME).o
+<span class="nv">MODULE_NAME</span> <span class="o">=</span> hello
+<span class="nv">obj-m</span> <span class="o">:=</span> <span class="k">$(</span>MODULE_NAME<span class="k">)</span>.o
 
-all:
-    make -C $(KERNEL_DIR) M=$(PWD) modules
+<span class="nf">all</span><span class="o">:</span>
+    make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
 
-test:
+<span class="nf">test</span><span class="o">:</span>
     sudo dmesg -c
     sudo insmod ./hello.ko
-    echo &quot;procfs hello test&quot; &gt;&gt; /proc/hello/system
+    <span class="nb">echo</span> <span class="s2">&quot;procfs hello test&quot;</span> &gt;&gt; /proc/hello/system
     sudo dmesg -c
     sudo rmmod hello.ko
 
-clean:
-    make -C $(KERNEL_DIR) M=$(PWD) clean
-</code></pre></p>
+<span class="nf">clean</span><span class="o">:</span>
+    make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+</code></pre></div>
+</div>
+</div>
 <h3 id="io-access">IO Access</h3>
 <h3 id="seq_file-interface">seq_file interface</h3>
 <h2 id="bpf">BPF</h2>
 <h3 id="precondition">Precondition</h3>
-<p> <pre><code class>$ sudo apt-get install clang
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install clang
+</code></pre></div>
 <h3 id="hello-bpf">Hello, BPF</h3>
 <p>a.c</p>
-<p> <pre><code class=console>int f(int x) {
-    return x + 1;
-}
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="go">int f(int x) {</span>
+<span class="go">    return x + 1;</span>
+<span class="go">}</span>
+</code></pre></div>
 <p>Make</p>
-<p> <pre><code class=console>$ clang -c -S -emit-llvm a.c                   # &lt; = a.ll (LLVM IR)
-$ clang -c -S -target bpf a.c                  # &lt; = a.s  (eBPF)
-$ clang -c -target bpf a.c                     # &lt; = a.o  (eBPF bytecode)
-$ objcopy -I elf64-little -O binary a.o a.bin  # &lt; = Extract eBPF bytecode
-</code></pre></p>
-<p>~~ TBD ~~</p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>clang -c -S -emit-llvm a.c                   <span class="c1"># &lt; = a.ll (LLVM IR)</span>
+<span class="gp">$ </span>clang -c -S -target bpf a.c                  <span class="c1"># &lt; = a.s  (eBPF)</span>
+<span class="gp">$ </span>clang -c -target bpf a.c                     <span class="c1"># &lt; = a.o  (eBPF bytecode)</span>
+<span class="gp">$ </span>objcopy -I elf64-little -O binary a.o a.bin  <span class="c1"># &lt; = Extract eBPF bytecode</span>
+</code></pre></div>
+~~ TBD ~~</p>
 <h2 id="coredump">Coredump</h2>
 <h2 id="reference">Reference</h2>
 <ul>

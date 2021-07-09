@@ -1252,11 +1252,11 @@
                 
                 <h1 id="digital-signal-processingdsp">Digital Signal Processing(DSP)</h1>
 <h2 id="voice-processing-discrete-time-processing">Voice Processing - Discrete-Time Processing</h2>
-<p> <pre><code class>$author:   Ching-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $initial:  Dec. 2002           
 $revised:  Mar. 2018
 $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab, speech
-</code></pre></p>
+</code></pre></div>
 <p>An implementation of changing the 10K sampling-rate-voice to</p>
 <ul>
 <li>22K sampling-rate-voice</li>
@@ -1282,148 +1282,148 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <li>CoolEdit 2000</li>
 </ul>
 <h2 id="programming">Programming</h2>
-<p> <pre><code class=matlab>%..............................................................................
-% Filename    : dsp2.m
-% Author      : Ching-Wen,Lai 
-% Running     : running this .m file in Matlab
-% Description : Changing the Sampling Rate 
-%
-% Date        : 12/02/2002  ver2.0  
-%               1. 更正 22K 的 butter filter 成 stable – 減少爆音現象
-%               2. 更正 8K  butter filter , Wc=1/5 (取最小的)
-%               3. 更正 10K Plot 錯誤 與 新增 頻 域 圖 形 
-% Requirement : speech_10K.wav     (PCM 格式 ; sampling rate = 10K)
-%
-% Result      : 1. speech_22K.wav  (PCM 格式 ; sampling rate = 22K)
-%               2. speech_8K.wav   (PCM 格式 ; sampling rate =  8K) 
-%
-% References  : Chapter 4.6 Changing The Sampling Rate using 
-%               Discrete-Time Processing
-%               Book::Discrete-Time Signal Processing 
-%               (ISBN: 0-13-0834443-2  )
-%
-% Comment     : 使用 矩陣方式 處理 ,比 用Loop方式處理(for...), 速度快很多
-%..............................................................................
+<div class="highlight"><pre><span></span><code><span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">% Filename    : dsp2.m</span><span class="w"></span>
+<span class="c">% Author      : Ching-Wen,Lai </span><span class="w"></span>
+<span class="c">% Running     : running this .m file in Matlab</span><span class="w"></span>
+<span class="c">% Description : Changing the Sampling Rate </span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% Date        : 12/02/2002  ver2.0  </span><span class="w"></span>
+<span class="c">%               1. 更正 22K 的 butter filter 成 stable – 減少爆音現象</span><span class="w"></span>
+<span class="c">%               2. 更正 8K  butter filter , Wc=1/5 (取最小的)</span><span class="w"></span>
+<span class="c">%               3. 更正 10K Plot 錯誤 與 新增 頻 域 圖 形 </span><span class="w"></span>
+<span class="c">% Requirement : speech_10K.wav     (PCM 格式 ; sampling rate = 10K)</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% Result      : 1. speech_22K.wav  (PCM 格式 ; sampling rate = 22K)</span><span class="w"></span>
+<span class="c">%               2. speech_8K.wav   (PCM 格式 ; sampling rate =  8K) </span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% References  : Chapter 4.6 Changing The Sampling Rate using </span><span class="w"></span>
+<span class="c">%               Discrete-Time Processing</span><span class="w"></span>
+<span class="c">%               Book::Discrete-Time Signal Processing </span><span class="w"></span>
+<span class="c">%               (ISBN: 0-13-0834443-2  )</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% Comment     : 使用 矩陣方式 處理 ,比 用Loop方式處理(for...), 速度快很多</span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-clear all;
-fs = 10000;                                      % set sampling rate
+<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span><span class="w"></span>
+<span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">;</span><span class="w">                                      </span><span class="c">% set sampling rate</span><span class="w"></span>
 
-%==============================================================================
-%              輸入 處理 10 K 語音資料
-%==============================================================================
+<span class="c">%==============================================================================</span><span class="w"></span>
+<span class="c">%              輸入 處理 10 K 語音資料</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-[ x,fs ] = wavread('speech_10K.wav');            % loading the PCM speech file
-len=length(x);
-k=input('請按下 任一鍵 播放 10K 語音');             % playing it 
-wavplay(x,fs);
+<span class="p">[</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">wavread</span><span class="p">(</span><span class="s">&#39;speech_10K.wav&#39;</span><span class="p">);</span><span class="w">            </span><span class="c">% loading the PCM speech file</span><span class="w"></span>
+<span class="n">len</span><span class="p">=</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 播放 10K 語音&#39;</span><span class="p">);</span><span class="w">             </span><span class="c">% playing it </span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
 
-%==============================================================================
-%              進行 DSP 處理 (10K -&gt; 110K --&gt; 22K )
-%==============================================================================
+<span class="c">%==============================================================================</span><span class="w"></span>
+<span class="c">%              進行 DSP 處理 (10K -&gt; 110K --&gt; 22K )</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-fprintf('將 10K 轉成 22K 處理中,請稍候...\n');
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;將 10K 轉成 22K 處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
 
-%..............................................................................
-%  [ Up sampling ] 10K -&gt; 110K          
-%  x_110K = {  x[ n/len ] , n= 0,|L|,|2l|,... 
-%                  {  0, Otherwise , 參考課本 4.84 式(p.172) 
-%..............................................................................
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%  [ Up sampling ] 10K -&gt; 110K          </span><span class="w"></span>
+<span class="c">%  x_110K = {  x[ n/len ] , n= 0,|L|,|2l|,... </span><span class="w"></span>
+<span class="c">%                  {  0, Otherwise , 參考課本 4.84 式(p.172) </span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-x_110K= [ zeros(len,10) x ];      
-x_110K = x_110K';                                %  轉置該矩陣 成 課本 4.84式
-%..............................................................................
-%
-%  使用  時域 Butterworth 數位濾波器 做 訊號重建
-%           同頻域 sinc 方式重建  ( 課本 4.88式 )
-%..............................................................................
+<span class="n">x_110K</span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">];</span><span class="w">      </span>
+<span class="n">x_110K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_110K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                </span><span class="c">%  轉置該矩陣 成 課本 4.84式</span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">%  使用  時域 Butterworth 數位濾波器 做 訊號重建</span><span class="w"></span>
+<span class="c">%           同頻域 sinc 方式重建  ( 課本 4.88式 )</span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-[ b ,a ] = butter( 19 , 1/11);                   % 1/11 與 1/5 取最小的 
-x_110K = filter(b,a,x_110K(:)); 
+<span class="p">[</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">,</span><span class="n">a</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">11</span><span class="p">);</span><span class="w">                   </span><span class="c">% 1/11 與 1/5 取最小的 </span><span class="w"></span>
+<span class="n">x_110K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">x_110K</span><span class="p">(:));</span><span class="w"> </span>
 
-%..............................................................................
-%   [ Down sampling ] 110K -&gt; 22K
-%   X_110K[n] = X_22K [ nM ]  , M = 1/5
-%                        課本 4.71式 
-%..............................................................................
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%   [ Down sampling ] 110K -&gt; 22K</span><span class="w"></span>
+<span class="c">%   X_110K[n] = X_22K [ nM ]  , M = 1/5</span><span class="w"></span>
+<span class="c">%                        課本 4.71式 </span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-x_22K = reshape(x_110K(:),5,(len*11)/5);         %  重新安排矩陣的形狀                                                                                      
-x_22K=x_22K';                                    %  轉置該矩陣
-x_22K = x_22K(:, 5 ) ;                           %  M= 1/5, 取出第五行          
+<span class="n">x_22K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">x_110K</span><span class="p">(:),</span><span class="mi">5</span><span class="p">,(</span><span class="n">len</span><span class="o">*</span><span class="mi">11</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">);</span><span class="w">         </span><span class="c">%  重新安排矩陣的形狀                                                                                      </span><span class="w"></span>
+<span class="n">x_22K</span><span class="p">=</span><span class="n">x_22K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                    </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
+<span class="n">x_22K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">                           </span><span class="c">%  M= 1/5, 取出第五行          </span><span class="w"></span>
 
-%==============================================================================
-%              輸出 處理結果 ( 10 K --&gt; 22K )
-%==============================================================================
+<span class="c">%==============================================================================</span><span class="w"></span>
+<span class="c">%              輸出 處理結果 ( 10 K --&gt; 22K )</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-k=input('請按下 任一鍵 撥放 22K 聲音');
-wavplay( x_22K(:), fs*2.2 );
-wavwrite( x_22K(:), fs*2.2 ,16,'speech_22K.wav');
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放 22K 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">2.2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">2.2</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;speech_22K.wav&#39;</span><span class="p">);</span><span class="w"></span>
 
-%==============================================================================
-%              進行 DSP 處理 (10K -&gt; 40K --&gt; 8K )
-%==============================================================================
+<span class="c">%==============================================================================</span><span class="w"></span>
+<span class="c">%              進行 DSP 處理 (10K -&gt; 40K --&gt; 8K )</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-fprintf('將 10K 轉成 8K 處理中,請稍候...\n');
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;將 10K 轉成 8K 處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
 
-%..............................................................................
-%           [ Up sampling ] 10K -&gt; 40K          
-%  x_40K  = {  x[ n/len ] , n= 0,|L|,|2l|,... 
-%                 {  0, Otherwise , 參考課本 4.84式(p.172) 
-%..............................................................................
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%           [ Up sampling ] 10K -&gt; 40K          </span><span class="w"></span>
+<span class="c">%  x_40K  = {  x[ n/len ] , n= 0,|L|,|2l|,... </span><span class="w"></span>
+<span class="c">%                 {  0, Otherwise , 參考課本 4.84式(p.172) </span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-x_40K= [ zeros(len,3) x ];      
-x_40K = x_40K';                                  %  轉置該矩陣
+<span class="n">x_40K</span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">];</span><span class="w">      </span>
+<span class="n">x_40K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_40K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                  </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
 
-%..............................................................................
-%
-%  使用  時域 Butterworth 數位濾波器 做 訊號重建
-%      同頻域 sinc 方式重建  ( 課本 4.88式 )
-%..............................................................................
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">%  使用  時域 Butterworth 數位濾波器 做 訊號重建</span><span class="w"></span>
+<span class="c">%      同頻域 sinc 方式重建  ( 課本 4.88式 )</span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-[ b ,a ] = butter( 30 , 1/5);                    % 1/5 與 1/4 取最小的             
-x_40K = filter(b,a,x_40K(:)); 
+<span class="p">[</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">,</span><span class="n">a</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">);</span><span class="w">                    </span><span class="c">% 1/5 與 1/4 取最小的             </span><span class="w"></span>
+<span class="n">x_40K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">x_40K</span><span class="p">(:));</span><span class="w"> </span>
 
-%..............................................................................
-%   [Down sampling ] 40K -&gt; 8K
-%   X_110K[n] = X_22K [ nM ]  , M = 1/5
-%                               課本 4.71式 
-%..............................................................................
+<span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">%   [Down sampling ] 40K -&gt; 8K</span><span class="w"></span>
+<span class="c">%   X_110K[n] = X_22K [ nM ]  , M = 1/5</span><span class="w"></span>
+<span class="c">%                               課本 4.71式 </span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-x_8K = reshape(x_40K(:),5,(len*4)/5);            %  重新安排矩陣的形狀                                                                                           
-x_8K=x_8K';                                      %  轉置該矩陣
-x_8K = x_8K(:, 5 ) ;                             %  M=1/5, 取出第五行                                   
+<span class="n">x_8K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">x_40K</span><span class="p">(:),</span><span class="mi">5</span><span class="p">,(</span><span class="n">len</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">);</span><span class="w">            </span><span class="c">%  重新安排矩陣的形狀                                                                                           </span><span class="w"></span>
+<span class="n">x_8K</span><span class="p">=</span><span class="n">x_8K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                      </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
+<span class="n">x_8K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">                             </span><span class="c">%  M=1/5, 取出第五行                                   </span><span class="w"></span>
 
-%============================================================================== 
-%              輸出 處理結果 ( 10 K --&gt; 8K )
-%==============================================================================
+<span class="c">%============================================================================== </span><span class="w"></span>
+<span class="c">%              輸出 處理結果 ( 10 K --&gt; 8K )</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-k=input('請按下 任一鍵 撥放 8K 聲音');
-wavplay( x_8K(:), fs*0.8 );
-wavwrite( x_8K(:), fs*0.8 ,16,'speech_8K.wav');
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放 8K 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">0.8</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">0.8</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;speech_8K.wav&#39;</span><span class="p">);</span><span class="w"></span>
 
-%==============================================================================
-%  繪出 各處理階段的 訊號 ( 10K/ 110K/ 22K/ 40K/ 8K ), 方便 比較
-%==============================================================================
+<span class="c">%==============================================================================</span><span class="w"></span>
+<span class="c">%  繪出 各處理階段的 訊號 ( 10K/ 110K/ 22K/ 40K/ 8K ), 方便 比較</span><span class="w"></span>
+<span class="c">%==============================================================================</span><span class="w"></span>
 
-subplot(332), plot(x(:),'.'),grid                % 繪出 原始 10K 訊號
-title('10K')
-subplot(333), specgram(x(:)),grid                % 繪出 10K 訊號 頻譜圖
-title('10K')
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">332</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">(:),</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">% 繪出 原始 10K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;10K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">333</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">                </span><span class="c">% 繪出 10K 訊號 頻譜圖</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;10K&#39;</span><span class="p">)</span><span class="w"></span>
 
-subplot(334), plot(x_110K,'.'),grid              % 繪出 110K 訊號
-title('110K')
-subplot(335), plot(x_22K,'.'),grid               % 繪出 22K 訊號
-title('22K')
-subplot(336), specgram(x_22K(:)),grid            % 繪出 22K 訊號 頻譜圖
-title('22K')
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">334</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_110K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">              </span><span class="c">% 繪出 110K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;110K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">335</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_22K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 22K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;22K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">336</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x_22K</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">            </span><span class="c">% 繪出 22K 訊號 頻譜圖</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;22K&#39;</span><span class="p">)</span><span class="w"></span>
 
-subplot(337), plot(x_40K,'.'),grid               % 繪出 40K 訊號
-title('40K')
-subplot(338), plot(x_8K,'.'),grid                %  繪出8K 訊號
-title('8K')
-subplot(339), specgram(x_8K(:)),grid             %  繪出 8K 訊號 頻譜圖
-title('8K')
-shg
-</code></pre></p>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">337</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_40K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 40K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;40K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">338</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_8K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">%  繪出8K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;8K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">339</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x_8K</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">             </span><span class="c">%  繪出 8K 訊號 頻譜圖</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;8K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">shg</span><span class="w"></span>
+</code></pre></div>
 <h2 id="running">Running</h2>
 <h3 id="screenshot">Screenshot</h3>
 <p><img alt="result" src="../dsp2-exe.jpg" />    </p>

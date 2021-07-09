@@ -1268,38 +1268,40 @@
 <p>you can just apply a free account from <code>GitHub</code> or <code>GitLab</code>.</p>
 <h2 id="useful-git-commands">Useful Git commands</h2>
 <ul>
-<li>Basic Git commands</li>
+<li>
+<p>Basic Git commands
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git log
+<span class="gp">$ </span>git status
+<span class="gp">$ </span>git diff &lt;FILENAME&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>Get Git log time
+<div class="highlight"><pre><span></span><code><span class="go">git log -1 --format=%cd</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Get current Branch
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git branch <span class="p">|</span> grep <span class="se">\*</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Get current Git commit hash
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git rev-parse HEAD
+<span class="gp">$ </span>git rev-parse --short HEAD
+</code></pre></div></p>
+</li>
+<li>
+<p>Get all Git commits since last tag
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git log <span class="k">$(</span>git describe --tags --abbrev<span class="o">=</span><span class="m">0</span><span class="k">)</span>..HEAD --oneline --date<span class="o">=</span>format:<span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span> --format<span class="o">=</span><span class="s2">&quot;%&lt;(19,trunc)%cd %s (%an) (%h)&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Get Remote URL
+<div class="highlight"><pre><span></span><code>$ git config --get remote.origin.url
+</code></pre></div></p>
+</li>
 </ul>
-<p> <pre><code class=console>$ git log
-$ git status
-$ git diff &lt;FILENAME&gt;
-</code></pre></p>
-<ul>
-<li>Get Git log time</li>
-</ul>
-<p> <pre><code class=console>git log -1 --format=%cd
-</code></pre></p>
-<ul>
-<li>Get current Branch</li>
-</ul>
-<p> <pre><code class=console>$ git branch | grep \*
-</code></pre></p>
-<ul>
-<li>Get current Git commit hash</li>
-</ul>
-<p> <pre><code class=console>$ git rev-parse HEAD
-$ git rev-parse --short HEAD
-</code></pre></p>
-<ul>
-<li>Get all Git commits since last tag</li>
-</ul>
-<p> <pre><code class=console>$ git log $(git describe --tags --abbrev=0)..HEAD --oneline --date=format:'%Y-%m-%d %H:%M:%S' --format=&quot;%&lt;(19,trunc)%cd %s (%an) (%h)&quot;
-</code></pre></p>
-<ul>
-<li>Get Remote URL</li>
-</ul>
-<p> <pre><code class>$ git config --get remote.origin.url
-</code></pre></p>
 <h2 id="run-gitlab-in-docker">Run Gitlab in Docker</h2>
 <p>use <a href="https://github.com/sameersbn/docker-gitlab">docker-gitlab</a> from <a href="https://github.com/sameersbn">sameersbn(Sameer Naik)</a>.</p>
 <h2 id="git-runner">Git runner</h2>

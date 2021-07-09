@@ -1445,40 +1445,41 @@
 <h3 id="upgrade-linux-kernel">Upgrade Linux Kernel</h3>
 <p>In my case, I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
 <ul>
-<li>Check the current Linux Kernel version, it's <code>4.19.x</code> now.</li>
+<li>
+<p>Check the current Linux Kernel version, it's <code>4.19.x</code> now.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo uname -a
+<span class="go">config-4.19.0-17-amd64</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Upgrade the essential packages
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
+<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget
+</code></pre></div></p>
+</li>
+<li>
+<p>Add apt repository to support <code>linux-image-5.10.x</code>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://deb.debian.org/debian buster-backports main&#39;</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
+<span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree <span class="o">(</span>Optional<span class="o">)</span>
+<span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
+</code></pre></div></p>
+</li>
+<li>
+<p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
+<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
+</code></pre></div></p>
+</li>
 </ul>
-<p> <pre><code class=console>$ sudo uname -a
-config-4.19.0-17-amd64
-</code></pre></p>
-<ul>
-<li>Upgrade the essential packages</li>
-</ul>
-<p> <pre><code class=console>$ sudo apt-get update &amp;&amp; sudo apt-get upgrade
-$ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-$ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
-$ sudo apt-get install -y software-properties-common rsync
-$ sudo apt-get install -y libncurses5-dev gcc grub2 wget
-</code></pre></p>
-<ul>
-<li>Add apt repository to support <code>linux-image-5.10.x</code></li>
-</ul>
-<p> <pre><code class=console>$ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
-$ sudo apt-get update
-$ sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
-$ sudo apt-get install firmware-misc-nonfree (Optional)
-$ sync; sudo reboot
-</code></pre></p>
-<ul>
-<li>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code></li>
-</ul>
-<p> <pre><code class=console>$ uname -a
-Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux
-</code></pre></p>
 <h3 id="check-wi-fi-channel-and-so-on">Check Wi-Fi channel and so on</h3>
 <ul>
-<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.</li>
-</ul>
-<p> <pre><code class>$ lsusb
+<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.
+<div class="highlight"><pre><span></span><code>$ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
 
 $ sudo ifconfig
@@ -1488,19 +1489,20 @@ wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-</code></pre></p>
+</code></pre></div></li>
+</ul>
 <p>Install <code>aircrack-ng</code> and run <code>airodump-ng</code> to check Wi-Fi channel. Better to use <code>aircrack-ng 1.6</code> to support WPA3-SAE.</p>
 <p>Install <code>aircrack-ng</code></p>
-<p> <pre><code class>$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
+<div class="highlight"><pre><span></span><code>$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
 $ tar xvf 1.6.tar.gz 
 $ cd aircrack-ng-1.6
 $ ./autogen.sh 
 $ ./configure 
 $ make
 $ sudo make install
-</code></pre></p>
-<p>Run <code>airodump-ng</code></p>
-<p> <pre><code class>$ sudo airodump-ng wlx008e86000266
+</code></pre></div>
+<p>Run <code>airodump-ng</code>
+<div class="highlight"><pre><span></span><code>$ sudo airodump-ng wlx008e86000266
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
@@ -1510,27 +1512,27 @@ $ sudo make install
  BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
 
  C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
-</code></pre></p>
+</code></pre></div></p>
 <p>as a result, SSID <code>AP1</code> works on <code>Channel 13</code>.</p>
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
 <li>Enable Monitor Mode, use below script then press <code>./set_mon.sh wlx008e86000266 13</code></li>
 </ul>
 <p>set_mon.sh</p>
-<p> <pre><code class=console>#!/bin/sh
-if [ $# -lt 2 ]; then
-    echo &quot;Usage: $0 [DEV_NAME] [CHANNEL]&quot;
-    exit 1
-fi
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+<span class="go">if [ $# -lt 2 ]; then</span>
+<span class="go">    echo &quot;Usage: $0 [DEV_NAME] [CHANNEL]&quot;</span>
+<span class="go">    exit 1</span>
+<span class="go">fi</span>
 
-dev=$1
-ch=$2
+<span class="go">dev=$1</span>
+<span class="go">ch=$2</span>
 
-sudo ifconfig ${dev} down
-sudo iwconfig ${dev} mode monitor
-sudo ifconfig ${dev} up
-sudo iwconfig ${dev} channel ${ch}
-</code></pre></p>
+<span class="go">sudo ifconfig ${dev} down</span>
+<span class="go">sudo iwconfig ${dev} mode monitor</span>
+<span class="go">sudo ifconfig ${dev} up</span>
+<span class="go">sudo iwconfig ${dev} channel ${ch}</span>
+</code></pre></div>
 <h3 id="run-wireshark">Run Wireshark</h3>
 <p>Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture </p>
 <ul>
@@ -1542,36 +1544,36 @@ sudo iwconfig ${dev} channel ${ch}
 <li>Four way handshark (wlan.fc.type == 0x0002).</li>
 </ul>
 <p>you need to put below combination to the Filter rule.</p>
-<p> <pre><code class=console>wlan.addr[4:2] == A5:1A and (wlan.fc.type_subtype &lt; 0x0005 || wlan.fc.type == 0x0002)
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="go">wlan.addr[4:2] == A5:1A and (wlan.fc.type_subtype &lt; 0x0005 || wlan.fc.type == 0x0002)</span>
+</code></pre></div>
 <h3 id="vendor-specific-ieee-80211-information-element">Vendor Specific IEEE 802.11 Information Element</h3>
 <p>run <code>./set_ie.sh "000a00" "01234567"</code> to add new MTK IE element to RTL AP.</p>
 <p>set_ie.sh</p>
-<p> <pre><code class=console>#!/bin/sh
-if [ $# -lt 1 ]; then
-    echo &quot;Usage: $0 [OUI] [CONTENT]&quot;
-    exit 1
-fi
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+<span class="go">if [ $# -lt 1 ]; then</span>
+<span class="go">    echo &quot;Usage: $0 [OUI] [CONTENT]&quot;</span>
+<span class="go">    exit 1</span>
+<span class="go">fi</span>
 
-oui=$1
-content=$2
+<span class="go">oui=$1</span>
+<span class="go">content=$2</span>
 
-echo &quot;set IE&quot;
-echo &quot;  - OUI:      $oui&quot;
-echo &quot;  - CONTENT:  $content&quot;
+<span class="go">echo &quot;set IE&quot;</span>
+<span class="go">echo &quot;  - OUI:      $oui&quot;</span>
+<span class="go">echo &quot;  - CONTENT:  $content&quot;</span>
 
-iwpriv wlan1 setCIE ${oui},${content}
+<span class="go">iwpriv wlan1 setCIE ${oui},${content}</span>
 
-echo &quot;Set WLAN IE done&quot;
-</code></pre></p>
+<span class="go">echo &quot;Set WLAN IE done&quot;</span>
+</code></pre></div>
 <p>There is what we saw from Wireshark (Click <code>Packet</code> → <code>Copy</code> → <code>All Visible Selected Tree Items</code>)</p>
-<p> <pre><code class=console>Tag: Vendor Specific: Mediatek Corp.
-    Tag Number: Vendor Specific (221)
-    Tag length: 10
-    OUI: 00:0a:00 (Mediatek Corp.)
-    Vendor Specific OUI Type: 48
-    Vendor Specific Data: 30313233343536
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="go">Tag: Vendor Specific: Mediatek Corp.</span>
+<span class="go">    Tag Number: Vendor Specific (221)</span>
+<span class="go">    Tag length: 10</span>
+<span class="go">    OUI: 00:0a:00 (Mediatek Corp.)</span>
+<span class="go">    Vendor Specific OUI Type: 48</span>
+<span class="go">    Vendor Specific Data: 30313233343536</span>
+</code></pre></div>
 <h3 id="reference-books">Reference Books</h3>
 <ul>
 <li>Wireshark &amp; Ethereal Network Protocol Analyzer Toolkit/CH6-Wireless Sniffing with Wireshark</li>
@@ -1579,15 +1581,15 @@ echo &quot;Set WLAN IE done&quot;
 </ul>
 <h2 id="tshark">tshark</h2>
 <p>Install</p>
-<p> <pre><code class=console>$ sudo apt-get install tshark
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tshark
+</code></pre></div>
 <p>Command to capture Beacon frame</p>
-<p> <pre><code class=console>$ sudo tshark -i wlx008e86000266 -f &quot;type mgt subtype beacon&quot;
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tshark -i wlx008e86000266 -f <span class="s2">&quot;type mgt subtype beacon&quot;</span>
+</code></pre></div>
 <h2 id="tcpdump">tcpdump</h2>
 <p>Install tcpdump</p>
-<p> <pre><code class=console>$ sudo apt-get install tcpdump
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tcpdump
+</code></pre></div>
 <h3 id="vlan-packets">VLAN packets</h3>
 <p>VLAN belongs to layer2, use below command to dump VLAN packets</p>
 <ul>
@@ -1595,15 +1597,15 @@ echo &quot;Set WLAN IE done&quot;
 <li><code>-n</code>: Blocks converting the host addresses, and the port numbers to names.</li>
 <li><code>-X</code>: Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.</li>
 </ul>
-<p> <pre><code class=console>$ sudo tcpdump -i enp0s25 -en -XX
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX
+</code></pre></div>
 <h3 id="pppoe-packets">PPPoE packets</h3>
 <ul>
 <li><code>0x8863</code>: PPPoE Discovery Stage</li>
 <li><code>0x8864</code>: PPPoE Session Stage</li>
 </ul>
-<p> <pre><code class=console>$ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
-</code></pre></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8863 or ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8864
+</code></pre></div>
 <h2 id="qualcomm-qxdm">Qualcomm QxDM</h2>
 <p>~~ TBD ~~</p>
 <h2 id="mtk-catcher">MTK Catcher</h2>
@@ -1722,34 +1724,33 @@ echo &quot;Set WLAN IE done&quot;
 </table>
 <h3 id="promiscuous-mode">Promiscuous Mode</h3>
 <p>Enable Promiscuous Mode </p>
-<p> <pre><code class=console>$ sudo ifconfig enp0s25 promisc
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 promisc
 
-$ sudo ifconfig enp0s25
-enp0s25: flags=4419&lt;UP,BROADCAST,RUNNING,PROMISC,MULTICAST&gt;  mtu 1500           # &lt; = PROMISC
-        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255
-        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;
-        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)
-        RX packets 309505  bytes 241920726 (230.7 MiB)
-        RX errors 0  dropped 1  overruns 0  frame 0
-        TX packets 279294  bytes 36722749 (35.0 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 264
-        device interrupt 20  memory 0xf2600000-f2620000
-</code></pre></p>
+<span class="gp">$ </span>sudo ifconfig enp0s25
+<span class="go">enp0s25: flags=4419&lt;UP,BROADCAST,RUNNING,PROMISC,MULTICAST&gt;  mtu 1500           # &lt; = PROMISC</span>
+<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
+<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
+<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 309505  bytes 241920726 (230.7 MiB)</span>
+<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
+<span class="go">        TX packets 279294  bytes 36722749 (35.0 MiB)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 264</span>
+<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+</code></pre></div>
 <p>Disable Promiscuous Mode</p>
-<p> <pre><code class=console>$ sudo ifconfig enp0s25 -promisc
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 -promisc
 
-$ sudo ifconfig enp0s25
-enp0s25: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
-        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255
-        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;
-        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)
-        RX packets 309890  bytes 241950545 (230.7 MiB)
-        RX errors 0  dropped 1  overruns 0  frame 0
-        TX packets 279816  bytes 36788444 (35.0 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 266
-        device interrupt 20  memory 0xf2600000-f2620000
-
-</code></pre></p>
+<span class="gp">$ </span>sudo ifconfig enp0s25
+<span class="go">enp0s25: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span>
+<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
+<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
+<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 309890  bytes 241950545 (230.7 MiB)</span>
+<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
+<span class="go">        TX packets 279816  bytes 36788444 (35.0 MiB)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 266</span>
+<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+</code></pre></div>
                 
               
               

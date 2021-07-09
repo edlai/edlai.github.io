@@ -1452,8 +1452,8 @@
 <p>Issue below command on Terminal to access NTUT FTP Server after login <code>NTUT Sun OS Server</code>.</p>
 </li>
 </ul>
-<p><code>bash
-  telnet 140.124.13.2 21</code></p>
+<div class="highlight"><pre><span></span><code>telnet <span class="m">140</span>.124.13.2 <span class="m">21</span>
+</code></pre></div>
 <ul>
 <li>Issue below FTP commands trying to list file(s) from NTUT FTP Server</li>
 </ul>
@@ -1509,8 +1509,8 @@
 </li>
 <li>
 <p><strong>Terminal 1:</strong> Issue below command to access NTUT FTP Server (<code>Command Port</code>)
-  <code>bash
-  telnet 140.124.13.2 21</code></p>
+  <div class="highlight"><pre><span></span><code>telnet <span class="m">140</span>.124.13.2 <span class="m">21</span>
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Terminal 1:</strong> Issue below command on <code>Command Port</code> find out <code>Data Port</code>'s number</p>
@@ -1550,13 +1550,13 @@
 <ul>
 <li><strong>Terminal 2:</strong> Issue below command on <code>Terminal 2</code> to access NTUT FTP Server.</li>
 </ul>
-<p><code>bash
-  telnet 140.124.13.2 21</code></p>
+<div class="highlight"><pre><span></span><code>telnet <span class="m">140</span>.124.13.2 <span class="m">21</span>
+</code></pre></div>
 <ul>
 <li><strong>Terminal 2:</strong> Issue below FTP commands on <code>Terminal 2</code>, accessing Port <code>50033</code>.</li>
 </ul>
-<p><code>bash
-  telnet 140.124.13.2 50033</code></p>
+<div class="highlight"><pre><span></span><code>telnet <span class="m">140</span>.124.13.2 <span class="m">50033</span>
+</code></pre></div>
 <ul>
 <li><strong>Terminal 1:</strong> Issue below command on <code>Data port</code></li>
 </ul>
@@ -1606,8 +1606,8 @@
 <ul>
 <li>Enable <code>Debug Mode</code> (with <code>-d</code> optional)  when accessing FTP server.  </li>
 </ul>
-<p><code>bash
-  ftp -d 140.124.13.2</code></p>
+<div class="highlight"><pre><span></span><code>ftp -d <span class="m">140</span>.124.13.2
+</code></pre></div>
 <ul>
 <li>User can observe and diagnostic the command when the FTP-Client issues to FTP-Server. </li>
 </ul>
@@ -1641,9 +1641,9 @@
 <ul>
 <li>Navigate to <code>Documents/RFC</code>, issue below command to fetch RFC file.</li>
 </ul>
-<p><code>bash
-  get rfc959.txt      #&lt;= get file rfc959.txt
-  quit                #&lt;= logout FTP server</code>  </p>
+<div class="highlight"><pre><span></span><code>get rfc959.txt      <span class="c1">#&lt;= get file rfc959.txt</span>
+quit                <span class="c1">#&lt;= logout FTP server</span>
+</code></pre></div>
 <p><img alt="result" src="f7.gif" /></p>
 <ul>
 <li>Reading from the Editor.  </li>
@@ -1665,11 +1665,11 @@
 <li>FTP Code <code>226</code></li>
 <li>Closing data connection. Requested file action successful (file transfer, abort, etc.).</li>
 </ul>
-<p> <pre><code class>$author:   Jin-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Jin-Wen (Ed) Lai
 $date:     Oct. 2001
 $revised:  Mar. 2018
 $keywords: computer, networks, network, http, RFC.
-</code></pre></p>
+</code></pre></div>
                 
               
               

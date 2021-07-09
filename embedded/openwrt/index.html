@@ -1228,14 +1228,14 @@
 </ul>
 <h2 id="quick-start">Quick Start</h2>
 <p>Clone the repository </p>
-<p> <pre><code class=bash>$ git clone https://github.com/openwrt/openwrt
-$ cd openwrt
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/openwrt/openwrt
+$ <span class="nb">cd</span> openwrt
 $ cp feeds.conf.default feeds.conf
-$ echo src-git linkit https://github.com/MediaTek-Labs/linkit-smart-7688-feed.git &gt;&gt; feeds.conf
+$ <span class="nb">echo</span> src-git linkit https://github.com/MediaTek-Labs/linkit-smart-7688-feed.git &gt;&gt; feeds.conf
 $ ./scripts/feeds update
 $ ./scripts/feeds install -a
 $ make menuconfig
-</code></pre></p>
+</code></pre></div>
 <p>Select profile as following,</p>
 <ul>
 <li>Target System: <code>MediaTek Ralink MIPS</code></li>
@@ -1243,8 +1243,8 @@ $ make menuconfig
 <li>Target Profile: <code>MediaTek LinkIt Smart 7688</code>  </li>
 </ul>
 <p>make it</p>
-<p> <pre><code class>$ make V=99 2&gt;&amp;1 | tee build.log | grep -i error
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>$ make V=99 2&gt;&amp;1 | tee build.log | grep -i error
+</code></pre></div>
 <p>Output images. There are in <code>bin/targets/ramips/mt76x8/</code></p>
 <ul>
 <li>bin/targets/ramips/mt76x8/openwrt-ramips-mt76x8-mediatek_mt7628an-eval-board-initramfs-kernel.bin</li>

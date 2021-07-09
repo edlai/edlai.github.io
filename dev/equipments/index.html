@@ -1342,11 +1342,11 @@
 <h3 id="mikrotik-rb750gr3-hex"><a href="https://mikrotik.com/product/RB750Gr3">MikroTik RB750Gr3 hEX</a></h3>
 <p>RouterOS is the nice operating system which has good cost performance ratio.</p>
 <h4 id="config-pppoe-server-with-vlan-support">Config PPPoE server with VLAN support</h4>
-<p> <pre><code class>Interfaces &gt; VLAN &gt; Name: vlan2 , VLAN ID: 2, Interface: eth3
+<div class="highlight"><pre><span></span><code>Interfaces &gt; VLAN &gt; Name: vlan2 , VLAN ID: 2, Interface: eth3
 IP &gt; Pool &gt; Name: PPPoE_Pool, Address: 10.1.1.2-10.1.1.254
 PPP &gt; Profiles &gt; Name: PPPoE_profile, Local Address: 10.1.1.1, Remote Address: PPPoE_Pool
 PPP &gt; PPPoE Server &gt; Interface: vlan2; Default Profile: PPPoE profile
-</code></pre></p>
+</code></pre></div>
 <h4 id="reference">Reference</h4>
 <ul>
 <li>

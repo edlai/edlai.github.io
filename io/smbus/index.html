@@ -1135,11 +1135,11 @@
                 <h1 id="under-construction">Under Construction ...</h1>
 <h1 id="system-management-bussmbus">System Management Bus(SMBus)</h1>
 <h2 id="system-management-bussmbus-thermal-sensor">System Management Bus(SMBus): Thermal Sensor</h2>
-<p> <pre><code class>$author:   Jin-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Jin-Wen (Ed) Lai
 $date:     Mar. 2018
 $revised:  Jun. 2018
 $Keywords:
-</code></pre></p>
+</code></pre></div>
 <p>An exercise of fetching the values of Thermal Sensors from CPU.</p>
 <h2 id="content">Content</h2>
 <ul>
@@ -1164,146 +1164,163 @@ $Keywords:
 <ul>
 <li>Confirm the OS version, <code>18.04</code></li>
 </ul>
-<p><code>sh
-  $ sudo cat /etc/os-release
-  NAME="Ubuntu"
-  VERSION="18.04 LTS (Bionic Beaver)"
-  ID=ubuntu
-  ID_LIKE=debian
-  PRETTY_NAME="Ubuntu 18.04 LTS"
-  VERSION_ID="18.04"
-  HOME_URL="https://www.ubuntu.com/"
-  SUPPORT_URL="https://help.ubuntu.com/"
-  BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
-  PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
-  VERSION_CODENAME=bionic
-  UBUNTU_CODENAME=bionic</code></p>
+<div class="highlight"><pre><span></span><code>$ sudo cat /etc/os-release
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;18.04 LTS (Bionic Beaver)&quot;</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu 18.04 LTS&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;18.04&quot;</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;https://www.ubuntu.com/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://help.ubuntu.com/&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://bugs.launchpad.net/ubuntu/&quot;</span>
+<span class="nv">PRIVACY_POLICY_URL</span><span class="o">=</span><span class="s2">&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>bionic
+<span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>bionic
+</code></pre></div>
 <ul>
 <li>Confirm the Linux Kernel version <code>4.15.0</code></li>
 </ul>
-<p><code>sh
-  $ sudo uname -a
-  Linux sdr 4.15.0-23-generic #25-Ubuntu SMP Wed May 23 18:02:16 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</code></p>
+<div class="highlight"><pre><span></span><code>$ sudo uname -a
+Linux sdr <span class="m">4</span>.15.0-23-generic <span class="c1">#25-Ubuntu SMP Wed May 23 18:02:16 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div>
 <ul>
 <li>Installation for <code>lm_sensors</code></li>
 </ul>
-<p><code>sh
-  $ sudo apt install lm-sensors</code></p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install lm-sensors
+</code></pre></div>
 <ul>
 <li>Running configuration for <code>lm_sensors</code></li>
 </ul>
-<p>``` sh
-  $ sudo sensors-detect
-  # sensors-detect revision 6284 (2015-05-31 14:00:33 +0200)
-  # Board: ASUSTeK COMPUTER INC. PRIME Z270M-PLUS
-  # Kernel: 4.4.0-128-generic x86_64
-  # Processor: Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz (6/158/9)</p>
-<p>This program will help you determine which kernel modules you need
-  to load to use lm_sensors most effectively. It is generally safe
-  and recommended to accept the default answers to all questions,
-  unless you know what you're doing.</p>
-<p>Some south bridges, CPUs or memory controllers contain embedded sensors.
-  Do you want to scan for them? This is totally safe. (YES/no): YES
-  Module cpuid loaded successfully.
-  Silicon Integrated Systems SIS5595...                       No
-  VIA VT82C686 Integrated Sensors...                          No
-  VIA VT8231 Integrated Sensors...                            No
-  AMD K8 thermal sensors...                                   No
-  AMD Family 10h thermal sensors...                           No
-  AMD Family 11h thermal sensors...                           No
-  AMD Family 12h and 14h thermal sensors...                   No
-  AMD Family 15h thermal sensors...                           No
-  AMD Family 16h thermal sensors...                           No
-  AMD Family 15h power sensors...                             No
-  AMD Family 16h power sensors...                             No
-  Intel digital thermal sensor...                             Success!
-      (driver `coretemp')
-  Intel AMB FB-DIMM thermal sensor...                         No
-  Intel 5500/5520/X58 thermal sensor...                       No
-  VIA C7 thermal sensor...                                    No
-  VIA Nano thermal sensor...                                  No</p>
-<p>Some Super I/O chips contain embedded sensors. We have to write to
-  standard I/O ports to probe them. This is usually safe.
-  Do you want to scan for Super I/O sensors? (YES/no): YES
-  Probing for Super-I/O at 0x2e/0x2f
-  Trying family <code>National Semiconductor/ITE'...               No
-  Trying family</code>SMSC'...                                     No
-  Trying family <code>VIA/Winbond/Nuvoton/Fintek'...               Yes
-  Found unknown chip with ID 0xd121
-      (logical device B has address 0x290, could be sensors)
-  Probing for Super-I/O at 0x4e/0x4f
-  Trying family</code>National Semiconductor/ITE'...               No
-  Trying family <code>SMSC'...                                     No
-  Trying family</code>VIA/Winbond/Nuvoton/Fintek'...               No
-  Trying family `ITE'...                                      No</p>
-<p>Some systems (mainly servers) implement IPMI, a set of common interfaces
-  through which system health data may be retrieved, amongst other things.
-  We first try to get the information from SMBIOS. If we don't find it
-  there, we have to read from arbitrary I/O ports to probe for such
-  interfaces. This is normally safe. Do you want to scan for IPMI
-  interfaces? (YES/no): YES
-  Probing for <code>IPMI BMC KCS' at 0xca0...                      No
-  Probing for</code>IPMI BMC SMIC' at 0xca8...                     No</p>
-<p>Some hardware monitoring chips are accessible through the ISA I/O ports.
-  We have to write to arbitrary I/O ports to probe them. This is usually
-  safe though. Yes, you do have ISA I/O ports even if you do not have any
-  ISA slots! Do you want to scan the ISA I/O ports? (YES/no): YES
-  Probing for <code>National Semiconductor LM78' at 0x290...       No
-  Probing for</code>National Semiconductor LM79' at 0x290...       No
-  Probing for <code>Winbond W83781D' at 0x290...                   No
-  Probing for</code>Winbond W83782D' at 0x290...                   No</p>
-<p>Lastly, we can probe the I2C/SMBus adapters for connected hardware
-  monitoring devices. This is the most risky part, and while it works
-  reasonably well on most systems, it has been reported to cause trouble
-  on some systems.
-  Do you want to probe the I2C/SMBus adapters now? (YES/no): YES
-  Found unknown SMBus adapter 8086:a2a3 at 0000:00:1f.4.
-  Sorry, no supported PCI bus adapters found.</p>
-<p>Next adapter: i915 gmbus dpc (i2c-0)
-  Do you want to scan it? (yes/NO/selectively): yes</p>
-<p>Next adapter: i915 gmbus dpb (i2c-1)
-  Do you want to scan it? (yes/NO/selectively): yes</p>
-<p>Next adapter: i915 gmbus dpd (i2c-2)
-  Do you want to scan it? (yes/NO/selectively): yes</p>
-<p>Next adapter: DPDDC-E (i2c-3)
-  Do you want to scan it? (yes/NO/selectively): yes</p>
-<p>Now follows a summary of the probes I have just done.
-  Just press ENTER to continue:</p>
-<p>Driver <code>coretemp':
-    * Chip</code>Intel digital thermal sensor' (confidence: 9)</p>
-<p>To load everything that is needed, add this to /etc/modules:
-  #----cut here----
-  # Chip drivers
-  coretemp
-  #----cut here----
-  If you have some drivers built into your kernel, the list above will
-  contain too many modules. Skip the appropriate ones!</p>
-<p>Do you want to add these lines automatically to /etc/modules? (yes/NO)yes
-  Successful!</p>
-<p>Monitoring programs won't work until the needed modules are
-  loaded. You may want to run '/etc/init.d/kmod start'
-  to load them.</p>
-<p>Unloading cpuid... OK
-  ```</p>
+<div class="highlight"><pre><span></span><code>$ sudo sensors-detect
+<span class="c1"># sensors-detect revision 6284 (2015-05-31 14:00:33 +0200)</span>
+<span class="c1"># Board: ASUSTeK COMPUTER INC. PRIME Z270M-PLUS</span>
+<span class="c1"># Kernel: 4.4.0-128-generic x86_64</span>
+<span class="c1"># Processor: Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz (6/158/9)</span>
+
+This program will <span class="nb">help</span> you determine which kernel modules you need
+to load to use lm_sensors most effectively. It is generally safe
+and recommended to accept the default answers to all questions,
+unless you know what you<span class="s1">&#39;re doing.</span>
+
+<span class="s1">Some south bridges, CPUs or memory controllers contain embedded sensors.</span>
+<span class="s1">Do you want to scan for them? This is totally safe. (YES/no): YES</span>
+<span class="s1">Module cpuid loaded successfully.</span>
+<span class="s1">Silicon Integrated Systems SIS5595...                       No</span>
+<span class="s1">VIA VT82C686 Integrated Sensors...                          No</span>
+<span class="s1">VIA VT8231 Integrated Sensors...                            No</span>
+<span class="s1">AMD K8 thermal sensors...                                   No</span>
+<span class="s1">AMD Family 10h thermal sensors...                           No</span>
+<span class="s1">AMD Family 11h thermal sensors...                           No</span>
+<span class="s1">AMD Family 12h and 14h thermal sensors...                   No</span>
+<span class="s1">AMD Family 15h thermal sensors...                           No</span>
+<span class="s1">AMD Family 16h thermal sensors...                           No</span>
+<span class="s1">AMD Family 15h power sensors...                             No</span>
+<span class="s1">AMD Family 16h power sensors...                             No</span>
+<span class="s1">Intel digital thermal sensor...                             Success!</span>
+<span class="s1">    (driver `coretemp&#39;</span><span class="o">)</span>
+Intel AMB FB-DIMM thermal sensor...                         No
+Intel <span class="m">5500</span>/5520/X58 thermal sensor...                       No
+VIA C7 thermal sensor...                                    No
+VIA Nano thermal sensor...                                  No
+
+Some Super I/O chips contain embedded sensors. We have to write to
+standard I/O ports to probe them. This is usually safe.
+Do you want to scan <span class="k">for</span> Super I/O sensors? <span class="o">(</span>YES/no<span class="o">)</span>: YES
+Probing <span class="k">for</span> Super-I/O at 0x2e/0x2f
+Trying family <span class="sb">`</span>National Semiconductor/ITE<span class="s1">&#39;...               No</span>
+<span class="s1">Trying family `SMSC&#39;</span>...                                     No
+Trying family <span class="sb">`</span>VIA/Winbond/Nuvoton/Fintek<span class="s1">&#39;...               Yes</span>
+<span class="s1">Found unknown chip with ID 0xd121</span>
+<span class="s1">    (logical device B has address 0x290, could be sensors)</span>
+<span class="s1">Probing for Super-I/O at 0x4e/0x4f</span>
+<span class="s1">Trying family `National Semiconductor/ITE&#39;</span>...               No
+Trying family <span class="sb">`</span>SMSC<span class="s1">&#39;...                                     No</span>
+<span class="s1">Trying family `VIA/Winbond/Nuvoton/Fintek&#39;</span>...               No
+Trying family <span class="sb">`</span>ITE<span class="s1">&#39;...                                      No</span>
+
+<span class="s1">Some systems (mainly servers) implement IPMI, a set of common interfaces</span>
+<span class="s1">through which system health data may be retrieved, amongst other things.</span>
+<span class="s1">We first try to get the information from SMBIOS. If we don&#39;</span>t find it
+there, we have to <span class="nb">read</span> from arbitrary I/O ports to probe <span class="k">for</span> such
+interfaces. This is normally safe. Do you want to scan <span class="k">for</span> IPMI
+interfaces? <span class="o">(</span>YES/no<span class="o">)</span>: YES
+Probing <span class="k">for</span> <span class="sb">`</span>IPMI BMC KCS<span class="s1">&#39; at 0xca0...                      No</span>
+<span class="s1">Probing for `IPMI BMC SMIC&#39;</span> at 0xca8...                     No
+
+Some hardware monitoring chips are accessible through the ISA I/O ports.
+We have to write to arbitrary I/O ports to probe them. This is usually
+safe though. Yes, you <span class="k">do</span> have ISA I/O ports even <span class="k">if</span> you <span class="k">do</span> not have any
+ISA slots! Do you want to scan the ISA I/O ports? <span class="o">(</span>YES/no<span class="o">)</span>: YES
+Probing <span class="k">for</span> <span class="sb">`</span>National Semiconductor LM78<span class="s1">&#39; at 0x290...       No</span>
+<span class="s1">Probing for `National Semiconductor LM79&#39;</span> at 0x290...       No
+Probing <span class="k">for</span> <span class="sb">`</span>Winbond W83781D<span class="s1">&#39; at 0x290...                   No</span>
+<span class="s1">Probing for `Winbond W83782D&#39;</span> at 0x290...                   No
+
+Lastly, we can probe the I2C/SMBus adapters <span class="k">for</span> connected hardware
+monitoring devices. This is the most risky part, and <span class="k">while</span> it works
+reasonably well on most systems, it has been reported to cause trouble
+on some systems.
+Do you want to probe the I2C/SMBus adapters now? <span class="o">(</span>YES/no<span class="o">)</span>: YES
+Found unknown SMBus adapter <span class="m">8086</span>:a2a3 at <span class="m">0000</span>:00:1f.4.
+Sorry, no supported PCI bus adapters found.
+
+Next adapter: i915 gmbus dpc <span class="o">(</span>i2c-0<span class="o">)</span>
+Do you want to scan it? <span class="o">(</span>yes/NO/selectively<span class="o">)</span>: yes
+
+Next adapter: i915 gmbus dpb <span class="o">(</span>i2c-1<span class="o">)</span>
+Do you want to scan it? <span class="o">(</span>yes/NO/selectively<span class="o">)</span>: yes
+
+Next adapter: i915 gmbus dpd <span class="o">(</span>i2c-2<span class="o">)</span>
+Do you want to scan it? <span class="o">(</span>yes/NO/selectively<span class="o">)</span>: yes
+
+Next adapter: DPDDC-E <span class="o">(</span>i2c-3<span class="o">)</span>
+Do you want to scan it? <span class="o">(</span>yes/NO/selectively<span class="o">)</span>: yes
+
+
+Now follows a summary of the probes I have just <span class="k">done</span>.
+Just press ENTER to <span class="k">continue</span>:
+
+Driver <span class="sb">`</span>coretemp<span class="s1">&#39;:</span>
+<span class="s1">  * Chip `Intel digital thermal sensor&#39;</span> <span class="o">(</span>confidence: <span class="m">9</span><span class="o">)</span>
+
+To load everything that is needed, add this to /etc/modules:
+<span class="c1">#----cut here----</span>
+<span class="c1"># Chip drivers</span>
+coretemp
+<span class="c1">#----cut here----</span>
+If you have some drivers built into your kernel, the list above will
+contain too many modules. Skip the appropriate ones!
+
+Do you want to add these lines automatically to /etc/modules? <span class="o">(</span>yes/NO<span class="o">)</span>yes
+Successful!
+
+Monitoring programs won<span class="s1">&#39;t work until the needed modules are</span>
+<span class="s1">loaded. You may want to run &#39;</span>/etc/init.d/kmod start<span class="err">&#39;</span>
+to load them.
+
+Unloading cpuid... OK
+</code></pre></div>
 <ul>
 <li>Fetching CPU Temperature by <code>sensors</code>. But we only got 4 results of Temperatures of Temperature even this is 8-core CPU.</li>
 </ul>
-<p>```
-  asus-isa-0000
-  Adapter: ISA adapter
-  cpu_fan:        0 RPM</p>
-<p>acpitz-virtual-0
-  Adapter: Virtual device
-  temp1:        +27.8°C  (crit = +119.0°C)
-  temp2:        +29.8°C  (crit = +119.0°C)</p>
-<p>coretemp-isa-0000
-  Adapter: ISA adapter
-  Package id 0:  +33.0°C  (high = +80.0°C, crit = +100.0°C)
-  Core 0:        +31.0°C  (high = +80.0°C, crit = +100.0°C)
-  Core 1:        +33.0°C  (high = +80.0°C, crit = +100.0°C)
-  Core 2:        +32.0°C  (high = +80.0°C, crit = +100.0°C)
-  Core 3:        +33.0°C  (high = +80.0°C, crit = +100.0°C)
-  ```</p>
+<div class="highlight"><pre><span></span><code>asus-isa-0000
+Adapter: ISA adapter
+cpu_fan:        0 RPM
+
+acpitz-virtual-0
+Adapter: Virtual device
+temp1:        +27.8°C  (crit = +119.0°C)
+temp2:        +29.8°C  (crit = +119.0°C)
+
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +33.0°C  (high = +80.0°C, crit = +100.0°C)
+Core 0:        +31.0°C  (high = +80.0°C, crit = +100.0°C)
+Core 1:        +33.0°C  (high = +80.0°C, crit = +100.0°C)
+Core 2:        +32.0°C  (high = +80.0°C, crit = +100.0°C)
+Core 3:        +33.0°C  (high = +80.0°C, crit = +100.0°C)
+</code></pre></div>
 <ul>
 <li>Workaround</li>
 <li>Use <code>the highest temperatures</code> in all of the results. It's <code>+33.0°C</code> in above case.</li>
@@ -1355,218 +1372,224 @@ $Keywords:
 <h2 id="appendix">Appendix</h2>
 <ul>
 <li>The CPU info of <code>i7-7700</code>
-  ```
-  $ sudo cat /proc/cpuinfo
-  processor       : 0
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4194.140
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 0
-  cpu cores       : 4
-  apicid          : 0
-  initial apicid  : 0
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</li>
+  <div class="highlight"><pre><span></span><code>$ sudo cat /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4194.140
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 0
+cpu cores       : 4
+apicid          : 0
+initial apicid  : 0
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 1
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4169.250
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 1
+cpu cores       : 4
+apicid          : 2
+initial apicid  : 2
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 2
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4178.812
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 2
+cpu cores       : 4
+apicid          : 4
+initial apicid  : 4
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 3
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4122.000
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 3
+cpu cores       : 4
+apicid          : 6
+initial apicid  : 6
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 4
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4130.156
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 0
+cpu cores       : 4
+apicid          : 1
+initial apicid  : 1
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 5
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4154.203
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 1
+cpu cores       : 4
+apicid          : 3
+initial apicid  : 3
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 6
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4200.187
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 2
+cpu cores       : 4
+apicid          : 5
+initial apicid  : 5
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+
+processor       : 7
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+stepping        : 9
+microcode       : 0x84
+cpu MHz         : 4152.656
+cache size      : 8192 KB
+physical id     : 0
+siblings        : 8
+core id         : 3
+cpu cores       : 4
+apicid          : 7
+initial apicid  : 7
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 22
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips        : 7199.89
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 39 bits physical, 48 bits virtual
+power management:
+</code></pre></div></li>
 </ul>
-<p>processor       : 1
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4169.250
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 1
-  cpu cores       : 4
-  apicid          : 2
-  initial apicid  : 2
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 2
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4178.812
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 2
-  cpu cores       : 4
-  apicid          : 4
-  initial apicid  : 4
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 3
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4122.000
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 3
-  cpu cores       : 4
-  apicid          : 6
-  initial apicid  : 6
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 4
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4130.156
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 0
-  cpu cores       : 4
-  apicid          : 1
-  initial apicid  : 1
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 5
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4154.203
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 1
-  cpu cores       : 4
-  apicid          : 3
-  initial apicid  : 3
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 6
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4200.187
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 2
-  cpu cores       : 4
-  apicid          : 5
-  initial apicid  : 5
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:</p>
-<p>processor       : 7
-  vendor_id       : GenuineIntel
-  cpu family      : 6
-  model           : 158
-  model name      : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-  stepping        : 9
-  microcode       : 0x84
-  cpu MHz         : 4152.656
-  cache size      : 8192 KB
-  physical id     : 0
-  siblings        : 8
-  core id         : 3
-  cpu cores       : 4
-  apicid          : 7
-  initial apicid  : 7
-  fpu             : yes
-  fpu_exception   : yes
-  cpuid level     : 22
-  wp              : yes
-  flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch invpcid_single intel_pt ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
-  bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
-  bogomips        : 7199.89
-  clflush size    : 64
-  cache_alignment : 64
-  address sizes   : 39 bits physical, 48 bits virtual
-  power management:
-  ```</p>
                 
               
               

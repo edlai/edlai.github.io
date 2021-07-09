@@ -1403,30 +1403,32 @@
 <h2 id="user-space">User Space</h2>
 <h3 id="shell">SHELL</h3>
 <ul>
-<li>Using <code>sysfs</code> interface    </li>
-</ul>
-<p> <pre><code class=sh>echo 49 &gt; /sys/class/gpio/export
-echo out &gt; /sys/class/gpio/gpio49/direction
+<li>
+<p>Using <code>sysfs</code> interface  <br />
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="m">49</span> &gt; /sys/class/gpio/export
+<span class="nb">echo</span> out &gt; /sys/class/gpio/gpio49/direction
 
-while :
-do
-  echo &quot;Press [CTRL+C] to stop..&quot;
-  echo &quot;LED ON  -O-&quot;
-  echo 0 &gt; /sys/class/gpio/gpio49/value
-  sleep 1
-  echo &quot;LED OFF -X-&quot;
-  echo 1 &gt; /sys/class/gpio/gpio49/value
-  sleep 1
-done
+<span class="k">while</span> :
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Press [CTRL+C] to stop..&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;LED ON  -O-&quot;</span>
+  <span class="nb">echo</span> <span class="m">0</span> &gt; /sys/class/gpio/gpio49/value
+  sleep <span class="m">1</span>
+  <span class="nb">echo</span> <span class="s2">&quot;LED OFF -X-&quot;</span>
+  <span class="nb">echo</span> <span class="m">1</span> &gt; /sys/class/gpio/gpio49/value
+  sleep <span class="m">1</span>
+<span class="k">done</span>
 
-# do this manually if user pressed &quot;Ctrl-C&quot;
-echo 49 &gt; /sys/class/gpio/unexport
-</code></pre></p>
-<ul>
-<li>PILI</li>
+<span class="c1"># do this manually if user pressed &quot;Ctrl-C&quot;</span>
+<span class="nb">echo</span> <span class="m">49</span> &gt; /sys/class/gpio/unexport
+</code></pre></div></p>
+</li>
+<li>
+<p>PILI
+<div class="highlight"><pre><span></span><code>TBD
+</code></pre></div></p>
+</li>
 </ul>
-<p> <pre><code class>TBD
-</code></pre></p>
 <h3 id="c">C</h3>
 <ul>
 <li>Using <code>/dev/mem</code></li>
@@ -1436,8 +1438,8 @@ echo 49 &gt; /sys/class/gpio/unexport
 <li>Using <code>mraa</code></li>
 </ul>
 <h2 id="kernel-space">Kernel Space</h2>
-<p> <pre><code class>#include &lt;linux/gpio.h&gt;
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>#include &lt;linux/gpio.h&gt;
+</code></pre></div>
 <h2 id="userspace-io">Userspace I/O</h2>
 <p>Userspace I/O (UIO) </p>
 <ul>
@@ -1768,12 +1770,12 @@ https://vadl.github.io/images/bbb/P9Header.png</p>
 <ul>
 <li>pingroups</li>
 </ul>
-<p> <pre><code class># cat /sys/kernel/debug/pinctrl/44e10800.pinmux/pingroups
+<div class="highlight"><pre><span></span><code># cat /sys/kernel/debug/pinctrl/44e10800.pinmux/pingroups
 registered pin groups:
 group: pinmux_uart0_pins
 pin 92 (PIN92)
 pin 93 (PIN93)
-</code></pre></p>
+</code></pre></div>
                 
               
               

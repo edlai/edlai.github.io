@@ -1307,11 +1307,11 @@
                 
                 <h1 id="television-engineering">Television Engineering</h1>
 <h2 id="multimedia-player">Multimedia Player</h2>
-<p> <pre><code class>$author:   Ching-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $date:     May. 2003
 $revised:  Mar. 2018
 $keywords: television, engineering, multimedia, player
-</code></pre></p>
+</code></pre></div>
 <p>An implementation of Multimedia Player</p>
 <h2 id="content">Content</h2>
 <ul>
@@ -1334,15 +1334,15 @@ $keywords: television, engineering, multimedia, player
 <li>在程式內即是利用API 的 <code>mciSendString</code>函式,來播放 <code>*.wav</code> , <code>*.mid</code> , <code>*.avi</code> 檔.</li>
 <li>宣告 API 函數,在表單或模組作以下宣告    </li>
 </ul>
-<p> <pre><code class=vb>Public Const WS_CHILD = &amp;H40000000
+<div class="highlight"><pre><span></span><code>Public Const WS_CHILD = &amp;H40000000
 Declare Function mciSendString Lib &quot;winmm&quot; Alias &quot;mciSendStringA&quot; (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uReturnLength As Long, ByVal hwndCallback As Long) As Long
 Public FrameNO As Integer
-</code></pre></p>
+</code></pre></div>
 <ul>
 <li>使用 <a href="https://msdn.microsoft.com/zh-tw/library/windows/desktop/dd743373(v=vs.85).aspx"><code>mciSendString</code></a> 函數播放多媒體檔    </li>
 </ul>
-<p> <pre><code class=vb>Ret=mciSendString (&quot;MCI Command&quot;,0,0,0 )
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>Ret=mciSendString (&quot;MCI Command&quot;,0,0,0 )
+</code></pre></div>
 <ul>
 <li>
 <p>以<code>flags</code>參數指定方式播放語音檔 </p>
@@ -1474,7 +1474,7 @@ Public FrameNO As Integer
 </tbody>
 </table>
 <h2 id="programming">Programming</h2>
-<p> <pre><code class=vb>Dim item(5) As String
+<div class="highlight"><pre><span></span><code>Dim item(5) As String
 Dim sel As Integer
 Dim delCounter As Integer
 
@@ -1567,7 +1567,7 @@ Private Sub stopComm_Click()
     Call mciSendString(&quot;close Animation&quot;, 0, 0, 0)
     cmdPlay.Enabled = True
 End Sub
-</code></pre></p>
+</code></pre></div>
 <h2 id="running">Running</h2>
 <p><img alt="r" src="run-1.jpg" /></p>
 <ul>

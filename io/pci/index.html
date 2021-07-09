@@ -1307,11 +1307,11 @@
                 
                 <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
 <h2 id="peripheral-component-interconnect-pci">Peripheral Component Interconnect (PCI)</h2>
-<p> <pre><code class>$author:   Ching-Wen (Ed) Lai
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $date:     May. 2003
 $revised:  Mar. 2018
 $keywords: man, machine, interface, peripheral component interconnect, pci
-</code></pre></p>
+</code></pre></div>
 <p>An exercise of PCI interface control by <code>Assembly</code>. </p>
 <h2 id="content">Content</h2>
 <ul>
@@ -1440,153 +1440,148 @@ OS 會提示已經發現下列硬體 – <code>PCI Early non-VGA Device</code>. 
 <ul>
 <li>以下程式以控制七段顯示器的上數. 七段顯示器位址線位於 IO_Bank_1 IO-8~15, 資料線位於IO_Bank_1 IO-40~47, 透過與 Base 的加權,即可找出相對應的位址。   </li>
 </ul>
-<p> <pre><code class=nasm>MODEL  SMALL                           
-.386
-.STACK
+<div class="highlight"><pre><span></span><code><span class="nf">MODEL</span>  <span class="nv">SMALL</span>                           
+<span class="nf">.386</span>
+<span class="nf">.STACK</span>
 
-.DATA
+<span class="nf">.DATA</span>
 
-IO_PORT0       EQU     0E811H  ;  io_bank_1 io-8~15
-IO_PORT1       EQU     0E815H  ;  io_bank_1 io-40~47
-OUT_DISABLED   EQU     0E808H  ;  io_bank_0
-IO_PORT0D      EQU     0E800H  ;  io_bank_0
-IO_PORT1D      EQU     0E804H  ;  io_bank_0
+<span class="no">IO_PORT0</span><span class="kd">       EQU</span>     <span class="mh">0E811H</span>  <span class="c1">;  io_bank_1 io-8~15</span>
+<span class="no">IO_PORT1</span><span class="kd">       EQU</span>     <span class="mh">0E815H</span>  <span class="c1">;  io_bank_1 io-40~47</span>
+<span class="no">OUT_DISABLED</span><span class="kd">   EQU</span>     <span class="mh">0E808H</span>  <span class="c1">;  io_bank_0</span>
+<span class="no">IO_PORT0D</span><span class="kd">      EQU</span>     <span class="mh">0E800H</span>  <span class="c1">;  io_bank_0</span>
+<span class="no">IO_PORT1D</span><span class="kd">      EQU</span>     <span class="mh">0E804H</span>  <span class="c1">;  io_bank_0</span>
 
-.CODE
-BEGIN:
-        PUSH    DS
-        MOV     AX,0
-        PUSH    AX
-        MOV     AX,@DATA
-        MOV     DS,AX
-DISP_BEGIN:                             
+<span class="nf">.CODE</span>
+<span class="nl">BEGIN:</span>
+        <span class="nf">PUSH</span>    <span class="nb">DS</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mi">0</span>
+        <span class="nf">PUSH</span>    <span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="err">@</span><span class="nv">DATA</span>
+        <span class="nf">MOV</span>     <span class="nb">DS</span><span class="p">,</span><span class="nb">AX</span>
+<span class="nl">DISP_BEGIN:</span>                             
 
-        MOV     DX,IO_PORT1            ;第一個七段碼亮
-        MOV     AX,0005H               ;0000-0005 不同位址輸出
-        OUT     DX,AX
-        CALL    COUNT_7SEG
-        CALL    WAIT_1S
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT1</span>            <span class="c1">;第一個七段碼亮</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0005H</span>               <span class="c1">;0000-0005 不同位址輸出</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">CALL</span>    <span class="nv">COUNT_7SEG</span>
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     AH,0BH                 ;按任意鍵結束程式
-        INT     21H                    ;中斷向量21h
-        CMP     AL,0FFH
-        JNZ     DISP_BEGIN
-        JMP     EXIT                   ;程式結束
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span><span class="mh">0BH</span>                 <span class="c1">;按任意鍵結束程式</span>
+        <span class="nf">INT</span>     <span class="mh">21H</span>                    <span class="c1">;中斷向量21h</span>
+        <span class="nf">CMP</span>     <span class="nb">AL</span><span class="p">,</span><span class="mh">0FFH</span>
+        <span class="nf">JNZ</span>     <span class="nb">DISP</span><span class="nv">_BEGIN</span>
+        <span class="nf">JMP</span>     <span class="nv">EXIT</span>                   <span class="c1">;程式結束</span>
 
-COUNT_7SEG:                            ;顯示0~9數字
-        MOV     DX,IO_PORT0            ;顯示 O
-        MOV     AX,003FH               ;0011_1111
-        OUT     DX,AX
+<span class="nl">COUNT_7SEG:</span>                            <span class="c1">;顯示0~9數字</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 O</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">003FH</span>               <span class="c1">;0011_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 1
-        MOV     AX,0006H               ;0000_0110  
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 1</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0006H</span>               <span class="c1">;0000_0110  </span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 2
-        MOV     AX,005BH               ;0101_1011
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 2</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">005BH</span>               <span class="c1">;0101_1011</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 3
-        MOV     AX,004FH               ;0100_1111
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 3</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">004FH</span>               <span class="c1">;0100_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 4
-        MOV     AX,0066H               ;0110_0110
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 4</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0066H</span>               <span class="c1">;0110_0110</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 5
-        MOV     AX,006DH               ;0110_1101
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 5</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">006DH</span>               <span class="c1">;0110_1101</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 6
-        MOV     AX,007DH               ;0111_1101
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 6</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">007DH</span>               <span class="c1">;0111_1101</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 7
-        MOV     AX,0007H               ;0000_0111
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 7</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0007H</span>               <span class="c1">;0000_0111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 8
-        MOV     AX,007FH               ;0111_1111
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 8</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">007FH</span>               <span class="c1">;0111_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        MOV     DX,IO_PORT0            ;顯示 9
-        MOV     AX,006FH               ;0110_1111
-        OUT     DX,AX
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0</span>            <span class="c1">;顯示 9</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">006FH</span>               <span class="c1">;0110_1111</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
 
-        CALL    WAIT_1S
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1S</span>
 
-        RET
+        <span class="nf">RET</span>
 
-WAIT_1S:
-        MOV     BX,0007FH
-WAIT_LOOP:
-        CALL    WAIT_1MS
-        DEC     BX
-        CMP     BX,0000H
-        JBE     WAIT_1S_EXIT
-        LOOP    WAIT_LOOP
-WAIT_1S_EXIT:
-        RET
+<span class="nl">WAIT_1S:</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="mh">0007FH</span>
+<span class="nl">WAIT_LOOP:</span>
+        <span class="nf">CALL</span>    <span class="nv">WAIT_1MS</span>
+        <span class="nf">DEC</span>     <span class="nb">BX</span>
+        <span class="nf">CMP</span>     <span class="nb">BX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">JBE</span>     <span class="nv">WAIT_1S_EXIT</span>
+        <span class="nf">LOOP</span>    <span class="nv">WAIT_LOOP</span>
+<span class="nl">WAIT_1S_EXIT:</span>
+        <span class="nf">RET</span>
 
-WAIT_1MS:
-        MOV     CX,03FFFH
-WAIT_LOOP1:
-        MOV     BX,BX
-        MOV     BX,BX
-        MOV     BX,BX
-        MOV     BX,BX
-        MOV     BX,BX
-        MOV     BX,BX
-        MOV     BX,BX
-        LOOP    WAIT_LOOP1
-        RET
+<span class="nl">WAIT_1MS:</span>
+        <span class="nf">MOV</span>     <span class="nb">CX</span><span class="p">,</span><span class="mh">03FFFH</span>
+<span class="nl">WAIT_LOOP1:</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">MOV</span>     <span class="nb">BX</span><span class="p">,</span><span class="nb">BX</span>
+        <span class="nf">LOOP</span>    <span class="nv">WAIT_LOOP1</span>
+        <span class="nf">RET</span>
 
-EXIT:
-        MOV     DX,OUT_DISABLED                 ;清除所有設定。
-        MOV     AX,0000H
-        OUT     DX,AX
-        MOV     DX,IO_PORT0D
-        MOV     EAX,00000000H
-        OUT     DX,EAX
-        MOV     DX,IO_PORT1D
-        MOV     AX,0000H
-        OUT     DX,AX
-        MOV     AH,4CH
-        INT     21H
-        END     BEGIN
-
-</code></pre></p>
+<span class="nl">EXIT:</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">OUT_DISABLED</span>                 <span class="c1">;清除所有設定。</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT0D</span>
+        <span class="nf">MOV</span>     <span class="nb">EAX</span><span class="p">,</span><span class="mh">00000000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">EAX</span>
+        <span class="nf">MOV</span>     <span class="nb">DX</span><span class="p">,</span><span class="nv">IO_PORT1D</span>
+        <span class="nf">MOV</span>     <span class="nb">AX</span><span class="p">,</span><span class="mh">0000H</span>
+        <span class="nf">OUT</span>     <span class="nb">DX</span><span class="p">,</span><span class="nb">AX</span>
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span><span class="mh">4CH</span>
+        <span class="nf">INT</span>     <span class="mh">21H</span>
+        <span class="nf">END</span>     <span class="nv">BEGIN</span>
+</code></pre></div>
 <h2 id="running">Running</h2>
 <ol>
-<li>使用<code>MASM</code>編譯程式碼  </li>
-</ol>
-<p> <pre><code class=sh>C:\MASM\ML 7SEG-1.TXT
-</code></pre></p>
-<ol>
-<li>執行之後產成 OBJ 與 EXE 檔, 直接執行  </li>
-</ol>
-<p> <pre><code class=sh>C:\MASM\7SEG-1
-</code></pre></p>
-<ol>
+<li>使用<code>MASM</code>編譯程式碼<br />
+<div class="highlight"><pre><span></span><code>C:<span class="se">\M</span>ASM<span class="se">\M</span>L 7SEG-1.TXT
+</code></pre></div></li>
+<li>執行之後產成 OBJ 與 EXE 檔, 直接執行<br />
+<div class="highlight"><pre><span></span><code>C:<span class="se">\M</span>ASM<span class="se">\7</span>SEG-1
+</code></pre></div></li>
 <li>即可看到 7-SEG 群 的左側第一個由 0 開始往上數至9, 並且一直循環.<br />
 <img alt="r" src="leapPciDevice-3.jpg" />  </li>
 </ol>

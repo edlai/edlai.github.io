@@ -1414,53 +1414,53 @@
 </ul>
 <h2 id="backward-system">Backward System</h2>
 <h3 id="programming">Programming</h3>
-<p> <pre><code class=matlab>%..............................................................................
-% Filename      : b.m
-% Author        : Ching-Wen,Lai 
-% Running       : running this .m file in Matlab
-% Description   : High-Pass-Filter
-%
-% Date          : 10/21 2002 ver1.0
-% Input Voice   : speech.wav (PCM 格式)
-% Output Voice  : speech_m.wav(PCM 格式)
-% 
-% References    : Backward System
-%                 Book : Discrete-Time Signal Processing 
-%                 (ISBN: 0-13-0834443-2 p.21(2.45式)
-%..............................................................................
+<div class="highlight"><pre><span></span><code><span class="c">%..............................................................................</span><span class="w"></span>
+<span class="c">% Filename      : b.m</span><span class="w"></span>
+<span class="c">% Author        : Ching-Wen,Lai </span><span class="w"></span>
+<span class="c">% Running       : running this .m file in Matlab</span><span class="w"></span>
+<span class="c">% Description   : High-Pass-Filter</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% Date          : 10/21 2002 ver1.0</span><span class="w"></span>
+<span class="c">% Input Voice   : speech.wav (PCM 格式)</span><span class="w"></span>
+<span class="c">% Output Voice  : speech_m.wav(PCM 格式)</span><span class="w"></span>
+<span class="c">% </span><span class="w"></span>
+<span class="c">% References    : Backward System</span><span class="w"></span>
+<span class="c">%                 Book : Discrete-Time Signal Processing </span><span class="w"></span>
+<span class="c">%                 (ISBN: 0-13-0834443-2 p.21(2.45式)</span><span class="w"></span>
+<span class="c">%..............................................................................</span><span class="w"></span>
 
-fs=8000;
+<span class="n">fs</span><span class="p">=</span><span class="mi">8000</span><span class="p">;</span><span class="w"></span>
 
-%  ..........................  語音取樣開始  ..................................
+<span class="c">%  ..........................  語音取樣開始  ..................................</span><span class="w"></span>
 
-[ x,fs ] = wavread('speech.wav');            % 讀取 speech.wav 檔案內的語音樣本
-k=input('請按下 任一鍵 撥放處理 前 聲音');
-wavplay(x,fs);                               % 處理前先試聽該語音樣本
+<span class="p">[</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">wavread</span><span class="p">(</span><span class="s">&#39;speech.wav&#39;</span><span class="p">);</span><span class="w">            </span><span class="c">% 讀取 speech.wav 檔案內的語音樣本</span><span class="w"></span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放處理 前 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w">                               </span><span class="c">% 處理前先試聽該語音樣本</span><span class="w"></span>
 
-% ............   進行 DSP 處理  【  Backward System 】.........................
+<span class="c">% ............   進行 DSP 處理  【  Backward System 】.........................</span><span class="w"></span>
 
-fprintf('處理中,請稍候...\n');
-len=length(x);
-for n = 1:len,                               % n  :: 語音資料數目
-    if n == 1
-        y(n) = x(n);                         % Backward System 第一筆不作累計      
-    else
-        y(n) = x(n)- x(n-1);                 % 將之前取樣值拿來與目前的相減
-    end  
-end
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">len</span><span class="p">=</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">len</span><span class="p">,</span><span class="w">                               </span><span class="c">% n  :: 語音資料數目</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w">                         </span><span class="c">% Backward System 第一筆不作累計      </span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w">                 </span><span class="c">% 將之前取樣值拿來與目前的相減</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w">  </span>
+<span class="k">end</span><span class="w"></span>
 
-% ......... DSP 處理後結果::產生波型圖與頻譜 .....................................               
+<span class="c">% ......... DSP 處理後結果::產生波型圖與頻譜 .....................................               </span><span class="w"></span>
 
-k=input('請按下 任一鍵 撥放處理 後 聲音');
-wavplay(y,fs);                               % 聽處理后聲音
-wavwrite(y, fs, 16, 'speech_b.wav');         % 寫入 speech_b.wav 檔
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放處理 後 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w">                               </span><span class="c">% 聽處理后聲音</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;speech_b.wav&#39;</span><span class="p">);</span><span class="w">         </span><span class="c">% 寫入 speech_b.wav 檔</span><span class="w"></span>
 
-subplot(221), plot((1:length(x)),x);
-subplot(223), specgram(x(:));
-subplot(222), plot((1:length(y)),y);
-subplot(224), specgram(y(:));
-shg
-</code></pre></p>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x</span><span class="p">(:));</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">y</span><span class="p">(:));</span><span class="w"></span>
+<span class="n">shg</span><span class="w"></span>
+</code></pre></div>
 <h3 id="screenshot">Screenshot</h3>
 <p><img alt="result" src="bp_exe.jpg" />    </p>
 <h3 id="step-by-step">Step-by-Step</h3>
@@ -1508,63 +1508,63 @@ shg
 </table>
 <h2 id="moving-average">Moving Average</h2>
 <h3 id="programming_1">Programming</h3>
-<p> <pre><code class=matlab>%........................................................................................
-% Filename     : m.m
-% Author       : Ching-Wen,Lai
-% Running      : running this .m file in Matlab
-% Description  : Low-pass-Filter
-%
-% Date         : 10/21 2002 ver1.0
-% Input Voice  : speech.wav (PCM 格式)
-% Output Voice : speech_m.wav(PCM 格式)
-% Advanced     : 由於程式在作累加與平均的工作。此次累加值只與上一筆差一筆新值與一筆舊值，
-%                故累加動作可以改成只有第一次作累加， 之後作加上去新值與減去一筆舊值(之前
-%                的最前取樣點)，如此累加的動作會較快。但目前為方便，直接搭配課本易閱讀於,
-%                目前並無此動作
-% Reference    : Moving Average
-%                BOOK:  Discrete-Time Signal Processing 
-%                (ISBN: 0-13-0834443-2 p.17(2.24式)
-%........................................................................................
+<div class="highlight"><pre><span></span><code><span class="c">%........................................................................................</span><span class="w"></span>
+<span class="c">% Filename     : m.m</span><span class="w"></span>
+<span class="c">% Author       : Ching-Wen,Lai</span><span class="w"></span>
+<span class="c">% Running      : running this .m file in Matlab</span><span class="w"></span>
+<span class="c">% Description  : Low-pass-Filter</span><span class="w"></span>
+<span class="c">%</span><span class="w"></span>
+<span class="c">% Date         : 10/21 2002 ver1.0</span><span class="w"></span>
+<span class="c">% Input Voice  : speech.wav (PCM 格式)</span><span class="w"></span>
+<span class="c">% Output Voice : speech_m.wav(PCM 格式)</span><span class="w"></span>
+<span class="c">% Advanced     : 由於程式在作累加與平均的工作。此次累加值只與上一筆差一筆新值與一筆舊值，</span><span class="w"></span>
+<span class="c">%                故累加動作可以改成只有第一次作累加， 之後作加上去新值與減去一筆舊值(之前</span><span class="w"></span>
+<span class="c">%                的最前取樣點)，如此累加的動作會較快。但目前為方便，直接搭配課本易閱讀於,</span><span class="w"></span>
+<span class="c">%                目前並無此動作</span><span class="w"></span>
+<span class="c">% Reference    : Moving Average</span><span class="w"></span>
+<span class="c">%                BOOK:  Discrete-Time Signal Processing </span><span class="w"></span>
+<span class="c">%                (ISBN: 0-13-0834443-2 p.17(2.24式)</span><span class="w"></span>
+<span class="c">%........................................................................................</span><span class="w"></span>
 
-fs=8000;                              % Set sampling rate
+<span class="n">fs</span><span class="p">=</span><span class="mi">8000</span><span class="p">;</span><span class="w">                              </span><span class="c">% Set sampling rate</span><span class="w"></span>
 
-% ................................    語音檔輸入    ................................
+<span class="c">% ................................    語音檔輸入    ................................</span><span class="w"></span>
 
-[ x,fs ] = wavread('speech.wav');     
-k=input('請按下 [Enter] 鍵 撥放處理 前 聲音');
-wavplay(x,fs);
+<span class="p">[</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">wavread</span><span class="p">(</span><span class="s">&#39;speech.wav&#39;</span><span class="p">);</span><span class="w">     </span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 [Enter] 鍵 撥放處理 前 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
 
-% ...................... 進行 DSP 處理  【  Moving Average 】........................
+<span class="c">% ...................... 進行 DSP 處理  【  Moving Average 】........................</span><span class="w"></span>
 
-m1=input('請輸入 M1 值 :: ');          % M1 控制 比 n 點 大的取樣數
-m2=input('請輸入 M2 值 :: ');          % M2 控制 比 n 點 小的取樣數
-fprintf('\n處理中,請稍候...\n');
-len=length(x);
+<span class="n">m1</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請輸入 M1 值 :: &#39;</span><span class="p">);</span><span class="w">          </span><span class="c">% M1 控制 比 n 點 大的取樣數</span><span class="w"></span>
+<span class="n">m2</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請輸入 M2 值 :: &#39;</span><span class="p">);</span><span class="w">          </span><span class="c">% M2 控制 比 n 點 小的取樣數</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;\n處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">len</span><span class="p">=</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 
-for n = 1:len,                        % n  :: 語音資料數目  
-    if (n &amp;gt;= m2+1) &amp; ( n&amp;lt;=len-m1)     % 只有在 Moving Average 的範圍內才作處理
-        sum = 0; 
-        for  k = -m1:m2,              % k = -m1 ~ m2
-            sum=sum+x(n-k);           % 取值放入sum作累總
-        end    
-        y(n) = sum/(m1+m2+1);         % 求出累加後 的平均值                
-    else        
-        y(n) = x(n);
-        %fprintf('第 %d 點數據,不作取樣\n',n);   % Check 用
-    end  
-end
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">len</span><span class="p">,</span><span class="w">                        </span><span class="c">% n  :: 語音資料數目  </span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;=</span><span class="w"> </span><span class="n">m2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;=</span><span class="n">len</span><span class="o">-</span><span class="n">m1</span><span class="p">)</span><span class="w">     </span><span class="c">% 只有在 Moving Average 的範圍內才作處理</span><span class="w"></span>
+<span class="w">        </span><span class="nb">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="k">for</span><span class="w">  </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">m1</span><span class="p">:</span><span class="n">m2</span><span class="p">,</span><span class="w">              </span><span class="c">% k = -m1 ~ m2</span><span class="w"></span>
+<span class="w">            </span><span class="nb">sum</span><span class="p">=</span><span class="nb">sum</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">);</span><span class="w">           </span><span class="c">% 取值放入sum作累總</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w">    </span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="o">/</span><span class="p">(</span><span class="n">m1</span><span class="o">+</span><span class="n">m2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w">         </span><span class="c">% 求出累加後 的平均值                </span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w">        </span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c">%fprintf(&#39;第 %d 點數據,不作取樣\n&#39;,n);   % Check 用</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w">  </span>
+<span class="k">end</span><span class="w"></span>
 
-% ...........     DSP 處理後結果::產生波型圖與頻譜     ...............
+<span class="c">% ...........     DSP 處理後結果::產生波型圖與頻譜     ...............</span><span class="w"></span>
 
-k=input('請按下 [Enter] 撥放處理 後 聲音');
-wavplay(y,fs);
-wavwrite(y, fs, 16, 'speech_m.wav');  % 寫入 speech_m.wav 檔
-subplot(221), plot((1:length(x)),x);
-subplot(223), specgram(x(:));
-subplot(222), plot((1:length(y)),y);
-subplot(224), specgram(y(:));
-shg
-</code></pre></p>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 [Enter] 撥放處理 後 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavplay</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;speech_m.wav&#39;</span><span class="p">);</span><span class="w">  </span><span class="c">% 寫入 speech_m.wav 檔</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x</span><span class="p">(:));</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">y</span><span class="p">(:));</span><span class="w"></span>
+<span class="n">shg</span><span class="w"></span>
+</code></pre></div>
 <h3 id="screenshot_1">Screenshot</h3>
 <p><img alt="result" src="ma_exe.jpg" /></p>
 <h3 id="step-by-step_1">Step-by-Step</h3>
@@ -1686,11 +1686,11 @@ shg
 <li>publisher: Prentice Hall</li>
 <li>isbn: 0-13-0834443-2</li>
 </ul>
-<p> <pre><code class>$author:   Jing-Wen (Ed) Lai 
+<div class="highlight"><pre><span></span><code>$author:   Jing-Wen (Ed) Lai 
 $initial:  Nov. 2002           
 $revised:  Mar. 2018
 $keywords: dsp, digital, signal, processing, voice, moving average, backward system, matlab, speech
-</code></pre></p>
+</code></pre></div>
                 
               
               
