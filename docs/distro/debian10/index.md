@@ -372,6 +372,18 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
 ~~ TBD ~~
 ### IO Port
 
+#### Port-mapped I/O (PMIO):
+Separate address space for memory and I/O
+Implemented by a few CPU manufacturers (x86 included)
+Concept of I/O ports
+
+#### Memory-mapped I/O (MMIO):
+Same address space for memory and I/O
+Most CPU manufacturers (e.g., ARM)
+The difference between registers and memory is transparent to software
+Concept of I/O memory
+
+#### Function
 
 ```
 #include <linux/ioport.h>
