@@ -104,8 +104,6 @@ There is HTTP file server which can run in Windows OS.
 
 Suggest to use default coding configuration by `clang-format` of Visual Studio Code.
 
-- [VS Code](https://code.visualstudio.com/docs/cpp/cpp-ide): use `clang-format` by default.
-
 - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
 
 Below script format `main.c` by `clang-format`.
