@@ -431,13 +431,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrade-linux-kernel" class="md-nav__link">
-    Upgrade Linux Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#check-wi-fi-channel-and-so-on" class="md-nav__link">
     Check Wi-Fi channel and so on
   </a>
@@ -591,6 +584,18 @@
     <li class="md-nav__item">
       <a href="../docker/" class="md-nav__link">
         Docker and Macvlan
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../doc/" class="md-nav__link">
+        Documentation
       </a>
     </li>
   
@@ -1305,13 +1310,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrade-linux-kernel" class="md-nav__link">
-    Upgrade Linux Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#check-wi-fi-channel-and-so-on" class="md-nav__link">
     Check Wi-Fi channel and so on
   </a>
@@ -1441,44 +1439,25 @@
                 
                 <h1 id="diagnostic-tools">Diagnostic Tools</h1>
 <h2 id="wireshare">Wireshare</h2>
-<p>Download and install Wireshark from Internet. If you would like to capture <strong>Wireless Traffice</strong> in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.</p>
-<h3 id="upgrade-linux-kernel">Upgrade Linux Kernel</h3>
-<p>In my case, I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
-<ul>
-<li>
-<p>Check the current Linux Kernel version, it's <code>4.19.x</code> now.
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo uname -a
-<span class="go">config-4.19.0-17-amd64</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Upgrade the essential packages
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<p>Download <code>Ubuntu 20.10</code> from <a href="https://www.ubuntu-tw.org/">Ubuntu Website</a>. Check the current Linux Kernel version, it's <code>5.8.x</code> now.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
+<span class="go">Linux ed-ThinkPad-X230 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div>
+<p>Install Wireshark and so on.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo rm -rf /bin/sh <span class="o">&amp;&amp;</span> sudo ln -s /bin/bash /bin/sh
+<span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp">$ </span>sudo apt-get install openssh-server vim net-tools
+<span class="gp">$ </span>sudo apt-get install wireshark
 <span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
 <span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
 <span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
-<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget
-</code></pre></div></p>
-</li>
-<li>
-<p>Add apt repository to support <code>linux-image-5.10.x</code>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://deb.debian.org/debian buster-backports main&#39;</span>
-<span class="gp">$ </span>sudo apt-get update
-<span class="gp">$ </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
-<span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree <span class="o">(</span>Optional<span class="o">)</span>
-<span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
-</code></pre></div></p>
-</li>
-<li>
-<p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
-<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
-</code></pre></div></p>
-</li>
-</ul>
+<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
+<span class="gp">$ </span>sudo apt-get install -y libtool
+</code></pre></div>
 <h3 id="check-wi-fi-channel-and-so-on">Check Wi-Fi channel and so on</h3>
 <ul>
-<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.
+<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
 
@@ -1489,20 +1468,20 @@ wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-</code></pre></div></li>
-</ul>
+</code></pre></div>
 <p>Install <code>aircrack-ng</code> and run <code>airodump-ng</code> to check Wi-Fi channel. Better to use <code>aircrack-ng 1.6</code> to support WPA3-SAE.</p>
-<p>Install <code>aircrack-ng</code></p>
-<div class="highlight"><pre><span></span><code>$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
-$ tar xvf 1.6.tar.gz 
-$ cd aircrack-ng-1.6
-$ ./autogen.sh 
-$ ./configure 
-$ make
-$ sudo make install
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
+<span class="gp">$ </span>tar xvf <span class="m">1</span>.6.tar.gz
+<span class="gp">$ </span><span class="nb">cd</span> aircrack-ng-1.6
+<span class="gp">$ </span>./autogen.sh
+<span class="gp">$ </span>./configure
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+<span class="gp">$ </span>sudo ldconfig
 </code></pre></div>
 <p>Run <code>airodump-ng</code>
 <div class="highlight"><pre><span></span><code>$ sudo airodump-ng wlx008e86000266
+
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
@@ -1514,6 +1493,13 @@ $ sudo make install
  C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
 </code></pre></div></p>
 <p>as a result, SSID <code>AP1</code> works on <code>Channel 13</code>.</p>
+<p>PS. try to use <code>gcc 9</code> if <code>gcc 10</code> cannot compile <code>aircrack-ng</code>
+<div class="highlight"><pre><span></span><code>$ sudo apt install gcc-9; sudo apt install g++-9
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+$ sudo update-alternatives --config gcc
+$ gcc -v
+gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)
+</code></pre></div></p>
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
 <li>Enable Monitor Mode, use below script then press <code>./set_mon.sh wlx008e86000266 13</code></li>
@@ -1534,12 +1520,17 @@ $ sudo make install
 <span class="go">sudo iwconfig ${dev} channel ${ch}</span>
 </code></pre></div>
 <h3 id="run-wireshark">Run Wireshark</h3>
-<p>Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture </p>
+<ul>
+<li>Run Wireshark</li>
+<li>Select Menu/View/Wireless Toolbar</li>
+<li>Set Filter to display beacon Frame. there is a sample filter if you would like to capture.</li>
+</ul>
+<p>Filter:</p>
 <ul>
 <li>MAC address: C4:E9:0A:6F:A5:1A,</li>
-<li>Association,</li>
-<li>Reassociation,</li>
-<li>Probe,</li>
+<li>Association Req/Rep</li>
+<li>Reassociation Req/Rep</li>
+<li>Probe Req/Rep</li>
 <li>Beacon ((wlan.fc.type_subtype &lt;= 0x0008)),</li>
 <li>Four way handshark (wlan.fc.type == 0x0002).</li>
 </ul>

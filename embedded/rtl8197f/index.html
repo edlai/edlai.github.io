@@ -427,6 +427,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/doc/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1135,28 +1147,28 @@
                 <h1 id="rtk-8197f">RTK 8197F</h1>
 <p>Run <code>Ubuntu 16.04</code> (VPS), it cannot work in <code>Ubuntu 18.04</code>.</p>
 <p>Prepare</p>
-<div class="highlight"><pre><span></span><code><span class="go">rm -rf /bin/sh &amp;&amp; ln -s /bin/bash /bin/sh</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>rm -rf /bin/sh <span class="o">&amp;&amp;</span> ln -s /bin/bash /bin/sh
 </code></pre></div>
 <p>Install below packages</p>
-<div class="highlight"><pre><span></span><code><span class="go">cat /etc/lsb-release</span>
-<span class="go">apt-get -y update &gt; /dev/null 2&gt; /dev/null</span>
-<span class="go">apt-get -y upgrade &gt; /dev/null 2&gt; /dev/null</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat /etc/lsb-release
+<span class="gp">$ </span>apt-get -y update &gt; /dev/null <span class="m">2</span>&gt; /dev/null
+<span class="gp">$ </span>apt-get -y upgrade &gt; /dev/null <span class="m">2</span>&gt; /dev/null
 
-<span class="go">apt-get -y install wget git build-essential gcc-multilib g++-multilib</span>
-<span class="go">apt-get -y install lsb-core autoconf automake libjson-* libmpc-dev lib32stdc++6 p7zip-full tree</span>
-<span class="go">apt-get -y install gcc g++ binutils patch bzip2 flex bison make autoconf gettext texinfo unzip</span>
-<span class="go">apt-get -y install sharutils subversion libncurses5-dev ncurses-term zlib1g-dev subversion</span>
-<span class="go">apt-get -y install gawk libz-dev asciidoc libtool libssl-dev</span>
-<span class="go">apt-get -y install intltool libiconv* glib2.0 ccache sshfs mtd-utils rst2pdf</span>
+<span class="gp">$ </span>apt-get -y install wget git build-essential gcc-multilib g++-multilib
+<span class="gp">$ </span>apt-get -y install lsb-core autoconf automake libjson-* libmpc-dev lib32stdc++6 p7zip-full tree
+<span class="gp">$ </span>apt-get -y install gcc g++ binutils patch bzip2 flex bison make autoconf gettext texinfo unzip
+<span class="gp">$ </span>apt-get -y install sharutils subversion libncurses5-dev ncurses-term zlib1g-dev subversion
+<span class="gp">$ </span>apt-get -y install gawk libz-dev asciidoc libtool libssl-dev
+<span class="gp">$ </span>apt-get -y install intltool libiconv* glib2.0 ccache sshfs mtd-utils rst2pdf
 </code></pre></div>
 <p>Build Image</p>
-<div class="highlight"><pre><span></span><code>export TERMINFO=/lib/terminfo
-make clean
-make distclean
-make menuconfig
+<div class="highlight"><pre><span></span><code>$ export TERMINFO=/lib/terminfo
+$ make clean
+$ make distclean
+$ make menuconfig
 </code></pre></div>
 <p>Select Target</p>
-<div class="highlight"><pre><span></span><code>make 2&gt;&amp;1 | tee mk.log
+<div class="highlight"><pre><span></span><code>$ make 2&gt;&amp;1 | tee mk.log
 </code></pre></div>
                 
               

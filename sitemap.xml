@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://edlai.github.io/dev/doc/</loc>
+         <lastmod>2021-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://edlai.github.io/dev/docker/</loc>
          <lastmod>2021-07-10</lastmod>
          <changefreq>daily</changefreq>

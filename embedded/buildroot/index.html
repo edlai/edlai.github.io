@@ -431,6 +431,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/doc/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -520,22 +532,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#one-single-package-manually" class="md-nav__link">
-    One single package manually
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hello" class="md-nav__link">
-    Hello
+  <a href="#add-one-single-package-manually" class="md-nav__link">
+    Add one single package manually
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#add-some-useful-packages" class="md-nav__link">
-    Add some useful Packages
+    Add some useful packages
   </a>
   
 </li>
@@ -543,6 +548,54 @@
           <li class="md-nav__item">
   <a href="#add-your-first-package" class="md-nav__link">
     Add Your first Package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-kernel" class="md-nav__link">
+    Linux Kernel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#busybox" class="md-nav__link">
+    Busybox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qemu" class="md-nav__link">
+    Qemu
+  </a>
+  
+    <nav class="md-nav" aria-label="Qemu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    Run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
   </a>
   
 </li>
@@ -1251,22 +1304,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#one-single-package-manually" class="md-nav__link">
-    One single package manually
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hello" class="md-nav__link">
-    Hello
+  <a href="#add-one-single-package-manually" class="md-nav__link">
+    Add one single package manually
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#add-some-useful-packages" class="md-nav__link">
-    Add some useful Packages
+    Add some useful packages
   </a>
   
 </li>
@@ -1274,6 +1320,54 @@
           <li class="md-nav__item">
   <a href="#add-your-first-package" class="md-nav__link">
     Add Your first Package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-kernel" class="md-nav__link">
+    Linux Kernel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#busybox" class="md-nav__link">
+    Busybox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qemu" class="md-nav__link">
+    Qemu
+  </a>
+  
+    <nav class="md-nav" aria-label="Qemu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    Run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
   </a>
   
 </li>
@@ -1304,11 +1398,11 @@
                 
                 
                 <h1 id="buildroot">Buildroot</h1>
-<p>There are some resource for buildroot.</p>
+<p>There are some resources for buildroot.</p>
 <ul>
-<li><a href="https://buildroot.org/">Buildroot</a>: Making Embedded Linux Easy</li>
-<li><a href="https://github.com/buildroot/buildroot">Buildroot in GitHub</a></li>
-<li><a href="https://github.com/buildroot/buildroot/tree/master/package">Buildroot's Packages</a></li>
+<li><a href="https://github.com/buildroot/buildroot">GitHub</a>: source code in GitHub.</li>
+<li><a href="https://buildroot.org/">Buildroot</a>: official website.</li>
+<li><a href="https://github.com/buildroot/buildroot/tree/master/package">Packages</a>: official packages.</li>
 </ul>
 <h2 id="requirements">Requirements</h2>
 <ul>
@@ -1325,11 +1419,11 @@ $ make
 $ ls -lah output/images/sdcard.img
 -rw-r--r-- <span class="m">1</span> ed ed 153M Jul  <span class="m">3</span> <span class="m">20</span>:29 output/images/sdcard.img
 </code></pre></div>
-<p>Programming image to SD card. insert SD card to RPI3 and try to power on RPI3. If you uses Windows OS, you can programming image to SD card by using <code>Rufus</code>.</p>
+<p>Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you uses Windows OS, you can programming image to SD card by using <a href="https://rufus.ie/"><code>Rufus</code></a>.</p>
 <h2 id="package">Package</h2>
-<h3 id="one-single-package-manually">One single package manually</h3>
-<p>try to build one single package manually. Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
-<div class="highlight"><pre><span></span><code>$ make tcodump
+<h3 id="add-one-single-package-manually">Add one single package manually</h3>
+<p>Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
+<div class="highlight"><pre><span></span><code>$ make tcpdump
 $ ls -lah output/target/usr/bin/tcpdump
 -rwxr-xr-x <span class="m">1</span> ed ed <span class="m">1</span>.2M Jul  <span class="m">3</span> <span class="m">20</span>:48 output/target/usr/bin/tcpdump
 </code></pre></div>
@@ -1337,9 +1431,7 @@ $ ls -lah output/target/usr/bin/tcpdump
 <div class="highlight"><pre><span></span><code>$ make tcpdump-dirclean
 $ make tcpdump-rebuild
 </code></pre></div>
-<h3 id="hello">Hello</h3>
-<p><a href="https://hackmd.io/@c_0KKCwzQE2rsd39mpvNQQ/rklPsoKaI">Add hello app to buildroot</a></p>
-<h3 id="add-some-useful-packages">Add some useful Packages</h3>
+<h3 id="add-some-useful-packages">Add some useful packages</h3>
 <p>There are some useful packages and its location when pressing <code>make menuconfig</code>. Consider to enable them then make the image again.</p>
 <ul>
 <li>wget (Target packages &gt; Networking Applications &gt; wget)</li>
@@ -1350,105 +1442,146 @@ $ make tcpdump-rebuild
 <li>libcurl (Libraries &gt; Networking &gt; libcurl)</li>
 </ul>
 <h3 id="add-your-first-package">Add Your first Package</h3>
-<p>(Reference)[https://wiki.t-firefly.com/en/Firefly-RK3399/debug.html]</p>
-<p>hello.c</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span>include &lt;stdio.h&gt;
-
-<span class="go">int main()</span>
-<span class="go">{</span>
-<span class="go">    printf(&quot;buildroot helloworld\n&quot;);</span>
-<span class="go">    return 0;</span>
-<span class="go">}</span>
+<p>Package file Layout</p>
+<div class="highlight"><pre><span></span><code>package
+├── Config.in
+└── hello
+    ├── Config.in
+    ├── hello.mk
+    └── src
+        ├── .gitignore
+        ├── hello.c
+        └── Makefile
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">Makefile:</span>
-
-<span class="go">OPT    = -O2</span>
-<span class="go">DEBUG  = -g</span>
-<span class="go">OTHER  = -Wall -Wno-deprecated</span>
-<span class="go">CFLAGS = $(OPT) $(OTHER)</span>
-<span class="go">INCDIR = -I</span>
-<span class="go">LIBDIR = -L</span>
-<span class="go">LIBS =</span>
-<span class="go">APP=helloworld</span>
-<span class="go">SRCS=hello.c</span>
-
-<span class="go">all:</span>
-<span class="gp">    $</span><span class="o">(</span>CC<span class="o">)</span> -o <span class="k">$(</span>APP<span class="k">)</span> <span class="k">$(</span>SRCS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>LIBDIR<span class="k">)</span> <span class="k">$(</span>INCDIR<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
-<span class="go">clean:</span>
-<span class="go">    rm $(APP)</span>
+<p>package/Config.in: add <code>Misc</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">menu</span> <span class="s2">&quot;Misc&quot;</span>
+        <span class="err">source</span> <span class="s2">&quot;package/hello/Config.in&quot;</span>
+<span class="err">endmenu</span>
 </code></pre></div>
-<p>Config.in</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">package/Config.in</span>
-
-<span class="go">……</span>
-<span class="go">menu &quot;Text editors and viewers&quot;</span>
-<span class="go">    source &quot;package/ed/Config.in&quot;</span>
-<span class="go">    source &quot;package/joe/Config.in&quot;</span>
-<span class="go">    source &quot;package/less/Config.in&quot;</span>
-<span class="go">    source &quot;package/mc/Config.in&quot;</span>
-<span class="go">    source &quot;package/most/Config.in&quot;</span>
-<span class="go">    source &quot;package/nano/Config.in&quot;</span>
-<span class="go">    source &quot;package/uemacs/Config.in&quot;</span>
-<span class="go">    source &quot;package/vim/Config.in&quot;</span>
-<span class="go">endmenu</span>
-
-<span class="go">menu &quot;myown helloworld&quot;</span>
-<span class="go">    source &quot;package/helloworld/Config.in&quot;</span>
-<span class="go">endmenu</span>
-
-<span class="go">endmenu</span>
-<span class="go">注意要在最後這個 endmenu 前插入。</span>
-
-<span class="go">2. 新建 ～/buildroot-2020.08.1/package/helloworld/Config.in</span>
-
-<span class="go">config BR2_PACKAGE_HELLOWORLD</span>
-<span class="go">bool &quot;helloworld&quot;</span>
-<span class="go">help</span>
-<span class="go">  This is a demo to add myown helloworld.</span>
-<span class="go">此時menuconfig就有了。</span>
-
-<span class="go">3. 新建～/buildroot-2020.08.1/package/helloworld/helloworld.mk</span>
-
-<span class="gp">#</span><span class="c1">###############################################################################</span>
-<span class="gp">#</span>
-<span class="gp"># </span>helloworld
-<span class="gp">#</span>
-<span class="gp">#</span><span class="c1">###############################################################################</span>
-
-<span class="go">HELLOWORLD_VERSION:= 1.0.0</span>
-<span class="gp">HELLOWORLD_SITE:= $</span><span class="o">(</span>CURDIR<span class="o">)</span>/dl/helloworld
-<span class="go">HELLOWORLD_SITE_METHOD:=local</span>
-<span class="go">HELLOWORLD_INSTALL_TARGET:=YES</span>
-
-<span class="go">define HELLOWORLD_BUILD_CMDS</span>
-<span class="gp">    $</span><span class="o">(</span>MAKE<span class="o">)</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_CC<span class="k">)</span><span class="s2">&quot;</span> <span class="nv">LD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_LD<span class="k">)</span><span class="s2">&quot;</span> -C <span class="k">$(</span>@D<span class="k">)</span> all
-<span class="go">endef</span>
-
-<span class="go">define HELLOWORLD_INSTALL_TARGET_CMDS</span>
-<span class="gp">    $</span><span class="o">(</span>INSTALL<span class="o">)</span> -D -m <span class="m">0755</span> <span class="k">$(</span>@D<span class="k">)</span>/helloworld <span class="k">$(</span>TARGET_DIR<span class="k">)</span>/bin
-<span class="go">endef</span>
-
-<span class="go">define HELLOWORLD_PERMISSIONS</span>
-<span class="go">    /bin/helloworld f 4755 0 0 - - - - -</span>
-<span class="go">endef</span>
-
-<span class="gp">$</span><span class="o">(</span><span class="nb">eval</span> <span class="k">$(</span>generic-package<span class="k">)</span><span class="o">)</span>
-<span class="gp">#</span><span class="c1"># Linux Kernel</span>
-
-<span class="go">There are the commands for make linux kerenl. </span>
+<p>package/hello/Config.in: add <code>BR2_PACKAGE_HELLO</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">config</span> <span class="err">BR2_PACKAGE_HELLO</span>
+        <span class="err">bool</span> <span class="s2">&quot;hello&quot;</span>
+        <span class="err">help</span>
+                <span class="err">Hello</span> <span class="err">world</span> <span class="err">package.</span>
+                <span class="nf">http</span><span class="o">:</span>//<span class="n">example</span>.<span class="n">com</span>
 </code></pre></div>
-$ make linux-menuconfig
+<p>package/hello/hello.mk</p>
+<div class="highlight"><pre><span></span><code><span class="nv">HELLO_VERSION</span> <span class="o">=</span> <span class="m">1</span>.0
+<span class="nv">HELLO_SITE</span> <span class="o">=</span> ./package/hello/src
+<span class="nv">HELLO_SITE_METHOD</span> <span class="o">=</span> <span class="nb">local</span>
+
+<span class="cp">define HELLO_BUILD_CMDS</span>
+        <span class="k">$(</span>MAKE<span class="k">)</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_CC<span class="k">)</span><span class="s2">&quot;</span> <span class="nv">LD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>TARGET_LD<span class="k">)</span><span class="s2">&quot;</span> -C <span class="k">$(</span>@D<span class="k">)</span>
+<span class="cp">endef</span>
+
+<span class="cp">define HELLO_INSTALL_TARGET_CMDS</span>
+        <span class="k">$(</span>INSTALL<span class="k">)</span> -D -m <span class="m">0755</span> <span class="k">$(</span>@D<span class="k">)</span>/hello <span class="k">$(</span>TARGET_DIR<span class="k">)</span>/usr/bin
+<span class="cp">endef</span>
+
+<span class="k">$(</span><span class="nv">eval</span> <span class="k">$(</span><span class="nv">generic-package</span><span class="k">))</span>
+</code></pre></div>
+<p>package/hello/src/.gitignore</p>
+<div class="highlight"><pre><span></span><code>hello
+</code></pre></div>
+<p>package/hello/src/hello.c</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;buildroot helloworld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>package/hello/src/Makefile</p>
+<div class="highlight"><pre><span></span><code><span class="nv">CC</span> <span class="o">=</span> gcc
+
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+
+<span class="nf">hello</span><span class="o">:</span> <span class="n">hello</span>.<span class="n">c</span>
+        <span class="k">$(</span>CC<span class="k">)</span> -o <span class="s1">&#39;$@&#39;</span> <span class="s1">&#39;$&lt;&#39;</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+        rm hello
+</code></pre></div>
+<p>Manually</p>
+<div class="highlight"><pre><span></span><code>$ make hello-dirclean
+
+$ make hello-rebuild
+
+$ tree output/build/hello-1.0/
+output/build/hello-1.0/
+├── hello
+├── hello.c
+└── Makefile
+
+$ make hello-install
+
+$ file output/target/usr/bin/hello
+output/target/usr/bin/hello: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped
+</code></pre></div>
+<p>Build Image</p>
+<div class="highlight"><pre><span></span><code>$ make raspberrypi3_64_defconfig           # &lt; = (Optional)
+$ echo &#39;BR2_PACKAGE_HELLO=y&#39; &gt;&gt; .config
+$ make BR2_JLEVEL=2
+</code></pre></div>
+<p>Program Image to SD card and Power on PRI3, run <code>hello</code> in Traget Board.</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>hello
+<span class="go">buildroot helloworld</span>
+</code></pre></div>
+<h2 id="linux-kernel">Linux Kernel</h2>
+<p>There are the commands for make linux kerenl.</p>
+<div class="highlight"><pre><span></span><code>$ make linux-menuconfig
 $ make linux-rebuild
-<div class="highlight"><pre><span></span><code>## Busybox
-
-There are the commands to make busybox. Use `mkfifo` as an example, try to step into `Coreutils &gt; mkfifo` and rebuild busybox.
 </code></pre></div>
-$ busybox-menuconfig 
+<h2 id="busybox">Busybox</h2>
+<p>There are the commands to make busybox. Use <code>mkfifo</code> as an example, try to step into <code>Coreutils &gt; mkfifo</code> and rebuild busybox.
+<div class="highlight"><pre><span></span><code>$ busybox-menuconfig
 $ make busybox-rebuild
-```</p>
+</code></pre></div></p>
+<h2 id="qemu">Qemu</h2>
+<h3 id="build">Build</h3>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make clean
+<span class="gp">$ </span>make qemu_arm_vexpress_defconfig
+<span class="gp">$ </span>make
+</code></pre></div>
+<h3 id="run">Run</h3>
+<!-- -nographic  -->
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>qemu-system-arm -M vexpress-a9 -smp <span class="m">1</span> -m <span class="m">256</span> -kernel output/images/zImage -dtb output/images/vexpress-v2p-ca9.dtb -drive <span class="nv">file</span><span class="o">=</span>output/images/rootfs.ext2,if<span class="o">=</span>sd,format<span class="o">=</span>raw -append <span class="s2">&quot;console=ttyAMA0,115200 root=/dev/mmcblk0&quot;</span> -serial stdio -net nic,model<span class="o">=</span>lan9118 -net user -nographic
+</code></pre></div>
+<h3 id="result">Result</h3>
+<div class="highlight"><pre><span></span><code><span class="go">...</span>
+<span class="go">udhcpc: lease of 10.0.2.15 obtained, lease time 86400</span>
+<span class="go">deleting routers</span>
+<span class="go">adding dns 10.0.2.3</span>
+<span class="go">OK</span>
+
+<span class="go">Welcome to Buildroot</span>
+<span class="go">buildroot login: root</span>
+<span class="gp"># </span>uname -a
+<span class="go">Linux buildroot 5.10.7 #1 SMP Sat Jul 10 15:43:17 CST 2021 armv7l GNU/Linux</span>
+<span class="gp"># </span>ifconfig
+<span class="go">eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56</span>
+<span class="go">          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0</span>
+<span class="go">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:2 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:2 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:1180 (1.1 KiB)  TX bytes:688 (688.0 B)</span>
+<span class="go">          Interrupt:30</span>
+
+<span class="go">lo        Link encap:Local Loopback</span>
+<span class="go">          inet addr:127.0.0.1  Mask:255.0.0.0</span>
+<span class="go">          UP LOOPBACK RUNNING  MTU:65536  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
+</code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://www.cnblogs.com/arnoldlu/p/9553995.html">buildroot使用介绍</a></li>
+<li><a href="https://wiki.t-firefly.com/en/Firefly-RK3399/debug.html">Buildroot development</a></li>
 </ul>
 <p>~~ TBD~~~</p>
                 
@@ -1470,7 +1603,7 @@ $ make busybox-rebuild
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../dev/docker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker and Macvlan" rel="prev">
+        <a href="../../dev/doc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Documentation" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1479,7 +1612,7 @@ $ make busybox-rebuild
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker and Macvlan
+              Documentation
             </div>
           </div>
         </a>
