@@ -1,19 +1,3 @@
-# Automation and Crawler
-
-## Automation
-
-### Telnet
-
-The sample code to use python to perform firmware upgrading via telnet protocol.
-
-~ TBD ~
-
-
-### SSH
-
-The sample code to use python to perform  firmware upgrading via ssh protocol.
-
-``` python
 #!/usr/bin/env python3
 import paramiko
 username = "ed"
@@ -32,6 +16,3 @@ try:
 except Exception:
     print('Exception!!')
     raise
-```
-
-~ TBD ~
