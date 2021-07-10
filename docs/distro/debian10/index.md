@@ -89,14 +89,14 @@ Compile and Install the Kernel
 
 ```console
 $ sudo add-apt-repository 'deb http://http.us.debian.org/debian/ buster main contrib non-free'
-$ sudo make -j $(nproc) V=99 deb-pkg
+$ sudo make -j $(nproc) V=99 deb-pkg 2>&1 | tee build.log | grep -i error
 $ cd ..
 ```
 
 Result
 
 ```console
-$ls -lah | grep deb
+$ ls -lah | grep deb
 -rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb
 -rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb
 -rw-r--r--  1 ed   ed   893M Jul  9 00:25 linux-image-5.10.40-dbg_5.10.40-5_amd64.deb
