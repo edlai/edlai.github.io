@@ -1433,11 +1433,11 @@ make: *** [Makefile:1167: vmlinux] Error 1
 </code></pre></div>
 <p>Compile and Install the Kernel</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">&#39;deb http://http.us.debian.org/debian/ buster main contrib non-free&#39;</span>
-<span class="gp">$ </span>sudo make -j <span class="k">$(</span>nproc<span class="k">)</span> <span class="nv">V</span><span class="o">=</span><span class="m">99</span> deb-pkg
+<span class="gp">$ </span>sudo make -j <span class="k">$(</span>nproc<span class="k">)</span> <span class="nv">V</span><span class="o">=</span><span class="m">99</span> deb-pkg <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee build.log <span class="p">|</span> grep -i error
 <span class="gp">$ </span><span class="nb">cd</span> ..
 </code></pre></div>
 <p>Result</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span>ls -lah <span class="p">|</span> grep deb
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ls -lah <span class="p">|</span> grep deb
 <span class="go">-rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb</span>
 <span class="go">-rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb</span>
 <span class="go">-rw-r--r--  1 ed   ed   893M Jul  9 00:25 linux-image-5.10.40-dbg_5.10.40-5_amd64.deb</span>
