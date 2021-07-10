@@ -13,6 +13,7 @@ nav:
           - 'Performance Measurement': 'dev/perf/index.md'
           - 'Git and Build Machine': 'dev/git/index.md'
           - 'Docker and Macvlan': 'dev/docker/index.md'
+          - 'Documentation': 'dev/doc/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'

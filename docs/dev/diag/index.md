@@ -3,45 +3,31 @@
 
 ## Wireshare
 
-Download and install Wireshark from Internet. If you would like to capture __Wireless Traffice__ in Linux OS, you may need to find a suitable WiFi dongle which can support monitor mode. For `Debian 10.10`, becasue its Linux Kernel version is 4.x, you need to upgrade Linux Kernel to 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.
+Download `Ubuntu 20.10` from [Ubuntu Website](https://www.ubuntu-tw.org/). Check the current Linux Kernel version, it's `5.8.x` now.
 
-### Upgrade Linux Kernel
-
-In my case, I choose [`debian-live-10.10.0-amd64-xfce.iso`](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/)
-
-- Check the current Linux Kernel version, it's `4.19.x` now.
-```console
-$ sudo uname -a
-config-4.19.0-17-amd64
+``` console
+$ uname -a
+Linux ed-ThinkPad-X230 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-- Upgrade the essential packages
+Install Wireshark and so on.
+
 ```console
+$ sudo rm -rf /bin/sh && sudo ln -s /bin/bash /bin/sh
 $ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install openssh-server vim net-tools
+$ sudo apt-get install wireshark
 $ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
 $ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
 $ sudo apt-get install -y software-properties-common rsync
-$ sudo apt-get install -y libncurses5-dev gcc grub2 wget
-```
-
-- Add apt repository to support `linux-image-5.10.x`
-``` console
-$ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
-$ sudo apt-get update
-$ sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
-$ sudo apt-get install firmware-misc-nonfree (Optional)
-$ sync; sudo reboot
-```
-
-- After rebooted. Check current Linux version to make sure its `Linux Kernel 5.10`
-``` console
-$ uname -a
-Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux
+$ sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
+$ sudo apt-get install -y libtool
 ```
 
 ### Check Wi-Fi channel and so on
 
 - Insert Wi-Fi dongle and confirm Interface name. The PID/VID is `0e8d:7612`. and the interface name is `wlx008e86000266` now.
+
 ```
 $ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
@@ -57,21 +43,21 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 Install `aircrack-ng` and run `airodump-ng` to check Wi-Fi channel. Better to use `aircrack-ng 1.6` to support WPA3-SAE.
 
-Install `aircrack-ng`
-
-```
+```console
 $ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
-$ tar xvf 1.6.tar.gz 
+$ tar xvf 1.6.tar.gz
 $ cd aircrack-ng-1.6
-$ ./autogen.sh 
-$ ./configure 
+$ ./autogen.sh
+$ ./configure
 $ make
 $ sudo make install
+$ sudo ldconfig
 ```
 
 Run `airodump-ng`
 ```
 $ sudo airodump-ng wlx008e86000266
+
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
@@ -84,6 +70,16 @@ $ sudo airodump-ng wlx008e86000266
 ```
 
 as a result, SSID `AP1` works on `Channel 13`.
+
+
+PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`
+```
+$ sudo apt install gcc-9; sudo apt install g++-9
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+$ sudo update-alternatives --config gcc
+$ gcc -v
+gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)
+```
 
 ### Enable Monitor Mode
 
@@ -109,12 +105,16 @@ sudo iwconfig ${dev} channel ${ch}
 
 ### Run Wireshark
 
-Run Wireshark and set Filter to display beacon Frame. there is a sample filter if you would like to capture 
+- Run Wireshark
+- Select Menu/View/Wireless Toolbar
+- Set Filter to display beacon Frame. there is a sample filter if you would like to capture.
+
+Filter:
 
 - MAC address: C4:E9:0A:6F:A5:1A,
-- Association,
-- Reassociation,
-- Probe,
+- Association Req/Rep
+- Reassociation Req/Rep
+- Probe Req/Rep
 - Beacon ((wlan.fc.type_subtype <= 0x0008)),
 - Four way handshark (wlan.fc.type == 0x0002).
 

@@ -321,31 +321,7 @@ $ ping 8.8.8.8
 $ tmux deattach
 # - RUN BELOW COMMAND TO ATTACH AGAIN -
 $ tmux attach
-
 ```
-## Documentation
-
-- Markdown
-
-markdown to pdf.
-
-```console
-$ echo "test" > doc.md
-$ pandoc doc.md
-```
-
-- reStructuredText 
-
-rst to pdf.
-
-```console
-$ echo "test" > doc.rst
-$ rst2pdf doc.rst 
-```
-
-- [Swagger](https://swagger.io/): API Documentation & Design Tools for Teams
-
-~ TBD ~
 
 ## Wi-Fi Tool
 
