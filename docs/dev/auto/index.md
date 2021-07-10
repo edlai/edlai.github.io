@@ -4,7 +4,7 @@
 
 ### Telnet
 
-The sample code to use python to perform firmware upgrading via telnet protocol.
+The sample code shows how to login Router and execute `ls` command.
 
 ``` python
 import time
@@ -104,7 +104,7 @@ tn.close()
 
 ### SSH
 
-The sample code to use python to perform  firmware upgrading via ssh protocol.
+The sample code shows how to login Server and execute `ls` command.
 
 ``` python
 #!/usr/bin/env python3
