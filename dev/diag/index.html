@@ -1458,16 +1458,16 @@
 <ul>
 <li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ lsusb
-Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>lsusb
+<span class="go">Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.</span>
 
-$ sudo ifconfig
-wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
-        ether 1e:a4:80:77:09:f3  txqueuelen 1000  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+<span class="gp">$ </span>sudo ifconfig
+<span class="go">wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span>
+<span class="go">        ether 1e:a4:80:77:09:f3  txqueuelen 1000  (Ethernet)</span>
+<span class="go">        RX packets 0  bytes 0 (0.0 B)</span>
+<span class="go">        RX errors 0  dropped 0  overruns 0  frame 0</span>
+<span class="go">        TX packets 0  bytes 0 (0.0 B)</span>
+<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span>
 </code></pre></div>
 <p>Install <code>aircrack-ng</code> and run <code>airodump-ng</code> to check Wi-Fi channel. Better to use <code>aircrack-ng 1.6</code> to support WPA3-SAE.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
@@ -1479,27 +1479,30 @@ wlx008e86000266: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
 <span class="gp">$ </span>sudo make install
 <span class="gp">$ </span>sudo ldconfig
 </code></pre></div>
-<p>Run <code>airodump-ng</code>
-<div class="highlight"><pre><span></span><code>$ sudo airodump-ng wlx008e86000266
+<p>Run <code>airodump-ng</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo airodump-ng wlx008e86000266
 
- CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
+<span class="go"> CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.</span>
 
- BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+<span class="go"> BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID</span>
 
- C4:E9:0A:6F:A5:1A  -20       12        0    0  13  270   WPA2 CCMP   PSK  AP1
+<span class="go"> C4:E9:0A:6F:A5:1A  -20       12        0    0  13  270   WPA2 CCMP   PSK  AP1</span>
 
- BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
+<span class="go"> BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes</span>
 
- C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
-</code></pre></div></p>
+<span class="go"> C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1</span>
+</code></pre></div>
 <p>as a result, SSID <code>AP1</code> works on <code>Channel 13</code>.</p>
-<p>PS. try to use <code>gcc 9</code> if <code>gcc 10</code> cannot compile <code>aircrack-ng</code>
-<div class="highlight"><pre><span></span><code>$ sudo apt install gcc-9; sudo apt install g++-9
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-$ sudo update-alternatives --config gcc
-$ gcc -v
-gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)
-</code></pre></div></p>
+<p>PS. try to use <code>gcc 9</code> if <code>gcc 10</code> cannot compile <code>aircrack-ng</code>.</p>
+<ul>
+<li><a href="https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/">如何在Ubuntu 18.04上安裝GCC編譯器</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt install gcc-9<span class="p">;</span> sudo apt install g++-9
+<span class="gp">$ </span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 <span class="m">90</span> --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+<span class="gp">$ </span>sudo update-alternatives --config gcc
+<span class="gp">$ </span>gcc -v
+<span class="go">gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)</span>
+</code></pre></div>
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
 <li>Enable Monitor Mode, use below script then press <code>./set_mon.sh wlx008e86000266 13</code></li>
