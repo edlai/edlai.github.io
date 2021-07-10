@@ -28,7 +28,7 @@ $ sudo apt-get install -y libtool
 
 - Insert Wi-Fi dongle and confirm Interface name. The PID/VID is `0e8d:7612`. and the interface name is `wlx008e86000266` now.
 
-```
+```console
 $ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
 
@@ -55,7 +55,8 @@ $ sudo ldconfig
 ```
 
 Run `airodump-ng`
-```
+
+```console
 $ sudo airodump-ng wlx008e86000266
 
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
@@ -72,8 +73,11 @@ $ sudo airodump-ng wlx008e86000266
 as a result, SSID `AP1` works on `Channel 13`.
 
 
-PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`
-```
+PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`.
+
+- [如何在Ubuntu 18.04上安裝GCC編譯器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)
+
+```console
 $ sudo apt install gcc-9; sudo apt install g++-9
 $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
 $ sudo update-alternatives --config gcc
