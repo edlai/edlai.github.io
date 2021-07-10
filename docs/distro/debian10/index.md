@@ -125,7 +125,7 @@ $ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
 
 === "C"
 
-    ``` c
+    ```c linenums="1"
     #include <linux/init.h>
     #include <linux/module.h>
 
@@ -148,7 +148,7 @@ $ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
 
 === "Makefile"
 
-    ```makefile
+    ```makefile linenums="1"
     PWD := $(shell pwd)
     KVERSION := $(shell uname -r)
     KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
@@ -182,9 +182,9 @@ make[1]: Entering directory '/usr/src/linux-headers-5.10.40'
 make[1]: Leaving directory '/usr/src/linux-headers-5.10.40'
 ```
 
-Result
+Project Layout (As a result)
 
-```bash
+```console
 $ tree
 .
 ├── hello.c
@@ -214,15 +214,24 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
 [ 5360.557612] Bye !
 ```
 
-### Procfs
+### Proc Filesystem
+
+
+```
+📝 Functions:
+⮚ struct proc_dir_entry *proc_mkdir(const char *name, struct proc_dir_entry *parent)；
+⮚ static inline struct proc_dir_entry *proc_create(const char *name, umode_t mode,struct proc_dir_entry *parent, const struct file_operations *proc_fops);
+⮚ unsigned long copy_to_user(void __user * to, const void * from, unsigned long n);
+⮚ int copy_from_user_toio(volatile void __iomem * dst, const void __user * src, size_t count);
+```
 
 === "C"
 
-    ``` c
-    #include <linux/kernel.h> /* We're doing kernel work */
-    #include <linux/module.h> /* Specifically, a module */
-    #include <linux/proc_fs.h>    /* Necessary because we use the proc fs */
-    #include <asm/uaccess.h>  /* for copy_from_user */
+    ``` c linenums="1"
+    #include <linux/kernel.h>   /* We're doing kernel work */
+    #include <linux/module.h>   /* Specifically, a module */
+    #include <linux/proc_fs.h>  /* Necessary because we use the proc fs */
+    #include <asm/uaccess.h>    /* for copy_from_user */
     #include <linux/fs.h>
     #include <linux/seq_file.h>
     #include <linux/slab.h>
@@ -347,7 +356,7 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
 
 === "Makefile"
 
-    ``` makefile
+    ``` makefile linenums="1"
     PWD := $(shell pwd)
     KVERSION := $(shell uname -r)
     KERNEL_DIR = /usr/src/linux-headers-$(KVERSION)/
@@ -370,23 +379,55 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
     ```
 
 ~~ TBD ~~
-### IO Port
+### Accessing IO Port
 
-#### Port-mapped I/O (PMIO)
-
-
-#### Memory-mapped I/O (MMIO)
-
-#### Framwbuffer
-
-#### Function
-
-```
+```c
 #include <linux/ioport.h>
 struct resource *request_region(unsigned long first, unsigned long n, const char *name);
 void release_region(unsigned long start, unsigned long n);
 
 ```
+
+- Port-mapped I/O (PMIO)
+
+<!--
+    ``` mermaid
+    graph LR
+    A[Start] --> B{Error?};
+    B -->|Yes| C[Hmm...];
+    C --> D[Debug];
+    D --> B;
+    B ---->|No| E[Yay!];
+    ```
+
+    ```flow
+    st=>start: Start:>http://www.google.com[blank]
+    e=>end:>http://www.google.com
+    op1=>operation: My Operation
+    sub1=>subroutine: My Subroutine
+    cond=>condition: Yes
+    or No?:>http://www.google.com
+    io=>inputoutput: catch something...
+    st->op1->cond
+    cond(yes)->io->e
+    cond(no)->sub1(right)->op1
+    ```
+     
+    ```sequence
+    Title: Here is a title
+    A->B: Normal line
+    B-->C: Dashed line
+    C->>D: Open arrow
+    D-->>A: Dashed open arrow
+    ```
+-->
+
+- Memory-mapped I/O (MMIO)
+
+### Framwbuffer
+
+- Function
+
 
 ### seq_file interface
 

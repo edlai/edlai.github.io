@@ -63,5 +63,10 @@ theme:
     - navigation.tabs
 
 markdown_extensions:
+  - pymdownx.snippets
   - pymdownx.tabbed
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-experimental
+          format: !!python/name:pymdownx.superfences.fence_code_format
