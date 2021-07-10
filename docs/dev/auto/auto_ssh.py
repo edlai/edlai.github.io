@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import paramiko
 username = "ed"
-password = "1111qqqq"
+password = "11111111"
 hostname = "127.0.0.1"
 port = 22
 try:
