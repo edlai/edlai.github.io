@@ -1,1793 +1,967 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="canonical" href="https://edlai.github.io/io/isa/">
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
-    
-    
-      
-        <title>Industry Standard Architecture (ISA) - 🦉 Ed's Wiki</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
-      
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
-      
-    
-    
-    
-    
-      
+<!DOCTYPE html>
 
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#man-machine-interfaces" class="md-skip">
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/io/isa/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>Industry Standard Architecture (ISA) - 🦉 Ed's Wiki</title>
+<link href="../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#man-machine-interfaces">
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="🦉 Ed&#39;s Wiki" class="md-header__button md-logo" aria-label="🦉 Ed's Wiki" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="🦉 Ed's Wiki" class="md-header__button md-logo" data-md-component="logo" href="../.." title="🦉 Ed's Wiki">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             🦉 Ed's Wiki
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Industry Standard Architecture (ISA)
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list"></ol>
 </div>
-    
-    
-  </nav>
+</div>
+</div>
+</div>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
         Home
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../dev/softwares/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../dev/softwares/">
         Engineering
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../qualitative-research/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../qualitative-research/">
         Education
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../collections/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../collections/">
         Collection
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../motivation/painting/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../motivation/painting/">
         Motivation
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../motivation/traveling/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../motivation/traveling/">
       Traveling
     </a>
-  </li>
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="🦉 Ed&#39;s Wiki" class="md-nav__button md-logo" aria-label="🦉 Ed's Wiki" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="🦉 Ed's Wiki" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="🦉 Ed's Wiki">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
     🦉 Ed's Wiki
   </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      <label class="md-nav__link" for="__nav_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
         Home
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
           Home
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         About Me
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#about-here" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
         About Here
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#academic-background" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
         Academic Background
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#work-experience" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
         Work Experience
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#technician-certificate" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
         Technician Certificate
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#technician-training" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
         Technician Training
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
-      
-      <label class="md-nav__link" for="__nav_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Engineering
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      <label class="md-nav__link" for="__nav_2_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
         Development Tools
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
           Development Tools
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/softwares/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/softwares/">
         Softwares Tools
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/accessories/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/accessories/">
         Accessories
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/equipments/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/equipments/">
         Networking Equipments
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/auto/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/auto/">
         Automation and Crawler
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/prog/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/prog/">
         Programmer Skills
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/diag/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/">
         Diagnostic Tools
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/perf/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/perf/">
         Performance Measurement
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/git/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/git/">
         Git and Build Machine
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/docker/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/docker/">
         Docker and Macvlan
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/doc/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/doc/">
         Documentation
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      <label class="md-nav__link" for="__nav_2_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../embedded/buildroot/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/buildroot/">
         Buildroot
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../embedded/openwrt/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/openwrt/">
         OpenWRT
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Linux Distribution
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Linux Distribution" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Distribution" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           Linux Distribution
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../distro/debian10/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../distro/debian10/">
         Debian 10.10
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
-      
-      <label class="md-nav__link" for="__nav_2_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Computer Networks
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           Computer Networks
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
-      
-      <label class="md-nav__link" for="__nav_2_4_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_1">
         Application Layer
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_4_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
           Application Layer
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../net/hypertext-transfer-protocol/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/hypertext-transfer-protocol/">
         Hypertext Transfer Protocol(HTTP)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../net/file-transfer-protocol/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/file-transfer-protocol/">
         File Transfer Protocol (FTP)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
         Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
-      
-      <label class="md-nav__link" for="__nav_2_5">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
-      
-      <label class="md-nav__link" for="__nav_2_5_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_5_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dsp/discrete-time-processing/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/discrete-time-processing/">
         Discrete-Time Processing
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dsp/moving-average-and-backward-system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/moving-average-and-backward-system/">
         Moving Average and Backward System
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" type="checkbox" id="__nav_2_5_2" >
-      
-      <label class="md-nav__link" for="__nav_2_5_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_5_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_2">
+<span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dsp/window-size-and-the-spectrogram/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/window-size-and-the-spectrogram/">
         Window Size and the Spectrogram
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
-      
-      <label class="md-nav__link" for="__nav_2_6">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../os/assembler-compiler/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../os/assembler-compiler/">
         An Assembler Compiler
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
-      
-      <label class="md-nav__link" for="__nav_2_7">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_7">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           Industry Standard Architecture (ISA)
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Industry Standard Architecture (ISA)
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#industry-standard-architecture-isa" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#industry-standard-architecture-isa">
     Industry Standard Architecture (ISA)
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#content" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
     Content
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#concept" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
     Concept
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
     Requirements
   </a>
-  
-    <nav class="md-nav" aria-label="Requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hareware" class="md-nav__link">
+<nav aria-label="Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hareware">
     Hareware
   </a>
-  
-    <nav class="md-nav" aria-label="Hareware">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schematic" class="md-nav__link">
+<nav aria-label="Hareware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schematic">
     Schematic
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#soldering" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#soldering">
     Soldering
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#hand-tools" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hand-tools">
     Hand Tools
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#components">
     Components
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-first" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#safety-first">
     Safety First
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#software" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
     Software
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#demonstration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demonstration">
     Demonstration
   </a>
-  
-    <nav class="md-nav" aria-label="Demonstration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dos" class="md-nav__link">
+<nav aria-label="Demonstration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dos">
     DOS
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debug">
     Debug
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#red-hat-linux" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#red-hat-linux">
     Red Hat Linux
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c">
     C
   </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#programming" class="md-nav__link">
+<nav aria-label="C" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
     Programming
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c_1">
     C++
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
     Windows
   </a>
-  
-    <nav class="md-nav" aria-label="Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#turbo-c" class="md-nav__link">
+<nav aria-label="Windows" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turbo-c">
     Turbo C
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced">
     Advanced
   </a>
-  
-    <nav class="md-nav" aria-label="Advanced">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#linux-device-driver" class="md-nav__link">
+<nav aria-label="Advanced" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-device-driver">
     Linux Device Driver
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#qt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qt">
     QT
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
     Reference
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
     Appendix
   </a>
-  
-    <nav class="md-nav" aria-label="Appendix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#appendix-a-pc-at-interface-pinout" class="md-nav__link">
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-a-pc-at-interface-pinout">
     Appendix A - PC AT Interface Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout">
     Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-c-intel-8254-programmable-interval-timer-pinout" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-c-intel-8254-programmable-interval-timer-pinout">
     Appendix C - Intel 8254 Programmable Interval Timer Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-d-remote-access-by-vnc" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-d-remote-access-by-vnc">
     Appendix D - Remote Access by VNC
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pci/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pci/">
         Peripheral Component Interconnect (PCI)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ldd/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ldd/">
         Parallel Port Device (LPT) and Linux Device Driver
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gpio/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
         General Purpose Input Output (GPIO)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../i2c/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../i2c/">
         Inter-Integrated Circuit (I2C)
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
-      
-      <label class="md-nav__link" for="__nav_2_8">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tv/player/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/player/">
         Multimedia Player
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tv/mpeg1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/mpeg1/">
         Digital Vedio Conversion - MPEG-1
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
-      
-      <label class="md-nav__link" for="__nav_2_9">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_9">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../misc/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/">
         Misc
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Education
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Education" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Education
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../qualitative-research/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../qualitative-research/">
         Qualitative Research
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../quantitative-research/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../quantitative-research/">
         Quantitative Research
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Collection
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Collection" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Collection
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../collections/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../collections/">
         Collections
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      <label class="md-nav__link" for="__nav_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         Motivation
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Motivation" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           Motivation
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../motivation/painting/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../motivation/painting/">
         Painting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../motivation/traveling/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../motivation/traveling/">
         Traveling
       </a>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#industry-standard-architecture-isa" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#industry-standard-architecture-isa">
     Industry Standard Architecture (ISA)
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#content" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
     Content
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#concept" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
     Concept
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
     Requirements
   </a>
-  
-    <nav class="md-nav" aria-label="Requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hareware" class="md-nav__link">
+<nav aria-label="Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hareware">
     Hareware
   </a>
-  
-    <nav class="md-nav" aria-label="Hareware">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schematic" class="md-nav__link">
+<nav aria-label="Hareware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schematic">
     Schematic
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#soldering" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#soldering">
     Soldering
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#hand-tools" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hand-tools">
     Hand Tools
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#components">
     Components
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-first" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#safety-first">
     Safety First
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#software" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
     Software
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#demonstration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demonstration">
     Demonstration
   </a>
-  
-    <nav class="md-nav" aria-label="Demonstration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dos" class="md-nav__link">
+<nav aria-label="Demonstration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dos">
     DOS
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debug">
     Debug
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#red-hat-linux" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#red-hat-linux">
     Red Hat Linux
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c">
     C
   </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#programming" class="md-nav__link">
+<nav aria-label="C" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
     Programming
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c_1">
     C++
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
     Windows
   </a>
-  
-    <nav class="md-nav" aria-label="Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#turbo-c" class="md-nav__link">
+<nav aria-label="Windows" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turbo-c">
     Turbo C
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced">
     Advanced
   </a>
-  
-    <nav class="md-nav" aria-label="Advanced">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#linux-device-driver" class="md-nav__link">
+<nav aria-label="Advanced" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-device-driver">
     Linux Device Driver
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#qt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qt">
     QT
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
     Reference
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
     Appendix
   </a>
-  
-    <nav class="md-nav" aria-label="Appendix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#appendix-a-pc-at-interface-pinout" class="md-nav__link">
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-a-pc-at-interface-pinout">
     Appendix A - PC AT Interface Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-b-intel-82c55a-programmable-peripheral-interface-pinout">
     Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-c-intel-8254-programmable-interval-timer-pinout" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-c-intel-8254-programmable-interval-timer-pinout">
     Appendix C - Intel 8254 Programmable Interval Timer Pinout
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#appendix-d-remote-access-by-vnc" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-d-remote-access-by-vnc">
     Appendix D - Remote Access by VNC
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
 <h2 id="industry-standard-architecture-isa">Industry Standard Architecture (ISA)</h2>
 <div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $date:     May. 2003
@@ -1837,7 +1011,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <li><a href="#appendix-a---pc-at-interface-pinout">Appendix A - PC AT Interface Pinout</a></li>
 <li><a href="#appendix-b---intel-82c55a-programmable-peripheral-interface-pinout">Appendix B - Intel 82C55A Programmable Peripheral Interface Pinout</a></li>
 <li><a href="#appendix-c---intel-8254-programmable-interval-timer-pinout">Appendix C - Intel 8254 Programmable Interval Timer Pinout</a></li>
-<li><a href="#appendix-d---remote-Access-by-vnc">Appendix D - Remote Access by VNC</a>  </li>
+<li><a href="#appendix-d---remote-Access-by-vnc">Appendix D - Remote Access by VNC</a> </li>
 </ul>
 <h2 id="concept">Concept</h2>
 <p>基本 I/O 控制實驗，設計一塊 ISA 電路板，利用 Intel 8255 擴充電腦 IO port, 並控制 LED 閃爍. </p>
@@ -1846,8 +1020,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <h4 id="schematic">Schematic</h4>
 <ul>
 <li>
-<p>Electronic Schematic  <br />
-<img alt="circuit" src="circuit.jpg" /></p>
+<p>Electronic Schematic  <br/>
+<img alt="circuit" src="circuit.jpg"/></p>
 </li>
 <li>
 <p>I/O Address mapping of Intel 8255:    </p>
@@ -1974,8 +1148,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
 </thead>
 <tbody>
 <tr>
-<td><img alt="r" src="cir.jpg" /></td>
-<td><img alt="r" src="action_4.gif" /></td>
+<td><img alt="r" src="cir.jpg"/></td>
+<td><img alt="r" src="action_4.gif"/></td>
 </tr>
 </tbody>
 </table>
@@ -2278,12 +1452,12 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <tbody>
 <tr>
 <td>0</td>
-<td>C:/><code>cd dos60</code></td>
+<td>C:/&gt;<code>cd dos60</code></td>
 <td>切到 debug 所在的那個資料夾 (Optional)</td>
 </tr>
 <tr>
 <td>1</td>
-<td>C:/><code>debug</code></td>
+<td>C:/&gt;<code>debug</code></td>
 <td>進入 <code>debug</code>模式，此時會出現命令提示字元 <code>-</code></td>
 </tr>
 <tr>
@@ -2383,12 +1557,12 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <tr>
 <td>1</td>
 <td>C  語言</td>
-<td>#include <asm/io.h></td>
+<td>#include <asm io.h=""></asm></td>
 </tr>
 <tr>
 <td>2</td>
 <td>C++語言</td>
-<td>#include <sys/io.h></td>
+<td>#include <sys io.h=""></sys></td>
 </tr>
 </tbody>
 </table>
@@ -2455,11 +1629,11 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="hello.jpg" /></p>
+<p><img alt="r" src="hello.jpg"/></p>
 <ul>
 <li>kb.c</li>
 </ul>
@@ -2467,7 +1641,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="cm">Filename: kb.c</span>
 <span class="cm">Compiler: gcc -O -o kb kb.c</span>
 <span class="cm">Author:   Jing-Wen.Lai</span>
-<span class="cm">Function: 平常執行 Loop 印出 計數 訊息 ，除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">Function: 平常執行 Loop 印出 計數 訊息 ，除非鍵盤按下 'q' 鍵 則離開計數 Loop 。 </span>
 <span class="cm">Date:     03/22 2003</span>
 <span class="cm">Reference: 參考以下網路文件改寫</span>
 <span class="cm">      http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html</span>
@@ -2491,13 +1665,13 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="cm">/* [[ 當輸入字元不為 q 時  ]]  */</span>
   <span class="cm">/* =========================== */</span>
 
-  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;looping %d time(s) </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">'q'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"looping %d time(s) </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
 
     <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
       <span class="n">ch</span> <span class="o">=</span> <span class="n">readch</span><span class="p">();</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Input %c ==</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"== Input %c ==</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
@@ -2505,7 +1679,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="cm">/* [[  輸入字元 為 q 時  ]] */</span>
   <span class="cm">/* ======================== */</span>
 
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"== Quit == </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
   <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
@@ -2541,7 +1715,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="kbhit.jpg" /></p>
+<p><img alt="r" src="kbhit.jpg"/></p>
 <ul>
 <li>io.c</li>
 </ul>
@@ -2549,8 +1723,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="cm">      --  io.c  &lt;Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用&gt;  --</span>
 <span class="cm">Author:    Jing-Wen.Lai</span>
 <span class="cm">Function:  以 Linux C 控制 8255 I/O 實驗板上的 LED,</span>
-<span class="cm">Compiler:  使用 `gcc -O2 -o io io.c&#39;,</span>
-<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Compiler:  使用 `gcc -O2 -o io io.c',</span>
+<span class="cm">Running:   以 root 的身份執行 `./io'.</span>
 <span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
 <span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
 <span class="cm">****************************************************************************/</span>
@@ -2565,8 +1739,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
   <span class="cm">/* 取得埠位址的存取權限 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
   <span class="cm">/* 定義 8255 工作模式 */</span>
   <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
@@ -2579,20 +1753,20 @@ $keywords: man, machine, interface, industry standard architecture, isa
     <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
     <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
       <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+      <span class="n">printf</span><span class="p">(</span><span class="s">"-X-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
       <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"-O-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="cm">/* 我們不再需要這些埠位址 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
   <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="cm">/* 結束 io.c */</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="io.jpg" /></p>
+<p><img alt="r" src="io.jpg"/></p>
 <ul>
 <li>blink.c    </li>
 </ul>
@@ -2601,7 +1775,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="cm">Compiler:  gcc -O -o blink blink.c</span>
 <span class="cm">Author:    Jing-Wen.Lai</span>
 <span class="cm">Function:  平常執行 Loop 印出 計數 訊息 ， 8255 I/O 實驗板上的 LED 亦隨之閃爍</span>
-<span class="cm">            除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。 </span>
+<span class="cm">            除非鍵盤按下 'q' 鍵 則離開計數 Loop 。 </span>
 <span class="cm">Date:      May. 22/2003</span>
 <span class="cm">******************************************************************************/</span>
 
@@ -2627,8 +1801,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
 
   <span class="cm">/* 取得埠位址的存取權限 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
   <span class="cm">/* 定義 8255 工作模式 */</span>
   <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
@@ -2642,17 +1816,17 @@ $keywords: man, machine, interface, industry standard architecture, isa
 
   <span class="cm">/*  LED  交互 閃爍  */</span>
 
-  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//printf(&quot;looping %d times \n&quot;,loopCount);</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">'q'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//printf("looping %d times \n",loopCount);</span>
 
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">loopCount</span><span class="o">++</span><span class="p">;</span>
 
     <span class="k">if</span><span class="p">(</span><span class="n">loopCount</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
           <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span> 
+          <span class="n">printf</span><span class="p">(</span><span class="s">"-X-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span> 
     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
           <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">"-O-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">loopCount</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span> <span class="p">{</span>
@@ -2668,10 +1842,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
   <span class="cm">/* 我們不再需要這些埠位址 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"== Quit == </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
   <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
@@ -2708,7 +1882,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
     <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="blink.jpg" /></p>
+<p><img alt="r" src="blink.jpg"/></p>
 <ul>
 <li>pili_test.c    </li>
 </ul>
@@ -2727,7 +1901,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 
   <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>    
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">LED_Data</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">LED_Data</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
@@ -2744,7 +1918,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="pili_test.jpg" /></p>
+<p><img alt="r" src="pili_test.jpg"/></p>
 <ul>
 <li>pili.c    </li>
 </ul>
@@ -2752,7 +1926,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="cm">Filename: blink.c</span>
 <span class="cm">Compiler: gcc -O -o blink blink.c</span>
 <span class="cm">Author:   Jing-Wen.Lai</span>
-<span class="cm">Function: 目的 :: LED 走馬燈。除非鍵盤按下 &#39;q&#39; 鍵 則離開計數 Loop 。</span>
+<span class="cm">Function: 目的 :: LED 走馬燈。除非鍵盤按下 'q' 鍵 則離開計數 Loop 。</span>
 <span class="cm">Date:     3/22 2003</span>
 <span class="cm">****************************************************************************/</span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -2779,8 +1953,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VMIN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">new</span><span class="p">.</span><span class="n">c_cc</span><span class="p">[</span><span class="n">VTIME</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new</span><span class="p">);</span>
 
   <span class="cm">/* 取得埠位址的存取權限 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
   <span class="cm">/* 定義 8255 工作模式 */</span>
   <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
@@ -2794,10 +1968,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
 
   <span class="cm">/*  LED  交互 閃爍  */</span>
 
-  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">&#39;q&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">ch</span> <span class="o">!=</span> <span class="sc">'q'</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> 
     <span class="n">outb</span><span class="p">(</span> <span class="n">LED_Data</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pili Lamp is Running and The 8255-Port-A&#39;s outData is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">LED_Data</span><span class="p">);</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Pili Lamp is Running and The 8255-Port-A's outData is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">LED_Data</span><span class="p">);</span> 
     <span class="k">if</span> <span class="p">(</span><span class="n">directionFlag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
       <span class="n">LED_Data</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>            
       <span class="k">if</span> <span class="p">(</span><span class="n">LED_Data</span> <span class="o">==</span> <span class="mi">128</span><span class="p">){</span>
@@ -2822,10 +1996,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
   <span class="cm">/* 我們不再需要這些埠位址 */</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span>
 
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;== Quit == </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"== Quit == </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">orig</span><span class="p">);</span>
   <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
@@ -2861,7 +2035,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="k">return</span> <span class="n">ch</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="pili.jpg" /></p>
+<p><img alt="r" src="pili.jpg"/></p>
 <h3 id="c_1">C++</h3>
 <ul>
 <li>There are some programs which can help us to verify the hardware and software.    </li>
@@ -2905,19 +2079,19 @@ $keywords: man, machine, interface, industry standard architecture, isa
 
 <span class="cp">#include</span> <span class="cpf">&lt;iostream.h&gt;</span><span class="cp"></span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>    
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello C++ !&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello C++ !"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="hello_cpp.jpg" /></p>
+<p><img alt="r" src="hello_cpp.jpg"/></p>
 <ul>
 <li>io.cpp      </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
 <span class="cm">Filename:  io.cpp</span>
 <span class="cm">Function:  Linux I/O 埠 基本測試 -- 測試 剛組裝完成的 IO 板用</span>
-<span class="cm">Compiler:  使用 `g++ -O -o io io.cpp&#39;,</span>
-<span class="cm">Running:   以 root 的身份執行 `./io&#39;.</span>
+<span class="cm">Compiler:  使用 `g++ -O -o io io.cpp',</span>
+<span class="cm">Running:   以 root 的身份執行 `./io'.</span>
 <span class="cm">Reference: 由&lt;&lt;CLDP -- Linux 中文文件計劃&gt;&gt;改寫</span>
 <span class="cm">            http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html</span>
 <span class="cm">******************************************************************************/</span>
@@ -2931,8 +2105,8 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
   <span class="p">{</span>
     <span class="cm">/* 取得埠位址的存取權限 */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
     <span class="cm">/* 定義 8255 工作模式 */</span>
     <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
@@ -2945,20 +2119,20 @@ $keywords: man, machine, interface, industry standard architecture, isa
     <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>        
         <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
           <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-X-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
+          <span class="n">printf</span><span class="p">(</span><span class="s">"-X-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> 
         <span class="p">}</span><span class="k">else</span><span class="p">{</span>
           <span class="n">outb</span><span class="p">(</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-O-  step: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">"-O-  step: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> 
 
     <span class="cm">/* 我們不再需要這些埠位址 */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="cpp_io.png" /></p>
+<p><img alt="r" src="cpp_io.png"/></p>
 <ul>
 <li>class_io.cpp    </li>
 </ul>
@@ -3003,9 +2177,9 @@ $keywords: man, machine, interface, industry standard architecture, isa
     <span class="n">ClassForPio8255Card</span> <span class="n">pio8255Card</span><span class="p">;</span>   
     <span class="n">pio8255Card</span><span class="p">.</span><span class="n">initAndApplySystemAddrFor8255Card</span><span class="p">();</span>       <span class="c1">// 初始化 8255 卡</span>
     <span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="o">!=</span><span class="mi">5</span><span class="p">){</span>
-      <span class="n">cout</span>  <span class="o">&lt;&lt;</span><span class="s">&quot;1:Brighting all LED 2:Darking all LED 3:PILI LED(MSB-&gt;LSB)  4:PILI LED(LSB-&gt;MSB)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="n">cout</span>  <span class="o">&lt;&lt;</span><span class="s">"1:Brighting all LED 2:Darking all LED 3:PILI LED(MSB-&gt;LSB)  4:PILI LED(LSB-&gt;MSB)</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
       <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">ch</span><span class="p">;</span>
-      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Selected Function is :&quot;</span><span class="o">&lt;&lt;</span><span class="n">ch</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Selected Function is :"</span><span class="o">&lt;&lt;</span><span class="n">ch</span><span class="o">&lt;&lt;</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
       <span class="k">switch</span><span class="p">(</span><span class="n">ch</span><span class="p">){</span>    
         <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
     <span class="n">pio8255Card</span><span class="p">.</span><span class="n">brightAllLedOn8255Card</span><span class="p">();</span>           
@@ -3020,7 +2194,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
           <span class="n">pio8255Card</span><span class="p">.</span><span class="n">piliLampFromLSBtoMSB</span><span class="p">();</span>   
           <span class="k">break</span><span class="p">;</span>    
   <span class="k">default</span><span class="o">:</span>
-          <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;undefine Function ,try again please!</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">;</span>
+          <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"undefine Function ,try again please!</span><span class="se">\n</span><span class="s">"</span> <span class="p">;</span>
           <span class="k">break</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -3029,10 +2203,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">ClassForPio8255Card::initAndApplySystemAddrFor8255Card</span><span class="p">(){</span>
-    <span class="c1">//cout &lt;&lt; &quot;initAndApplySystemAddrFor8255Card\n&quot;;</span>
+    <span class="c1">//cout &lt;&lt; "initAndApplySystemAddrFor8255Card\n";</span>
     <span class="cm">/* 取得埠位址的存取權限 */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
     <span class="cm">/* 定義 8255 工作模式 */</span>
     <span class="n">outb</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="n">CCW</span><span class="p">);</span>
@@ -3041,12 +2215,12 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">ClassForPio8255Card::brightAllLedOn8255Card</span><span class="p">(){</span>
-    <span class="c1">//cout &lt;&lt; &quot;brightAllLedOn8255Card\n&quot;;</span>
+    <span class="c1">//cout &lt;&lt; "brightAllLedOn8255Card\n";</span>
     <span class="n">outb</span><span class="p">(</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span> 
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">ClassForPio8255Card::darkAllLedOn8255Card</span><span class="p">(){</span>
-    <span class="c1">//cout &lt;&lt; &quot;darkAllLedOn8255Card\n&quot;;</span>
+    <span class="c1">//cout &lt;&lt; "darkAllLedOn8255Card\n";</span>
     <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -3069,26 +2243,26 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">ClassForPio8255Card::releaseSystemAddrFor8255Card</span><span class="p">(){</span>
-    <span class="c1">//cout &lt;&lt; &quot;releaseSystemAddrFor8255Card\n&quot;;</span>
+    <span class="c1">//cout &lt;&lt; "releaseSystemAddrFor8255Card\n";</span>
     <span class="c1">//  LED 暗 </span>
     <span class="n">outb</span><span class="p">(</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">PA</span><span class="p">);</span>
 
     <span class="cm">/* 我們不再需要這些埠位址 */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;ioperm&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">CCW</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ioperm</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="p">{</span><span class="n">perror</span><span class="p">(</span><span class="s">"ioperm"</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);}</span>
 
   <span class="p">}</span>
 </code></pre></div>
-<p><img alt="r" src="class_io.png" /></p>
+<p><img alt="r" src="class_io.png"/></p>
 <h2 id="windows">Windows</h2>
 <h3 id="turbo-c">Turbo C</h3>
 <div class="highlight"><pre><span></span><code><span class="c1">//**********************************************************************************</span>
 <span class="c1">//-- PC上介面實習 8255 與 8254 測試  </span>
 <span class="c1">//-- 版本:     v0.1 6/6/2001 </span>
 <span class="c1">//-- 說明:     測試 組裝 完畢 的 8255 與 8254 是否可動作    </span>
-<span class="c1">//-- 使用方式: 隨意按任一按鍵,   螢幕上 顯示 &quot;O&quot;, 此時 LED 1,2,5,6 亮, 並且喇叭發出聲音</span>
-<span class="c1">//--           再隨意按任一按鍵, 螢幕上 顯示 &quot;X&quot;, 此時 LED 全部  不亮, 並且喇叭不發出聲音                              </span>
-<span class="c1">//--           按 &quot;Esc&quot; 鍵 可 離開本程式</span>
+<span class="c1">//-- 使用方式: 隨意按任一按鍵,   螢幕上 顯示 "O", 此時 LED 1,2,5,6 亮, 並且喇叭發出聲音</span>
+<span class="c1">//--           再隨意按任一按鍵, 螢幕上 顯示 "X", 此時 LED 全部  不亮, 並且喇叭不發出聲音                              </span>
+<span class="c1">//--           按 "Esc" 鍵 可 離開本程式</span>
 <span class="c1">//--================================================================================</span>
 <span class="c1">//-- IO 位址  :  請 參考 下面 #define 的定義</span>
 <span class="c1">//-- 配合硬體 :  參考 下面  參考文件 </span>
@@ -3127,7 +2301,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="c1">//--                   ( 錯誤蠻多的 改的有點 眼花ㄋ ,不過依作者的錯誤程式碼卻可以執行,真令人訝異) </span>
 <span class="c1">//-- 備註:    無法在 我的 P-II 上測試(或許需調整 安邁 ROM 內 CLK 的設定,但與可以測試的 P-I 主機 ROM 設定內無法發現相同的 Function)</span>
 <span class="c1">//--         ,改成於 檢來的 P-I 上測試 ,由於 P-I 的配備較陽春 故將程式碼 改成用 Turbo C++ 寫</span>
-<span class="c1">//-- 注意:    在 #define 後的 註解 需以 &quot; // &quot; 開頭 不能使用 &quot; ; &quot;</span>
+<span class="c1">//-- 注意:    在 #define 後的 註解 需以 " // " 開頭 不能使用 " ; "</span>
 <span class="c1">//-- 更新Log:</span>
 <span class="c1">//</span>
 <span class="c1">//**********************************************************************************</span>
@@ -3170,7 +2344,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>   
   <span class="n">clrscr</span><span class="p">();</span>
-  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;push Esc to exit&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"push Esc to exit"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
   <span class="c1">//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   8255 初始化   &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
   <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_CW</span><span class="p">,</span> <span class="n">PPI_8255_CW_STATE</span><span class="p">);</span>        <span class="c1">// 設定 8255</span>
   <span class="c1">//outportb(PPI_8255_CW, PPI_8255_CW_STATE);        // 設定 8255</span>
@@ -3183,12 +2357,12 @@ $keywords: man, machine, interface, industry standard architecture, isa
 
   <span class="k">while</span><span class="p">(</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;O&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"O"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
       <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
         <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledEnable</span><span class="p">);</span>         <span class="c1">// 致能 LED</span>
 <span class="c1">//  out(PPI_8255_PC ,bellEnable);        // 致能 蜂鳴器</span>
     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;X&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"X"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">25000</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
   <span class="n">out</span><span class="p">(</span><span class="n">PPI_8255_PA</span> <span class="p">,</span><span class="n">ledDisable</span><span class="p">);</span>      <span class="c1">// 禁能 LED</span>
 <span class="c1">//  out(PPI_8255_PC ,bellDisable);       // 禁能 蜂鳴器</span>
@@ -3206,7 +2380,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 </ul>
 <h3 id="qt">QT</h3>
 <ul>
-<li>hello_qt.cpp  <br />
+<li>hello_qt.cpp  <br/>
 <div class="highlight"><pre><span></span><code><span class="cm">/****************************************************************************</span>
 <span class="cm">Filename:  hello_qt.cpp</span>
 <span class="cm">Compiler:  g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o hello_qt hello_qt.cpp</span>
@@ -3222,7 +2396,7 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span> <span class="p">){</span>
   <span class="n">QApplication</span> <span class="n">a</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
 
-  <span class="n">QPushButton</span> <span class="n">hello</span><span class="p">(</span> <span class="s">&quot;Hello QT!&quot;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
+  <span class="n">QPushButton</span> <span class="n">hello</span><span class="p">(</span> <span class="s">"Hello QT!"</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
   <span class="n">hello</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
   <span class="n">a</span><span class="p">.</span><span class="n">setMainWidget</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">hello</span> <span class="p">);</span>
@@ -3231,10 +2405,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
-<p><img alt="r" src="hello_qt_comm.png" />  <br />
-<img alt="r" src="hello_qt_exec.png" />    </p>
+<p><img alt="r" src="hello_qt_comm.png"/> <br/>
+<img alt="r" src="hello_qt_exec.png"/> </p>
 <ul>
-<li>frame: moc 使用訊號 與╱或 溝槽的類別的一般骨架 <br />
+<li>frame: moc 使用訊號 與╱或 溝槽的類別的一般骨架 <br/>
 (摘錄於 <a href="#http://www.oreilly.com/catalog/prowqt2/inx.html">Programming</a> with Qt  p.32)    </li>
 </ul>
 <p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Qobject</span> 
@@ -3305,10 +2479,10 @@ $keywords: man, machine, interface, industry standard architecture, isa
 
   <span class="c1">// create two push buttons for decrementing and </span>
   <span class="c1">// incrementing the slider values</span>
-  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">decrement</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">decrement</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">"&lt;"</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
   <span class="n">decrement</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
-  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">increment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
+  <span class="n">QPushButton</span><span class="o">*</span> <span class="n">increment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span> <span class="s">"&gt;"</span><span class="p">,</span> <span class="n">mywidget</span> <span class="p">);</span>
   <span class="n">increment</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span> <span class="p">);</span>
 
   <span class="c1">// connect the clicked() signal of the buttons to the slots that </span>
@@ -3323,12 +2497,12 @@ $keywords: man, machine, interface, industry standard architecture, isa
   <span class="k">return</span> <span class="n">myapp</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-- QT socket   <br />
-<img alt="r" src="mocDemo1_arch.jpg" />  </p>
+- QT socket   <br/>
+<img alt="r" src="mocDemo1_arch.jpg"/> </p>
 <ul>
-<li>Running    <br />
-<img alt="r" src="mocDemo1_comm.png" /><br />
-<img alt="r" src="mocDemo1_exec.png" /></li>
+<li>Running    <br/>
+<img alt="r" src="mocDemo1_comm.png"/><br/>
+<img alt="r" src="mocDemo1_exec.png"/></li>
 </ul>
 <h2 id="reference">Reference</h2>
 <table>
@@ -4068,19 +3242,19 @@ $keywords: man, machine, interface, industry standard architecture, isa
 <tr>
 <td>Step.4</td>
 <td></td>
-<td>Run VNC Viewer <img alt="r" src="vnc_client_1.jpg" /></td>
+<td>Run VNC Viewer <img alt="r" src="vnc_client_1.jpg"/></td>
 <td>啟動 VNC client 端, 輸入主機 IP</td>
 </tr>
 <tr>
 <td>Step.5</td>
 <td></td>
-<td><img alt="r" src="vnc_client_2.jpg" /></td>
+<td><img alt="r" src="vnc_client_2.jpg"/></td>
 <td>輸入登入的密碼</td>
 </tr>
 <tr>
 <td>Step.6</td>
 <td></td>
-<td><img alt="r" src="vnc_client_3.jpg" /></td>
+<td><img alt="r" src="vnc_client_3.jpg"/></td>
 <td>登入完畢</td>
 </tr>
 </tbody>
@@ -4091,81 +3265,57 @@ $keywords: man, machine, interface, industry standard architecture, isa
 //               = O.O =       = ⊙⊙ =       = >.< =    ~ @.@ ~
 //                (m_m)~        (﹋﹋)﹏       (m_m)﹏    (m_m)∫
 -->
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-      </main>
-      
-        
+</article>
+</div>
+</div>
+</main>
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../os/assembler-compiler/" class="md-footer__link md-footer__link--prev" aria-label="Previous: An Assembler Compiler" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: An Assembler Compiler" class="md-footer__link md-footer__link--prev" href="../../os/assembler-compiler/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                 Previous
               </span>
               An Assembler Compiler
             </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../pci/" class="md-footer__link md-footer__link--next" aria-label="Next: Peripheral Component Interconnect (PCI)" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
+</div>
+</a>
+<a aria-label="Next: Peripheral Component Interconnect (PCI)" class="md-footer__link md-footer__link--next" href="../pci/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                 Next
               </span>
               Peripheral Component Interconnect (PCI)
             </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
           Material for MkDocs
         </a>
-        
-      </div>
-      
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
 </html>

@@ -1,1374 +1,686 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="canonical" href="https://edlai.github.io/dsp/discrete-time-processing/_index/">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
-    
-    
-      
-        <title>Digital Signal Processing(DSP) - 🦉 Ed's Wiki</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
-      
-    
-    
-    
-    
-      
+<!DOCTYPE html>
 
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#digital-signal-processingdsp" class="md-skip">
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/dsp/discrete-time-processing/_index/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>Digital Signal Processing(DSP) - 🦉 Ed's Wiki</title>
+<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#digital-signal-processingdsp">
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="🦉 Ed&#39;s Wiki" class="md-header__button md-logo" aria-label="🦉 Ed's Wiki" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="🦉 Ed's Wiki" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="🦉 Ed's Wiki">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             🦉 Ed's Wiki
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Digital Signal Processing(DSP)
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list"></ol>
 </div>
-    
-    
-  </nav>
+</div>
+</div>
+</div>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
         Home
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../dev/softwares/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../dev/softwares/">
         Engineering
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../qualitative-research/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../qualitative-research/">
         Education
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../collections/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../collections/">
         Collection
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../motivation/painting/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../motivation/painting/">
         Motivation
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../motivation/traveling/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../motivation/traveling/">
       Traveling
     </a>
-  </li>
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="🦉 Ed&#39;s Wiki" class="md-nav__button md-logo" aria-label="🦉 Ed's Wiki" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="🦉 Ed's Wiki" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="🦉 Ed's Wiki">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
     🦉 Ed's Wiki
   </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      <label class="md-nav__link" for="__nav_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
         Home
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
           Home
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         About Me
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#about-here" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
         About Here
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#academic-background" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
         Academic Background
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#work-experience" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
         Work Experience
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#technician-certificate" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
         Technician Certificate
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#technician-training" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
         Technician Training
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      <label class="md-nav__link" for="__nav_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Engineering" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Engineering
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      <label class="md-nav__link" for="__nav_2_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
         Development Tools
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Development Tools" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
           Development Tools
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/softwares/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/softwares/">
         Softwares Tools
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/accessories/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/accessories/">
         Accessories
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/equipments/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/equipments/">
         Networking Equipments
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/auto/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/auto/">
         Automation and Crawler
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/prog/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/prog/">
         Programmer Skills
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/diag/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/diag/">
         Diagnostic Tools
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/perf/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/perf/">
         Performance Measurement
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/git/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/git/">
         Git and Build Machine
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/docker/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/docker/">
         Docker and Macvlan
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev/doc/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/doc/">
         Documentation
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      <label class="md-nav__link" for="__nav_2_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Embedded Linux" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../embedded/buildroot/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../embedded/buildroot/">
         Buildroot
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../embedded/openwrt/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../embedded/openwrt/">
         OpenWRT
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Linux Distribution
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Linux Distribution" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Distribution" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           Linux Distribution
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../distro/debian10/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../distro/debian10/">
         Debian 10.10
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
-      
-      <label class="md-nav__link" for="__nav_2_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Computer Networks
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Computer Networks" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           Computer Networks
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
-      
-      <label class="md-nav__link" for="__nav_2_4_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_1">
         Application Layer
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Application Layer" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_4_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
           Application Layer
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../net/hypertext-transfer-protocol/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/hypertext-transfer-protocol/">
         Hypertext Transfer Protocol(HTTP)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../net/file-transfer-protocol/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/file-transfer-protocol/">
         File Transfer Protocol (FTP)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../net/simple-mail-transfer-protocol-and-post-office-protocol/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
         Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
-      
-      <label class="md-nav__link" for="__nav_2_5">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Digital Signal Processing" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
-      
-      <label class="md-nav__link" for="__nav_2_5_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Voice Processing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_5_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
         Discrete-Time Processing
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../moving-average-and-backward-system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../moving-average-and-backward-system/">
         Moving Average and Backward System
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" type="checkbox" id="__nav_2_5_2" >
-      
-      <label class="md-nav__link" for="__nav_2_5_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Spectrum Analysis" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_5_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_2">
+<span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../window-size-and-the-spectrogram/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../window-size-and-the-spectrogram/">
         Window Size and the Spectrogram
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
-      
-      <label class="md-nav__link" for="__nav_2_6">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Operating Systems" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../os/assembler-compiler/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../os/assembler-compiler/">
         An Assembler Compiler
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
-      
-      <label class="md-nav__link" for="__nav_2_7">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Man-Machine Interfaces" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_7">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../io/isa/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/isa/">
         Industry Standard Architecture (ISA)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../io/pci/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/pci/">
         Peripheral Component Interconnect (PCI)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../io/ldd/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/ldd/">
         Parallel Port Device (LPT) and Linux Device Driver
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../io/gpio/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/gpio/">
         General Purpose Input Output (GPIO)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../io/i2c/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/i2c/">
         Inter-Integrated Circuit (I2C)
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
-      
-      <label class="md-nav__link" for="__nav_2_8">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Television Engineering" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tv/player/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tv/player/">
         Multimedia Player
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tv/mpeg1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tv/mpeg1/">
         Digital Vedio Conversion - MPEG-1
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
-      
-      <label class="md-nav__link" for="__nav_2_9">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_9">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../misc/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../misc/">
         Misc
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Education
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Education" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Education
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../qualitative-research/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../qualitative-research/">
         Qualitative Research
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../quantitative-research/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../quantitative-research/">
         Quantitative Research
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Collection
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Collection" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Collection
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../collections/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/">
         Collections
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      <label class="md-nav__link" for="__nav_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         Motivation
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Motivation" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Motivation" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           Motivation
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../motivation/painting/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../motivation/painting/">
         Painting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../motivation/traveling/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../motivation/traveling/">
         Traveling
       </a>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#voice-processing-discrete-time-processing" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#voice-processing-discrete-time-processing">
     Voice Processing - Discrete-Time Processing
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#content" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
     Content
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
     Requirements
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#programming" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
     Programming
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#running" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
     Running
   </a>
-  
-    <nav class="md-nav" aria-label="Running">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#screenshot" class="md-nav__link">
+<nav aria-label="Running" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#screenshot">
     Screenshot
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-by-step" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-by-step">
     Step-by-Step
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#result" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#result">
     Result
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#observation" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#observation">
     Observation
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conclusion">
     Conclusion
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced">
     Advanced
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#comment" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comment">
     Comment
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
     Reference
   </a>
-  
-    <nav class="md-nav" aria-label="Reference">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#book" class="md-nav__link">
+<nav aria-label="Reference" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#book">
     Book
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="digital-signal-processingdsp">Digital Signal Processing(DSP)</h1>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="digital-signal-processingdsp">Digital Signal Processing(DSP)</h1>
 <h2 id="voice-processing-discrete-time-processing">Voice Processing - Discrete-Time Processing</h2>
 <div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
 $initial:  Dec. 2002           
@@ -1430,16 +742,16 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <span class="c">%              輸入 處理 10 K 語音資料</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="p">[</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">wavread</span><span class="p">(</span><span class="s">&#39;speech_10K.wav&#39;</span><span class="p">);</span><span class="w">            </span><span class="c">% loading the PCM speech file</span><span class="w"></span>
+<span class="p">[</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">wavread</span><span class="p">(</span><span class="s">'speech_10K.wav'</span><span class="p">);</span><span class="w">            </span><span class="c">% loading the PCM speech file</span><span class="w"></span>
 <span class="n">len</span><span class="p">=</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
-<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 播放 10K 語音&#39;</span><span class="p">);</span><span class="w">             </span><span class="c">% playing it </span><span class="w"></span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">'請按下 任一鍵 播放 10K 語音'</span><span class="p">);</span><span class="w">             </span><span class="c">% playing it </span><span class="w"></span>
 <span class="n">wavplay</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">%==============================================================================</span><span class="w"></span>
 <span class="c">%              進行 DSP 處理 (10K -&gt; 110K --&gt; 22K )</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;將 10K 轉成 22K 處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">'將 10K 轉成 22K 處理中,請稍候...\n'</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">%..............................................................................</span><span class="w"></span>
 <span class="c">%  [ Up sampling ] 10K -&gt; 110K          </span><span class="w"></span>
@@ -1448,7 +760,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <span class="c">%..............................................................................</span><span class="w"></span>
 
 <span class="n">x_110K</span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">];</span><span class="w">      </span>
-<span class="n">x_110K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_110K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                </span><span class="c">%  轉置該矩陣 成 課本 4.84式</span><span class="w"></span>
+<span class="n">x_110K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_110K</span><span class="o">'</span><span class="p">;</span><span class="w">                                </span><span class="c">%  轉置該矩陣 成 課本 4.84式</span><span class="w"></span>
 <span class="c">%..............................................................................</span><span class="w"></span>
 <span class="c">%</span><span class="w"></span>
 <span class="c">%  使用  時域 Butterworth 數位濾波器 做 訊號重建</span><span class="w"></span>
@@ -1465,22 +777,22 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <span class="c">%..............................................................................</span><span class="w"></span>
 
 <span class="n">x_22K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">x_110K</span><span class="p">(:),</span><span class="mi">5</span><span class="p">,(</span><span class="n">len</span><span class="o">*</span><span class="mi">11</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">);</span><span class="w">         </span><span class="c">%  重新安排矩陣的形狀                                                                                      </span><span class="w"></span>
-<span class="n">x_22K</span><span class="p">=</span><span class="n">x_22K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                    </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
+<span class="n">x_22K</span><span class="p">=</span><span class="n">x_22K</span><span class="o">'</span><span class="p">;</span><span class="w">                                    </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
 <span class="n">x_22K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">                           </span><span class="c">%  M= 1/5, 取出第五行          </span><span class="w"></span>
 
 <span class="c">%==============================================================================</span><span class="w"></span>
 <span class="c">%              輸出 處理結果 ( 10 K --&gt; 22K )</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放 22K 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">'請按下 任一鍵 撥放 22K 聲音'</span><span class="p">);</span><span class="w"></span>
 <span class="n">wavplay</span><span class="p">(</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">2.2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
-<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">2.2</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;speech_22K.wav&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_22K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">2.2</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">'speech_22K.wav'</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">%==============================================================================</span><span class="w"></span>
 <span class="c">%              進行 DSP 處理 (10K -&gt; 40K --&gt; 8K )</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;將 10K 轉成 8K 處理中,請稍候...\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">'將 10K 轉成 8K 處理中,請稍候...\n'</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">%..............................................................................</span><span class="w"></span>
 <span class="c">%           [ Up sampling ] 10K -&gt; 40K          </span><span class="w"></span>
@@ -1489,7 +801,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <span class="c">%..............................................................................</span><span class="w"></span>
 
 <span class="n">x_40K</span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">];</span><span class="w">      </span>
-<span class="n">x_40K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_40K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                  </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
+<span class="n">x_40K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_40K</span><span class="o">'</span><span class="p">;</span><span class="w">                                  </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
 
 <span class="c">%..............................................................................</span><span class="w"></span>
 <span class="c">%</span><span class="w"></span>
@@ -1507,44 +819,44 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <span class="c">%..............................................................................</span><span class="w"></span>
 
 <span class="n">x_8K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">x_40K</span><span class="p">(:),</span><span class="mi">5</span><span class="p">,(</span><span class="n">len</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">);</span><span class="w">            </span><span class="c">%  重新安排矩陣的形狀                                                                                           </span><span class="w"></span>
-<span class="n">x_8K</span><span class="p">=</span><span class="n">x_8K</span><span class="o">&#39;</span><span class="p">;</span><span class="w">                                      </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
+<span class="n">x_8K</span><span class="p">=</span><span class="n">x_8K</span><span class="o">'</span><span class="p">;</span><span class="w">                                      </span><span class="c">%  轉置該矩陣</span><span class="w"></span>
 <span class="n">x_8K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">                             </span><span class="c">%  M=1/5, 取出第五行                                   </span><span class="w"></span>
 
 <span class="c">%============================================================================== </span><span class="w"></span>
 <span class="c">%              輸出 處理結果 ( 10 K --&gt; 8K )</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">&#39;請按下 任一鍵 撥放 8K 聲音&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">k</span><span class="p">=</span><span class="nb">input</span><span class="p">(</span><span class="s">'請按下 任一鍵 撥放 8K 聲音'</span><span class="p">);</span><span class="w"></span>
 <span class="n">wavplay</span><span class="p">(</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">0.8</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
-<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">0.8</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;speech_8K.wav&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">wavwrite</span><span class="p">(</span><span class="w"> </span><span class="n">x_8K</span><span class="p">(:),</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="mf">0.8</span><span class="w"> </span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">'speech_8K.wav'</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">%==============================================================================</span><span class="w"></span>
 <span class="c">%  繪出 各處理階段的 訊號 ( 10K/ 110K/ 22K/ 40K/ 8K ), 方便 比較</span><span class="w"></span>
 <span class="c">%==============================================================================</span><span class="w"></span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">332</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">(:),</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">% 繪出 原始 10K 訊號</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;10K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">332</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">(:),</span><span class="s">'.'</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">% 繪出 原始 10K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'10K'</span><span class="p">)</span><span class="w"></span>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">333</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">                </span><span class="c">% 繪出 10K 訊號 頻譜圖</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;10K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'10K'</span><span class="p">)</span><span class="w"></span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">334</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_110K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">              </span><span class="c">% 繪出 110K 訊號</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;110K&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">335</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_22K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 22K 訊號</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;22K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">334</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_110K</span><span class="p">,</span><span class="s">'.'</span><span class="p">),</span><span class="nb">grid</span><span class="w">              </span><span class="c">% 繪出 110K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'110K'</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">335</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_22K</span><span class="p">,</span><span class="s">'.'</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 22K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'22K'</span><span class="p">)</span><span class="w"></span>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">336</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x_22K</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">            </span><span class="c">% 繪出 22K 訊號 頻譜圖</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;22K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'22K'</span><span class="p">)</span><span class="w"></span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">337</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_40K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 40K 訊號</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;40K&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">338</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_8K</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">%  繪出8K 訊號</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;8K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">337</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_40K</span><span class="p">,</span><span class="s">'.'</span><span class="p">),</span><span class="nb">grid</span><span class="w">               </span><span class="c">% 繪出 40K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'40K'</span><span class="p">)</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">338</span><span class="p">),</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x_8K</span><span class="p">,</span><span class="s">'.'</span><span class="p">),</span><span class="nb">grid</span><span class="w">                </span><span class="c">%  繪出8K 訊號</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'8K'</span><span class="p">)</span><span class="w"></span>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">339</span><span class="p">),</span><span class="w"> </span><span class="n">specgram</span><span class="p">(</span><span class="n">x_8K</span><span class="p">(:)),</span><span class="nb">grid</span><span class="w">             </span><span class="c">%  繪出 8K 訊號 頻譜圖</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;8K&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'8K'</span><span class="p">)</span><span class="w"></span>
 <span class="nb">shg</span><span class="w"></span>
 </code></pre></div>
 <h2 id="running">Running</h2>
 <h3 id="screenshot">Screenshot</h3>
-<p><img alt="result" src="../dsp2-exe.jpg" />    </p>
+<p><img alt="result" src="../dsp2-exe.jpg"/> </p>
 <h3 id="step-by-step">Step-by-Step</h3>
 <table>
 <thead>
@@ -1566,7 +878,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <td>2</td>
 <td>請按下 任一鍵 播放 10K 語音</td>
 <td>Play the original voice before proceeded</td>
-<td><audio controls=""><source src="speech_10K.wav" type="audio/wav"></audio></td>
+<td><audio controls=""><source src="speech_10K.wav" type="audio/wav"/></audio></td>
 </tr>
 <tr>
 <td>3</td>
@@ -1578,7 +890,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <td>4</td>
 <td>請按下 任一鍵 播放 22K 語音</td>
 <td>Play the output voice after proceeded</td>
-<td><audio controls=""> <source src="speech_22K.wav" type="audio/wav"> </audio></td>
+<td><audio controls=""> <source src="speech_22K.wav" type="audio/wav"/> </audio></td>
 </tr>
 <tr>
 <td>5</td>
@@ -1590,7 +902,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <td>6</td>
 <td>請按下 任一鍵 播放 8K 語音</td>
 <td>Play the output voice after proceeded</td>
-<td><audio controls=""> <source src="speech_8K.wav" type="audio/wav"> </audio></td>
+<td><audio controls=""> <source src="speech_8K.wav" type="audio/wav"/> </audio></td>
 </tr>
 <tr>
 <td>7</td>
@@ -1601,7 +913,7 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 </tbody>
 </table>
 <h3 id="result">Result</h3>
-<p><img alt="result" src="../dsp2-exe2.jpg" />    </p>
+<p><img alt="result" src="../dsp2-exe2.jpg"/> </p>
 <p>▲ 圖形中可觀察, Up Sampling 與 Down Sampling 時的失真程度
 - 右邊為upSampling,到 110K 與 40K 的波形。
 - 中間上面為原始波形外,上至下各為 downSampling 到 22K, 與 8K 的波形。
@@ -1618,28 +930,28 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <tbody>
 <tr>
 <td>fdatools</td>
-<td>fdatools [Wc = 1 /11, order = 19 ] <img alt="result" src="../fdatools1-1.jpg" /> ▲使用 Butterworth filter ,並將之調到 Stable</td>
-<td>fdatools [ Wc = 1 /5, order = 30 ]  <img alt="result" src="../fdatools2-1.jpg" /> ▲使用 Butterworth filter ,並將之調到 Stable</td>
+<td>fdatools [Wc = 1 /11, order = 19 ] <img alt="result" src="../fdatools1-1.jpg"/> ▲使用 Butterworth filter ,並將之調到 Stable</td>
+<td>fdatools [ Wc = 1 /5, order = 30 ]  <img alt="result" src="../fdatools2-1.jpg"/> ▲使用 Butterworth filter ,並將之調到 Stable</td>
 </tr>
 <tr>
 <td>Impulse Response</td>
-<td><img alt="result" src="../fdatools1-2-1.jpg" /></td>
-<td><img alt="result" src="../fdatools2-1-1.jpg" /></td>
+<td><img alt="result" src="../fdatools1-2-1.jpg"/></td>
+<td><img alt="result" src="../fdatools2-1-1.jpg"/></td>
 </tr>
 <tr>
 <td>Zero-pole plot</td>
-<td><img alt="result" src="../fdatools1-2-2.jpg" /></td>
-<td><img alt="result" src="../fdatools2-1-2.jpg" /></td>
+<td><img alt="result" src="../fdatools1-2-2.jpg"/></td>
+<td><img alt="result" src="../fdatools2-1-2.jpg"/></td>
 </tr>
 <tr>
 <td>Step Response</td>
-<td><img alt="result" src="../fdatools1-2-3.jpg" /></td>
-<td><img alt="result" src="../fdatools2-1-3.jpg" /></td>
+<td><img alt="result" src="../fdatools1-2-3.jpg"/></td>
+<td><img alt="result" src="../fdatools2-1-3.jpg"/></td>
 </tr>
 <tr>
 <td>Phase Response</td>
-<td><img alt="result" src="../fdatools1-2-4.jpg" /></td>
-<td><img alt="result" src="../fdatools2-1-4.jpg" /></td>
+<td><img alt="result" src="../fdatools1-2-4.jpg"/></td>
+<td><img alt="result" src="../fdatools2-1-4.jpg"/></td>
 </tr>
 </tbody>
 </table>
@@ -1666,46 +978,29 @@ $keywords: dsp, digital, signal, processing, up sampling, down sampling, matlab,
 <li>publisher: Prentice Hall</li>
 <li>isbn: 0-13-0834443-2</li>
 </ul>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-      </main>
-      
-        
+</article>
+</div>
+</div>
+</main>
 <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
           Material for MkDocs
         </a>
-        
-      </div>
-      
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
 </html>
