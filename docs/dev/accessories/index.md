@@ -17,9 +17,9 @@ It is expensive than PL2303.
 There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, but MTK chipsets may have problem to capture `RTS` packets.
 
 
-Clear syslog using `dmesg -c` then plug the dongle and run `lsusb`, `dmesg` and `ifconfig` to make sure this device is enabled in your machine. 
+Clear syslog using `dmesg -c` then plug the dongle and run `lsusb`, `dmesg` and `ifconfig` to make sure this device is enabled in your machine.
 
-### MTK 7601U chipset(2717:4106)
+### MTK 7601U (2717:4106)
 
 ```console
 $ sudo lsusb
@@ -51,7 +51,7 @@ wlx8c00001900aa: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 ```
 
-### MTK 7610 chipset(0e8d:7610)
+### MTK 7610 (0e8d:7610)
 
 ```console
 $ sudo lsusb
@@ -81,9 +81,9 @@ wlx001122340147: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 ```
 
-### MTK 7612 chipset(0e8d:7612)
+### MTK 7612 (0e8d:7612)
 
-#### Without SD function
+- Without SD function
 
 ```console
 $ sudo lsusb
@@ -116,7 +116,7 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-#### With SD function (0e8d:2870)
+- With SD function (0e8d:2870)
 
 ```console
 $ lsusb
@@ -172,7 +172,7 @@ wlx0013ef5f0f65: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-### Ralink RT5372 chipset (2001:3c20)
+### Ralink RT5372 (2001:3c20)
 
 - [D-Link DWA-140 rev D1](https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1) (rt2800usb)
 
@@ -193,7 +193,7 @@ $ dmesg
 [ 7355.919471] rt2800usb 2-2:1.0: firmware: direct-loading firmware rt2870.bin
 [ 7355.919475] ieee80211 phy8: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.36
 
-$ sudo ifconfig 
+$ sudo ifconfig
 wlxd8fee3d7ae29: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         ether 96:4f:c3:ae:3b:c2  txqueuelen 1000  (Ethernet)
         RX packets 0  bytes 0 (0.0 B)
@@ -211,7 +211,7 @@ $ sudo apt-get update
 $ sudo apt-get install bluetooth bluez bluez-hcidump
 ```
 
-### CP2102/CP2109 UART Bridge(10c4:ea60)
+### CP2102/CP2109 (10c4:ea60)
 
 ```console
 $ lsusb
@@ -228,7 +228,7 @@ $ dmesg
 [ 3743.444720] usb 3-1: cp210x converter now attached to ttyUSB0
 ```
 
-### Cambridge Bluetooth Dongle(0a12:0001)
+### Cambridge Bluetooth (0a12:0001)
 
 ```console
 $ lsusb

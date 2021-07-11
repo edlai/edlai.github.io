@@ -222,7 +222,6 @@ $ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 
 ~~ TBD ~~
 
-
 ## Appendix
 
 ### Wireless Display Filter Reference
@@ -258,9 +257,9 @@ $ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 | Null QoS data              | wlan.fc.type_subtype == 0x2C   |
 
 
-### Promiscuous Mode 
+### Promiscuous Mode
 
-Enable Promiscuous Mode 
+Enable Promiscuous Mode
 
 ```console
 $ sudo ifconfig enp0s25 promisc

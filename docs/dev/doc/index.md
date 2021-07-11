@@ -21,6 +21,12 @@ $ echo "test" > doc.rst
 $ rst2pdf doc.rst
 ```
 
-## [Swagger](https://swagger.io/): API Documentation & Design Tools for Teams
+## LaTeX
+
+~~ TBD ~~
+
+## [Swagger](https://swagger.io/)
+
+API Documentation & Design Tools for Teams.
 
 ~ TBD ~

@@ -24,6 +24,7 @@ nav:
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
 #         - 'Testbed Setup': 'dev/testbed/index.md'
+#       - 'Leadership': 'leadership.md'
         - 'Embedded Linux':
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
@@ -73,8 +74,17 @@ theme:
 markdown_extensions:
   - pymdownx.snippets
   - pymdownx.tabbed
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid-experimental
           format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+    - search
+    - mermaid2:
+
+extra_javascript:
+    - https://unpkg.com/mermaid/dist/mermaid.min.js

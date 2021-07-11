@@ -23,15 +23,16 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format)
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
-- [ToDo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+- [ToDo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)s
 
-better to enlarge `max_user_watches` also.
+???+ info "max_user_watches"
+    Please consider to enlarge `max_user_watches` to `524288` also.
 
-```console
-$ echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
-$ cat /proc/sys/fs/inotify/max_user_watches
-$ sudo sysctl -p
-```
+    ```console
+    $ echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
+    $ cat /proc/sys/fs/inotify/max_user_watches
+    $ sudo sysctl -p
+    ```
 
 There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) and it userful shortcuts as following
 

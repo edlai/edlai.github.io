@@ -1,5 +1,3 @@
-# Under Construction now ...
-
 # Man-Machine Interfaces
 
 ## Parallel Port Device and Linux Device Driver
@@ -13,6 +11,7 @@ $keywords: man, machine, interface
 
 An exercise of an implementation of Linux Device Driver. 
 
+<!--
 ## Content
 
 * [Concept](#concept)
@@ -25,7 +24,6 @@ An exercise of an implementation of Linux Device Driver.
 * [Application](#application)
 * [Demonstration](#demonstration)
 
-<!--
 * [Advanced](#advanced)
 * [References](#reference)
 * [Appendix](#appendix)
@@ -34,19 +32,27 @@ An exercise of an implementation of Linux Device Driver.
 
 ## Concept
 
-- 驅動電腦並列埠上的 LED.    
+- Blink LED which connects to PC's Parallel Port.
 
+<!--
   <svg width="600" height="110">
   <rect x="0" y="0"   width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-  <text x="50" y="50" alignment-baseline="middle" text-anchor="middle">Super I/O</text>  
-  <line x1="100" y1="50" x2="200" y2="50" style="stroke:rgb(255, 0, 0);stroke-width:2" />  
+  <text x="50" y="50" alignment-baseline="middle" text-anchor="middle">Super I/O</text>
+  <line x1="100" y1="50" x2="200" y2="50" style="stroke:rgb(255, 0, 0);stroke-width:2" />
   <rect x="200" y="0" width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-  <text x="250" y="50" alignment-baseline="middle" text-anchor="middle">Parallel Port</text>  
+  <text x="250" y="50" alignment-baseline="middle" text-anchor="middle">Parallel Port</text>
   <line x1="300" y1="50" x2="400" y2="50" style="stroke:rgb(255, 0, 0);stroke-width:2" />
   <rect x="400" y="0" width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-  <text x="450" y="50" alignment-baseline="middle" text-anchor="middle">Breadboard</text>   
+  <text x="450" y="50" alignment-baseline="middle" text-anchor="middle">Breadboard</text>
   Sorry,  your browser does not support inline SVG.
-  </svg> 
+  </svg>
+-->
+
+<pre><div class="mermaid">
+  graph TD
+  A[Super I/O] --> B[Parallel Port]
+  B --> C[Breadboard]
+</div></pre>
 
 ## Requirements
 

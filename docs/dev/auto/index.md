@@ -2,7 +2,7 @@
 
 ## Automation
 
-### Telnet
+### TELNET
 
 The sample code shows how to login Router and execute `ls` command.
 

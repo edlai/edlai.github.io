@@ -14,8 +14,9 @@ There are some resources for buildroot.
 
 Download source code and set configuration to Raspberry Pi 3, then make it.
 
-```bash
+```console
 $ mkdir br2
+$ cd br2
 $ wget https://buildroot.org/downloads/buildroot-2021.05.tar.bz2
 $ tar xvf buildroot-2021.05.tar.bz2
 $ cd buildroot-2021.05
@@ -23,7 +24,6 @@ $ make raspberrypi3_64_defconfig
 $ make
 $ ls -lah output/images/sdcard.img
 -rw-r--r-- 1 ed ed 153M Jul  3 20:29 output/images/sdcard.img
-
 ```
 
 Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you use Windows OS, you can programming image to SD card by using [`Rufus`](https://rufus.ie/).
