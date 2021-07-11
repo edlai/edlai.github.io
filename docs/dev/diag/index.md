@@ -12,23 +12,21 @@ Linux ed-ThinkPad-X230 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2
 
 Install Wireshark and so on.
 
-```console
+``` console
 $ sudo rm -rf /bin/sh && sudo ln -s /bin/bash /bin/sh
 $ sudo apt-get update && sudo apt-get upgrade
-$ sudo apt-get install openssh-server vim net-tools
-$ sudo apt-get install wireshark
+$ sudo apt-get install openssh-server vim net-tools wireshark
 $ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-$ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+$ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc libtool
 $ sudo apt-get install -y software-properties-common rsync
 $ sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
-$ sudo apt-get install -y libtool
 ```
 
 ### Check Wi-Fi channel and so on
 
-- Insert Wi-Fi dongle and confirm Interface name. The PID/VID is `0e8d:7612`. and the interface name is `wlx008e86000266` now.
+- Plug Wi-Fi dongle and confirm its interface name. The PID/VID is `0e8d:7612`. and the interface name is `wlx008e86000266` in my case.
 
-```console
+``` console
 $ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
 
@@ -43,10 +41,9 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 Install `aircrack-ng` and run `airodump-ng` to check Wi-Fi channel. Better to use `aircrack-ng 1.6` to support WPA3-SAE.
 
-```console
-$ wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
-$ tar xvf 1.6.tar.gz
-$ cd aircrack-ng-1.6
+``` console
+$ git clone https://github.com/aircrack-ng/aircrack-ng.git
+$ cd aircrack-ng
 $ ./autogen.sh
 $ ./configure
 $ make
@@ -56,7 +53,7 @@ $ sudo ldconfig
 
 Run `airodump-ng`
 
-```console
+``` console
 $ sudo airodump-ng wlx008e86000266
 
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
@@ -72,7 +69,7 @@ $ sudo airodump-ng wlx008e86000266
 
 as a result, SSID `AP1` works on `Channel 13`.
 
-
+<!--
 PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`.
 
 - [如何在Ubuntu 18.04上安裝GCC編譯器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)
@@ -84,6 +81,13 @@ $ sudo update-alternatives --config gcc
 $ gcc -v
 gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)
 ```
+
+Back to Gcc10
+
+```console
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+```
+-->
 
 ### Enable Monitor Mode
 

@@ -38,7 +38,7 @@ Motivations for my life and career.
 
 ## Work Experience
 
-** » Firmware Developer « **
+*** » Firmware Developer « ***
 
 The products (Wireless Mesh and Cellular Routers) I developed with my colleagues before.
 
@@ -48,7 +48,7 @@ The products (Wireless Mesh and Cellular Routers) I developed with my colleagues
    <!--- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86` [`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
 - D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips` [`RTL8197F`](https://www.realtek.com/en/products/communications-network-ics/item/rtl8197f): The mesh Wi-Fi router. (handover from HsinChu RD team)
 
-** » Web Developer « **
+*** » Web Developer « ***
 
 Enhancing [`MIT Scratch 3.0`](https://scratch.mit.edu/) (block-based programming language) and [`Dr.Scratch`](http://drscratch.org/). Communication by using Restful API.
 
