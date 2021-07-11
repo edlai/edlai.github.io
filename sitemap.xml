@@ -151,6 +151,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://edlai.github.io/interview/</loc>
+         <lastmod>2021-07-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://edlai.github.io/io/</loc>
          <lastmod>2021-07-11</lastmod>
          <changefreq>daily</changefreq>
@@ -206,11 +211,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/motivation/traveling/</loc>
-         <lastmod>2021-07-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://edlai.github.io/net/</loc>
          <lastmod>2021-07-11</lastmod>
          <changefreq>daily</changefreq>
@@ -237,6 +237,21 @@
     </url>
     <url>
          <loc>https://edlai.github.io/os/assembler-compiler/</loc>
+         <lastmod>2021-07-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/photos/</loc>
+         <lastmod>2021-07-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/traveling/tour/</loc>
+         <lastmod>2021-07-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/traveling/trip/</loc>
          <lastmod>2021-07-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
