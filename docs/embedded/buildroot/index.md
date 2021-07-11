@@ -26,9 +26,9 @@ $ ls -lah output/images/sdcard.img
 
 ```
 
-Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you uses Windows OS, you can programming image to SD card by using [`Rufus`](https://rufus.ie/).
+Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you use Windows OS, you can programming image to SD card by using [`Rufus`](https://rufus.ie/).
 
-## Package
+## Packages
 
 ### Add one single package manually
 
@@ -125,8 +125,8 @@ package/hello/src/hello.c
 
 int main(void)
 {
-        printf("buildroot helloworld\n");
-        return 0;
+  printf("buildroot helloworld\n");
+  return 0;
 }
 ```
 
@@ -210,12 +210,17 @@ $ make
 
 ### Run
 
+run it via `qemu-system-arm`.
+
 <!-- -nographic  -->
 
 ```console
 $ qemu-system-arm -M vexpress-a9 -smp 1 -m 256 -kernel output/images/zImage -dtb output/images/vexpress-v2p-ca9.dtb -drive file=output/images/rootfs.ext2,if=sd,format=raw -append "console=ttyAMA0,115200 root=/dev/mmcblk0" -serial stdio -net nic,model=lan9118 -net user -nographic
 ```
 ### Result
+
+- Username: root
+- Password: [blank]
 
 ```console
 ...

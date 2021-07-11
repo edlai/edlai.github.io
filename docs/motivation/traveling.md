@@ -1,12 +1,26 @@
 # Traveling
 
 It always has chance to meet different people and cultural diversity.
-# Biz. Trip
 
-| # | Lab                          | Location(s)                            | Mission(s)                             | Time      |
+## Personal Trip
+
+- Japan * 3 (Nagoya shi, Ōsaka shi, Hokkaidō)
+- Thailand * 1 (Pattaya)
+- Malaysia * 1
+- Cambodia * 1 (Angkor Wat)
+
+## Business Trip
+
+### Multi-purpose
+
+- Mainland China * 4 (Beijing * 2, Shanghai * 2)
+
+### Homologation
+
+| # | Lab/ Telecom Lab             | Location/ Hotel                      | Mission(s)                             | Year      |
 |---|------------------------------|----------------------------------------|----------------------------------------|-----------|
 | 1 | [Kyocera Wireless Lab](https://kyoceramobile.com/) | 10300 Campus Point Drive, San Diego, CA | Production Verification (EVDO router)  | 2005 B.C  |
-| 2 | Kyocera in Venezuela (Movistar) | [Ambassador Suites Hotel Caracas, Venezuela](https://goo.gl/maps/fDk36Jyx3d1WPGdQ9) | Fix software bug (EVDO router) | 2005 B.C |
+| 2 | Kyocera @ Venezuela (Movistar) | [Ambassador Suites Hotel Caracas, Venezuela](https://goo.gl/maps/fDk36Jyx3d1WPGdQ9) | Fix software bug (EVDO router) | 2005 B.C |
 | 3 | CAT Telecom, HBC Telecom     | Bangkok, Thailand                      | Product Promotion (HSDPA router)                    | 2006 B.C  |
 | 4 | Telkomsel Telecom            | Jakarta, Indonesia                     | Product Promotion (HSDPA router)                    | 2006 B.C  |
 | 5 | Maxis Telecom, Celcom Telecom | Kuala Lumpur, Malaysia                 | Product Promotion (HSDPA router)                     | 2006 B.C  |

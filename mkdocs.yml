@@ -5,7 +5,7 @@ nav:
         - 'About Me': 'index.md'
         - 'About Here': '/#about-here'
         - 'Academic Background': '/#academic-background'
-        - 'Work Experience': '/#experience'
+        - 'Work Experience': '/#work-experience'
         - 'Technician Certificate': '/#technician-certificate'
         - 'Technician Training': '/#technician-training'
     - 'Engineering':
@@ -60,8 +60,8 @@ nav:
     - 'Collection':
         - 'Collections': 'collections/index.md'
     - 'Motivation':
-        - 'Traveling': 'motivation/traveling.md'
         - 'Painting': 'motivation/painting.md'
+    - 'Traveling': 'motivation/traveling.md'
 
 theme:
   name: material
