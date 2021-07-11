@@ -1537,17 +1537,15 @@
 <p>Install Wireshark and so on.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo rm -rf /bin/sh <span class="o">&amp;&amp;</span> sudo ln -s /bin/bash /bin/sh
 <span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
-<span class="gp">$ </span>sudo apt-get install openssh-server vim net-tools
-<span class="gp">$ </span>sudo apt-get install wireshark
+<span class="gp">$ </span>sudo apt-get install openssh-server vim net-tools wireshark
 <span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc libtool
 <span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
 <span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
-<span class="gp">$ </span>sudo apt-get install -y libtool
 </code></pre></div>
 <h3 id="check-wi-fi-channel-and-so-on">Check Wi-Fi channel and so on</h3>
 <ul>
-<li>Insert Wi-Fi dongle and confirm Interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> now.</li>
+<li>Plug Wi-Fi dongle and confirm its interface name. The PID/VID is <code>0e8d:7612</code>. and the interface name is <code>wlx008e86000266</code> in my case.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>lsusb
 <span class="go">Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.</span>
@@ -1561,9 +1559,8 @@
 <span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span>
 </code></pre></div>
 <p>Install <code>aircrack-ng</code> and run <code>airodump-ng</code> to check Wi-Fi channel. Better to use <code>aircrack-ng 1.6</code> to support WPA3-SAE.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://github.com/aircrack-ng/aircrack-ng/archive/refs/tags/1.6.tar.gz
-<span class="gp">$ </span>tar xvf <span class="m">1</span>.6.tar.gz
-<span class="gp">$ </span><span class="nb">cd</span> aircrack-ng-1.6
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git clone https://github.com/aircrack-ng/aircrack-ng.git
+<span class="gp">$ </span><span class="nb">cd</span> aircrack-ng
 <span class="gp">$ </span>./autogen.sh
 <span class="gp">$ </span>./configure
 <span class="gp">$ </span>make
@@ -1584,16 +1581,24 @@
 <span class="go"> C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1</span>
 </code></pre></div>
 <p>as a result, SSID <code>AP1</code> works on <code>Channel 13</code>.</p>
-<p>PS. try to use <code>gcc 9</code> if <code>gcc 10</code> cannot compile <code>aircrack-ng</code>.</p>
-<ul>
-<li><a href="https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/">如何在Ubuntu 18.04上安裝GCC編譯器</a></li>
-</ul>
+<!--
+PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`.
+
+- [如何在Ubuntu 18.04上安裝GCC編譯器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)
+
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt install gcc-9<span class="p">;</span> sudo apt install g++-9
 <span class="gp">$ </span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 <span class="m">90</span> --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
 <span class="gp">$ </span>sudo update-alternatives --config gcc
 <span class="gp">$ </span>gcc -v
 <span class="go">gcc version 9.3.0 (Ubuntu 9.3.0-18ubuntu1)</span>
 </code></pre></div>
+
+Back to Gcc10
+
+<div class="highlight"><pre><span></span><code><span class="go">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10</span>
+</code></pre></div>
+-->
+
 <h3 id="enable-monitor-mode">Enable Monitor Mode</h3>
 <ul>
 <li>Enable Monitor Mode, use below script then press <code>./set_mon.sh wlx008e86000266 13</code></li>
