@@ -4,5 +4,9 @@
 # sudo pip3 install -U mkdocs
 # sudo pip3 install mkdocs-material
 # sudo pip3 install markdown-fenced-code-tabs
+# sudo pip3 install mkdocs-mermaid2-plugin
+#sudo pip3 install --upgrade mkdocs-material
+
+
 
 mkdocs serve -a 0.0.0.0:8080
