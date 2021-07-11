@@ -2,6 +2,8 @@
 
 ## About Me
 
+![Placeholder](photos/romania_002.jpg){ align=left, width=25%, loading=lazy }
+
 I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time. (Updated: 2021/07/03)
 
 ----
@@ -16,11 +18,19 @@ There are some of my reports and homeworks when I was a BSEE undergraduate stude
 - [Education](qualitative-research/index.md)
 There are some of the reports and homeworks when I was a MSMIE graduate student. But it's still under construction now. 
 
-- [Collection](collections/index.md)
-My collection from Internet. Something like how to write your CV using TEX files (LaTeX), how to capture wireless packets from Wireshark and so on.
 
-- [Motivation](painting/index.md)
+- [Collection](collections/index.md)
+My collection from Internet.
+
+<!--
+
+- [Motivation](motivation/painting/index.md)
 Motivations for my life and career.
+
+- [Traveling](motivation/traveling/index.md)
+Motivations for my life and career.
+
+-->
 
 ## Academic Background
 

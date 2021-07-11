@@ -1,21 +1,12 @@
-# Traveling
+# Business Trip
 
 It always has chance to meet different people and cultural diversity.
 
-## Personal Trip
-
-- Japan * 3 (Nagoya shi, Ōsaka shi, Hokkaidō)
-- Thailand * 1 (Pattaya)
-- Malaysia * 1 (Kuala Lumpur)
-- Cambodia * 1 (Angkor Wat)
-
-## Business Trip
-
-### Multi-purpose
+## Multi-purpose
 
 - Mainland China * 4 (Beijing * 2, Shanghai * 2)
 
-### Homologation
+## Homologation
 
 | # | Lab/ Telecom Lab             | Location/ Hotel                      | Mission(s)                             | Year      |
 |---|------------------------------|----------------------------------------|----------------------------------------|-----------|

@@ -53,3 +53,4 @@ dkms.conf
 
 # Mkdocs files
 site/
+src/

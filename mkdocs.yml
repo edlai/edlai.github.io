@@ -1,4 +1,4 @@
-site_name: 🦉 Ed's Wiki
+site_name: Ed's Wiki  🦉
 site_url: https://edlai.github.io/
 nav:
     - Home:
@@ -60,9 +60,12 @@ nav:
         - 'Quantitative Research': 'quantitative-research.md'
     - 'Collection':
         - 'Collections': 'collections/index.md'
-    - 'Motivation':
-        - 'Painting': 'motivation/painting.md'
-    - 'Traveling': 'motivation/traveling.md'
+#    - 'Motivation':
+#        - 'Painting': 'motivation/painting.md'
+    - 'Traveling':
+        - 'Trip': 'traveling/trip.md'
+        - 'Tour': 'traveling/tour.md'
+        - 'Photos': 'photos/index.md'
 
 theme:
   name: material
@@ -70,10 +73,14 @@ theme:
     text: Roboto
   features:
     - navigation.tabs
+#  custom_dir: mkdocs-rtd-lightbox
 
 markdown_extensions:
+#  - lightbox
+#  - extra
   - pymdownx.snippets
   - pymdownx.tabbed
+  - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences:

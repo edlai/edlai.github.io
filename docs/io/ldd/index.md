@@ -9,7 +9,7 @@ $revised:  Mar. 2018
 $keywords: man, machine, interface
 ```
 
-An exercise of an implementation of Linux Device Driver. 
+An exercise of an implementation of Linux Device Driver.
 
 <!--
 ## Content

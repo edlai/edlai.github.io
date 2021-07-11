@@ -30,6 +30,11 @@ $ rst2pdf doc.rst
 [Swagger]((https://swagger.io/)) is an API Documentation & Design Tools for Teams.
 
 ## PlantUML
-## [PlantUML](https://plantuml.com/zh/)
+
+[PlantUML](https://plantuml.com/zh/).
+
+## mermaid
+
+[mermaid2](https://pypi.org/project/mkdocs-mermaid2-plugin/).
 
 ~ TBD ~
