@@ -84,17 +84,15 @@ By the way, if you use Windows 10 OS, this OS also provides [WSL2](https://githu
 There are some TFTP tools, most of all I use `tftp64` beacuse my development environment is Windows 10.
 
 - [tftp64](http://tftpd32.jounin.net/tftpd32_download.html): for Windows OS, it includes tftp server, client and syslog server.
-- [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git): for Linux OS.
-- [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver): for Mac OS.
+- [tftpd-hpa](https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git) (Optional): for Linux OS.
+- [TftpServer for Mac](https://www.macupdate.com/app/mac/11116/tftpserver) (Optional): for Mac OS.
 
 ### HTTP File Server (Optional)
 
 There is HTTP file server which can run in Windows OS.
 
 - [HFS Server](https://www.rejetto.com/hfs/): HTTP file server.
-### Web, Mail, FTP, and Telnet server (Optional)
-
-- [LiteServe](http://www.cmfperception.com/liteserve.html)
+- [LiteServe](http://www.cmfperception.com/liteserve.html): Web, Mail, FTP, and Telnet server
 
 ## Code Comparer
 
@@ -107,6 +105,7 @@ Suggest to use default coding configuration by `clang-format` of Visual Studio C
 - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): the default formattering tool in VSC.
 
 Below script format `main.c` by `clang-format`.
+
 ```console
 $ sudo apt-get install clang-format
 $ clang-format -i main.c
@@ -125,6 +124,7 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 ```
 
 Below script can help use to fomat all `*.c`, `*.h` and `java` files.
+
 ```console
 #!/bin/sh
 
@@ -148,6 +148,7 @@ do
   rm -rf $f
 done
 ```
+
 ## Source Code Tagging System
 
 Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
@@ -158,7 +159,17 @@ $ tar xvf hostapd-2.9.tar.gz
 $ cd hostapd-2.9
 ```
 
-- [CScope](http://cscope.sourceforge.net/)
+- [CScope](http://cscope.sourceforge.net/): a developer's tool for browsing source code.
+
+```
+$ sudo apt-get install exuberant-ctags cscope
+$ ctags --version
+$ cscope --version
+$ find  ./ -name "*.c" -or -name "*.h" -or -name "*.cpp" -or -name "*.S" | cscope -Rbq
+# - OR -
+$ cscope -R
+```
+
 - [GNU Global](https://www.gnu.org/software/global/): source code tagging system.
 
 Install global
@@ -278,12 +289,13 @@ Usage
 $ ack eloop_register_read_sock
 ```
 
-## Static Code Analysis Tools
+## Code Analysis Tools
 
-### Lint
+### Static Code Analysis Tools
 
-- [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160)
-- [CPPCheck](http://cppcheck.sourceforge.net/)
+
+- [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160): a clang-based C++ “linter” tool.
+- [CPPCheck](http://cppcheck.sourceforge.net/): A tool for static C/C++ code analysis
 
 ```
 # - INSTALL -
@@ -294,7 +306,7 @@ $ cppcheck -j 3 --enable=all ~/Project
 $ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
 ```
 
-- [splint](https://splint.org/)
+- [splint](https://splint.org/): a tool for statically checking C programs for security vulnerabilities and coding mistakes.
 
 ```
 $ sudo apt-get update -y; sudo apt-get install -y splint
@@ -303,13 +315,13 @@ $ splint test.c +bounds -varuse   # bounds: check memory leak
 
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
 
-## Dynamic Code Analysis Tools 
+### Dynamic Code Analysis Tools 
 
-### [Valgrind](https://www.valgrind.org/)
+### [Valgrind](https://www.valgrind.org/): an instrumentation framework for building dynamic analysis tools.
 
-## Terminal multiplexer
+## Terminal Multiplexer
 
-- [Tmux Terminal](https://github.com/tmux/tmux/wiki)
+- [Tmux Terminal](https://github.com/tmux/tmux/wiki): a terminal multiplexer.
 
 ```console
 # - INSTALL -
@@ -323,13 +335,15 @@ $ tmux deattach
 $ tmux attach
 ```
 
-## Wi-Fi Tool
+- [GNU Screen](https://www.gnu.org/software/screen/): a full-screen window manager that multiplexes a physical terminal.
 
-- [Wireshark](https://www.wireshark.org/)
-- [InSSIDer 5](https://www.metageek.com/products/inssider/)
-- [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html)
-- [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
+## Wi-Fi Tools
+
+- [InSSIDer 5](https://www.metageek.com/products/inssider/): fast WiFi scanning, and packet capture capabilities.
+- [wifiinfoview](https://www.nirsoft.net/utils/wifi_information_view.html): WiFi Scanner for Windows 10/7/8/Vista.
+- [airodump-ng](https://www.aircrack-ng.org/doku.php?id=airodump-ng): packet capturing of raw 802.11 frames.
+- [Wireshark/tshark](https://www.wireshark.org/): network protocol analyzer.
 
 ## Web Debugging Proxy
 
-- [Fiddler](https://www.telerik.com/fiddler)
+- [Fiddler](https://www.telerik.com/fiddler): web Debugging Proxy and Troubleshooting Solutions.

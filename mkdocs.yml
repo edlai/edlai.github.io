@@ -1,7 +1,13 @@
 site_name: 🦉 Ed's Wiki
 site_url: https://edlai.github.io/
 nav:
-    - Home: 'index.md'
+    - Home:
+        - 'About Me': 'index.md'
+        - 'About Here': '/#about-here'
+        - 'Academic Background': '/#academic-background'
+        - 'Work Experience': '/#experience'
+        - 'Technician Certificate': '/#technician-certificate'
+        - 'Technician Training': '/#technician-training'
     - 'Engineering':
         - 'Development Tools':
           - 'Softwares Tools': 'dev/softwares/index.md'
