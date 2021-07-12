@@ -47,4 +47,38 @@ use [docker-gitlab](https://github.com/sameersbn/docker-gitlab) from [sameersbn(
 
 ## Azure DevOps
 
+move to Azure from Gitlab
+```
+```
+
 ## Nginx
+
+Add `/etc/nginx/sites-available/gitlab`
+
+```
+server {
+    listen 88;
+    location / {
+        proxy_pass        "http://127.0.0.1:10080";
+    }
+}
+```
+
+Restart
+
+```
+$ sudo service nginx restart
+```
+## FTP
+
+- Install vsftpd
+- Revised `/etc/vsftpd.conf`
+
+## LIGHTTPD
+
+- Install lighttpd
+- Revised `/etc/vsftpd.conf`
+
+## TFTP Server
+
+- Install tftpd-hpa

@@ -23,7 +23,14 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format)
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
-- [ToDo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)s
+- [ToDo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+- [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+
+<!--
+- C/C++ Extension Pack
+- C/C++ Snippets
+- C/C++ Themes
+-->
 
 ???+ info "max_user_watches"
     Please consider to enlarge `max_user_watches` to `524288` also.
