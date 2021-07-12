@@ -6,7 +6,7 @@ This chapter introduces some software development tools.
 
 ### Visual Studio Code
 
-Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development tools. First of all, just install
+Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development tool. First of all, just install
 [Visual Studio Code](https://code.visualstudio.com/) as a foundation of code editor then don't forget to install its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery) as following as well.
 
 ### VSC Extensions
