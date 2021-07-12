@@ -30,11 +30,11 @@
 ----
 
 
-| Others                        |                                                  |
-------------------------------- | -------------------------------------------------|
-| Chat with colleague @ Romania | ![Placeholder](romania_0004.jpg){ loading=lazy } |
-| Düsseldorf  @ Germany         | ![Placeholder](germany_0001.jpg){ loading=lazy } |
-| Danube @ Hungary              | ![Placeholder](hungary_0001.jpg){ loading=lazy } |
+| Others                            |                                                  |
+----------------------------------- | -------------------------------------------------|
+| Chat with my colleagues, Romania  | ![Placeholder](romania_0004.jpg){ loading=lazy } |
+| Düsseldorf, Germany @2014         | ![Placeholder](germany_0001.jpg){ loading=lazy } |
+| Danube, Hungary @ 2013            | ![Placeholder](hungary_0001.jpg){ loading=lazy } |
 
 ----
 

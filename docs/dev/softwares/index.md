@@ -32,6 +32,10 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 - C/C++ Themes
 -->
 
+
+???+ tip "VSC Extensions - C/C++ for Visual Studio Code"
+    It's highly recommended to install `C/C++ for Visual Studio Code`, it supports `Coding Convention`, 'Source Code Tagging System' and so on.
+
 ???+ info "max_user_watches"
     Please consider to enlarge `max_user_watches` to `524288` also.
 
@@ -52,20 +56,20 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 
 VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.
 
-```console
+``` console
 $ curl -fsSL https://code-server.dev/install.sh | sh
 ```
 
 Its setting file is in `~/.config/code-server/config.yaml`. You can revise `Bind-addr` and `Password` to allow external access (user needs to run code-server to product this config file).
 
-```console
+``` console
 Bind-addr: 0.0.0.0:9786   # < = Use IP 0.0.0.0 and port 9786 to allow external access
 Password: 11111111        # < = define your password, this case is 11111111
 ```
 
 Now, you can run code server with below command.
 
-```console
+``` console
 $ code-server .
 ```
 
@@ -114,7 +118,7 @@ Suggest to use default coding configuration by `clang-format` of Visual Studio C
 
 Below script format `main.c` by `clang-format`.
 
-```console
+``` console
 $ sudo apt-get install clang-format
 $ clang-format -i main.c
 ```
@@ -124,7 +128,7 @@ $ clang-format -i main.c
 Install `astyle` and there is a case for coding convention as following to format `main.c` or `*.c` and `*.h` files
 `style: K&R`, and `Indent: 2`
 
-```cosnole
+``` cosnole
 $ sudo apt-get install astyle
 $ astyle --style=kr --indent=spaces=2 -p -U -f main.c
 - OR -
@@ -133,18 +137,19 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 
 Below script can help use to fomat all `*.c`, `*.h` and `java` files.
 
-```console
+``` bash
 #!/bin/sh
 
 echo "running this script for doing code convention"
-
 astyle -V
 
+# formate c code
 for f in $(find ../ -name '*.c' -or -name '*.cpp' -or -name '*.h' -type f)
 do
   astyle --style=kr --indent=spaces=2 -p -U -f $f
 done
 
+# formate java code
 for f in $(find ../ -name '*.java' -type f)
 do
   astyle --style=java --indent=spaces=2 -p -U -f $f
@@ -161,7 +166,7 @@ done
 
 Use [hostapd](https://w1.fi/hostapd/) as an example, fetch the code and untar it.
 
-```console
+``` console
 $ wget https://w1.fi/releases/hostapd-2.9.tar.gz
 $ tar xvf hostapd-2.9.tar.gz
 $ cd hostapd-2.9
@@ -169,7 +174,7 @@ $ cd hostapd-2.9
 
 - [CScope](http://cscope.sourceforge.net/): a developer's tool for browsing source code.
 
-```
+``` console
 $ sudo apt-get install exuberant-ctags cscope
 $ ctags --version
 $ cscope --version
@@ -182,7 +187,7 @@ $ cscope -R
 
 Install global
 
-```console
+``` console
 $ sudo apt-get install global
 $ sudo ldconfig
 $ global
@@ -215,7 +220,7 @@ Options:
 
 in short, the usage of `global` is
 
-```console
+``` console
 $ global (find definition of pattern)
 $ global -r (find references of pattern)
 $ global -x (shows the detail)
@@ -224,7 +229,7 @@ $ global -xg (locates the lines which have specified pattern)
 
 Run gtags, make sure it products `GPATH`, `GRTAGS` and `GTAGS` files.
 
-```console
+``` console
 $ gtags
 $ ls
 CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src
@@ -232,7 +237,7 @@ CONTRIBUTIONS  COPYING  GPATH  GRTAGS  GTAGS  hostapd  README  src
 
 Find definition of pattern
 
-```console
+``` console
 $ global eloop_sock
 src/utils/eloop.c
 src/utils/eloop_win.c
@@ -240,13 +245,13 @@ src/utils/eloop_win.c
 
 Update database.
 
-```console
+``` console
 $ global -u
 ```
 
 product HTML file and copy to HTTP folder.
 
-```console
+``` console
 $ htags -ffnsa   # < = w/. Searching
 $ sudo cp -r HTML/ /var/www/html/hostapd
 ```
@@ -255,7 +260,7 @@ $ sudo cp -r HTML/ /var/www/html/hostapd
 
 An example for `hostapd` to generate Doxygen document
 
-```console
+``` console
 $ sudo apt-get install doxygen
 $ sudo apt-get install graphviz
 $ sudo ldconfig
@@ -278,7 +283,9 @@ For more detail, please check [this blog](https://blog.longwin.com.tw/2011/04/do
 
 - grep
 
-```
+Usage
+
+``` console
 $ grep -rsni eloop_register_read_sock *
 ```
 
@@ -286,14 +293,14 @@ $ grep -rsni eloop_register_read_sock *
 
 Install
 
-```
+``` console
 $ sudo apt-get install ack-grep
 $ sudo ldconfig
 ```
 
 Usage
 
-```
+``` console
 $ ack eloop_register_read_sock
 ```
 
@@ -305,7 +312,7 @@ $ ack eloop_register_read_sock
 - [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160): a clang-based C++ “linter” tool.
 - [CPPCheck](http://cppcheck.sourceforge.net/): A tool for static C/C++ code analysis
 
-```
+``` console
 # - INSTALL -
 $ sudo apt-get update -y; sudo apt-get install cppcheck
 # - RUN -
@@ -316,16 +323,16 @@ $ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
 
 - [splint](https://splint.org/): a tool for statically checking C programs for security vulnerabilities and coding mistakes.
 
-```
+``` console
 $ sudo apt-get update -y; sudo apt-get install -y splint
-$ splint test.c +bounds -varuse   # bounds: check memory leak 
+$ splint test.c +bounds -varuse   # bounds: check memory leak
 ```
 
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
 
-### Dynamic Code Analysis Tools 
+### Dynamic Code Analysis Tools
 
-### [Valgrind](https://www.valgrind.org/): an instrumentation framework for building dynamic analysis tools.
+- [Valgrind](https://www.valgrind.org/): an instrumentation framework for building dynamic analysis tools.
 
 ## Terminal Multiplexer
 
