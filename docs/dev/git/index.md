@@ -1,11 +1,8 @@
-# Git and Build Machine
+# Git Repo and Build Machine
 
 ## Git Server
 
-you can just apply a free account from `GitHub` or `GitLab`.
-
-- Gitlab
-- Azure DevOps
+you can just apply a free account from `Gitlab`, `GitLab` or `Azure DevOps`.
 
 ### Useful Git commands
 
