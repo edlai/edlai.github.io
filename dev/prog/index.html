@@ -302,6 +302,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#cjson">
+    cJSON
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#sqlite">
     SQLite
   </a>
@@ -769,6 +774,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#cjson">
+    cJSON
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#sqlite">
     SQLite
   </a>
@@ -814,16 +824,17 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="computer-programmer-skills">Computer Programmer Skills</h1>
+<p>~~ TBD ~~</p>
 <h2 id="ansi-c">ANSI C</h2>
 <h3 id="autofree"><a href="https://hackmd.io/@ofAlpaca/rJ1NAv8K7?type=view">autofree</a></h3>
 <h3 id="strtol-vs-atoi"><a href="https://stackoverflow.com/questions/3792663/atol-v-s-strtol">strtol v.s. atoi</a></h3>
-<p>the weakless of <code>atoi</code>
+<p>the weakless of <code>atoi</code></p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
 
 <span class="n">printf</span><span class="p">(</span><span class="s">"abc to int ="</span><span class="p">,</span> <span class="n">atoi</span><span class="p">(</span><span class="s">"abc"</span><span class="p">));</span>
 <span class="n">printf</span><span class="p">(</span><span class="s">"string 0 to int ="</span><span class="p">,</span> <span class="n">atoi</span><span class="p">(</span><span class="s">"0"</span><span class="p">));</span>
 </code></pre></div>
-the advantage of <code>strtol</code>
+<p>the advantage of <code>strtol</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">errno</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="cm">/* To distinguish success/failure after call */</span>
 <span class="n">val</span> <span class="o">=</span> <span class="n">strtol</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">endptr</span><span class="p">,</span> <span class="n">base</span><span class="p">);</span>
 
@@ -832,11 +843,17 @@ the advantage of <code>strtol</code>
   <span class="n">perror</span><span class="p">(</span><span class="s">"strtol"</span><span class="p">);</span>
   <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></p>
-<p><code>strtol</code> support different base(hex, dec and so on)
+</code></pre></div>
+<p><code>strtol</code> support different base(hex, dec and so on)</p>
+<ul>
+<li>atoi</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="kt">int</span> <span class="nf">atoi</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">nptr</span><span class="p">);</span>
-</code></pre></div></p>
+</code></pre></div>
+<ul>
+<li>strtol</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="kt">long</span> <span class="kt">int</span>
 <span class="n">strtol</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">nptr</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">endptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">);</span>
@@ -853,6 +870,7 @@ the advantage of <code>strtol</code>
 <h3 id="memory-overflow-vs-memory-leak">Memory Overflow v.s. Memory Leak</h3>
 <h3 id="function-point">Function Point</h3>
 <h3 id="flexible-array">Flexible Array</h3>
+<h3 id="cjson">cJSON</h3>
 <h3 id="sqlite">SQLite</h3>
 <h3 id="evhttplibevent">evhttp/libevent</h3>
 <h3 id="xor-swap-algorithm">XOR swap algorithm</h3>
