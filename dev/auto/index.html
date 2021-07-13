@@ -666,34 +666,6 @@
 <span class="n">MAX_WINDOW_WIDTH</span> <span class="o">=</span> <span class="mi">65000</span>  <span class="c1"># Max Value: 65535</span>
 <span class="n">MAX_WINDOW_HEIGHT</span> <span class="o">=</span> <span class="mi">5000</span>
 
-
-<span class="k">def</span> <span class="nf">set_max_window_size</span><span class="p">(</span><span class="n">tsocket</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
-    <span class="sd">"""</span>
-<span class="sd">    Set Window size to resolve line width issue</span>
-<span class="sd">    Set Windows size command: IAC SB NAWS &lt;16-bit value&gt; &lt;16-bit value&gt; IAC SE</span>
-<span class="sd">    --&gt; inform the Telnet server of the window width and height.</span>
-<span class="sd">    Refer to https://www.ietf.org/rfc/rfc1073.txt</span>
-<span class="sd">    :param tsocket: telnet socket object</span>
-<span class="sd">    :param command: telnet Command</span>
-<span class="sd">    :param option: telnet option</span>
-<span class="sd">    :return: None</span>
-<span class="sd">    """</span>
-
-    <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="n">NAWS</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; NAWS"</span><span class="p">)</span>
-        <span class="n">width</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="n">MAX_WINDOW_WIDTH</span><span class="p">)</span>
-        <span class="n">height</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="n">MAX_WINDOW_HEIGHT</span><span class="p">)</span>
-        <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">WILL</span> <span class="o">+</span> <span class="n">NAWS</span><span class="p">)</span>
-        <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">SB</span> <span class="o">+</span> <span class="n">NAWS</span> <span class="o">+</span> <span class="n">width</span> <span class="o">+</span> <span class="n">height</span> <span class="o">+</span> <span class="n">IAC</span> <span class="o">+</span> <span class="n">SE</span><span class="p">)</span>
-    <span class="c1"># -- below code taken from telnetlib source</span>
-    <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="n">DO</span><span class="p">,</span> <span class="n">DONT</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; WONT"</span><span class="p">)</span>
-        <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">WONT</span> <span class="o">+</span> <span class="n">option</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="n">WILL</span><span class="p">,</span> <span class="n">WONT</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DONT"</span><span class="p">)</span>
-        <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">DONT</span> <span class="o">+</span> <span class="n">option</span><span class="p">)</span>
-
-
 <span class="n">host</span> <span class="o">=</span> <span class="s2">"192.168.2.1"</span>
 <span class="n">user</span> <span class="o">=</span> <span class="s2">"root"</span>
 <span class="n">passwd</span> <span class="o">=</span> <span class="s2">"11111111"</span>
@@ -724,9 +696,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DONT"</span><span class="p">)</span>
         <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">DONT</span> <span class="o">+</span> <span class="n">option</span><span class="p">)</span>
 
-
-<span class="n">command_arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ls -ls"</span><span class="p">,</span>
-               <span class="s2">"exit"</span><span class="p">]</span>
+<span class="n">command_arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ls -ls"</span><span class="p">,</span> <span class="s2">"exit"</span><span class="p">]</span>
 
 <span class="n">tn</span> <span class="o">=</span> <span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">tn</span><span class="o">.</span><span class="n">set_debuglevel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
