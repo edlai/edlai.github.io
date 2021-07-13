@@ -121,7 +121,7 @@ Delete    | DELETE |  DELETE              |
 Read      | SELECT |  GET                 |
 Update    | UPDATE |  PUT / POST / PATCH  |
 
-### GET
+#### GET
 
 - Grab all API
 
@@ -134,7 +134,7 @@ $ curl -H 'Cache-Control: no-cache' http://192.168.0.1:8000/api/
 ``` console
 $ curl -H 'Cache-Control: no-cache' http://192.168.0.1:8000/api/users
 ```
-### POST
+#### POST
 
 - Modify the current settings
 
@@ -147,6 +147,9 @@ $ curl -H 'Cache-Control: no-cache' http://localhost:8000/api/users/[{"username"
 ``` console
 $ curl -X POST -H 'Cache-Control: no-cache' -F "file_uploaded=@output/fw.bin" http://192.168.0.1:8000/api/upload/
 ```
+
+### Python Selenium
+
 ### Misc
 
 - CSRF token
