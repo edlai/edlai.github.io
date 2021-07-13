@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../edu/qualitative-research/">
+<a class="md-tabs__link" href="../../edu/">
         Education
       </a>
 </li>
@@ -244,13 +244,37 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#http-request">
+    HTTP REQUEST
+  </a>
+<nav aria-label="HTTP REQUEST" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#method">
+    Method
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get">
+    GET
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post">
+    POST
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+    Misc
+  </a>
+</li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../prog/">
-        Programmer Skills
-      </a>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../diag/">
@@ -275,6 +299,21 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../doc/">
         Documentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prog/">
+        Programmer Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../python/">
+        Extending Python with C
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mass/">
+        Mass Production
       </a>
 </li>
 </ul>
@@ -551,6 +590,26 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../edu/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../edu/thesis/">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../edu/english/">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../edu/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
@@ -646,6 +705,35 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#http-request">
+    HTTP REQUEST
+  </a>
+<nav aria-label="HTTP REQUEST" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#method">
+    Method
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get">
+    GET
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post">
+    POST
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+    Misc
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -654,8 +742,27 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="automation-and-crawler">Automation and Crawler</h1>
+<p>There are around few steps as following for firmware development and verification. Firmware RnD can make up a script to do so automatically.</p>
+<ol>
+<li>Firmware Development<ul>
+<li>SSH to Build Server (Host) to build firmware code.</li>
+</ul>
+</li>
+<li>Firmware Deployment<ul>
+<li>TELNET to CPE (Target) to updage the firmware in bootload mode or or in kernel mode.</li>
+<li>or SNED a HTTP POST to updage new firmware.</li>
+</ul>
+</li>
+<li>Provisioning<ul>
+<li>SEND a HTTP POST request to change the current setting.</li>
+</ul>
+</li>
+<li>Verification<ul>
+<li>SEND a HTTP GET request to get the current setting.</li>
+</ul>
+</li>
+</ol>
 <h2 id="automation">Automation</h2>
-<p>Combine below scripts, user can SSH to build machine to build firmware code then TELNET to CPE to updage firmware code.</p>
 <h3 id="telnet">TELNET</h3>
 <p>The sample code shows how to login Router and execute <code>ls</code> command.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
@@ -738,6 +845,71 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Exception!!'</span><span class="p">)</span>
     <span class="k">raise</span>
 </code></pre></div>
+<h2 id="http-request">HTTP REQUEST</h2>
+<ul>
+<li><a href="https://curl.se/">curl</a>: command line tool and libraryfor transferring data with URLs.</li>
+<li><a href="https://docs.python-requests.org/en/master/">Python Requests</a>: an elegant and simple HTTP library for Python, built for human beings.</li>
+<li><a href="https://github.com/axios/axios">axios</a>: Promise based HTTP client for the browser and node.js.</li>
+<li><a href="https://www.postman.com/">Postman</a>: The Collaboration Platform for API Development.</li>
+</ul>
+<h3 id="method">Method</h3>
+<table>
+<thead>
+<tr>
+<th>CURD</th>
+<th align="center">SQL</th>
+<th>HTTP Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create</td>
+<td align="center">INSERT</td>
+<td>PUT / POST</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td align="center">DELETE</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td>Read</td>
+<td align="center">SELECT</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>Update</td>
+<td align="center">UPDATE</td>
+<td>PUT / POST / PATCH</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get">GET</h3>
+<ul>
+<li>Grab all API</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -H <span class="s1">'Cache-Control: no-cache'</span> http://192.168.0.1:8000/api/
+</code></pre></div>
+<ul>
+<li>Grab current settings</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -H <span class="s1">'Cache-Control: no-cache'</span> http://192.168.0.1:8000/api/users
+</code></pre></div>
+<h3 id="post">POST</h3>
+<ul>
+<li>Modify the current settings</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -H <span class="s1">'Cache-Control: no-cache'</span> http://localhost:8000/api/users/<span class="o">[{</span><span class="s2">"username"</span>: <span class="s2">"joe"</span>, <span class="s2">"email"</span>: <span class="s2">"joe@example.com"</span><span class="o">}]</span>
+</code></pre></div>
+<ul>
+<li>Upload a File</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X POST -H <span class="s1">'Cache-Control: no-cache'</span> -F <span class="s2">"file_uploaded=@output/fw.bin"</span> http://192.168.0.1:8000/api/upload/
+</code></pre></div>
+<h3 id="misc">Misc</h3>
+<ul>
+<li>CSRF token</li>
+</ul>
 <p>~ TBD ~</p>
 </article>
 </div>
@@ -758,13 +930,13 @@
             </div>
 </div>
 </a>
-<a aria-label="Next: Programmer Skills" class="md-footer__link md-footer__link--next" href="../prog/" rel="next">
+<a aria-label="Next: Diagnostic Tools" class="md-footer__link md-footer__link--next" href="../diag/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Programmer Skills
+              Diagnostic Tools
             </div>
 </div>
 <div class="md-footer__button md-icon">
