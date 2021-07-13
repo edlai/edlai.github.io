@@ -13,6 +13,7 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 
 - [Visual Studio Code Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) (Highly Recommended)
 - [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (Highly Recommended)
+- [Visual Studio IntelliCode](https://visualstudio.microsoft.com/zh-hant/services/intellicode/)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens): easy to check git history and so on.
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 - [Trailing Space](https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces)
@@ -279,6 +280,7 @@ $ doxygen Doxygen
 ```
 For more detail, please check [this blog](https://blog.longwin.com.tw/2011/04/doxygen-document-generator-2011/)
 
+- (woboq)[https://code.woboq.org/]: Code Browser by Woboq for C & C++.
 ## Searching Tools
 
 - grep

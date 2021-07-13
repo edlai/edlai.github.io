@@ -1,8 +1,18 @@
 # Automation and Crawler
 
-## Automation
+There are around few steps as following for firmware development and verification. Firmware RnD can make up a script to do so automatically.
 
-Combine below scripts, user can SSH to build machine to build firmware code then TELNET to CPE to updage firmware code.
+1. Firmware Development
+    - SSH to Build Server (Host) to build firmware code.
+2. Firmware Deployment
+    - TELNET to CPE (Target) to updage the firmware in bootload mode or or in kernel mode.
+    - or SNED a HTTP POST to updage new firmware.
+3. Provisioning
+    - SEND a HTTP POST request to change the current setting.
+4. Verification
+    - SEND a HTTP GET request to get the current setting.
+
+## Automation
 
 ### TELNET
 
@@ -94,5 +104,51 @@ except Exception:
     print('Exception!!')
     raise
 ```
+
+## HTTP REQUEST
+
+- [curl](https://curl.se/): command line tool and libraryfor transferring data with URLs.
+- [Python Requests](https://docs.python-requests.org/en/master/): an elegant and simple HTTP library for Python, built for human beings.
+- [axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js.
+- [Postman](https://www.postman.com/): The Collaboration Platform for API Development.
+
+### Method
+
+CURD      | SQL    |  HTTP Method         |
+----------|:------:|----------------------|
+Create    | INSERT |  PUT / POST          |
+Delete    | DELETE |  DELETE              |
+Read      | SELECT |  GET                 |
+Update    | UPDATE |  PUT / POST / PATCH  |
+
+### GET
+
+- Grab all API
+
+``` console
+$ curl -H 'Cache-Control: no-cache' http://192.168.0.1:8000/api/
+```
+
+- Grab current settings
+
+``` console
+$ curl -H 'Cache-Control: no-cache' http://192.168.0.1:8000/api/users
+```
+### POST
+
+- Modify the current settings
+
+``` console
+$ curl -H 'Cache-Control: no-cache' http://localhost:8000/api/users/[{"username": "joe", "email": "joe@example.com"}]
+```
+
+- Upload a File
+
+``` console
+$ curl -X POST -H 'Cache-Control: no-cache' -F "file_uploaded=@output/fw.bin" http://192.168.0.1:8000/api/upload/
+```
+### Misc
+
+- CSRF token
 
 ~ TBD ~

@@ -1,6 +1,8 @@
 
 # Accessories for Firmware Development
 
+This chapter introduces some accessories for firmware development.
+
 ## USB-to-RS232 console cable
 
 
