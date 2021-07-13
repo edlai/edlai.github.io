@@ -35,7 +35,7 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 
 
 ???+ tip "VSC Extensions - C/C++ for Visual Studio Code"
-    It's highly recommended to install `C/C++ for Visual Studio Code`, it supports `Coding Convention`, 'Source Code Tagging System' and so on.
+    It's highly recommended to install `C/C++ for Visual Studio Code`, it supports `Coding Convention`, `Source Code Tagging System` and so on.
 
 ???+ info "max_user_watches"
     Please consider to enlarge `max_user_watches` to `524288` also.
