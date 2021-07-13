@@ -21,7 +21,7 @@ There are several sections of this Wiki.
 - [Engineering](dev/softwares/index.md)
 There are some of my reports and homeworks when I was a BSEE undergraduate student in university or in my career.
 
-- [Education](qualitative-research/index.md)
+- [Education](edu/qualitative-research/index.md)
 There are some of the reports and homeworks when I was a MSMIE graduate student. But it's still under construction now. 
 
 
@@ -62,7 +62,7 @@ The products (Wireless Mesh and Cellular Routers) I developed with my colleagues
 - [D-Link DIR-45x EVDO/HSPA Router ODM](http://en.techinfodepot.shoutwiki.com/wiki/D-Link_DIR-450_rev_A1) (with 2 colleagues in 2006 B.C.) `x86`
    <!--[`emulator`](http://www.support.dlink.ca/emulators/dir450/103/login.htm)-->
    <!--- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86` [`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
-- D-Link COVR-1100 (with 2 colleagues in 2020 B.C.)`mips` [`RTL8197F`](https://www.realtek.com/en/products/communications-network-ics/item/rtl8197f): The mesh Wi-Fi router. (handover from HsinChu RD team)
+- D-Link COVR-1100 Wi-Fi Mesh Router(with 2 colleagues in 2020 B.C., handover from HsinChu RD team)`mips` [`RTL8197F`](https://www.realtek.com/en/products/communications-network-ics/item/rtl8197f)
 
 *** » Web Developer « ***
 

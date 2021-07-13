@@ -2,30 +2,41 @@
 
 ## Network Hub (Optional)
 
-If you don't to want to spend your time to set `Port Mirror` to Network Switch, please consider to buy ancient Hub for packet sniffing.
+If you don't to want to spend your time to set `Port Mirror` to Network Switch, please look for ancient Hub for packet sniffing.
 
 ### LINKSYS EW5HUB
+![EW5HUB](linksys_001.png) 
 ### D-Link DE-805TP
 
+![DE-805TP](dlink_001.png)
 ## Network Switch
 
-better to have `Port Mirroring` function for the Network Switch.
+It's better to have `Port Mirroring` function to the Network Switch.
 
-### [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)
+<!--### [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)-->
 
-### [VigorSwitch G1080](https://www.draytek.com/products/vigorswitch-g1080/)
+### VigorSwitch G1080
+
+8-Port Smart Lite Managed Gigabit Switch
 
 - Default IP: 192.168.1.224
 - Default Password: admin
+- Website: [*](https://www.draytek.com/products/vigorswitch-g1080/#overview)
 - Port Mirroring:
 
-![DrayTek](draytek.png)
+![DrayTek](draytek_001.png)
 
 ## Ethernet Router
 
-### [MikroTik RB750Gr3 hEX](https://mikrotik.com/product/RB750Gr3)
+### MikroTik RB750Gr3 hEX
 
+5x Gigabit Ethernet, Dual Core 880MHz CPU, 256MB RAM, USB, microSD, RouterOS L4.
+<!--
 RouterOS is the nice operating system which has good cost performance ratio.
+-->
+
+- Default IP: 192.168.88.1
+- Website: [*](https://mikrotik.com/product/RB750Gr3)
 
 - Config PPPoE server with VLAN support
 

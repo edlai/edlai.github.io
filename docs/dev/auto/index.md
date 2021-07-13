@@ -2,6 +2,8 @@
 
 ## Automation
 
+Combine below scripts, user can SSH to build machine to build firmware code then TELNET to CPE to updage firmware code.
+
 ### TELNET
 
 The sample code shows how to login Router and execute `ls` command.
@@ -73,10 +75,6 @@ def set_max_window_size(tsocket, command, option):
         print(">>>>>>>>>>>>>>>>>> DONT")
         tsocket.send(IAC + DONT + option)
 
-
-host = "192.168.2.1"
-user = "root"
-passwd = "1111qqqq@Wrsdd2019"
 
 command_arr = ["ls -ls",
                "exit"]
