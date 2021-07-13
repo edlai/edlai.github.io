@@ -1,21 +1,23 @@
-# Debian 10.10
+---
+title: My Document
+date: 2021-07-13
+---
+
+# Quick Start to Rebuild Linux Kernel
 
 This chapter describes
 
-- how to upgrade and rebuild Linux Kernel in Debian 10.10.
-- how to insert and remove Linux Device Driver.
+- How to upgrade and rebuild Linux Kernel from Linux 4.x to Linux 5.x in Debian 10.10.
+- How to enable and disable new Linux Device Module.
 
 
 ## Rebuild Linux Kernel
 
-Download and install Wireshark from Internet.For `Debian 10.10`, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.
-
-
-Programming Live CD, in my case I choose [`debian-live-10.10.0-amd64-xfce.iso`](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/)
+Download and install `Debian 10.10` to your device, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x. In my case I choose [`debian-live-10.10.0-amd64-xfce.iso`](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/).
 
 Check the current Linux Kernel version.
 
-```console
+``` console
 # uname -a
 config-4.19.0-17-amd64
 ```
@@ -58,9 +60,9 @@ $ sync; sudo reboot
 ```
 
 
-Rebuild the kernel
+Rebuild Linux kernel
 
-```console
+``` console
 $ sudo apt-get update ; sudo apt-get upgrade; sudo apt autoremove
 $ sudo apt-cache search kernel | grep source | grep 5.10
 linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches
@@ -87,15 +89,15 @@ CONFIG_DEBUG_INFO_BTF=n
 
 Compile and Install the Kernel
 
-```console
+``` console
 $ sudo add-apt-repository 'deb http://http.us.debian.org/debian/ buster main contrib non-free'
 $ sudo make -j $(nproc) V=99 deb-pkg 2>&1 | tee build.log | grep -i error
 $ cd ..
 ```
 
-Result
+As the result, there are around four deb files.
 
-```console
+``` console
 $ ls -lah | grep deb
 -rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb
 -rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb
@@ -105,7 +107,7 @@ $ ls -lah | grep deb
 
 Install
 
-```console
+``` console
 $ sudo dpkg -i linux-image-5.10.40_5.10.40-5_amd64.deb
 $ sudo dpkg -i linux-headers-5.10.40_5.10.40-5_amd64.deb
 $ sync
@@ -114,7 +116,7 @@ $ sudo reboot
 
 Verification
 
-```console
+``` console
 $ uname -a
 $ Linux ed-pc 5.10.40 #5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux
 ```
@@ -215,7 +217,6 @@ hello 16384 0 - Live 0x0000000000000000 (OE)
 ```
 
 ### Proc Filesystem
-
 
 ```
 📝 Functions:
@@ -460,6 +461,21 @@ $ objcopy -I elf64-little -O binary a.o a.bin  # < = Extract eBPF bytecode
 ~~ TBD ~~
 
 ## Coredump
+
+## Appendix
+
+### Tag Linux Kernel Code
+
+An example to tag kernel code for x86 system.
+
+``` console
+$ wget https://git.kernel.org/torvalds/t/linux-5.14-rc1.tar.gz
+$ tar xvf linux-5.14-rc1.tar.gz
+$ cd linux-5.14-rc1/
+$ make ARCH=x86 cscope tags
+```
+
+for more detail, please check [linux kernel make tag variable](https://stackoverflow.com/questions/50791012/linux-kernel-make-tag-variable)
 
 ## Reference
 

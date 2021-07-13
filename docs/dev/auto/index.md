@@ -6,11 +6,11 @@ There are around few steps as following for firmware development and verificatio
     - SSH to Build Server (Host) to build firmware code.
 2. Firmware Deployment
     - TELNET to CPE (Target) to updage the firmware in bootload mode or or in kernel mode.
-    - or SNED a HTTP POST to updage new firmware.
+    - or submit a HTTP POST to updage new firmware.
 3. Provisioning
-    - SEND a HTTP POST request to change the current setting.
+    - submit a HTTP POST request to change the current setting.
 4. Verification
-    - SEND a HTTP GET request to get the current setting.
+    -  submit a HTTP GET request to get the current setting.
 
 ## Automation
 
@@ -148,7 +148,7 @@ $ curl -H 'Cache-Control: no-cache' http://localhost:8000/api/users/[{"username"
 $ curl -X POST -H 'Cache-Control: no-cache' -F "file_uploaded=@output/fw.bin" http://192.168.0.1:8000/api/upload/
 ```
 
-### Python Selenium
+### Selenium
 
 ### Misc
 

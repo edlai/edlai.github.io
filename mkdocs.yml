@@ -30,8 +30,8 @@ nav:
         - 'Embedded Linux':
           - 'Buildroot': 'embedded/buildroot/index.md'
           - 'OpenWRT': 'embedded/openwrt/index.md'
-        - 'Linux Distribution':
-          - 'Debian 10.10': 'distro/debian10/index.md'
+        - 'Linux Kernel':
+          - 'Rebuild Kernel': 'kernel/rebuild/index.md'
         - 'Computer Networks':
           - 'Application Layer':
             - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
