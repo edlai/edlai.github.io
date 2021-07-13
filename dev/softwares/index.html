@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../qualitative-research/">
+<a class="md-tabs__link" href="../../edu/qualitative-research/">
         Education
       </a>
 </li>
@@ -297,11 +297,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#dynamic-code-analysis-tools">
     Dynamic Code Analysis Tools
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#valgrind-an-instrumentation-framework-for-building-dynamic-analysis-tools">
-    Valgrind: an instrumentation framework for building dynamic analysis tools.
   </a>
 </li>
 </ul>
@@ -644,12 +639,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../qualitative-research/">
+<a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../quantitative-research/">
+<a class="md-nav__link" href="../../edu/quantitative-research/">
         Quantitative Research
       </a>
 </li>
@@ -809,11 +804,6 @@
     Dynamic Code Analysis Tools
   </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#valgrind-an-instrumentation-framework-for-building-dynamic-analysis-tools">
-    Valgrind: an instrumentation framework for building dynamic analysis tools.
-  </a>
-</li>
 </ul>
 </nav>
 </li>
@@ -843,7 +833,7 @@
 <p>This chapter introduces some software development tools.</p>
 <h2 id="code-editor">Code Editor</h2>
 <h3 id="visual-studio-code">Visual Studio Code</h3>
-<p>Instead of <code>vi</code>, highly recommended to use Visual Studio Code(VSC) as a firmware development tools. First of all, just install
+<p>Instead of <code>vi</code>, highly recommended to use Visual Studio Code(VSC) as a firmware development tool. First of all, just install
 <a href="https://code.visualstudio.com/">Visual Studio Code</a> as a foundation of code editor then don't forget to install its <a href="https://code.visualstudio.com/docs/editor/extension-gallery">Recommended extensions</a> as following as well.</p>
 <h3 id="vsc-extensions">VSC Extensions</h3>
 <ul>
@@ -859,8 +849,16 @@
 <li><a href="https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format">shell-format</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock">Peacock</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml">PlantUML</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">ToDo Tree</a>s</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">ToDo Tree</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a></li>
 </ul>
+<!--
+- C/C++ Extension Pack
+- C/C++ Snippets
+- C/C++ Themes
+-->
+<details class="tip" open="open"><summary>VSC Extensions - C/C++ for Visual Studio Code</summary><p>It's highly recommended to install <code>C/C++ for Visual Studio Code</code>, it supports <code>Coding Convention</code>, 'Source Code Tagging System' and so on.</p>
+</details>
 <details class="info" open="open"><summary>max_user_watches</summary><p>Please consider to enlarge <code>max_user_watches</code> to <code>524288</code> also.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">echo</span> fs.inotify.max_user_watches<span class="o">=</span><span class="m">524288</span> &gt;&gt; /etc/sysctl.conf
 <span class="gp">$ </span>cat /proc/sys/fs/inotify/max_user_watches
@@ -937,27 +935,28 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f main.c
 $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 </code></pre></div>
 <p>Below script can help use to fomat all <code>*.c</code>, <code>*.h</code> and <code>java</code> files.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/bin/sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
-<span class="go">echo "running this script for doing code convention"</span>
+<span class="nb">echo</span> <span class="s2">"running this script for doing code convention"</span>
+astyle -V
 
-<span class="go">astyle -V</span>
+<span class="c1"># formate c code</span>
+<span class="k">for</span> f <span class="k">in</span> <span class="k">$(</span>find ../ -name <span class="s1">'*.c'</span> -or -name <span class="s1">'*.cpp'</span> -or -name <span class="s1">'*.h'</span> -type f<span class="k">)</span>
+<span class="k">do</span>
+  astyle --style<span class="o">=</span>kr --indent<span class="o">=</span><span class="nv">spaces</span><span class="o">=</span><span class="m">2</span> -p -U -f <span class="nv">$f</span>
+<span class="k">done</span>
 
-<span class="go">for f in $(find ../ -name '*.c' -or -name '*.cpp' -or -name '*.h' -type f)</span>
-<span class="go">do</span>
-<span class="go">  astyle --style=kr --indent=spaces=2 -p -U -f $f</span>
-<span class="go">done</span>
+<span class="c1"># formate java code</span>
+<span class="k">for</span> f <span class="k">in</span> <span class="k">$(</span>find ../ -name <span class="s1">'*.java'</span> -type f<span class="k">)</span>
+<span class="k">do</span>
+  astyle --style<span class="o">=</span>java --indent<span class="o">=</span><span class="nv">spaces</span><span class="o">=</span><span class="m">2</span> -p -U -f <span class="nv">$f</span>
+<span class="k">done</span>
 
-<span class="go">for f in $(find ../ -name '*.java' -type f)</span>
-<span class="go">do</span>
-<span class="go">  astyle --style=java --indent=spaces=2 -p -U -f $f</span>
-<span class="go">done</span>
-
-<span class="gp"># </span>after formate the code,we need to rm <span class="s1">'*.orig'</span> file
-<span class="go">for f in $(find ../ -name '*.orig' -type f)</span>
-<span class="go">do</span>
-<span class="go">  rm -rf $f</span>
-<span class="go">done</span>
+<span class="c1"># after formate the code,we need to rm '*.orig' file</span>
+<span class="k">for</span> f <span class="k">in</span> <span class="k">$(</span>find ../ -name <span class="s1">'*.orig'</span> -type f<span class="k">)</span>
+<span class="k">do</span>
+  rm -rf <span class="nv">$f</span>
+<span class="k">done</span>
 </code></pre></div>
 <h2 id="source-code-tagging-system">Source Code Tagging System</h2>
 <p>Use <a href="https://w1.fi/hostapd/">hostapd</a> as an example, fetch the code and untar it.</p>
@@ -968,12 +967,12 @@ $ astyle --style=kr --indent=spaces=2 -p -U -f *.c *.h
 <ul>
 <li><a href="http://cscope.sourceforge.net/">CScope</a>: a developer's tool for browsing source code.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install exuberant-ctags cscope
-$ ctags --version
-$ cscope --version
-$ find  ./ -name "*.c" -or -name "*.h" -or -name "*.cpp" -or -name "*.S" | cscope -Rbq
-# - OR -
-$ cscope -R
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install exuberant-ctags cscope
+<span class="gp">$ </span>ctags --version
+<span class="gp">$ </span>cscope --version
+<span class="gp">$ </span>find  ./ -name <span class="s2">"*.c"</span> -or -name <span class="s2">"*.h"</span> -or -name <span class="s2">"*.cpp"</span> -or -name <span class="s2">"*.S"</span> <span class="p">|</span> cscope -Rbq
+<span class="gp"># </span>- OR -
+<span class="gp">$ </span>cscope -R
 </code></pre></div>
 <ul>
 <li><a href="https://www.gnu.org/software/global/">GNU Global</a>: source code tagging system.</li>
@@ -1056,17 +1055,18 @@ For more detail, please check <a href="https://blog.longwin.com.tw/2011/04/doxyg
 <ul>
 <li>grep</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ grep -rsni eloop_register_read_sock *
+<p>Usage</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>grep -rsni eloop_register_read_sock *
 </code></pre></div>
 <ul>
 <li>ack</li>
 </ul>
 <p>Install</p>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install ack-grep
-$ sudo ldconfig
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install ack-grep
+<span class="gp">$ </span>sudo ldconfig
 </code></pre></div>
 <p>Usage</p>
-<div class="highlight"><pre><span></span><code>$ ack eloop_register_read_sock
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ack eloop_register_read_sock
 </code></pre></div>
 <h2 id="code-analysis-tools">Code Analysis Tools</h2>
 <h3 id="static-code-analysis-tools">Static Code Analysis Tools</h3>
@@ -1074,24 +1074,26 @@ $ sudo ldconfig
 <li><a href="https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160">clang-tidy</a>: a clang-based C++ “linter” tool.</li>
 <li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a>: A tool for static C/C++ code analysis</li>
 </ul>
-<div class="highlight"><pre><span></span><code># - INSTALL -
-$ sudo apt-get update -y; sudo apt-get install cppcheck
-# - RUN -
-$ cppcheck -j 3 ~/Project         # &lt; = open 3 threads to check source code from Project folder，--enable==error by default
-$ cppcheck -j 3 --enable=all ~/Project 
-$ cppcheck -j 3 --enable=all --xml 2&gt;err.xml ./   # &lt; = Get Report
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>- INSTALL -
+<span class="gp">$ </span>sudo apt-get update -y<span class="p">;</span> sudo apt-get install cppcheck
+<span class="gp"># </span>- RUN -
+<span class="gp">$ </span>cppcheck -j <span class="m">3</span> ~/Project         <span class="c1"># &lt; = open 3 threads to check source code from Project folder，--enable==error by default</span>
+<span class="gp">$ </span>cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all ~/Project 
+<span class="gp">$ </span>cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all --xml <span class="m">2</span>&gt;err.xml ./   <span class="c1"># &lt; = Get Report</span>
 </code></pre></div>
 <ul>
 <li><a href="https://splint.org/">splint</a>: a tool for statically checking C programs for security vulnerabilities and coding mistakes.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get update -y; sudo apt-get install -y splint
-$ splint test.c +bounds -varuse   # bounds: check memory leak 
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update -y<span class="p">;</span> sudo apt-get install -y splint
+<span class="gp">$ </span>splint test.c +bounds -varuse   <span class="c1"># bounds: check memory leak</span>
 </code></pre></div>
 <ul>
 <li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
 </ul>
 <h3 id="dynamic-code-analysis-tools">Dynamic Code Analysis Tools</h3>
-<h3 id="valgrind-an-instrumentation-framework-for-building-dynamic-analysis-tools"><a href="https://www.valgrind.org/">Valgrind</a>: an instrumentation framework for building dynamic analysis tools.</h3>
+<ul>
+<li><a href="https://www.valgrind.org/">Valgrind</a>: an instrumentation framework for building dynamic analysis tools.</li>
+</ul>
 <h2 id="terminal-multiplexer">Terminal Multiplexer</h2>
 <ul>
 <li><a href="https://github.com/tmux/tmux/wiki">Tmux Terminal</a>: a terminal multiplexer.</li>

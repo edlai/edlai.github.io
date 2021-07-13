@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../qualitative-research/">
+<a class="md-tabs__link" href="../../edu/qualitative-research/">
         Education
       </a>
 </li>
@@ -551,12 +551,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../qualitative-research/">
+<a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../quantitative-research/">
+<a class="md-nav__link" href="../../edu/quantitative-research/">
         Quantitative Research
       </a>
 </li>
@@ -655,6 +655,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="automation-and-crawler">Automation and Crawler</h1>
 <h2 id="automation">Automation</h2>
+<p>Combine below scripts, user can SSH to build machine to build firmware code then TELNET to CPE to updage firmware code.</p>
 <h3 id="telnet">TELNET</h3>
 <p>The sample code shows how to login Router and execute <code>ls</code> command.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
@@ -723,10 +724,6 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DONT"</span><span class="p">)</span>
         <span class="n">tsocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">IAC</span> <span class="o">+</span> <span class="n">DONT</span> <span class="o">+</span> <span class="n">option</span><span class="p">)</span>
 
-
-<span class="n">host</span> <span class="o">=</span> <span class="s2">"192.168.2.1"</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">"root"</span>
-<span class="n">passwd</span> <span class="o">=</span> <span class="s2">"1111qqqq@Wrsdd2019"</span>
 
 <span class="n">command_arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ls -ls"</span><span class="p">,</span>
                <span class="s2">"exit"</span><span class="p">]</span>

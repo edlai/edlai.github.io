@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../qualitative-research/">
+<a class="md-tabs__link" href="../../edu/qualitative-research/">
         Education
       </a>
 </li>
@@ -256,8 +256,36 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#docker-compose">
+    Docker Compose
+  </a>
+<nav aria-label="Docker Compose" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#yaml">
+    YAML
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#macvlan">
     Macvlan
+  </a>
+<nav aria-label="Macvlan" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run-mqtt">
+    Run MQTT
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
   </a>
 </li>
 </ul>
@@ -542,12 +570,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../qualitative-research/">
+<a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../quantitative-research/">
+<a class="md-nav__link" href="../../edu/quantitative-research/">
         Quantitative Research
       </a>
 </li>
@@ -624,8 +652,36 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#docker-compose">
+    Docker Compose
+  </a>
+<nav aria-label="Docker Compose" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#yaml">
+    YAML
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#macvlan">
     Macvlan
+  </a>
+<nav aria-label="Macvlan" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run-mqtt">
+    Run MQTT
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
   </a>
 </li>
 </ul>
@@ -636,9 +692,95 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="docker-and-macvlan">Docker and Macvlan</h1>
-<p>under construction...</p>
+<p>If you are not familiar with Docker Compose, pleasr take a look <a href="https://docs.docker.com/compose/gettingstarted/">Get started with Docker Compose</a>.</p>
 <h2 id="docker">Docker</h2>
+<p>Follow <a href="https://docs.docker.com/engine/install/ubuntu/">Install Docker Engine on Ubuntu</a> to install Docker in Ubuntu 20.10.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get remove docker docker-engine docker.io containerd runc
+<span class="gp">$ </span>sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+<span class="gp">$ </span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+<span class="gp">$ </span><span class="nb">echo</span> <span class="s2">"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable"</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre></div>
+<p>Show Docker version you installed.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker version
+<span class="go">Client: Docker Engine - Community</span>
+<span class="go"> Version:           20.10.7</span>
+<span class="go"> API version:       1.41</span>
+<span class="go"> Go version:        go1.13.15</span>
+<span class="go"> Git commit:        f0df350</span>
+<span class="go"> Built:             Wed Jun  2 11:56:41 2021</span>
+<span class="go"> OS/Arch:           linux/amd64</span>
+<span class="go"> Context:           default</span>
+<span class="go"> Experimental:      true</span>
+
+<span class="go">Server: Docker Engine - Community</span>
+<span class="go"> Engine:</span>
+<span class="go">  Version:          20.10.7</span>
+<span class="go">  API version:      1.41 (minimum version 1.12)</span>
+<span class="go">  Go version:       go1.13.15</span>
+<span class="go">  Git commit:       b0f5bc3</span>
+<span class="go">  Built:            Wed Jun  2 11:54:53 2021</span>
+<span class="go">  OS/Arch:          linux/amd64</span>
+<span class="go">  Experimental:     false</span>
+<span class="go"> containerd:</span>
+<span class="go">  Version:          1.4.6</span>
+<span class="go">  GitCommit:        d71fcd7d8303cbf684402823e425e9dd2e99285d</span>
+<span class="go"> runc:</span>
+<span class="go">  Version:          1.0.0-rc95</span>
+<span class="go">  GitCommit:        b9ee9c6314599f1b4a7f497e1f1f856fe433d3b7</span>
+<span class="go"> docker-init:</span>
+<span class="go">  Version:          0.19.0</span>
+<span class="go">  GitCommit:        de40ad0</span>
+</code></pre></div>
+<p>Add User and logout then re-login again</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo groupadd docker
+<span class="gp">$ </span>sudo usermod -aG docker <span class="nv">$USER</span>
+<span class="gp">$ </span><span class="nb">logout</span>
+</code></pre></div>
+<p>Run it.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo docker run hello-world
+
+<span class="go">Unable to find image 'hello-world:latest' locally</span>
+<span class="go">latest: Pulling from library/hello-world</span>
+<span class="go">b8dfde127a29: Pull complete</span>
+<span class="go">Digest: sha256:df5f5184104426b65967e016ff2ac0bfcd44ad7899ca3bbcf8e44e4461491a9e</span>
+<span class="go">Status: Downloaded newer image for hello-world:latest</span>
+
+<span class="go">Hello from Docker!</span>
+<span class="go">This message shows that your installation appears to be working correctly.</span>
+
+<span class="go">...</span>
+
+<span class="go">To try something more ambitious, you can run an Ubuntu container with:</span>
+<span class="gp"> $ </span>docker run -it ubuntu bash
+</code></pre></div>
+<p>Run it using interactive(<code>-it</code>) then press <code>uname -a</code> to check the current Ubuntu version docker installed.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker run -it ubuntu bash
+<span class="go">Unable to find image 'ubuntu:latest' locally</span>
+<span class="go">latest: Pulling from library/ubuntu</span>
+<span class="go">c549ccf8d472: Pull complete</span>
+<span class="go">Digest: sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe</span>
+<span class="go">Status: Downloaded newer image for ubuntu:latest</span>
+<span class="gp">root@7a58af80ae6b:/# </span>uname -a
+<span class="go">Linux 7a58af80ae6b 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+<span class="gp">root@7a58af80ae6b:/# </span><span class="nb">exit</span>
+</code></pre></div>
+<h2 id="docker-compose">Docker Compose</h2>
+<p>Follow <a href="https://docs.docker.com/compose/install/">Install Docker Compose</a> to install Docker Compose.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo curl -L <span class="s2">"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">"</span> -o /usr/local/bin/docker-compose
+<span class="gp">$ </span>sudo chmod +x /usr/local/bin/docker-compose
+
+<span class="gp">$ </span>docker-compose --version
+<span class="go">docker-compose version 1.29.2, build 5becea4c</span>
+</code></pre></div>
+<h3 id="yaml">YAML</h3>
 <h2 id="macvlan">Macvlan</h2>
+<h3 id="run-mqtt">Run MQTT</h3>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://devconnected.com/how-to-list-docker-images/">How To List Docker Images</a></li>
+</ul>
 </article>
 </div>
 </div>

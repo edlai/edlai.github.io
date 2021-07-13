@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../qualitative-research/">
+<a class="md-tabs__link" href="../../edu/qualitative-research/">
         Education
       </a>
 </li>
@@ -245,11 +245,6 @@
   </a>
 <nav aria-label="Network Switch" class="md-nav">
 <ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#dgs-1210-10p">
-    DGS-1210-10P
-  </a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#vigorswitch-g1080">
     VigorSwitch G1080
@@ -584,12 +579,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../qualitative-research/">
+<a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../quantitative-research/">
+<a class="md-nav__link" href="../../edu/quantitative-research/">
         Quantitative Research
       </a>
 </li>
@@ -686,11 +681,6 @@
 <nav aria-label="Network Switch" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#dgs-1210-10p">
-    DGS-1210-10P
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#vigorswitch-g1080">
     VigorSwitch G1080
   </a>
@@ -721,24 +711,37 @@
 <article class="md-content__inner md-typeset">
 <h1 id="equipments">Equipments</h1>
 <h2 id="network-hub-optional">Network Hub (Optional)</h2>
-<p>If you don't to want to spend your time to set <code>Port Mirror</code> to Network Switch, please consider to buy ancient Hub for packet sniffing.</p>
+<p>If you don't to want to spend your time to set <code>Port Mirror</code> to Network Switch, please look for ancient Hub for packet sniffing.</p>
 <h3 id="linksys-ew5hub">LINKSYS EW5HUB</h3>
+<p><img alt="EW5HUB" src="linksys_001.png"/> </p>
 <h3 id="d-link-de-805tp">D-Link DE-805TP</h3>
+<p><img alt="DE-805TP" src="dlink_001.png"/></p>
 <h2 id="network-switch">Network Switch</h2>
-<p>better to have <code>Port Mirroring</code> function for the Network Switch.</p>
-<h3 id="dgs-1210-10p"><a href="http://www.dlinktw.com.tw/business/product?id=343">DGS-1210-10P</a></h3>
-<h3 id="vigorswitch-g1080"><a href="https://www.draytek.com/products/vigorswitch-g1080/">VigorSwitch G1080</a></h3>
+<p>It's better to have <code>Port Mirroring</code> function to the Network Switch.</p>
+<!--### [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)-->
+<h3 id="vigorswitch-g1080">VigorSwitch G1080</h3>
+<p>8-Port Smart Lite Managed Gigabit Switch</p>
 <ul>
 <li>Default IP: 192.168.1.224</li>
 <li>Default Password: admin</li>
+<li>Website: <a href="https://www.draytek.com/products/vigorswitch-g1080/#overview">*</a></li>
 <li>Port Mirroring:</li>
 </ul>
-<p><img alt="DrayTek" src="draytek.png"/></p>
+<p><img alt="DrayTek" src="draytek_001.png"/></p>
 <h2 id="ethernet-router">Ethernet Router</h2>
-<h3 id="mikrotik-rb750gr3-hex"><a href="https://mikrotik.com/product/RB750Gr3">MikroTik RB750Gr3 hEX</a></h3>
-<p>RouterOS is the nice operating system which has good cost performance ratio.</p>
+<h3 id="mikrotik-rb750gr3-hex">MikroTik RB750Gr3 hEX</h3>
+<p>5x Gigabit Ethernet, Dual Core 880MHz CPU, 256MB RAM, USB, microSD, RouterOS L4.</p>
+<!--
+RouterOS is the nice operating system which has good cost performance ratio.
+-->
 <ul>
-<li>Config PPPoE server with VLAN support</li>
+<li>Default IP: 192.168.88.1</li>
+<li>
+<p>Website: <a href="https://mikrotik.com/product/RB750Gr3">*</a></p>
+</li>
+<li>
+<p>Config PPPoE server with VLAN support</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code>Interfaces &gt; VLAN &gt; Name: vlan2 , VLAN ID: 2, Interface: eth3
 IP &gt; Pool &gt; Name: PPPoE_Pool, Address: 10.1.1.2-10.1.1.254

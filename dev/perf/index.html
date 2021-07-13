@@ -96,7 +96,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../qualitative-research/">
+<a class="md-tabs__link" href="../../edu/qualitative-research/">
         Education
       </a>
 </li>
@@ -244,25 +244,40 @@
 <a class="md-nav__link" href="#networking-performance">
     Networking Performance
   </a>
-<nav aria-label="Networking Performance" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tools">
+    Tools
+  </a>
+<nav aria-label="Tools" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#iperf">
-    iperf
+<a class="md-nav__link" href="#linux-bandwidth-monitor-tools">
+    Linux Bandwidth Monitor Tools
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#bandwidth-monitor">
-    Bandwidth Monitor
+<a class="md-nav__link" href="#windows-bandwidth-monitor-tools">
+    Windows Bandwidth Monitor Tools
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iperf3">
+    iperf3
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ftp">
+    FTP
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#http">
+    HTTP
   </a>
 </li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#snmp">
-    SNMP
-  </a>
 </li>
 </ul>
 </nav>
@@ -556,12 +571,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../qualitative-research/">
+<a class="md-nav__link" href="../../edu/qualitative-research/">
         Qualitative Research
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../quantitative-research/">
+<a class="md-nav__link" href="../../edu/quantitative-research/">
         Quantitative Research
       </a>
 </li>
@@ -636,25 +651,40 @@
 <a class="md-nav__link" href="#networking-performance">
     Networking Performance
   </a>
-<nav aria-label="Networking Performance" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tools">
+    Tools
+  </a>
+<nav aria-label="Tools" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#iperf">
-    iperf
+<a class="md-nav__link" href="#linux-bandwidth-monitor-tools">
+    Linux Bandwidth Monitor Tools
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#bandwidth-monitor">
-    Bandwidth Monitor
+<a class="md-nav__link" href="#windows-bandwidth-monitor-tools">
+    Windows Bandwidth Monitor Tools
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iperf3">
+    iperf3
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ftp">
+    FTP
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#http">
+    HTTP
   </a>
 </li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#snmp">
-    SNMP
-  </a>
 </li>
 </ul>
 </nav>
@@ -665,20 +695,63 @@
 <article class="md-content__inner md-typeset">
 <h1 id="performance-measurement">Performance  Measurement</h1>
 <h2 id="networking-performance">Networking Performance</h2>
-<h3 id="iperf">iperf</h3>
-<ul>
-<li><a href="https://iperf.fr/">iPerf</a>: The ultimate speed test tool for TCP, UDP and SCTP
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install iperf3
-</code></pre></div></li>
-</ul>
-<p>~~ TBD ~~</p>
-<h3 id="bandwidth-monitor">Bandwidth Monitor</h3>
+<h2 id="tools">Tools</h2>
+<h3 id="linux-bandwidth-monitor-tools">Linux Bandwidth Monitor Tools</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Bmon">bmon</a></li>
+</ul>
+<h3 id="windows-bandwidth-monitor-tools">Windows Bandwidth Monitor Tools</h3>
+<ul>
 <li><a href="http://www.bwmonitor.com/">Bandwidth Monitor</a></li>
 </ul>
-<h2 id="snmp">SNMP</h2>
-<p>~~ TBD ~~</p>
+<h3 id="iperf3">iperf3</h3>
+<ul>
+<li><a href="https://iperf.fr/">iPerf</a>: The ultimate speed test tool for TCP, UDP and SCTP</li>
+</ul>
+<p>Install</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install iperf3
+</code></pre></div>
+<p>Server Side</p>
+<div class="highlight"><pre><span></span><code>$ iperf3 -s
+</code></pre></div>
+<p>Client Side</p>
+<div class="highlight"><pre><span></span><code>$ iperf3 -c ${SERVER_IP}
+</code></pre></div>
+<h3 id="ftp">FTP</h3>
+<h3 id="http">HTTP</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">URL</span><span class="o">=</span><span class="s2">"http://speedtest.tele2.net/1GB.zip"</span>
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="s2">"curl.log"</span>
+
+rm -rf <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span>
+curl -L -o /dev/null <span class="s2">"</span><span class="nv">$URL</span><span class="s2">"</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>  <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span>
+cat <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span>
+</code></pre></div>
+<ul>
+<li>Reference</li>
+<li><a href="https://copperlight.github.io/shell/measuring-transfer-speed-over-time-with-curl/">Measuring Transfer Speed Over Time with cURL</a></li>
+<li><a href="http://speedtest.tele2.net/">Tele2 Speedtest Service</a></li>
+<li><a href="http://speed.hinet.net/ftptest.html">Hinet FTP</a></li>
+</ul>
+<!--
+
+### IxChariot
+
+- [IXCHARIOT/HAWKEYE PLATFORM ENDPOINTS](https://support.ixiacom.com/support-links/ixchariot/endpoint-library/platform-endpoints)
+
+## Flash
+
+<div class="highlight"><pre><span></span><code>$ mtd tool
+</code></pre></div>
+
+- Reference
+  - [採用dd 工具做Nand Flash磨損均衡](https://www.jianshu.com/p/763f8564edea)
+  - [使用linux的MTD tests support測試flash性能](http://simple-is-beauty.blogspot.com/2018/12/linuxmtd-tests-supportflash.html)
+
+~~ TBD ~~
+
+-->
 </article>
 </div>
 </div>
