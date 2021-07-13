@@ -14,8 +14,13 @@
 
 ### C
 
+- [C 貼士](https://www.delftstack.com/zh-tw/howto/c/)
 - Queue
 - Stack
+
+Strncpy
+- [strncpy 是否會自動補上 \0 ?](https://hackmd.io/@unknowntpo/strncpy)
+
 - Swap without 3rd var
 
 - [C 語言入門](https://www.youtube.com/watch?v=MqOHuaAN_3A&ab_channel=FeisStudio)
