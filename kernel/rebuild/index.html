@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://edlai.github.io/distro/debian10/" rel="canonical"/>
+<link href="https://edlai.github.io/kernel/rebuild/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Debian 10.10 - Ed's Wiki  🦉</title>
+<title>My Document - Ed's Wiki  🦉</title>
 <link href="../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#debian-1010">
+<a class="md-skip" href="#quick-start-to-rebuild-linux-kernel">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Debian 10.10
+              My Document
             
           </span>
 </div>
@@ -227,7 +227,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../dev/git/">
-        Git and Build Machine
+        Git Repo and Build Machine
       </a>
 </li>
 <li class="md-nav__item">
@@ -286,23 +286,23 @@
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3">
-        Linux Distribution
+        Linux Kernel
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Linux Distribution" class="md-nav" data-md-level="2">
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
-          Linux Distribution
+          Linux Kernel
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Debian 10.10
+          Rebuild Kernel
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Debian 10.10
+        Rebuild Kernel
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -372,6 +372,20 @@
 <a class="md-nav__link" href="#coredump">
     Coredump
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tag-linux-kernel-code">
+    Tag Linux Kernel Code
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#reference">
@@ -770,6 +784,20 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tag-linux-kernel-code">
+    Tag Linux Kernel Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#reference">
     Reference
   </a>
@@ -781,15 +809,14 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="debian-1010">Debian 10.10</h1>
+<h1 id="quick-start-to-rebuild-linux-kernel">Quick Start to Rebuild Linux Kernel</h1>
 <p>This chapter describes</p>
 <ul>
-<li>how to upgrade and rebuild Linux Kernel in Debian 10.10.</li>
-<li>how to insert and remove Linux Device Driver.</li>
+<li>How to upgrade and rebuild Linux Kernel from Linux 4.x to Linux 5.x in Debian 10.10.</li>
+<li>How to enable and disable new Linux Device Module.</li>
 </ul>
 <h2 id="rebuild-linux-kernel">Rebuild Linux Kernel</h2>
-<p>Download and install Wireshark from Internet.For <code>Debian 10.10</code>, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x which can support more WiFi dongles. There are the steps as following to upgrade Linux Kernel from 4.x to 5.x in Debian 10.10.</p>
-<p>Programming Live CD, in my case I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a></p>
+<p>Download and install <code>Debian 10.10</code> to your device, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x. In my case I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a>.</p>
 <p>Check the current Linux Kernel version.</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
 <span class="go">config-4.19.0-17-amd64</span>
@@ -819,7 +846,7 @@
 <span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree
 <span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
 </code></pre></div>
-<p>Rebuild the kernel</p>
+<p>Rebuild Linux kernel</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="p">;</span> sudo apt-get upgrade<span class="p">;</span> sudo apt autoremove
 <span class="gp">$ </span>sudo apt-cache search kernel <span class="p">|</span> grep <span class="nb">source</span> <span class="p">|</span> grep <span class="m">5</span>.10
 <span class="go">linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches</span>
@@ -846,7 +873,7 @@ make: *** [Makefile:1167: vmlinux] Error 1
 <span class="gp">$ </span>sudo make -j <span class="k">$(</span>nproc<span class="k">)</span> <span class="nv">V</span><span class="o">=</span><span class="m">99</span> deb-pkg <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee build.log <span class="p">|</span> grep -i error
 <span class="gp">$ </span><span class="nb">cd</span> ..
 </code></pre></div>
-<p>Result</p>
+<p>As the result, there are around four deb files.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>ls -lah <span class="p">|</span> grep deb
 <span class="go">-rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb</span>
 <span class="go">-rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb</span>
@@ -1343,6 +1370,15 @@ D--&gt;&gt;A: Dashed open arrow
 </code></pre></div>
 ~~ TBD ~~</p>
 <h2 id="coredump">Coredump</h2>
+<h2 id="appendix">Appendix</h2>
+<h3 id="tag-linux-kernel-code">Tag Linux Kernel Code</h3>
+<p>An example to tag kernel code for x86 system.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://git.kernel.org/torvalds/t/linux-5.14-rc1.tar.gz
+<span class="gp">$ </span>tar xvf linux-5.14-rc1.tar.gz
+<span class="gp">$ </span><span class="nb">cd</span> linux-5.14-rc1/
+<span class="gp">$ </span>make <span class="nv">ARCH</span><span class="o">=</span>x86 cscope tags
+</code></pre></div>
+<p>for more detail, please check <a href="https://stackoverflow.com/questions/50791012/linux-kernel-make-tag-variable">linux kernel make tag variable</a></p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://www.craftypenguins.net/kernel-module-snippets-part-1-hello-world/">Kernel Module Snippets – Part 1 – Hello World</a></li>
