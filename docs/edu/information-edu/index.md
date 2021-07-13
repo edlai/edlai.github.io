@@ -14,8 +14,11 @@
 
 ### C
 
+- [C 語言入門](https://www.youtube.com/watch?v=MqOHuaAN_3A&ab_channel=FeisStudio)
+
 - printf()
 - scanf()
+
 ### LeetCode
 
 - [Python 與 C 的 LeetCode 六月挑戰](https://feis.studio/#/leetcode_june)
