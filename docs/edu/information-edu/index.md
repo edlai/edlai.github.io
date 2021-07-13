@@ -8,6 +8,10 @@
 
 ## Text-Based Computer Programming Languages
 
+### Python
+
+~~ TBD ~~
+
 ### C
 
 - printf()
