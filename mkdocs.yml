@@ -56,6 +56,8 @@ nav:
         - 'Miscellaneous':
           - 'Misc': 'misc/index.md'
     - 'Education':
+        - 'Introduction': 'edu/index.md'
+        - 'Information Education': 'edu/information-edu/index.md'
         - 'Qualitative Research': 'edu/qualitative-research/index.md'
         - 'Quantitative Research': 'edu/quantitative-research/index.md'
     - 'Collection':
