@@ -16,7 +16,7 @@ nav:
           - 'Automation and Crawler': 'dev/auto/index.md'
           - 'Diagnostic Tools': 'dev/diag/index.md'
           - 'Performance Measurement': 'dev/perf/index.md'
-          - 'Git and Build Machine': 'dev/git/index.md'
+          - 'Git Repo and Build Machine': 'dev/git/index.md'
           - 'Docker and Macvlan': 'dev/docker/index.md'
           - 'Documentation': 'dev/doc/index.md'
           - 'Programmer Skills': 'dev/prog/index.md'
