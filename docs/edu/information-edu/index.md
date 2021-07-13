@@ -14,10 +14,16 @@
 
 ### C
 
+- Queue
+- Stack
+- Swap without 3rd var
+
 - [C 語言入門](https://www.youtube.com/watch?v=MqOHuaAN_3A&ab_channel=FeisStudio)
 
 - printf()
 - scanf()
+
+- read entire file
 
 #### Call by address
 
