@@ -23,7 +23,7 @@
 
 - [Jserv系統軟體課程進度與開放資源](http://wiki.csie.ncku.edu.tw/sysprog/schedule)
 
-- [How can I return to a string address and then assign it to a new string?](https://stackoverflow.com/questions/2619229/how-can-i-return-to-a-string-address-and-then-assign-it-to-a-new-string)
+- strncpy: [How can I return to a string address and then assign it to a new string?](https://stackoverflow.com/questions/2619229/how-can-i-return-to-a-string-address-and-then-assign-it-to-a-new-string)
 - [malloc, free, and memmove inside a subfunction](https://stackoverflow.com/questions/28618434/malloc-free-and-memmove-inside-a-subfunction)
 
 
