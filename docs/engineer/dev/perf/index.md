@@ -1,6 +1,4 @@
-# Performance  Measurement
-
-## Networking Performance
+# Networking Performance
 
 ## Tools
 

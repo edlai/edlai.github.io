@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <h1>A contace manager</h1>
+
+    <h2>Purpose</h2>
+
+    This exercise walks you through a layout problem with a more substantial code example behind it. The aim is to build the
+    GUI for a simple contact manager, based on data supplied in a table stored as a file (the data file is available via
+    a link in the online version of this lab script):
+
+    <div align="center">
+        <img src="data:image/gif;base64,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">
+    </div>
+
+    <ol>
+        <li>Re-start SpecTcl or select File=&gt;New to create an empty grid.</li>
+        <li>Create labels on the two grid cells of the left column of the GUI canvas. It is best to do this by clicking on the
+            label icon in the palette, then simply clicking in the relevant cells: this causes both of them to be registered
+            as label widgets. (You can de-select the label widget by clicking its icon in the palette again.)</li>
+        <li>To create the third and fourth labels (Telephone and Email in the figure above), click roughly where the middle of
+            each label should appear in the GUI.</li>
+        <li>Change the text of the labels to match the above figure. When each label widget is selected, its text can be edited
+            in the entry region at the left of the button bar. (You have to click in the entry region before typing.)</li>
+        <li>You will see that the text on the labels is left-aligned, but by default labels are centred. To change this, use
+            SpecTcl's 'sticky' button (the left-hand button in the row to the right of the text entry region).</li>
+        <li>Create the Find button by selecting the button widget and clicking roughly where it should appear below the Email
+            label. Set the text and the command name of the button to Find.</li>
+        <li>You now need to create the entry widgets. Drag one from the palette to the cell to the right of the Forename cell.
+            Create the other four entry widgets in the same way. Make sure that text within the entry widgets is right-aligned,
+            and associate an appropriate variable name with each entry.</li>
+        <li>You now need to add a finishing touch and make the application re-size in a sensible way.
+            <ul>
+                <li>Place a border around the top, right and bottom sides of the GUI by selecting (by clicking) on each edge
+                    and using Edit=&gt;Insert to create a new row or column.</li>
+                <li>To set the minimum size for each border, grab the right gridline of the last column and watch the message
+                    area at the bottom of the window. Move this edge of the border left until it is 10 pixels wide.</li>
+                <li>Repeat with the other edges, noting that you must move the right-hand edge of columns and the bottom edge
+                    of rows.</li>
+                <li>For column 2, click repeatedly on the column "handle" until it has arrowheads at its ends. Column 1 should
+                    not have arrowheads. This sets the re-size behaviour for each column.</li>
+            </ul>
+        </li>
+        <li>Test out your GUI and observe what happens when you re-size it.</li>
+        <li>You now need to add code to implement the functionality of the contact manager using the Edit=&gt;Edit code facility
+            in SpecTcl. The following is a template of the code you will need:</li>
+    </ol>
+
+    <xmp>
+
+        1.        proc <procedurename> {} {
+        2.        global <declarations>
+        3.   
+        4.        open <stafflist file, catching any errors>
+        5.        while <read line from stafflist file> {
+        6.            if [regexp <searchstring>] ;# match search string
+        7.                regexp <set fields to entry variables>
+        8.                set <match found>
+        9.            }
+        10.       }
+        11.       if <no matches found> {
+        12.          set <entry variables> "No match found"
+        13.       }
+        14.       close <stafflist file>
+        15.      }
+        
+    </xmp>
+
+    <p>The bold text is actual Tcl commands which you should use to implement file handling, string matching etc.; the parts
+        in angle brackets need to be expanded to match variable names etc which you have chosen.</p>
+    <ul>
+        <li>Test and verify that your application works correctly, and can search on any field within the database. Make sure
+            it also works correctly if no match for the search string is found.</li>
+        <li>Paste a screenshot of your interface and the code file which it generates into your assignment documentation. What
+            happens if the search string matches more than one entry in the datafile? Explain how you would modify the design
+            of the contact manager to handle this case sensibly. (It is not necessary to implement working code.)</li>
+    </ul>
+
+    <h2>Solution</h2>
+
+    <h3> my sample code</h3>
+
+    <xmp>
+        #!/usr/bin/wish -f
+        #                A contact manager
+        # % Author    %  Ching-Wen.Lai
+        # % ver       %  0.1
+        # % Env.      %  tclPro/wish(直譯器 window shell ;Linux平台 ; 請自行設定 wish 路徑 (程式第一行) )
+        #                Window XP/ Red Hat 7.0 (平台)
+        #                EditPlus(Editor;可有可無 ; Ms Windows )
+        #                Visual Tcl(Editor; 可將 .tcl 轉成 .exe 檔 ;可有可無 ; Ms Windows )
+        # %  Exec     %  <<  Window XP  >> after you installed tclPro , double click the hw4.tcl file  
+        # %  Function %  基本作業上所說的功能                
+        #
+        # %  未完成.  %  menu 的 help 不知如何向右對齊
+        #                可依作業所言 改成 pack 的 geometry management   
+        #
+        # %  缺點.    %  Entry 不太會用 有些地方寫的 不是 很好
+        #
+        # %  參考.    %  1. 洪朝貴的首頁 http://www.cyut.edu.tw/~ckhung/
+        #                2. tclPro 內部 demo / Demos-IWidgets( 非常有用 )
+        #                3. Beginning Linux Programming 基峰 isbn 957-566-692-5
+        # %  備註.    %  1. 可以以陣列來精簡 程式碼    
+        #                2. 只有一字相同即可搜尋到 ,最好改良成更精確搜尋方式(基本上已和作業要求相符)       
+        #                  附加檔案. hw4.txt  ( Contact Data ) 
+        #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        set keyword ""
+        
+        # ..............    drawing GUI + geometry management      ..................
+        
+        set counter 0
+        foreach i { Forename Surname Telephone Email } {
+            set ent($i) ""
+            label .l$i  -text "$i" -width 10 -anchor w -font "Helvetica 10"
+            entry .e$i -justify "left"  -textvariable ent($i)
+            grid  .l$i -row  [ incr counter ] -column 0 -sticky "we"
+            grid  .e$i -row  $counter -column 1 -sticky "we"   
+        }
+        
+        button .find   -text    "Find"  -background "#FFFF66"  -command search   
+        entry  .key    -justify "left"  -background "#FFFFCC"  -textvariable keyword       
+        grid   .find   -row   5 -column 0 -sticky "we"
+        grid   .key    -row   5 -column 1 -sticky "we"
+        
+        
+        # ..............      Response      ..............................
+        # my mistake : when Define global Array  do'nt use "global ent(xxx)" ,but "global ent"
+        
+        proc search { } {
+            global keyword
+            global ent   
+            set    temp ""
+            set    gotIt  0
+            set    contactFile [open "hw4.txt" "r"]
+            while {[gets $contactFile fred] != -1} {
+                if {[ regexp $keyword $fred]} {
+                    set pars "(\[A-Za-z]+) +(\[A-Za-z]+) +(\[0-9]+) +(\[A-Za-z]+)"
+                    #set pars "Sam Wales 3377 bcd"  # Cannot work , i do'nt know why?
+                    regexp $pars $fred temp ent(Forename) ent(Surname) ent(Telephone) ent(Email)           
+                    set    gotIt  1
+                    break
+                }
+            }
+            close $contactFile
+            if { $gotIt == 0 } {       
+                tk_messageBox -message "Sorry!! Cannot find it ." -type ok       
+            }   
+        }
+    </xmp>
+
+    <h3> txt file </h3>
+    <xmp>
+        Andy Downton 2277 acd 
+        Sam Wales 3377 bcd 
+        Peter London 4477 ccd
+    </xmp>
+
+</body>
+
+</html>

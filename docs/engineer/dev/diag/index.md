@@ -1,9 +1,6 @@
-
-# Diagnostic Tools
+# Wireshark for Wireless Sniffer
 
 This chapter introduces how to capture Wi-Fi traffic and so on.
-
-## Wireshark
 
 Download `Ubuntu 20.10` from [Ubuntu Website](https://www.ubuntu-tw.org/). Check the current Linux Kernel version, it's `5.8.x` now.
 

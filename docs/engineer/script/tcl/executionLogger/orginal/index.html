@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <h1>An Execution Logger</h1>
+
+    <h2>Purpose</h2>
+    The purpose of this exercise is for you to create an execution logger. You type commands into the GUI and the result of the
+    command is shown in the text widget below it, as the following screenshot (taken from Linux) illustrates.
+
+    <div align="center">
+        <img src="data:image/gif;base64,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">
+    </div>
+
+    <ol>
+        <li>Create the user interface as shown in the screenshot.
+            <ul>
+                <li>This actually comprises four columns and three rows: the rightmost column contains only the scrollbar, and
+                    the Help and Run it! buttons both span two columns.</li>
+                <li>The buttons labelled File and Help are not ordinary buttons but menubuttons. You should change the item_name
+                    property of the File menubutton to be fileMenubutton and the menu property to be m; this corresponds
+                    to the first two lines of code given below. Similarly, you should change the item_name property of the
+                    Help menubutton to be helpMenubutton and the menu property to be m.</li>
+            </ul>
+        </li>
+        <li>You should create the text widget, which receives the output of the command, before the accompanying scrollbar. You
+            should then use the Commands=&gt;Attach scrollbars command to associate the scrollbars with the text widget.</li>
+        <li>The command property of the Run it! button should be set to GoGoGo.</li>
+        <li>The item_name property of the text widget should be set to log. It should also have a groove relief.</li>
+        <li>Enter the following code into the code editor:</li>
+        </ul>
+
+        <xmp>       
+            menu .fileMenubutton.m
+          
+          1.      .fileMenubutton.m add command -label Exit -command exit
+          2.   
+          3.      menu .helpMenubutton.m
+          4.      .helpMenubutton.m add command -label About -command About
+          5.   
+          6.      proc GoGoGo {} {
+          7.         global entry
+          8.         .log insert end [exec $entry]\n
+          9.      }
+          10.   
+          11.    proc About {} {
+          12.        tk_messageBox -message \
+          13.        "Written by acd@essex.ac.uk" -type ok
+          14.    }
+        </xmp>
+
+        You should insert your own contact information in the About procedure.
+        <ul>
+            <li>Save and test your program, confirming that it works for the ls command. If you are working in the Windows environment,
+                try some suitable MSDOS commands such as attrib (displays attributes of files in the current directory) or
+                chkdsk (checks the current disk and displays a status report).</li>
+            <li>Find the code file generated by your execution logger and paste it into your assignment documentation. Add comments
+                to explain the function of each part of the code. Also submit a screendump of your execution logger design.
+                This user interface could probably have been created more easily using one of Tk's other geometry managers,
+                the packer.</li>
+        </ul>
+
+    </ol>
+
+    <h2>Solution</h2>
+
+    <h3>my sample code</h3>
+
+    <xmp>
+        #!/usr/bin/wish -f
+        #                An execution logger
+        # % Author   %   Ching-Wen.Lai
+        # % Version  %   0.2
+        # % Env.     %   tclPro/wish(直譯器 window shell ;Linux平台 ; 請自行設定 wish 路徑 (程式第一行) ) 
+        #                Window XP/ Red Hat 7.0 (平台) 
+        #                EditPlus(Editor;可有可無 ; Ms Windows )
+        #                Visual Tcl(Editor; 可將 .tcl 轉成 .exe 檔 ;可有可無 ; Ms Windows )
+        # %  Run     %   1. Red Hat 7.0 
+        #                  Ada$ chmod 755 hw3.tcl
+        #                  Ada$ ./hw3.tcl
+        #                            use 'ls' command to test it    
+        #                2. Window XP
+        #                  after you installed tclPro , double click the hw3.tcl file     
+        #                  use 'attrib/chkdsk' command to test it
+        # % Function %  基本作業上所說的功能                 
+        #
+        # %  未完成. %  menu 的 help 不知如何向右對齊 
+        #               可依作業所言 改成 pack 的 geometry management    
+        #
+        # %  缺點.   %  Entry 不太會用 有些地方寫的 不是 很好
+        #
+        # %  參考.   %  洪朝貴的首頁 http://www.cyut.edu.tw/~ckhung/
+        #               tclPro 內部 demo / Demos-IWidgets( 非常有用 )
+        #               Beginning Linux Programming 基峰 isbn 957-566-692-5
+        # %  備註.   %  無完全按照作業指定 menu 的樣式定義      
+        #
+        
+        set entry  ""
+        
+        # ..........  Drawing GUI      ..............................
+        
+        ### Menu
+        
+        menu .menu -tearoff 0 -type menubar
+        set  m .menu.fileMenubutton
+        menu $m -tearoff 0
+        .menu add cascade -label "File" -menu $m -underline 0
+        $m add command -label "Exit"  -underline 0 -command exit
+        set  h .menu.helpMenubutton
+        menu $h -tearoff 0    
+        .menu add cascade -label "Help" -menu $h -underline 0 
+        $h add command -label "About"  -underline 0 -command About
+        . configure -menu .menu
+        
+        ### Label , Entry , Button , Text , ScrollBar
+        
+        label     .lab      -text "Command:"  -width 2 -anchor w -font "Helvetica 10" 
+        entry     .ent      -justify "left"   -textvariable entry
+        button    .run      -text "Run it!"   -background "#FFFF99"  -borderwidth "2" -font "lucidasans-10"  -command GoGoGo
+        scrollbar .yscroll  -orient vertical  -command ".log yview"
+        text      .log      -height 20 -width 50 -bg white -yscrollcommand ".yscroll set" 
+        
+        # ..........  Geometry management   ..............................
+        
+        grid .lab    -row 0 -column 0 -sticky "we"
+        grid .ent    -row 0 -column 1 -sticky "ew"
+        grid .run       -row 0 -column 2 -columnspan 2 -sticky "ew"
+        grid .log       -row 1 -column 0 -columnspan 3 -sticky "news"
+        grid .yscroll   -row 1 -column 3 -sticky "ns"
+        
+        # .................Response .......................................
+        
+        proc GoGoGo { } {
+            global entry    
+            .log insert end [exec $entry]\n    
+        }
+        
+        proc About { } {
+            tk_messageBox -message "Written by ed@url.com.tw" -type ok            
+        }
+        </xmp>
+
+</body>
+
+</html>

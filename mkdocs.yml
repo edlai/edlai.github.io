@@ -14,11 +14,14 @@ nav:
           - 'Accessories': 'engineer/dev/accessories/index.md'
           - 'Networking Equipments': 'engineer/dev/equipments/index.md'
           - 'Automation and Crawler': 'engineer/dev/auto/index.md'
-          - 'Diagnostic Tools': 'engineer/dev/diag/index.md'
-          - 'Performance Measurement': 'engineer/dev/perf/index.md'
+          - 'Diagnostic Tools':
+            - 'Wireshark for Wi-Fi sniffer': 'engineer/dev/diag/index.md'
+            - 'Remote Capture - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
+          - 'Performance Measurement':
+            - 'Networking Performance': 'engineer/dev/perf/index.md'
           - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
           - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
-          - 'Documentation': 'engineer/dev/doc/index.md'
+          - 'Documentation Skill': 'engineer/dev/doc/index.md'
           - 'Programmer Skills': 'engineer/dev/prog/index.md'
           - 'Extending Python with C': 'engineer/dev/python/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
@@ -26,8 +29,6 @@ nav:
 #         - 'SDR and CMW500': 'dev/bss/index.md'
 #         - 'Testbed Setup': 'dev/testbed/index.md'
 #       - 'Leadership': 'leadership.md'
-        - 'Linux Kernel':
-          - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Embedded Linux':
           - 'SDK Framework':
             - 'Buildroot': 'engineer/embedded/buildroot/index.md'
@@ -36,13 +37,28 @@ nav:
             - 'Surveillance Camera': 'engineer/embedded/cam/cloud/index.md'
           - 'Lifetime Measurement':
             - 'Flash MTD Lifetime': 'engineer/dev/lifetime/index.md'
+        - 'Linux Kernel':
+          - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
           - 'Amarisoft SDR': 'engineer/cell/sdr/index.md'
+        - 'Scripting language':
+          - 'TCL':
+            - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'
+            - 'Execution Logger': 'engineer/script/tcl/executionLogger/index.md'
+            - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
+            - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
+          - 'Perl':
+            - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
+            - 'Quiz': 'engineer/script/pl/quiz/index.md'
+#          - 'Python':
+#            - 'AES': 'engineer/script/py/aes/index.md'
+#            - 'CTYPE': 'engineer/script/py/ctype/index.md'
+#            - 'Request': 'engineer/script/py/request/index.md'
+#            - 'Selenium': 'engineer/script/py/selenium/index.md'
         - 'Computer Networks':
-          - 'Application Layer':
-            - 'Hypertext Transfer Protocol(HTTP)': 'engineer/net/hypertext-transfer-protocol/index.md'
-            - 'File Transfer Protocol (FTP)': 'engineer/net/file-transfer-protocol/index.md'
-            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineer/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
+          - 'Hypertext Transfer Protocol(HTTP)': 'engineer/net/hypertext-transfer-protocol/index.md'
+          - 'File Transfer Protocol (FTP)': 'engineer/net/file-transfer-protocol/index.md'
+          - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineer/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
         - 'Digital Signal Processing':
           - 'Voice Processing':
             - 'Discrete-Time Processing' : 'engineer/dsp/discrete-time-processing/index.md'

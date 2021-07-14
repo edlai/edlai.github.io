@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Code -->
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <!-- Fonts -->
+  <style>
+    @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+  </style>
+  <!-- font-family: 'Noto Sans TC', sans-serif; -->
+  <!--
+  <link href="https://fonts.googleapis.com/css?family='Noto Sans TC', Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  -->
+
+  <title> </title>
+</head>
+
+<body>
+
+  <h1>Online Exercises</h1>
+
+  <p>
+
+    <ul>
+      <li>Ching-Wen, Lai</li>
+      <li>May 2001</li>
+      <li>Keywords: perl, online, exercises, file system</li>
+    </ul>
+
+    <h2>Purpose</h2>
+
+    使用檔案系統撰寫一程式，使之能 透過網際網路，上傳 與 瀏覽 由 每位同學自行出題的 線上題庫, 並可由程式整理題庫進行 線上測驗.
+    <p>
+
+      <h2>Prerequisites</h2>
+
+      <ul>
+        <li>Perl</li>
+      </ul>
+
+      <h2>Exercises</h2>
+
+      網址 http://www.cc.ntut.edu.tw/cgi-bin/cgiwrap/~s9360511/os.pl (畢業後目前鏈結已失效)
+      <br> 以下以重點功能說明(點選圖形即可放大觀看).
+
+      <hr class="style2">
+
+      <div class="row row-border">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osMenu_mini.jpg" alt="" width="359" height="399">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 1. 系統首頁 </h3>
+          進入系統首頁，列出所有功能，以下一一說明。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osUploadExam_mini.jpg" alt="" width="366" height="401">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 2. 上傳題庫 ( 使用網頁上傳 ) </h3>
+          填入你所出的題目，四個選擇的答案和正確的答案，按下 Sumit 上傳。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osListAllExam_mini.jpg" alt="" width="389" height="399">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 3. 上傳題庫格式 (代人上傳)</h3>
+          如果上述網頁上傳方式太麻煩，可以考慮將題目與答案編輯成這種格式，Mail給管理者，讓管理者以手動加入檔案格式資料題庫。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osListAllExam_mini.jpg" alt="" width="389" height="399">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 4. 瀏覽題庫 (全部展開模式) </h3>
+          將題庫以精美排版方式展開，方便線上閱讀。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osListAllExam_simplify_mini.jpg" alt="" width="432" height="400">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 5. 瀏覽題庫 ( 精簡模式 )</h3>
+          將提庫以精簡方式顯示，方便用紙列印。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osListRightAns_mini.jpg" alt="" width="411" height="399">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 6. 瀏覽題庫 ( 只顯示正確答案 ) </h3>
+          只顯示正確答案，萬一來不及看書，也能考前抱佛腳，有個印象。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osTestingOnLine_mini.jpg" alt="" width="411" height="400">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 7. 瀏覽題庫 ( 線上測驗模式 I ) </h3>
+          進行線上複習測驗。有以下功能︰
+          <p>
+            <p>
+              <ul>
+                <li>[錯誤提醒]
+                  <br> 程式會顯示一對話框告訴你答錯了,若不需要,可以將打勾取消。</li>
+                <li>[複習標示]
+                  <br> 答錯時會在答案處顯示正確答案並標上色彩(淡藍色),方便你複習。</li>
+                <li>[離線使用]
+                  <br> 請選擇檔案,另存新檔,將本網頁儲存後,即可離線使用(不上網亦可線上測驗)</li>
+                <li>[檔案型態]
+                  <br> 需離線使用將網頁存檔時，若顯示格式不符,沒關係,存成HTML檔后亦可使用。</li>
+                <li>[題庫管理]
+                  <br> 顯示每一章內題庫共有幾題題目。</li>
+                <li>[時間管理]
+                  <br> 顯示測驗階段，總共耗費的時間。</li>
+                <li>[進度管理]
+                  <br> 進行測驗時，所完成的題數與百分比(完成題數/全部題數) 。</li>
+                <li>[錯誤管理]
+                  <br> 系統顯示測驗時，答錯幾題與錯誤百分比(答錯題數/完成題數) 。</li>
+              </ul>
+        </div>
+      </div>
+
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osErrorAns_mini.jpg" alt="" width="412" height="400">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 8. 瀏覽題庫 ( 線上測驗模式 II ) </h3>
+          承上，如果答錯了，會顯示一Window告訴你的答案錯誤，系統除會顯示正確答案外，並標示顏色。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osListExamStatus_mini.jpg" alt="" width="366" height="399">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 9. 題庫上傳狀態 </h3>
+          檢視題庫的上傳狀況，得知尚有那位同學尚未上傳題庫。
+          <p>
+            <p>
+
+              以符號代表上傳狀況，
+              <p>
+                <p>
+
+                  <ul>
+                    <li>星號 - 代表上傳完畢、</li>
+                    <li>磁片符號 - 代表於加值包內( PDF檔內 ，詳見下面說明)。</li>
+                    <li>人頭 - 代表還未上傳個人題庫。</li>
+                  </ul>
+                  <img src="osListExamStatus_symbolMean.jpg" alt="" width="167" height="114">
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osPDFadd_mini.jpg" alt="" width="405" height="398">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 10. 系統加值包 </h3>
+          HTML網頁顯示圖片與表格需再經過幾道手續的處理，為了避免麻煩，並節省時間，所以將含有表格或圖片的題目製成 MS Word 或 PDF 檔。直接線上閱讀(如果瀏覽器有該格式的 Plug-in 的話 )或下載，簡化處理手續。
+          <p>
+            <p>
+
+              左邊列出 PDF線上顯示 shortCut 。
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="osPersonalExam_mini.gif" alt="" width="399" height="395">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 11. 瀏覽個人題庫 </h3>
+          只單純瀏覽個人的題庫。
+        </div>
+      </div>
+
+
+      <h2>Exercises ( II )</h2>
+      除了上述的基本功能外，尚有以下的功能。
+      <ul>
+        <li>開懷................ 讓同學貼笑話，看看笑話放鬆一下，休息是為了走長遠的路。
+        </li>
+        <li>語音討論區.... 在 Winba 申請一個語音討論區，可以用麥克風與喇叭直接語音留言。</li>
+        <li>系統說明........ 關於本題庫系統的說明。
+        </li>
+        <li>講義下載........ 老師上課的講義下載。
+        </li>
+        <li>更正題庫........ 手動更正的題庫。
+        </li>
+      </ul>
+
+      <h2>版權宣告</h2>
+      我只負責撰寫程式 而 題庫內容 屬於全班同學所有。
+
+      <h2>感想</h2>
+      本程式是以 檔案系統 寫成，利用 Perl 來寫入檔案，讀取與並顯示出所欲閱覽的格式， 通常這類的程式會比 存取 資料庫系統 的程式來的難以維護，程式撰寫時間較多，資料保密性亦不佳。 所以之後的 屬於這類的 程式大多以 PHP 語言 搭配 資料庫系統
+      ( MySQL )寫成。
+
+</body>
+
+</html>
