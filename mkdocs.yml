@@ -49,8 +49,8 @@ nav:
             - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
             - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
           - 'Perl':
-            - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
             - 'Quiz': 'engineer/script/pl/quiz/index.md'
+            - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
 #          - 'Python':
 #            - 'AES': 'engineer/script/py/aes/index.md'
 #            - 'CTYPE': 'engineer/script/py/ctype/index.md'
