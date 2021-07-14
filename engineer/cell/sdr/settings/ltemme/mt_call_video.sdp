@@ -1,0 +1,47 @@
+v=0
+o=Amarisoft-IMS 0 0 IN IP4 0.0.0.0
+s=Amarisoft-IMS
+c=IN IP4 0.0.0.0
+t=0 0
+a=group:LS 2 1 
+a=3gpp_sync_info:Sync
+m=audio 10000 RTP/AVP 100
+c=IN IP4 0.0.0.0
+b=AS:41
+b=RR:0
+b=RS:0
+a=rtpmap:100 AMR/8000/1
+a=fmtp:100 mode-change-capability=2; octet-align=1; max-red=220
+a=ptime:20
+a=maxptime:240
+a=mid:1
+a=sendrecv
+m=video 10002 RTP/AVP 103 104 105 106
+c=IN IP4 0.0.0.0
+b=AS:5210
+b=RR:0
+b=RS:0
+a=rtpmap:103 H264/90000
+a=fmtp:103 profile-level-id=42400c; packetization-mode=1
+a=framesize:103 352-288
+a=rtpmap:104 H264/90000
+a=fmtp:104 profile-level-id=42401f; packetization-mode=1
+a=framesize:104 1280-720
+a=rtpmap:105 H264/90000
+a=fmtp:105 profile-level-id=42400c; packetization-mode=0
+a=framesize:105 352-288
+a=rtpmap:106 H264/90000
+a=fmtp:106 profile-level-id=42401f; packetization-mode=0
+a=framesize:106 1280-720
+a=tcap:1 RTP/AVPF
+a=ptime:33
+a=maxptime:250
+a=acap:1 rtcp-fb:* trr-int 0
+a=acap:2 rtcp-fb:* nack
+a=acap:3 rtcp-fb:* nack pli
+a=acap:4 rtcp-fb:* ccm fir
+a=acap:5 rtcp-fb:* ccm tmmbr
+a=mid:2
+a=pcfg:1 t=1 a=1,2,3,4,5
+a=extmap:5 urn:3gpp:video-orientation
+a=sendrecv

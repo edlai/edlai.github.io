@@ -1,0 +1,1570 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/engineer/kernel/rebuild/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>My Document - Ed's Wiki  🦉</title>
+<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#quick-start-to-rebuild-linux-kernel">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Ed's Wiki  🦉" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Ed's Wiki  🦉
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              My Document
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../dev/softwares/">
+        Engineering
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../edu/index.md">
+        Education
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../collections/">
+        Collection
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../traveling/trip/">
+        Traveling
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../photos/">
+      Photos
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Ed's Wiki  🦉" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    Ed's Wiki  🦉
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        About Me
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
+        About Here
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
+        Academic Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
+        Work Experience
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
+        Technician Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
+        Technician Training
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/softwares/">
+        Softwares Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/accessories/">
+        Accessories
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/equipments/">
+        Networking Equipments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/auto/">
+        Automation and Crawler
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/">
+        Diagnostic Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/perf/">
+        Performance Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/git/">
+        Git Repo and Build Machine
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/docker/">
+        Docker and Macvlan
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/doc/">
+        Documentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/prog/">
+        Programmer Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/python/">
+        Extending Python with C
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Rebuild Kernel
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Rebuild Kernel
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rebuild-linux-kernel">
+    Rebuild Linux Kernel
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-kernel-module">
+    Linux Kernel Module
+  </a>
+<nav aria-label="Linux Kernel Module" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hello-world">
+    Hello, World
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proc-filesystem">
+    Proc Filesystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accessing-io-port">
+    Accessing IO Port
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#framwbuffer">
+    Framwbuffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#seq_file-interface">
+    seq_file interface
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bpf">
+    BPF
+  </a>
+<nav aria-label="BPF" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#precondition">
+    Precondition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hello-bpf">
+    Hello, BPF
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coredump">
+    Coredump
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tag-linux-kernel-code">
+    Tag Linux Kernel Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" id="__nav_2_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_1">
+        SDK Framework
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SDK Framework" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_1">
+<span class="md-nav__icon md-icon"></span>
+          SDK Framework
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/buildroot/">
+        Buildroot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/openwrt/">
+        OpenWRT
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2">
+        Application
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Application
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/cam/cloud/">
+        Surveillance Camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+        Lifetime Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Lifetime Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/lifetime/">
+        Flash MTD Lifetime
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Celluar Network
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cell/sdr/">
+        Amarisoft SDR
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/hypertext-transfer-protocol/">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/file-transfer-protocol/">
+        File Transfer Protocol (FTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/discrete-time-processing/">
+        Discrete-Time Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/moving-average-and-backward-system/">
+        Moving Average and Backward System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/window-size-and-the-spectrogram/">
+        Window Size and the Spectrogram
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+        Image Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Image Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Image Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/grayscale/">
+        Grayscale
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/monochrome/">
+        Monochrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/negative/">
+        Negative Film
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/colorbar/">
+        Colorbar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/text/">
+        Text Picture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/mirror/">
+        Mirror
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/py/resize/">
+        Image Resizer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../os/assembler-compiler/">
+        An Assembler Compiler
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/isa/">
+        Industry Standard Architecture (ISA)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/pci/">
+        Peripheral Component Interconnect (PCI)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/ldd/">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/gpio/">
+        General Purpose Input Output (GPIO)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/i2c/">
+        Inter-Integrated Circuit (I2C)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/player/">
+        Multimedia Player
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/mpeg1/">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/">
+        Misc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/index.md">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/thesis/index.md">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/english/index.md">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/qualitative-research/">
+        Qualitative Research
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/quantitative-research/">
+        Quantitative Research
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/">
+        Collections
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Traveling
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Traveling" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Traveling
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/trip/">
+        Trip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/tour/">
+        Tour
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../photos/">
+        Photos
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rebuild-linux-kernel">
+    Rebuild Linux Kernel
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-kernel-module">
+    Linux Kernel Module
+  </a>
+<nav aria-label="Linux Kernel Module" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hello-world">
+    Hello, World
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proc-filesystem">
+    Proc Filesystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accessing-io-port">
+    Accessing IO Port
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#framwbuffer">
+    Framwbuffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#seq_file-interface">
+    seq_file interface
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bpf">
+    BPF
+  </a>
+<nav aria-label="BPF" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#precondition">
+    Precondition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hello-bpf">
+    Hello, BPF
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coredump">
+    Coredump
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tag-linux-kernel-code">
+    Tag Linux Kernel Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="quick-start-to-rebuild-linux-kernel">Quick Start to Rebuild Linux Kernel</h1>
+<p>This chapter describes</p>
+<ul>
+<li>How to upgrade and rebuild Linux Kernel from Linux 4.x to Linux 5.x in Debian 10.10.</li>
+<li>How to enable and disable new Linux Device Module.</li>
+</ul>
+<h2 id="rebuild-linux-kernel">Rebuild Linux Kernel</h2>
+<p>Download and install <code>Debian 10.10</code> to your device, becasue its Linux Kernel version is 4.x, we need to upgrade to Linux Kernel 5.x. In my case I choose <a href="https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"><code>debian-live-10.10.0-amd64-xfce.iso</code></a>.</p>
+<p>Check the current Linux Kernel version.</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">config-4.19.0-17-amd64</span>
+</code></pre></div>
+<p>Upgrade the essential packages for wireless capture</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="gp">$ </span>sudo apt-get install -y openssh-server vim net-tools usbutils pciutils
+<span class="gp">$ </span>sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+<span class="gp">$ </span>sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc
+<span class="gp">$ </span>sudo apt-get install -y software-properties-common rsync
+<span class="gp">$ </span>sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
+<span class="gp">$ </span>sudo service sshd restart
+</code></pre></div>
+<p>Add apt repository to support <code>linux-image-5.10.0</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">'deb http://deb.debian.org/debian buster-backports main'</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install linux-image-5.10.0-0.bpo.7-amd64
+<span class="gp">$ </span>sync reboot
+</code></pre></div>
+<p>After rebooted. Check current Linux version to make sure its <code>Linux Kernel 5.10</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>uname -a
+<span class="go">Linux vultr.guest 5.10.0-0.bpo.7-amd64 #1 SMP Debian 5.10.40-1~bpo10+1 (2021-06-04) x86_64 GNU/Linux</span>
+</code></pre></div>
+<p>Add apt repository to support <code>firmware-misc-nonfree</code> (Optional)</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">'deb http://ftp.de.debian.org/debian stretch main non-free'</span>
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install firmware-misc-nonfree
+<span class="gp">$ </span>sync<span class="p">;</span> sudo reboot
+</code></pre></div>
+<p>Rebuild Linux kernel</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update <span class="p">;</span> sudo apt-get upgrade<span class="p">;</span> sudo apt autoremove
+<span class="gp">$ </span>sudo apt-cache search kernel <span class="p">|</span> grep <span class="nb">source</span> <span class="p">|</span> grep <span class="m">5</span>.10
+<span class="go">linux-source-5.10 - Linux kernel source for version 5.10 with Debian patches</span>
+<span class="gp">$ </span>sudo apt-get install linux-source-5.10
+<span class="gp">$ </span>sudo cp /usr/src/linux-source-5.10.tar.xz .
+<span class="gp">$ </span>sudo chgrp ed linux-source-5.10.tar.xz
+<span class="gp">$ </span>sudo chown ed linux-source-5.10.tar.xz
+<span class="gp">$ </span>tar xvf linux-source-5.10.tar.xz
+<span class="gp">$ </span><span class="nb">cd</span> linux-source-5.10/
+<span class="gp">$ </span>cp /boot/config-<span class="k">$(</span>uname -r<span class="k">)</span> .config
+<span class="gp">$ </span>scripts/config --set-str SYSTEM_TRUSTED_KEYS <span class="s2">""</span>
+</code></pre></div>
+<p>Revise CONFIG_DEBUG_INFO_BTF to avoid build error</p>
+<!--
+BTF: .tmp_vmlinux.btf: pahole version v1.12 is too old, need at least v1.16
+Failed to generate BTF for vmlinux
+Try to disable CONFIG_DEBUG_INFO_BTF
+make: *** [Makefile:1167: vmlinux] Error 1
+-->
+<div class="highlight"><pre><span></span><code>CONFIG_DEBUG_INFO_BTF=n
+</code></pre></div>
+<p>Compile and Install the Kernel</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo add-apt-repository <span class="s1">'deb http://http.us.debian.org/debian/ buster main contrib non-free'</span>
+<span class="gp">$ </span>sudo make -j <span class="k">$(</span>nproc<span class="k">)</span> <span class="nv">V</span><span class="o">=</span><span class="m">99</span> deb-pkg <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee build.log <span class="p">|</span> grep -i error
+<span class="gp">$ </span><span class="nb">cd</span> ..
+</code></pre></div>
+<p>As the result, there are around four deb files.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ls -lah <span class="p">|</span> grep deb
+<span class="go">-rw-r--r--  1 ed   ed   7.7M Jul  8 23:56 linux-headers-5.10.40_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed    50M Jul  8 23:58 linux-image-5.10.40_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed   893M Jul  9 00:25 linux-image-5.10.40-dbg_5.10.40-5_amd64.deb</span>
+<span class="go">-rw-r--r--  1 ed   ed   1.1M Jul  8 23:57 linux-libc-dev_5.10.40-5_amd64.deb</span>
+</code></pre></div>
+<p>Install</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo dpkg -i linux-image-5.10.40_5.10.40-5_amd64.deb
+<span class="gp">$ </span>sudo dpkg -i linux-headers-5.10.40_5.10.40-5_amd64.deb
+<span class="gp">$ </span>sync
+<span class="gp">$ </span>sudo reboot
+</code></pre></div>
+<p>Verification</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uname -a
+<span class="gp">$ </span>Linux ed-pc <span class="m">5</span>.10.40 <span class="c1">#5 SMP Thu Jul 8 21:17:59 CST 2021 x86_64 GNU/Linux</span>
+</code></pre></div>
+<h2 id="linux-kernel-module">Linux Kernel Module</h2>
+<h3 id="hello-world">Hello, World</h3>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/init.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"Dual BSD/GPL"</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">hello_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"Hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">hello_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"Goodbye, Hello world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">module_init</span><span class="p">(</span><span class="n">hello_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">hello_exit</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Makefile</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">PWD</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">KVERSION</span> <span class="o">:=</span> <span class="k">$(</span>shell uname -r<span class="k">)</span>
+<span class="nv">KERNEL_DIR</span> <span class="o">=</span> /usr/src/linux-headers-<span class="k">$(</span>KVERSION<span class="k">)</span>/
+
+<span class="nv">MODULE_NAME</span> <span class="o">=</span> hello
+<span class="nv">obj-m</span> <span class="o">:=</span> <span class="k">$(</span>MODULE_NAME<span class="k">)</span>.o
+
+<span class="nf">all</span><span class="o">:</span>
+  make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
+
+<span class="nf">test</span><span class="o">:</span>
+  dmesg -c
+  sudo insmod ./hello.ko
+  sudo lsmod <span class="p">|</span> grep hello
+  cat /proc/modules  <span class="p">|</span> grep hello
+  sudo rmmod hello
+
+<span class="nf">clean</span><span class="o">:</span>
+  make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+</code></pre></div>
+</td></tr></table>
+</div>
+</input></input></div>
+<p>Build the module</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make
+<span class="go">make -C /usr/src/linux-headers-5.10.40/ M=/home/ed/hello  modules</span>
+<span class="go">make[1]: Entering directory '/usr/src/linux-headers-5.10.40'</span>
+<span class="go">  CC [M]  /home/ed/hello/hello.o</span>
+<span class="go">  MODPOST /home/ed/hello/Module.symvers</span>
+<span class="go">  LD [M]  /home/ed/hello/hello.ko</span>
+<span class="go">make[1]: Leaving directory '/usr/src/linux-headers-5.10.40'</span>
+</code></pre></div>
+<p>Project Layout (As a result)</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>tree
+<span class="go">.</span>
+<span class="go">├── hello.c</span>
+<span class="go">├── hello.ko</span>
+<span class="go">├── hello.mod</span>
+<span class="go">├── hello.mod.c</span>
+<span class="go">├── hello.mod.o</span>
+<span class="go">├── hello.o</span>
+<span class="go">├── Makefile</span>
+<span class="go">├── modules.order</span>
+<span class="go">└── Module.symvers</span>
+
+<span class="go">0 directories, 9 files</span>
+</code></pre></div>
+<p>Verification</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make <span class="nb">test</span>
+<span class="go">[ 5163.936243] hello: loading out-of-tree module taints kernel.</span>
+<span class="go">[ 5163.936708] Hello world !</span>
+
+<span class="go">hello                  16384  0</span>
+
+<span class="go">hello 16384 0 - Live 0x0000000000000000 (OE)</span>
+
+<span class="go">[ 5360.557612] Bye !</span>
+</code></pre></div>
+<h3 id="proc-filesystem">Proc Filesystem</h3>
+<div class="highlight"><pre><span></span><code>📝 Functions:
+⮚ struct proc_dir_entry *proc_mkdir(const char *name, struct proc_dir_entry *parent)；
+⮚ static inline struct proc_dir_entry *proc_create(const char *name, umode_t mode,struct proc_dir_entry *parent, const struct file_operations *proc_fops);
+⮚ unsigned long copy_to_user(void __user * to, const void * from, unsigned long n);
+⮚ int copy_from_user_toio(volatile void __iomem * dst, const void __user * src, size_t count);
+</code></pre></div>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/kernel.h&gt;</span><span class="c1">   /* We're doing kernel work */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="c1">   /* Specifically, a module */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/proc_fs.h&gt;</span><span class="c1">  /* Necessary because we use the proc fs */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/uaccess.h&gt;</span><span class="c1">    /* for copy_from_user */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/seq_file.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/slab.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">"hello.h"</span><span class="cp"></span>
+
+<span class="cp">#define PROCFS_MAX_SIZE     1024</span>
+<span class="cp">#define PROCFS_NAME         "hello"</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">procfs_buffer</span><span class="p">[</span><span class="n">PROCFS_MAX_SIZE</span><span class="p">];</span>
+<span class="k">static</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">procfs_buffer_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_dir_entry</span> <span class="o">*</span><span class="n">entry</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_dir_entry</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * This function is called when the /proc file is read.</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">procfile_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="n">offset</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">offset</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">)</span> <span class="cm">/* we have finished to read, return 0 */</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="cm">/* fill the buffer, return the buffer size */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">copy_to_user</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">procfs_buffer</span><span class="p">,</span> <span class="n">procfs_buffer_size</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">offset</span> <span class="o">=</span> <span class="n">procfs_buffer_size</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">procfs_buffer_size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * This function is called when the /proc file is written</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">procfile_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span><span class="o">*</span> <span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">f_pos</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">tlen</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">((</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">GFP_KERNEL</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">tmp</span><span class="p">)</span><span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">buffer</span><span class="p">,</span><span class="n">count</span><span class="p">)){</span>
+        <span class="n">kfree</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">EFAULT</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">tlen</span> <span class="o">=</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">PROCFS_MAX_SIZE</span><span class="p">)</span>
+        <span class="n">tlen</span> <span class="o">=</span> <span class="n">count</span><span class="p">;</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">procfs_buffer</span><span class="p">,</span><span class="n">tmp</span><span class="p">,</span><span class="n">tlen</span><span class="p">);</span>
+    <span class="n">procfs_buffer_size</span> <span class="o">=</span> <span class="n">tlen</span><span class="p">;</span>
+    <span class="n">kfree</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+    <span class="n">printk</span><span class="p">(</span><span class="s">"Procfs Input: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">procfs_buffer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">tlen</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">procfile_show</span><span class="p">(</span><span class="k">struct</span> <span class="nc">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="n">v</span><span class="p">){</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">seq_printf</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Open the procfile</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">procfile_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">single_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">procfile_show</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">proc_ops</span> <span class="n">proc_fops</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">proc_lseek</span> <span class="o">=</span> <span class="n">seq_lseek</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_open</span> <span class="o">=</span> <span class="n">procfile_open</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_read</span> <span class="o">=</span> <span class="n">procfile_read</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_release</span> <span class="o">=</span> <span class="n">single_release</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">proc_write</span> <span class="o">=</span> <span class="n">procfile_write</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> *This function is called from main.c when the module is loaded</span>
+<span class="cm"> */</span>
+ <span class="kt">int</span> <span class="n">__init</span> <span class="n">my_proc_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proc_mkdir</span><span class="p">(</span><span class="n">PROCFS_NAME</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">proc_create</span><span class="p">(</span><span class="s">"system"</span><span class="p">,</span><span class="mo">0777</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="o">&amp;</span><span class="n">proc_fops</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">entry</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"unable to create /proc/hello/system"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"/proc/hello/system is created"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> *This function is called from main.c when the module is unloaded</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="n">__exit</span> <span class="n">my_proc_cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">remove_proc_entry</span><span class="p">(</span><span class="s">"system"</span><span class="p">,</span> <span class="n">parent</span><span class="p">);</span>
+    <span class="n">remove_proc_entry</span><span class="p">(</span><span class="n">PROCFS_NAME</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="n">hello_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"Hello, Procfs!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+    <span class="cm">/* create the /proc file */</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">my_proc_init</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="n">hello_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">my_proc_cleanup</span><span class="p">();</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"Goodbye, Procfs!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">module_init</span><span class="p">(</span><span class="n">hello_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">hello_exit</span><span class="p">);</span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"GPL"</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">"Hello Procfs example."</span><span class="p">);</span>
+<span class="n">MODULE_SUPPORTED_DEVICE</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Makefile</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">PWD</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">KVERSION</span> <span class="o">:=</span> <span class="k">$(</span>shell uname -r<span class="k">)</span>
+<span class="nv">KERNEL_DIR</span> <span class="o">=</span> /usr/src/linux-headers-<span class="k">$(</span>KVERSION<span class="k">)</span>/
+
+<span class="nv">MODULE_NAME</span> <span class="o">=</span> hello
+<span class="nv">obj-m</span> <span class="o">:=</span> <span class="k">$(</span>MODULE_NAME<span class="k">)</span>.o
+
+<span class="nf">all</span><span class="o">:</span>
+    make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
+
+<span class="nf">test</span><span class="o">:</span>
+    sudo dmesg -c
+    sudo insmod ./hello.ko
+    <span class="nb">echo</span> <span class="s2">"procfs hello test"</span> &gt;&gt; /proc/hello/system
+    sudo dmesg -c
+    sudo rmmod hello.ko
+
+<span class="nf">clean</span><span class="o">:</span>
+    make -C <span class="k">$(</span>KERNEL_DIR<span class="k">)</span> <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+</code></pre></div>
+</td></tr></table>
+</div>
+</input></input></div>
+<p>~~ TBD ~~</p>
+<h3 id="accessing-io-port">Accessing IO Port</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/ioport.h&gt;</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">resource</span> <span class="o">*</span><span class="n">request_region</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">first</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">release_region</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">start</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>Port-mapped I/O (PMIO)</li>
+</ul>
+<!--
+    <pre class="mermaid-experimental"><code>graph LR
+A[Start] --&gt; B{Error?};
+B --&gt;|Yes| C[Hmm...];
+C --&gt; D[Debug];
+D --&gt; B;
+B ----&gt;|No| E[Yay!];</code></pre>
+
+    <div class="highlight"><pre><span></span><code>st=&gt;start: Start:&gt;http://www.google.com[blank]
+e=&gt;end:&gt;http://www.google.com
+op1=&gt;operation: My Operation
+sub1=&gt;subroutine: My Subroutine
+cond=&gt;condition: Yes
+or No?:&gt;http://www.google.com
+io=&gt;inputoutput: catch something...
+st-&gt;op1-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op1
+</code></pre></div>
+
+    <div class="highlight"><pre><span></span><code>Title: Here is a title
+A-&gt;B: Normal line
+B--&gt;C: Dashed line
+C-&gt;&gt;D: Open arrow
+D--&gt;&gt;A: Dashed open arrow
+</code></pre></div>
+-->
+<ul>
+<li>Memory-mapped I/O (MMIO)</li>
+</ul>
+<h3 id="framwbuffer">Framwbuffer</h3>
+<ul>
+<li>Function</li>
+</ul>
+<h3 id="seq_file-interface">seq_file interface</h3>
+<h2 id="bpf">BPF</h2>
+<h3 id="precondition">Precondition</h3>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install clang
+</code></pre></div>
+<h3 id="hello-bpf">Hello, BPF</h3>
+<p>a.c</p>
+<div class="highlight"><pre><span></span><code><span class="go">int f(int x) {</span>
+<span class="go">    return x + 1;</span>
+<span class="go">}</span>
+</code></pre></div>
+<p>Make</p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>clang -c -S -emit-llvm a.c                   <span class="c1"># &lt; = a.ll (LLVM IR)</span>
+<span class="gp">$ </span>clang -c -S -target bpf a.c                  <span class="c1"># &lt; = a.s  (eBPF)</span>
+<span class="gp">$ </span>clang -c -target bpf a.c                     <span class="c1"># &lt; = a.o  (eBPF bytecode)</span>
+<span class="gp">$ </span>objcopy -I elf64-little -O binary a.o a.bin  <span class="c1"># &lt; = Extract eBPF bytecode</span>
+</code></pre></div>
+~~ TBD ~~</p>
+<h2 id="coredump">Coredump</h2>
+<h2 id="appendix">Appendix</h2>
+<h3 id="tag-linux-kernel-code">Tag Linux Kernel Code</h3>
+<p>An example to tag kernel code for x86 system.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget https://git.kernel.org/torvalds/t/linux-5.14-rc1.tar.gz
+<span class="gp">$ </span>tar xvf linux-5.14-rc1.tar.gz
+<span class="gp">$ </span><span class="nb">cd</span> linux-5.14-rc1/
+<span class="gp">$ </span>make <span class="nv">ARCH</span><span class="o">=</span>x86 cscope tags
+</code></pre></div>
+<p>for more detail, please check <a href="https://stackoverflow.com/questions/50791012/linux-kernel-make-tag-variable">linux kernel make tag variable</a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://www.craftypenguins.net/kernel-module-snippets-part-1-hello-world/">Kernel Module Snippets – Part 1 – Hello World</a></li>
+<li><a href="https://hackmd.io/@sysprog/linux-ebpf">Linux 核心設計: 透過 eBPF 觀察作業系統行為</a></li>
+<li><a href="https://linux-kernel-labs.github.io/refs/heads/master/labs/interrupts.html">I/O access and Interrupts</a></li>
+<li><a href="https://lwn.net/Kernel/LDD3/">Linux Device Drivers, Third Edition</a></li>
+</ul>
+<!--
+sudo apt-get install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils
+-->
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Extending Python with C" class="md-footer__link md-footer__link--prev" href="../../dev/python/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Extending Python with C
+            </div>
+</div>
+</a>
+<a aria-label="Next: Buildroot" class="md-footer__link md-footer__link--next" href="../../embedded/buildroot/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Buildroot
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

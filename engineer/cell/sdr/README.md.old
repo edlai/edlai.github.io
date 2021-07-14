@@ -1,0 +1,53 @@
+# Cellular Technologies
+
+## Software Define Network (SDR) - Amarisoft AMARI LTE 100
+
+A basic practice/an basic introduction of how to operator LTE Tester.
+
+- Requirements
+- Topology
+- Installation
+- Component
+  - Radio Front-End
+  - eNode B
+    - Cell Power
+  - MMS
+    - SMS
+  - IMS
+- Function
+  - Throughput
+  - VoLTE
+  - VoWiFi
+  - Hybird
+
+## Requirements
+
+- One Linux PC
+- Ubuntu 16.04
+
+## Topology
+
+```
+  ------------------------
+ |      Router            |
+ |  192.168.168.1         |    
+  ------------------------
+             /
+       ------
+      /
+  ------------------------
+ | 192.168.168.20         |
+ | Amarisoft PC           |
+ |  192.168.3.1           |
+  ------------------------
+     /\               /\             .....
+    /  \             /  \        
+    CPE1             CPE2            .....
+   [APN: default]   [APN: internet]  .....
+ ```
+
+## Installation
+
+
+
+##

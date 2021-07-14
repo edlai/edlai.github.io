@@ -1,0 +1,2468 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/engineer/io/ldd/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>Parallel Port Device (LPT) and Linux Device Driver - Ed's Wiki  🦉</title>
+<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#man-machine-interfaces">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Ed's Wiki  🦉" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Ed's Wiki  🦉
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Parallel Port Device (LPT) and Linux Device Driver
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../dev/softwares/">
+        Engineering
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../edu/index.md">
+        Education
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../collections/">
+        Collection
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../traveling/trip/">
+        Traveling
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../photos/">
+      Photos
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Ed's Wiki  🦉" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    Ed's Wiki  🦉
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        About Me
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
+        About Here
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
+        Academic Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
+        Work Experience
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
+        Technician Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
+        Technician Training
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/softwares/">
+        Softwares Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/accessories/">
+        Accessories
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/equipments/">
+        Networking Equipments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/auto/">
+        Automation and Crawler
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/">
+        Diagnostic Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/perf/">
+        Performance Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/git/">
+        Git Repo and Build Machine
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/docker/">
+        Docker and Macvlan
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/doc/">
+        Documentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/prog/">
+        Programmer Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/python/">
+        Extending Python with C
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kernel/rebuild/">
+        Rebuild Kernel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" id="__nav_2_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_1">
+        SDK Framework
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SDK Framework" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_1">
+<span class="md-nav__icon md-icon"></span>
+          SDK Framework
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/buildroot/">
+        Buildroot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/openwrt/">
+        OpenWRT
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2">
+        Application
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Application
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/cam/cloud/">
+        Surveillance Camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+        Lifetime Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Lifetime Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/lifetime/">
+        Flash MTD Lifetime
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Celluar Network
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cell/sdr/">
+        Amarisoft SDR
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/hypertext-transfer-protocol/">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/file-transfer-protocol/">
+        File Transfer Protocol (FTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/discrete-time-processing/">
+        Discrete-Time Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/moving-average-and-backward-system/">
+        Moving Average and Backward System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/window-size-and-the-spectrogram/">
+        Window Size and the Spectrogram
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+        Image Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Image Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Image Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/grayscale/">
+        Grayscale
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/monochrome/">
+        Monochrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/negative/">
+        Negative Film
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/colorbar/">
+        Colorbar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/text/">
+        Text Picture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/mirror/">
+        Mirror
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/py/resize/">
+        Image Resizer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../os/assembler-compiler/">
+        An Assembler Compiler
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../isa/">
+        Industry Standard Architecture (ISA)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pci/">
+        Peripheral Component Interconnect (PCI)
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Parallel Port Device (LPT) and Linux Device Driver
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parallel-port-device-and-linux-device-driver">
+    Parallel Port Device and Linux Device Driver
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
+    Concept
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+<nav aria-label="Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+    Hardware
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+    Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware_1">
+    Hardware
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+<nav aria-label="Background" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#io-port-address-in-pc">
+    IO Port Address in PC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bios">
+    BIOS 數據區
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#super-io">
+    Super IO
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
+    Programming
+  </a>
+<nav aria-label="Programming" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stand-alone-edition">
+    Stand-alone Edition
+  </a>
+<nav aria-label="Stand-alone Edition" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#module-code">
+    Module Code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-space-utility-for-inputting-value-to-kernel-space">
+    User Space Utility, for inputting value to Kernel Space.
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#loading-module">
+    Loading module
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#module-unloading-sdd_unload">
+    Module Unloading sdd_unload
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
+    Running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#utility">
+    Utility
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#online-edition">
+    Online Edition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#application">
+    Application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demonstration">
+    Demonstration
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        General Purpose Input Output (GPIO)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../i2c/">
+        Inter-Integrated Circuit (I2C)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/player/">
+        Multimedia Player
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/mpeg1/">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/">
+        Misc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/index.md">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/thesis/index.md">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/english/index.md">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/qualitative-research/">
+        Qualitative Research
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/quantitative-research/">
+        Quantitative Research
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/">
+        Collections
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Traveling
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Traveling" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Traveling
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/trip/">
+        Trip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/tour/">
+        Tour
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../photos/">
+        Photos
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parallel-port-device-and-linux-device-driver">
+    Parallel Port Device and Linux Device Driver
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
+    Concept
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+<nav aria-label="Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+    Hardware
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+    Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware_1">
+    Hardware
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+<nav aria-label="Background" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#io-port-address-in-pc">
+    IO Port Address in PC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bios">
+    BIOS 數據區
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#super-io">
+    Super IO
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
+    Programming
+  </a>
+<nav aria-label="Programming" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stand-alone-edition">
+    Stand-alone Edition
+  </a>
+<nav aria-label="Stand-alone Edition" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#module-code">
+    Module Code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-space-utility-for-inputting-value-to-kernel-space">
+    User Space Utility, for inputting value to Kernel Space.
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#loading-module">
+    Loading module
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#module-unloading-sdd_unload">
+    Module Unloading sdd_unload
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
+    Running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#utility">
+    Utility
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#online-edition">
+    Online Edition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#application">
+    Application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demonstration">
+    Demonstration
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="man-machine-interfaces">Man-Machine Interfaces</h1>
+<h2 id="parallel-port-device-and-linux-device-driver">Parallel Port Device and Linux Device Driver</h2>
+<div class="highlight"><pre><span></span><code>$author:   Jin-Wen (Ed) Lai, s9360511[at]ntut[dot]org[dot]tw
+$date:     May. 2003
+$revised:  Mar. 2018
+$keywords: man, machine, interface
+</code></pre></div>
+<p>An exercise of an implementation of Linux Device Driver.</p>
+<!--
+## Content
+
+* [Concept](#concept)
+* [Requirements](#requirements)
+  * [Hardware](#hardware)
+  * [Software](#software)
+* [Programming](#programming)
+  * [Stand-alone Edition](#stand-alone-edition)
+  * [Online Edition](#online-edition)
+* [Application](#application)
+* [Demonstration](#demonstration)
+
+* [Advanced](#advanced)
+* [References](#reference)
+* [Appendix](#appendix)
+  * [Appendix A - Super I/O](#)
+-->
+<h2 id="concept">Concept</h2>
+<ul>
+<li>Blink LED which connects to PC's Parallel Port.</li>
+</ul>
+<!--
+  <svg width="600" height="110">
+  <rect x="0" y="0"   width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  <text x="50" y="50" alignment-baseline="middle" text-anchor="middle">Super I/O</text>
+  <line x1="100" y1="50" x2="200" y2="50" style="stroke:rgb(255, 0, 0);stroke-width:2" />
+  <rect x="200" y="0" width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  <text x="250" y="50" alignment-baseline="middle" text-anchor="middle">Parallel Port</text>
+  <line x1="300" y1="50" x2="400" y2="50" style="stroke:rgb(255, 0, 0);stroke-width:2" />
+  <rect x="400" y="0" width="100" height="100" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  <text x="450" y="50" alignment-baseline="middle" text-anchor="middle">Breadboard</text>
+  Sorry,  your browser does not support inline SVG.
+  </svg>
+-->
+<pre><div class="mermaid">
+  graph TD
+  A[Super I/O] --&gt; B[Parallel Port]
+  B --&gt; C[Breadboard]
+</div></pre>
+<h2 id="requirements">Requirements</h2>
+<h3 id="hardware">Hardware</h3>
+<ul>
+<li>PC (w/. Parallel Port)</li>
+</ul>
+<h3 id="software">Software</h3>
+<ul>
+<li>RedHat Linux</li>
+<li>Linux GCC</li>
+</ul>
+<h3 id="hardware_1">Hardware</h3>
+<ul>
+<li>
+<p>Schematic  <br/>
+<img alt="r" src="circuit.png"/></p>
+</li>
+<li>
+<p>Breadboard  <br/>
+<img alt="r" src="goods.png"/></p>
+</li>
+</ul>
+<h2 id="background">Background</h2>
+<h3 id="io-port-address-in-pc">IO Port Address in PC</h3>
+<table>
+<thead>
+<tr>
+<th>I/O埠</th>
+<th>LPT1</th>
+<th>LPT2</th>
+<th>Monochrome Display Adapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資料輸出埠</td>
+<td>0x378</td>
+<td>0x278</td>
+<td>0x3BC</td>
+</tr>
+<tr>
+<td>狀態輸入埠</td>
+<td>0x379</td>
+<td>0x279</td>
+<td>0x3BD</td>
+</tr>
+<tr>
+<td>控制輸出埠</td>
+<td>0x37A</td>
+<td>0x27A</td>
+<td>0x3BE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bios">BIOS 數據區</h3>
+<ul>
+<li>當BIOS尋找到平行埠後, 除會標明LPT名稱外, 也會在BIOS數據區（Data Area）內儲存BIOS規劃給平行埠的位址.</li>
+<li>BIOS數據區是一個記憶體區域, 其內部儲存著記錄PC所有裝置的映射表(mapping table).</li>
+<li>因此, 若無法利用作業系統獲得平行埠的<code>378</code>或<code>278</code>位址, 那就必須透過BIOS的映射表來取得.  <br/>
+<img alt="r" src="debug.png"/></li>
+</ul>
+<h3 id="super-io">Super IO</h3>
+<ul>
+<li>目前 PC 上的 <a href="https://en.wikipedia.org/wiki/Parallel_port"><code>Parallel port</code></a>,  幾乎有已整合到<a href="https://en.wikipedia.org/wiki/Super_I/O"><code>Super IO</code></a>裡面.</li>
+<li>所以我們可以參考 <code>Super IO</code> 的規格.</li>
+<li>IT8712F 的方塊圖  <br/>
+<img alt="r" src="it8712f.png"/> </li>
+<li>IT8712F 腳位定義表格 (<strong>P.100~P117</strong>)    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Signal</th>
+<th>Pin</th>
+<th>Signal</th>
+<th>Pin</th>
+<th>Signal</th>
+<th>Pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DTR2#</td>
+<td>33</td>
+<td>SCRIO/GP12</td>
+<td>65</td>
+<td>DSKCHG#</td>
+<td>97</td>
+<td>VIN1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RTS2#</td>
+<td>34</td>
+<td>SCRCLK/GP11</td>
+<td>66</td>
+<td>IRTX/GP47</td>
+<td>98</td>
+<td>VIN0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DSR2#</td>
+<td>35</td>
+<td>VCC</td>
+<td>67</td>
+<td>VCCH</td>
+<td>99</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>4</td>
+<td>VCC</td>
+<td>36</td>
+<td>LPCPD#</td>
+<td>68</td>
+<td>COPEN#</td>
+<td><strong><em>100</em></strong></td>
+<td><strong><em>SLCT</em></strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>SOUT2</td>
+<td>37</td>
+<td>LRESET#</td>
+<td></td>
+<td>69    VBAT</td>
+<td><strong><em>101</em></strong></td>
+<td><strong><em>PE</em></strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SIN2</td>
+<td>38</td>
+<td>LDRQ#</td>
+<td>70</td>
+<td>IRRX/GP46</td>
+<td><strong><em>102</em></strong></td>
+<td><strong><em>BUSY</em></strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>FAN_TAC1</td>
+<td>39</td>
+<td>SERIRQ</td>
+<td>71</td>
+<td>PSIN/GP45</td>
+<td><strong><em>103</em></strong></td>
+<td><strong><em>ACK#</em></strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>FAN_CTL1</td>
+<td>40</td>
+<td>LFRAME#</td>
+<td></td>
+<td>72    PWRON#/GP44</td>
+<td><strong><em>104</em></strong></td>
+<td><strong><em>SLIN#</em></strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>FAN_TAC2/GP52</td>
+<td>41</td>
+<td>LAD0</td>
+<td>73</td>
+<td>PME#/GP54</td>
+<td><strong><em>105</em></strong></td>
+<td><strong><em>INIT#</em></strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>FAN_CTL2/GP51</td>
+<td>42</td>
+<td>LAD1</td>
+<td>74</td>
+<td>GNDD</td>
+<td><strong><em>106</em></strong></td>
+<td><strong><em>ERR#</em></strong></td>
+</tr>
+<tr>
+<td>11</td>
+<td>FAN_TAC3/GP37</td>
+<td>43</td>
+<td>LAD2</td>
+<td>75</td>
+<td>PANSWH#/GP43</td>
+<td><strong><em>107</em></strong></td>
+<td><strong><em>AFD#</em></strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td>FAN_CTL3/GP36</td>
+<td>44</td>
+<td>LAD3</td>
+<td>76</td>
+<td>PSON#/GP42</td>
+<td><strong><em>108</em></strong></td>
+<td><strong><em>STB#</em></strong></td>
+</tr>
+<tr>
+<td>13</td>
+<td>WTI#/GP35</td>
+<td>45</td>
+<td>KRST#</td>
+<td>77</td>
+<td>RING#/GP53</td>
+<td><strong><em>109</em></strong></td>
+<td><strong><em>PD0</em></strong></td>
+</tr>
+<tr>
+<td>14</td>
+<td>VID4/GP34</td>
+<td>46</td>
+<td>GA20</td>
+<td>78</td>
+<td>GP41</td>
+<td><strong><em>110</em></strong></td>
+<td><strong><em>PD1</em></strong></td>
+</tr>
+<tr>
+<td>15</td>
+<td>GNDD</td>
+<td>47</td>
+<td>PCICLK</td>
+<td>79</td>
+<td>GP40</td>
+<td><strong><em>111</em></strong></td>
+<td><strong><em>PD2</em></strong></td>
+</tr>
+<tr>
+<td>16</td>
+<td>VID3/GP33</td>
+<td>48</td>
+<td>CLKRUN#/GP50</td>
+<td>80</td>
+<td>KDAT</td>
+<td><strong><em>112</em></strong></td>
+<td><strong><em>PD3</em></strong></td>
+</tr>
+<tr>
+<td>17</td>
+<td>VID2/GP32</td>
+<td>49</td>
+<td>CLKIN</td>
+<td>81</td>
+<td>KCLK</td>
+<td><strong><em>113</em></strong></td>
+<td><strong><em>PD4</em></strong></td>
+</tr>
+<tr>
+<td>18</td>
+<td>VID1/GP31</td>
+<td>50</td>
+<td>GNDD</td>
+<td>82</td>
+<td>MDAT</td>
+<td><strong><em>114</em></strong></td>
+<td><strong><em>PD5</em></strong></td>
+</tr>
+<tr>
+<td>19</td>
+<td>VID0/GP30</td>
+<td>51</td>
+<td>DENSEL#</td>
+<td>83</td>
+<td>MCLK</td>
+<td><strong><em>115</em></strong></td>
+<td><strong><em>PD6</em></strong></td>
+</tr>
+<tr>
+<td>20</td>
+<td>JSBB2/GP27</td>
+<td>52</td>
+<td>MTRA#</td>
+<td>84</td>
+<td>SCRPRES#/GP10</td>
+<td><strong><em>116</em></strong></td>
+<td><strong><em>PD7</em></strong></td>
+</tr>
+<tr>
+<td>21</td>
+<td>JSBB1/GP26</td>
+<td>53</td>
+<td>MTRB#</td>
+<td>85</td>
+<td>CIRRX/COPENO#/GP55</td>
+<td><strong><em>117</em></strong></td>
+<td><strong><em>GNDD</em></strong></td>
+</tr>
+<tr>
+<td>22</td>
+<td>JSBCY/GP25</td>
+<td>54</td>
+<td>DRVA#</td>
+<td>86</td>
+<td>GNDA</td>
+<td>118</td>
+<td>DCD1#</td>
+</tr>
+<tr>
+<td>23</td>
+<td>JSBCX/GP24</td>
+<td>55</td>
+<td>DRVB#</td>
+<td>87</td>
+<td>TMPIN3</td>
+<td>119</td>
+<td>RI1#</td>
+</tr>
+<tr>
+<td>24</td>
+<td>JSAB2/GP23</td>
+<td>56</td>
+<td>WDATA#</td>
+<td>88</td>
+<td>TMPIN2</td>
+<td>120</td>
+<td>CTS1#</td>
+</tr>
+<tr>
+<td>25</td>
+<td>JSAB1/GP22</td>
+<td>57</td>
+<td>DIR#</td>
+<td>89</td>
+<td>TMPIN1</td>
+<td>121</td>
+<td>DTR1#/JP1</td>
+</tr>
+<tr>
+<td>26</td>
+<td>JSACY/GP21</td>
+<td>58</td>
+<td>STEP#</td>
+<td>90</td>
+<td>VREF</td>
+<td>122</td>
+<td>RTS1#/JP2</td>
+</tr>
+<tr>
+<td>27</td>
+<td>JSACX/GP20</td>
+<td>59</td>
+<td>HDSEL#</td>
+<td>91</td>
+<td>VIN7</td>
+<td>123</td>
+<td>DSR1#</td>
+</tr>
+<tr>
+<td>28</td>
+<td>MIDI_OUT/GP17</td>
+<td>60</td>
+<td>WGATE#</td>
+<td>92</td>
+<td>VIN6</td>
+<td>124</td>
+<td>SOUT1/JP3</td>
+</tr>
+<tr>
+<td>29</td>
+<td>MIDI_IN/GP16</td>
+<td>61</td>
+<td>RDATA#</td>
+<td>93</td>
+<td>VIN5</td>
+<td>125</td>
+<td>SIN1</td>
+</tr>
+<tr>
+<td>30</td>
+<td>CIRTX/GP15</td>
+<td>62</td>
+<td>TRK0#</td>
+<td>94</td>
+<td>VIN4</td>
+<td>126</td>
+<td>DCD2#</td>
+</tr>
+<tr>
+<td>31</td>
+<td>SCRRST/GP14</td>
+<td>63</td>
+<td>INDEX#</td>
+<td>95</td>
+<td>VIN3</td>
+<td>127</td>
+<td>RI2#</td>
+</tr>
+<tr>
+<td>32</td>
+<td>SCRPFET#/GP13</td>
+<td>64</td>
+<td>WPT#</td>
+<td>96</td>
+<td>VIN2</td>
+<td>128</td>
+<td>CTS2#</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>IT8712F 並列埠腳位定義描述</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Pin(s) No.</th>
+<th>Symbol</th>
+<th>I/O</th>
+<th>Power</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>SLCT</td>
+<td>DI</td>
+<td>VCC</td>
+<td>Printer Select.            This signal goes high when the line printer has been selected.</td>
+</tr>
+<tr>
+<td>101</td>
+<td>PE</td>
+<td>DI</td>
+<td>VCC</td>
+<td>Printer Paper End.         This signal is set high by the printer when it runs out of paper.</td>
+</tr>
+<tr>
+<td>102</td>
+<td>BUSY</td>
+<td>DI</td>
+<td>VCC</td>
+<td>Printer Busy.              This signal goes high when the line printer has a local operation in progress and cannot accept data.</td>
+</tr>
+<tr>
+<td>103</td>
+<td>ACK#</td>
+<td>DI</td>
+<td>VCC</td>
+<td>Printer Acknowledge #.     This signal goes low to indicate that the printer has already received a character and is ready to accept another.</td>
+</tr>
+<tr>
+<td>104</td>
+<td>SLIN#</td>
+<td>DIO24</td>
+<td>VCC</td>
+<td>Printer Select Input #.    When low, the printer is selected. This signal is derived from the complement of bit 3 of the printer control register.</td>
+</tr>
+<tr>
+<td>105</td>
+<td>INIT#</td>
+<td>DIO24</td>
+<td>VCC</td>
+<td>Printer Initialize #,      active low. This signal is derived from bit 2 of the printer control register, and is used to initialize the printer.</td>
+</tr>
+<tr>
+<td>106</td>
+<td>ERR#</td>
+<td>DI</td>
+<td>VCC</td>
+<td>Printer Error #.           When low, it indicates that the printer has encountered an error. The error message can be read from bit 3 of the printer status register.</td>
+</tr>
+<tr>
+<td>107</td>
+<td>AFD#</td>
+<td>DIO24</td>
+<td>VCC</td>
+<td>Printer Auto Line Feed #,  active low. This signal is derived from the complement of bit 1 of the printer control register, and is used to advance one line after each line is printed.</td>
+</tr>
+<tr>
+<td>108</td>
+<td>STB#</td>
+<td>DIO24</td>
+<td>VCC</td>
+<td>Printer Strobe #,         active low. This signal is the complement of bit 0 of the printer control register, and is used to strobe the printing data into the printer.</td>
+</tr>
+<tr>
+<td>109 - 116</td>
+<td>PD[0:7]</td>
+<td>DIO24</td>
+<td>VCC</td>
+<td>Parallel Port Data Bus.    This bus provides a byte-wide input or output to the system. The eight lines are held in a high impedance state when the port is deselected.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>IT8712F IC腳位定義  <br/>
+<img alt="r" src="pinout.png"/> </p>
+</li>
+<li>
+<p>IT8712F 並列埠線路  <br/>
+<img alt="r" src="circuit1.png"/> <br/>
+<img alt="r" src="circuit2.png"/> </p>
+</li>
+<li>
+<p>IT8712F BIOS Initialize function    </p>
+</li>
+<li>Borrowed from Specifications</li>
+<li>主程式(Main):     </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nl">Main:</span> 
+        <span class="nf">CALL</span>    <span class="nv">Enter_Configuration_mode</span> 
+        <span class="nf">CALL</span>    <span class="nb">Ch</span><span class="nv">eck_Chip</span>             <span class="c1">;Don't need in BIOS POST code </span>
+        <span class="nf">JNC</span>     <span class="nv">Initial_OK</span>               <span class="c1">;Don't need in BIOS POST code </span>
+        <span class="nf">CALL</span>    <span class="nv">Earlyio_Program</span> 
+        <span class="nf">CALL</span>    <span class="nv">Initialize_All_Device</span> 
+        <span class="nf">CALL</span>    <span class="nv">Before_Boot</span> 
+        <span class="nf">CALL</span>    <span class="nv">Exit_Configuration_mode</span> 
+        <span class="nf">CALL</span>    <span class="nv">Reset_System</span>           <span class="c1">;Don't need in BIOS POST code </span>
+  <span class="nl">Initial_OK:</span> 
+        <span class="nf">CALL</span>    <span class="nv">Exit_Configuration_mode</span>    <span class="c1">;Don't need in BIOS POST code </span>
+        <span class="nf">MOV</span>   <span class="nb">AH</span><span class="p">,</span> <span class="mh">4Ch</span> 
+        <span class="nf">INT</span>     <span class="mh">21h</span>
+</code></pre></div>
+<ul>
+<li>驅動週邊裝置:     </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">Initialize_All_Device</span> <span class="nv">PROC</span> <span class="nv">NEAR</span> 
+<span class="nl">APC_PME_Status:</span> 
+<span class="nl">KBC_Keyboard_Status:</span> 
+<span class="nl">KBC_Mouse_Status:</span> 
+<span class="nl">MIDI_Status:</span> 
+<span class="nl">Game_Status:</span> 
+<span class="nl">CIR_Status:</span> 
+<span class="nl">FDC_Status:</span> 
+<span class="nl">FDC_Function:</span> 
+<span class="nl">Register:</span> 
+<span class="nl">Serial1_Status:</span> 
+<span class="nl">Serial2_Status:</span> 
+<span class="nl">Serial2_Function:</span> 
+<span class="nl">ConfigurationRegister2:</span>
+</code></pre></div>
+<ul>
+<li>關於印表機埠的初值設定程式片段:    </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nl">Parallel_Status:</span>
+        <span class="nf">MOV</span> <span class="nb">BH</span><span class="p">,</span> <span class="mh">03h</span>                  <span class="c1">;LDN=03h -&gt; Parallel port </span>
+        <span class="nf">MOV</span> <span class="nb">BL</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="p">]</span>      <span class="c1">;Enable/Disable Parallel port </span>
+
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_Status</span> 
+        <span class="nf">MOV</span> <span class="nb">BX</span><span class="p">,</span> <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="o">+</span><span class="mh">01h</span><span class="p">]</span>  <span class="c1">;Set Parallel portbaseaddress</span>
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_Port</span> 
+        <span class="nf">MOV</span> <span class="nb">BL</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">Parallel</span><span class="o">+</span><span class="mh">03h</span><span class="p">]</span>  <span class="c1">;Set Parallel port IRQ </span>
+        <span class="nf">CALL</span>    <span class="nv">Set_Device_IRQ</span> 
+<span class="nl">Parallel_Function:</span>
+        <span class="nf">MOV</span> <span class="nb">AL</span><span class="p">,</span> <span class="mh">0F0h</span>                         <span class="c1">;(Index 0F0h) </span>
+        <span class="nf">MOV</span> <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_Mode</span><span class="p">]</span>        <span class="c1">;Parallel Port Special </span>
+<span class="nl">ConfigurationRegister:</span>
+        <span class="nf">CALL</span>    <span class="nv">Write_Configuration_Data</span>         <span class="c1">;P_Mode-&gt;SPP, EPP, ECP... </span>
+        <span class="nf">MOV</span> <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_Mode</span><span class="p">]</span> 
+        <span class="nf">AND</span> <span class="nb">AH</span><span class="p">,</span> <span class="mh">02h</span> 
+        <span class="nf">JZ</span>      <span class="nv">No_Set_DMA</span> 
+        <span class="nf">MOV</span> <span class="nb">AL</span><span class="p">,</span> <span class="mh">074h</span> 
+        <span class="nf">MOV</span>     <span class="nb">AH</span><span class="p">,</span> <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="nb">CS</span><span class="p">:[</span><span class="nv">P_DMA</span><span class="p">]</span>         <span class="c1">;Set Parallel DMA channel </span>
+        <span class="nf">CALL</span>    <span class="nv">Write_Configuration_Data</span>         <span class="c1">;P_DMA-&gt;DMA channel </span>
+<span class="nl">No_Set_DMA:</span>
+        <span class="nf">RET</span> 
+<span class="nf">Initialize_All_Device</span> <span class="nv">ENDP</span>
+</code></pre></div>
+<ul>
+<li>印表機參數預設值:   </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">;-------------------------------------------------------------------------------</span>
+<span class="nf">Parallel</span>       <span class="nv">DB</span>  <span class="mh">01h</span>   <span class="c1">;00h-&gt;Disable,  01h-&gt;Enable </span>
+                <span class="kd">DW</span>  <span class="mh">378h</span>  <span class="c1">;3BCh-&gt;LPT0,    378h-&gt;LPT1,  278h-&gt;LPT2 </span>
+                <span class="kd">DB</span>  <span class="mh">07h</span>   <span class="c1">;07h-&gt;IRQ7,     05h-&gt;IRQ5 </span>
+<span class="nf">P_Mode</span>         <span class="nv">DB</span>  <span class="mh">03h</span>   <span class="c1">;00h-&gt;SPP,      01h-&gt;EPP,    02h-&gt;ECP, 03h-&gt;EPP&amp;ECP </span>
+<span class="nf">P_DMA</span>          <span class="nv">DB</span>  <span class="mh">03h</span>   <span class="c1">;01h-&gt;DMA1,     03h-&gt;DMA3 </span>
+<span class="c1">;-------------------------------------------------------------------------------</span>
+</code></pre></div>
+<h2 id="programming">Programming</h2>
+<h3 id="stand-alone-edition">Stand-alone Edition</h3>
+<h4 id="module-code">Module Code</h4>
+<ul>
+<li>Kernel Space Device Driver coding (<code>ldd.c</code>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/******************************************************************************</span>
+<span class="cm">Linux Device drivers</span>
+
+<span class="cm">Compiler: $ sudo make</span>
+<span class="cm">Enable:   $ sudo sdd_load    #&lt;= loading it on your kernel</span>
+<span class="cm">Disable:  $ sudo sdd_unload  #&lt;= remove it on you kernel</span>
+<span class="cm">Usage:    $ sudo echo -n "12345" &gt; /dev/sddw</span>
+<span class="cm">Files:    1. Makefile</span>
+<span class="cm">          2. sdd_load</span>
+<span class="cm">          3. sdd_unload</span>
+<span class="cm">******************************************************************************/</span>
+
+<span class="cp">#if defined(CONFIG_MODVERSIONS) &amp;&amp; ! defined(MODVERSIONS)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/modversions.h&gt;</span><span class="cp"></span>
+<span class="cp">#define MODVERSIONS</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;linux/kernel.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/uaccess.h&gt;</span><span class="c1">  // for put_user,</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/ioport.h&gt;</span><span class="c1"> // for check_region...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/sched.h&gt;</span><span class="c1">  // for request_irq ...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/errno.h&gt;</span><span class="c1">  // for -EIO...</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/io.h&gt;</span><span class="c1">       // for inb_p outb_p</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/delay.h&gt;</span><span class="c1">  // for u_delay</span><span class="cp"></span>
+
+<span class="cm">/* Sub Proc */</span>
+
+<span class="kt">int</span> <span class="nf">init_module</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">cleanup_module</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_release</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_ioctl</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">,</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sdd_irq_handler</span><span class="p">(</span><span class="kt">int</span> <span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="nc">pt_regs</span> <span class="o">*</span><span class="p">);</span>
+
+<span class="cp">#define DEVICE_NAME "sdd"</span>
+
+<span class="c1">// major device number </span>
+<span class="cp">#define SDD_MAJOR 0          </span><span class="c1">// SDD_MAJOR = 0   表示由系統動態配置</span>
+
+<span class="c1">// minor device number</span>
+<span class="cp">#define SDD_WRITE 0</span>
+<span class="cp">#define SDD_READ 1</span>
+
+<span class="c1">// ioctl commands</span>
+<span class="cp">#define SDD_TRON    _IO('M',0x01)</span>
+<span class="cp">#define SDD_TROFF   _IO('M',0x02)</span>
+
+<span class="c1">// I/O ports used by the device</span>
+
+<span class="cp">#define SDD_BASE     0x378       </span><span class="c1">// base port (the First Printer port )</span>
+<span class="cp">#define SDD_REGSIZE  3           </span><span class="c1">// size of I/O port regin</span>
+
+<span class="cp">#define SDD_OUT (SDD_BASE + 0)</span>
+<span class="cp">#define SDD_IN  (SDD_BASE + 2)</span>
+
+<span class="c1">// interrupt line used by the device</span>
+<span class="cp">#define SDD_IRQ 0x7</span>
+
+<span class="cp">#define TRACE_CHR(chr) \</span>
+<span class="cp">    if (sdd_trace) printk("%c",(chr));</span>
+
+<span class="cp">#define TRACE_TXT(txt) \</span>
+<span class="cp">    if (sdd_trace) printk(KERN_INFO"%s\n",(txt));</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">sdd_trace</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">read_busy</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">write_busy</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">Major</span><span class="p">;</span>                               <span class="c1">// Major Device Number</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">myint</span><span class="p">;</span>                               <span class="c1">// for delay loop</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">myint</span><span class="p">,</span> <span class="s">"i"</span><span class="p">);</span>                       <span class="c1">// i: integer</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">"i"</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>          <span class="c1">// b: single byte</span>
+<span class="n">MODULE_PARM</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s">"b"</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">file_operations</span> <span class="n">fops</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">read</span> <span class="o">=</span> <span class="n">sdd_read</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">write</span> <span class="o">=</span> <span class="n">sdd_write</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">ioctl</span> <span class="o">=</span> <span class="n">sdd_ioctl</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">open</span> <span class="o">=</span> <span class="n">sdd_open</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">release</span> <span class="o">=</span> <span class="n">sdd_release</span>
+<span class="p">};</span>
+
+<span class="c1">// .............................. Functions .................................</span>
+
+<span class="kt">int</span> <span class="nf">init_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="n">Major</span> <span class="o">=</span> <span class="n">register_chrdev</span><span class="p">(</span><span class="n">SDD_MAJOR</span><span class="p">,</span> <span class="n">DEVICE_NAME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fops</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Major</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">"SDD:Registering the character device failed with %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">Major</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">Major</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">check_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span><span class="n">SDD_REGSIZE</span><span class="p">))</span> <span class="p">{</span>
+          <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">"SDD:Cannot Register ports at %04x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">SDD_BASE</span><span class="p">);</span>
+          <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="s">"sdd"</span><span class="p">);</span>
+          <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">request_region</span><span class="p">(</span><span class="n">SDD_MAJOR</span><span class="p">,</span> <span class="n">SDD_REGSIZE</span><span class="p">,</span><span class="s">"sdd"</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">request_irq</span><span class="p">(</span><span class="n">SDD_IRQ</span><span class="p">,</span><span class="n">sdd_irq_handler</span><span class="p">,</span><span class="n">SA_INTERRUPT</span><span class="p">,</span><span class="s">"sdd"</span><span class="p">,</span><span class="nb">NULL</span><span class="p">)){</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_WARNING</span><span class="s">"SDD:Cannot Register IRQ %d"</span><span class="p">,</span> <span class="n">SDD_IRQ</span><span class="p">);</span>
+        <span class="n">release_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span> <span class="n">SDD_REGSIZE</span><span class="p">);</span>
+        <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="s">"sdd"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">read_busy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">write_busy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span><span class="s">"</span><span class="se">\n</span><span class="s">SDD:Register</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">cleanup_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">free_irq</span><span class="p">(</span><span class="n">SDD_IRQ</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">release_region</span><span class="p">(</span><span class="n">SDD_BASE</span><span class="p">,</span><span class="n">SDD_REGSIZE</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">unregister_chrdev</span><span class="p">(</span><span class="n">Major</span><span class="p">,</span> <span class="n">DEVICE_NAME</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">printk</span><span class="p">(</span><span class="s">"Error in unregister_chrdev: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">printk</span> <span class="p">(</span><span class="n">KERN_INFO</span><span class="s">"SDD:unRegistered</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_open</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">"sdd_open"</span><span class="p">);</span>
+
+    <span class="k">switch</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)){</span>
+        <span class="k">case</span> <span class="nl">SDD_WRITE</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">write_busy</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="n">EBUSY</span><span class="p">;</span>
+            <span class="n">write_busy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_READ</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">read_busy</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="n">EBUSY</span><span class="p">;</span>
+            <span class="n">read_busy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">ENXIO</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">MOD_INC_USE_COUNT</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_release</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">){</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">"RELEASE"</span><span class="p">);</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)){</span>
+        <span class="k">case</span> <span class="nl">SDD_WRITE</span><span class="p">:</span>
+            <span class="n">write_busy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_READ</span><span class="p">:</span>
+            <span class="n">read_busy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">ENXIO</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">MOD_DEC_USE_COUNT</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">ppos</span><span class="p">){</span>
+
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">"sdd:read"</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_dentry</span><span class="o">-&gt;</span><span class="n">d_inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SDD_READ</span><span class="p">){</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">printk</span><span class="p">(</span><span class="s">"&lt;1&gt;%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">count</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">put_user</span><span class="p">(</span><span class="n">inb_p</span><span class="p">(</span><span class="n">SDD_IN</span><span class="p">),</span><span class="n">buf</span><span class="o">+</span><span class="n">i</span><span class="p">)){</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">'r'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*  Called when a process writes to dev file: echo "hi" &gt; /dev/hello */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span><span class="n">loff_t</span> <span class="o">*</span><span class="n">ppos</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">"sdd:write"</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">MINOR</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_dentry</span><span class="o">-&gt;</span><span class="n">d_inode</span><span class="o">-&gt;</span><span class="n">i_rdev</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SDD_WRITE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">get_user</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">buf</span><span class="o">+</span><span class="n">i</span><span class="p">)){</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">outb_p</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">SDD_OUT</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">myint</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">myint</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">;</span><span class="n">myint</span><span class="o">++</span><span class="p">){</span>
+                <span class="n">udelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">'w'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">TRACE_CHR</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">sdd_ioctl</span><span class="p">(</span><span class="k">struct</span> <span class="nc">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">,</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">arg</span><span class="p">){</span>
+
+    <span class="n">TRACE_TXT</span><span class="p">(</span><span class="s">"sdd:ioctl"</span><span class="p">);</span>
+
+    <span class="k">switch</span><span class="p">(</span><span class="n">cmd</span><span class="p">){</span>
+        <span class="k">case</span> <span class="nl">SDD_TRON</span><span class="p">:</span>
+            <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">SDD_TROFF</span><span class="p">:</span>
+            <span class="n">sdd_trace</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sdd_irq_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="n">dev_id</span><span class="p">,</span><span class="k">struct</span> <span class="nc">pt_regs</span> <span class="o">*</span><span class="n">regs</span><span class="p">){</span>
+    <span class="n">sdd_trace</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span> <span class="n">sdd_trace</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"GPL"</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">"SDD"</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">"Smart Device Drivers"</span><span class="p">);</span>
+<span class="n">MODULE_SUPPORTED_DEVICE</span><span class="p">(</span><span class="s">"Smart Device Drivers"</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>Makefile</code>, 編譯成 <code>obj</code> 檔,使之可載入系統核心.    </li>
+</ul>
+<div class="highlight"><pre><span></span><code>WARN    := -W -Wall -Wstrict-prototypes -Wmissing-prototypes
+INCLUDE := -isystem /lib/modules/`uname -r`/build/include
+CFLAGS  := -O2 -DMODULE -D__KERNEL__ ${WARN} ${INCLUDE}
+CC      := gcc-3.2
+OBJS    := ${patsubst %.c, %.o, ${wildcard *.c}}
+all: ${OBJS}
+.PHONY: clean
+clean:
+    rm -rf *.o
+</code></pre></div>
+<h4 id="user-space-utility-for-inputting-value-to-kernel-space">User Space Utility, for inputting value to <code>Kernel Space</code>.</h4>
+<div class="highlight"><pre><span></span><code><span class="k">sub</span> <span class="nf">echoString</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span> <span class="s">"end"</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">""</span><span class="p">){</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"echo String "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" to SDD."</span><span class="p">);</span>
+        <span class="nv">$command</span> <span class="o">=</span><span class="s">"echo -n \""</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">"\" &gt; /dev/sddw"</span><span class="p">;</span>
+        <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Finish Downloaded ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">" by shell command(echo) "</span><span class="o">.</span> <span class="s">" .."</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"download ok"</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Empty !! Please make sure again!!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># 下載資料到裝置 ( 經由 Perl Script open/Close Function下載  ): </span>
+<span class="c1"># 同上述 STEP 1 至 STEP 7</span>
+<span class="c1"># 輸入欲傳輸的 ASCII Code 輸入 Entry 按下 『 SUMIT  to SDD by open a Device 』 </span>
+<span class="c1"># 裝置上的 LED 會將 送到裝置上的 ASCII Code 依序 顯示在  LED 上</span>
+<span class="c1"># 使用shell command (echo) 輸出程式碼說明 Perl code</span>
+<span class="c1"># 紅色部分即是用 Perl開啟(open)與 關閉(close)裝置的Script</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="k">sub</span> <span class="nf">writeDevice</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">""</span><span class="p">){</span>
+        <span class="nv">$devicepath</span><span class="o">=</span><span class="s">"&gt; \/dev\/sddw"</span><span class="p">;</span>
+        <span class="nv">@_</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="sr">//</span><span class="p">,</span> <span class="nv">$echoString</span><span class="p">);</span>
+
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Downloading ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" now\n"</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"sending"</span><span class="o">.</span> <span class="nv">$_</span><span class="o">.</span><span class="s">" now "</span><span class="p">);</span>
+
+        <span class="k">foreach</span> <span class="nv">$_</span> <span class="p">(</span><span class="nv">@_</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>  
+            <span class="k">print</span> <span class="s">"download ASCII code --&gt; "</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">" now \n"</span><span class="p">;</span>
+            <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$_</span><span class="p">;</span>
+            <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Finish Downloaded by ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" PERL Script open\/close Function.."</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Writing to SDD ok"</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Empty !! Please make sure again!!"</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="loading-module">Loading module</h4>
+<ul>
+<li>The Steps        </li>
+<li>動態載入模組</li>
+<li>找出 裝置主要代碼</li>
+<li>不管裝置存不存在安全起見先移除裝置</li>
+<li>建立節點 ( 次要 節點 Minor Number )</li>
+<li>
+<p>製作檔案連結
+6.列出該裝置資訊</p>
+</li>
+<li>
+<p>Shell Script</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>#!/bin/sh
+
+module="sdd"
+device="sdd"
+mode="666"
+
+##########################################
+# Step &lt;1&gt; 動態載入模組
+##########################################
+
+/sbin/insmod  ${module}.o || exit 1
+
+###########################################
+# Step &lt;2&gt; Finding Device drivers's major Number
+#          找出裝置的主要代碼
+###########################################
+
+major=`cat /proc/devices | grep sdd | awk '{ print $1 }'`
+
+#####################################################
+# Step &lt;3&gt; Remove Old SDD Device drivers If it's exist ...
+#          不管裝置存不存在 安全起見 先移除裝置
+#####################################################
+
+rm -f /dev/${device}0
+rm -f /dev/${device}1
+rm -f /dev/${device}r
+rm -f /dev/${device}w
+
+#####################################################
+# Step &lt;4&gt; 建立 節點 ( 次要 節點 Minor Number )
+#####################################################
+
+mknod --m=${mode} /dev/${device}0 c ${major} 0
+mknod --m=${mode} /dev/${device}1 c ${major} 1
+
+##########################################
+# Step &lt;5&gt; 制作 捷徑
+##########################################
+
+ln -sf sdd0 /dev/${device}w
+ln -sf sdd1 /dev/${device}r
+
+##########################################
+# Step &lt;6&gt; 列 出  建 立 好 的 裝 置
+##########################################
+
+ls -l /dev | grep sdd
+</code></pre></div>
+<h4 id="module-unloading-sdd_unload">Module Unloading <code>sdd_unload</code></h4>
+<ul>
+<li>The Steps</li>
+<li>如果不再使用移除該模組</li>
+<li>移除檔案連結</li>
+<li>
+<p>自系統中移除模組</p>
+</li>
+<li>
+<p>Shell Script   </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>#!/bin/sh
+module="sdd"
+device="sdd"
+
+rm -f /dev/${device}0
+rm -f /dev/${device}1
+rm -f /dev/${device}r
+rm -f /dev/${device}w
+</code></pre></div>
+<h4 id="running">Running</h4>
+<ul>
+<li>
+<p>Input
+<div class="highlight"><pre><span></span><code>$ sudo echo -n "12345" &gt; /dev/sddw
+</code></pre></div></p>
+</li>
+<li>
+<p>Output
+<div class="highlight"><pre><span></span><code># sudo cat /dev/sddr
+</code></pre></div></p>
+</li>
+<li>
+<p>Running automatically, </p>
+</li>
+<li>user can add the script to <code>/etc/rc.d/rc.local</code></li>
+</ul>
+<h4 id="utility">Utility</h4>
+<ul>
+<li>
+<p>User Space Utility (sddHelper.pl), use Perl/TK to create the WebUI for helping users to <code>insert</code>, <code>remove</code> module and so on.   </p>
+</li>
+<li>
+<p>GUI  <br/>
+<img alt="r" src="help.png"/> </p>
+</li>
+<li>
+<p>Coding    </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/perl -w</span>
+
+<span class="k">use</span> <span class="nn">Tk</span><span class="p">;</span>
+
+<span class="c1"># Create main window.</span>
+<span class="k">my</span> <span class="nv">$main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MainWindow</span><span class="p">;</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">(</span><span class="s">"SDD HELPER"</span><span class="p">);</span>
+
+<span class="c1"># A menu bar is really a Frame.</span>
+<span class="nv">$menubar</span> <span class="o">=</span> <span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Frame</span><span class="p">(</span><span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">"raised"</span><span class="p">,</span> <span class="o">-</span><span class="n">borderwidth</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1"># Menubuttons appear on the menu bar.</span>
+<span class="nv">$filebutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Module"</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"make SDD"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">make_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Load SDD"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">loadSDD_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"unload SDD"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">unloadSDD_choice</span><span class="p">],</span> 
+                        <span class="s">"-"</span><span class="p">,</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"lsmod"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">lsmod_choice</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Exit"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;\&amp;</span><span class="n">exit_choice</span><span class="p">]]);</span>
+<span class="nv">$filebutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"left"</span><span class="p">);</span>
+
+<span class="c1"># Resource menu.</span>
+<span class="nv">$resousebutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Resouse"</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"I/O..."</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">ioResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Modules(lsmod)"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Ksyms"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">KsymsResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Devices"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">DevicesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"IRQ"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">IrqResouse</span> <span class="p">],</span> 
+                        <span class="s">"-"</span><span class="p">,</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"Loglevel String"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">logLevelResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"....."</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">]]);</span>
+<span class="nv">$resousebutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"left"</span><span class="p">);</span>
+
+<span class="c1"># Command menu.</span>
+<span class="nv">$commandbutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Command"</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+                <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"ps"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">psCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"dmesg"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">dmesgCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"ls -l /dev"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">lsDevCommand</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"--"</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">DevicesResouse</span> <span class="p">],</span> 
+                        <span class="p">[</span><span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"....."</span><span class="p">,</span> 
+                        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">modulesResouse</span> <span class="p">]]);</span>
+<span class="nv">$commandbutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"left"</span><span class="p">);</span>
+
+
+
+<span class="c1"># Help menu.</span>
+<span class="nv">$helpbutton</span> <span class="o">=</span> <span class="nv">$menubar</span><span class="o">-&gt;</span><span class="n">Menubutton</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Help"</span><span class="p">,</span> <span class="o">-</span><span class="n">underline</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="o">-</span><span class="n">menuitems</span> <span class="o">=&gt;</span> <span class="p">[[</span> <span class="s">'command'</span> <span class="o">=&gt;</span><span class="s">"About..."</span><span class="p">,</span> 
+        <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">about_choice</span> <span class="p">]]);</span>
+
+<span class="c1"># Help menu should appear on the right.</span>
+<span class="nv">$helpbutton</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"right"</span><span class="p">);</span>
+<span class="nv">$menubar</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"top"</span><span class="p">,</span>  <span class="o">-</span><span class="n">fill</span><span class="o">=&gt;</span><span class="s">"x"</span><span class="p">);</span>
+
+<span class="nv">$echoString</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+
+<span class="c1">#  ........................................</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Label</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"send String By Echo command Shell / Open Print Port:"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span>  <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Entry</span><span class="p">(</span><span class="o">-</span><span class="n">textvariable</span> <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$echoString</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span>  <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">#  ........................................</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"SUMIT to SDD by SHELL (Echo) command"</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">echoString</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"SUMIT to SDD by OPEN a Device"</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">writeDevice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"read the Data From SDD Device"</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">readDevice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+
+
+
+<span class="c1"># Create a label widget for the main area.</span>
+<span class="nv">$mainArea</span><span class="o">=</span><span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Scrolled</span><span class="p">(</span><span class="sx">qw/Text -setgrid true -width 100 -height 10 -scrollbars e -wrap word/</span><span class="p">);</span>
+<span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="sx">qw/-expand yes -fill both  -side top/</span><span class="p">);</span>
+
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"makeing SDD "</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">make_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"Loading SDD "</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">loadSDD_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"Remove  SDD "</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">unloadSDD_choice</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Button</span><span class="p">(</span><span class="o">-</span><span class="n">text</span> <span class="o">=&gt;</span> <span class="s">"Who am I"</span><span class="p">,</span>  <span class="o">-</span><span class="n">relief</span><span class="o">=&gt;</span><span class="s">'ridge'</span><span class="p">,</span> <span class="o">-</span><span class="n">command</span> <span class="o">=&gt;</span> <span class="o">\&amp;</span><span class="n">whoAmI_choise</span> <span class="p">)</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span> <span class="o">=&gt;</span> <span class="s">'top'</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span> <span class="o">=&gt;</span> <span class="s">'w'</span><span class="p">,</span> <span class="o">-</span><span class="n">fill</span> <span class="o">=&gt;</span> <span class="s">'x'</span><span class="p">,</span>  <span class="o">-</span><span class="n">expand</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
+
+
+<span class="c1"># Create a status area.</span>
+<span class="nv">$status</span> <span class="o">=</span> <span class="nv">$main</span><span class="o">-&gt;</span><span class="n">Label</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Status area"</span><span class="p">,</span> <span class="o">-</span><span class="n">borderwidth</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">anchor</span><span class="o">=&gt;</span><span class="s">"w"</span><span class="p">);</span>
+<span class="nv">$status</span><span class="o">-&gt;</span><span class="nb">pack</span><span class="p">(</span><span class="o">-</span><span class="n">side</span><span class="o">=&gt;</span><span class="s">"top"</span><span class="p">,</span>  <span class="o">-</span><span class="n">fill</span><span class="o">=&gt;</span><span class="s">"x"</span><span class="p">);</span>
+
+
+<span class="c1"># Let Perl/Tk handle window events.</span>
+<span class="n">MainLoop</span><span class="p">;</span>
+
+<span class="k">sub</span> <span class="nf">echoString</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">""</span><span class="p">){</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"echo String "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" to SDD."</span><span class="p">);</span>
+        <span class="nv">$command</span> <span class="o">=</span><span class="s">"echo -n \""</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">"\" &gt; /dev/sddw"</span><span class="p">;</span>
+        <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Finish Downloaded ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span> <span class="o">.</span><span class="s">" by shell command(echo) "</span><span class="o">.</span> <span class="s">" .."</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"download ok"</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Empty !! Please make sure again!!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Todo 要有裝置 lock 功能</span>
+
+<span class="k">sub</span> <span class="nf">writeDevice</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="k">unless</span> <span class="p">(</span><span class="nv">$echoString</span> <span class="ow">eq</span> <span class="s">""</span><span class="p">){</span>
+        <span class="nv">$devicepath</span><span class="o">=</span><span class="s">"&gt; \/dev\/sddw"</span><span class="p">;</span>
+        <span class="nv">@_</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="sr">//</span><span class="p">,</span> <span class="nv">$echoString</span><span class="p">);</span>
+
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Downloading ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" now\n"</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"sending"</span><span class="o">.</span> <span class="nv">$_</span><span class="o">.</span><span class="s">" now "</span><span class="p">);</span>
+
+        <span class="k">foreach</span> <span class="nv">$_</span> <span class="p">(</span><span class="nv">@_</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>
+            <span class="k">print</span> <span class="s">"download ASCII code --&gt; "</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">" now \n"</span><span class="p">;</span>
+            <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$_</span><span class="p">;</span>
+            <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"Finish Downloaded by ASCII Code "</span><span class="o">.</span><span class="nv">$echoString</span><span class="o">.</span><span class="s">" PERL Script open\/close Function.."</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Writing to SDD ok"</span><span class="p">);</span>
+        <span class="nv">$echoString</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Empty !! Please make sure again!!"</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">readDevice</span><span class="p">{</span>
+    <span class="nv">$devicepath</span><span class="o">=</span><span class="s">"\/dev\/sddr"</span><span class="p">;</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+
+    <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="nv">$devicepath</span><span class="p">);</span>
+        <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FILE&gt;</span><span class="p">){</span>
+            <span class="k">print</span> <span class="nv">$_</span><span class="o">.</span><span class="s">"\n"</span><span class="p">;</span>
+            <span class="p">;</span> <span class="c1"># next | last | last if ($i == 1)</span>
+        <span class="p">}</span>
+    <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">whoAmI_choise</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"whoami"</span><span class="p">);</span>
+        <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Who are You !!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"># .................................................</span>
+<span class="c1"># Subroutine to handle button click.</span>
+<span class="k">sub</span> <span class="nf">exit_choice</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s">"Bye!\n"</span><span class="p">;</span>
+    <span class="nb">exit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">lsmod_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"lsmod"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"List Module ."</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">make_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"make"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"making SDD. ok"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">loadSDD_choice</span> <span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"./sdd_load"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Loading SDD."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">unloadSDD_choice</span> <span class="p">{</span>
+
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"./sdd_unload"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"unLoad SDD."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">about_choice</span> <span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="s">"SDD Helper 1.0"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"About the SDD."</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">ioResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/proc/ioports"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"IO port List p.53 "</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">modulesResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/proc/modules"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Module Info p.51"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">KsymsResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/proc/ksyms"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Kernel Table p.53"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">DevicesResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/proc/devices"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">" Devices p.61"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">IrqResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/proc/interrupts"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">" Devices p.245"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">logLevelResouse</span><span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"/usr/src/linux-2.4.19-16mdk/include/linux/kernel.h"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">" logLevel String p.95"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">psCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"ps"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"PS OK"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">sub</span> <span class="nf">dmesgCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"dmesg"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"Dmesg OK"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub</span> <span class="nf">lsDevCommand</span><span class="p">{</span>
+    <span class="n">exeCommand</span><span class="p">(</span><span class="s">"ls -l /dev"</span><span class="p">);</span>
+    <span class="nv">$status</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="o">=&gt;</span><span class="s">"finding Major and Minor number(c:char node/ b:block node) p.58"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">exeCommand</span><span class="p">{</span>
+    <span class="nv">$command</span><span class="o">=</span><span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s">"&gt;response.txt"</span><span class="p">;</span>
+    <span class="nb">system</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+    <span class="o">&amp;</span><span class="n">readFile</span><span class="p">(</span><span class="s">"response.txt"</span><span class="p">);</span>
+    <span class="nb">system</span><span class="p">(</span><span class="s">"rm -f response.txt"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># .................................................</span>
+<span class="k">sub</span> <span class="nf">readFile</span><span class="p">{</span>
+    <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">,</span>  <span class="s">"end"</span><span class="p">);</span>
+    <span class="nb">open</span><span class="p">(</span> <span class="n">FILENAME</span><span class="p">,</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+    <span class="nv">@context</span><span class="o">=</span><span class="sr">&lt;FILENAME&gt;</span><span class="p">;</span>
+    <span class="nb">close</span><span class="p">(</span><span class="n">FILENAME</span><span class="p">);</span>
+
+    <span class="k">foreach</span> <span class="nv">$i</span><span class="p">(</span><span class="nv">@context</span><span class="p">){</span>
+        <span class="nv">$mainArea</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="s">'end'</span><span class="p">,</span>  <span class="nv">$i</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h2 id="online-edition">Online Edition</h2>
+<ul>
+<li>Topology</li>
+<li>Client:Personal Computer,Brower,FTP Client,AP(off-line)    </li>
+<li>
+<p>Server:Apache HTTP Server,PHP Script,GD,Database,Perl Script, Bash shell    <br/>
+<img alt="r" src="topology.png"/></p>
+</li>
+<li>
+<p>Uplink (I)   <br/>
+<img alt="r" src="uplink1.png"/></p>
+</li>
+<li>
+<p>Uplink (II)   <br/>
+<img alt="r" src="uplink2.png"/></p>
+</li>
+<li>
+<p>Running</p>
+</li>
+<li>
+<p>打開瀏覽器,連接前端靜態Form網頁,鍵入預傳給裝置之值,之後按下提交送出  <br/>
+<img alt="r" src="run1.png"/></p>
+</li>
+<li>如果該值有效的話,PHP Script 開啟裝置並送出ASCII code 到該裝置,裝置收到該值並顯示在LED上,HTTP Server 並回報成功  <br/>
+<img alt="r" src="run2.png"/></li>
+<li>
+<p>如果該值無效的話,裝置不動作HTTP Server回報失敗  <br/>
+<img alt="r" src="run2.png"/></p>
+</li>
+<li>
+<p>Static Web page (<code>index.html</code>), providing this web page for user to input the value remotely.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>downing ascii code to /drv/sddw<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span> downloading ASCII code to <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    Remote Server's <span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">#0000ff</span><span class="p">&gt;</span> /dev/sddw <span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"download.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"GET"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_parent"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">cellpadding</span><span class="o">=</span><span class="s">"0"</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">name</span><span class="o">=</span><span class="s">downLoadString</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"sumit"</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+
+這網頁會將你所鍵入的 ASCII Code <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+送到遠端主機的 /dev/sddw 裝置
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+The Page is at /var/www/html ( remote machine )<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Edited by BuleFish
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li>Dynamic Web Pages (<code>download.php</code>), opening the device and feed the value to device driver via <code>PHP</code> code.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;title&gt;Download ASCII code to /drv/sddw&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="cp">&lt;?</span>
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt; Download ASCII code </span><span class="se">\"</span><span class="s2">&lt;font color=#ff0000&gt;"</span><span class="o">.</span> <span class="nv">$downLoadString</span><span class="o">.</span> <span class="s2">"&lt;/font&gt;</span><span class="se">\"</span><span class="s2">  &lt;br&gt; to Remote Server's  /dev/sddw &lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;hr&gt;&lt;p&gt;&lt;p&gt;"</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$downLoadString</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">"The ASCII Code</span><span class="se">\"</span><span class="s2">"</span> <span class="o">.</span> <span class="nv">$downLoadString</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">download Ok..."</span><span class="p">;</span>
+    <span class="nv">$fp</span><span class="o">=</span><span class="nb">fopen</span> <span class="p">(</span> <span class="s2">"/dev/sddw"</span><span class="p">,</span> <span class="s2">"w"</span> <span class="p">);</span>
+        <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span>  <span class="nv">$downLoadString</span><span class="p">);</span>
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">" Empty!! Please make sure again  !!&lt;p&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;a href='download.html'&gt; Try Again &lt;/a&gt;&lt;p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;p&gt;</span>
+<span class="x">&lt;p&gt;</span>
+<span class="x">&lt;hr&gt;</span>
+<span class="x">Opening the &lt;font color=#0000ff&gt;&lt;b&gt;/sdd/sddw &lt;/b&gt;&lt;/font&gt;</span>
+<span class="x">by &lt;font color=#0000ff&gt;&lt;b&gt; PHP &lt;/b&gt;&lt;/font&gt; script &lt;br&gt;</span>
+<span class="x">fopen/fwrite function [ download.php ]</span>
+
+<span class="x">&lt;p&gt;</span>
+<span class="x">PS. if download speed is too slow,  &lt;br&gt;try to mak a under downloading page</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h2 id="application">Application</h2>
+<ul>
+<li>Data Collection  <br/>
+<img alt="r" src="usage.png"/></li>
+</ul>
+<h2 id="demonstration">Demonstration</h2>
+<ul>
+<li>Please click <code>▶</code> to play below video.      </li>
+</ul>
+<video controls="" width="400">
+<source src="report.mp4" type="video/mp4"/>
+  Your browser does not support HTML5 video.
+</video>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Peripheral Component Interconnect (PCI)" class="md-footer__link md-footer__link--prev" href="../pci/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Peripheral Component Interconnect (PCI)
+            </div>
+</div>
+</a>
+<a aria-label="Next: General Purpose Input Output (GPIO)" class="md-footer__link md-footer__link--next" href="../gpio/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              General Purpose Input Output (GPIO)
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({});</script></body>
+</html>

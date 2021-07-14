@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
+
+  <title>Document</title>
+ </head>
+ <body>
+
+<!-- <p>Type 'correct' to validate.</p> -->
+<!--
+<h2>Request:</h2>
+
+<form action="javascript:alert( 'success!' );">
+  <div>
+    Input Text you want to show: (Could be in Chinese) <br> <input type="text"> <br>
+    <input type="submit">
+  </div>
+</form>
+<span></span>
+-->
+<h2>Response:</h2>
+
+<canvas id="myCanvas" width="240" height="320" style="border:1px solid #d3d3d3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.fillStyle="gray";
+ctx.fillRect(0,0,30,320);
+ctx.fillStyle="yellow";
+ctx.fillRect(30,0,30,320);
+ctx.fillStyle="cyan";
+ctx.fillRect(60,0,30,320);
+ctx.fillStyle="green";
+ctx.fillRect(90,0,30,320);
+ctx.fillStyle="magenta";
+ctx.fillRect(120,0,30,320);
+ctx.fillStyle="red";
+ctx.fillRect(150,0,30,320);
+ctx.fillStyle="blue";
+ctx.fillRect(180,0,30,320);
+ctx.fillStyle="black";
+ctx.fillRect(210,0,30,320);
+</script>
+</body>
+</html>

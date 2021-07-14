@@ -1,0 +1,1189 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/engineer/tv/player/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>Multimedia Player - Ed's Wiki  🦉</title>
+<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#television-engineering">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Ed's Wiki  🦉" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Ed's Wiki  🦉
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Multimedia Player
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../dev/softwares/">
+        Engineering
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../edu/index.md">
+        Education
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../collections/">
+        Collection
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../traveling/trip/">
+        Traveling
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../photos/">
+      Photos
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Ed's Wiki  🦉" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    Ed's Wiki  🦉
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        About Me
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
+        About Here
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
+        Academic Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
+        Work Experience
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
+        Technician Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
+        Technician Training
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/softwares/">
+        Softwares Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/accessories/">
+        Accessories
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/equipments/">
+        Networking Equipments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/auto/">
+        Automation and Crawler
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/">
+        Diagnostic Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/perf/">
+        Performance Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/git/">
+        Git Repo and Build Machine
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/docker/">
+        Docker and Macvlan
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/doc/">
+        Documentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/prog/">
+        Programmer Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/python/">
+        Extending Python with C
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kernel/rebuild/">
+        Rebuild Kernel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" id="__nav_2_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_1">
+        SDK Framework
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SDK Framework" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_1">
+<span class="md-nav__icon md-icon"></span>
+          SDK Framework
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/buildroot/">
+        Buildroot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/openwrt/">
+        OpenWRT
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2">
+        Application
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Application
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/cam/cloud/">
+        Surveillance Camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+        Lifetime Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Lifetime Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/lifetime/">
+        Flash MTD Lifetime
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Celluar Network
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cell/sdr/">
+        Amarisoft SDR
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/hypertext-transfer-protocol/">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/file-transfer-protocol/">
+        File Transfer Protocol (FTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/discrete-time-processing/">
+        Discrete-Time Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/moving-average-and-backward-system/">
+        Moving Average and Backward System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/window-size-and-the-spectrogram/">
+        Window Size and the Spectrogram
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+        Image Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Image Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Image Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/grayscale/">
+        Grayscale
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/monochrome/">
+        Monochrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/negative/">
+        Negative Film
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/colorbar/">
+        Colorbar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/text/">
+        Text Picture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/mirror/">
+        Mirror
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/py/resize/">
+        Image Resizer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../os/assembler-compiler/">
+        An Assembler Compiler
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/isa/">
+        Industry Standard Architecture (ISA)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/pci/">
+        Peripheral Component Interconnect (PCI)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/ldd/">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/gpio/">
+        General Purpose Input Output (GPIO)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/i2c/">
+        Inter-Integrated Circuit (I2C)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Multimedia Player
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Multimedia Player
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multimedia-player">
+    Multimedia Player
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
+    Content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
+    Concept
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gui-interface">
+    GUI Interface
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
+    Programming
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
+    Running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mpeg1/">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/">
+        Misc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/index.md">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/thesis/index.md">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/english/index.md">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/qualitative-research/">
+        Qualitative Research
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/quantitative-research/">
+        Quantitative Research
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/">
+        Collections
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Traveling
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Traveling" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Traveling
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/trip/">
+        Trip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/tour/">
+        Tour
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../photos/">
+        Photos
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multimedia-player">
+    Multimedia Player
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
+    Content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concept">
+    Concept
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gui-interface">
+    GUI Interface
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
+    Programming
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
+    Running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="television-engineering">Television Engineering</h1>
+<h2 id="multimedia-player">Multimedia Player</h2>
+<div class="highlight"><pre><span></span><code>$author:   Ching-Wen (Ed) Lai
+$date:     May. 2003
+$revised:  Mar. 2018
+$keywords: television, engineering, multimedia, player
+</code></pre></div>
+<p>An implementation of Multimedia Player</p>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#background">Background</a></li>
+<li><a href="#gui-interface">GUI Interface</a></li>
+<li><a href="#programming">Programming</a></li>
+<li><a href="#reference">References</a></li>
+</ul>
+<h2 id="concept">Concept</h2>
+<p>設計一多媒體程式,  可以播放<code>AVI</code>與<code>MIDI</code>類型的多媒體檔案。</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Visual Basic 6.0</li>
+</ul>
+<h2 id="background">Background</h2>
+<ul>
+<li>使用 <code>Visual Basic</code> 的 API 中的 <code>MCI(Media Control Interface)</code> 語音播放函式, 播放多媒體檔. </li>
+<li>在程式內即是利用API 的 <code>mciSendString</code>函式,來播放 <code>*.wav</code> , <code>*.mid</code> , <code>*.avi</code> 檔.</li>
+<li>宣告 API 函數,在表單或模組作以下宣告    </li>
+</ul>
+<div class="highlight"><pre><span></span><code>Public Const WS_CHILD = &amp;H40000000
+Declare Function mciSendString Lib "winmm" Alias "mciSendStringA" (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uReturnLength As Long, ByVal hwndCallback As Long) As Long
+Public FrameNO As Integer
+</code></pre></div>
+<ul>
+<li>使用 <a href="https://msdn.microsoft.com/zh-tw/library/windows/desktop/dd743373(v=vs.85).aspx"><code>mciSendString</code></a> 函數播放多媒體檔    </li>
+</ul>
+<div class="highlight"><pre><span></span><code>Ret=mciSendString ("MCI Command",0,0,0 )
+</code></pre></div>
+<ul>
+<li>
+<p>以<code>flags</code>參數指定方式播放語音檔 </p>
+</li>
+<li>
+<p>ret 為呼叫 mciSendString 的傳回值 其值為 0 代表失敗,為 1 代表成功</p>
+</li>
+<li>
+<p>MCI Command Strings    </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>MCI Command Strings</th>
+<th>Parameters</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>設備名稱  <code>[tape 設備形式]</code> <code>[alias 別名 ]</code></td>
+<td>開啟設備</td>
+</tr>
+<tr>
+<td>close</td>
+<td>設備名稱</td>
+<td>關閉</td>
+</tr>
+<tr>
+<td>play</td>
+<td>設備名稱</td>
+<td>播放</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>-</td>
+<td>暫停</td>
+</tr>
+<tr>
+<td>resume</td>
+<td>設備名稱</td>
+<td>恢復播放</td>
+</tr>
+<tr>
+<td>seek</td>
+<td>設備名稱 <code>[ to 位置 | to start | to end ]</code></td>
+<td>移到</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>設備名稱</td>
+<td>停止</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gui-interface">GUI Interface</h2>
+<ul>
+<li>表單設計    </li>
+</ul>
+<p><img alt="" src="gui-1.jpg"/> </p>
+<ul>
+<li><strong>播放區</strong>: 最頂端為 播放區 ,放映多媒體檔案</li>
+<li><strong>播放清單</strong>: 可加入五筆資料 雙擊播放清單可播放選定的曲目</li>
+<li><strong>Play</strong>: 播放選定的曲目</li>
+<li><strong>Pause</strong>: 暫時停止播放</li>
+<li><strong>Resume</strong>: 解除暫停播放的狀態 繼續播放</li>
+<li><strong>STOP</strong>: 停止播放</li>
+<li><strong>Add to List</strong>: 開啟通用型檔案對話盒 將所選定的檔案加入 播放清單</li>
+<li><strong>Del List Item</strong>: 刪除播放清單內的選定的資料 </li>
+<li><strong>Play now</strong>: 目前播放的曲目</li>
+<li>
+<p><strong>State</strong>: 顯示系統狀態</p>
+</li>
+<li>
+<p>物件重要屬性值    </p>
+</li>
+</ul>
+<p><img alt="" src="gui-2.jpg"/> </p>
+<table>
+<thead>
+<tr>
+<th>物件</th>
+<th>Name (物件名稱)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buttom</td>
+<td>cmdPlay</td>
+</tr>
+<tr>
+<td>Buttom</td>
+<td>cmdPause</td>
+</tr>
+<tr>
+<td>Buttom</td>
+<td>cmdResume</td>
+</tr>
+<tr>
+<td>Buttom</td>
+<td>stopComm</td>
+</tr>
+<tr>
+<td>Text Text1</td>
+<td>Text1</td>
+</tr>
+<tr>
+<td>Text Text2</td>
+<td>Text2</td>
+</tr>
+<tr>
+<td>List List1</td>
+<td>List1</td>
+</tr>
+<tr>
+<td>Buttom</td>
+<td>openComm</td>
+</tr>
+<tr>
+<td>Buttom</td>
+<td>delListComm</td>
+</tr>
+<tr>
+<td>CommonDialog</td>
+<td>CommonDialog1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="programming">Programming</h2>
+<div class="highlight"><pre><span></span><code>Dim item(5) As String
+Dim sel As Integer
+Dim delCounter As Integer
+
+Private Sub cmdPause_Click()
+  Ret&amp; = mciSendString("pause Animation", 0&amp;, 0, 0)
+  cmdPause.Enabled = False
+  cmdResume.Enabled = True
+End Sub
+
+Private Sub cmdPlay_Click()
+  cmdPause.Enabled = True
+  cmdResume.Enabled = False
+  Call List1_DblClick
+End Sub
+
+Private Sub cmdResume_Click()
+    Ret&amp; = mciSendString("resume Animation", 0&amp;, 0, 0)
+    cmdPause.Enabled = True
+    cmdResume.Enabled = False
+End Sub
+
+Private Sub Command1_Click()
+  Form_Unload (True)
+End Sub
+
+Private Sub delListComm_Click()
+If List1.ListIndex &lt;&gt; -1 Then
+    Text2 = "刪除" + item(List1.ListIndex)
+    delCounter = Val(List1.ListIndex)
+    List1.RemoveItem List1.ListIndex
+    If sel &lt; 6 Then
+        For delCounter = delCounter To sel
+            item(delCounter) = item(delCounter + 1)
+        Next
+    End If
+    sel = sel - 1
+    If sel = -1 Then
+        delListComm.Enabled = False
+    End If
+Else
+    Text2 = "播放清單是空的"
+    delListComm.Enabled = False
+End If
+End Sub
+
+Private Sub Form_Load()
+  Form1.Show
+  delListComm.Enabled = False
+  Text1 = "使用 Add to List 加入播放清單"
+sel = -1
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+    Ret&amp; = mciSendString("close Animation", 0&amp;, 0, 0)
+
+End Sub
+
+Private Sub List1_DblClick()
+
+  If List1.ListIndex &gt; -1 Then
+    Call mciSendString("close Animation", 0, 0, 0)
+    cmdPlay.Enabled = False
+    CmdString$ = ("open " + item(List1.ListIndex) + " type MPEGVideo alias Animation parent " + Str$(Form1.hWnd) + " style " + Str$(WS_CHILD))
+    Ret&amp; = mciSendString(CmdString$, 0&amp;, 0, 0)
+    Ret&amp; = mciSendString("break Animation on 114", 0&amp;, 0, 0)
+    Ret&amp; = mciSendString("set Animation time format frames", 0&amp;, 0, 0)
+    Ret&amp; = mciSendString("put Animation window at 10 10 320 240", 0&amp;, 0, 0)
+    Ret&amp; = mciSendString("play Animation", 0&amp;, 0, 0)
+    Text1 = item(List1.ListIndex)
+  Else
+    Text1 = "請選擇曲目"
+  End If
+End Sub
+
+Private Sub openComm_Click()
+    If sel &lt; 4 And sel &gt; -2 Then
+        CommonDialog1.ShowOpen
+        List1.AddItem CommonDialog1.FileName
+        sel = sel + 1
+        Text2 = "加入 " + CommonDialog1.FileName + " 至播放清單"
+        item(sel) = CommonDialog1.FileName
+        delListComm.Enabled = True
+     Else
+        Text2 = "播放清單已滿,請移除不需要的清單資料"
+     End If
+End Sub
+
+
+Private Sub stopComm_Click()
+    Call mciSendString("close Animation", 0, 0, 0)
+    cmdPlay.Enabled = True
+End Sub
+</code></pre></div>
+<h2 id="running">Running</h2>
+<p><img alt="r" src="run-1.jpg"/></p>
+<ul>
+<li>按下 <code>Add to List</code> 將影片加入播放清單, 雙擊播放清單內的<code>Item</code>即可播放多媒體檔案 ,</li>
+<li>播放中可以按下<code>Pause</code>暫停,<code>Resume</code>繼續,  或<code>STOP</code>停止播放。 若需將該筆資料由播放清單內移除,請按<code>Del List Item</code>。</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://ipac.nlpi.edu.tw/cgi-bin/spydus.exe/FULL/OPAC/ALLENQ/83062/831033,9">Visual Basic 6.0學習範本 黃世陽等編著 松崗</a></li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Inter-Integrated Circuit (I2C)" class="md-footer__link md-footer__link--prev" href="../../io/i2c/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Inter-Integrated Circuit (I2C)
+            </div>
+</div>
+</a>
+<a aria-label="Next: Digital Vedio Conversion - MPEG-1" class="md-footer__link md-footer__link--next" href="../mpeg1/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Digital Vedio Conversion - MPEG-1
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

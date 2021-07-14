@@ -1,0 +1,2099 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/engineer/dip/py/face/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<title>[Image Processing](../../) - Ed's Wiki  🦉</title>
+<link href="../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#image-processing">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Ed's Wiki  🦉" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Ed's Wiki  🦉
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              [Image Processing](../../)
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../dev/softwares/">
+        Engineering
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../edu/index.md">
+        Education
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../collections/">
+        Collection
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../traveling/trip/">
+        Traveling
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../photos/">
+      Photos
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Ed's Wiki  🦉" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    Ed's Wiki  🦉
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+        About Me
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#about-here">
+        About Here
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#academic-background">
+        Academic Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#work-experience">
+        Work Experience
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-certificate">
+        Technician Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/#technician-training">
+        Technician Training
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/softwares/">
+        Softwares Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/accessories/">
+        Accessories
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/equipments/">
+        Networking Equipments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/auto/">
+        Automation and Crawler
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/diag/">
+        Diagnostic Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/perf/">
+        Performance Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/git/">
+        Git Repo and Build Machine
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/docker/">
+        Docker and Macvlan
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/doc/">
+        Documentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/prog/">
+        Programmer Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/python/">
+        Extending Python with C
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../kernel/rebuild/">
+        Rebuild Kernel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" id="__nav_2_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_1">
+        SDK Framework
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SDK Framework" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_1">
+<span class="md-nav__icon md-icon"></span>
+          SDK Framework
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../embedded/buildroot/">
+        Buildroot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../embedded/openwrt/">
+        OpenWRT
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2">
+        Application
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Application
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../embedded/cam/cloud/">
+        Surveillance Camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+        Lifetime Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Lifetime Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/lifetime/">
+        Flash MTD Lifetime
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Celluar Network
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cell/sdr/">
+        Amarisoft SDR
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
+        Application Layer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+          Application Layer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/hypertext-transfer-protocol/">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/file-transfer-protocol/">
+        File Transfer Protocol (FTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dsp/discrete-time-processing/">
+        Discrete-Time Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dsp/moving-average-and-backward-system/">
+        Moving Average and Backward System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dsp/window-size-and-the-spectrogram/">
+        Window Size and the Spectrogram
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+        Image Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Image Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Image Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/grayscale/">
+        Grayscale
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/monochrome/">
+        Monochrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/negative/">
+        Negative Film
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/colorbar/">
+        Colorbar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/text/">
+        Text Picture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../js/mirror/">
+        Mirror
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resize/">
+        Image Resizer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../os/assembler-compiler/">
+        An Assembler Compiler
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/isa/">
+        Industry Standard Architecture (ISA)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/pci/">
+        Peripheral Component Interconnect (PCI)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/ldd/">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/gpio/">
+        General Purpose Input Output (GPIO)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../io/i2c/">
+        Inter-Integrated Circuit (I2C)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tv/player/">
+        Multimedia Player
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tv/mpeg1/">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../misc/">
+        Misc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../edu/index.md">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../edu/thesis/index.md">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../edu/english/index.md">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../education/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../education/qualitative-research/">
+        Qualitative Research
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../education/quantitative-research/">
+        Quantitative Research
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../collections/">
+        Collections
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Traveling
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Traveling" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Traveling
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../traveling/trip/">
+        Trip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../traveling/tour/">
+        Tour
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../photos/">
+        Photos
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#face-detection">
+    Face Detection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content">
+    Content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#programming">
+    Programming
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#running">
+    Running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced">
+    Advanced
+  </a>
+<nav aria-label="Advanced" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#microsoft-azure-face-api">
+    Microsoft Azure Face API
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attachment">
+    Attachment
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="image-processing"><a href="../../">Image Processing</a></h1>
+<h2 id="face-detection">Face Detection</h2>
+<p>An implementation of digital image processing for Face Detection.</p>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#programming">Programming</a></li>
+<li><a href="#running">Running</a></li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python</li>
+<li>OpenCV <code>apt install python-opencv</code></li>
+<li><a href="haarcascade_frontalface_default.xml">haarcascade_frontalface_default.xml</a></li>
+</ul>
+<h2 id="programming">Programming</h2>
+<ul>
+<li>save below code to <code>face.py</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">cascPath</span> <span class="o">=</span> <span class="s2">"haarcascade_frontalface_default.xml"</span><span class="p">;</span>
+<span class="n">faceCascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="n">cascPath</span><span class="p">)</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"../../lena.png"</span><span class="p">)</span>
+<span class="n">gray</span> <span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>    
+
+<span class="n">faces</span> <span class="o">=</span> <span class="n">faceCascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span>
+  <span class="n">gray</span><span class="p">,</span>
+  <span class="n">scaleFactor</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+  <span class="n">minNeighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+  <span class="n">minSize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+  <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">CV_HAAR_SCALE_IMAGE</span>
+<span class="p">)</span>
+
+<span class="c1"># Draw a rectangle around the faces</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+  <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">'lena_face.png'</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="running">Running</h2>
+<ul>
+<li>The result of single face detection </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Original</th>
+<th>Single-Face Detection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="r" src="../../lena.png"/></td>
+<td><img alt="r" src="lena_face.png"/></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The result of multiple-face detection</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Original</th>
+<th>Multiple-Face Detection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="r" src="ann.png"/></td>
+<td><img alt="r" src="ann_face.png"/></td>
+</tr>
+</tbody>
+</table>
+<h2 id="advanced">Advanced</h2>
+<h3 id="microsoft-azure-face-api"><a href="https://azure.microsoft.com/zh-tw/services/cognitive-services/face/">Microsoft Azure Face API</a></h3>
+<ul>
+<li>It should be five-face but we got six-face from multiple-face detection.</li>
+<li>It seems there is no this problem from Microsoft Azure Face API.</li>
+<li>Gender also be distinguished by Microsoft Azure also.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Original</th>
+<th>Face Detection by <code>Microsoft Azure</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="r" src="ann_ms.png"/></td>
+<td><img alt="r" src="ann_face_ms.png"/></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://www.superdatascience.com/opencv-face-detection/">FACE DETECTION USING OPENCV AND PYTHON: A BEGINNER’S GUIDE</a></li>
+<li><a href="http://gogoprivateryan.blogspot.tw/2015/09/opencv-3-opencv-python-face-recognition.html">記錄, OpenCV 學習路徑, (3) 人臉辨識 (OpenCV, Python, Face Recognition)</a></li>
+</ul>
+<h2 id="attachment">Attachment</h2>
+<ul>
+<li><strong>Single-Face Detection:</strong> The <code>JSON</code> result of <code>Microsoft Azure Face API</code> <br/>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"ddb79f2d-3e55-4153-8d60-a51e81e85551"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">131</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">126</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">97</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">97</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">30.4</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"female"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">25.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"NoGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"headwear"</span><span class="p">,</span>
+          <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.97</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"low"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.11</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"goodExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.58</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"medium"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.4</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">153.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">155.0</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">191.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">155.3</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">183.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">183.3</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">153.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">203.6</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">187.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">204.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">137.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">145.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">173.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">149.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">147.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">155.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">156.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">151.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">154.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">160.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">163.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">158.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">187.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">149.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">207.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">144.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">186.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">158.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">193.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">151.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">193.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">160.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">199.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">156.3</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">172.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">159.3</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">183.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">159.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">171.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">174.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">187.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">174.6</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">166.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">185.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">190.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">183.8</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">177.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">200.6</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">176.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">204.5</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">175.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">207.1</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">174.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">213.1</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></li>
+<li><strong>Multiple-Face Detection:</strong> The <code>JSON</code> result of <code>Microsoft Azure Face API</code> <br/>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"c2a726c1-1dcb-4a30-bd3b-ccb3615132c3"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">896</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">801</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">110</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">11.4</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"male"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">25.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.1</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"ReadingGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"glasses"</span><span class="p">,</span>
+          <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.99</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"headwear"</span><span class="p">,</span>
+          <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">1.0</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"medium"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.67</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"goodExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.65</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.86</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">833.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">924.9</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">881.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">926.8</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">859.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">953.7</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">832.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">976.2</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">871.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">980.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">809.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">913.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">848.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">914.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">824.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">923.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">833.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">921.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">832.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">928.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">841.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">925.8</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">869.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">916.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">897.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">915.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">874.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">926.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">883.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">923.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">882.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">930.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">889.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">927.0</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">850.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">928.7</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">866.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">929.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">846.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">944.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">869.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">946.0</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">840.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">956.4</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">873.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">957.7</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">855.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">975.0</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">854.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">979.6</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">854.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">980.4</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">854.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">987.1</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"5b2795a8-dc0d-4860-83de-a594f761283d"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">396</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">172</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">106</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">106</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">1.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"brown"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.93</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"gray"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.53</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"other"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.18</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"blond"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.08</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.01</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">1.7</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">2.2</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"male"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">27.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.1</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"NoGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.96</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"goodExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.73</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.83</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">203.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">424.7</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">251.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">425.4</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">225.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">452.9</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">202.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">473.6</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">244.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">474.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">185.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">414.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">218.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">419.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">195.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">425.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">202.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">422.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">202.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">427.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">209.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">426.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">237.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">418.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">266.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">414.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">243.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">426.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">250.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">423.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">251.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">428.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">259.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">426.0</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">221.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">429.1</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">233.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">428.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">216.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">444.1</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">236.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">444.0</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">210.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">453.3</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">240.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">454.6</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">224.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">467.4</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">224.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">472.4</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">224.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">476.2</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">225.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">483.3</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"ec0d98e8-7255-46ca-965d-21e31983b71d"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">432</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">809</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">98</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.07</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.98</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"brown"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.95</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"gray"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.44</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"other"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.22</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"blond"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.07</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.05</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">-0.4</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">2.5</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"male"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">43.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.1</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"ReadingGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"glasses"</span><span class="p">,</span>
+          <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">1.0</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.76</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"overExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.76</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">1.0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">834.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">459.4</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">879.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">458.8</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">860.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">478.3</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">841.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">506.3</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">874.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">506.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">816.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">445.8</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">851.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">445.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">826.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">459.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">834.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">456.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">834.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">461.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">842.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">459.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">866.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">445.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">899.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">447.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">871.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">458.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">880.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">456.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">880.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">461.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">889.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">459.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">852.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">459.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">866.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">458.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">849.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">472.8</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">869.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">472.1</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">843.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">483.4</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">875.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">482.5</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">858.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">496.9</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">858.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">502.1</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">859.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">505.1</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">858.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">511.5</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"b6fcac21-8876-4c40-89c5-078401e02ab9"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">483</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">95</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"brown"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.97</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.95</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"gray"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.28</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"other"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.28</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.23</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"blond"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.03</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">13.2</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">-18.9</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"female"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">33.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"NoGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">1.0</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"goodExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.67</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"low"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.28</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">515.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">519.0</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">556.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">527.6</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">525.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">546.2</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">505.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">559.5</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">550.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">568.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">498.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">507.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">525.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">510.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">507.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">518.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">515.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">515.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">513.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">521.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">520.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">521.4</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">543.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">514.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">577.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">524.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">548.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">527.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">556.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">524.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">555.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">530.6</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">563.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">529.8</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">526.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">523.8</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">539.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">526.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">519.5</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">537.5</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">538.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">542.7</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">512.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">544.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">542.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">553.4</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">524.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">560.6</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">523.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">563.7</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">523.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">569.8</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">522.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">574.6</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"faceId"</span><span class="p">:</span> <span class="s2">"c0a132fc-29cb-4262-8a58-fb138ff42994"</span><span class="p">,</span>
+    <span class="nt">"faceRectangle"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"top"</span><span class="p">:</span> <span class="mi">339</span><span class="p">,</span>
+      <span class="nt">"left"</span><span class="p">:</span> <span class="mi">358</span><span class="p">,</span>
+      <span class="nt">"width"</span><span class="p">:</span> <span class="mi">94</span><span class="p">,</span>
+      <span class="nt">"height"</span><span class="p">:</span> <span class="mi">94</span>
+    <span class="p">},</span>
+    <span class="nt">"faceAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"hair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"bald"</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span>
+        <span class="nt">"invisible"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"hairColor"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"brown"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.98</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.94</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"blond"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.37</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"gray"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.22</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"other"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.09</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"color"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="nt">"confidence"</span><span class="p">:</span> <span class="mf">0.07</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="nt">"smile"</span><span class="p">:</span> <span class="mf">0.999</span><span class="p">,</span>
+      <span class="nt">"headPose"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"pitch"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"roll"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"yaw"</span><span class="p">:</span> <span class="mf">4.7</span>
+      <span class="p">},</span>
+      <span class="nt">"gender"</span><span class="p">:</span> <span class="s2">"male"</span><span class="p">,</span>
+      <span class="nt">"age"</span><span class="p">:</span> <span class="mf">28.0</span><span class="p">,</span>
+      <span class="nt">"facialHair"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"moustache"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"beard"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="nt">"sideburns"</span><span class="p">:</span> <span class="mf">0.1</span>
+      <span class="p">},</span>
+      <span class="nt">"glasses"</span><span class="p">:</span> <span class="s2">"NoGlasses"</span><span class="p">,</span>
+      <span class="nt">"makeup"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"eyeMakeup"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"lipMakeup"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"emotion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"anger"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"contempt"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"disgust"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"fear"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"happiness"</span><span class="p">:</span> <span class="mf">0.999</span><span class="p">,</span>
+        <span class="nt">"neutral"</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
+        <span class="nt">"sadness"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="nt">"surprise"</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="p">},</span>
+      <span class="nt">"occlusion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"foreheadOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"eyeOccluded"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">"mouthOccluded"</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nt">"accessories"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">"blur"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"blurLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">1.0</span>
+      <span class="p">},</span>
+      <span class="nt">"exposure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"exposureLevel"</span><span class="p">:</span> <span class="s2">"overExposure"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">0.77</span>
+      <span class="p">},</span>
+      <span class="nt">"noise"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"noiseLevel"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+        <span class="nt">"value"</span><span class="p">:</span> <span class="mf">1.0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"faceLandmarks"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"pupilLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">385.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">363.7</span>
+      <span class="p">},</span>
+      <span class="nt">"pupilRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">426.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">364.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">406.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">386.4</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">385.7</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">408.4</span>
+      <span class="p">},</span>
+      <span class="nt">"mouthRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">420.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">409.0</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">365.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">354.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">399.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">353.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">375.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">364.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">384.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">361.2</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">384.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">366.3</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeLeftInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">391.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">364.8</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">413.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">351.9</span>
+      <span class="p">},</span>
+      <span class="nt">"eyebrowRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">440.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">354.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightInner"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">418.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">365.5</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">425.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">362.1</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">425.8</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">366.7</span>
+      <span class="p">},</span>
+      <span class="nt">"eyeRightOuter"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">432.1</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">364.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootLeft"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">399.0</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">366.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRootRight"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">410.9</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">366.2</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">397.6</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">380.4</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">414.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">380.5</span>
+      <span class="p">},</span>
+      <span class="nt">"noseLeftAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">391.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">387.9</span>
+      <span class="p">},</span>
+      <span class="nt">"noseRightAlarOutTip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">419.2</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">389.6</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">406.4</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">401.4</span>
+      <span class="p">},</span>
+      <span class="nt">"upperLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">406.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">405.4</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipTop"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">405.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">412.9</span>
+      <span class="p">},</span>
+      <span class="nt">"underLipBottom"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"x"</span><span class="p">:</span> <span class="mf">405.3</span><span class="p">,</span>
+        <span class="nt">"y"</span><span class="p">:</span> <span class="mf">417.9</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
