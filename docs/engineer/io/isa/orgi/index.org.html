@@ -1,0 +1,3225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>IO &#25511;&#21046;&#23526;&#20316;</title>
+                                                                        
+                                                                        
+      
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+  <body>
+                 <b>Programmable Input/Output IC </b> &nbsp;            
+                 
+<h3>I/O &#25511;&#21046; &#23526;&#20316;<br>
+               </h3>
+                - written by<b> Jing-Wen.Lai</b> &nbsp;  '03/02/23 <br>
+                           
+<hr width="100%" size="2">             
+<ul>
+              <li>Purpose</li>
+      <li>&#23433;&#20840;&#31532;&#19968;</li>
+      <li>&#30828;&#39636;&#38651;&#36335;<br>
+                       
+    <ul>
+          <li>&#25163;&#24037;&#20855;</li>
+          <li>&#38651;&#23376;&#20803;&#20214;</li>
+          <li>&#38651;&#36335;&#22294;</li>
+                       
+    </ul>
+      </li>
+      <li>MS-DOS 6.0 &#9472; DOS &#24179;&#21488;&#19978;&#30340;&#39511;&#35657;<br>
+     
+    <ul>
+       <li>debug<br>
+       </li>
+     
+    </ul>
+   </li>
+      <li>RedHat 8.0 &#9472; Linux &#24179;&#21488;&#19978;&#30340;&#39511;&#35657;<br>
+     
+    <ul>
+       <li>c</li>
+       <li>c++<br>
+       </li>
+     
+    </ul>
+   </li>
+   <li>Appendix - A :: &#25509;&#33139;&#23450;&#32681;<br>
+     
+    <ul>
+       <li>PC AT &#25844;&#20805;&#27133; &#25509;&#33139; &#23450;&#32681;</li>
+       <li>8255A &#25509;&#33139;</li>
+       <li>8254 &nbsp;&#25509;&#33139;</li>
+     
+    </ul>
+   </li>
+   <li>Appendix - B :: Linux C I/O &#25511;&#21046; &#31243;&#24335;&#30908;<br>
+     
+    <ul>
+       <li>hello.c</li>
+       <li>kb.c</li>
+       <li>io.c</li>
+       <li>blink.c</li>
+       <li>pili_test.c</li>
+       <li>pili.c<br>
+       </li>
+     
+    </ul>
+   </li>
+   <li>Appendix - C<br>
+    <ul>
+      <li>hello.cpp</li>
+      <li>io.cpp</li>
+      <li>hello_qt.cpp</li>
+      <li>quit.cpp<br>
+      </li>
+    </ul>
+  </li>
+   <li>Appendix - Dmoc <br>
+    <ul>
+      <li>&#20351;&#29992;&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340;&#39006;&#21029;&#30340;&#19968;&#33324;&#39592;&#26550;</li>
+      <li>&#38364;&#26044; &#34389;&#29702; moc &#30340;&#21839;&#38988; [ &#31243;&#24335;&#30908; ] [ &#26550;&#27083; ] [ &#22519;&#34892;&#32080;&#26524; ][&#25105;&#30340;&#30097;&#21839;]</li>
+      <li>&#36914;&#38542;&#31684;&#20363; &#65292;&#34389;&#29702; moc &#30340;&#21839;&#38988;&#65292; &nbsp; [ &#31243;&#24335;&#30908; ] [ &#26550;&#27083; ]</li>
+    </ul>
+  </li>
+      <li>555<br>
+   </li>
+                       
+</ul>
+                       
+<hr width="100%" size="2">- Keywords :: C/C++, QT&#12290;<br>
+                 
+<h3>&#12304; Purpose <b>&#12305;&nbsp;</b></h3>
+         &#20351;&#29992;&#20197;&#19979;&#20316;&#26989;&#31995;&#32113;<br>
+                 
+<ul>
+           <li><font color="#006600">DOS</font></li>
+           <li><font color="#006600">Red Hat Linux</font> </li>
+           <li><font color="#006600">Win9x </font></li>
+           <li><font color="#006600">WinXp(Windows NT4.0&#20197;&#19978;) </font></li>
+                 
+</ul>
+         &#25511;&#21046;&#20854; ISA&nbsp;8255 I/O &#23526;&#39511;&#29256; &#12290;<br>
+                 
+<h3>&#12304; &#23433;&#20840;&#31532;&#19968; <b>&#12305;</b></h3>
+             
+<ul>
+      <li>&#30701;&#36335; &#30070;&#38651;&#36335;&#28938;&#25509;&#23436;&#30050;&#24460;&#38656;&#30906;&#23450;&#20854;&#27491;&#36000;&#38651;&#28304;&#27794;&#26377;&#30701;&#36335;</li>
+       
+</ul>
+       
+<h3>&#12304; &#30828;&#39636;&#38651;&#36335; <b>&#12305;</b></h3>
+    <u><font color="#006600"><b>&#25163;&#24037;&#20855;</b></font></u><br>
+    <br>
+    &#28310;&#20633;&#19968;&#33324;&#30340;&#28938;&#25509;&#24037;&#20855;&#21363;&#21487;&#12290;<br>
+    <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66" align="center">&#32232;&#34399;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#25163;&#24037;&#20855;&#21517;&#31281;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#25976;&#37327;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#21934;&#20301;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#21697;&#29260;/&#35215;&#26684;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#20633;&#35387;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top">&#38651;&#28889;&#37941;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25903;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">2<br>
+          </td>
+          <td valign="top">&#23574;&#22068;&#37463;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25903;<br>
+          </td>
+          <td valign="top">&nbsp;/PN-2005 <br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">3<br>
+          </td>
+          <td valign="top">&#26012;&#21475;&#37463;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25903;<br>
+          </td>
+          <td valign="top">&nbsp;/TR-25-P<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">4<br>
+          </td>
+          <td valign="top">&#21560;&#37675;&#22120;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25903;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">5<br>
+          </td>
+          <td valign="top">&#37554;&#37675;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25458;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">&#28040;&#32791;&#21697;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">6<br>
+          </td>
+          <td valign="top">&#37709;&#37504;&#32218;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#25458;<br>
+          </td>
+          <td valign="top">OK / R26-500<br>
+          </td>
+          <td valign="top">&#28040;&#32791;&#21697;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">7<br>
+          </td>
+          <td valign="top">&#37675;&#27833;( &#37554;&#37675;&#33167; )<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#32592;<br>
+          </td>
+          <td valign="top">goot / BS-10<br>
+          </td>
+          <td valign="top">&#28040;&#32791;&#21697;&#65307;&#21487;&#26377;&#21487;&#28961;&#65307;&#24314;&#35696;&#23569;&#29992;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">8<br>
+          </td>
+          <td valign="top">&#19977;&#29992;&#38651;&#37686;<br>
+          </td>
+          <td valign="top" align="center">1<br>
+          </td>
+          <td valign="top" align="center">&#21488;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">&#26368;&#23569;&#38656;&#21487;&#37327;&#28204;&#27472;&#22982;&#20540;<br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    <br>
+    &#21478;&#26377; &#21487;&#26377;&#21487;&#28961;&#30340; &#38450;&#38748;&#38651;&#29992;&#36513;&#23376;&#12289;&#19968;&#34399;&#36215;&#23376;&#12289;&#21313;&#34399;&#36215;&#23376;&#8230;&#19981;&#20877;&#36101;&#36848;&#12290;<br>
+    <u><br>
+    <font color="#006600"><b>&#38651;&#23376;&#20803;&#20214;</b></font></u><br>
+    <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66">&#32232;&#34399;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#38646;&#20214;&#21517;&#31281;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#25976;&#37327;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#20633;&#35387;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">82C55<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#21487;&#31243;&#24335;&#35215;&#21123;&#37007;&#36655;&#20171;&#38754; ; PPI<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">2<br>
+          </td>
+          <td valign="top">8254 ( &#25110; D71054C )<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#21487;&#31243;&#24335;&#35215;&#21123;&#35336;&#25976;(&#26178;)&#20171;&#38754; / &#26368;&#39640;&#36664;&#20837;&#26178;&#24207; 8 MHz <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">3<br>
+          </td>
+          <td valign="top">74LS138&nbsp;<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#35299;&#30908;&#33268;&#33021; 8255 &#33287; 8254 &#29992;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">4<br>
+          </td>
+          <td valign="top">74LS00<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#35299;&#30908;&#33268;&#33021; 74LS138 &#33287; &#21895;&#21485;&#38651;&#36335;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">5<br>
+          </td>
+          <td valign="top"> 5K &#21487;&#35519;&#24335;&#38651;&#38459;<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#21895;&#21485;&#38651;&#36335;&#29992;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6<br>
+          </td>
+          <td valign="top">C1815<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#21895;&#21485;&#38651;&#36335;&#29992; , &#32232;&#34399;&#38754; &#25509;&#33139; ECB<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">7<br>
+          </td>
+          <td valign="top">&#21895;&#21485;<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#21895;&#21485;&#38651;&#36335;&#29992;, &#20351;&#29992; PC &#19978;&#30340;&#21895;&#21485;&#21363;&#21487;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">8<br>
+          </td>
+          <td valign="top">LED<br>
+          </td>
+          <td valign="top">8<br>
+          </td>
+          <td valign="top"> &#27298;&#35222;8255 portA &#36664;&#20986;&#29992;(&#21313;&#38982;&#21253;&#35037;&#22411; LED &#26377;&#26178;&#28961;&#27861;&#21205;&#20316;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">9<br>
+          </td>
+          <td valign="top">PC ISA &#31354;&#29256;<br>
+          </td>
+          <td valign="top">1<br>
+          </td>
+          <td valign="top">&#37329;&#25163;&#25351; AT &#20171;&#38754;&#38651;&#36335;&#26495;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">10<br>
+          </td>
+          <td valign="top">IC &#33139;&#24231;<br>
+          </td>
+          <td valign="top">N/A<br>
+          </td>
+          <td valign="top">&#19978;&#36848; IC &#25152;&#38656;&#33139;&#24231; <br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    <br>
+    &#25490;&#37341;&#24231;&#21487;&#35222;&#38656;&#35201;&#28310;&#20633;&#12290;<br>
+    &nbsp;&nbsp;&nbsp;  <br>
+    <u><font color="#006600"><b>&#38651;&#36335;&#22294;</b></font></u><br>
+    <br>
+    &#38651;&#36335;&#22294; &#65072;<br>
+   <br>
+   <img src="circuit.jpg" alt="" width="993" height="608">
+   <br>
+   &#38651;&#28304;&#37197;&#32622; &#65072;<br>
+   <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="40%">
+     <tbody>
+       <tr>
+         <td valign="top" align="center"><br>
+         </td>
+         <td valign="top" align="center">8255<br>
+         </td>
+         <td valign="top" align="center">8254<br>
+         </td>
+         <td valign="top" align="center">74LS138<br>
+         </td>
+         <td valign="top" align="center">74LS00<br>
+         </td>
+         <td valign="top" align="center">74LS244<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">+5V<br>
+         </td>
+         <td valign="top" align="center">26<br>
+         </td>
+         <td valign="top" align="center">24<br>
+         </td>
+         <td valign="top" align="center">16<br>
+         </td>
+         <td valign="top" align="center">14<br>
+         </td>
+         <td valign="top" align="center">20<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">GND<br>
+         </td>
+         <td valign="top" align="center">7<br>
+         </td>
+         <td valign="top" align="center">12<br>
+         </td>
+         <td valign="top" align="center">8<br>
+         </td>
+         <td valign="top" align="center">7<br>
+         </td>
+         <td valign="top" align="center">10<br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+ <br>
+ 8255 &#65292;I/O &#20301;&#22336;&#23450;&#32681;&#65072;<br>
+ <br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="30%">
+   <tbody>
+     <tr>
+       <td valign="top" align="center" bgcolor="#ffcc66">8255A<br>
+       </td>
+       <td valign="top" align="center" bgcolor="#ffcc66">I/O &#20301;&#22336;<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">Port A<br>
+       </td>
+       <td valign="top" align="center">300H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">Port B<br>
+       </td>
+       <td valign="top" align="center">301H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">Port C<br>
+       </td>
+       <td valign="top" align="center">302H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">&#25511;&#21046;&#23383;&#32068;<br>
+       </td>
+       <td valign="top" align="center">303H<br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+   8254 &#65292;I/O &#20301;&#22336;&#23450;&#32681;&#65072;<br>
+ <br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="30%">
+   <tbody>
+     <tr>
+       <td valign="top" bgcolor="#ffcc66" align="center">8254<br>
+       </td>
+       <td valign="top" bgcolor="#ffcc66" align="center">I/O &#20301;&#22336;<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">&#31532; 0 &#35336;&#25976;&#22120;<br>
+       </td>
+       <td valign="top" align="center">320H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">&#31532; 0 &#35336;&#25976;&#22120;<br>
+       </td>
+       <td valign="top" align="center">321H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">&#31532; 0 &#35336;&#25976;&#22120;<br>
+       </td>
+       <td valign="top" align="center">322H<br>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top" align="center">&#25511;&#21046;&#23383;&#32068;<br>
+       </td>
+       <td valign="top" align="center">323H<br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+ <br>
+   &#38646;&#20214;&#25509;&#33139;&#22294; &#65072;<br>
+     
+<ul>
+     <li><a href="appro-A-pin.html#isa">PC AT &nbsp;&#25844;&#20805;&#27133;</a></li>
+     <li><a href="appro-A-pin.html#8255">8255 &#25509;&#33139;</a></li>
+     <li><a href="appro-A-pin.html#8254">8254 &#25509;&#33139;</a><br>
+     </li>
+     
+</ul>
+    Orcad Family Release 9.2 Lite Edition &#38646;&#20214;&#25152;&#38656;&#20351;&#29992;&#30340; Library<br>
+   <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66">Orcad &#38646;&#20214;&#24235;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc33">&#38646;&#20214;&#21517;&#31281;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">MISC<br>
+          </td>
+          <td valign="top">82C55A 8254<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">MUX DECODER GATE<br>
+          </td>
+          <td valign="top">74LS138<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">BUSDRIVER TRANSCEIVER<br>
+          </td>
+          <td valign="top">74LS00<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">DISCRETE<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">CONNECTOR<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    <br>
+   &#30828;&#39636;&#35215;&#21123;&#65072;<br>
+ <br>
+ &#30828;&#39636;&#23526;&#39636;&#65072;<br>
+ <br>
+    <u><font color="#006600"><b>&#38651;&#36335;&#25913;&#33391;</b></font></u><br>
+    <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66">&#38917;&#30446;<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66">&#35498;&#26126;<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">&#26049;&#36335;&#38651;&#23481;<br>
+          </td>
+          <td valign="top">&#27599;&#38982; IC &#26049;&#38752;&#36817;&#38651;&#28304;&#34389;&#21487;&#21152;&#19978;&#21487;&#26159;&#38656;&#35201;&#21152; IC <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">LED &#30340;&#38480;&#27969;&#38651;&#38459;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">DIP SWITCH &#30340;&#20809;&#34261;&#21512;&#38651;&#26230;&#39636;<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    <br>
+                 
+<h3>&#12304; DOS <b>&#19978;&#30340;&#39511;&#35657; &#12305;</b></h3>
+         &#29694;&#22312;&#25033;&#35442;&#24456;&#23569;&#20154;&#26371;&#29992; MS-DOS &#20316;&#26989;&#31995;&#32113;&#20102;&#21543;&#12290;&#19981;&#36942; DOS &#31995;&#32113;&#22312;&#30828;&#30879;&#19978;&#30340;&nbsp; <font
+ color="#006600">&#38283;&#27231;&#36895;&#24230;&#24555;</font>    &#19988;&#20839;&#37096;&#30340;<font color="#006600"> Debug</font>
+&#25351;&#20196;&#65292;<br>
+         &#22312; ISA 8255 I/O &#23526;&#39511;&#26495; &#21083;&#28938;&#22909;&#65292;&#35201;&#39511;&#35657;&#20854;&#21151;&#33021;&#26178;&#65292;&#21487;&#26159;&#38750;&#24120;&#26041;&#20415;&#30340;&#12290;<br>
+         <br>
+         &#27492;&#27425;&#20351;&#29992;&#25105;&#30340;&#26700;&#19978;&#22411;&#38651;&#33126;&#12290;&#30828;&#30879;&#20351;&#29992; CONNER CP30254H( 252M ) &#20006;&#23433;&#35037;&#20197;&#19979;&#30340;&#31995;&#32113;&#65292;<br>
+         <br>
+                 
+<table width="60%" border="1" cellspacing="2" cellpadding="2">
+           <tbody>
+             <tr>
+               <td valign="top" bgcolor="#ffcc66">&#36575;&#39636;&#21517;&#31281;<br>
+               </td>
+               <td valign="top" bgcolor="#ffcc66">&#35498;&#26126;<br>
+               </td>
+               <td valign="top" bgcolor="#ffcc66">&#24517;&#35201;&#24615;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">DOS 6.00<br>
+               </td>
+               <td valign="top">&#38283;&#27231;&#65292; Debug &#25351;&#20196;<br>
+               </td>
+               <td valign="top">&#24517;&#35201;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">PCTOOLS9<br>
+               </td>
+               <td valign="top">&#39006;&#20284; NU8 &#30340;&#31995;&#32113;&#31649;&#29702;&#33287;&#20462;&#35703;&#24037;&#20855;<br>
+               </td>
+               <td valign="top">&#38750;&#20006;&#35201;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">Turbo C++ 3.0<br>
+               </td>
+               <td valign="top">C &#31243;&#24335; &#32232;&#35695;&#22120;<br>
+               </td>
+               <td valign="top">&#38750;&#20006;&#35201;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">Macro Assembler 6.11<br>
+               </td>
+               <td valign="top">&#32068;&#21512;&#35486;&#35328;&#32232;&#35695;&#22120;<br>
+               </td>
+               <td valign="top">&#38750;&#20006;&#35201;<br>
+               </td>
+             </tr>
+                                   
+  </tbody>         
+</table>
+         <br>
+         &#30001;&#26044;&#25105;&#20497;&#21482;&#26159;&#35201;&#29992;&#20358;&#28204;&#35430; 8255 I/O &#23526;&#39511;&#29256;&#65292;&#25925;&#21482;&#38656;&#35201; DOS 6.00 &#23601;&#21487;&#20197;&#20102;&#65292;&#20854;&#23427;&#35222;&#38656;&#35201;&#22312;&#23433;&#35037;&#12290;<br>
+         <br>
+         &#23559; 8255 I/O &#23526;&#39511;&#29256; &#25554;&#20837; ISA &#27133;&#65292;&#38651;&#33126;&#38283;&#27231;&#24460;&#65292;&#37749;&#20837;&#20197;&#19979;&#25351;&#20196;&#12290;<br>
+         <br>
+                 
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+           <tbody>
+             <tr>
+               <td valign="top" align="center" bgcolor="#ffcc66">Step<br>
+               </td>
+               <td valign="top" bgcolor="#ffcc66">&#25351;&#20196;<br>
+               </td>
+               <td valign="top" bgcolor="#ffcc66">&#35498;&#26126;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">1<br>
+               </td>
+               <td valign="top">cd dos60<br>
+               </td>
+               <td valign="top">&#20999;&#21040;&#20320; debug &#25152;&#22312;&#30340;&#37027;&#20491;&#36039;&#26009;&#22846;<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">2<br>
+               </td>
+               <td valign="top">debug<br>
+               </td>
+               <td valign="top">&#22519;&#34892; debug &#25351;&#20196;&#65292;&#36914;&#20837; &nbsp;debug &#27169;&#24335;&#65292;&#27492;&#26178; &#25351;&#20196;&#19979;&#38754;&#26371; &#20986;&#29694; 
+&#21629;&#20196;&#25552;&#31034;&#23383;&#20803;    "-" )<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">3<br>
+               </td>
+               <td valign="top">- <b><font color="#006600">o 303 80</font></b><br>
+               </td>
+               <td valign="top">&#35373;&#23450; 8255 &#30340; port A &#12289;port B&#12289;port C &#30342;&#28858;&#27169;&#24335; 0 &#36664;&#20986; 
+(  &#21069;&#38754;  &#30340;  "-"&#34399;&#28858;&#31995;&#32113;&#25552;&#31034;&#23383;&#20803;&#65292;&#19981;&#29992;&#37749;&#20837;)<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">4<br>
+               </td>
+               <td valign="top">- <b><font color="#006600">o 300 ff</font></b><br>
+               </td>
+               <td valign="top">&#20196; 8255 &#30340; port A &#36664;&#20986; 11111111 ( LED &#20840;&#37096; &#40670;&#20142; )<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">5<br>
+               </td>
+               <td valign="top">- <b><font color="#006600">o 300 00</font></b><br>
+               </td>
+               <td valign="top">&#20196; 8255 &#30340; port A &#36664;&#20986; 00000000 ( LED &#20840; &nbsp;&#26263; 
+ )<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">6<br>
+               </td>
+               <td valign="top">- <font color="#006600"><b>o 300 55</b></font><br>
+               </td>
+               <td valign="top">&#20196; 8255 &#30340; port A &#36664;&#20986; 10101010 ( LED 0&#12289;2&#12289;4&#12289;6 
+&#40670;&#20142;  )<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">7<br>
+               </td>
+               <td valign="top">- <font color="#006600"><b>o 300 aa</b></font><br>
+               </td>
+               <td valign="top">&#20196; 8255 &#30340; port A &#36664;&#20986; 01010101 ( LED 1&#12289;3&#12289;4&#12289;5 
+&#40670;&#20142;  )<br>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="center">8<br>
+               </td>
+               <td valign="top">- <font color="#006600"><b>q</b></font><br>
+               </td>
+               <td valign="top">&#26368;&#24460;&#19979; q &#21629;&#20196; &#38626;&#38283; debug &#27169;&#24335;<br>
+               </td>
+             </tr>
+                                   
+  </tbody>         
+</table>
+         <br>
+         &#30070;&#28982;&#21487;&#22810;&#21152;&#24190;&#38917;&#28204;&#35430;  8255 I/O &#23526;&#39511;&#29256;&#65292;&#33509;&#28204;&#35430;&#38917;&#30446;&#30526;&#22810;&#65292;&#21487;&#20197;&#32771;&#24942;&#23531; &#25033;&#29992;&#31243;&#24335;&#35486;&#35328; ( Turbo C++&#12289;Macro Assembler 
+    ) &#21152;&#20197;&#28204;&#35430;&#12290;<br>
+         <br>
+                 
+<h3><font color="#000000">&#12304; </font><font color="#000000">Red Hat Linux</font><b> 
+ &#19978;&#30340;&#39511;&#35657;</b><font color="#000000"> &#12305;</font></h3>
+   &#22312;<font color="#000000"> Red Hat Linux</font>  8.0 &#24179;&#21488;&#19978; &#65292;&#20351;&#29992; root &#27402;&#38480; &#65292;&#20197; C 
+&#33287;  C++ &#20358;&#39493;&#21205;&nbsp; 8255 I/O &#23526;&#39511;&#26495;&#12290;<br>
+   <br>
+   &#30828;&#30879;&#20351;&#29992; Quantum Fireball Ex( 6449M ) &#20006;&#23433;&#35037;&#20197;&#19979;&#30340;&#31995;&#32113;&#65292;<br>
+        <br>
+                 
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+           <tbody>
+             <tr>
+               <td valign="top" bgcolor="#ffcc66">&#36575;&#39636;&#21517;&#31281;<br>
+               </td>
+               <td valign="top" bgcolor="#ffcc66">&#35498;&#26126;<br>
+               </td>
+             <td valign="top" bgcolor="#ffcc66">&#20633;&#35387;<br>
+             </td>
+                             </tr>
+             <tr>
+               <td valign="top">RedHat Linux 8.0<br>
+               </td>
+               <td valign="top">&#21547; X window( X 11 &#65307;&#35222;&#31383;&#29872;&#22659; )<br>
+               </td>
+             <td valign="top">Linux &#20316;&#26989;&#24179;&#21488;&#12290;<br>
+             </td>
+                             </tr>
+             <tr>
+             <td valign="top">gcc 3.2 ( 20020903 )<br>
+             </td>
+             <td valign="top">C &#35486;&#35328;(GNU C) &#32068;&#35695;&#22120;&#12290;<br>
+             </td>
+             <td valign="top">&#19979; gcc -v &#25351;&#20196; &#21487;&#26597;&#30475; gcc &#29256;&#26412;<br>
+             </td>
+           </tr>
+           <tr>
+               <td valign="top">g++<br>
+               </td>
+               <td valign="top">C++ &#35486;&#35328;&#32068;&#35695;&#22120;&#12290;<br>
+               </td>
+             <td valign="top">&#32068;&#35695;&#22120;&#12290;<br>
+             </td>
+                             </tr>
+             <tr>
+               <td valign="top">QT<br>
+               </td>
+               <td valign="top">KDE UI &#24037;&#20855;&#32068;<br>
+               </td>
+             <td valign="top">&#38656;&#20351;&#29992; g++ &#32232;&#35695;&#22120;<br>
+       QT&nbsp; &#21443;&#32771;&#25163;&#20874; [&#31777;&#39636;] &nbsp;http://www.qiliang.net:81/qt/<br>
+             </td>
+                             </tr>
+        <tr>
+          <td valign="top">Kate<br>
+          </td>
+          <td valign="top">&#32232;&#36655; C/C++ &#35486;&#35328;&#29992;&#12290;<br>
+          </td>
+          <td valign="top">&#32232;&#36655;&#22120;&#12290;<br>
+          </td>
+        </tr>
+                                   
+  </tbody>         
+</table>
+         <br>
+   &#20351;&#29992; C &#35486;&#35328; &#33287; C++ &#35486;&#35328;&#20358;&#25511;&#21046; I/O &#25152;&#38656; INCLUDE &#30340;&#27161;&#38957;&#27284;&#12290;<br>
+    <br>
+                 
+<table cellpadding="2" cellspacing="2" border="1" width="50%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66" align="center">&#20351;&#29992;&#35486;&#35328;<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66" align="center">&#25152;&#38656; INCLUDE &#30340;&#27284;&#26696;&#33287;&#35486;&#27861;<br>
+          </td>
+                        </tr>
+        <tr>
+          <td valign="top" align="center">C &#35486;&#35328;<br>
+          </td>
+          <td valign="top" align="center">#include &lt;asm/io.h&gt;<br>
+          </td>
+                        </tr>
+     <tr>
+       <td valign="top" align="center">C++&#35486;&#35328;<br>
+       </td>
+       <td valign="top" align="center">#include &lt;sys/io.h&gt;<br>
+       </td>
+     </tr>
+                         
+  </tbody>    
+</table>
+    <br>
+ <br>
+    <u>C &#35486;&#35328;&#29256;&#26412;&#31243;&#24335;</u><br>
+ <br>
+ &#30001;&#26044;&#25105;&#23565; Linux C &#20063;&#19981;&#26159;&#24456;&#29087;&#24713; &#12290;&#25152;&#20197;&#25353;&#29031;&#31243;&#24335;&#38656;&#27714;&#65292;&#21443;&#32771;&#24190;&#20221;&#25991;&#20214;&#20006;&#20808;&#23531;&#20102;&#24190;&#20491;&#23567;&#31243;&#24335;&#28204;&#35430;&#19968;&#19979;&#12290;<br>
+ <br>
+     
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+     <tbody>
+       <tr>
+         <td valign="top" bgcolor="#ffcc66" align="center">&#31243;&#24335;&#21517;&#31281;<br>
+         </td>
+         <td valign="top" bgcolor="#ffcc66" align="center">&#35498;&#26126;<br>
+         </td>
+                                </tr>
+       <tr>
+         <td valign="top" align="center">hello.c<br>
+         </td>
+         <td valign="top">Linux C&nbsp; &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#21360;&#20986; Hello, world&#12290;<br>
+         </td>
+                                </tr>
+       <tr>
+         <td valign="top" align="center">kb.c<br>
+         </td>
+         <td valign="top">&#23559; Linux C&nbsp; &#23531;&#20986; DOS-like C&#19978; &#30340; kbhit &nbsp;&#20989;&#24335;(&#20597;&#28204;&#37749;&#30436;&#26159;&#21542;&#34987;&#25353;&#19979;)&#21151;&#33021;&#12290;<br>
+         </td>
+                                </tr>
+    <tr>
+      <td valign="top" align="center">io.c<br>
+      </td>
+      <td valign="top">&#20197; Linux C &#25511;&#21046; &#38275;&#29197; 8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED &#12290;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">blink.c<br>
+      </td>
+      <td valign="top">&#32080;&#21512; kb.c &#33287; io.c &#12290;8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED&#19981;&#20572;&#38275;&#29197;&#65292;&#30452;&#21040;&#25353;&#19979; q &#37749;&#25165;&#38626;&#38283;&#12290;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">pili_testing.c<br>
+      </td>
+      <td valign="top">LED &#36305;&#39340;&#29128;&#27169;&#25836;&#31243;&#24335;&#12290;&#30001; 1 &#35336;&#25976;&#33267; 128 &#65292; 128 &#35336;&#25976;&#33267; 1&#65292;&#20358;&#22238;&#21015;&#21360; &#20849; 20 &#27425;&#12290;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">pili.c<br>
+      </td>
+      <td valign="top">LED &#36305;&#39340;&#29128;&#12290;8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED&#20358;&#22238;&#38275;&#29197;&#65292;&#30452;&#21040;&#25353;&#19979; q &nbsp;&#37749;&#25165;&#38626;&#38283;<br>
+      </td>
+    </tr>
+           
+  </tbody>   
+</table>
+   <br>
+ &#30001;&#26368;&#24460;&#30340;&#36305;&#39340;&#29128;&#31243;&#24335;&#65292;&#26368;&#24460;&#30906;&#23450; &#21487;&#25511;&#21046; 8255 I/O &#23526;&#39511;&#26495;&#12290;<br>
+<br>
+&#8251; &#39493;&#21205;&#31243;&#24335; &#33287; &#32178;&#38555;&#32178;&#36335; ( Internet ) &#36953;&#25511;8255 I/O &#23526;&#39511;&#26495;<br>
+-- &#23578;&#32570; --<br>
+<br>
+&#20197;&#19978;&#31243;&#24335;&#30340;&#21443;&#32771;&#36039;&#26009;&#12290;<br>
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+  <tbody>
+    <tr>
+      <td valign="top" bgcolor="#ffcc66" align="center">&#32178;&#22336;<br>
+      </td>
+      <td valign="top" bgcolor="#ffcc66" align="center">&#35498;&#26126;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">http://gcc.gnu.org/<br>
+      </td>
+      <td valign="top">Linux &#19978;&#30340; C &#35486;&#35328;&#21443;&#32771;&#25991;&#20214;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html<br>
+      </td>
+      <td valign="top">&#22312;Linux C&#19978;&#30340; kbhit() :: kbhit() MSDOS equivalent in
+Linux<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html<br>
+      </td>
+      <td valign="top">Linux C&#19978;&nbsp; root &#27402;&#38480; &#30340; I/O&#25511;&#21046;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+   &#19968;&#33324;&#32780;&#35328;&#65292;C &#27604; C++ &#32068;&#35695;&#21518; &#20308;&#29992;&#36611;&#23567;&#30340;&#31354;&#38291; &#65292;&#36969;&#21512;&#29992;&#20358;&#30332;&#23637;&#38651;&#33126;&#36913;&#37002;&#39493;&#21205;&#31243;&#24335;&#12290;<br>
+   <br>
+   <u>C ++ &#35486;&#35328;&#29256;&#26412;&#31243;&#24335;</u>( &#37197;&#21512;QT&#24037;&#20855;&#32068; )<br>
+   <br>
+     
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+     <tbody>
+       <tr>
+         <td valign="top" align="center" bgcolor="#ffcc66">&#31243;&#24335;&#21517;&#31281;<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffcc66">&#35498;&#26126;<br>
+         </td>
+                                  </tr>
+       <tr>
+         <td valign="top" align="center">hello.cpp<br>
+         </td>
+         <td valign="top">C++ &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#21360;&#20986; Hello, world&#12290;<br>
+         </td>
+                                  </tr>
+       <tr>
+      <td valign="top" align="center">io.cpp<br>
+      </td>
+      <td valign="top">&#20197;&nbsp; C++&nbsp; &#25511;&#21046; &#38275;&#29197; 8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED &#12290;<br>
+      </td>
+    </tr>
+    <tr>
+         <td valign="top" align="center">hello_qt.cpp<br>
+         </td>
+         <td valign="top">Linux GUI &#35222;&#31383;&#31243;&#24335; &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#24314;&#31435;&#19968;&#20491; Hello QT! &#30340;&#22522;&#26412;&#35222;&#31383;<br>
+         </td>
+                                  </tr>
+    <tr>
+      <td valign="top" align="center">qt_quit.cpp<br>
+      </td>
+      <td valign="top">Linux GUI &#35222;&#31383;&#31243;&#24335; &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#21487;&#20197;&#34389;&#29702;&#20107;&#20214;&#30340;&#20659;&#36958; &#12290; <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" rowspan="1" colspan="2">&#22312; qt_quit.cpp &#20013;&#20107;&#20214;&#30340;&#20659;&#36958;&#26159;&#20351;&#29992;&#29694;&#25104;&#30340;&#28317;&#27133;
+&#38656;&#35201;&#26356;&#21152;&#20102;&#35299; &#28317;&#35338;&#34399;&#38291;&#30340;&#38364;&#20418;<br>
+&#21443;&#32771;&#20197;&#19979;&#25991;&#20214;<br>
+      <ul>
+        <li>moc &#20351;&#29992;&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340;&#39006;&#21029;&#30340;&#19968;&#33324;&#39592;&#26550;</li>
+        <li>&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340; &#39006;&#21029; [ &#31684;&#20363; ]&#33287; [ &#31034;&#24847;&#22294; ] &nbsp;&#33287; [ &#22519;&#34892;&#32080;&#26524; ]&#33287; [ &#25105;&#30340;&#30097;&#21839; ]</li>
+        <li>&#36914;&#38542;&#31684;&#20363; &#65292;&#34389;&#29702; moc &#30340;&#21839;&#38988;&#65292; &nbsp; [ &#31243;&#24335;&#30908; ] [ &#26550;&#27083; ]</li>
+      </ul>
+ &#20006;&#23531;&#20841;&#20491;&#31243;&#24335;&#20358;&#28204;&#35430;&#19968;&#19979;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">moc1.cpp<br>
+      </td>
+      <td valign="top">&#31532;&#19968;&#31278; moc(Meta Object Compiler) &#30340;&#24341;&#29992;&#26041;&#24335;&#65292;&#36969;&#21512;&#23567;&#31243;&#24335;&#12290;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">moc2.cpp<br>
+      </td>
+      <td valign="top">&#31532;&#20108;&#31278; moc &#30340;&#24341;&#29992;&#26041;&#24335;&#12290;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">&#37325;&#32622;<br>
+      </td>
+    </tr>
+           
+  </tbody>   
+</table>
+   <br>
+<br>
+<br>
+<br>
+&#20197;&#19978;&#31243;&#24335;&#30340;&#32178;&#31449;&#21443;&#32771;&#36039;&#26009;&#12290;<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top" align="center" bgcolor="#ffcc66">&#32178;&#22336;<br>
+      </td>
+      <td valign="top" align="center" bgcolor="#ffcc66">&#35498;&#26126;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">http://www.mathcs.carleton.edu/courses/course_resources/cs117/<br>
+      </td>
+      <td valign="top">Linux &#19978;&#30340; C ++ &#35486;&#35328;&#25945;&#23416;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">http://doc.trolltech.com/<br>
+      </td>
+      <td valign="top">QT &#32218;&#19978;&#25991;&#20214;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+   &#20415;&#26044;&#30332;&#23637; Client &#31471; &#35222;&#31383; &#31243;&#24335;&#12290;<br>
+    <br>
+    <br>
+       
+<h3>&#12304;&nbsp; <b>&#12305;</b></h3>
+                 
+<h3>&#12304;&nbsp; <b>&#12305;</b></h3>
+                 
+<h3>&#12304;&nbsp; <b>&#12305;</b></h3>
+                 
+<h3>&#12304; ref. to <b>&#12305;</b></h3>
+             
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+         <tbody>
+           <tr>
+             <td valign="top" bgcolor="#ffcc66">&#21443;&#32771;&#36039;&#26009;<br>
+             </td>
+             <td valign="top" bgcolor="#ffcc66">&#32178;&#22336;<br>
+             </td>
+             <td valign="top" bgcolor="#ffcc66">&#35498;&#26126;<br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">Programmer &#28145;&#24230;&#35542;&#22727;<br>
+             </td>
+             <td valign="top">http://forum.vclxx.org/<br>
+             </td>
+             <td valign="top">&#31243;&#24335;&#23531;&#20316;&#35342;&#35542;&#21312;<br>
+             </td>
+           </tr>
+           <tr>
+          <td valign="top">32 Bit Delphi &#28145;&#24230;&#27511;&#38570;<br>
+          </td>
+          <td valign="top">http://vcl.vclxx.org/DELPHI/DEFAULT.HTM<br>
+          </td>
+          <td valign="top">&#21487;&#20197;&#19979;&#36617; DLPORT &#20803;&#20214;( &#22312; XP &#24179;&#21488;&#19978;&#25511;&#21046; I/O )<br>
+          </td>
+        </tr>
+        <tr>
+             <td valign="top">&#24503;&#24030;&#20736;&#22120;<br>
+             </td>
+             <td valign="top">http://www.ti.com/<br>
+             </td>
+             <td valign="top">&#21487;&#20197;&#25628;&#23563; IC &#26684;&#36039;&#26009;<br>
+             </td>
+           </tr>
+        <tr>
+          <td valign="top">&#33288;&#24503;&#36039;&#35338;<br>
+          </td>
+          <td valign="top">http://www.sinter.com.tw/<br>
+          </td>
+          <td valign="top">&#21830;&#26989;&#29256;&#39493;&#21205;&#31243;&#24335;<br>
+          </td>
+        </tr>
+                           
+  </tbody>       
+</table>
+       <br>
+                 
+<h3>&#12304; Remark <b>&#12305;</b></h3>
+         &#38283;&#27231;&#26178;&#22312; BIOS &#37325;&#35373;&#30828;&#30879;<br>
+         <br>
+           
+<h3>&#12304; Appendix-A&nbsp;<b> &#12305;</b></h3>
+&#38651;&#36335;&#25152;&#26371;&#29992;&#21040; ISA &#21345; &#33287; IC &#25509;&#33139;&#23450;&#32681;&#12290;<br>
+<br>
+  &nbsp;&#9670; PC AT &#25844;&#20805;&#27133; &#25509;&#33139; &#23450;&#32681;<br>
+ <br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#ffcc66" align="center">Input/Output<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66" align="center">pin. Signal<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66" align="center" rowspan="1"
+ colspan="2">Pin. No.<br>
+          </td>
+                               <td valign="top" bgcolor="#ffcc66"
+ align="center">pin. Signal<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc66" align="center">Input/Output<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">GROUND<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">GND<br>
+          </td>
+          <td valign="top" align="right">B1<br>
+          </td>
+                        <td valign="top">A1<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">-I/O CH CK<br>
+          </td>
+          <td valign="top" align="center">I<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">RESET DRV<br>
+          </td>
+          <td valign="top" align="right">B2<br>
+          </td>
+                        <td valign="top">A2<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD7<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">+5V DC<br>
+          </td>
+          <td valign="top" align="right">B3<br>
+          </td>
+                        <td valign="top">A3<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD6<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ9<br>
+          </td>
+          <td valign="top" align="right">B4<br>
+          </td>
+                        <td valign="top">A4<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD5<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-5V DC<br>
+          </td>
+          <td valign="top" align="right">B5<br>
+          </td>
+                        <td valign="top">A5<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD4<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ2<br>
+          </td>
+          <td valign="top" align="right">B6<br>
+          </td>
+                        <td valign="top">A6<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD3<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-12V DC<br>
+          </td>
+          <td valign="top" align="right">B7<br>
+          </td>
+                        <td valign="top">A7<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD2<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">OWS<br>
+          </td>
+          <td valign="top" align="right">B8<br>
+          </td>
+                        <td valign="top">A8<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD1<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">+12V DC<br>
+          </td>
+          <td valign="top" align="right">B9<br>
+          </td>
+                        <td valign="top">A9<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SD0<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">GROUND<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">GND<br>
+          </td>
+          <td valign="top" align="right">B10<br>
+          </td>
+                        <td valign="top">A10<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">-I/O CH RDY<br>
+          </td>
+          <td valign="top" align="center">I<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-SMEMW<br>
+          </td>
+          <td valign="top" align="right">B11<br>
+          </td>
+                        <td valign="top">A11<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">AEN<br>
+          </td>
+          <td valign="top" align="center">O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-SMEMR<br>
+          </td>
+          <td valign="top" align="right">B12<br>
+          </td>
+                        <td valign="top">A12<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA19<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I/O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-IOW<br>
+          </td>
+          <td valign="top" align="right">B13<br>
+          </td>
+                        <td valign="top">A13<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA18<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I/O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-IOR<br>
+          </td>
+          <td valign="top" align="right">B14<br>
+          </td>
+                        <td valign="top">A14<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA17<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK3<br>
+          </td>
+          <td valign="top" align="right">B15<br>
+          </td>
+                        <td valign="top">A15<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA16<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ3<br>
+          </td>
+          <td valign="top" align="right">B16<br>
+          </td>
+                        <td valign="top">A16<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA15<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK1<br>
+          </td>
+          <td valign="top" align="right">B17<br>
+          </td>
+                        <td valign="top">A17<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA14<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ1<br>
+          </td>
+          <td valign="top" align="right">B18<br>
+          </td>
+                        <td valign="top">A18<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA13<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I/O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-REFRESH<br>
+          </td>
+          <td valign="top" align="right">B19<br>
+          </td>
+                        <td valign="top">A19<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA12<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">CLK<br>
+          </td>
+          <td valign="top" align="right">B20<br>
+          </td>
+                        <td valign="top">A20<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA11<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ7<br>
+          </td>
+          <td valign="top" align="right">B21<br>
+          </td>
+                        <td valign="top">A21<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA10<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ6<br>
+          </td>
+          <td valign="top" align="right">B22<br>
+          </td>
+                        <td valign="top">A22<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA9<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ5<br>
+          </td>
+          <td valign="top" align="right">B23<br>
+          </td>
+                        <td valign="top">A23<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA8<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ4<br>
+          </td>
+          <td valign="top" align="right">B24<br>
+          </td>
+                        <td valign="top">A24<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA7<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ3<br>
+          </td>
+          <td valign="top" align="right">B25<br>
+          </td>
+                        <td valign="top">A25<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA6<br>
+          </td>
+          <td valign="top" align="center">I/O</td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK2<br>
+          </td>
+          <td valign="top" align="right">B26<br>
+          </td>
+                        <td valign="top">A26<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA5<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">T/C<br>
+          </td>
+          <td valign="top" align="right">B27<br>
+          </td>
+                        <td valign="top">A27<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA4<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">BALE<br>
+          </td>
+          <td valign="top" align="right">B28<br>
+          </td>
+                        <td valign="top">A28<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA3<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">+5V DC<br>
+          </td>
+          <td valign="top" align="right">B29<br>
+          </td>
+                        <td valign="top">A29<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA2<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">OSC<br>
+          </td>
+          <td valign="top" align="right">B30<br>
+          </td>
+                        <td valign="top">A30<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA1<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">GROUND<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">GND<br>
+          </td>
+          <td valign="top" align="right">B31<br>
+          </td>
+                        <td valign="top">A31<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffff66">SA0<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    <br>
+    <br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+      <tbody>
+        <tr>
+          <td valign="top" align="center" bgcolor="#ffcc33">Input/Output<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffcc33">pin. Signal<br>
+          </td>
+          <td valign="top" bgcolor="#ffcc33" align="center" rowspan="1"
+ colspan="2">pin. No.<br>
+          </td>
+                               <td valign="top" align="center"
+ bgcolor="#ffcc33">pin. Signal<br>
+          </td>
+          <td valign="top" align="center" bgcolor="#ffcc33">Input/Output<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-MEM CS16<br>
+          </td>
+          <td valign="top" align="right">D1<br>
+          </td>
+                        <td valign="top">C1<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SBHE<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-I/O CS16<br>
+          </td>
+          <td valign="top" align="right">D2<br>
+          </td>
+                        <td valign="top">C2<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA23<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ10<br>
+          </td>
+          <td valign="top" align="right">D3<br>
+          </td>
+                        <td valign="top">C3<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA22<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ11<br>
+          </td>
+          <td valign="top" align="right">D4<br>
+          </td>
+                        <td valign="top">C4<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA21<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ12<br>
+          </td>
+          <td valign="top" align="right">D5<br>
+          </td>
+                        <td valign="top">C5<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA20<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ15<br>
+          </td>
+          <td valign="top" align="right">D6<br>
+          </td>
+                        <td valign="top">C6<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA19<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">IRQ14<br>
+          </td>
+          <td valign="top" align="right">D7<br>
+          </td>
+                        <td valign="top">C7<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA18<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK0<br>
+          </td>
+          <td valign="top" align="right">D8<br>
+          </td>
+                        <td valign="top">C8<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">LA17<br>
+          </td>
+          <td valign="top" align="center">I/O</td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ0<br>
+          </td>
+          <td valign="top" align="right">D9<br>
+          </td>
+                        <td valign="top">C9<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-MEMR<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK5<br>
+          </td>
+          <td valign="top" align="right">D10<br>
+          </td>
+                        <td valign="top">C10<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-MEMW<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ5<br>
+          </td>
+          <td valign="top" align="right">D11<br>
+          </td>
+                        <td valign="top">C11<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD8<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK6<br>
+          </td>
+          <td valign="top" align="right">D12<br>
+          </td>
+                        <td valign="top">C12<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD9<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ6<br>
+          </td>
+          <td valign="top" align="right">D13<br>
+          </td>
+                        <td valign="top">C13<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD10<br>
+          </td>
+          <td valign="top" align="center">I/O</td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">O<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">-DACK7<br>
+          </td>
+          <td valign="top" align="right">D14<br>
+          </td>
+                        <td valign="top">C14<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD11<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">DRQ7<br>
+          </td>
+          <td valign="top" align="right">D15<br>
+          </td>
+                        <td valign="top">C15<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD12<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">POWER<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">+5V DC<br>
+          </td>
+          <td valign="top" align="right">D16<br>
+          </td>
+                        <td valign="top">C16<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD13<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">I<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">MASTER<br>
+          </td>
+          <td valign="top" align="right">D17<br>
+          </td>
+                        <td valign="top">C17<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD14<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">GROUND<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">GND<br>
+          </td>
+          <td valign="top" align="right">D18<br>
+          </td>
+                        <td valign="top">C18<br>
+          </td>
+          <td valign="top" bgcolor="#ffff66">SD15<br>
+          </td>
+          <td valign="top" align="center">I/O<br>
+          </td>
+        </tr>
+               
+  </tbody>    
+</table>
+   <br>
+    &#9670; 8255A &#25509;&#33139; <br>
+ &nbsp; 
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+     <tbody>
+       <tr>
+         <td valign="top" align="center" bgcolor="#ffcc33">pin. Signal<br>
+         </td>
+         <td valign="top" rowspan="1" colspan="2" align="center"
+ bgcolor="#ffcc33">pin. No<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffcc33">pin. Signal<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PA3<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">1<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">40<br>
+         </td>
+         <td valign="top" align="center">PA4<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PA2<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">2<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">39<br>
+         </td>
+         <td valign="top" align="center">PA5<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PA1<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">3<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">38<br>
+         </td>
+         <td valign="top" align="center">PA6<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PA0<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">4<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">37<br>
+         </td>
+         <td valign="top" align="center">PA7<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">-RD<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">5<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">36<br>
+         </td>
+         <td valign="top" align="center">-WR<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">-CS<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">6<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">35<br>
+         </td>
+         <td valign="top" align="center">RESET<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">GND<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">7<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">34<br>
+         </td>
+         <td valign="top" align="center">D0<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">A1<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">8<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">33<br>
+         </td>
+         <td valign="top" align="center">D1<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">A2<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">9<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">32<br>
+         </td>
+         <td valign="top" align="center">D2<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC7<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">10<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">31<br>
+         </td>
+         <td valign="top" align="center">D3<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC6<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">11<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">30<br>
+         </td>
+         <td valign="top" align="center">D4<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC5<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">12<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">29<br>
+         </td>
+         <td valign="top" align="center">D5<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC4<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">13<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">28<br>
+         </td>
+         <td valign="top" align="center">D6<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC0<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">14<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">27<br>
+         </td>
+         <td valign="top" align="center">D7<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC1<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">15<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">26<br>
+         </td>
+         <td valign="top" align="center">VCC<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC2<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">16<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">25<br>
+         </td>
+         <td valign="top" align="center">PB7<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PC3<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">17<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">24<br>
+         </td>
+         <td valign="top" align="center">PB6<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PB0<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">18<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">23<br>
+         </td>
+         <td valign="top" align="center">PB5<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PB1<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">19<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">22<br>
+         </td>
+         <td valign="top" align="center">PB4<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">PB2<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">20<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffff66">21<br>
+         </td>
+         <td valign="top" align="center">PB3<br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+   <br>
+    &#9670; 8254 &#25509;&#33139;<br>
+ <br>
+     
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+     <tbody>
+       <tr>
+         <td valign="top" align="center" bgcolor="#ffcc33">pin. Signal<br>
+         </td>
+         <td valign="top" rowspan="1" colspan="2" align="center"
+ bgcolor="#ffcc33">pin. No<br>
+         </td>
+         <td valign="top" align="center" bgcolor="#ffcc33">pin. Signal<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D7<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">1<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">24<br>
+         </td>
+         <td valign="top" align="center">VCC<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D6<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">2<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">23<br>
+         </td>
+         <td valign="top" align="center">-WR<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D5<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">3<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">22<br>
+         </td>
+         <td valign="top" align="center">-RD<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D4<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">4<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">21<br>
+         </td>
+         <td valign="top" align="center">-CS<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D3<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">5<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">20<br>
+         </td>
+         <td valign="top" align="center">A1<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D2<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">6<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">19<br>
+         </td>
+         <td valign="top" align="center">A0<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D1<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">7<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">18<br>
+         </td>
+         <td valign="top" align="center">CLK2<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">D0<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">8<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">17<br>
+         </td>
+         <td valign="top" align="center">OUT2<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">CLK0<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">9<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">16<br>
+         </td>
+         <td valign="top" align="center">GATE2<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">OUT0<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">10<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">15<br>
+         </td>
+         <td valign="top" align="center">CLK1<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">GATE0<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">11<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">14<br>
+         </td>
+         <td valign="top" align="center">GATE1<br>
+         </td>
+       </tr>
+       <tr>
+         <td valign="top" align="center">GND<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">12<br>
+         </td>
+         <td valign="top" bgcolor="#ffff66" align="center">13<br>
+         </td>
+         <td valign="top" align="center">OUT1<br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+   <br>
+     
+<h3>&#12304; Appendix-B &#12305;</h3>
+&#20197;&#19979;&#21015;&#20986; C &#35486;&#35328;&#31243;&#24335;&#30908; &#33287;&#22519;&#34892;&#32080;&#26524;&#12290;  &#28858;&#20102;&#26041;&#20415; &#25776;&#23531;&#31243;&#24335;&#30908;&#12289;&#28204;&#35430;&#32080;&#26524;&#65292;&#25776;&#23531;&#27492;&#20221;&#35498;&#26126;&#25991;&#20214;&#65292;&#19978;&#32178;&#32893;&#20018;&#27969;&#38899;&#27138;&#65292;&#8230;<br>
+&#22312;&#20027;&#27231;&#31471;&#26550;&#35373;&#20102; FTP Server ( &#23559; Win-XP &#19979;&#32232;&#23531;&#30340;&#31243;&#24335;&#30908;&#19978;&#20659;&#33267; RedHat Linux ) &#33287; VNC Server( &#36960;&#31471;&#36953;&#25511;
+RedHat Linux )&#65292;<br>
+&#20351;&#29992; VNC &#36575;&#39636;&#65292;&#30001; Win-XP &#36960;&#31471;&#36899;&#32218;&#21040; RedHat Linux 8.0 &#22519;&#34892;&#31243;&#24335;&#65292;&#22312; &nbsp;Win-XP &#22519;&#34892;&#32080;&#26524;&#12290;<br>
+<br>
+<u>VNC Server &#36899;&#32218;&#27493;&#39519;</u><br>
+<br>
+<table cellpadding="2" cellspacing="2" border="1" width="99%">
+  <tbody>
+    <tr>
+      <td valign="top" bgcolor="#ffcc66" align="center">&#27493;&#39519;<br>
+      </td>
+      <td valign="top" bgcolor="#ffcc66" align="center">RedHat Linux 8.0<br>
+      </td>
+      <td valign="top" bgcolor="#ffcc66" align="center">Win-XP<br>
+      </td>
+      <td valign="top" bgcolor="#ffcc66" align="center">&#35498;&#26126;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">Step.0<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">&#36914;&#20837; &#32066;&#31471;&#27231; &#9472; &#36229;&#32026;&#20351;&#29992;&#32773;&#27169;&#24335;<br>
+&#20006;&#36664;&#20837;&#20197;&#19979;&#21629;&#20196;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.1<br>
+      </td>
+      <td valign="top">adsl-start<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">RedHat Linux &#20027;&#27231;&#36899;&#32218;&#33267;&#32178;&#38555;&#32178;&#36335;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.2<br>
+      </td>
+      <td valign="top">vncserver<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">&#21855;&#21205; vncserver <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.3<br>
+      </td>
+      <td valign="top">ifconfig<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">&#26597;&#30475; dhcp &#25152;&#20998;&#37197;&#21040;&#30340; IP<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.4<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">Run VNC Viewer<br>
+      <img src="vnc_client_1.jpg" alt="" width="381" height="134">
+ <br>
+      </td>
+      <td valign="top">&#21855;&#21205; VNC client &#31471;<br>
+&#36664;&#20837;&#20027;&#27231; IP<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.5<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><img src="vnc_client_2.jpg" alt="" width="336"
+ height="108">
+      <br>
+      </td>
+      <td valign="top">&#36664;&#20837;&#30331;&#20837;&#30340;&#23494;&#30908;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">Step.6<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><img src="vnc_client_3.jpg" alt="" width="532"
+ height="381">
+      <br>
+      </td>
+      <td valign="top">&#30331;&#20837;&#23436;&#30050;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+ &#9670; hello.c<br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+   <tbody>
+     <tr>
+       <td valign="top">/*<br>
+ Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;hello.c<br>
+ compile command :&nbsp; &nbsp;gcc -O -o hello hello.c<br>
+       <br>
+ Auther : &nbsp; Jing-Wen.Lai<br>
+ &#30446;&#30340; :: &nbsp; &nbsp;Linux C&nbsp; &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#21360;&#20986; Hello, world&#12290; <br>
+ &#26085;&#26399; :: &nbsp; &nbsp;3/22 2003<br>
+ */<br>
+       <br>
+ #include &lt;stdio.h&gt;<br>
+ int main(int argc, char *argv[])<br>
+ {<br>
+ &nbsp;&nbsp;&nbsp; printf("Hello, world\n");<br>
+ &nbsp;&nbsp;&nbsp; return 0;<br>
+ }<br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="hello.jpg" alt="" width="324" height="162">
+<br>
+<br>
+ &#9670; kb.c<br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+   <tbody>
+     <tr>
+       <td valign="top">/*<br>
+ Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kb.c<br>
+ compile command :&nbsp; gcc -O -o kb kb.c<br>
+       <br>
+ Auther : Jing-Wen.Lai<br>
+ &#30446;&#30340; :: &#24179;&#24120;&#22519;&#34892; Loop &#21360;&#20986; &#35336;&#25976; &#35338;&#24687; &#65292;&#38500;&#38750;&#37749;&#30436;&#25353;&#19979; 'q' &#37749; &#21063;&#38626;&#38283;&#35336;&#25976; Loop &#12290; <br>
+ &#21443;&#32771; :: &#21443;&#32771;&#32178;&#36335;&#25991;&#20214;(http://www.control.auc.dk/~jnn/c2000/programs/mm5/keyboardhit/msg02541.html)&#25913;&#23531;&#12290;<br>
+ &#26085;&#26399; :: 3/22 2003<br>
+ */<br>
+       <br>
+ #include &lt;stdio.h&gt;<br>
+ #include &lt;termios.h&gt;<br>
+       <br>
+ static struct termios orig, new;<br>
+ static int peek = -1;<br>
+       <br>
+ int main()<br>
+ {<br>
+ &nbsp; <br>
+ &nbsp; int ch =0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
+&nbsp; &nbsp;&nbsp; /*&nbsp; &#37749;&#30436;&#25152;&#25353;&#19979;&#30340;&#23383;&#20803; */<br>
+ &nbsp; int loopCount=1;&nbsp;&nbsp;&nbsp; /*&nbsp; Loop &#29992; &#35336;&#25976;&#22120;&nbsp;&nbsp; 
+*/<br>
+       <br>
+ &nbsp; tcgetattr(0, &amp;orig);<br>
+ &nbsp; new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO; 
+new.c_lflag &amp;= ~ISIG;<br>
+ &nbsp; new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);<br>
+       <br>
+ &nbsp; /* =========================== */<br>
+ &nbsp; /* [[ &#30070;&#36664;&#20837;&#23383;&#20803;&#19981;&#28858; q &#26178;&nbsp; ]]&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;*/<br>
+ &nbsp; /* =========================== */<br>
+       <br>
+ &nbsp; while(ch != 'q') {<br>
+ &nbsp;&nbsp;&nbsp; printf("looping %d time(s) \n",loopCount);<br>
+ &nbsp;&nbsp;&nbsp; sleep(1); loopCount++;<br>
+       <br>
+ &nbsp;&nbsp;&nbsp; if(kbhit()) {<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = readch();<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("== Input %c ==\n",ch);<br>
+ &nbsp;&nbsp;&nbsp; }<br>
+       <br>
+ &nbsp; }<br>
+       <br>
+ &nbsp; /* ======================== */<br>
+ &nbsp; /* [[&nbsp; &#36664;&#20837;&#23383;&#20803; &#28858; q &#26178;&nbsp; ]] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; */<br>
+ &nbsp; /* ======================== */<br>
+       <br>
+ &nbsp; printf("== Quit == \n");<br>
+ &nbsp; tcsetattr(0,TCSANOW, &amp;orig);<br>
+ &nbsp; exit(0);<br>
+       <br>
+ }<br>
+       <br>
+ /* ======================= */<br>
+ /*&nbsp;&nbsp; sub Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+*/<br>
+ /* ======================= */<br>
+ int kbhit()<br>
+ {<br>
+ &nbsp;&nbsp;&nbsp; char ch;int nread;<br>
+ &nbsp;&nbsp;&nbsp; if(peek != -1) return 1;<br>
+ &nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=0;<br>
+ &nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);<br>
+ &nbsp;&nbsp;&nbsp; nread = read(0,&amp;ch,1);<br>
+ &nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=1;<br>
+ &nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);&nbsp;&nbsp;&nbsp; <br>
+ &nbsp;&nbsp;&nbsp; if(nread == 1) {<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; peek = ch;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;<br>
+ &nbsp;&nbsp;&nbsp; }<br>
+ &nbsp;&nbsp;&nbsp; return 0;<br>
+ }<br>
+       <br>
+ int readch()<br>
+ {<br>
+ &nbsp;&nbsp;&nbsp; char ch;<br>
+ &nbsp;&nbsp;&nbsp; if(peek != -1) {<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = peek;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peek = -1;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ch;<br>
+ &nbsp;&nbsp;&nbsp; }<br>
+ &nbsp;&nbsp;&nbsp; read(0,&amp;ch,1);<br>
+ &nbsp;&nbsp;&nbsp; return ch;<br>
+ }<br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="kbhit.jpg" alt="" width="289" height="278">
+<br>
+<br>
+ &#9670; io.c<br>
+ 
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+   <tbody>
+     <tr>
+       <td valign="top">/*<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; --&nbsp; io.c&nbsp; &lt;Linux I/O &#22496; &#22522;&#26412;&#28204;&#35430; -- &#28204;&#35430;
+&#21083;&#32068;&#35037;&#23436;&#25104;&#30340; IO &#26495;&#29992;&gt;&nbsp; --<br>
+       <br>
+ &nbsp;&nbsp;&nbsp;&nbsp; Auther : Jing-Wen.Lai<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&#21205;&#20316; : &#20197; Linux C &#25511;&#21046; 8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED &#65292;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; &#32232;&#35695; : &#20351;&#29992; `gcc -O2 -o io io.c',<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; &#22519;&#34892; : &#20197; root &#30340;&#36523;&#20221;&#22519;&#34892; `./io'.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; &#21443;&#32771; : &#30001;&lt;&lt;CLDP -- Linux &#20013;&#25991;&#25991;&#20214;&#35336;&#21123;&gt;&gt;&#25913;&#23531;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <br>
+ */<br>
+ #include &lt;stdio.h&gt;<br>
+ #include &lt;unistd.h&gt;<br>
+ #include &lt;asm/io.h&gt;<br>
+       <br>
+ #define CCW 0x303&nbsp; /* 8255 CCW */<br>
+ #define PA&nbsp; 0x300&nbsp;&nbsp; /* 8255 PORT A */<br>
+ int main()<br>
+ {<br>
+ &nbsp;&nbsp;&nbsp; int i=0;<br>
+       <br>
+ &nbsp;&nbsp;&nbsp; /* &#21462;&#24471;&#22496;&#20301;&#22336;&#30340;&#23384;&#21462;&#27402;&#38480; */<br>
+ &nbsp;&nbsp;&nbsp; if (ioperm(CCW, 3, 1)) {perror("ioperm"); exit(1);}<br>
+ &nbsp;&nbsp;&nbsp; if (ioperm(PA, 3, 1))&nbsp; {perror("ioperm"); exit(1);}<br>
+       <br>
+ &nbsp;&nbsp;&nbsp; /* &#23450;&#32681; 8255 &#24037;&#20316;&#27169;&#24335; */<br>
+ &nbsp;&nbsp;&nbsp; outb(0x80, CCW);<br>
+       <br>
+ &nbsp;&nbsp;&nbsp; /* &#37325;&#32622; 8255 PORT A &#30340;&#36664;&#20986;&#36039;&#26009;&#20449;&#34399; (D0-7) &#20840;&#28858;&#38646; (0) */<br>
+ &nbsp;&nbsp;&nbsp; outb(0, PA);<br>
+       <br>
+ &nbsp;&nbsp;&nbsp; /* LED&nbsp;&nbsp; &#20132;&#20114; &#38275;&#29197; 10 &#27425; &#65292;&#27599;&#27425; 1000 ms */<br>
+ &nbsp;&nbsp;&nbsp; for (i=1; i&lt;=10; i++){<br>
+ &nbsp;&nbsp;&nbsp; usleep(1000000);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i%2 == 0){<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0x00, PA);<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-X-&nbsp; 
+step: %d\n",i); <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0xFF, PA);<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-O-&nbsp; 
+step: %d\n",i);<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+ &nbsp;&nbsp;&nbsp; } <br>
+       <br>
+ &nbsp;&nbsp; /* &#25105;&#20497;&#19981;&#20877;&#38656;&#35201;&#36889;&#20123;&#22496;&#20301;&#22336; */<br>
+ &nbsp;&nbsp; if (ioperm(CCW, 3, 0)) {perror("ioperm"); exit(1);}<br>
+ &nbsp;&nbsp; if (ioperm(PA, 3, 0))&nbsp; {perror("ioperm"); exit(1);}<br>
+ &nbsp;&nbsp; exit(0);<br>
+       <br>
+ &nbsp;/* &#32080;&#26463; io.c */<br>
+ }<br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="io.jpg" alt="" width="279" height="247">
+<br>
+<br>
+ &#9670; blink.c<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+      <br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blink.c<br>
+compile command :&nbsp; gcc -O -o blink blink.c<br>
+      <br>
+Auther : Jing-Wen.Lai<br>
+&#30446;&#30340; :: &#24179;&#24120;&#22519;&#34892; Loop &#21360;&#20986; &#35336;&#25976; &#35338;&#24687; &#65292; 8255 I/O &#23526;&#39511;&#26495;&#19978;&#30340; LED &#20134;&#38568;&#20043;&#38275;&#29197;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &#38500;&#38750;&#37749;&#30436;&#25353;&#19979; 'q' &#37749; &#21063;&#38626;&#38283;&#35336;&#25976; Loop &#12290; <br>
+&#26085;&#26399; :: 3/22 2003<br>
+      <br>
+*/<br>
+      <br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;termios.h&gt;<br>
+#include &lt;unistd.h&gt;<br>
+#include &lt;asm/io.h&gt;<br>
+      <br>
+#define CCW 0x303&nbsp;&nbsp; /* 8255 CCW */<br>
+#define PA&nbsp; 0x300&nbsp;&nbsp; /* 8255 PORT A */<br>
+      <br>
+static struct termios orig, new;<br>
+static int peek = -1;<br>
+      <br>
+int main()<br>
+{<br>
+&nbsp; <br>
+&nbsp; int ch =0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*&nbsp;
+&#37749;&#30436;&#25152;&#25353;&#19979;&#30340;&#23383;&#20803; */<br>
+&nbsp; int loopCount=0;&nbsp;&nbsp;&nbsp; /*&nbsp; Loop &#29992; &#35336;&#25976;&#22120;&nbsp;&nbsp;
+*/<br>
+      <br>
+&nbsp; tcgetattr(0, &amp;orig);<br>
+&nbsp; new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO;
+new.c_lflag &amp;= ~ISIG;<br>
+&nbsp; new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);<br>
+      <br>
+&nbsp; /* &#21462;&#24471;&#22496;&#20301;&#22336;&#30340;&#23384;&#21462;&#27402;&#38480; */<br>
+&nbsp; if (ioperm(CCW, 3, 1)) {perror("ioperm"); exit(1);}<br>
+&nbsp; if (ioperm(PA, 3, 1))&nbsp; {perror("ioperm"); exit(1);}<br>
+&nbsp; <br>
+&nbsp; /* &#23450;&#32681; 8255 &#24037;&#20316;&#27169;&#24335; */<br>
+&nbsp; outb(0x80, CCW);<br>
+      <br>
+&nbsp; /* &#37325;&#32622; 8255 PORT A &#30340;&#36664;&#20986;&#36039;&#26009;&#20449;&#34399; (D0-7) &#20840;&#28858;&#38646; (0) */<br>
+&nbsp; outb(0, PA);<br>
+      <br>
+&nbsp; /* =========================== */<br>
+&nbsp; /* [[ &#30070;&#36664;&#20837;&#23383;&#20803;&#19981;&#28858; q &#26178;&nbsp; ]]&nbsp; */<br>
+&nbsp; /* =========================== */<br>
+      <br>
+&nbsp; /*&nbsp; LED&nbsp; &#20132;&#20114; &#38275;&#29197;&nbsp; */<br>
+&nbsp;&nbsp; <br>
+&nbsp; while(ch != 'q') {<br>
+&nbsp;&nbsp;&nbsp; //printf("looping %d times \n",loopCount);<br>
+      <br>
+&nbsp;&nbsp;&nbsp; sleep(1); loopCount++;<br>
+      <br>
+&nbsp;&nbsp;&nbsp; if(loopCount %2 == 0){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0x00, PA);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-X-&nbsp;
+step: %d\n",loopCount); <br>
+&nbsp;&nbsp;&nbsp; }else{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0xFF, PA);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-O-&nbsp;
+step: %d\n",loopCount);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+      <br>
+&nbsp;&nbsp;&nbsp; if(kbhit()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = readch();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; }<br>
+      <br>
+&nbsp; /* ======================== */<br>
+&nbsp; /* [[&nbsp; &#36664;&#20837;&#23383;&#20803; &#28858; q &#26178;&nbsp; ]] */<br>
+&nbsp; /* ======================== */<br>
+&nbsp; <br>
+&nbsp; //&nbsp; LED &#19981;&#20142; <br>
+&nbsp; outb( 0x00, PA);<br>
+      <br>
+&nbsp; /* &#25105;&#20497;&#19981;&#20877;&#38656;&#35201;&#36889;&#20123;&#22496;&#20301;&#22336; */<br>
+&nbsp; if (ioperm(CCW, 3, 0)) {perror("ioperm"); exit(1);}<br>
+&nbsp; if (ioperm(PA, 3, 0))&nbsp; {perror("ioperm"); exit(1);}<br>
+&nbsp; <br>
+&nbsp; printf("== Quit == \n");<br>
+&nbsp; tcsetattr(0,TCSANOW, &amp;orig);<br>
+&nbsp; exit(0);<br>
+      <br>
+}<br>
+      <br>
+/* ======================= */<br>
+/*&nbsp;&nbsp; sub Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*/<br>
+/* ======================= */<br>
+int kbhit()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char ch;int nread;<br>
+&nbsp;&nbsp;&nbsp; if(peek != -1) return 1;<br>
+&nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=0;<br>
+&nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);<br>
+&nbsp;&nbsp;&nbsp; nread = read(0,&amp;ch,1);<br>
+&nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=1;<br>
+&nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; if(nread == 1) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; peek = ch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}<br>
+      <br>
+int readch()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char ch;<br>
+&nbsp;&nbsp;&nbsp; if(peek != -1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = peek;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peek = -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ch;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; read(0,&amp;ch,1);<br>
+&nbsp;&nbsp;&nbsp; return ch;<br>
+}<br>
+      <br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="blink.jpg" alt="" width="320" height="326">
+<br>
+<br>
+ &#9670; pili_test.c<br>
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+Filename :: pili_test.c<br>
+compile command :&nbsp; gcc -O -o pili_test pili_test.c<br>
+      <br>
+Auther&nbsp;&nbsp; :: Jing-Wen.Lai<br>
+&#30446;&#30340; :: &#30001; 1 &#35336;&#25976;&#33267; 128 &#65292; 128 &#35336;&#25976;&#33267; 1&#65292;&#20358;&#22238;&#21015;&#21360; <br>
+&#26085;&#26399; :: 3/23 2003<br>
+      <br>
+*/<br>
+      <br>
+#include &lt;stdio.h&gt; <br>
+      <br>
+int main(){&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; int LED_Data=0x01;&nbsp;&nbsp;&nbsp;&nbsp; /*&nbsp;&nbsp;
+&#21021;&#22987;&#21270;&#36039;&#26009;&nbsp;&nbsp;&nbsp;&nbsp; */&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; int directionFlag=1;&nbsp;&nbsp; &nbsp; &nbsp; /* 1: LED
+&#21521;&#24038;&#40670;&#20142; ; 0:LED &#21521;&#21491;&#40670;&#20142;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; int i;<br>
+      <br>
+&nbsp;&nbsp;&nbsp; for(i=0;i&lt;20;i++){&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("%d\n", LED_Data);<br>
+      <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (directionFlag == 1)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; LED_Data *= 2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (LED_Data ==
+128){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+directionFlag = 0;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }else{<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; LED_Data /= 2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (LED_Data ==
+1){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+directionFlag = 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="pili_test.jpg" alt="" width="358" height="370">
+<br>
+<br>
+ &#9670; pili.c<br>
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+      <br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blink.c<br>
+compile command :&nbsp; gcc -O -o blink blink.c<br>
+      <br>
+Auther : Jing-Wen.Lai<br>
+&#30446;&#30340; :: &#30446;&#30340; :: LED &#36208;&#39340;&#29128;&#12290;&#38500;&#38750;&#37749;&#30436;&#25353;&#19979; 'q' &#37749; &#21063;&#38626;&#38283;&#35336;&#25976; Loop &#12290;<br>
+&#26085;&#26399; :: 3/22 2003<br>
+      <br>
+*/<br>
+      <br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;termios.h&gt;<br>
+#include &lt;unistd.h&gt;<br>
+#include &lt;asm/io.h&gt;<br>
+      <br>
+#define CCW 0x303&nbsp;&nbsp; /* 8255 CCW */<br>
+#define PA&nbsp; 0x300&nbsp;&nbsp; /* 8255 PORT A */<br>
+      <br>
+static struct termios orig, new;<br>
+static int peek = -1;<br>
+      <br>
+int main()<br>
+{<br>
+&nbsp; <br>
+&nbsp; int ch =0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*&nbsp;
+&#37749;&#30436;&#25152;&#25353;&#19979;&#30340;&#23383;&#20803; */<br>
+&nbsp; int loopCount=0;&nbsp;&nbsp;&nbsp; /*&nbsp; Loop &#29992; &#35336;&#25976;&#22120;&nbsp;&nbsp;
+*/<br>
+      <br>
+&nbsp; int LED_Data=0x01;&nbsp;&nbsp;&nbsp;&nbsp; /* &#21021;&#22987;&#21270;&#36039;&#26009;&nbsp;&nbsp;&nbsp;
+*/&nbsp;&nbsp;&nbsp; <br>
+&nbsp; int directionFlag=1;&nbsp;&nbsp; /* 1: LED &#21521;&#24038;&#40670;&#20142; ; 0:LED &#21521;&#21491;&#40670;&#20142;&nbsp;&nbsp;&nbsp;
+*/<br>
+      <br>
+&nbsp; tcgetattr(0, &amp;orig);<br>
+&nbsp; new = orig; new.c_lflag &amp;= ~ICANON; new.c_lflag &amp;= ~ECHO;
+new.c_lflag &amp;= ~ISIG;<br>
+&nbsp; new.c_cc[VMIN] = 1; new.c_cc[VTIME] = 0; tcsetattr(0, TCSANOW, &amp;new);<br>
+      <br>
+&nbsp; /* &#21462;&#24471;&#22496;&#20301;&#22336;&#30340;&#23384;&#21462;&#27402;&#38480; */<br>
+&nbsp; if (ioperm(CCW, 3, 1)) {perror("ioperm"); exit(1);}<br>
+&nbsp; if (ioperm(PA, 3, 1))&nbsp; {perror("ioperm"); exit(1);}<br>
+&nbsp; <br>
+&nbsp; /* &#23450;&#32681; 8255 &#24037;&#20316;&#27169;&#24335; */<br>
+&nbsp; outb(0x80, CCW);<br>
+      <br>
+&nbsp; /* &#37325;&#32622; 8255 PORT A &#30340;&#36664;&#20986;&#36039;&#26009;&#20449;&#34399; (D0-7) &#20840;&#28858;&#38646; (0) */<br>
+&nbsp; outb(0, PA);<br>
+      <br>
+&nbsp; /* =========================== */<br>
+&nbsp; /* [[ &#30070;&#36664;&#20837;&#23383;&#20803;&#19981;&#28858; q &#26178;&nbsp; ]]&nbsp; */<br>
+&nbsp; /* =========================== */<br>
+      <br>
+&nbsp; /*&nbsp; LED&nbsp; &#20132;&#20114; &#38275;&#29197;&nbsp; */<br>
+&nbsp;&nbsp; <br>
+&nbsp; while(ch != 'q') {<br>
+&nbsp;&nbsp;&nbsp; sleep(1); <br>
+&nbsp;&nbsp;&nbsp; outb( LED_Data, PA);<br>
+&nbsp;&nbsp;&nbsp; printf("Pili Lamp is Running and The 8255-Port-A's outData
+is %d\n",LED_Data); <br>
+&nbsp;&nbsp;&nbsp; if (directionFlag == 1)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; LED_Data *= 2;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (LED_Data ==
+128){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+directionFlag = 0;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }else{<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; LED_Data /= 2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (LED_Data ==
+1){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+directionFlag = 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; if(kbhit()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = readch();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; }<br>
+      <br>
+&nbsp; /* ======================== */<br>
+&nbsp; /* [[&nbsp; &#36664;&#20837;&#23383;&#20803; &#28858; q &#26178;&nbsp; ]] */<br>
+&nbsp; /* ======================== */<br>
+&nbsp; <br>
+&nbsp; //&nbsp; LED &#19981;&#20142; <br>
+&nbsp; outb( 0x00, PA);<br>
+      <br>
+&nbsp; /* &#25105;&#20497;&#19981;&#20877;&#38656;&#35201;&#36889;&#20123;&#22496;&#20301;&#22336; */<br>
+&nbsp; if (ioperm(CCW, 3, 0)) {perror("ioperm"); exit(1);}<br>
+&nbsp; if (ioperm(PA, 3, 0))&nbsp; {perror("ioperm"); exit(1);}<br>
+&nbsp; <br>
+&nbsp; printf("== Quit == \n");<br>
+&nbsp; tcsetattr(0,TCSANOW, &amp;orig);<br>
+&nbsp; exit(0);<br>
+      <br>
+}<br>
+      <br>
+/* ======================= */<br>
+/*&nbsp;&nbsp; sub Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*/<br>
+/* ======================= */<br>
+int kbhit()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char ch;int nread;<br>
+&nbsp;&nbsp;&nbsp; if(peek != -1) return 1;<br>
+&nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=0;<br>
+&nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);<br>
+&nbsp;&nbsp;&nbsp; nread = read(0,&amp;ch,1);<br>
+&nbsp;&nbsp;&nbsp; new.c_cc[VMIN]=1;<br>
+&nbsp;&nbsp;&nbsp; tcsetattr(0, TCSANOW, &amp;new);&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; if(nread == 1) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; peek = ch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}<br>
+      <br>
+int readch()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char ch;<br>
+&nbsp;&nbsp;&nbsp; if(peek != -1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = peek;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peek = -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ch;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; read(0,&amp;ch,1);<br>
+&nbsp;&nbsp;&nbsp; return ch;<br>
+}<br>
+      <br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="pili.jpg" alt="" width="419" height="378">
+<br>
+<br>
+<h3>&#12304; Appendix-C &#12305;</h3>
+&#9670; hello.cpp<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello.cpp<br>
+compile command :&nbsp; g++&nbsp; -Wno-deprecated -ohello hello.cpp<br>
+      <br>
+&#30446;&#30340; :: C++ &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#21360;&#20986; Hello C++!&#12290; <br>
+&#21443;&#32771; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+&#26085;&#26399; :: 3/23 2003<br>
+*/<br>
+      <br>
+#include &lt;iostream.h&gt;<br>
+int main() {&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Hello C++ !" &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp; return (0);<br>
+}<br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="hello_cpp.jpg" alt="" width="408" height="125">
+<br>
+<br>
+&#9670; io.cpp<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; --&nbsp; io.cpp&nbsp; &lt;Linux I/O &#22496; &#22522;&#26412;&#28204;&#35430; -- &#28204;&#35430;
+&#21083;&#32068;&#35037;&#23436;&#25104;&#30340; IO &#26495;&#29992;&gt;&nbsp; --<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &#21205;&#20316; :<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &#32232;&#35695; : &#20351;&#29992; `g++ -O -o io io.cpp',<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &#22519;&#34892; : &#20197; root &#30340;&#36523;&#20221;&#22519;&#34892; `./io'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &#21443;&#32771; : &#30001;&lt;&lt;CLDP -- Linux &#20013;&#25991;&#25991;&#20214;&#35336;&#21123;&gt;&gt;&#25913;&#23531;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://www.linux.org.tw/CLDP/mini/IO-Port-Programming-9.html<br>
+*/<br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;unistd.h&gt;<br>
+#include &lt;sys/io.h&gt;<br>
+      <br>
+&nbsp;#define CCW 0x303&nbsp; /* 8255 CCW */<br>
+&nbsp;#define PA 0x300&nbsp;&nbsp; /* 8255 PORT A */<br>
+&nbsp;int main()<br>
+&nbsp;{<br>
+&nbsp;&nbsp; /* &#21462;&#24471;&#22496;&#20301;&#22336;&#30340;&#23384;&#21462;&#27402;&#38480; */<br>
+&nbsp;&nbsp; if (ioperm(CCW, 3, 1)) {perror("ioperm"); return (0);}<br>
+&nbsp;&nbsp; if (ioperm(PA, 3, 1)) {perror("ioperm"); return (0);}<br>
+      <br>
+&nbsp;&nbsp; /* &#23450;&#32681; 8255 &#24037;&#20316;&#27169;&#24335; */<br>
+&nbsp;&nbsp; outb(0x80, CCW);<br>
+      <br>
+&nbsp;&nbsp; /* &#37325;&#32622; 8255 PORT A &#30340;&#36664;&#20986;&#36039;&#26009;&#20449;&#34399; (D0-7) &#20840;&#28858;&#38646; (0) */<br>
+&nbsp;&nbsp; outb(0, PA);<br>
+      <br>
+&nbsp;&nbsp; /* PILI &#29128;&nbsp; (1000 ms) &#20132;&#20114; &#38275;&#29197; */<br>
+&nbsp;&nbsp; for (int i=1; i&lt;=10; i++){<br>
+&nbsp;&nbsp;&nbsp; usleep(1000000);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i%2 == 0){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0x00, PA);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-X-&nbsp;
+step: %d\n",i); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outb( 0xFF, PA);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("-O-&nbsp;
+step: %d\n",i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; } <br>
+      <br>
+&nbsp;&nbsp; /* &#25105;&#20497;&#19981;&#20877;&#38656;&#35201;&#36889;&#20123;&#22496;&#20301;&#22336; */<br>
+&nbsp;&nbsp; if (ioperm(CCW, 3, 0)) {perror("ioperm"); return (0);}<br>
+&nbsp;&nbsp; if (ioperm(PA, 3, 0))&nbsp; {perror("ioperm"); return (0);}<br>
+&nbsp;&nbsp; return (0);<br>
+&nbsp;}<br>
+      <br>
+&nbsp;/* &#32080;&#26463; example.c */<br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#22519;&#34892;&#32080;&#26524;( &#20197;&#19979;&#22343;&#22312; Red Hat Linux 8.0 &#24179;&#21488;)<br>
+<img src="cpp_io.png" alt="" width="302" height="292">
+<br>
+<br>
+ &#9670; hello_qt.cpp<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello_qt.cpp<br>
+compile command : g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o hello_qt hello_qt.cpp<br>
+execute command : ./hello_qt&amp; ( &#19999;&#21040;&#32972;&#26223;&#22519;&#34892; )<br>
+      <br>
+&#30446;&#30340; :: Linux GUI &#35222;&#31383;&#31243;&#24335; &#30340;&#22522;&#26412;&#28204;&#35430;&#65292;&#24314;&#31435;&#19968;&#20491; Hello QT! &#30340;&#22522;&#26412;&#35222;&#31383; &#12290; <br>
+&#21443;&#32771; :&nbsp; http://doc.trolltech.com/3.1/tutorial1-01.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+&#26085;&#26399; :: 3/23 2003<br>
+*/<br>
+      <br>
+#include &lt;qapplication.h&gt;<br>
+#include &lt;qpushbutton.h&gt;<br>
+      <br>
+int main( int argc, char **argv ){<br>
+&nbsp;&nbsp;&nbsp; QApplication a( argc, argv );<br>
+      <br>
+&nbsp;&nbsp;&nbsp; QPushButton hello( "Hello QT!", 0 );<br>
+&nbsp;&nbsp;&nbsp; hello.resize( 100, 30 );<br>
+      <br>
+&nbsp;&nbsp;&nbsp; a.setMainWidget( &amp;hello );<br>
+&nbsp;&nbsp;&nbsp; hello.show();<br>
+&nbsp;&nbsp;&nbsp; return a.exec();<br>
+}<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&#32068;&#35695;&#33287;&#22519;&#34892;&#21629;&#20196; ( &#20197;&#19979;&#22343;&#22312; Red Hat Linux 8.0 &#24179;&#21488;)<br>
+<img src="hello_qt_comm.png" alt="" width="611" height="174">
+<br>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="hello_qt_exec.png" alt="" width="112" height="56">
+<br>
+<br>
+<br>
+<h3>&#12304; Appendix-D &#12305;</h3>
+ &#9670;moc &#20351;&#29992;&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340;&#39006;&#21029;&#30340;&#19968;&#33324;&#39592;&#26550; (&#25688;&#37636;&#26044; <a
+ href="http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with
+Qt</a> &nbsp;p.32)<br>
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+  <tbody>
+    <tr>
+      <td valign="top">class MyClass : public Qobject <br>
+{ <br>
+Q_OBJECT <br>
+... <br>
+signals:&nbsp;	<br>
+&nbsp; &nbsp; // &#23559;&#20320;&#30340;<b> &#35338;&#34399;</b> &#25918;&#22312;&#36889;&#35041;,&#22914;&nbsp;	<br>
+&nbsp; &nbsp; void somethingDone(); <br>
+&nbsp; &nbsp; ...<br>
+&nbsp; &nbsp; public slots:&nbsp;	<br>
+&nbsp; &nbsp; // &#23559;&#20320;<b> &#20844;&#38283;&#30340;&#28317;&#27133;</b> &#25918;&#22312;&#36889;&#35041;,&#22914;&nbsp;	<br>
+&nbsp; &nbsp; viod soltDoSomething();&nbsp; <br>
+      <br>
+&nbsp; &nbsp; private slots:&nbsp; <br>
+&nbsp; &nbsp; // &#23559;&#20320;<b> &#31169;&#26377;&#30340;&#28317;&#27133;</b> &#25918;&#22312;&#36889;&#35041;,&#22914;&nbsp;	<br>
+&nbsp; &nbsp; void slotDoSomethingInternal();&nbsp;&nbsp;	<br>
+      <br>
+&nbsp; &nbsp; // &#30070;&#28982;, &#20320;&#21487;&#20197;&#21152;&#20837;&#20854;&#20182;&#30340;&#23459;&#21578; <br>
+};&nbsp; <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+&#9670;&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340; &#39006;&#21029; (&#25688;&#37636;&#26044; <a
+ href="http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with
+Qt</a> &nbsp;p.35 )<br>
+<h4>[ &#31684;&#20363; ]</h4>
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mocDemo1.cpp<br>
+compile command : g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o mocDemo1 mocDemo1.cpp<br>
+execute command : ./mocDemo1&amp; ( &#19999;&#21040;&#32972;&#26223;&#22519;&#34892; )<br>
+      <br>
+&#30446;&#30340; :: &#20102;&#35299; moc &#30340;&#29992;&#27861;&#12290; <br>
+&#21443;&#32771; :&nbsp; &#20986;&#33258; Programming with QT , exercise-2-4-1.cpp ( p35 &#30340; &#32244;&#32722;&#38988; ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+&#26085;&#26399; :: 3/24 2003<br>
+      <br>
+&#21839;&#38988; :: &#20006;&#27794;&#26377; &#29992; Programming with QT &#26360;&#20013;&#20197; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; moc (moc -o moc_file.cpp myfile.h)
+&#20358;&#34389;&#29702; &#21253;&#21547;&#39006;&#21029;&#23459;&#21578;&#30340;&#27284;&#26696;&#20134;&#21487;&#21205;&#20316;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &#25152;&#20197;&#20006;&#19981;&#30906;&#23450; qt3 &#20197;&#24460;&#30340;&#20570;&#27861;<br>
+*/<br>
+      <br>
+#include &lt;qapplication.h&gt;<br>
+#include &lt;qslider.h&gt;<br>
+#include &lt;qlcdnumber.h&gt;<br>
+      <br>
+int main( int argc, char* argv[] )<br>
+{<br>
+&nbsp; QApplication myapp( argc, argv );<br>
+      <br>
+&nbsp; QWidget* mywidget = new QWidget();<br>
+&nbsp; mywidget-&gt;setGeometry( 400, 300, 170, 110 );<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp; QSlider* myslider = new QSlider( 0,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// minimum value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 9,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// maximum value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// step<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// initial value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; QSlider::Horizontal, // orientation<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; mywidget&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// parent<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; );<br>
+&nbsp; myslider-&gt;setGeometry( 10, 10, 150, 30 );<br>
+&nbsp; myslider-&gt;setTracking( false );<br>
+      <br>
+&nbsp; QLCDNumber* mylcdnum = new QLCDNumber( 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// number of digits <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;mywidget // parent<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;);<br>
+&nbsp; mylcdnum-&gt;setGeometry( 60, 50, 50, 50 );<br>
+&nbsp; mylcdnum-&gt;display( 1 ); // display initial value<br>
+      <br>
+&nbsp; // connect slider and number display<br>
+&nbsp; QObject::connect( myslider, SIGNAL( <b>valueChanged( int ) </b>),
+      <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; mylcdnum, SLOT( <b>display( int )</b> ) );<br>
+&nbsp; <br>
+&nbsp; myapp.setMainWidget( mywidget );<br>
+&nbsp; mywidget-&gt;show();<br>
+&nbsp; return myapp.exec();<br>
+}<br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h4>[ &#31034;&#24847;&#22294; ] &nbsp;</h4>
+<img src="mocDemo1_arch.jpg" alt="" width="517" height="257">
+<br>
+<h4>[ &#22519;&#34892;&#32080;&#26524; ]</h4>
+&#32068;&#35695;&#33287;&#22519;&#34892;&#21629;&#20196; <br>
+ <img src="mocDemo1_comm.png" alt="" width="602" height="174">
+<br>
+<br>
+&#22519;&#34892;&#32080;&#26524;<br>
+<img src="mocDemo1_exec.png" alt="" width="182" height="136">
+<br>
+<br>
+<h4>[ &#25105;&#30340;&#30097;&#21839; ]</h4>
+&#20006;&#27794;&#26377; &#29992; Programming with QT &#26360;&#20013;&#20197; moc (moc -o moc_file.cpp myfile.h) &#20358;&#34389;&#29702; &#21253;&#21547;&#39006;&#21029;&#23459;&#21578;&#30340;&#27284;&#26696;&#20134;&#21487;&#21205;&#20316;&#12290;<br>
+&#25152;&#20197;&#20006;&#19981;&#30906;&#23450; qt3 &#20197;&#24460;&#30340;&#20570;&#27861;&#12290;<br>
+<br>
+&#9670;&#36914;&#38542;&#31684;&#20363;&#65292;&#35338;&#34399; &#33287;&#9585;&#25110; &#28317;&#27133;&#30340; &#39006;&#21029; (&#25688;&#37636;&#26044; <a
+ href="http://www.oreilly.com/catalog/prowqt2/inx.html">Programming with
+Qt</a> &nbsp;p.35 )<br>
+<h4>&nbsp;[ &#31243;&#24335;&#30908; ]&nbsp;</h4>
+<table cellpadding="2" cellspacing="2" border="1" width="90%">
+  <tbody>
+    <tr>
+      <td valign="top">/*<br>
+Filename ::&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mocDemo2.cpp<br>
+compile command : g++ -I$QTDIR/include -L$QTDIR/lib -lqt -o mocDemo2 mocDemo2.cpp<br>
+execute command : ./mocDemo2&amp; ( &#19999;&#21040;&#32972;&#26223;&#22519;&#34892; )<br>
+      <br>
+&#30446;&#30340; :: &#20102;&#35299; moc &#30340;&#29992;&#27861; &#12290; <br>
+&#21443;&#32771; :&nbsp; &#20986;&#33258; Programming with QT , exercise-2-4-1.cpp (p35 &#30340; &#32244;&#32722;&#38988; )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+&#26085;&#26399; :: 3/24 2003<br>
+      <br>
+&#21839;&#38988; :: &#20006;&#27794;&#26377; &#29992; Programming with QT &#26360;&#20013;&#20197; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; moc (moc -o moc_file.cpp myfile.h)
+&#20358;&#34389;&#29702; &#21253;&#21547;&#39006;&#21029;&#23459;&#21578;&#30340;&#27284;&#26696;&#20134;&#21487;&#21205;&#20316;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &#25152;&#20197;&#20006;&#19981;&#30906;&#23450; qt3 &#20197;&#24460;&#30340;&#20570;&#27861;<br>
+*/<br>
+      <br>
+#include &lt;qapplication.h&gt;<br>
+#include &lt;qpushbutton.h&gt;<br>
+#include &lt;qslider.h&gt;<br>
+#include &lt;qlcdnumber.h&gt;<br>
+      <br>
+int main( int argc, char* argv[] )<br>
+{<br>
+&nbsp; QApplication myapp( argc, argv );<br>
+      <br>
+&nbsp; QWidget* mywidget = new QWidget();<br>
+&nbsp; mywidget-&gt;setGeometry( 400, 300, 170, 150 );<br>
+&nbsp; <br>
+&nbsp; <br>
+&nbsp; QSlider* myslider = new QSlider( 0,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// minimum value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 9,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// maximum value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// step<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// initial value<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; QSlider::Horizontal, // orientation<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; mywidget&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// parent<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; );<br>
+&nbsp; myslider-&gt;setGeometry( 10, 10, 150, 30 );<br>
+      <br>
+&nbsp; QLCDNumber* mylcdnum = new QLCDNumber( 1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// number of digits <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;mywidget // parent<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;);<br>
+&nbsp; mylcdnum-&gt;setGeometry( 60, 50, 50, 50 );<br>
+&nbsp; mylcdnum-&gt;display( 1 ); // display initial value<br>
+      <br>
+&nbsp; // connect slider and number display<b><br>
+&nbsp; QObject::connect( myslider, SIGNAL( valueChanged( int ) ), <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; mylcdnum, SLOT( display( int ) ) );</b><br>
+      <br>
+&nbsp; // create two push buttons for decrementing and <br>
+&nbsp; // incrementing the slider values<br>
+&nbsp; QPushButton* decrement = new QPushButton( "&lt;", mywidget );<br>
+&nbsp; decrement-&gt;setGeometry( 10, 110, 50, 30 );<br>
+      <br>
+&nbsp; QPushButton* increment = new QPushButton( "&gt;", mywidget );<br>
+&nbsp; increment-&gt;setGeometry( 110, 110, 50, 30 );<br>
+&nbsp; <br>
+&nbsp; // connect the clicked() signal of the buttons to the slots that <br>
+&nbsp; // increment and decrement the slider value<b><br>
+&nbsp; QObject::connect( decrement, SIGNAL( clicked() ),<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; myslider, SLOT( subtractStep() ) );<br>
+&nbsp; QObject::connect( increment, SIGNAL( clicked() ),<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; myslider, SLOT( addStep() ) );<br>
+&nbsp; </b><br>
+&nbsp; myapp.setMainWidget( mywidget );<br>
+&nbsp; mywidget-&gt;show();<br>
+&nbsp; return myapp.exec();<br>
+}<br>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4>[ &#26550;&#27083; ]</h4>
+<br>
+ 
+<h3>&#12304; Appendix-E &#12305;</h3>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

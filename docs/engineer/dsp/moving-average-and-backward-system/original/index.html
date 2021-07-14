@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Code -->
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <title> </title>
+ </head>
+ <body>
+
+<h1>Moving Average and Backward System</h1>
+
+Voice Processing by using Moving Average and Backward System for DSP demonstration. <p>
+
+<ul>
+	<li>Lai,Ching-Wen</li>
+	<li>November 2002</li>
+	<li>Keywords: DSP, Moving Average, Backward System, Matlab, Speech</li>
+</ul>
+
+<h2>Purposal</h2>
+
+using below methods to process human voice and comparing the output results. <p>
+
+<ul>
+	<li>Backward System (High-pass filter)</li>
+	<li>Moving Average (Low-pass filter)</li>
+</ul>
+
+<h2>Requirements</h2>
+
+<ul>
+	<li>Voice Recorder (Windows): for recording human voice</li>
+	<li>Matlab 6.5: for processing the original voice and export the results</li>
+</ul>
+
+<h2>Backward System</h2>
+
+<h3>my sample code</h3>
+<xmp>
+
+%..............................................................................
+% Filenmae    :  b.m
+% Auother     :  Ching-Wen,Lai 
+% 操作        :  在 Matlab 底下執行本 .m 檔
+% 程式描述    :  high-pass filter, 高通濾波器
+%
+%  Date       :  10/21 2002 ver1.0
+%  準備檔案   :  speech.wav (PCM 格式)
+%  產生檔案   :  speech_m.wav(PCM 格式)
+% 
+%  References :  Backward System
+%                Book :: Discrete-Time Signal Processing 
+%                (isbn::0-13-0834443-2 p.21(2.45式)
+%..............................................................................
+
+fs=8000;
+
+%  ..........................  語音取樣開始  ..................................
+
+[ x,fs ] = wavread('speech.wav');            % 讀取 speech.wav 檔案內的語音樣本
+k=input('請按下 任一鍵 撥放處理 前 聲音');
+wavplay(x,fs);                               % 處理前先試聽該語音樣本
+
+% ............   進行 DSP 處理  【  Backward System 】.........................
+
+fprintf('處理中,請稍候...\n');
+len=length(x);
+for n = 1:len,                               % n  :: 語音資料數目
+    if n == 1
+        y(n) = x(n);                         % Backward System 第一筆不作累計      
+    else
+        y(n) = x(n)- x(n-1);                 % 將之前取樣值拿來與目前的相減
+    end  
+end
+
+% ......... DSP 處理後結果::產生波型圖與頻譜 .....................................               
+
+k=input('請按下 任一鍵 撥放處理 後 聲音');
+wavplay(y,fs);                               % 聽處理后聲音
+wavwrite(y, fs, 16, 'speech_b.wav');         % 寫入 speech_b.wav 檔
+
+subplot(221), plot((1:length(x)),x);
+subplot(223), specgram(x(:));
+subplot(222), plot((1:length(y)),y);
+subplot(224), specgram(y(:));
+shg
+
+</xmp>
+
+<h3>The Results</h3>
+
+<img src="bp_exe.jpg">
+
+<h3>Step by Step</h3>
+
+<div class="table-responsive">
+<table class="table">
+<tr>
+	<th>Step</th>
+	<th>Message</th>
+	<th>Result</th>
+	<th> Audio </th>
+</tr>
+
+<tr>
+	<td>1</td>
+	<td>&gt;&gt; b</td>
+	<td>launch the program of Backward System</td>
+	<td></td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>請按下任一鍵撥放處理前聲音</td>
+	<td>play the original voice before proceeded  </td>
+	<td><audio controls><source src="speech.wav" type="audio/wav"></audio></td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>處理中,請稍候...</td>
+	<td>running Backward System</td>
+	<td></td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>請按下 任一鍵 撥放處理 後 聲音</td>
+	<td>play the output voice before proceeded  </td>
+	<td> <audio controls> <source src="speech_b.wav" type="audio/wav"> </audio></td>
+</tr>
+<tr>
+	<td>5</td>
+	<td>&gt;&gt; </td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+</div>
+
+
+<h2>Moving Average</h2>
+
+<h3>my sample code</h3>
+
+<xmp>
+
+%........................................................................................
+% filenmae   : m.m
+% auother    : Ching-Wen,Lai
+% 操作       : 在 Matlab 底下執行本 .m 檔
+% 程式描述   : low-passfilter, 低通濾波器
+%
+% Date       : 10/21 2002 ver1.0
+% 準備檔案   : speech.wav (PCM 格式)
+% 產生檔案   : speech_m.wav(PCM 格式)
+% 演算法改良 : 由於程式在作累加與平均的工作。此次累加值只與上一筆差一筆新值與一筆舊值，
+%              故累加動作可以改成只有第一次作累加， 之後作加上去新值與減去一筆舊值(之前
+%              的最前取樣點)，如此累加的動作會較快。但目前為方便，直接搭配課本易閱讀於,
+%              目前並無此動作
+% References : Moving Average
+%              book::Discrete-Time Signal Processing 
+%              (isbn::0-13-0834443-2 p.17(2.24式)
+%........................................................................................
+
+fs=8000;                     %set sampling rate
+
+% ................................    語音檔輸入    ................................
+
+[ x,fs ] = wavread('speech.wav');     
+k=input('請按下 [Enter] 鍵 撥放處理 前 聲音');
+wavplay(x,fs);
+
+% ...................... 進行 DSP 處理  【  Moving Average 】........................
+
+m1=input('請輸入 M1 值 :: ');         % M1 控制 比 n 點 大的取樣數
+m2=input('請輸入 M2 值 :: ');         % M2 控制 比 n 點 小的取樣數
+fprintf('\n處理中,請稍候...\n');
+len=length(x);
+
+for n = 1:len,                        % n  :: 語音資料數目  
+    if (n &gt;= m2+1) & ( n&lt;=len-m1)     % 只有在 Moving Average 的範圍內才作處理
+        sum = 0; 
+        for  k = -m1:m2,              % k = -m1 ~ m2
+            sum=sum+x(n-k);           % 取值放入sum作累總
+        end    
+        y(n) = sum/(m1+m2+1);         % 求出累加後 的平均值                
+    else        
+        y(n) = x(n);
+        %fprintf('第 %d 點數據,不作取樣\n',n);   % Check 用
+    end  
+end
+
+% ...........     DSP 處理後結果::產生波型圖與頻譜     ...............
+                
+k=input('請按下 [Enter] 撥放處理 後 聲音');
+wavplay(y,fs);
+wavwrite(y, fs, 16, 'speech_m.wav');  % 寫入 speech_m.wav 檔
+subplot(221), plot((1:length(x)),x);
+subplot(223), specgram(x(:));
+subplot(222), plot((1:length(y)),y);
+subplot(224), specgram(y(:));
+shg
+
+</xmp>
+
+<h3>The Results</h3>
+
+<img src="ma_exe.jpg">
+
+<h3>Step by Step</h3>
+
+<div class="table-responsive">
+<table class="table">
+
+<tr>
+	<th> Step</th>
+	<th> Message </th>
+	<th> Result </th>
+	<th> Audio </th>
+</tr>
+<tr>
+	<td> 1</td>
+	<td> &gt;&gt; m </td>
+    <td> launch the program of Moving Average </td>
+    <td> </td>
+</tr>
+<tr>
+	<td> 2</td>
+	<td> 請按下 [Enter] 鍵 撥放處理 前 聲音 </td>
+	<td> Play the original voice before proceeded</td>
+	<td> <audio controls> <source src="speech.wav" type="audio/wav"> </audio> </td>
+</tr>
+
+<tr>
+	<td> 3</td>
+	<td> 請輸入 M1 值 :: </td>
+	<td> 輸入 Moving Average 由原點之後,要一起做平均的語音訊號 Range</td>
+	<td>  </td>
+
+</tr>
+
+<tr>
+	<td> 4</td>
+	<td> 請輸入 M2 值 :: </td>
+	<td> 輸入 Moving Average 由原點之前,要一起做平均的語音訊號 Range</td>
+	<td>  </td>
+
+</tr>
+
+<tr>
+	<td> ...</td>
+	<td>  </td>
+	<td> </td>
+	<td> </td>
+
+</tr>
+
+<tr>
+	<td> 5</td>
+	<td> 處理中,請稍候... </td>
+	<td> running Moving Average</td>
+	<td>  </td>
+
+</tr>
+
+<tr>
+	<td> 6</td>
+	<td> 請按下 [Enter] 撥放處理 後 聲音 </td>
+	<td> play the output voice before proceeded PLAY</td>
+	<td> <audio controls> <source src="speech_m.wav" type="audio/wav"> </audio> </td>
+
+</tr>
+
+<tr>
+	<td> 7</td>
+	<td> &gt;&gt;  </td>
+	<td> </td>
+	<td> </td>
+
+</tr>
+
+</table>
+</div>
+
+<h2>Conclusion</h2>
+
+觀察可得, 經過Backward System 處理後語音較為高亢，而經過 Moving Average 處理後語音較為低沉。
+
+<div class="table-responsive">
+<table class="table">
+
+<tr>
+	<td> Original voice</td>
+	<td> <audio controls> <source src="speech.wav" type="audio/wav"> </audio> </td>
+
+</tr>
+<tr>
+	<td> The Voice after running Backward System</td>
+	<td> <audio controls> <source src="speech_b.wav" type="audio/wav"> </audio> </td>
+
+</tr>
+<tr>
+	<td> The Voice after running Moving Average</td>
+	<td> <audio controls> <source src="speech_m.wav" type="audio/wav"> </audio> </td>
+
+</tr>
+</table>
+</div>
+
+<h3>Conclusion From Graphics</h3>
+
+<div class="table-responsive">
+<table class="table">
+<tr>
+	<td><img src="bp_pic.jpg" width="383" height="283" border="0" alt=""></td>
+	<td><img src="ma_pic.jpg" width="369" height="278" border="0" alt=""></td>
+</tr>
+<tr>
+	<td>Backward System: from Spectrogram we learned this function is for High-Pass filter </td>
+	<td>Moving Average: from Spectrogram we learned this function is for Low-Pass filter </td>
+</tr>
+</table>
+</div>
+
+<h2>Advanced</h2>
+could be tried to use VHDL/Verilog to implement Moving Average and Backward System
+
+<h2>Comment</h2>
+try to use Matlab 6.5 if Matlab 6.0 cannot be installed for CPU Intel Pentium 4
+
+<h2>References</h2>
+Discrete-Time Signal Processing Alan V. Oppenheim,Ronald W.Schafer and John R.Buck,Prentice Hall (ISBN: 0-13-0834443-2)
+
+
+ </body>
+</html>

@@ -10,60 +10,74 @@ nav:
         - 'Technician Training': '/#technician-training'
     - 'Engineering':
         - 'Development Tools':
-          - 'Softwares Tools': 'dev/softwares/index.md'
-          - 'Accessories': 'dev/accessories/index.md'
-          - 'Networking Equipments': 'dev/equipments/index.md'
-          - 'Automation and Crawler': 'dev/auto/index.md'
-          - 'Diagnostic Tools': 'dev/diag/index.md'
-          - 'Performance Measurement': 'dev/perf/index.md'
-          - 'Git Repo and Build Machine': 'dev/git/index.md'
-          - 'Docker and Macvlan': 'dev/docker/index.md'
-          - 'Documentation': 'dev/doc/index.md'
-          - 'Programmer Skills': 'dev/prog/index.md'
-          - 'Extending Python with C': 'dev/python/index.md'
-          - 'Lifetime Measurement': 'dev/lifetime/index.md'
+          - 'Softwares Tools': 'engineer/dev/softwares/index.md'
+          - 'Accessories': 'engineer/dev/accessories/index.md'
+          - 'Networking Equipments': 'engineer/dev/equipments/index.md'
+          - 'Automation and Crawler': 'engineer/dev/auto/index.md'
+          - 'Diagnostic Tools': 'engineer/dev/diag/index.md'
+          - 'Performance Measurement': 'engineer/dev/perf/index.md'
+          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
+          - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
+          - 'Documentation': 'engineer/dev/doc/index.md'
+          - 'Programmer Skills': 'engineer/dev/prog/index.md'
+          - 'Extending Python with C': 'engineer/dev/python/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
 #         - 'Testbed Setup': 'dev/testbed/index.md'
 #       - 'Leadership': 'leadership.md'
-        - 'Embedded Linux':
-          - 'Buildroot': 'embedded/buildroot/index.md'
-          - 'OpenWRT': 'embedded/openwrt/index.md'
         - 'Linux Kernel':
-          - 'Rebuild Kernel': 'kernel/rebuild/index.md'
+          - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
+        - 'Embedded Linux':
+          - 'SDK Framework':
+            - 'Buildroot': 'engineer/embedded/buildroot/index.md'
+            - 'OpenWRT': 'engineer/embedded/openwrt/index.md'
+          - 'Application':
+            - 'Surveillance Camera': 'engineer/embedded/cam/cloud/index.md'
+          - 'Lifetime Measurement':
+            - 'Flash MTD Lifetime': 'engineer/dev/lifetime/index.md'
+        - 'Celluar Network':
+          - 'Amarisoft SDR': 'engineer/cell/sdr/index.md'
         - 'Computer Networks':
           - 'Application Layer':
-            - 'Hypertext Transfer Protocol(HTTP)': 'net/hypertext-transfer-protocol/index.md'
-            - 'File Transfer Protocol (FTP)': 'net/file-transfer-protocol/index.md'
-            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
+            - 'Hypertext Transfer Protocol(HTTP)': 'engineer/net/hypertext-transfer-protocol/index.md'
+            - 'File Transfer Protocol (FTP)': 'engineer/net/file-transfer-protocol/index.md'
+            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineer/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
         - 'Digital Signal Processing':
           - 'Voice Processing':
-            - 'Discrete-Time Processing' : 'dsp/discrete-time-processing/index.md'
-            - 'Moving Average and Backward System' : 'dsp/moving-average-and-backward-system/index.md'
+            - 'Discrete-Time Processing' : 'engineer/dsp/discrete-time-processing/index.md'
+            - 'Moving Average and Backward System' : 'engineer/dsp/moving-average-and-backward-system/index.md'
           - 'Spectrum Analysis':
-            - 'Window Size and the Spectrogram' : 'dsp/window-size-and-the-spectrogram/index.md'
+            - 'Window Size and the Spectrogram' : 'engineer/dsp/window-size-and-the-spectrogram/index.md'
+        - 'Image Processing':
+            - 'Grayscale': 'engineer/dip/js/grayscale/index.md'
+            - 'Monochrome': 'engineer/dip/js/monochrome/index.md'
+            - 'Negative Film': 'engineer/dip/js/negative/index.md'
+            - 'Colorbar': 'engineer/dip/js/colorbar/index.md'
+            - 'Text Picture': 'engineer/dip/js/text/index.md'
+            - 'Mirror': 'engineer/dip/js/mirror/index.md'
+            - 'Image Resizer': 'engineer/dip/py/resize/index.md'
         - 'Operating Systems':
-          - 'An Assembler Compiler': 'os/assembler-compiler/index.md'
+          - 'An Assembler Compiler': 'engineer/os/assembler-compiler/index.md'
         - 'Man-Machine Interfaces':
-          - 'Industry Standard Architecture (ISA)': 'io/isa/index.md'
-          - 'Peripheral Component Interconnect (PCI)': 'io/pci/index.md'
-          - 'Parallel Port Device (LPT) and Linux Device Driver': 'io/ldd/index.md'
-          - 'General Purpose Input Output (GPIO)': 'io/gpio/index.md'
-          - 'Inter-Integrated Circuit (I2C)': 'io/i2c/index.md'
+          - 'Industry Standard Architecture (ISA)': 'engineer/io/isa/index.md'
+          - 'Peripheral Component Interconnect (PCI)': 'engineer/io/pci/index.md'
+          - 'Parallel Port Device (LPT) and Linux Device Driver': 'engineer/io/ldd/index.md'
+          - 'General Purpose Input Output (GPIO)': 'engineer/io/gpio/index.md'
+          - 'Inter-Integrated Circuit (I2C)': 'engineer/io/i2c/index.md'
         - 'Television Engineering':
-          - 'Multimedia Player': 'tv/player/index.md'
-          - 'Digital Vedio Conversion - MPEG-1': 'tv/mpeg1/index.md'
+          - 'Multimedia Player': 'engineer/tv/player/index.md'
+          - 'Digital Vedio Conversion - MPEG-1': 'engineer/tv/mpeg1/index.md'
 #         - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
         - 'Miscellaneous':
-          - 'Misc': 'misc/index.md'
+          - 'Misc': 'engineer/misc/index.md'
     - 'Education':
         - 'Introduction': 'edu/index.md'
         - 'Thesis': 'edu/thesis/index.md'
         - 'English': 'edu/english/index.md'
-        - 'Information Education': 'edu/information-edu/index.md'
-        - 'Qualitative Research': 'edu/qualitative-research/index.md'
-        - 'Quantitative Research': 'edu/quantitative-research/index.md'
+        - 'Information Education': 'education/information-edu/index.md'
+        - 'Qualitative Research': 'education/qualitative-research/index.md'
+        - 'Quantitative Research': 'education/quantitative-research/index.md'
     - 'Collection':
         - 'Collections': 'collections/index.md'
 #    - 'Motivation':
@@ -71,7 +85,7 @@ nav:
     - 'Traveling':
         - 'Trip': 'traveling/trip.md'
         - 'Tour': 'traveling/tour.md'
-        - 'Photos': 'photos/index.md'
+    - 'Photos': 'photos/index.md'
 
 theme:
   name: material

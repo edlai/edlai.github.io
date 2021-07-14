@@ -1,0 +1,166 @@
+/* SIB2 + SIB3 example for Bandwidth Reduced UEs */
+{
+  message c1: systemInformation: {
+    criticalExtensions systemInformation-r8: {
+      sib-TypeAndInfo {
+        sib2: {
+          radioResourceConfigCommon {
+            rach-ConfigCommon {
+              preambleInfo {
+                numberOfRA-Preambles n52
+              },
+              powerRampingParameters {
+                powerRampingStep dB2,
+                preambleInitialReceivedTargetPower dBm-104
+              },
+              ra-SupervisionInfo {
+                preambleTransMax n10,
+                ra-ResponseWindowSize sf10,
+                mac-ContentionResolutionTimer sf40
+              },
+              maxHARQ-Msg3Tx 5,
+              /* BR specific */
+              preambleTransMax-CE-r13 n10,
+              rach-CE-LevelInfoList-r13 { 
+                {
+                  /* CE level 0 */
+                  preambleMappingInfo-r13 {
+                    firstPreamble-r13 0,
+                    lastPreamble-r13 63 
+                  },
+                  ra-ResponseWindowSize-r13 sf50,
+                  mac-ContentionResolutionTimer-r13 sf80,
+                  rar-HoppingConfig-r13 off
+                }
+              }
+            },
+            bcch-Config {
+              modificationPeriodCoeff n4
+            },
+            pcch-Config {
+              defaultPagingCycle rf128,
+              nB oneT
+            },
+            prach-Config {
+              rootSequenceIndex 0, /* patched by eNB */
+              prach-ConfigInfo {
+                prach-ConfigIndex 4,
+                highSpeedFlag FALSE,
+                zeroCorrelationZoneConfig 11,
+                prach-FreqOffset 4
+              }
+            },
+            pdsch-ConfigCommon {
+              referenceSignalPower -5,
+              p-b 1
+            },
+            pusch-ConfigCommon {
+              pusch-ConfigBasic {
+                n-SB 1,
+                hoppingMode interSubFrame,
+                pusch-HoppingOffset 4,
+                enable64QAM FALSE
+              },
+              ul-ReferenceSignalsPUSCH {
+                groupHoppingEnabled FALSE,
+                groupAssignmentPUSCH 0,
+                sequenceHoppingEnabled FALSE,
+                cyclicShift 0
+              }
+            },
+            pucch-ConfigCommon {
+              deltaPUCCH-Shift ds2,
+              nRB-CQI 4,
+              nCS-AN 0,
+              n1PUCCH-AN 12
+            },
+            soundingRS-UL-ConfigCommon setup: {
+              srs-BandwidthConfig bw3,
+              srs-SubframeConfig sc3,
+              ackNackSRS-SimultaneousTransmission TRUE
+            },
+            uplinkPowerControlCommon {
+              p0-NominalPUSCH -85,
+              alpha al07,
+              p0-NominalPUCCH -117,
+              deltaFList-PUCCH {
+                deltaF-PUCCH-Format1 deltaF0,
+                deltaF-PUCCH-Format1b deltaF3,
+                deltaF-PUCCH-Format2 deltaF1,
+                deltaF-PUCCH-Format2a deltaF2,
+                deltaF-PUCCH-Format2b deltaF2
+              },
+              deltaPreambleMsg3 4
+            },
+            ul-CyclicPrefixLength len1,
+            bcch-Config-v1310 {
+              modificationPeriodCoeff-v1310 n64
+            },
+            pcch-Config-v1310 {
+              paging-narrowBands-r13 1,
+              mpdcch-NumRepetition-Paging-r13 r1
+            },
+            pdsch-ConfigCommon-v1310 {
+              pdsch-maxNumRepetitionCEmodeA-r13 r16
+            },
+            pusch-ConfigCommon-v1310 {
+              pusch-maxNumRepetitionCEmodeA-r13 r8
+            },
+            prach-ConfigCommon-v1310 {
+              rsrp-ThresholdsPrachInfoList-r13 { 0 },
+              mpdcch-startSF-CSS-RA-r13 fdd-r13: v1,
+              prach-ParametersListCE-r13 {
+                {
+                  prach-ConfigIndex-r13 4, /* must be the same as non BR config */
+                  prach-FreqOffset-r13 4,
+                  prach-StartingSubframe-r13 sf2,
+                  maxNumPreambleAttemptCE-r13 n3,
+                  numRepetitionPerPreambleAttempt-r13 n1,
+                  mpdcch-NarrowbandsToMonitor-r13 { 1 },
+                  mpdcch-NumRepetition-RA-r13 r1,
+                  prach-HoppingConfig-r13 off
+                }
+              }
+            },
+	    pucch-ConfigCommon-v1310 {
+               n1PUCCH-AN-InfoList-r13 { 0 }, /* patched by eNB */
+               pucch-NumRepetitionCE-Msg4-Level0-r13 n1
+            }
+          },
+          ue-TimersAndConstants {
+            t300 ms200,
+            t301 ms200,
+            t310 ms200,
+            n310 n6,
+            t311 ms10000,
+            n311 n5,
+            t300-v1310 ms5000,
+            t301-v1310 ms5000
+          },
+          freqInfo {
+            additionalSpectrumEmission 1
+          },
+          timeAlignmentTimerCommon infinity
+        },
+        sib3: {
+          cellReselectionInfoCommon {
+            q-Hyst dB2
+          },
+          cellReselectionServingFreqInfo {
+            s-NonIntraSearch 3,
+            threshServingLow 2,
+            cellReselectionPriority 6
+          },
+          intraFreqCellReselectionInfo {
+            q-RxLevMin -61,
+            p-Max 23,
+            s-IntraSearch 5,
+            presenceAntennaPort1 TRUE,
+            neighCellConfig '01'B,
+            t-ReselectionEUTRA 1
+          }
+        }
+      }
+    }
+  }
+}

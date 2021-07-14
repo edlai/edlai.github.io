@@ -1,0 +1,43 @@
+#!/bin/sh
+ifname="$1"     # Interface name
+index="$2"      # Network index (PDN index)
+apn="$3"        # Access point name
+type="$4"       # ipv4 or ipv6
+
+if [ "$type" = "ipv4" ] ; then
+
+    ifaddr="$5" # Interface address
+    addr1="$6"  # First IP address
+    addr2="$7"  # Last IP address
+    mask="$8"   # Mask
+
+    #echo "*** Configuring IPv4 pdn '$apn' on ${ifname}, $ifaddr/$mask"
+
+    # Configure interface
+    ifconfig ${ifname} ${ifaddr}/${mask} up
+
+    ipt=$(iptables -S | grep "\-A INPUT \-i ${ifname} \-j ACCEPT")
+    if [ "$ipt" = "" ] ; then
+        iptables -I INPUT -i ${ifname} -j ACCEPT
+    fi
+else
+
+    ll="$5"     # ipv6 link local address
+    addr1="$6"  # first ipv6 prefix
+    addr2="$7"  # last ipv6 prefix
+    mask="$8"   # Mask
+
+    #echo "*** Configuring IPv6 pdn '$apn' on ${ifname}, $addr1/$mask"
+
+    # Add link local address
+    ifconfig ${ifname} inet6 add ${addr1}/${mask} up
+
+    # Add route for all prefixes
+    ip -6 route add ${addr1}/${mask} dev ${ifname}
+
+    ipt=$(ip6tables -S | grep "\-A INPUT \-i ${ifname} \-j ACCEPT")
+    if [ "$ipt" = "" ] ; then
+        ip6tables -I INPUT -i ${ifname} -j ACCEPT
+    fi
+fi
+

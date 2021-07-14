@@ -1,7 +1,0 @@
-Grove: http://wiki.seeedstudio.com/BeagleBone_Green/
-
-beaglebone_gpio.h https://github.com/chiragnagpal/beaglebone_mmap/blob/master/beaglebone_gpio.h
-
-/dev/mem http://derekmolloy.ie/gpios-on-the-beaglebone-black-using-device-tree-overlays/
-
-https://github.com/shenki/linux-i2c-example/blob/master/i2c_example.c

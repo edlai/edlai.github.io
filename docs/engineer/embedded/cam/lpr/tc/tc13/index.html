@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+        
+  </style>
+</head>
+<body>
+  <script src="jquery-3.3.1.js"></script>
+  
+  <h1>
+    <del>
+      <div id="count">Waiting for Counter</div> 
+      <div id="plant">Waiting for Car Plant</div>
+    </del>
+  </h1>
+  
+  <div><img id="img" src="" alt="" width="100%"></div>
+
+  <script type="text/javascript">
+  $(function () {
+    count = 0;
+    wordsArray = [
+		'B01021_2408-GM.JPG',
+		'B01022_6D-4515.JPG',
+		'B01023_6261-LD.JPG',
+		'B01024_Z7-1928.JPG',
+		'B01025_7910-DM.JPG',
+		'B01026_ATF-7113.JPG',
+		'B01027A_0903-YB.JPG',
+		'B01028_AUK-1203.JPG',
+		'B01029_6317-YP.JPG',
+		'B01030_3D-0115.JPG'
+    ];
+      setInterval(function () {
+      count++;
+
+	  $("#plant").fadeOut(400, function () {
+        $(this).text(wordsArray[count % wordsArray.length]).fadeIn(400);
+      });
+
+	  $("#count").fadeOut(400, function () {
+        $(this).text(count % wordsArray.length).fadeIn(400);
+		//$(count).text(wordsArray[count % wordsArray.length]).fadeIn(400);
+      });
+
+      var newSrc = wordsArray[count % wordsArray.length];
+	  var c = count + 1;
+	  // replace image
+	  $('img').attr('src', newSrc);
+
+    }, 5000);
+  });
+  </script>
+</body>
+</html>
