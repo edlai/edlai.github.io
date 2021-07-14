@@ -21,7 +21,7 @@ nav:
           - 'Documentation': 'dev/doc/index.md'
           - 'Programmer Skills': 'dev/prog/index.md'
           - 'Extending Python with C': 'dev/python/index.md'
-          - 'Mass Production': 'dev/mass/index.md'
+          - 'Lifetime Measurement': 'dev/lifetime/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'

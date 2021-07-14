@@ -65,7 +65,7 @@ The products (Wireless Mesh and Cellular Routers) I developed with my colleagues
 
 *** » Web Developer « ***
 
-Enhancing [`MIT Scratch 3.0`](https://scratch.mit.edu/) (block-based programming language) and [`Dr.Scratch`](http://drscratch.org/). Communication by using Restful API.
+Enhanced [`MIT Scratch 3.0`](https://scratch.mit.edu/) (block-based programming language) and [`Dr.Scratch`](http://drscratch.org/). Communication by using Restful API.
 
 - [MIT Scratch 3.0](https://github.com/edlai/scratch-gui): [Node.js](https://nodejs.org/), [React](https://reactjs.org/), [Redux](https://redux.js.org/), [WebPack](https://webpack.js.org/)
 - [Dr.Scratch](https://github.com/edlai/drScratch): [Python](https://www.python.org/), [Django](https://www.djangoproject.com/)
