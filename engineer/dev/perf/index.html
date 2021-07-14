@@ -8,7 +8,7 @@
 <link href="https://edlai.github.io/engineer/dev/perf/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Performance Measurement - Ed's Wiki  🦉</title>
+<title>Networking Performance - Ed's Wiki  🦉</title>
 <link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#performance-measurement">
+<a class="md-skip" href="#networking-performance">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Performance Measurement
+              Networking Performance
             
           </span>
 </div>
@@ -220,19 +220,51 @@
         Automation and Crawler
       </a>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5" id="__nav_2_1_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_5">
+        Diagnostic Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Diagnostic Tools" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_5">
+<span class="md-nav__icon md-icon"></span>
+          Diagnostic Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../diag/">
-        Diagnostic Tools
+        Wireshark for Wi-Fi sniffer
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../diag/rpcapd/">
+        Remote Capture - rpcapd
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_6" id="__nav_2_1_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_6">
+        Performance Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Performance Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_6">
+<span class="md-nav__icon md-icon"></span>
+          Performance Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Performance Measurement
+          Networking Performance
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Performance Measurement
+        Networking Performance
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -240,11 +272,6 @@
       Table of contents
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#networking-performance">
-    Networking Performance
-  </a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#tools">
     Tools
@@ -282,6 +309,9 @@
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../git/">
         Git Repo and Build Machine
@@ -294,7 +324,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../doc/">
-        Documentation
+        Documentation Skill
       </a>
 </li>
 <li class="md-nav__item">
@@ -313,43 +343,23 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
-        Linux Kernel
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
-<span class="md-nav__icon md-icon"></span>
-          Linux Kernel
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../kernel/rebuild/">
-        Rebuild Kernel
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_2_2">
 <span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" id="__nav_2_3_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_1" id="__nav_2_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_1">
         SDK Framework
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="SDK Framework" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_3_1">
+<label class="md-nav__title" for="__nav_2_2_1">
 <span class="md-nav__icon md-icon"></span>
           SDK Framework
         </label>
@@ -368,13 +378,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
         Application
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Application" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_3_2">
+<label class="md-nav__title" for="__nav_2_2_2">
 <span class="md-nav__icon md-icon"></span>
           Application
         </label>
@@ -388,13 +398,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_3">
         Lifetime Measurement
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_3_3">
+<label class="md-nav__title" for="__nav_2_2_3">
 <span class="md-nav__icon md-icon"></span>
           Lifetime Measurement
         </label>
@@ -406,6 +416,26 @@
 </li>
 </ul>
 </nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kernel/rebuild/">
+        Rebuild Kernel
+      </a>
 </li>
 </ul>
 </nav>
@@ -433,25 +463,88 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_5">
-        Computer Networks
+        Scripting language
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<nav aria-label="Scripting language" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_5">
 <span class="md-nav__icon md-icon"></span>
-          Computer Networks
+          Scripting language
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_5_1">
-        Application Layer
+        TCL
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Application Layer" class="md-nav" data-md-level="3">
+<nav aria-label="TCL" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_5_1">
 <span class="md-nav__icon md-icon"></span>
-          Application Layer
+          TCL
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/contactManager/">
+        Contact Manager
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/executionLogger/">
+        Execution Logger
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/simpleCalculator/">
+        Simple Calculator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/wapPhoneEmulator/">
+        Wap Phone Emulator
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_2">
+        Perl
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Perl" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+          Perl
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/pl/dictionary/">
+        Dictionary
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/pl/quiz/">
+        Quiz
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -472,29 +565,26 @@
 </ul>
 </nav>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
+<label class="md-nav__title" for="__nav_2_7">
 <span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_6_1">
+<label class="md-nav__title" for="__nav_2_7_1">
 <span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
@@ -513,13 +603,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_2" id="__nav_2_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_6_2">
+<label class="md-nav__title" for="__nav_2_7_2">
 <span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
@@ -536,13 +626,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Image Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Image Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
+<label class="md-nav__title" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
           Image Processing
         </label>
@@ -586,13 +676,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
+<label class="md-nav__title" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
@@ -606,13 +696,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_9">
+<label class="md-nav__title" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
@@ -646,13 +736,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_10">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_10">
+<label class="md-nav__title" for="__nav_2_11">
 <span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
@@ -671,13 +761,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_11">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_11">
+<label class="md-nav__title" for="__nav_2_12">
 <span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
@@ -803,11 +893,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#networking-performance">
-    Networking Performance
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#tools">
     Tools
   </a>
@@ -848,8 +933,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="performance-measurement">Performance  Measurement</h1>
-<h2 id="networking-performance">Networking Performance</h2>
+<h1 id="networking-performance">Networking Performance</h1>
 <h2 id="tools">Tools</h2>
 <h3 id="linux-bandwidth-monitor-tools">Linux Bandwidth Monitor Tools</h3>
 <ul>
@@ -913,7 +997,7 @@ cat <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}<
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Diagnostic Tools" class="md-footer__link md-footer__link--prev" href="../diag/" rel="prev">
+<a aria-label="Previous: Remote Capture - rpcapd" class="md-footer__link md-footer__link--prev" href="../diag/rpcapd/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -922,7 +1006,7 @@ cat <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}<
 <span class="md-footer__direction">
                 Previous
               </span>
-              Diagnostic Tools
+              Remote Capture - rpcapd
             </div>
 </div>
 </a>

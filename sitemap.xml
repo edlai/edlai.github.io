@@ -111,6 +111,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://edlai.github.io/engineer/dev/diag/rpcapd/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://edlai.github.io/engineer/dev/doc/</loc>
          <lastmod>2021-07-14</lastmod>
          <changefreq>daily</changefreq>
@@ -517,6 +522,66 @@
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/os/assembler-compiler/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/pl/dictionary/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/pl/quiz/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/py/aes/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/py/ctype/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/py/request/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/py/selenium/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/tcl/README.index/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/tcl/contactManager/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/tcl/executionLogger/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/tcl/simpleCalculator/</loc>
+         <lastmod>2021-07-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/script/tcl/wapPhoneEmulator/</loc>
          <lastmod>2021-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    <h1>A Simple calculator</h1>
+
+    <h2>Purpose</h2>
+    It is possible to build a simple, but fully functional, calculator entirely within SpecTcl -- though the error handling leaves
+    something to be desired!
+    <br>
+
+    <div align="center">
+        <img src="data:image/gif;base64,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">
+    </div>
+
+    <ol>
+        <li> Although all the required button functions for a basic calculator are included in the design shown above, the overall
+            layout is less than ideal. By examining a variety of real and/or virtual (PC/workstation desk accessory) calculators,
+            produce a paper design for an improved layout for your version of the calculator. (Note: Your design must only
+            include the keys shown above -- this is not an exercise in adding all the bells and whistles of a fully-fledged
+            programmable scientific calculator!) </li>
+        <li> Create a new user interface and populate it with the buttons and an entry widget shown in the screenshot above, but
+            laid out according to your own design. Note that the text appearing in the entry widget should be right-justified.
+            The textvariable associated with the entry widget should be called answer.</li>
+        <li>For the OFF button, associate the built-in Tcl command exit with this button's command. This will cause the application
+            to exit when this button is pressed. </li>
+        <li>With the button labelled C (for clear), associate the command Clear in its properties list. </li>
+        <li>With the button labelled =, associate the command Evaluate in its properties list. </li>
+        <li>Every other button should have its command property set to AddChar followed by the label of the button; for example,
+            the button labelled * should be associated with the command AddChar * In the code editor, enter Tcl procedures
+            to implement AddChar, Clear and Evaluate. (Hint: You will need to use the string processing facilities of Tcl,
+            in particular the append command within the AddChar procedure. The textvariable answer needs to be declared global
+            within each procedure, as the Tk GUI code generated by SpecTcl is outside the scope of the procedures you are
+            writing.)&nbsp;
+        </li>
+        <li>Save your application and test it. Enter a simple arithmetic expression by clicking on your calculator buttons, then
+            press the = button to evaluate it. Enter an invalid arithmetic expression and see what happens. </li>
+        <li>Copy and paste the code for AddChar, Clear and Evaluate into your assignment submission. Explain, on no more than
+            one page of A4 how the calculator application works, and how you have improved the GUI compared with the design
+            shown above. Include your hand-drawn improved GUI and a screenshot of the one produced using SpecTcl.&nbsp;</li>
+    </ol>
+
+    <h2>Solution</h2>
+
+    </h3>my sample code</h3>
+    <br>
+    <ul>
+        <li>Download
+            <a href="simpleCalculator.tcl">here</a>
+        </li>
+    </ul>
+
+    <xmp>
+        #!/usr/bin/wish -f
+        #                    A Simple calculator (advanced)
+        # % Author        %  Ching-Wen.Lai
+        # % Version       %  0.1
+        # % Requirement   %  1. TclPro(直譯器 ; from : http://www.activeperl.com/Products/TclPro/ )
+        #                    2. Windows XP(平台)
+        #                    3. Visual Tcl(Editor; 可將 .tcl 轉成 .exe 檔 ;可有可無)
+        # % Execution     %  after you installed tclPro , double click the .tcl file
+        # % Function      %  1. 基本作業上所說的功能
+        #                    2. 除 0 錯誤可偵測出
+        #                    3. 基本 錯誤 可轉向 至 對話盒 顯示
+        #
+        # % Undone.       %  1. 科學符號 E 的功能 還未寫 需看是否可經 函式 直接轉換
+        #                    2. Entry 輸入字串長度控制
+        #    
+        # % Disadvantages %  Entry 不太會用 有些地方寫的 不是 很好
+        #
+        # % Reference     %  1. 洪朝貴的首頁 http://www.cyut.edu.tw/~ckhung/
+        #                    2. tclPro 內部 demo / Demos-IWidgets( 非常有用 )
+        #                    3. Beginning Linux Programming 基峰 isbn 957-566-692-5
+        
+        
+        set answer ""
+        set temp   ""
+        
+        #  ...............    Drawing GUI    ...........................
+        #  my mistakes: there is more than one space between -text and "
+        
+        option add *off.width 10
+        option add *ent.width 45
+        button .off -text "OFF"    -background "#FFFF99"  -borderwidth "3" -command {exit}
+        entry  .ent -justify "right" -textvariable answer
+        
+        foreach i {1 2 3 4 5 6 7 8 9 0 } {
+            button .f$i -text "$i" -command [list AddChar $i]
+            if { $i == "0" } {
+                grid .f$i -row 4 -column 0 -sticky "ew"
+            } else {      
+                grid .f$i -row    [expr {(($i%3) != 0 ) ? (($i/3)+1) : ($i/3)}] \
+                -column [expr {(($i%3) == 0 ) ? (($i%3)+2) : ($i%3)-1}] -sticky "ew"
+            }
+        }
+        
+        button .fdot -text "."  -command [list AddChar .]
+        button .fe   -text "E"  -command [list AddChar E]
+        button .frightBrackets -text "(" -command [list AddChar (]
+        button .fleftBrackets  -text ")" -command [list AddChar )]
+        button .fclr  -text "C"  -background "#CCFF66" -borderwidth "3" -command Clear
+        button .fequ  -text "="  -background "#33CCFF" -borderwidth "3" -command Evaluate
+        button .fadd -text "+" -command [list AddChar +]
+        button .fsub -text "-" -command [list AddChar -]
+        button .fmul -text "*" -command [list AddChar *]
+        button .fdiv -text "/" -command [list AddChar /]
+        
+        
+        # ............   Geometry Management (else 0-9 )   ..................
+        
+        grid .off -row 0 -column 0 -sticky "ew"
+        grid .ent -row 0 -column 1 -columnspan 4 -sticky "ew"
+        grid .fdot -row 4 -column 1 -sticky "ew"
+        grid .fe   -row 4 -column 2 -sticky "ew"
+        grid .frightBrackets -row 1 -column 3 -sticky "ew"
+        grid .fleftBrackets  -row 2 -column 3 -sticky "ew"
+        grid .fclr -row 3 -column 3 -sticky "ew"
+        grid .fequ -row 4 -column 3 -sticky "ew"
+        grid .fadd -row 1 -column 4 -sticky "ew"
+        grid .fsub -row 2 -column 4 -sticky "ew"
+        grid .fmul -row 3 -column 4 -sticky "ew"
+        grid .fdiv -row 4 -column 4 -sticky "ew"
+        
+        #......................................................................
+        # response
+        # my mistakes  : prog  xxx { yyy } {   be care yyy was capsuled by { }
+        # .....................................................................
+        # after < 0-9 + - * / ( ) > buttoms is pressed  , display them on display area
+        proc AddChar { i } {
+            .ent insert [.ent index end] $i      
+        }
+        
+        # .....   Clear display area   .....
+        proc Clear { } {          
+            .ent delete 0 end
+        }
+        
+        # .....   Display the result   .....
+        proc Evaluate { } {
+            global answer  
+            global temp
+            set temp $answer
+            if [ catch { set temp [expr $temp]} res ] {      
+                set i [tk_dialog .info "Info" $res info O Ok ]
+                set temp ""      
+            }  
+            .ent delete 0 end
+            .ent insert 0 $temp  
+        }
+</xmp>
+
+</body>
+
+</html>

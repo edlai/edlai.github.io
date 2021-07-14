@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Code -->
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <!-- Fonts -->
+  <style>
+    @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+  </style>
+  <!-- font-family: 'Noto Sans TC', sans-serif; -->
+  <!--
+  <link href="https://fonts.googleapis.com/css?family='Noto Sans TC', Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  -->
+
+  <title> </title>
+</head>
+
+<body>
+
+  <h1>Online Dictionary</h1>
+
+  <p>
+
+    <ul>
+      <li>Ching-Wen, Lai</li>
+      <li>May 2001</li>
+      <li>Keywords: perl, online, dictionary</li>
+    </ul>
+
+    <h2>Purpose</h2>
+
+    使用檔案系統撰寫一程式，使之能 透過網際網路，查詢 網路上的專有名稱。
+    <p>
+
+      <h2>Prerequisites</h2>
+
+      <ul>
+        <li>Perl</li>
+      </ul>
+
+      <h2>Dictionary</h2>
+
+      網址 http://www.cc.ntut.edu.tw/cgi-bin/cgiwrap/~s9360511/os.pl (畢業後目前鏈結已失效)
+      <br> 以下以重點功能說明(點選圖形即可放大觀看).
+
+      <hr class="style2">
+
+      <div class="row row-border">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="netIndex_mini.jpg">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 1. 系統首頁 與 查詢 (以 ARP為例) - Step. I </h3>
+
+          進入系統首頁。依照一般字典的查法，如果我們要查詢 Hello 這個字，
+          <br> 會先翻到 以 H 為字首的部分，再查詢字尾是以 ello 結尾的部分。
+          <p>
+            <p>
+
+              這邊的做法也是如此，如果要查詢 ARP 這個字 ，
+              <p>
+                <ol>
+                  <li>先在主索引區 點選 A 之後 ( 圖示最右邊的 A )
+                    <br>
+                    <img src="netAexample-0.jpg" alt="" width="309" height="31">
+                    <p>
+                  </li>
+                  <li>次索引會出現
+                    <br>
+                    <img src="netAexample-1.jpg" alt="" width="183" height="22">
+                    <p>
+                  </li>
+                  <li>點選展開該下拉功能表
+                    <br>
+                    <img src="netAexample-2.jpg" alt="" width="164" height="50">
+                    <p>
+                  </li>
+                  <li>上圖點選 ARP 後，即會跳到 ARP 的名詞解釋區 ( 續下 ) </li>
+                </ol>
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="netAexample_mini.jpg">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 2. 系統首頁 與 查詢 (以 ARP為例) - Step. II </h3>
+          可以發現瀏覽器最頂端，顯示 ARP 的查詢結果。
+          <br> 下圖為左方的關於 ARP 的查詢結果 。
+          <br>
+          <img src="netAexample-3.jpg" alt="" width="608" height="60">
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="netJexample_mini.jpg">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 3. 系統 查詢 (以 Jabbering node 為例) - Step. I </h3>
+          再看一個例子，若要查詢 Jabbering node，
+          <ol>
+            <li> 同上述的步驟，點選 主索引區的 J </li>
+            <li> 次索引方格會出現
+              <br>
+              <img src="netJexample3.jpg" alt="" width="187" height="20"> </li>
+            <li> 點選下拉功能表后，會出現
+              <br>
+              <img src="netJexample4.jpg" alt="" width="163" height="38">
+            </li>
+            <li> 上圖點選 Jabbering node 後，即會跳到 Jabbering node 的名詞解釋區 ( 續下 ) 。</li>
+          </ol>
+        </div>
+      </div>
+
+      <hr class="style2">
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <img src="netJexample1_mini.jpg">
+        </div>
+        <div class="col-sm-6">
+          <h3>■ 4. 系統 查詢 (以 Jabbering node 為例) - Step. II </h3>
+          可以發現瀏覽器最頂端，顯示 Jabbering node 的查詢結果。
+          <br> 下圖為左方的關於 Jabbering node 的查詢結果 。
+          <br>
+          <img src="netJexample2.jpg" alt="" width="582" height="44">
+        </div>
+      </div>
+
+
+</body>
+
+</html>
