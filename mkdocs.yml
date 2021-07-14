@@ -22,8 +22,9 @@ nav:
           - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
           - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
           - 'Documentation Skill': 'engineer/dev/doc/index.md'
-          - 'Programmer Skills': 'engineer/dev/prog/index.md'
-          - 'Extending Python with C': 'engineer/dev/python/index.md'
+#          - 'Programmer Skills':
+#           - 'Linux C': 'engineer/dev/prog/index.md'
+#           - 'Extending Python with C': 'engineer/dev/python/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
