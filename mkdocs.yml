@@ -17,7 +17,7 @@ nav:
           - 'Diagnostic Tools':
             - 'Wireless Sniffer': 'engineer/dev/diag/sniffer/index.md'
             - 'Remote Capture - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
-            - 'Networking Sniffer': 'engineer/dev/diag/tcpdump/index.md'
+#           - 'Networking Sniffer': 'engineer/dev/diag/tcpdump/index.md'
           - 'Performance Measurement':
             - 'Networking Performance': 'engineer/dev/perf/index.md'
           - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
