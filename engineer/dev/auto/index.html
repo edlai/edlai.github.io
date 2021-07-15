@@ -210,11 +210,6 @@
         Accessories
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../equipments/">
-        Networking Equipments
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -237,13 +232,13 @@
 <nav aria-label="Automation" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#telnet">
-    TELNET
+<a class="md-nav__link" href="#ssh">
+    SSH
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ssh">
-    SSH
+<a class="md-nav__link" href="#telnet">
+    TELNET
   </a>
 </li>
 </ul>
@@ -291,20 +286,20 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5" id="__nav_2_1_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_5">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" id="__nav_2_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_4">
         Diagnostic Tools
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Diagnostic Tools" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_5">
+<label class="md-nav__title" for="__nav_2_1_4">
 <span class="md-nav__icon md-icon"></span>
           Diagnostic Tools
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../diag/">
-        Wireshark for Wi-Fi sniffer
+<a class="md-nav__link" href="../diag/sniffer/">
+        Wireless Sniffer
       </a>
 </li>
 <li class="md-nav__item">
@@ -312,17 +307,22 @@
         Remote Capture - rpcapd
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../diag/tcpdump/">
+        Networking Sniffer
+      </a>
+</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_6" id="__nav_2_1_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5" id="__nav_2_1_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_5">
         Performance Measurement
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Performance Measurement" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_6">
+<label class="md-nav__title" for="__nav_2_1_5">
 <span class="md-nav__icon md-icon"></span>
           Performance Measurement
         </label>
@@ -912,13 +912,13 @@
 <nav aria-label="Automation" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#telnet">
-    TELNET
+<a class="md-nav__link" href="#ssh">
+    SSH
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ssh">
-    SSH
+<a class="md-nav__link" href="#telnet">
+    TELNET
   </a>
 </li>
 </ul>
@@ -991,6 +991,27 @@
 </li>
 </ol>
 <h2 id="automation">Automation</h2>
+<h3 id="ssh">SSH</h3>
+<p>The sample code shows how to login Server and execute <code>ls</code> command.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">paramiko</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s2">"ed"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">"11111111"</span>
+<span class="n">hostname</span> <span class="o">=</span> <span class="s2">"127.0.0.1"</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_transport</span><span class="p">()</span>
+    <span class="n">sftp</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPClient</span><span class="o">.</span><span class="n">from_transport</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s1">'ls -al'</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Exception!!'</span><span class="p">)</span>
+    <span class="k">raise</span>
+</code></pre></div>
 <h3 id="telnet">TELNET</h3>
 <p>The sample code shows how to login Router and execute <code>ls</code> command.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
@@ -1051,27 +1072,6 @@
 <span class="nb">print</span> <span class="p">(</span><span class="n">tn</span><span class="o">.</span><span class="n">read_all</span><span class="p">())</span>
 
 <span class="n">tn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-<h3 id="ssh">SSH</h3>
-<p>The sample code shows how to login Server and execute <code>ls</code> command.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
-<span class="kn">import</span> <span class="nn">paramiko</span>
-<span class="n">username</span> <span class="o">=</span> <span class="s2">"ed"</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s2">"11111111"</span>
-<span class="n">hostname</span> <span class="o">=</span> <span class="s2">"127.0.0.1"</span>
-<span class="n">port</span> <span class="o">=</span> <span class="mi">22</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_transport</span><span class="p">()</span>
-    <span class="n">sftp</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPClient</span><span class="o">.</span><span class="n">from_transport</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s1">'ls -al'</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Exception!!'</span><span class="p">)</span>
-    <span class="k">raise</span>
 </code></pre></div>
 <h2 id="http-request">HTTP REQUEST</h2>
 <ul>
@@ -1146,7 +1146,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Networking Equipments" class="md-footer__link md-footer__link--prev" href="../equipments/" rel="prev">
+<a aria-label="Previous: Accessories" class="md-footer__link md-footer__link--prev" href="../accessories/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -1155,17 +1155,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              Networking Equipments
+              Accessories
             </div>
 </div>
 </a>
-<a aria-label="Next: Wireshark for Wi-Fi sniffer" class="md-footer__link md-footer__link--next" href="../diag/" rel="next">
+<a aria-label="Next: Wireless Sniffer" class="md-footer__link md-footer__link--next" href="../diag/sniffer/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Wireshark for Wi-Fi sniffer
+              Wireless Sniffer
             </div>
 </div>
 <div class="md-footer__button md-icon">
