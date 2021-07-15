@@ -22,9 +22,10 @@ nav:
             - 'Networking Performance': 'engineer/dev/perf/index.md'
           - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
           - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
-          - 'Documentation Skill': 'engineer/dev/doc/index.md'
-#          - 'Programmer Skills':
-#           - 'Linux C': 'engineer/dev/prog/index.md'
+          - 'Documentation Skills': 'engineer/dev/doc/index.md'
+          - 'Programming Skills':
+            - 'Linux C (Basic)': 'engineer/dev/prog/c_basic/index.md'
+#           - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
 #           - 'Extending Python with C': 'engineer/dev/python/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
@@ -36,9 +37,9 @@ nav:
             - 'Buildroot': 'engineer/embedded/buildroot/index.md'
             - 'OpenWRT': 'engineer/embedded/openwrt/index.md'
           - 'Application':
-            - 'Surveillance Camera': 'engineer/embedded/cam/cloud/index.md'
-          - 'Lifetime Measurement':
-            - 'Flash MTD Lifetime': 'engineer/dev/lifetime/index.md'
+            - 'Surveillance Camera': 'engineer/embedded/camera/cloud/index.md'
+          - 'Production':
+            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
         - 'Linux Kernel':
           - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
