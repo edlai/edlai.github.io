@@ -24,9 +24,9 @@ nav:
           - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
           - 'Documentation Skills': 'engineer/dev/doc/index.md'
           - 'Programming Skills':
-            - 'Linux C (Basic)': 'engineer/dev/prog/c_basic/index.md'
+            - 'Linux C': 'engineer/dev/prog/linux_c/index.md'
 #           - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
-#           - 'Extending Python with C': 'engineer/dev/python/index.md'
+#           - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'QCOM QxDM and MTK Catcher': 'dev/diag/index.md'
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
