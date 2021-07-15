@@ -3,16 +3,76 @@
 
 This chapter introduces some accessories for firmware development.
 
-## USB-to-RS232 console cable
+## USB-to-Serial COMM port cable
 
+### Prolific PL2303
 
-### [PL2303](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41) 
+try to buy it from [Taobao](https://www.taobao.com/). It is not very expensive.
 
-Try to buy it from [Taobao](https://www.taobao.com/). It is not very expensive.
+- PID/VID: 2303/067B
+- Driver: [Windows]((http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41))
 
-### [FTDI chipsets](https://ftdichip.com/drivers/)
+<!--
+### [FTDI chipsets]
 
 It is expensive than PL2303.
+
+- Driver: [Windows](https://ftdichip.com/drivers/)
+-->
+
+
+## Networking Equipments
+
+### Network Hub (Optional, nice to have)
+
+If you don't to want to spend your time to set `Port Mirror` to Network Switch, please look for ancient Hub for packet sniffing.
+
+#### LINKSYS EW5HUB
+  ![EW5HUB](linksys_001.png) 
+#### D-Link DE-805TP
+
+  ![DE-805TP](dlink_001.png)
+### Network Switch
+
+It's better to have `Port Mirroring` function to the Network Switch.
+
+<!--### [DGS-1210-10P](http://www.dlinktw.com.tw/business/product?id=343)-->
+
+#### VigorSwitch G1080
+
+8-Port Smart Lite Managed Gigabit Switch
+
+- Default IP: 192.168.1.224
+- Default Password: admin
+- Website: [*](https://www.draytek.com/products/vigorswitch-g1080/#overview)
+- Port Mirroring:
+
+![DrayTek](draytek_001.png)
+
+### Ethernet Router
+
+#### MikroTik RB750Gr3 hEX
+
+5x Gigabit Ethernet, Dual Core 880MHz CPU, 256MB RAM, USB, microSD, RouterOS L4.
+<!--
+RouterOS is the nice operating system which has good cost performance ratio.
+-->
+
+- Default IP: 192.168.88.1
+- Website: [*](https://mikrotik.com/product/RB750Gr3)
+
+- Config PPPoE server with VLAN support
+
+```
+Interfaces > VLAN > Name: vlan2 , VLAN ID: 2, Interface: eth3
+IP > Pool > Name: PPPoE_Pool, Address: 10.1.1.2-10.1.1.254
+PPP > Profiles > Name: PPPoE_profile, Local Address: 10.1.1.1, Remote Address: PPPoE_Pool
+PPP > PPPoE Server > Interface: vlan2; Default Profile: PPPoE profile
+```
+
+- Reference
+    - [MikroTik RouterOS 建置 PPPoE Server 防止 ARP 攻擊 (房東必備)](https://www.ez2o.com/Blog/Post/MikroTik-RouterOS-PPPoE-Server)
+    - [MIKROTIK:-PPPoE configuration On VLAN Interface](http://laxmidharnetworking.blogspot.com/2017/06/mikrotik-pppoe-configuration-on-vlan.html)
 
 ## Wi-Fi Adaptor
 
@@ -21,7 +81,10 @@ There are some Wi-Fi USB dongle which can capture wireless packets in Linux OS, 
 
 Clear syslog using `dmesg -c` then plug the dongle and run `lsusb`, `dmesg` and `ifconfig` to make sure this device is enabled in your machine.
 
-### MTK 7601U (2717:4106)
+### MTK 7601U
+
+- PID/VID: 2717:4106
+- Firmware: mt7601u.bin
 
 ```console
 $ sudo lsusb
@@ -53,7 +116,10 @@ wlx8c00001900aa: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 ```
 
-### MTK 7610 (0e8d:7610)
+### MTK 7610
+
+- PID/VID: 0e8d:7610
+- Firmware: mediatek/mt7610e.bin
 
 ```console
 $ sudo lsusb
@@ -83,11 +149,15 @@ wlx001122340147: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 ```
 
-### MTK 7612 (0e8d:7612)
+### MTK 7612
 
-- Without SD function
+- SD Storage mode PID/VID: 0e8d:2870
+- Wi-Fi adaptor mode PID/VID: 0e8d:7612
+- Firmware: mt7662_rom_patch.bin, mt7662.bin
+- Eject command: `sudo eject /dev/sr0` (depend on stroage name of `sr0`)
 
-```console
+
+``` console
 $ sudo lsusb
 Bus 004 Device 004: ID 0e8d:7612 MediaTek Inc.
 
@@ -118,6 +188,7 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
+<!--
 - With SD function (0e8d:2870)
 
 ```console
@@ -173,12 +244,14 @@ wlx0013ef5f0f65: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+-->
 
-### Ralink RT5372 (2001:3c20)
+### Ralink RT5372
 
-- [D-Link DWA-140 rev D1](https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1) (rt2800usb)
+- PID/VID: 2001:3c20
+- Driver: [D-Link DWA-140 rev D1](https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1) (rt2800usb)
 
-```console
+``` console
 $ dmesg
 [ 7355.421533] usb 2-2: new high-speed USB device number 11 using xhci_hcd
 [ 7355.586303] usb 2-2: New USB device found, idVendor=2001, idProduct=3c20, bcdDevice= 1.01
@@ -213,7 +286,9 @@ $ sudo apt-get update
 $ sudo apt-get install bluetooth bluez bluez-hcidump
 ```
 
-### CP2102/CP2109 (10c4:ea60)
+### CP2102/CP2109
+
+- PID/VID: 10c4:ea60
 
 ```console
 $ lsusb
@@ -230,9 +305,11 @@ $ dmesg
 [ 3743.444720] usb 3-1: cp210x converter now attached to ttyUSB0
 ```
 
-### Cambridge Bluetooth (0a12:0001)
+### Cambridge Bluetooth
 
-```console
+- PID/VID: 0a12:0001
+
+``` console
 $ lsusb
 Bus 003 Device 034: ID 0a12:0001 Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
 
@@ -250,3 +327,13 @@ Devices:
         hci1    00:1A:7D:DA:71:15
         hci0    68:94:23:EB:7A:63
 ```
+
+## Flash Programmer and Socket
+
+### Flash Programmer (nice to have)
+
+- [SF100 SPI NOR Flash](https://www.dediprog.com/product/SF100)
+
+### SPI flash Socket 8 Pin SO8W 207mil package
+
+![flash.png](socket_0001.png)

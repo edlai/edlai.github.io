@@ -12,11 +12,12 @@ nav:
         - 'Development Tools':
           - 'Softwares Tools': 'engineer/dev/softwares/index.md'
           - 'Accessories': 'engineer/dev/accessories/index.md'
-          - 'Networking Equipments': 'engineer/dev/equipments/index.md'
+#          - 'Networking Equipments': 'engineer/dev/equipments/index.md'
           - 'Automation and Crawler': 'engineer/dev/auto/index.md'
           - 'Diagnostic Tools':
-            - 'Wireshark for Wi-Fi sniffer': 'engineer/dev/diag/index.md'
+            - 'Wireless Sniffer': 'engineer/dev/diag/sniffer/index.md'
             - 'Remote Capture - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
+            - 'Networking Sniffer': 'engineer/dev/diag/tcpdump/index.md'
           - 'Performance Measurement':
             - 'Networking Performance': 'engineer/dev/perf/index.md'
           - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'

@@ -46,7 +46,7 @@ Motivations for my life and career.
 
 <!-- diverse academic backgrounds, including `Electronic Engineering` and `Mathematics/Information Education`. -->
 
-<!--College of Science, --> 
+<!--College of Science, -->
 
 - M.S., 2021, National Taipei University of Education, Department of Mathematics and Information Education
 - B.S., 2003, National Taipei University of Technology, Department of Electronic Engineering
