@@ -9,8 +9,8 @@ To run the example, install the necessary libraries by running:
     # pip install -r requirements.txt
 
 Run the script on an image to get text, E.g.:
-     
-    # export VISION_API=AIzaSyDHEJ9JAQcIBjKmN8XoUkgM4zp6vXFaSJY
+
+    # export VISION_API=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     # ./text_detection.py <path-to-image>
 """
 
@@ -53,7 +53,7 @@ def main(photo_file):
         print('Found text:')
         a = text.split("\n")
         b = re.sub(' +|\-|\.','', a[len(a) - 2])
-        #c = re.sub('-', '', b) 
+        #c = re.sub('-', '', b)
         print b
 
 if __name__ == '__main__':
