@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://edlai.github.io/engineer/embedded/cam/lpr/alpr/" rel="canonical"/>
+<link href="https://edlai.github.io/engineer/embedded/camera/lpr/iv/" rel="canonical"/>
 <link href="../../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Under Construction … - Ed's Wiki  🦉</title>
+<title>Surveillance System - Ed's Wiki  🦉</title>
 <link href="../../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#under-construction">
+<a class="md-skip" href="#surveillance-system">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Under Construction …
+              Surveillance System
             
           </span>
 </div>
@@ -272,8 +272,28 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../dev/doc/">
-        Documentation Skill
+        Documentation Skills
       </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_9" id="__nav_2_1_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_9">
+        Programming Skills
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Programming Skills" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_9">
+<span class="md-nav__icon md-icon"></span>
+          Programming Skills
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/prog/c_basic/">
+        Linux C (Basic)
+      </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -338,18 +358,18 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2_3">
-        Lifetime Measurement
+        Production
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Lifetime Measurement" class="md-nav" data-md-level="3">
+<nav aria-label="Production" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_2_3">
 <span class="md-nav__icon md-icon"></span>
-          Lifetime Measurement
+          Production
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../../dev/lifetime/">
-        Flash MTD Lifetime
+<a class="md-nav__link" href="../../../endurance/">
+        Flash MTD Endurance
       </a>
 </li>
 </ul>
@@ -825,34 +845,257 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lpr-license-plate-recognition">
+    LPR - License Plate Recognition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#intelli-vision">
+    Intelli Vision
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+<nav aria-label="Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+    Hardware
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+    Software
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+<nav aria-label="Background" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#topology">
+    Topology
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+    Installation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting">
+    Setting
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-case">
+    Test case
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#remove">
+    Remove
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+    Troubleshooting
+  </a>
+<nav aria-label="Troubleshooting" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hd-ip-cam">
+    HD-IP Cam
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iv">
+    IV
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document">
+    Document
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="under-construction">Under Construction …</h1>
 <h1 id="surveillance-system">Surveillance System</h1>
-<h2 id="openalpr-automatic-license-plate-recognition-library">openalpr - Automatic License Plate Recognition library</h2>
-<h3 id="installation">Installation</h3>
+<h2 id="lpr-license-plate-recognition">LPR - License Plate Recognition</h2>
+<h2 id="intelli-vision">Intelli Vision</h2>
+<h2 id="requirements">Requirements</h2>
+<h3 id="hardware">Hardware</h3>
 <ul>
-<li>Perform below commands to install <code>alpr</code> <br/>
-<div class="highlight"><pre><span></span><code># apt-get update &amp;&amp; sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev
+<li>HD-IP Cam</li>
+<li>Default IP: http://192.168.1.110</li>
+<li>Default ID/PW: admin/[empty]</li>
+<li></li>
+<li>Aplex IPC (running Ubuntu 16.04)</li>
+<li>PoE Switch</li>
+</ul>
+<h3 id="software">Software</h3>
+<ul>
+<li>Ubuntu 16.04</li>
+<li>IntelliVision LPR</li>
+<li>Hisee App</li>
+</ul>
+<h2 id="background">Background</h2>
+<h3 id="topology">Topology</h3>
+<div class="highlight"><pre><span></span><code>            +---- IPCam      192.168.167.30
+                    +---- IPCam      192.168.167.40
+            |
+   Router -------- PoE -- IPC(Small) 192.168.167.68 http://192.168.167.68:1700/intelli-vision/Reports.html
+ (192.168.167.1)    |
+                    +---- IPC(Big)   192.168.167.57 http://192.168.167.57:1700/intelli-vision/Reports.html
+                    |
+                     ---- PC     192.168.167.X   (Optional)
+</code></pre></div>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Install <code>Ubuntu 16.04</code> on Aplex IPC</li>
+<li>tbd: fixed IP</li>
+<li>Install <code>IntelliVision LPR</code></li>
+<li>package
+    <div class="highlight"><pre><span></span><code># apt-get update
+# apt-get install openssh-server
+# apt-get install openssh-client
+# apt-get install mysql-server       (KEY Point, using `empty password`)
+# apt-get install mysql-client
+</code></pre></div></li>
+<li>
+<p>IV
+    <div class="highlight"><pre><span></span><code># chmod 777 ./install-deps.sh
+# ./install-deps.sh
+# dpkg -i iv_lpr_service_20180108_amd64.deb
+  Selecting previously unselected package iv-lpr-service.
+  (Reading database ... 193868 files and directories currently installed.)
+  Preparing to unpack iv_lpr_service_20180108_amd64.deb ...
+  Unpacking iv-lpr-service (18.01.08) ...
+  /var/lib/dpkg/tmp.ci/preinst: line 9: /etc/init.d/ivlprserviceapp: No such file or directory  #&lt;= normal?
+  Setting up iv-lpr-service (18.01.08) ...
+  insserv: warning: script 'ivlprserviceapp' missing LSB tags and overrides
+  Processing triggers for systemd (229-4ubuntu21.1) ...
+  Processing triggers for ureadahead (0.100.0-19) ...
+# ps ax | grep LPR
+  5314 ?        Sl     0:00 ./LPRApp
+</code></pre></div></p>
+</li>
+<li>
+<p>Install <code>TeamViewer</code> (Optional)</p>
+</li>
+<li>setup TV
+    <div class="highlight"><pre><span></span><code># wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+# dpkg -i teamviewer_amd64.deb
+# apt-get install -f                 #&lt;= run this if you get any dependency problems
+</code></pre></div></li>
+<li>setup fixed password on TV</li>
+<li>enable "Start TeamViewer with system"</li>
+</ol>
+<h2 id="setting">Setting</h2>
+<ol>
+<li>Navigate to IV webpage
+   <div class="highlight"><pre><span></span><code>http://192.168.167.68:1700/intelli-vision/Setting.html
+</code></pre></div></li>
+<li>Input Key
+   <div class="highlight"><pre><span></span><code>Evrq96oCqwyqXqaabbuuvvCCyyEM
+</code></pre></div></li>
+<li>Navigate to <code>Settings</code> &gt; <code>Common Settings</code>, using below <code>Country</code>
+<div class="highlight"><pre><span></span><code>Taiwan
+</code></pre></div></li>
+<li>Navigate to <code>Settings</code> &gt; <code>Setting</code> &gt; <code>Add New Camera</code></li>
+<li>Enter Camera Details &gt; IP Camera &gt; 
+   <div class="highlight"><pre><span></span><code>rtsp://admin:@192.168.167.40/1/h264major               #&lt;= Default
+rtsp://user:12345678@192.168.167.30/1/h264major        #&lt;= with ID/PW
+</code></pre></div></li>
+<li>Navigate to <code>Reports</code>, make sure LPR can get some results</li>
+<li>
+<p>Playing TC#01 on the screen in the meantime</p>
+</li>
+<li>
+<p>Navigate to <code>Watchlist</code> &gt; <code>Import from file</code></p>
+</li>
+<li>
+<p>import the <code>watchlist.txt</code> to IV-LPR</p>
+</li>
+<li></li>
+</ol>
+<h2 id="test-case">Test case</h2>
+<ul>
+<li>TC#1: 10 clean car-plant and repecting each 10 seconds</li>
+<li>TC#2: </li>
+</ul>
+<h2 id="remove">Remove</h2>
+<ul>
+<li>Remove 
+  <div class="highlight"><pre><span></span><code># dpkg -remove iv-lpr-service
 </code></pre></div></li>
 </ul>
-<h3 id="usage-by-command-line">Usage by Command Line</h3>
-<ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="hd-ip-cam">HD-IP Cam</h3>
+<ol>
 <li>
-<p>Images from JPG<br/>
-<div class="highlight"><pre><span></span><code>
+<p><code>HD-IP Cam</code> did <code>restore-to-default</code> by it-self</p>
+</li>
+<li>
+<p>固定開啟夜視 (IR)</p>
+</li>
+<li>
+<p>如何手動對焦 (Focus)</p>
+</li>
+</ol>
+<h3 id="iv">IV</h3>
+<ol>
+<li>
+<p>IV
+   <div class="highlight"><pre><span></span><code>/var/lib/dpkg/tmp.ci/preinst: line 9: /etc/init.d/ivlprserviceapp: No such file or directory  #&lt;= normal?
 </code></pre></div></p>
 </li>
 <li>
-<p>Streaming from MP4
-  <div class="highlight"><pre><span></span><code>
-</code></pre></div></p>
+<p>Loading
+  <div class="highlight"><pre><span></span><code>top - 12:56:58 up  1:31,  4 users,  load average: 6.83, 5.90, 5.34                #&lt;= 6.83 ??
+Tasks: 223 total,   4 running, 219 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 39.9 us, 21.1 sy, 36.4 ni,  2.5 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  3962040 total,   213200 free,  1743808 used,  2005032 buff/cache
+KiB Swap:  4113404 total,  4113404 free,        0 used.  1730272 avail Mem
+
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+5314 root      20   0 3362140 434092  60720 S 233.6 11.0 151:24.96 LPRApp         #&lt;= 233.6 ??
+</code></pre></div>
+  A:
+  文件上有建議要有獨立顯卡 / i5 ,
+  input解析度不要超過720p@30
+  與可以input更小的解析度去看消耗cpu 的變化</p>
 </li>
-</ul>
+</ol>
+<h2 id="document">Document</h2>
+<ol>
+<li>IntelliVision USER GUIDE</li>
+<li>Installation GUIDE</li>
+</ol>
 </article>
 </div>
 </div>

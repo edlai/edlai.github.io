@@ -136,17 +136,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/dev/lifetime/</loc>
-         <lastmod>2021-07-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://edlai.github.io/engineer/dev/perf/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/dev/prog/</loc>
+         <loc>https://edlai.github.io/engineer/dev/prog/c_adv/</loc>
+         <lastmod>2021-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/dev/prog/c_basic/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -381,52 +381,57 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/cloud/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/cloud/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/face/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/face/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/html5/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/html5/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/ipc/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/ipc/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/lpr/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/lpr/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/lpr/alpr/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/lpr/alpr/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/lpr/cht/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/lpr/cht/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/lpr/iv/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/lpr/iv/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/engineer/embedded/cam/lpr/tc/</loc>
+         <loc>https://edlai.github.io/engineer/embedded/camera/lpr/tc/</loc>
+         <lastmod>2021-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/embedded/endurance/</loc>
          <lastmod>2021-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
