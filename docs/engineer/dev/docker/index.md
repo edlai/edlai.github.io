@@ -3,6 +3,17 @@
 If you are not familiar with Docker Compose, pleasr take a look [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
 ## Docker
 
+- Docker File
+- Docker Compose YAML File
+### Install
+
+Install docker.
+
+``` console
+$ wget -qO- https://get.docker.com/ | sh
+```
+
+<!--
 Follow [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker in Ubuntu 20.10.
 
 ``` console
@@ -13,39 +24,12 @@ $ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg
 $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
+-->
 
 Show Docker version you installed.
 
 ``` console
 $ docker version
-Client: Docker Engine - Community
- Version:           20.10.7
- API version:       1.41
- Go version:        go1.13.15
- Git commit:        f0df350
- Built:             Wed Jun  2 11:56:41 2021
- OS/Arch:           linux/amd64
- Context:           default
- Experimental:      true
-
-Server: Docker Engine - Community
- Engine:
-  Version:          20.10.7
-  API version:      1.41 (minimum version 1.12)
-  Go version:       go1.13.15
-  Git commit:       b0f5bc3
-  Built:            Wed Jun  2 11:54:53 2021
-  OS/Arch:          linux/amd64
-  Experimental:     false
- containerd:
-  Version:          1.4.6
-  GitCommit:        d71fcd7d8303cbf684402823e425e9dd2e99285d
- runc:
-  Version:          1.0.0-rc95
-  GitCommit:        b9ee9c6314599f1b4a7f497e1f1f856fe433d3b7
- docker-init:
-  Version:          0.19.0
-  GitCommit:        de40ad0
 ```
 
 Add User and logout then re-login again
@@ -56,57 +40,127 @@ $ sudo usermod -aG docker $USER
 $ logout
 ```
 
-Run it.
+Run it. (Hello World)
 
 ``` console
-$ sudo docker run hello-world
+$ docker run hello-world
 
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-b8dfde127a29: Pull complete
-Digest: sha256:df5f5184104426b65967e016ff2ac0bfcd44ad7899ca3bbcf8e44e4461491a9e
-Status: Downloaded newer image for hello-world:latest
+or Run it. (Nginx)
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-...
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
+```console
+$ docker run -d -p 80:80 nginx
+$ netstat -alnp | grep 80
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      12680/docker-proxy
+tcp6       0      0 :::80                   :::*                    LISTEN      12689/docker-proxy
 ```
 
 Run it using interactive(`-it`) then press `uname -a` to check the current Ubuntu version docker installed.
 
 ```console
 $ docker run -it ubuntu bash
-Unable to find image 'ubuntu:latest' locally
-latest: Pulling from library/ubuntu
-c549ccf8d472: Pull complete
-Digest: sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
-Status: Downloaded newer image for ubuntu:latest
+...
 root@7a58af80ae6b:/# uname -a
 Linux 7a58af80ae6b 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 root@7a58af80ae6b:/# exit
+```
+
+Check Image
+
+``` console
+$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+ubuntu        latest    c29284518f49   2 days ago     72.8MB
+nginx         latest    4cdc5dd7eaad   9 days ago     133MB
+hello-world   latest    d1165f221234   4 months ago   13.3kB
+```
+
+<!--
+Check Socket
+
+```console
+$ ll /var/run/docker.sock
+srw-rw---- 1 root docker 0 Jul 16 02:19 /var/run/docker.sock=
+```
+-->
+
+### Docker File
+
+Dockerfile
+
+```
+FROM centos:7
+MAINTAINER ed
+
+RUN yum install -y wget
+
+RUN cd /
+
+ADD jdk-8u152-linux-x64.tar.gz /
+
+RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+RUN tar zxvf apache-tomcat-7.0.82.tar.gz
+
+ENV JAVA_HOME=/jdk1.8.0_152
+ENV PATH=$PATH:/jdk1.8.0_152/bin
+CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
 ```
 
 ## Docker Compose
 
 Follow [Install Docker Compose](https://docs.docker.com/compose/install/) to install Docker Compose.
 
-```console
+``` console
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
 
 $ docker-compose --version
 docker-compose version 1.29.2, build 5becea4c
-
 ```
 
 ### YAML
 
+`docker-compose.yml`
 
+```
+version: '3'
+
+services:
+
+  otrecorder:
+    image: owntracks/recorder
+    ports:
+      - 8083:8083
+    volumes:
+      - config:/config
+      - store:/store
+    restart: unless-stopped
+    environment:
+      OTR_HOST: mosquitto
+
+  mosquitto:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 8883:8883
+    volumes:
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/logs
+      - mosquitto-conf:/mosquitto/config
+    restart: unless-stopped
+
+volumes:
+  store:
+  config:
+  mosquitto-data:
+  mosquitto-logs:
+  mosquitto-conf:
+```
+
+### up
+
+```
+$ docker-compose up
+```
 
 ## Macvlan
 
