@@ -1,7 +1,3 @@
-# 👷 Under Construction ...
-
-# Cellular Technologies
-
 # Software Define Radio - Amarisoft AMARI LTE 100 SDR
 
 <!--
@@ -10,9 +6,10 @@ $keywords: amarisoft, cellular
 
 An exercise of running personal 4G LTE base station software on Linux PC.
 
-- Install and run `Amarisoft AMARI LTE 100 SDR` on Linux PC, user can run their `Personal 4G-LTE Service`.
+- Install and run `Amarisoft AMARI LTE 100 SDR` on Linux PC to build `Personal 4G-LTE Service`.
 - UE should be able to connect `SDR` in this case.
 
+<!--
 ## Content
 
 * [Concept](#concept)
@@ -29,6 +26,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
 * [Reference](#reference)
 * [Appendix](#appendix)
   - [Writable SIM card](#programming-sim-cards)
+-->
 
 ## Requirements
 
@@ -42,7 +40,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
   05:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)
   06:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)
   07:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)
-  08:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)  
+  08:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)
   ```
 - WLAN Card (Optional)
 
@@ -58,7 +56,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
 
   ```
    -------------------------------------
-  /             Internet               /      
+  /             Internet               /
   -------------------------------------
                      /                                                          * Outbound Interface of Router:                                       
                     /                         					  - IPv4: 61.228.45.217                              (for example)    
@@ -89,18 +87,18 @@ An exercise of running personal 4G LTE base station software on Linux PC.
 
 - Download `Ubuntu Server ISO Image` and burn it into USB dongle by [`rufus`](https://rufus.akeo.ie) with below setting    
 
-  |  rufus2.18       | rufus3.1         | 
+  |  rufus2.18       | rufus3.1         |
   |------------------|------------------|
   | ![r](rufus2.png) | ![r](rufus3.png) |
 
-- Plug `Ubuntu dongle` to PC and bootup PC by using this Bootable dongle (selecting USB Bootup in `BIOS/UEFI` boot menu)      
+- Plug `Ubuntu dongle` to PC and bootup PC by using this Bootable dongle (selecting USB Bootup in `BIOS/UEFI` boot menu)
 
 - Install `Ubuntu Server` to Linux PC, enable `Standard system utilities`, `Virtual Machine host` and `OpenSSH server`
   ![r](server.png)
 
 - there will be some network interfaces
 
-  ``` sh
+  ``` bash
   # ifconfig
   enp0s31f6 Link encap:Ethernet  HWaddr 60:45:cb:87:56:12
             inet addr:192.168.0.12  Bcast:192.168.0.255  Mask:255.255.255.0

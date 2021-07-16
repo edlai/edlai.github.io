@@ -105,10 +105,10 @@ ENV PATH=$PATH:/jdk1.8.0_152/bin
 CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
 ```
 
-Run it.
+Run it. (docker build)
 
 ```
-docker build -t mytomcat . --no-cache
+$ docker build -t mytomcat . --no-cache
 ```
 
 ## Docker Compose
@@ -168,11 +168,31 @@ volumes:
 $ docker-compose up
 ```
 
-## Macvlan
+## MACVLAN
 
+### Install
 
+```
+$ modprobe macvlan
+$ lsmod | grep macvlan
+macvlan                24576  0
+```
+
+### Topology
+
+```
+Home Router       (192.168.0.1)
+├── MQTT Broker   (192.168.0.2)
+├── MQTT Client 1 (192.168.0.3)
+└── MQTT Client 2 (192.168.0.4)
+
+```
+
+## MQTT
 ### Run MQTT
 
 ## Reference
 
 - [How To List Docker Images](https://devconnected.com/how-to-list-docker-images/)
+- [[容器] 如何寫 Dockerfile](https://blog.kevinyang.net/2020/08/03/docker-101-note-3/)
+- [[Docker] MACVLAN Network 簡介](https://godleon.github.io/blog/Docker/docker-network-macvlan/)

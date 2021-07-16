@@ -74,11 +74,30 @@ $ rmmod mtd_stresstest                            # < = remove module
 <6>mtd_stresstest: 9216 operations done
 <6>mtd_stresstest: finished, 10000 operations done
 ```
+ ### Script
+
+``` bash
+#!/bin/sh
+
+rm -rf /media/local/
+count=1
+while [ ${count} -lt 600 ]; do
+    TSTAMP="`date`  | ---> ${count}"
+    echo "$TSTAMP"
+    mkdir -p /media
+    time cp /usr/local /media/ -raf
+    diff /usr/local /media/local -r || exit -1
+    rm -rf /media/local;
+    sync
+
+    let count=${count}+1
+done
+```
 
 ## Reference
 
 - [使用linux的MTD tests support测试flash性能](https://blog.csdn.net/gp_scoprius/article/details/53257056)
-
+- [關於NAND Flash調試的一點總結](https://zhuanlan.zhihu.com/p/131298394)
 
 <!--
 
