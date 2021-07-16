@@ -105,6 +105,12 @@ ENV PATH=$PATH:/jdk1.8.0_152/bin
 CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
 ```
 
+Run it.
+
+```
+docker build -t mytomcat . --no-cache
+```
+
 ## Docker Compose
 
 Follow [Install Docker Compose](https://docs.docker.com/compose/install/) to install Docker Compose.
