@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://edlai.github.io/engineer/dev/prog/c_basic/" rel="canonical"/>
+<link href="https://edlai.github.io/engineer/dev/docker/compose/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Linux C (Basic) - Ed's Wiki  🦉</title>
+<title>Docker and Macvlan - Ed's Wiki  🦉</title>
 <link href="../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#c-basic">
+<a class="md-skip" href="#docker-and-macvlan">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Linux C (Basic)
+              Docker and Macvlan
             
           </span>
 </div>
@@ -91,7 +91,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../../softwares/">
+<a class="md-tabs__link" href="../../softwares/">
         Engineering
       </a>
 </li>
@@ -176,8 +176,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
@@ -188,8 +188,8 @@
           Engineering
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_1">
         Development Tools
         <span class="md-nav__icon md-icon"></span>
@@ -260,42 +260,6 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../git/">
-        Git Repo and Build Machine
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../docker/">
-        Docker and Macvlan
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../doc/">
-        Documentation Skills
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_9" id="__nav_2_1_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_9">
-        Programming Skills
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Programming Skills" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_9">
-<span class="md-nav__icon md-icon"></span>
-          Programming Skills
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
-        Linux C (Basic)
-      </a>
-</li>
-</ul>
-</nav>
-</li>
 </ul>
 </nav>
 </li>
@@ -351,26 +315,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../embedded/camera/cloud/">
         Surveillance Camera
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_2_3">
-        Production
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Production" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_2_3">
-<span class="md-nav__icon md-icon"></span>
-          Production
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../embedded/endurance/">
-        Flash MTD Endurance
       </a>
 </li>
 </ul>
@@ -846,47 +790,248 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker">
+    Docker
+  </a>
+<nav aria-label="Docker" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install">
+    Install
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-file">
+    Docker File
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-compose">
+    Docker Compose
+  </a>
+<nav aria-label="Docker Compose" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#yaml">
+    YAML
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#up">
+    up
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macvlan">
+    MACVLAN
+  </a>
+<nav aria-label="MACVLAN" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install_1">
+    Install
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#topology">
+    Topology
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mqtt">
+    MQTT
+  </a>
+<nav aria-label="MQTT" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run-mqtt">
+    Run MQTT
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="c-basic">C (Basic)</h1>
-<p>-<a href="https://www.youtube.com/watch?v=my-0xCJNgoM&amp;ab_channel=FeisStudio">【C 語言入門】20.4 - 使用 scanf 讀入資料的問題</a></p>
+<h1 id="docker-and-macvlan">Docker and Macvlan</h1>
+<p>If you are not familiar with Docker Compose, pleasr take a look <a href="https://docs.docker.com/compose/gettingstarted/">Get started with Docker Compose</a>.</p>
+<h2 id="docker">Docker</h2>
+<ul>
+<li>Docker File</li>
+<li>Docker Compose YAML File</li>
+</ul>
+<h3 id="install">Install</h3>
+<p>Install docker.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget -qO- https://get.docker.com/ <span class="p">|</span> sh
+</code></pre></div>
+<!--
+Follow [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker in Ubuntu 20.10.
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get remove docker docker-engine docker.io containerd runc
+<span class="gp">$ </span>sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+<span class="gp">$ </span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+<span class="gp">$ </span><span class="nb">echo</span> <span class="s2">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre></div>
+-->
+<p>Show Docker version you installed.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker version
+</code></pre></div>
+<p>Add User and logout then re-login again</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo groupadd docker
+<span class="gp">$ </span>sudo usermod -aG docker <span class="nv">$USER</span>
+<span class="gp">$ </span><span class="nb">logout</span>
+</code></pre></div>
+<p>Run it. (Hello World)</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker run hello-world
+
+<span class="go">or Run it. (Nginx)</span>
+
+<span class="go">```console</span>
+<span class="gp">$ </span>docker run -d -p <span class="m">80</span>:80 nginx
+<span class="gp">$ </span>netstat -alnp <span class="p">|</span> grep <span class="m">80</span>
+<span class="go">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      12680/docker-proxy</span>
+<span class="go">tcp6       0      0 :::80                   :::*                    LISTEN      12689/docker-proxy</span>
+</code></pre></div>
+<p>Run it using interactive(<code>-it</code>) then press <code>uname -a</code> to check the current Ubuntu version docker installed.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker run -it ubuntu bash
+<span class="go">...</span>
+<span class="gp">root@7a58af80ae6b:/# </span>uname -a
+<span class="go">Linux 7a58af80ae6b 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+<span class="gp">root@7a58af80ae6b:/# </span><span class="nb">exit</span>
+</code></pre></div>
+<p>Check Image</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>docker images
+<span class="go">REPOSITORY    TAG       IMAGE ID       CREATED        SIZE</span>
+<span class="go">ubuntu        latest    c29284518f49   2 days ago     72.8MB</span>
+<span class="go">nginx         latest    4cdc5dd7eaad   9 days ago     133MB</span>
+<span class="go">hello-world   latest    d1165f221234   4 months ago   13.3kB</span>
+</code></pre></div>
+<!--
+Check Socket
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ll /var/run/docker.sock
+<span class="go">srw-rw---- 1 root docker 0 Jul 16 02:19 /var/run/docker.sock=</span>
+</code></pre></div>
+-->
+<h3 id="docker-file">Docker File</h3>
+<p>Dockerfile</p>
+<div class="highlight"><pre><span></span><code>FROM centos:7
+MAINTAINER ed
+
+RUN yum install -y wget
+
+RUN cd /
+
+ADD jdk-8u152-linux-x64.tar.gz /
+
+RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+RUN tar zxvf apache-tomcat-7.0.82.tar.gz
+
+ENV JAVA_HOME=/jdk1.8.0_152
+ENV PATH=$PATH:/jdk1.8.0_152/bin
+CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
+</code></pre></div>
+<p>Run it. (docker build)</p>
+<div class="highlight"><pre><span></span><code>$ docker build -t mytomcat . --no-cache
+</code></pre></div>
+<h2 id="docker-compose">Docker Compose</h2>
+<p>Follow <a href="https://docs.docker.com/compose/install/">Install Docker Compose</a> to install Docker Compose.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo curl -L <span class="s2">"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">"</span> -o /usr/local/bin/docker-compose
+<span class="gp">$ </span>sudo chmod +x /usr/local/bin/docker-compose
+
+<span class="gp">$ </span>docker-compose --version
+<span class="go">docker-compose version 1.29.2, build 5becea4c</span>
+</code></pre></div>
+<h3 id="yaml">YAML</h3>
+<p><code>docker-compose.yml</code></p>
+<div class="highlight"><pre><span></span><code>version: '3'
+
+services:
+
+  otrecorder:
+    image: owntracks/recorder
+    ports:
+      - 8083:8083
+    volumes:
+      - config:/config
+      - store:/store
+    restart: unless-stopped
+    environment:
+      OTR_HOST: mosquitto
+
+  mosquitto:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 8883:8883
+    volumes:
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/logs
+      - mosquitto-conf:/mosquitto/config
+    restart: unless-stopped
+
+volumes:
+  store:
+  config:
+  mosquitto-data:
+  mosquitto-logs:
+  mosquitto-conf:
+</code></pre></div>
+<h3 id="up">up</h3>
+<div class="highlight"><pre><span></span><code>$ docker-compose up
+</code></pre></div>
+<h2 id="macvlan">MACVLAN</h2>
+<h3 id="install_1">Install</h3>
+<div class="highlight"><pre><span></span><code>$ modprobe macvlan
+$ lsmod | grep macvlan
+macvlan                24576  0
+</code></pre></div>
+<h3 id="topology">Topology</h3>
+<div class="highlight"><pre><span></span><code>Home Router       (192.168.0.1)
+├── MQTT Broker   (192.168.0.2)
+├── MQTT Client 1 (192.168.0.3)
+└── MQTT Client 2 (192.168.0.4)
+</code></pre></div>
+<h2 id="mqtt">MQTT</h2>
+<h3 id="run-mqtt">Run MQTT</h3>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://devconnected.com/how-to-list-docker-images/">How To List Docker Images</a></li>
+<li><a href="https://blog.kevinyang.net/2020/08/03/docker-101-note-3/">[容器] 如何寫 Dockerfile</a></li>
+<li><a href="https://godleon.github.io/blog/Docker/docker-network-macvlan/">[Docker] MACVLAN Network 簡介</a></li>
+</ul>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Documentation Skills" class="md-footer__link md-footer__link--prev" href="../../doc/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Previous
-              </span>
-              Documentation Skills
-            </div>
-</div>
-</a>
-<a aria-label="Next: Buildroot" class="md-footer__link md-footer__link--next" href="../../../embedded/buildroot/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
-              Buildroot
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">

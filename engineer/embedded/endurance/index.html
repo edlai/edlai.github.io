@@ -8,7 +8,7 @@
 <link href="https://edlai.github.io/engineer/embedded/endurance/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Flash MTD Endurance - Ed's Wiki  🦉</title>
+<title>Flash Memory Endurance Test - Ed's Wiki  🦉</title>
 <link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Flash MTD Endurance
+              Flash Memory Endurance Test
             
           </span>
 </div>
@@ -91,7 +91,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../../dev/softwares/">
+<a class="md-tabs__link" href="../../dev/softwares/">
         Engineering
       </a>
 </li>
@@ -176,8 +176,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
@@ -260,46 +260,11 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../dev/git/">
-        Git Repo and Build Machine
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../dev/docker/">
-        Docker and Macvlan
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../dev/doc/">
-        Documentation Skills
-      </a>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_9" id="__nav_2_1_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_9">
-        Programming Skills
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Programming Skills" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_9">
-<span class="md-nav__icon md-icon"></span>
-          Programming Skills
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../dev/prog/c_basic/">
-        Linux C (Basic)
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
@@ -351,64 +316,6 @@
 <a class="md-nav__link" href="../camera/cloud/">
         Surveillance Camera
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_2_3">
-        Production
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Production" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_2_3">
-<span class="md-nav__icon md-icon"></span>
-          Production
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Flash MTD Endurance
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-        Flash MTD Endurance
-      </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#enable-mtd-test-module">
-    Enable MTD test module
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#build-the-linux-kernel">
-    Build the Linux Kernel
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#running-test">
-    Running Test
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#check-result">
-    Check Result
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#reference">
-    Reference
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -961,7 +868,7 @@
 <span class="gp">$ </span>rmmod mtd_stresstest                            <span class="c1"># &lt; = remove module</span>
 </code></pre></div>
 <h2 id="check-result">Check Result</h2>
-<div class="highlight"><pre><span></span><code><span class="go">&lt;6&gt;mtd_stresstest: MTD device: 6</span>
+<p><div class="highlight"><pre><span></span><code><span class="go">&lt;6&gt;mtd_stresstest: MTD device: 6</span>
 <span class="go">&lt;6&gt;mtd_stresstest: not NAND flash, assume page size is 512 bytes.</span>
 <span class="go">&lt;6&gt;mtd_stresstest: MTD device size 1048576, eraseblock size 65536, page size 512, count of eraseblocks 16, pages per eraseblock 128, OOB size 0</span>
 <span class="go">&lt;6&gt;mtd_stresstest: doing operations</span>
@@ -977,9 +884,27 @@
 <span class="go">&lt;6&gt;mtd_stresstest: 9216 operations done</span>
 <span class="go">&lt;6&gt;mtd_stresstest: finished, 10000 operations done</span>
 </code></pre></div>
+ ### Script</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+
+rm -rf /media/local/
+<span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+<span class="k">while</span> <span class="o">[</span> <span class="si">${</span><span class="nv">count</span><span class="si">}</span> -lt <span class="m">600</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nv">TSTAMP</span><span class="o">=</span><span class="s2">"`date`  | ---&gt; </span><span class="si">${</span><span class="nv">count</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$TSTAMP</span><span class="s2">"</span>
+    mkdir -p /media
+    <span class="nb">time</span> cp /usr/local /media/ -raf
+    diff /usr/local /media/local -r <span class="o">||</span> <span class="nb">exit</span> -1
+    rm -rf /media/local<span class="p">;</span>
+    sync
+
+    <span class="nb">let</span> <span class="nv">count</span><span class="o">=</span><span class="si">${</span><span class="nv">count</span><span class="si">}</span>+1
+<span class="k">done</span>
+</code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://blog.csdn.net/gp_scoprius/article/details/53257056">使用linux的MTD tests support测试flash性能</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/131298394">關於NAND Flash調試的一點總結</a></li>
 </ul>
 <!--
 
@@ -1032,34 +957,6 @@ SDK Framework
 </div>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Surveillance Camera" class="md-footer__link md-footer__link--prev" href="../camera/cloud/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Previous
-              </span>
-              Surveillance Camera
-            </div>
-</div>
-</a>
-<a aria-label="Next: Rebuild Kernel" class="md-footer__link md-footer__link--next" href="../../kernel/rebuild/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
-              Rebuild Kernel
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">
