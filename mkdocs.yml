@@ -20,11 +20,14 @@ nav:
 #           - 'Networking Sniffer': 'engineer/dev/diag/tcpdump/index.md'
           - 'Performance Measurement':
             - 'Networking Performance': 'engineer/dev/perf/index.md'
-          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
-          - 'Docker and Macvlan': 'engineer/dev/docker/index.md'
-          - 'Documentation Skills': 'engineer/dev/doc/index.md'
-          - 'Programming Skills':
-            - 'Linux C': 'engineer/dev/prog/linux_c/index.md'
+#          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
+#          - 'Docker and Macvlan':
+#            - 'DockerFile': 'engineer/dev/docker/file/index.md'
+#            - 'Docker Compose': 'engineer/dev/docker/compose/index.md'
+#            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
+#          - 'Documentation Skills': 'engineer/dev/doc/index.md'
+#          - 'Programming Skills':
+#            - 'Linux C': 'engineer/dev/prog/linux_c/index.md'
 #           - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
 #           - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'Conversation Skills':
@@ -41,8 +44,8 @@ nav:
             - 'OpenWRT': 'engineer/embedded/openwrt/index.md'
           - 'Application':
             - 'Surveillance Camera': 'engineer/embedded/camera/cloud/index.md'
-          - 'Production':
-            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
+#          - 'Production':
+#            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
         - 'Linux Kernel':
           - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
