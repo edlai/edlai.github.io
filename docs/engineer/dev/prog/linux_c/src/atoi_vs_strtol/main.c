@@ -2,49 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void)
+static void str_2_int(char *str)
 {
   int atoi_val = 0;
   int strtol_val = 0;
-  char str[20] = {0};
-  char *endptr;
+  char *endptr = NULL;
 
-  strcpy(str, "98993489");
   atoi_val = atoi(str);
-  printf("String value = %s, atoi() = %d, ", str, atoi_val);
+  printf("String value = %10s, atoi() = %10d, ", str, atoi_val);
   strtol_val = strtol(str, &endptr, 10);
   if (endptr > str)
   {
-    printf("strtol() = %d\n", strtol_val);
+    printf("strtol() = %10d\n", strtol_val);
   }
   else
   {
-    printf("NOK\n");
+    printf("%s\n", "<NOK>");
   }
+}
 
-  strcpy(str, "abcde");
-  atoi_val = atoi(str);
-  printf("String value = %s, atoi() = %d, ", str, atoi_val);
-  strtol_val = strtol(str, &endptr, 10);
-  if (endptr > str)
-  {
-    printf("strtol() = %d\n", strtol_val);
-  }
-  else
-  {
-    printf("strtol() = NOK\n");
-  }
+int main(void)
+{
 
-  strcpy(str, "0");
-  atoi_val = atoi(str);
-  printf("String value = %s, atoi() = %d, ", str, atoi_val);
-  strtol_val = strtol(str, &endptr, 10);
-  if (endptr > str)
-  {
-    printf("strtol() = %d\n", strtol_val);
-  }
-  else
-  {
-    printf("NOK\n");
-  }
+  str_2_int("98993489");
+  str_2_int("-98993489");
+  str_2_int("-98993.489");
+  str_2_int("abc12345");
+  str_2_int("0");
 }
