@@ -8,7 +8,7 @@
 <link href="https://edlai.github.io/engineer/dev/prog/linux_c/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>C (Basic) - Ed's Wiki  🦉</title>
+<title>Linux C - Ed's Wiki  🦉</title>
 <link href="../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#c-basic">
+<a class="md-skip" href="#linux-c">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              C (Basic)
+              Linux C
             
           </span>
 </div>
@@ -796,17 +796,22 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#code-snippets">
+    Code Snippets
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#library">
+    Library
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#resource">
     Resource
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#c">
-    C 語言入門
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#c_1">
     你所不知道的 C 語言
   </a>
 </li>
@@ -822,14 +827,44 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="c-basic">C (Basic)</h1>
+<h1 id="linux-c">Linux C</h1>
+<h2 id="code-snippets">Code Snippets</h2>
+<ul>
+<li>the usages of pointer</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>$ sudo apt-get install cdecl
+$ explain char *(*fptab[])(int)
+</code></pre></div>
+- gcc and glibc versions
+- endian
+- framebuffer
+- volu
+- opts
+- unset, autofree
+- revise process name
+- read an entire file
+- avoid to double free memory point
+- check for fuction input
+- atoi v.s. strtol
+- append log to a log file
+- hexdump
+- printk
+- scanf and ignore the remaining
+- timer</p>
+<ul>
+<li>Queue</li>
+</ul>
+<h2 id="library">Library</h2>
+<ul>
+<li>enable verbose for libcurl</li>
+<li>evhttpd of libevent</li>
+</ul>
 <h2 id="resource">Resource</h2>
-<h2 id="c">C 語言入門</h2>
 <p><a href="https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx">C 語言入門</a></p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=my-0xCJNgoM&amp;ab_channel=FeisStudio">【C 語言入門】20.4 - 使用 scanf 讀入資料的問題</a></li>
 </ul>
-<h2 id="c_1">你所不知道的 C 語言</h2>
+<h2 id="c">你所不知道的 C 語言</h2>
 <p><a href="https://www.youtube.com/watch?v=H4Efd9zN00A&amp;ab_channel=.GUTS">你所不知道的 C 語言：技巧篇 (2017-03-20)</a></p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=lUFdjk8Nmbg&amp;ab_channel=.GUTS">你所不知道的 C 語言：技巧篇 (2019-07-11)</a></li>

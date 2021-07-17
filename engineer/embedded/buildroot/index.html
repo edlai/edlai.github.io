@@ -987,14 +987,14 @@
 <p>Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you use Windows OS, you can programming image to SD card by using <a href="https://rufus.ie/"><code>Rufus</code></a>.</p>
 <h2 id="packages">Packages</h2>
 <h3 id="add-one-single-package-manually">Add one single package manually</h3>
-<p>Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code> </p>
-<div class="highlight"><pre><span></span><code>$ make tcpdump
-$ ls -lah output/target/usr/bin/tcpdump
--rwxr-xr-x <span class="m">1</span> ed ed <span class="m">1</span>.2M Jul  <span class="m">3</span> <span class="m">20</span>:48 output/target/usr/bin/tcpdump
+<p>Use <code>make &lt;PKG&gt;</code> to build package, there is an examples to build one single package <code>tcpdump</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make tcpdump
+<span class="gp">$ </span>ls -lah output/target/usr/bin/tcpdump
+<span class="go">-rwxr-xr-x 1 ed ed 1.2M Jul  3 20:48 output/target/usr/bin/tcpdump</span>
 </code></pre></div>
 <p>If you would like to rebuild it again, press <code>&lt;PKG&gt;-dirclean</code> the <code>&lt;PKG&gt;-rebuild</code></p>
-<div class="highlight"><pre><span></span><code>$ make tcpdump-dirclean
-$ make tcpdump-rebuild
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make tcpdump-dirclean
+<span class="gp">$ </span>make tcpdump-rebuild
 </code></pre></div>
 <h3 id="add-some-useful-packages">Add some useful packages</h3>
 <p>There are some useful packages and its location when pressing <code>make menuconfig</code>. Consider to enable them then make the image again.</p>
@@ -1008,15 +1008,15 @@ $ make tcpdump-rebuild
 </ul>
 <h3 id="add-your-first-package">Add Your first Package</h3>
 <p>Package file Layout</p>
-<div class="highlight"><pre><span></span><code>package
-├── Config.in
-└── hello
-    ├── Config.in
-    ├── hello.mk
-    └── src
-        ├── .gitignore
-        ├── hello.c
-        └── Makefile
+<div class="highlight"><pre><span></span><code><span class="go">package</span>
+<span class="go">├── Config.in</span>
+<span class="go">└── hello</span>
+<span class="go">    ├── Config.in</span>
+<span class="go">    ├── hello.mk</span>
+<span class="go">    └── src</span>
+<span class="go">        ├── .gitignore</span>
+<span class="go">        ├── hello.c</span>
+<span class="go">        └── Makefile</span>
 </code></pre></div>
 <p>package/Config.in: add <code>Misc</code></p>
 <div class="highlight"><pre><span></span><code><span class="err">menu</span> <span class="s2">"Misc"</span>
@@ -1046,7 +1046,7 @@ $ make tcpdump-rebuild
 <span class="k">$(</span><span class="nv">eval</span> <span class="k">$(</span><span class="nv">generic-package</span><span class="k">))</span>
 </code></pre></div>
 <p>package/hello/src/.gitignore</p>
-<div class="highlight"><pre><span></span><code>hello
+<div class="highlight"><pre><span></span><code><span class="go">hello</span>
 </code></pre></div>
 <p>package/hello/src/hello.c</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -1069,25 +1069,25 @@ $ make tcpdump-rebuild
         rm hello
 </code></pre></div>
 <p>Manually</p>
-<div class="highlight"><pre><span></span><code>$ make hello-dirclean
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make hello-dirclean
 
-$ make hello-rebuild
+<span class="gp">$ </span>make hello-rebuild
 
-$ tree output/build/hello-1.0/
-output/build/hello-1.0/
-├── hello
-├── hello.c
-└── Makefile
+<span class="gp">$ </span>tree output/build/hello-1.0/
+<span class="go">output/build/hello-1.0/</span>
+<span class="go">├── hello</span>
+<span class="go">├── hello.c</span>
+<span class="go">└── Makefile</span>
 
-$ make hello-install
+<span class="gp">$ </span>make hello-install
 
-$ file output/target/usr/bin/hello
-output/target/usr/bin/hello: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped
+<span class="gp">$ </span>file output/target/usr/bin/hello
+<span class="go">output/target/usr/bin/hello: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped</span>
 </code></pre></div>
 <p>Build Image</p>
-<div class="highlight"><pre><span></span><code>$ make raspberrypi3_64_defconfig           # &lt; = (Optional)
-$ echo 'BR2_PACKAGE_HELLO=y' &gt;&gt; .config
-$ make BR2_JLEVEL=2
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make raspberrypi3_64_defconfig           <span class="c1"># &lt; = (Optional)</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'BR2_PACKAGE_HELLO=y'</span> &gt;&gt; .config
+<span class="gp">$ </span>make <span class="nv">BR2_JLEVEL</span><span class="o">=</span><span class="m">2</span>
 </code></pre></div>
 <p>Program Image to SD card and Power on PRI3, run <code>hello</code> in Traget Board.</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>hello
@@ -1095,14 +1095,14 @@ $ make BR2_JLEVEL=2
 </code></pre></div>
 <h2 id="linux-kernel">Linux Kernel</h2>
 <p>There are the commands for make linux kerenl.</p>
-<div class="highlight"><pre><span></span><code>$ make linux-menuconfig
-$ make linux-rebuild
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>make linux-menuconfig
+<span class="gp">$ </span>make linux-rebuild
 </code></pre></div>
 <h2 id="busybox">Busybox</h2>
-<p>There are the commands to make busybox. Use <code>mkfifo</code> as an example, try to step into <code>Coreutils &gt; mkfifo</code> and rebuild busybox.
-<div class="highlight"><pre><span></span><code>$ busybox-menuconfig
-$ make busybox-rebuild
-</code></pre></div></p>
+<p>There are the commands to make busybox. Use <code>mkfifo</code> as an example, try to step into <code>Coreutils &gt; mkfifo</code> and rebuild busybox.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>busybox-menuconfig
+<span class="gp">$ </span>make busybox-rebuild
+</code></pre></div>
 <h2 id="qemu">Qemu</h2>
 <h3 id="build">Build</h3>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>make clean
@@ -1152,7 +1152,6 @@ $ make busybox-rebuild
 <li><a href="https://www.cnblogs.com/arnoldlu/p/9553995.html">buildroot使用介绍</a></li>
 <li><a href="https://wiki.t-firefly.com/en/Firefly-RK3399/debug.html">Buildroot development</a></li>
 </ul>
-<p>~~ TBD~~~</p>
 </article>
 </div>
 </div>
