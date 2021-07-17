@@ -1,9 +1,33 @@
-# C (Basic)
+# Linux C
 
+## Code Snippets
+
+- the usages of pointer
+
+```
+$ sudo apt-get install cdecl
+$ explain char *(*fptab[])(int)
+```
+- opts
+- unset, autofree
+- revise process name
+- read an entire file
+- double free memory point
+- null detection for fuction call: const
+- atoi and strtol
+- append log to a log file
+- hexdump
+- printk
+- scanf and ignore the remaining
+- timer
+
+## Library
+
+- enable verbose for libcurl
+- evhttpd of libevent
 
 ## Resource
 
-## C 語言入門
 
 [C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
 
