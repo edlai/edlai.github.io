@@ -8,18 +8,24 @@
 $ sudo apt-get install cdecl
 $ explain char *(*fptab[])(int)
 ```
+- gcc and glibc versions
+- endian
+- framebuffer
+- volu
 - opts
 - unset, autofree
 - revise process name
 - read an entire file
-- double free memory point
-- null detection for fuction call: const
-- atoi and strtol
+- avoid to double free memory point
+- check for fuction input
+- atoi v.s. strtol
 - append log to a log file
 - hexdump
 - printk
 - scanf and ignore the remaining
 - timer
+
+- Queue
 
 ## Library
 
