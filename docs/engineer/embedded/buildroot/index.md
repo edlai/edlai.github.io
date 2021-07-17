@@ -14,7 +14,7 @@ There are some resources for buildroot.
 
 Download source code and set configuration to Raspberry Pi 3, then make it.
 
-```console
+``` console
 $ mkdir br2
 $ cd br2
 $ wget https://buildroot.org/downloads/buildroot-2021.05.tar.bz2
@@ -32,9 +32,9 @@ Programming image to SD card. Insert SD card to RPI3 and power on RPI3. If you u
 
 ### Add one single package manually
 
-Use `make <PKG>` to build package, there is an examples to build one single package `tcpdump` 
+Use `make <PKG>` to build package, there is an examples to build one single package `tcpdump`
 
-```bash
+``` console
 $ make tcpdump
 $ ls -lah output/target/usr/bin/tcpdump
 -rwxr-xr-x 1 ed ed 1.2M Jul  3 20:48 output/target/usr/bin/tcpdump
@@ -42,7 +42,7 @@ $ ls -lah output/target/usr/bin/tcpdump
 
 If you would like to rebuild it again, press `<PKG>-dirclean` the `<PKG>-rebuild`
 
-```bash
+``` console
 $ make tcpdump-dirclean
 $ make tcpdump-rebuild
 ```
@@ -63,7 +63,7 @@ There are some useful packages and its location when pressing `make menuconfig`.
 
 Package file Layout
 
-```
+``` console
 package
 ├── Config.in
 └── hello
@@ -114,13 +114,13 @@ $(eval $(generic-package))
 
 package/hello/src/.gitignore
 
-```
+``` console
 hello
 ```
 
 package/hello/src/hello.c
 
-```c
+``` c
 #include <stdio.h>
 
 int main(void)
@@ -132,7 +132,7 @@ int main(void)
 
 package/hello/src/Makefile
 
-```makefile
+``` makefile
 CC = gcc
 
 .PHONY: clean
@@ -146,7 +146,7 @@ clean:
 
 Manually
 
-```
+``` console
 $ make hello-dirclean
 
 $ make hello-rebuild
@@ -166,7 +166,7 @@ output/target/usr/bin/hello: ELF 64-bit LSB shared object, ARM aarch64, version 
 
 Build Image
 
-```
+``` console
 $ make raspberrypi3_64_defconfig           # < = (Optional)
 $ echo 'BR2_PACKAGE_HELLO=y' >> .config
 $ make BR2_JLEVEL=2
@@ -174,7 +174,7 @@ $ make BR2_JLEVEL=2
 
 Program Image to SD card and Power on PRI3, run `hello` in Traget Board.
 
-```console
+``` console
 # hello
 buildroot helloworld
 ```
@@ -183,7 +183,7 @@ buildroot helloworld
 
 There are the commands for make linux kerenl.
 
-```
+``` console
 $ make linux-menuconfig
 $ make linux-rebuild
 ```
@@ -191,7 +191,8 @@ $ make linux-rebuild
 ## Busybox
 
 There are the commands to make busybox. Use `mkfifo` as an example, try to step into `Coreutils > mkfifo` and rebuild busybox.
-```
+
+``` console
 $ busybox-menuconfig
 $ make busybox-rebuild
 ```
@@ -201,7 +202,7 @@ $ make busybox-rebuild
 
 ### Build
 
-```console
+``` console
 $ make clean
 $ make qemu_arm_vexpress_defconfig
 $ make
@@ -214,7 +215,7 @@ run it via `qemu-system-arm`.
 
 <!-- -nographic  -->
 
-```console
+``` console
 $ qemu-system-arm -M vexpress-a9 -smp 1 -m 256 -kernel output/images/zImage -dtb output/images/vexpress-v2p-ca9.dtb -drive file=output/images/rootfs.ext2,if=sd,format=raw -append "console=ttyAMA0,115200 root=/dev/mmcblk0" -serial stdio -net nic,model=lan9118 -net user -nographic
 ```
 ### Result
@@ -222,7 +223,7 @@ $ qemu-system-arm -M vexpress-a9 -smp 1 -m 256 -kernel output/images/zImage -dtb
 - Username: root
 - Password: [blank]
 
-```console
+``` console
 ...
 udhcpc: lease of 10.0.2.15 obtained, lease time 86400
 deleting routers
@@ -256,5 +257,3 @@ lo        Link encap:Local Loopback
 
 - [buildroot使用介绍](https://www.cnblogs.com/arnoldlu/p/9553995.html)
 - [Buildroot development](https://wiki.t-firefly.com/en/Firefly-RK3399/debug.html)
-
-~~ TBD~~~
