@@ -7,7 +7,7 @@ typedef union {
 } EndianTest;
 
 // 輸出位元組順序
-void printBytes(uint32_t x) {
+void dump(uint32_t x) {
   EndianTest et;
   et.l = x;
   for (int i = 0; i < 4; i++) {
@@ -18,9 +18,9 @@ void printBytes(uint32_t x) {
 
 int main() {
   uint32_t x = 0x12345678;
-  printf("0x%X 在記憶體中的儲存順序：", x);
-  printBytes(x);
+  printf("0x%X unsigned integer hostlong：", x);
+  dump(x);
   uint32_t n = htonl(x);
-  printf("0x%X 在網路中的傳輸順序：  ", x);
-  printBytes(n);
+  printf("0x%X to network byte order：  ", x);
+  dump(n);
 }
