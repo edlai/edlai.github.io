@@ -126,13 +126,6 @@ Industrial Instrument	                                         |                
 
 - [Surveillance Systems ](poc/cam) `ffmpeg`
 
-## Research and development (R&D)
-
-The products (Wireless Access Points and Cellular Routers) I developed with my colleagues before
-
-- [Kyocera KR1 EVDO Router ODM](https://wikidevi.com/wiki/Kyocera_KR1) (with 1 colleague in 2005 B.C.) `mips-arch` [`emulator`](http://support.dlink.ca/Emulators/kr1/h_wizard.html)
-- [D-Link DIR-450 EVDO Router ODM](https://wikidevi.com/wiki/D-Link_DIR-450_rev_A1) (with 2 colleagues in 2006 B.C.) `x86-arch` <!--[`emulator`](http://www.support.dlink.ca/emulators/dir450/103/login.htm)-->
-- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86-arch` <!--[`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
 
 
 
