@@ -1,13 +1,13 @@
 site_name: Ed's Wiki  🦉
 site_url: https://edlai.github.io/
 nav:
-    - Home:
-        - 'About Me': 'index.md'
-        - 'About Here': '/#about-here'
-        - 'Academic Background': '/#academic-background'
-        - 'Work Experience': '/#work-experience'
-        - 'Technician Certificate': '/#technician-certificate'
-        - 'Technician Training': '/#technician-training'
+    - Home: 'index.md'
+ #      - 'About Me': 'index.md'
+ #      - 'About Here': '/#about-here'
+ #       - 'Academic Background': '/#academic-background'
+ #       - 'Work Experience': '/#work-experience'
+ #       - 'Technician Certificate': '/#technician-certificate'
+ #       - 'Technician Training': '/#technician-training'
     - 'Engineering':
         - 'Development Tools':
           - 'Softwares Tools': 'engineer/dev/softwares/index.md'
@@ -39,11 +39,9 @@ nav:
 #         - 'Testbed Setup': 'dev/testbed/index.md'
 #       - 'Leadership': 'leadership.md'
         - 'Embedded Linux':
-          - 'SDK Framework':
-            - 'Buildroot': 'engineer/embedded/buildroot/index.md'
-            - 'OpenWRT': 'engineer/embedded/openwrt/index.md'
-          - 'Application':
-            - 'Surveillance Camera': 'engineer/embedded/camera/cloud/index.md'
+          - 'Buildroot SDK Framework': 'engineer/embedded/buildroot/index.md'
+          - 'OpenWRT SDK Framework': 'engineer/embedded/openwrt/index.md'
+          - 'Surveillance Camera': 'engineer/embedded/camera/cloud/index.md'
 #          - 'Production':
 #            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
         - 'Linux Kernel':
