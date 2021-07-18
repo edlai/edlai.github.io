@@ -34,10 +34,10 @@ $ explain char *(*fptab[])(int)
 
 ## Resource
 
+- [The Linux Programming Interface](https://man7.org/tlpi/code/online/index.html)
 
-[C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
-
-- [【C 語言入門】20.4 - 使用 scanf 讀入資料的問題](https://www.youtube.com/watch?v=my-0xCJNgoM&ab_channel=FeisStudio)
+- [C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
+  - [【C 語言入門】20.4 - 使用 scanf 讀入資料的問題](https://www.youtube.com/watch?v=my-0xCJNgoM&ab_channel=FeisStudio)
 
 ## 你所不知道的 C 語言
 
