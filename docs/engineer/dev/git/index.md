@@ -6,12 +6,18 @@ you can just apply a free account from `Gitlab`, `GitLab` or `Azure DevOps`.
 
 ### Useful Git commands
 
-- Basic Git commands
+Basic Git commands
 
-```console
+``` console
 $ git log
 $ git status
 $ git diff <FILENAME>
+```
+
+Export Git log to a file
+
+```
+$ git log > log.txt
 ```
 
 - Get Git log time
