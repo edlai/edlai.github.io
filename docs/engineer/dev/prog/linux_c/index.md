@@ -2,6 +2,16 @@
 
 ## Code Snippets
 
+### Variant
+
+- volatile, alignment
+### Goto
+
+- setjump, longjump
+### String
+
+- [asprintf]()
+### Point
 - the usages of pointer
 
 ```
@@ -35,6 +45,7 @@ $ explain char *(*fptab[])(int)
 ## Resource
 
 - [The Linux Programming Interface](https://man7.org/tlpi/code/online/index.html)
+- [軟件開發平台及語言筆記大全(超詳細)](https://www.cntofu.com/book/46/index.html)
 
 - [C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
   - [【C 語言入門】20.4 - 使用 scanf 讀入資料的問題](https://www.youtube.com/watch?v=my-0xCJNgoM&ab_channel=FeisStudio)
