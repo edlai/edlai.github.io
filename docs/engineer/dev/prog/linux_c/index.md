@@ -1,16 +1,30 @@
-# Linux C
+# C Programming Tips
 
 ## Code Snippets
 
 ### Variant
 
 - volatile, alignment
+
 ### Goto
 
-- setjump, longjump
+- goto, setjump, longjump
+
 ### String
 
+- [reverse a string]()
 - [asprintf]()
+- append string
+- insert string
+
+
+### Number
+
+- [strtol v.s. atoi](src/strtol_and_atoi/main.c)
+
+### File
+
+- read an entire file
 ### Point
 - the usages of pointer
 
@@ -25,7 +39,7 @@ $ explain char *(*fptab[])(int)
 - opts
 - unset, autofree
 - revise process name
-- read an entire file
+
 - avoid to double free memory point
 - check for fuction input
 - atoi v.s. strtol
@@ -50,10 +64,7 @@ $ explain char *(*fptab[])(int)
 - [C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
   - [【C 語言入門】20.4 - 使用 scanf 讀入資料的問題](https://www.youtube.com/watch?v=my-0xCJNgoM&ab_channel=FeisStudio)
 
-## 你所不知道的 C 語言
+-[你所不知道的 C 語言：技巧篇 (2017-03-20)](https://www.youtube.com/watch?v=H4Efd9zN00A&ab_channel=.GUTS)
+  - [你所不知道的 C 語言：技巧篇 (2019-07-11)](https://www.youtube.com/watch?v=lUFdjk8Nmbg&ab_channel=.GUTS)
 
-[你所不知道的 C 語言：技巧篇 (2017-03-20)](https://www.youtube.com/watch?v=H4Efd9zN00A&ab_channel=.GUTS)
-
-- [你所不知道的 C 語言：技巧篇 (2019-07-11)](https://www.youtube.com/watch?v=lUFdjk8Nmbg&ab_channel=.GUTS)
-
-## Jserv Homework
+- Jserv Homework

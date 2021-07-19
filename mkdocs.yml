@@ -26,8 +26,8 @@ nav:
 #            - 'Docker Compose': 'engineer/dev/docker/compose/index.md'
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
-#          - 'Programming Skills':
-#            - 'Linux C': 'engineer/dev/prog/linux_c/index.md'
+          - 'Programming Tips':
+            - 'C Programming Tips': 'engineer/dev/prog/linux_c/index.md'
 #           - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
 #           - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'Conversation Skills':
