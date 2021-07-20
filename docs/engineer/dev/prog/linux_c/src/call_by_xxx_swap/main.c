@@ -35,15 +35,15 @@ int main(void)
   int x = 2, y = 3;
   printf("x: %d, y: %d\n", x, y);
 
-  // incorrect method to swap two value
+  // incorrect method to swap two values
   swap_call_by_value(x, y);
   printf("x: %d, y: %d\n", x, y);
 
-  // correct method to swap two value
+  // correct method to swap two values by using temporary variable
   swap_call_by_address(&x, &y);
   printf("x: %d, y: %d\n", x, y);
 
-  // correct method to swap two value with xor
+  // correct method to swap two value by using xor
   swap_call_by_address_xor(&x, &y);
   printf("x: %d, y: %d\n", x, y);
 

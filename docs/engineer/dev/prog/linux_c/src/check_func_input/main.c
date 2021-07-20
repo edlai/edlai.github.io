@@ -7,8 +7,8 @@ static int my_strncpy(char *destination, const char *source, size_t num)
 
   //printf("%d\n", (int)strlen(source));
 
-  if (!destination || !*source || strlen(source) < num)
-  { // < = better to check function input
+  if (!destination || !*source)
+  {
     printf("error\n");
     return 0;
   }
@@ -23,13 +23,14 @@ static int my_strncpy(char *destination, const char *source, size_t num)
   return count;
 }
 
-// Implement `strncpy()` function in C
 int main(void)
 {
   char *source = "12345678901234567890";
+  
+  // < = better to empty array using {0}. not {'\0'}  to save running time
   char destination[21] = {0};
 
-  printf("destination before: (%02ld) ", strlen(destination));
+  printf("destination before: (0x%p)(%02ld) ", destination, strlen(destination));
   for (int i = 0; i < 20; i++)
   {
     printf("%02X ", destination[i]);
@@ -40,7 +41,7 @@ int main(void)
 
   if (num == my_strncpy(destination, source, num))
   {
-    printf("destination after:  (%02ld) ", strlen(destination));
+    printf("destination after:  (0x%p)(%02ld) ", destination, strlen(destination));
     for (int i = 0; i < 20; i++)
     {
       printf("%02X ", destination[i]);
