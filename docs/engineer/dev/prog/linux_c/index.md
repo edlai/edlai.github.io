@@ -1,5 +1,10 @@
 # C Programming Tips
 
+
+## Resource
+
+- [data-structures-and-algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
+
 ## Code Snippets
 
 ### Keyword
@@ -56,6 +61,8 @@ $ explain char *(*fptab[])(int)
 - timer
 
 - Queue
+
+
 
 ## Library
 

@@ -3,16 +3,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned int uint32_t;
+typedef unsigned char u8;
+typedef unsigned short int u16;
+typedef unsigned int u18;
 typedef unsigned __int64 uint64_t;
 
 int main(void)
 {
-  char str[] = "Hello";
-  char *p = str;
-  int n = 10;
+
 
   printf("%zu %zu %zu", sizeof(str), sizeof(p), sizeof(n));
 
