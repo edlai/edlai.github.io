@@ -4,6 +4,7 @@
 ## Resource
 
 - [data-structures-and-algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
+- [log2base2](https://www.log2base2.com/)
 
 ## Code Snippets
 
