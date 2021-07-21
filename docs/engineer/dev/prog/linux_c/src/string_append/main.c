@@ -1,5 +1,11 @@
 #define _GNU_SOURCE
 
+/*
+int vasprintf(char **strp, const char *fmt, va_list ap);
+int asprintf(char **strp, const char *fmt, ...);
+int snprintf (char * s, size_t n, const char * format, ... );
+*/
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,12 +31,22 @@ int util_str_append(char **buf, const char *format, ...)
 
   snprintf(new_buf, strnlen(old_buf, UINT_MAX) + strnlen(str, UINT_MAX) + 1, "%s%s", old_buf, str);
 
-  if (*buf)
+  if (*buf) {
     free(*buf);
+    *buf = NULL;
+  }
   *buf = new_buf;
 
-  free(old_buf);
-  free(str);
+  if (old_buf) {
+    free(old_buf);
+    old_buf = NULL;
+  }
+
+  if (str) {
+    free(str);
+    str = NULL;
+  }
+
 
   return 0;
 }
@@ -49,6 +65,14 @@ int main(void)
   }
 
   printf("%s\n", all_string);
+
+  if (all_string)
+  {
+    free(all_string);
+    all_string = NULL;
+  }
+
+  printf("well done\n");
 
   return 0;
 }
