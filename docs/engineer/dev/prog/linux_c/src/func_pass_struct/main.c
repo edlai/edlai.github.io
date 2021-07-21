@@ -1,0 +1,1 @@
+//https://iq.opengenus.org/pass-structure-to-function-in-c/

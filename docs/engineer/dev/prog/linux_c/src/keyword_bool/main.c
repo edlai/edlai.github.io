@@ -14,7 +14,6 @@ __bool_true_false_are_defined which expands to 1.
 
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

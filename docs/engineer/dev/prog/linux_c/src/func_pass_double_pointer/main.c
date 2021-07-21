@@ -57,28 +57,39 @@ void my_hexdump(void *mem, unsigned int len)
 // pass double point to a function
 int my_strcpy(char **dest, char const *src, int len)
 {
-  char *p = malloc(len + 1); /* +1 for \0 */
 
-  my_hexdump((void *)src, len);
+  printf("destination (%p): %s\n", dest, *dest);
+
+  char *p = calloc(0, sizeof(char) * (len + 1)); /* +1 for \0 */
 
   if (p == NULL)
     return 0;
 
-  strncpy(p, src, len + 1);
+  //strncpy(p, src, len + 1);
+  for (int i = 0; i < len + 1; i++)
+  {
+    *(p + i) = *(src + i);
+    printf("%02d [%p] %02X %c\n", i, p + i, *(p + i), *(p + i));
+  }
+
   *dest = p;
+
+  my_hexdump((void *)src, len);
+
   return 1;
 }
 
 int main(void)
 {
-  char *source = "Hello, world!";
+  char *source = "Hello, world! Hello, world! Hello, world! Hello, world!";
+  // sachar *destination; destination = NULL;
   char *destination = NULL;
 
   printf("source      (%p): %s\n", source, source);
-  printf("destination (%p): %s\n", destination, destination);
+  printf("destination (%p): %s\n", &destination, destination);
 
   if (my_strcpy(&destination, source, strnlen(source, UINT_MAX)))
-    printf("destination(%p): %s\n", destination, destination);
+    printf("destination (%p): %s\n", &destination, destination);
   else
     fprintf(stderr, "out of memory\n");
 

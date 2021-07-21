@@ -10,9 +10,7 @@
 
 ### Keyword
 
-auto break case char const continue default do double else enum extern float
-for goto if int long register return short signed sizeof static struct switch
-typedef union unsigned void volatile while
+auto break case char const continue default do double else enum extern float for goto if int long register return short signed sizeof static struct switch typedef union unsigned void volatile while
 
 ### Variant
 
@@ -29,6 +27,13 @@ typedef union unsigned void volatile while
 - append string
 - insert string
 
+
+### Function
+
+- pass a pointer to a function
+- pass a dobule-pointer to a function
+- pass a triple-pointer to a function
+- pass a structure to to a function
 
 ### Number
 
