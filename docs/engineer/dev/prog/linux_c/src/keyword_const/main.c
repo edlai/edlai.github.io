@@ -7,4 +7,4 @@ int * const *      = a pointer to a constant pointer(常數指標) to an integer
 int const * *      = a pointer to a pointer to a constant integer(常數)
 int const *const * = a pointer to a constant pointer to a constant integer(常數)
 
-int const 和const int 是一樣的。但const * 和* const 是不一樣的。
+int const 和 const int 是一樣的。但 const * 和 * const 是不一樣的。
