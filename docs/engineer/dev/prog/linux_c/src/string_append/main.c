@@ -47,22 +47,23 @@ int util_str_append(char **buf, const char *format, ...)
     str = NULL;
   }
 
-
   return 0;
 }
 
-#define str_count (sizeof(a) / sizeof(a[0]))
+#define keys (sizeof(key) / sizeof(key[0]))
 
 int main(void)
 {
 
   char *all_string = NULL;
-  char a[][10] = {"one", "two", "three", "four", "five", "six"};
+  char key[][64] = {"Accept", "Accept-Charset", "Accept-Encoding"};
+  char val[][64] = {"Accept: text/plain", "Accept-Charset: utf-8", "Accept-Encoding: gzip, deflate"};
 
-  for (int i = 0; i < str_count; i++)
+  for (int i = 0; i < keys; i++)
   {
-    util_str_append(&all_string, "%s ", a[i]);
+    util_str_append(&all_string, "%s: %s\r\n", key[i], val[i]);
   }
+  util_str_append(&all_string, "\r\n");
 
   printf("%s\n", all_string);
 
