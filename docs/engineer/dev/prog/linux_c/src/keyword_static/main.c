@@ -1,15 +1,28 @@
 #include <stdio.h>
 
-int global_var;
-
-int main()
+// this function only belong this scope
+static int static_fun_demo()
 {
-  int local_var;
+  printf("static_fun_demo: this function only belong this scope\n");
+  return 0;
+}
 
-  // check the value of global_var (always zero)
-  printf("global_var: %d\n", global_var);
+int static_var_demo()
+{
+  static int a = 0;
+  printf("a = %d\n", a++);
 
-  // check the value of local_var (maybe non-zero)
-  printf("local_var: %d\n", local_var);
+  return 0;
+}
+
+int main(void)
+{
+
+  static_fun_demo();
+  for (int i = 0; i < 5; i++)
+  {
+    static_var_demo();
+  }
+
   return 0;
 }

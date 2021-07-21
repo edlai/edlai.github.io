@@ -30,14 +30,17 @@ int main()
     //print the result
     printf("sum = %d\n", sum);
 
-    //deallocate the memory
+    // confirm the point address is not empty before deallocating the memory
     if (ptr)
     {
+      // deallocating the memory
       free(ptr);
-      ptr = NULL; // < = Aborted (core dumped) if uncomment this
+      // point to NULL
+      ptr = NULL;
     }
   }
 
-  free(ptr); // < = this's OK if double free the point again
+  // it will not cause segmentation fault if double free the point again
+  free(ptr);
   return 0;
 }

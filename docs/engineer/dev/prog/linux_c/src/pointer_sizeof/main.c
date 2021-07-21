@@ -14,7 +14,7 @@ int main(void)
   char *p = str;
   int n = 10;
 
-  printf("%zu %zu %zu", sizeof(str), sizeof(p), sizeof(n));
+  printf("%zu %zu %zu", sizeof(str), sizeof(p), sizeof(n));  // 6, 8, 4
 
   // int a[] = [ 6, 7, 8, 9, 10 ];
   //   int *p = a;
