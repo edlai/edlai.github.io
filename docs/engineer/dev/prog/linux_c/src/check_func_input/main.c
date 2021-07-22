@@ -26,7 +26,7 @@ static int my_strncpy(char *destination, const char *source, size_t num)
 int main(void)
 {
   char *source = "12345678901234567890";
-  
+
   // < = better to empty array using {0}. not {'\0'}  to save running time
   char destination[21] = {0};
 

@@ -11,7 +11,6 @@ typedef unsigned __int64 uint64_t;
 int main(void)
 {
 
-
   printf("%zu %zu %zu", sizeof(str), sizeof(p), sizeof(n));
 
   // int a[] = [ 6, 7, 8, 9, 10 ];
