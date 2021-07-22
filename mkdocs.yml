@@ -45,7 +45,7 @@ nav:
 #          - 'Production':
 #            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
         - 'Linux Kernel':
-          - 'Rebuild Kernel': 'engineer/kernel/rebuild/index.md'
+          - 'Rebuild Linux Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
           - 'Amarisoft SDR': 'engineer/cell/sdr/index.md'
         - 'Scripting language':
