@@ -47,7 +47,7 @@ nav:
         - 'Linux Kernel':
           - 'Rebuild Linux Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
-          - 'Amarisoft SDR': 'engineer/cell/sdr/index.md'
+          - 'Amarisoft SDR LTE 100': 'engineer/cell/sdr/index.md'
         - 'Scripting language':
           - 'TCL':
             - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'

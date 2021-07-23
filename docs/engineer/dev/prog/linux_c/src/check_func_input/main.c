@@ -7,9 +7,11 @@ static int my_strncpy(char *destination, const char *source, size_t num)
 
   //printf("%d\n", (int)strlen(source));
 
-  if (!destination || !*source)
+  // TIP: confirm inputs are not null
+  if ( !source || !*source)
   {
-    printf("error\n");
+    printf("source: %p\n", source);
+    printf("input error\n");
     return 0;
   }
 
@@ -25,24 +27,44 @@ static int my_strncpy(char *destination, const char *source, size_t num)
 
 int main(void)
 {
-  char *source = "12345678901234567890";
+  //char *source = "01234567890123456789";
+  //char *source = NULL;
+  char *source;
 
-  // < = better to empty array using {0}. not {'\0'}  to save running time
+  // TIP: use {0} to empty ({'\0'} is OK but to save running time
   char destination[21] = {0};
 
-  printf("destination before: (0x%p)(%02ld) ", destination, strlen(destination));
-  for (int i = 0; i < 20; i++)
+  printf("                                           ");
+  for (int i = 0; i <= 20 ; i++)
   {
-    printf("%02X ", destination[i]);
+    printf("%02d ", i + 1 );
   }
   printf("\n");
 
+#if (0)
+  printf("source            : (0x%p)(%02ld) ", source, strlen(source));
+  for (int i = 0; i <= strlen(source) ; i++)
+  {
+    printf("%02X ", source[i]);
+  }
+  printf("\n");
+#endif
+
+  printf("destination before: (0x%p)(%02ld) ", destination, strlen(destination));
+  for (int i = 0; i < 21; i++)
+  {
+    printf("%02X ", destination[i]);
+  }
+
+  printf("\n");
+
+  // TIP: confirm
   size_t num = 6;
 
   if (num == my_strncpy(destination, source, num))
   {
     printf("destination after:  (0x%p)(%02ld) ", destination, strlen(destination));
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 21; i++)
     {
       printf("%02X ", destination[i]);
     }

@@ -1,12 +1,16 @@
+// an example for swap 2 values with call by address
+
 #include <stdio.h>
 
-void swap_call_by_value(int a, int b) // call by value
+// call by value
+void swap_call_by_value(int a, int b)
 {
   int tmp = a;
   a = b;
   b = tmp;
 }
 
+// call by address
 void swap_call_by_address(int *p, int *q)
 {
   int tmp = *p;
@@ -14,14 +18,22 @@ void swap_call_by_address(int *p, int *q)
   *q = tmp;
 }
 
-void swap_call_by_address_xor(int *p, int *q)
+// call by address by using xor
+void swap_call_by_address_xor_1(int *p, int *q)
 {
   *p ^= *q;
   *q ^= *p;
   *p ^= *q;
 }
 
+// call by address by using xor
+void swap_call_by_address_xor_2(int *p, int *q)
+{
+  *p ^= *q ^= *p ^= *q;
+}
+
 #if (0)
+// there is no call by reference in C
 void swap_call_by_reference(int &a, int &b)
 {
   int tmp = a;
@@ -44,7 +56,10 @@ int main(void)
   printf("x: %d, y: %d\n", x, y);
 
   // correct method to swap two value by using xor
-  swap_call_by_address_xor(&x, &y);
+  swap_call_by_address_xor_1(&x, &y);
+  printf("x: %d, y: %d\n", x, y);
+
+  swap_call_by_address_xor_2(&x, &y);
   printf("x: %d, y: %d\n", x, y);
 
 #if (0)
