@@ -1,7 +1,11 @@
 // https://iter01.com/577425.html
-// https://zhuanlan.zhihu.com/p/361750240
+// https://zhuanlan.zhihu.com/p/361750240 圖解 | 深入揭秘 epoll 是如何實現 IO 多路復用的！
 // https://segmentfault.com/a/1190000003063859
-
+// https://stackify.com/best-way-to-load-test-a-web-server/
+// https://tigercosmos.xyz/post/2019/11/algorithm/red-black-tree/
+// https://medium.com/@fcamel/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%92%8C-non-blocking-io-a43881081aac 非同步程式設計和 non-blocking IO
+// https://github.com/aerospike-examples/async-c-tutorial aerospike-examples/async-c-tutorial
+// https://github.com/andsmedeiros/uevloop andsmedeiros/uevloop
 /*
 int epoll_create(int size); 創建一個 epoll 對象
 int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event); 向 epoll 對象中添加要管理的連接
@@ -146,6 +150,7 @@ int main(int ac, char *av[])
     // TIP: 可以用於等待IO事件。如果當前沒有可用的事件，這個函數會阻塞調用線程。
     nfds = epoll_wait(epollfd, events, MAX_EVENTS, -1);
 
+    // step into here if nfds is not NULL
     printf("%lu [%d:%s()] nfds=%d \n", time(0), __LINE__, __func__, nfds);
 
     if (nfds == -1)
