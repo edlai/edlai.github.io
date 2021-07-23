@@ -1,9 +1,14 @@
 // https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html
+// https://linux.die.net/man/3/opterr
+
+// TBD:
+// getopt_long
+// getopt_long_only
 
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <unistd.h> // opterr
 
 int main(int argc, char **argv)
 {

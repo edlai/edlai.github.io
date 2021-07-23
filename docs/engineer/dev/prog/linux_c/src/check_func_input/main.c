@@ -5,8 +5,6 @@
 static int my_strncpy(char *destination, const char *source, size_t num)
 {
 
-  //printf("%d\n", (int)strlen(source));
-
   // TIP: confirm inputs are not null
   if ( !source || !*source)
   {
@@ -73,3 +71,12 @@ int main(void)
 
   return 0;
 }
+
+/*
+$ ./a.out
+                                           01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
+destination before: (0x0x7fff558a3460)(00) 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+source: (nil)
+input error
+
+*/

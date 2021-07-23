@@ -31,7 +31,10 @@ int main()
         //print the result
         printf("sum = %d\n",sum);
 
-        //deallocate the memory
+        //TIP:
+        // 1. confirm ptr is not null
+        // 2. deallocate the memory
+        // 3. point to null
         if (ptr) {
           free(ptr);
           ptr = NULL;                 // < = Aborted (core dumped) if uncomment this
