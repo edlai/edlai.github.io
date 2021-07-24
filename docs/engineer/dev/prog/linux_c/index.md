@@ -8,6 +8,67 @@
 
 ## Code Snippets
 
+### Timer
+
+- sleep: `while(1)` with `sleep(int)`
+
+```
+#include <unistd.h>
+
+       unsigned int sleep(unsigned int seconds);
+```
+
+- alarm: `alarm()` and `signal()`
+
+```
+#include <unistd.h>
+
+unsigned int alarm(unsigned int seconds);
+
+#include <signal.h>
+typedef void (*sighandler_t)(int);
+sighandler_t signal(int signum, sighandler_t handler);
+
+```
+
+- select:
+
+- timer_settime
+
+```
+#include <signal.h>           /* Definition of SIGEV_* constants */
+#include <time.h>
+
+int timer_create(clockid_t clockid, struct sigevent *restrict sevp,
+                 timer_t *restrict timerid);
+
+
+int timer_settime(timer_t timerid, int flags,
+                  const struct itimerspec *restrict new_value,
+                  struct itimerspec *restrict old_value);
+
+      Link with -lrt.
+```
+
+- setitimer:
+
+```
+int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue));
+  - which
+    - ITIMER_REAL : 以系統真實的時間來計算，它送出SIGALRM信號。
+    - ITIMER_VIRTUAL : 以該進程在用戶態下花費的時間來計算，它送出SIGVTALRM信號。
+    - ITIMER_PROF : 以該進程在用戶態下和內核態下所費的時間來計算，它送出SIGPROF信號。
+  - itimerval
+    - itimerval的一個實例
+```
+
+- timerfd
+
+Reference
+
+- [高效 Web 伺服器開發](https://hackmd.io/@sysprog/fast-web-server)
+
+<!--
 ### Keyword
 
 auto break case char const continue default do double else enum extern float for goto if int long register return short signed sizeof static struct switch typedef union unsigned void volatile while
@@ -42,6 +103,7 @@ auto break case char const continue default do double else enum extern float for
 ### File
 
 - read an entire file
+
 ### Point
 - the usages of pointer
 
@@ -64,7 +126,6 @@ $ explain char *(*fptab[])(int)
 - hexdump
 - printk
 - scanf and ignore the remaining
-- timer
 
 - Queue
 
