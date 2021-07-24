@@ -13,7 +13,8 @@
 #include <sys/time.h>
 #include <sys/timerfd.h>
 
-struct periodic_info {
+struct periodic_info
+{
 	int timer_fd;
 	unsigned long long wakeups_missed;
 };
@@ -52,7 +53,8 @@ static void wait_period(struct periodic_info *info)
 	/* Wait for the next timer event. If we have missed any the
 	   number is written to "missed" */
 	ret = read(info->timer_fd, &missed, sizeof(missed));
-	if (ret == -1) {
+	if (ret == -1)
+	{
 		perror("read timer");
 		return;
 	}
@@ -69,7 +71,8 @@ static void *thread_1(void *arg)
 
 	printf("Thread 1 period 10ms\n");
 	make_periodic(10000, &info);
-	while (1) {
+	while (1)
+	{
 		thread_1_count++;
 		wait_period(&info);
 	}
@@ -82,7 +85,8 @@ static void *thread_2(void *arg)
 
 	printf("Thread 2 period 20ms\n");
 	make_periodic(20000, &info);
-	while (1) {
+	while (1)
+	{
 		thread_2_count++;
 		wait_period(&info);
 	}
@@ -100,6 +104,7 @@ int main(int argc, char *argv[])
 	pthread_create(&t_2, NULL, thread_2, NULL);
 
 	sleep(10);
+
 	printf("thread1 %d iterations\n", thread_1_count);
 	printf("thread2 %d iterations\n", thread_2_count);
 	return 0;

@@ -1,3 +1,5 @@
+// https://blog.richliu.com/2016/09/01/2002/sigalarm-timer_create-%E9%80%A0%E6%88%90-cpu-sys-100-%E7%9A%84%E5%95%8F%E9%A1%8C/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -8,6 +10,7 @@
 #include <time.h>
 #include <sys/epoll.h>
 #include <sys/timerfd.h>
+#include <time.h>
 
 sem_t g_timer_sem_hdlr;
 int timerfd;
@@ -30,20 +33,20 @@ void *sig_epoll_wait(void *ptr)
 
   while (1)
   {
-    numEvent = epoll_wait(epfd, &amp; events, 1, -1);
+    numEvent = epoll_wait(epfd, &events, 1, -1);
 
-    for (i = 0; i & lt; numEvent; i++)
+    for (i = 0; i < numEvent; i++)
     {
 
-      if (epoll_ctl(epfd, EPOLL_CTL_DEL, timerfd, &amp; ev) == -1)
+      if (epoll_ctl(epfd, EPOLL_CTL_DEL, timerfd, &ev) == -1)
         perror("[1] epoll_ctl del");
 
-      if (timerfd_settime(timerfd, 0, &amp; its, NULL) == -1)
+      if (timerfd_settime(timerfd, 0, &its, NULL) == -1)
         perror("[1] timerfd_settime");
 
-      if (epoll_ctl(epfd, EPOLL_CTL_ADD, timerfd, &amp; ev) == -1)
+      if (epoll_ctl(epfd, EPOLL_CTL_ADD, timerfd, &ev) == -1)
         perror("[1] epoll_ctl add");
-      sem_post(&amp; g_timer_sem_hdlr);
+      sem_post(&g_timer_sem_hdlr);
     }
   }
 
@@ -58,11 +61,11 @@ void create_timer(int sig, int msec)
     perror("timerfd_create");
 
   its.it_value.tv_sec = 0;
-  its.it_value.tv_nsec = msec * 1000000;
+  its.it_value.tv_nsec = msec * 10000;
   its.it_interval.tv_sec = its.it_value.tv_sec;
   its.it_interval.tv_nsec = its.it_value.tv_nsec;
 
-  if (timerfd_settime(timerfd, 0, &amp; its, NULL) == -1)
+  if (timerfd_settime(timerfd, 0, &its, NULL) == -1)
     perror("timerfd_settime");
 
   // Create epoll
@@ -70,31 +73,36 @@ void create_timer(int sig, int msec)
   if (epfd == -1)
     perror(" epoll_create ");
 
-  ev.data.ptr = &amp;
+  ev.data.ptr = &sig_timer;
   sig_timer;
   ev.events = EPOLLIN | EPOLLET;
 
   // enable epoll
 
-  if (epoll_ctl(epfd, EPOLL_CTL_ADD, timerfd, &amp; ev) == -1)
+  if (epoll_ctl(epfd, EPOLL_CTL_ADD, timerfd, &ev) == -1)
     perror("[0] epoll_ctl");
 
   // Create Thread
-  pthread_create(&amp; sig_thread, NULL, sig_epoll_wait, NULL);
+  pthread_create(&sig_thread, NULL, sig_epoll_wait, NULL);
 }
 
 void main()
 {
   int i = 0;
-  sem_init(&amp; g_timer_sem_hdlr, 1, 0);
+  sem_init(&g_timer_sem_hdlr, 1, 0);
 
   printf("Create Timer \n");
   create_timer(5566, 5); // ms
   while (1)
   {
-    sem_wait(&amp; g_timer_sem_hdlr);
+    sem_wait(&g_timer_sem_hdlr);
     if ((i % 10000) == 0)
+    {
+      time_t t;
+      time(&t);
+      printf("\n current time is : %s", ctime(&t));
       printf("%s: hello, i=%d\n", __func__, i);
+    }
     i++;
   }
   printf("exited.\n");

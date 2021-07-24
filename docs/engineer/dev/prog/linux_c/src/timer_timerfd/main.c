@@ -39,8 +39,7 @@ print_elapsed_time(void)
     printf("%d.%03d: ", secs, (nsecs + 500000) / 1000000);
 }
 
-int
-main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     struct itimerspec new_value;
     int max_exp, fd;
