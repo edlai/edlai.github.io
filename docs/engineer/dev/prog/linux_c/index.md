@@ -12,30 +12,30 @@
 
 - sleep: `while(1)` with `sleep(int)`
 
-```
+``` c
 #include <unistd.h>
 
-       unsigned int sleep(unsigned int seconds);
+unsigned int sleep(unsigned int seconds);
 ```
 
 - alarm: `alarm()` and `signal()`
 
-```
+``` c
 #include <unistd.h>
 
 unsigned int alarm(unsigned int seconds);
 
 #include <signal.h>
+
 typedef void (*sighandler_t)(int);
 sighandler_t signal(int signum, sighandler_t handler);
-
 ```
 
 - select:
 
 - timer_settime
 
-```
+``` c
 #include <signal.h>           /* Definition of SIGEV_* constants */
 #include <time.h>
 
@@ -47,22 +47,29 @@ int timer_settime(timer_t timerid, int flags,
                   const struct itimerspec *restrict new_value,
                   struct itimerspec *restrict old_value);
 
-      Link with -lrt.
+Link with -lrt.
 ```
 
 - setitimer:
 
-```
+``` c
 int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue));
-  - which
+  * which
     - ITIMER_REAL : 以系統真實的時間來計算，它送出SIGALRM信號。
     - ITIMER_VIRTUAL : 以該進程在用戶態下花費的時間來計算，它送出SIGVTALRM信號。
     - ITIMER_PROF : 以該進程在用戶態下和內核態下所費的時間來計算，它送出SIGPROF信號。
-  - itimerval
+  * itimerval
     - itimerval的一個實例
 ```
 
 - timerfd
+
+``` c
+#include <sys/timerfd.h>
+int timerfd_create(int clockid, int flags);
+int timerfd_settime(int fd, int flags, const struct itimerspec *new_value, struct itimerspec *old_value);
+int timerfd_gettime(int fd, struct itimerspec *curr_value);
+```
 
 Reference
 
