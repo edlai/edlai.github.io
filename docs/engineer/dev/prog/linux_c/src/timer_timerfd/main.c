@@ -59,8 +59,7 @@ int main(int argc, char *argv[])
 
     if ((argc != 2) && (argc != 4))
     {
-        fprintf(stderr, "%s init-secs [interval-secs max-exp]\n",
-                argv[0]);
+        fprintf(stderr, "%s init-secs [interval-secs max-exp]\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 

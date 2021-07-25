@@ -1,24 +1,26 @@
 #include <stdio.h>
+#include <inttypes.h>
 #include <time.h>
-#include <unistd.h>  // sleep
+#include <sys/time.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <math.h>
+#include <unistd.h> // sleep
 
-int main()
+int main(void)
 {
-  time_t start_t, end_t;
-  double diff_t;
 
-  printf("Starting of the program...\n");
-  time(&start_t);
+  struct timeval start, stop;
+  double secs = 0;
 
-  printf("Sleeping for 5 seconds...\n");
-  sleep(5);
-  usleep(5000);
+  gettimeofday(&start, NULL);
 
-  time(&end_t);
-  diff_t = difftime(end_t, start_t);
+  //printf("Do stuff  here\n");
+  usleep(300);
+  usleep(300);
 
-  printf("Execution time = %f\n", diff_t);
-  printf("Exiting of the program...\n");
-
-  return (0);
+  gettimeofday(&stop, NULL);
+  secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
+  printf("time taken %f\n", secs);
+  return 0;
 }

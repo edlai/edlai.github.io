@@ -1,4 +1,5 @@
 // https://stackoverflow.com/questions/10192903/time-in-milliseconds-in-c
+// $ gcc main.c -lm
 
 #include <stdio.h>
 #include <inttypes.h>
@@ -20,18 +21,18 @@ uint64_t get_now_time()
   return spec.tv_sec * 1000 + lround(spec.tv_nsec / 1e6);
 }
 
-int64_t millis2()
-{
-  struct timespec now;
-  timespec_get(&now, TIME_UTC);
-  return ((int64_t)now.tv_sec) * 1000 + ((int64_t)now.tv_nsec) / 1000000;
-}
-
 long millis1()
 {
   struct timespec _t;
   clock_gettime(CLOCK_REALTIME, &_t);
   return _t.tv_sec * 1000 + lround(_t.tv_nsec / 1.0e6);
+}
+
+int64_t millis2()
+{
+  struct timespec now;
+  timespec_get(&now, TIME_UTC);
+  return ((int64_t)now.tv_sec) * 1000 + ((int64_t)now.tv_nsec) / 1000000;
 }
 
 long long current_timestamp()

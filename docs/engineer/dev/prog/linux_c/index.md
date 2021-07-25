@@ -8,6 +8,22 @@
 
 ## Code Snippets
 
+
+### 
+
+- time(0)
+- gettimeofday (thread safe) | timediff
+- timespec_get (C11)
+- clock_gettime
+
+```
+#include <time.h>
+
+int clock_getres(clockid_t clk_id, struct timespec *res);
+int clock_gettime(clockid_t clk_id, struct timespec *tp);
+int clock_settime(clockid_t clk_id, const struct timespec *tp);
+```
+
 ### Timer
 
 - sleep: `while(1)` with `sleep(int)`
@@ -75,6 +91,7 @@ Reference
 
 - [高效 Web 伺服器開發](https://hackmd.io/@sysprog/fast-web-server)
 - [Patterns in C - Part 5: REACTOR](https://www.adamtornhill.com/Patterns%20in%20C%205,%20REACTOR.pdf)
+
 <!--
 ### Keyword
 
@@ -155,3 +172,5 @@ $ explain char *(*fptab[])(int)
   - [你所不知道的 C 語言：技巧篇 (2019-07-11)](https://www.youtube.com/watch?v=lUFdjk8Nmbg&ab_channel=.GUTS)
 
 - Jserv Homework
+
+-->
