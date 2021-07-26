@@ -1,7 +1,5 @@
 /*
-
 C89/C90 -> C99 -> C11 -> C17/C18 -> C2x
-
 */
 #include <stdio.h>
 #include <stdlib.h>

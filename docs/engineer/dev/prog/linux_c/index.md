@@ -8,6 +8,32 @@
 
 ## Code Snippets
 
+### GCC version
+
+- __STDC_VERSION__
+- __STRICT_ANSI__
+
+
+### Parsing Arguments
+
+- Parsing Arguments with getopt
+- Check function input
+
+### Function Call
+
+- Pass a value to a function (call-by-value) (swap two numbers)
+- Pass a pointer to a function  (call-by-address)
+- Pass a dobule-pointer to a function
+- Pass a triple-pointer to a function
+- Pass a structure to to a function
+- Pass a structure-in-structure to to a function
+
+### String
+
+- [reverse a string]()
+- [asprintf]()
+- append string
+- insert string
 
 ### Time
 
@@ -48,7 +74,6 @@ int clock_settime(clockid_t clk_id, const struct timespec *tp);
 
 ``` c
 #include <unistd.h>
-
 unsigned int sleep(unsigned int seconds);
 ```
 
@@ -56,11 +81,11 @@ unsigned int sleep(unsigned int seconds);
 
 ``` c
 #include <unistd.h>
-
 unsigned int alarm(unsigned int seconds);
+```
 
+``` c
 #include <signal.h>
-
 typedef void (*sighandler_t)(int);
 sighandler_t signal(int signum, sighandler_t handler);
 ```
@@ -123,20 +148,10 @@ auto break case char const continue default do double else enum extern float for
 
 - goto, setjump, longjump
 
-### String
-
-- [reverse a string]()
-- [asprintf]()
-- append string
-- insert string
 
 
-### Function
 
-- pass a pointer to a function
-- pass a dobule-pointer to a function
-- pass a triple-pointer to a function
-- pass a structure to to a function
+
 
 ### Number
 
