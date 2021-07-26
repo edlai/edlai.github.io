@@ -17,18 +17,18 @@
 
 ### Parsing Arguments
 
-- Parsing Arguments with getopt
-- Check function input
+#### Parsing Arguments with getopt
+#### Check function input
 
 ### Function Call
 
-- Pass a value to a function (call-by-value) (swap two numbers)
-- Pass a address to a function  (call-by-address)
-- Pass a dobule-pointer to a function
-- Pass a triple-pointer to a function
-- Pass a structure to to a function
-- Pass a structure-in-structure to to a function
-- Pass a function point to a function
+#### Pass a value to a function (call-by-value) (swap two numbers)
+#### Pass a address to a function  (call-by-address)
+#### Pass a dobule-pointer to a function
+#### Pass a triple-pointer to a function
+#### Pass a structure to to a function
+#### Pass a structure-in-structure to to a function
+#### Pass a function point to a function
 
 Example:
 
@@ -43,20 +43,20 @@ int scanf(const char *restrict format, ...);
 
 ### String
 
-- reverse a string
-- [append a string] (asprintf)
-- insert a string
+#### reverse a string
+#### [append a new string](asprintf)
+#### insert a string
 
 ### Time
 
-- time(0): get current time stamp
+#### time(0): get current time stamp
 
 ``` c
 #include <time.h>
 time_t time(time_t* timer)
 ```
 
-- gettimeofday (thread safe): calculate time consuming
+#### gettimeofday (thread safe): calculate time consuming
 
 ``` c
 #include <sys/time.h>
@@ -82,14 +82,14 @@ int clock_settime(clockid_t clk_id, const struct timespec *tp);
 
 ### Timer
 
-- sleep: `while(1)` with `sleep(int)`
+#### sleep: `while(1)` with `sleep(int)`
 
 ``` c
 #include <unistd.h>
 unsigned int sleep(unsigned int seconds);
 ```
 
-- alarm: `alarm()` and `signal()`
+#### alarm: `alarm()` and `signal()`
 
 ``` c
 #include <unistd.h>
@@ -102,9 +102,9 @@ typedef void (*sighandler_t)(int);
 sighandler_t signal(int signum, sighandler_t handler);
 ```
 
-- select:
+#### select:
 
-- timer_settime
+#### timer_settime
 
 ``` c
 #include <signal.h>           /* Definition of SIGEV_* constants */
@@ -121,7 +121,7 @@ int timer_settime(timer_t timerid, int flags,
 Link with -lrt.
 ```
 
-- setitimer:
+#### setitimer:
 
 ``` c
 int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue));
@@ -133,7 +133,7 @@ int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue
     - itimerval的一個實例
 ```
 
-- timerfd
+#### timerfd
 
 ``` c
 #include <sys/timerfd.h>
@@ -141,6 +141,23 @@ int timerfd_create(int clockid, int flags);
 int timerfd_settime(int fd, int flags, const struct itimerspec *new_value, struct itimerspec *old_value);
 int timerfd_gettime(int fd, struct itimerspec *curr_value);
 ```
+
+### LibEvent
+
+``` console
+$ sudo apt-get update
+$ sudo apt install libevent-dev
+```
+#### Simple Server and Client
+
+
+### Libev
+
+### Libuv
+
+#### Time Server
+
+#### Httpd server
 
 Reference
 
