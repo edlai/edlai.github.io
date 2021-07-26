@@ -3,18 +3,35 @@
 
 ## Resource
 
-- [data-structures-and-algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
-- [log2base2](https://www.log2base2.com/)
+- [Data structures and algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
+- [log2base2](https://www.log2base2.com/): World's First Visual Learning Platform
 
 ## Code Snippets
 
 
-### 
+### Time
 
-- time(0)
-- gettimeofday (thread safe) | timediff
+- time(0): get current time stamp
+
+``` c
+#include <time.h>
+time_t time(time_t* timer)
+```
+
+- gettimeofday (thread safe): calculate time consuming
+
+``` c
+#include <sys/time.h>
+int gettimeofday(struct timeval *restrict tv,
+                 struct timezone *restrict tz);
+int settimeofday(const struct timeval *tv,
+                 const struct timezone *tz);
+```
+
+<!--
 - timespec_get (C11)
 - clock_gettime
+
 
 ```
 #include <time.h>
@@ -23,6 +40,7 @@ int clock_getres(clockid_t clk_id, struct timespec *res);
 int clock_gettime(clockid_t clk_id, struct timespec *tp);
 int clock_settime(clockid_t clk_id, const struct timespec *tp);
 ```
+-->
 
 ### Timer
 

@@ -7,20 +7,33 @@
 #include <math.h>
 #include <unistd.h> // sleep
 
+void timediff()
+{
+  static struct timeval record_stamp;
+  struct timeval curr_stamp;
+
+  gettimeofday(&curr_stamp, NULL);
+
+  if (0 == record_stamp.tv_sec && 0 == record_stamp.tv_usec)
+  {
+    printf(">>> record time stamp\n");
+  }
+  else
+  {
+    printf(">>> diff   time stamp\n");
+    double secs = 0;
+    secs = (double)(curr_stamp.tv_usec - record_stamp.tv_usec) / 1000000 + (double)(curr_stamp.tv_sec - record_stamp.tv_sec);
+    printf(">>> time   taken %16f\n", secs);
+  }
+  record_stamp = curr_stamp;
+}
+
 int main(void)
 {
-
-  struct timeval start, stop;
-  double secs = 0;
-
-  gettimeofday(&start, NULL);
-
-  //printf("Do stuff  here\n");
+  timediff();
   usleep(300);
-  usleep(300);
-
-  gettimeofday(&stop, NULL);
-  secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
-  printf("time taken %f\n", secs);
+  timediff();
+  sleep(1);
+  timediff();
   return 0;
 }
