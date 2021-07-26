@@ -30,16 +30,92 @@
 #### Pass a structure-in-structure to to a function
 #### Pass a function point to a function
 
-Example:
+Usage of scanf:
 
 ``` c
 #include <stdio.h>
 int scanf(const char *restrict format, ...);
 ```
 
+Example:
+
+`&` means `call by address` for interger.
+
+Implementation:
+
+- [Github](https://github.com/aligrudi/neatlibc/blob/master/scanf.c)
+
+``` c
+char str[20] = {0};
+int count, num = 42;
+sscanf ("hello/17", "%[^/]/%d", str, &num);
+```
+
+### State Machine and Function Point
+
+### Point
+
+the usages of pointer
+
+```
+$ sudo apt-get install cdecl
+$ explain char *(*fptab[])(int)
+```
+- gcc and glibc versions
+
+<!--
+- framebuffer
+- volu
+- opts
+- unset, autofree
+- revise process name
+
+- avoid to double free memory point
+- check for fuction input
+- atoi v.s. strtol
+- append log to a log file
+- hexdump
+- printk
+- scanf and ignore the remaining
+-->
+
+- Queue
+
 ### Diagnostic
 
 - Trace function call and print function point
+
+#### Trace function enter /exit
+
+``` c
+#define DUMP(func, call) \
+  printf("%s: func = %p, called by = %p\n", __FUNCTION__, func, call)
+
+void __attribute__((no_instrument_function))
+__cyg_profile_func_enter(void *this_func, void *call_site)
+{
+  DUMP(this_func, call_site);
+}
+
+void __attribute__((no_instrument_function))
+__cyg_profile_func_exit(void *this_func, void *call_site)
+{
+  DUMP(this_func, call_site);
+}
+```
+
+Print function point
+
+``` c
+int do_calc(int a, int b)
+{
+  return do_multi(a, b);
+}
+
+printf("The address of the do_calc  is = %p\n", do_calc);
+```
+
+#### Endian
 
 ### String
 
@@ -190,35 +266,13 @@ auto break case char const continue default do double else enum extern float for
 
 - read an entire file
 
-### Point
-- the usages of pointer
 
-```
-$ sudo apt-get install cdecl
-$ explain char *(*fptab[])(int)
-```
-- gcc and glibc versions
-- endian
-- framebuffer
-- volu
-- opts
-- unset, autofree
-- revise process name
-
-- avoid to double free memory point
-- check for fuction input
-- atoi v.s. strtol
-- append log to a log file
-- hexdump
-- printk
-- scanf and ignore the remaining
-
-- Queue
 
 
 
 ## Library
 
+- Zero MQ https://zh.wikipedia.org/wiki/%C3%98MQ
 - enable verbose for libcurl
 - evhttpd of libevent
 
@@ -234,5 +288,9 @@ $ explain char *(*fptab[])(int)
   - [你所不知道的 C 語言：技巧篇 (2019-07-11)](https://www.youtube.com/watch?v=lUFdjk8Nmbg&ab_channel=.GUTS)
 
 - Jserv Homework
+
+## Books
+
+- 
 
 -->
