@@ -5,6 +5,7 @@
 
 - [Data structures and algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
 - [log2base2](https://www.log2base2.com/): World's First Visual Learning Platform
+- [C 語言教程](https://www.runoob.com/cprogramming/c-tutorial.html)
 
 ## Code Snippets
 
@@ -22,18 +23,29 @@
 ### Function Call
 
 - Pass a value to a function (call-by-value) (swap two numbers)
-- Pass a pointer to a function  (call-by-address)
+- Pass a address to a function  (call-by-address)
 - Pass a dobule-pointer to a function
 - Pass a triple-pointer to a function
 - Pass a structure to to a function
 - Pass a structure-in-structure to to a function
+- Pass a function point to a function
+
+Example:
+
+``` c
+#include <stdio.h>
+int scanf(const char *restrict format, ...);
+```
+
+### Diagnostic
+
+- Trace function call and print function point
 
 ### String
 
-- [reverse a string]()
-- [asprintf]()
-- append string
-- insert string
+- reverse a string
+- [append a string] (asprintf)
+- insert a string
 
 ### Time
 
