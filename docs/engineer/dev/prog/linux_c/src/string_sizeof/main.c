@@ -54,16 +54,16 @@ void hexdump(void *mem, unsigned int len)
 int main(void)
 {
   char str[] = "Hello World";
-  char *p = str;
+  char *p = str; // &str[0];
   short a;
   int b;
   long c;
   float d;
   double e;
-  printf("%d\n", sizeof(str));
+  printf("%d %p\n", sizeof(str));
 
   // TIP: use *p to get
-  printf("%d %d (0x%x) (%s)\n", sizeof(*p), sizeof(p), p, p);
+  printf("%c %d %d (0x%x) (%s)\n", *p, sizeof(*p), sizeof(p), p, p);
 
   printf("%d\n", sizeof(a));
   printf("%d\n", sizeof(b));

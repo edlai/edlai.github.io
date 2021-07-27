@@ -51,6 +51,10 @@ int count, num = 42;
 sscanf ("hello/17", "%[^/]/%d", str, &num);
 ```
 
+### Explicitly/ImplicitlyType Conversion
+
+http://ot-note.logdown.com/posts/173174/note-cpp-named-type-convertion
+
 ### State Machine and Function Point
 
 ### Point
