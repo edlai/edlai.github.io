@@ -22,10 +22,11 @@ An exercise of an implementation of personal cloud recordings. Recording the str
 * [Advanced](#advanced)
 * [Troubleshooting](#troubleshooting)
 -->
-
+<!--
 ## Concept
 
 - Recording the streaming from Surveillance Camera via 4G LTE Cellular Network.
+-->
 
 ## Requirements
 
@@ -35,12 +36,19 @@ An exercise of an implementation of personal cloud recordings. Recording the str
 - **Platform:** MT7688 Target Board
 - **Webcam:**   Logitech C270 UVC Webcam
 - **Cellular:** 4G LTE Modem
-- **Finished Goods:**
-  ![r](cpe.png)
+- **Target Device:**
+
+![r](cpe.png)
 
 ### Software
 
-- OpenWRT Linux
+#### Cloud Host
+
+- `ffmpeg`
+
+#### Target Device
+
+- `mjpg_streamer` in an OpenWRT Linux OS
 
 ## Background
 
@@ -50,17 +58,17 @@ An exercise of an implementation of personal cloud recordings. Recording the str
  ---------------------------------
 / Cloud Server (running ffmpeg)  /
 ---------------------------------
-	      /   Cloud:   [2001:19f0:7001:111a:5400:1ff:fe5c:4f86]
-        ______
-             /
+       /  Cloud Host: [2001:19f0:7001:111a:5400:1ff:fe5c:4f86]
+      /_____
+           /
           .-~~~-.
   .- ~ ~-(       )_ _
  /                     ~ -.
 |         4G LTE NW         \
  \                         .'
    ~- . _____________ . -~
-              /
-             /  IPCam:   http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream
+      /
+    /  Target Device: http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream
  ----------------------------------
 / IP CAMs (running mjpg-streamer) /
 ----------------------------------
@@ -95,23 +103,11 @@ An exercise of an implementation of personal cloud recordings. Recording the str
   # apt-get install iftop    # (Optional)
   ```
 
-- Issue `ffmpeg` command and point out the IPcam address
+- Issue `ffmpeg` command and point out the IPcam address, system will record the streaming.
 
-  ``` console
-  # ffmpeg -f mjpeg -r 5 -i "http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream" -r 5 ./video.avi
-  ```
+``` console
+# ffmpeg -f mjpeg -r 5 -i "http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream" -r 5 ./video.avi
 
-- To force the frame rate of the input file (valid for raw formats only) to 5 fps and the frame rate of the output file to 5 fps:
-  [man](https://linux.die.net/man/1/ffmpeg)
-  - **- i:** filename, input file name
-  - **- b:** bitrate, Set the video bitrate in bit/s (default = 200 kb/s).
-  - **- vcodec:** codec, Force video codec to codec. Use the "copy" special value to tell that the raw codec data must be copied as is.
-  - **- r:** fps, Set frame rate (Hz value, fraction or abbreviation), (default = 25).
-  - **- y:** Overwrite output files.
-
-- System will record the streaming
-
-  ``` console
   ffmpeg version 3.2.10-1~deb9u1 Copyright (c) 2000-2018 the FFmpeg developers
     built with gcc 6.3.0 (Debian 6.3.0-18) 20170516
     configuration: --prefix=/usr --extra-version='1~deb9u1' --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libebur128 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
@@ -129,8 +125,16 @@ An exercise of an implementation of personal cloud recordings. Recording the str
       Stream #0:0: Video: mjpeg, yuvj422p(pc, bt470bg/unknown/unknown), 640x480, 5 tbr, 1200k tbn, 5 tbc
   [swscaler @ 0x5636a0d10480] deprecated pixel format used, make sure you did set range correctly
   Output #0, avi, to './video1.avi':
-  ```
+```
 
+- To force the frame rate of the input file (valid for raw formats only) to 5 fps and the frame rate of the output file to 5 fps:
+  - **- i:** filename, input file name
+  - **- b:** bitrate, Set the video bitrate in bit/s (default = 200 kb/s).
+  - **- vcodec:** codec, Force video codec to codec. Use the "copy" special value to tell that the raw codec data must be copied as is.
+  - **- r:** fps, Set frame rate (Hz value, fraction or abbreviation), (default = 25).
+  - **- y:** Overwrite output files.
+
+for more detail, please check the [man page](https://linux.die.net/man/1/ffmpeg)
 
 <!--
 # ffmpeg -f mjpeg -r 5 -i "http://openwrt:openwrt@localhost:8080/?action=stream" -r 5 ./video.avi
@@ -146,7 +150,7 @@ An exercise of an implementation of personal cloud recordings. Recording the str
 - Observation of `ffmpeg`
   ![r](ffmpeg.png)
 
-- Observation of CPU Usage for VPS
+- Observation of CPU Usage for VPS, it's around 5% 
   ![r](usage-cpu.png)
 
 - Observation of Disk Operations  for VPS

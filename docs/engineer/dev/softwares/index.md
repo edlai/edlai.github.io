@@ -1,6 +1,6 @@
 # Software Tools for Firmware Development
 
-This chapter introduces some software development tools.
+This chapter introduces some software development tools for firmware development.
 
 ## Code Editor
 
@@ -48,11 +48,14 @@ Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware
 
 There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) and it userful shortcuts as following
 
-- Deleting tabs when using tabs as spaces: <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
-- Switch to next Tab: <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
-- Go back / forward: <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>
-- BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd>
-- Toggle BookMark: <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd>
+Action                                     | Visual Studio Code Keymap                                 |
+-------------------------------------------|-----------------------------------------------------------|
+Go Back / Forward                          | <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>               |
+Deleting tabs when using tabs as spaces    | <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
+Switch to next Tab                         | <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
+BookMark                                   | <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd>
+Toggle BookMark                            | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd>
+
 ### Code Server
 
 VSC also provides Web IDE called [Code Server](https://github.com/cdr/code-server/releases), use below command to install Code Server.

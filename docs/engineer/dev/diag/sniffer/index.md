@@ -167,10 +167,12 @@ Tag: Vendor Specific: Mediatek Corp.
     Vendor Specific Data: 30313233343536
 ```
 
-### Reference Books
+### References
 
 - Wireshark & Ethereal Network Protocol Analyzer Toolkit/CH6-Wireless Sniffing with Wireshark
 - Network Analysis Using Wireshark Cookbook
+- [802.11AX REMOTE PACKET CAPTURES USING THE JETSON NANO](https://semfionetworks.com/blog/80211ax-remote-packet-captures-using-the-jetson-nano/)
+- [最便宜的Wi-Fi 6封包嗅探器，Nvidia Jetson Nano 安裝Intel AX200](https://blog.xmr.tw/2020/10/18/%e6%9c%80%e4%be%bf%e5%ae%9c%e7%9a%84ax200%e5%97%85%e6%8e%a2%e5%99%a8%ef%bc%8cnvidia-jetson-nano-%e5%ae%89%e8%a3%9dintel-ax200/#comment-16)
 
 ## tshark
 

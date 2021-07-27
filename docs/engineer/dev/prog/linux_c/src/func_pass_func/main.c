@@ -2,29 +2,46 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
-// 回调函数
+// pass callback function
 void populate_array(int *array, size_t arraySize, int (*getNextValue)(void))
 {
   for (size_t i = 0; i < arraySize; i++)
     array[i] = getNextValue();
 }
 
-// 获取随机值
+// Get random value
 int getNextRandomValue(void)
 {
-  return rand();
+  int a;
+  a = rand() % 100 + 1;
+  return a;
 }
 
 int main(void)
 {
-  int myarray[10];
-  /* getNextRandomValue 不能加括号，否则无法编译，因为加上括号之后相当于传入此参数时传入了 int , 而不是函数指针*/
+  int myarray[10] = {0};
+
+  // TIP: srand in main not in function
+  srand(time(NULL));
+
+  // normally function call
+  for (int i = 0; i < 10; i++)
+  {
+    printf("%d ", getNextRandomValue());
+  }
+
+  printf("\n");
+
+  // TIP: pass getNextRandomValue as function point to populate_array function
   populate_array(myarray, 10, getNextRandomValue);
+
   for (int i = 0; i < 10; i++)
   {
     printf("%d ", myarray[i]);
   }
+
   printf("\n");
   return 0;
 }
