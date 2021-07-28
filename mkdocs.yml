@@ -26,10 +26,14 @@ nav:
 #            - 'Docker Compose': 'engineer/dev/docker/compose/index.md'
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
-          - 'Programming Tips':
-            - 'C Programming Tips': 'engineer/dev/prog/linux_c/index.md'
-#           - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
-#           - 'Python with C': 'engineer/dev/python/index.md'
+          - 'Programming Tips of C':
+#            - 'C Programming Tips': 'engineer/dev/prog/linux_c/index.md'
+#            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
+#            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
+#            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'
+            - 'Function Argument': 'engineer/dev/prog/linux_c/function.md'
+#            - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
+#            - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'Conversation Skills':
 #           - 'Lee Books':
 #           - 'TOEFL': 'engineer/dev/conv/toefl/index.md'
@@ -48,12 +52,12 @@ nav:
           - 'Rebuild Linux Kernel': 'engineer/kernel/rebuild/index.md'
         - 'Celluar Network':
           - 'Amarisoft SDR LTE 100': 'engineer/cell/sdr/index.md'
-        - 'Scripting language':
+        - 'Scripting Language':
           - 'TCL':
             - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'
             - 'Execution Logger': 'engineer/script/tcl/executionLogger/index.md'
             - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
-            - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
+#            - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
           - 'Perl':
             - 'Quiz': 'engineer/script/pl/quiz/index.md'
             - 'Dictionary': 'engineer/script/pl/dictionary/index.md'

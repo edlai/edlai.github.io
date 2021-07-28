@@ -1,6 +1,6 @@
 # Software Tools for Firmware Development
 
-This chapter introduces some software development tools for firmware development.
+This article introduces some software development tools for firmware development.
 
 ## Code Editor
 

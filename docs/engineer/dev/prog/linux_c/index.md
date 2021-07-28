@@ -11,6 +11,8 @@
 
 ### GCC version
 
+Check GCC version
+
 - __STDC_VERSION__
 - __STRICT_ANSI__
 
@@ -247,7 +249,13 @@ Reference
 <!--
 ### Keyword
 
+``` c
 auto break case char const continue default do double else enum extern float for goto if int long register return short signed sizeof static struct switch typedef union unsigned void volatile while
+```
+
+Notice:
+
+- sizeof is a MACRO, strlen is a function.
 
 ### Variant
 

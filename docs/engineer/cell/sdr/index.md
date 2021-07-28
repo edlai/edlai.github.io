@@ -54,38 +54,37 @@ An exercise of running personal 4G LTE base station software on Linux PC.
 
 ### Topology
 
-  ```
-   -------------------------------------
-  /             Internet               /
-  -------------------------------------
-                     /                                                          * Outbound Interface of Router:                                       
-                    /                         					  - IPv4: 61.228.45.217                              (for example)    
-                   /                          					  - IPv6: 2001:b011:200b:1d1:1262:ebff:fe90:7320/64  (for example)    
-    ------------------------------------					                                                                      
-   /             Router                /      					                                                                      
-  /                                   /       					                                                                      
-  ------------------------------------						                                                                      
-                     /                        					* Inbound Interface of Router:                                        
-                    /                          					  - IPv4: 192.168.167.1                                               
-                   /			       					  - IPv6: 2001:b011:200b:129a:1262:ebff:fe90:7320/64  (for example)   
-     -----------------------------------					                                                                      
-    /    Amarisoft AMARI LTE 100       /      					* SDR                                                                 
-   /                                  /       					  - IPv4: 192.168.167.20                                              
-  /  APN: {default | internet...}    /        					  - IPv6: 2001:b011:200b:129a:6245:cbff:fe87:5612/64   (for example)  
-  -----------------------------------						                                                                      
-           /\                     /\          					* UE: APN1 (Default APN)                                              
-          /  \	     APN1        /  \        ... APN-2,APN-3 , APN-4 		   - IPv4:                      - IPv6:                                
-         /    \		        /    \        					     * tun0: 192.168.2.1	  * tun0:                              
-     ---------------        ---------------   					     * tun1: 192.168.3.1	  * tun1:                              
-    /     UE 1     /       /     UE 2 ... /    					     * tun2: 192.168.4.1	  * tun2: 2001:468:3000:1::/48         
-    ---------------        ---------------    					     * tun3: 192.168.5.1	  * tun3: 2001:468:4000:1::/48         
-    IPv4: 192.168.2.x     IPv4: 192.168.3.x     
-  
-  ```
+```
+ -------------------------------------
+/             Internet               /
+-------------------------------------
+                   /        * Outbound Interface of Router:
+                  /           - IPv4: 61.228.45.217
+                 /            - IPv6: 2001:b011:200b:1d1:1262:ebff:fe90:7320/64
+  ------------------------------------
+ /             Router                /
+/                                   /
+------------------------------------
+                   /        * Inbound Interface of Router:
+                  /           - IPv4: 192.168.167.1
+                 /            - IPv6: 2001:b011:200b:129a:1262:ebff:fe90:7320/64  (for example)
+   -----------------------------------
+  /    Amarisoft AMARI LTE 100       /   * SDR
+ /                                  /      - IPv4: 192.168.167.20
+/  APN: {default | internet...}    /       - IPv6: 2001:b011:200b:129a:6245:cbff:fe87:5612/64   (for example)
+-----------------------------------
+         /\                     /\       * UE: APN1 (Default APN) ... APN-2, APN-3, APN-4
+        /  \       APN1        /  \        - IPv4:                 - IPv6:
+       /    \		              /    \         * tun0: 192.168.2.1      * tun0:
+   ---------------        ---------------    * tun1: 192.168.3.1      * tun1:
+  /     UE 1     /       /     UE 2 ... /    * tun2: 192.168.4.1      * tun2: 2001:468:3000:1::/48
+  ---------------        ---------------     * tun3: 192.168.5.1      * tun3: 2001:468:4000:1::/48
+  IPv4: 192.168.2.x     IPv4: 192.168.3.x
+```
 
 ### Ubuntu PC
 
-- Download `Ubuntu Server ISO Image` and burn it into USB dongle by [`rufus`](https://rufus.akeo.ie) with below setting    
+- Download `Ubuntu Server ISO Image` and burn it into USB dongle by [`rufus`](https://rufus.akeo.ie) with below setting.
 
   |  rufus2.18       | rufus3.1         |
   |------------------|------------------|
@@ -98,7 +97,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
 
 - there will be some network interfaces
 
-  ``` bash
+  ``` console
   # ifconfig
   enp0s31f6 Link encap:Ethernet  HWaddr 60:45:cb:87:56:12
             inet addr:192.168.0.12  Bcast:192.168.0.255  Mask:255.255.255.0
@@ -156,7 +155,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
   ```
 
-- Install `ubuntu-desktop` to PC    
+- Install `ubuntu-desktop` to PC
 
   ``` sh
   $ sudo apt-get update
@@ -165,14 +164,14 @@ An exercise of running personal 4G LTE base station software on Linux PC.
   $ sudo startx
   ```
 
-- Install below packages to Ubuntu PC     
+- Install below packages to Ubuntu PC
 
   ``` sh
   $ sudo apt-get install wireshark    #<= packet capturer
   $ sudo apt-get install shutter      #<= Screenshot capturer (Optional)
   ```
 
-- Use Fixed IP on SDR, put below setting to `/etc/network/interfaces` (Optional)     
+- Use Fixed IP on SDR, put below setting to `/etc/network/interfaces` (Optional)
 
   ``` sh
   auto lo
@@ -190,13 +189,14 @@ An exercise of running personal 4G LTE base station software on Linux PC.
   iface enp0s31f6 inet6 auto
   ```
 
-- Issue below command to restart netwoek service   
+- Issue below command to restart netwoek service
 
   ``` sh
   $ sudo /etc/init.d/networking restart
   ```
 
-- PS. Orginal   
+<!--
+- PS. Orginal
 
   ``` sh
   # The primary network interface
@@ -205,6 +205,7 @@ An exercise of running personal 4G LTE base station software on Linux PC.
   # This is an autoconfigured IPv6 interface
   iface enp0s31f6 inet6 auto
   ```
+-->
 
 ### AMARI LTE 100
 
