@@ -1,4 +1,4 @@
-# Function Argument
+# Function Argument Parameters
 
 ## Call by Value
 
@@ -22,31 +22,16 @@
 
 ### 
 
-
-``` c
-#define DUMP(func, call) \
-  printf("%s: func = %p, called by = %p\n", __FUNCTION__, func, call)
-
-void __attribute__((no_instrument_function))
-__cyg_profile_func_enter(void *this_func, void *call_site)
-{
-  DUMP(this_func, call_site);
-}
-
-void __attribute__((no_instrument_function))
-__cyg_profile_func_exit(void *this_func, void *call_site)
-{
-  DUMP(this_func, call_site);
-}
+``` c linenums="1" hl_lines="17-30 46-48"
+--8<--
+docs/engineer/dev/prog/linux_c/src/func_enter_exit/main.c
+--8<--
 ```
 
-Print function point
+Code
 
-``` c
-int do_calc(int a, int b)
-{
-  return do_multi(a, b);
-}
-
-printf("The address of the do_calc  is = %p\n", do_calc);
+``` c linenums="1" hl_lines="13-19"
+--8<--
+docs/engineer/dev/prog/linux_c/src/func_pass_point/main.c
+--8<--
 ```

@@ -31,7 +31,7 @@ nav:
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'
-            - 'Function Argument': 'engineer/dev/prog/linux_c/function.md'
+            - 'Function Argument': 'engineer/dev/prog/linux_c/function_call.md'
 #            - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
 #            - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'Conversation Skills':
