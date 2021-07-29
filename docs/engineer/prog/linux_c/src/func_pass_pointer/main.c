@@ -2,15 +2,15 @@
 
 #include <stdio.h>
 
-// call by value
-void swap_call_by_value(int a, int b)
+// BAD example: call by value
+void swap_call_by_value(int p, int q)
 {
-  int tmp = a;
-  a = b;
-  b = tmp;
+  int tmp = p;
+  p = q;
+  q = tmp;
 }
 
-// call by address
+// GOOD example: call by address
 void swap_call_by_address(int *p, int *q)
 {
   int tmp = *p;
@@ -18,7 +18,7 @@ void swap_call_by_address(int *p, int *q)
   *q = tmp;
 }
 
-// call by address by using xor
+// GOOD example with XOR: call by address
 void swap_call_by_address_xor_1(int *p, int *q)
 {
   *p ^= *q;
@@ -26,14 +26,13 @@ void swap_call_by_address_xor_1(int *p, int *q)
   *p ^= *q;
 }
 
-// call by address by using xor
+// GOOD example with XOR: call by address
 void swap_call_by_address_xor_2(int *p, int *q)
 {
   *p ^= *q ^= *p ^= *q;
 }
 
-#if (0)
-// there is no call by reference in C
+#if (0)  // There is no call by reference in C
 void swap_call_by_reference(int &a, int &b)
 {
   int tmp = a;
@@ -49,18 +48,18 @@ int main(void)
 
   // incorrect method to swap two values
   swap_call_by_value(x, y);
-  printf("x: %d, y: %d\n", x, y);
+  printf("BAD example:  x: %d, y: %d\n", x, y);
 
   // correct method to swap two values by using temporary variable
   swap_call_by_address(&x, &y);
-  printf("x: %d, y: %d\n", x, y);
+  printf("GOOD example: x: %d, y: %d\n", x, y);
 
   // correct method to swap two value by using xor
   swap_call_by_address_xor_1(&x, &y);
-  printf("x: %d, y: %d\n", x, y);
+  printf("GOOD example: x: %d, y: %d\n", x, y);
 
   swap_call_by_address_xor_2(&x, &y);
-  printf("x: %d, y: %d\n", x, y);
+  printf("GOOD example: x: %d, y: %d\n", x, y);
 
 #if (0)
   swap_call_by_reference(x, y);

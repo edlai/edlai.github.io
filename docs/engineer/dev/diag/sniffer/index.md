@@ -1,34 +1,42 @@
-# Wireshark for Wireless Sniffer
+# Wireless Sniffer -Wireshark
 
-This chapter introduces how to capture Wi-Fi traffic and so on.
+This chapter introduces how to capture Wi-Fi traffic in Ubuntu 20.10.
 
-Download `Ubuntu 20.10` from [Ubuntu Website](https://www.ubuntu-tw.org/). Check the current Linux Kernel version, it's `5.8.x` now.
+## Install Ubuntu
 
-``` console
+Download `Ubuntu 20.10` from [Ubuntu Website](https://www.ubuntu-tw.org/). Install to a USB dongle or a Disk.
+
+Check the current Linux Kernel version. It's `5.8.x` now.
+
+``` sh
 $ uname -a
 Linux ed-ThinkPad-X230 5.8.0-59-generic #66-Ubuntu SMP Thu Jun 17 00:46:01 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-Install Wireshark and so on.
+## Install Wireshark and some applications
 
-``` console
+``` sh
 $ sudo rm -rf /bin/sh && sudo ln -s /bin/bash /bin/sh
 $ sudo apt-get update && sudo apt-get upgrade
-$ sudo apt-get install openssh-server vim net-tools wireshark
+$ sudo apt-get install -y openssh-server vim net-tools wireshark
 $ sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
 $ sudo apt-get install -y git fakeroot ncurses-dev xz-utils bc libtool
 $ sudo apt-get install -y software-properties-common rsync
 $ sudo apt-get install -y libncurses5-dev gcc grub2 wget dwarves tree curl
 ```
 
-### Check Wi-Fi channel and so on
+## Plug Wi-Fi dongle
 
-- Plug Wi-Fi dongle and confirm its interface name. The PID/VID is `0e8d:7612`. and the interface name is `wlx008e86000266` in my case.
+Plug Wi-Fi dongle and confirm its interface name. The PID/VID is `0e8d:7612` for this MediaTek Wi-Fi dongle in this case.
 
-``` console
+``` sh
 $ lsusb
 Bus 002 Device 003: ID 0e8d:7612 MediaTek Inc.
+```
 
+And the current interface name is `wlx008e86000266` now.
+
+``` sh
 $ sudo ifconfig
 wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         ether 1e:a4:80:77:09:f3  txqueuelen 1000  (Ethernet)
@@ -38,9 +46,11 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-Install `aircrack-ng` and run `airodump-ng` to check Wi-Fi channel. Better to use `aircrack-ng 1.6` to support WPA3-SAE.
+## Scan Wi-Fi Channel
 
-``` console
+Install `aircrack-ng` and run `airodump-ng` to check Wi-Fi channel. It's better to use `aircrack-ng 1.6` which is able to support WPA3-SAE.
+
+``` sh
 $ git clone https://github.com/aircrack-ng/aircrack-ng.git
 $ cd aircrack-ng
 $ ./autogen.sh
@@ -50,23 +60,21 @@ $ sudo make install
 $ sudo ldconfig
 ```
 
-Run `airodump-ng`
+Run `airodump-ng`. it seems SSID `AP1` works on `Channel 13`.
 
-``` console
+``` sh
 $ sudo airodump-ng wlx008e86000266
 
  CH  8 ][ Elapsed: 12 s ][ 2021-07-05 19:24 ][ Are you sure you want to quit? Press Q again to quit.
 
  BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
-
  C4:E9:0A:6F:A5:1A  -20       12        0    0  13  270   WPA2 CCMP   PSK  AP1
 
  BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
-
  C4:E9:0A:2F:03:A2  40:31:3C:D1:BD:C9  -41    0 - 6      0        1
 ```
 
-as a result, SSID `AP1` works on `Channel 13`.
+
 
 <!--
 PS. try to use `gcc 9` if `gcc 10` cannot compile `aircrack-ng`.
@@ -90,24 +98,16 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave 
 
 ### Enable Monitor Mode
 
-- Enable Monitor Mode, use below script then press `./set_mon.sh wlx008e86000266 13`
+- Enable Monitor Mode, use below script ([Download](set_mon.sh)) to press
 
-set_mon.sh
+`$ ./set_mon.sh ${INTERFACE_NAME} ${WIFI_CHANNEL}`
 
-```console
-#!/bin/sh
-if [ $# -lt 2 ]; then
-    echo "Usage: $0 [DEV_NAME] [CHANNEL]"
-    exit 1
-fi
+``` sh
+$ set_mon.sh wlx008e86000266 13
 
-dev=$1
-ch=$2
-
-sudo ifconfig ${dev} down
-sudo iwconfig ${dev} mode monitor
-sudo ifconfig ${dev} up
-sudo iwconfig ${dev} channel ${ch}
+--8<--
+docs/engineer/dev/diag/sniffer/set_mon.sh
+--8<--
 ```
 
 ### Run Wireshark
@@ -118,26 +118,32 @@ sudo iwconfig ${dev} channel ${ch}
 
 Filter:
 
-- MAC address: C4:E9:0A:6F:A5:1A,
+Consider to below case to capture below traffices.
+
+- MAC address: C4:E9:0A:6F:A5:1A
 - Association Req/Rep
 - Reassociation Req/Rep
 - Probe Req/Rep
-- Beacon ((wlan.fc.type_subtype <= 0x0008)),
-- Four way handshark (wlan.fc.type == 0x0002).
+- Beacon ((wlan.fc.type_subtype <= 0x0008))
+- Four way handshark (wlan.fc.type == 0x0002)
 
-you need to put below combination to the Filter rule.
+User needs to put below combination to the Filter rule.
 
-```console
+``` sh
 wlan.addr[4:2] == A5:1A and (wlan.fc.type_subtype < 0x0005 || wlan.fc.type == 0x0002)
 ```
 
+## User Case
+
+Try to add new IE Element to Realtek Wi-Fi platform and confirm its beacon frame did include the new IE Element from Wireshark.
+
 ### Vendor Specific IEEE 802.11 Information Element
 
-run `./set_ie.sh "000a00" "01234567"` to add new MTK IE element to RTL AP.
+Use below script to run `./set_ie.sh "000a00" "01234567"` adding new MTK IE element to Realtek AP.
 
 set_ie.sh
 
-```console
+``` sh
 #!/bin/sh
 if [ $# -lt 1 ]; then
     echo "Usage: $0 [OUI] [CONTENT]"
@@ -167,12 +173,14 @@ Tag: Vendor Specific: Mediatek Corp.
     Vendor Specific Data: 30313233343536
 ```
 
-### References
+## References
 
 - Wireshark & Ethereal Network Protocol Analyzer Toolkit/CH6-Wireless Sniffing with Wireshark
 - Network Analysis Using Wireshark Cookbook
 - [802.11AX REMOTE PACKET CAPTURES USING THE JETSON NANO](https://semfionetworks.com/blog/80211ax-remote-packet-captures-using-the-jetson-nano/)
 - [最便宜的Wi-Fi 6封包嗅探器，Nvidia Jetson Nano 安裝Intel AX200](https://blog.xmr.tw/2020/10/18/%e6%9c%80%e4%be%bf%e5%ae%9c%e7%9a%84ax200%e5%97%85%e6%8e%a2%e5%99%a8%ef%bc%8cnvidia-jetson-nano-%e5%ae%89%e8%a3%9dintel-ax200/#comment-16)
+
+<!--
 
 ## tshark
 
@@ -222,7 +230,7 @@ $ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 ## MTK Catcher
 
 ~~ TBD ~~
-
+-->
 ## Appendix
 
 ### Wireless Display Filter Reference
@@ -258,6 +266,11 @@ $ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
 | Null QoS data              | wlan.fc.type_subtype == 0x2C   |
 
 
+### MCS Table (HT/VHT/HE)
+
+~~ TBD ~~
+
+<!--
 ### Promiscuous Mode
 
 Enable Promiscuous Mode
@@ -294,4 +307,4 @@ enp0s25: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         device interrupt 20  memory 0xf2600000-f2620000
 
 ```
-
+-->

@@ -12,12 +12,11 @@ nav:
         - 'Development Tools':
           - 'Softwares Tools': 'engineer/dev/softwares/index.md'
           - 'Accessories': 'engineer/dev/accessories/index.md'
-#          - 'Networking Equipments': 'engineer/dev/equipments/index.md'
           - 'Automation and Crawler': 'engineer/dev/auto/index.md'
           - 'Diagnostic Tools':
-            - 'Wireless Sniffer': 'engineer/dev/diag/sniffer/index.md'
-            - 'Remote Capture - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
-#           - 'Networking Sniffer': 'engineer/dev/diag/tcpdump/index.md'
+            - 'Wireless Sniffer - Wireshark': 'engineer/dev/diag/sniffer/index.md'
+            - 'Remote Capturer - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
+            - 'Networking Sniffer - tcpdump': 'engineer/dev/diag/tcpdump/index.md'
           - 'Performance Measurement':
             - 'Networking Performance': 'engineer/dev/perf/index.md'
 #          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
@@ -26,12 +25,13 @@ nav:
 #            - 'Docker Compose': 'engineer/dev/docker/compose/index.md'
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
-          - 'Programming Tips of C':
-#            - 'C Programming Tips': 'engineer/dev/prog/linux_c/index.md'
+        - 'Programming Tips':
+          - 'C Programming Tips':
+            - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'
-            - 'Function Argument': 'engineer/dev/prog/linux_c/function_call.md'
+
 #            - 'Linux C (Advance)': 'engineer/dev/prog/c_adv/index.md'
 #            - 'Python with C': 'engineer/dev/python/index.md'
 #         - 'Conversation Skills':

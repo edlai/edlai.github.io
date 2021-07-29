@@ -1,10 +1,45 @@
-# Tcpdump and Tshark
+# Tcpdump
 
-## Promiscuous Mode
+Tcpdump can capture Network traffice in console mode.
+
+## Install tcpdump
+
+``` sh
+$ sudo apt-get install tcpdump
+```
+
+## User Cases
+### Dump VLAN packets
+
+VLAN belongs to layer2, use below command to dump VLAN packets.
+
+``` sh
+$ sudo tcpdump -i enp0s25 -en -XX
+```
+
+- `-e`: Prints the link-level header on each dump line.
+- `-n`:	Blocks converting the host addresses, and the port numbers to names.
+- `-X`:	Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.
+
+### Dump PPPoE packets
+
+VLAN belongs to layer3, use below command to dump PPPoE packets.
+
+
+``` sh
+$ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
+```
+
+- `0x8863`: PPPoE Discovery Stage
+- `0x8864`: PPPoE Session Stage
+
+
+## Appendix
+### Promiscuous Mode
 
 Enable Promiscuous Mode
 
-```console
+``` sh
 $ sudo ifconfig enp0s25 promisc
 
 $ sudo ifconfig enp0s25
@@ -21,7 +56,7 @@ enp0s25: flags=4419<UP,BROADCAST,RUNNING,PROMISC,MULTICAST>  mtu 1500           
 
 Disable Promiscuous Mode
 
-```console
+``` sh
 $ sudo ifconfig enp0s25 -promisc
 
 $ sudo ifconfig enp0s25
@@ -36,48 +71,3 @@ enp0s25: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         device interrupt 20  memory 0xf2600000-f2620000
 
 ```
-
-
-## tshark
-
-Install
-
-```console
-$ sudo apt-get install tshark
-```
-
-Command to capture Beacon frame
-
-```console
-$ sudo tshark -i wlx008e86000266 -f "type mgt subtype beacon"
-```
-
-## tcpdump
-
-Install tcpdump
-
-```console
-$ sudo apt-get install tcpdump
-```
-### VLAN packets
-
-VLAN belongs to layer2, use below command to dump VLAN packets
-
-- `-e`: Prints the link-level header on each dump line.
-- `-n`:	Blocks converting the host addresses, and the port numbers to names.
-- `-X`:	Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.
-
-```console
-$ sudo tcpdump -i enp0s25 -en -XX
-```
-
-### PPPoE packets
-
-- `0x8863`: PPPoE Discovery Stage
-- `0x8864`: PPPoE Session Stage
-
-```console
-$ sudo tcpdump -i enp0s25 -en -XX ether[0x0c:2]==0x8863 or ether[0x0c:2]==0x8864
-```
-
-#
