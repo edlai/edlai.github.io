@@ -34,6 +34,12 @@ docs/engineer/prog/linux_c/src/func_pass_pointer_double/main.c
 --8<--
 ```
 
+``` c linenums="1"
+--8<--
+docs/engineer/prog/linux_c/src/func_pass_pointer_double/swap_string.c
+--8<--
+```
+
 ### Pass a Triple-pointer to a function
 
 ~~ TBD ~~
