@@ -4,7 +4,7 @@
 
 ### Pass Value(s) to a function
 
-Pass two numbers to a function, and return their sum of two numbers.
+Sum two numbers.
 
 ``` c linenums="1"
 --8<--
@@ -16,11 +16,19 @@ docs/engineer/prog/linux_c/src/func_pass_value/main.c
 
 ### Pass Point(s) to a function
 
-Pass two numbers to a function, and swap these two numbers.
+Swap 2 numbers.
 
 ``` c linenums="1"
 --8<--
-docs/engineer/prog/linux_c/src/func_pass_pointer/main.c
+docs/engineer/prog/linux_c/src/func_pass_point_swap_num/main.c
+--8<--
+```
+
+Swap 2 strings.
+
+``` c linenums="1"
+--8<--
+docs/engineer/prog/linux_c/src/func_pass_point_swap_str/main.c
 --8<--
 ```
 
