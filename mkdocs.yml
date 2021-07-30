@@ -27,7 +27,9 @@ nav:
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
         - 'Programming Tips':
           - 'C Programming Tips':
+            - 'C Compiler': 'engineer/prog/linux_c/env_toolchain.md'
             - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
+            - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'

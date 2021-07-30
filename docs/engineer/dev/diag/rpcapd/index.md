@@ -2,7 +2,7 @@
 
 ## Remote Packet Capture
 
-- 在嵌入式系統(`Embedded Linux`)中, 有時我們需要抓取某一個對外網口 (e.q `wan0`)來回的封包, 以便確認其封包內容是我們所期望的. 
+- 在嵌入式系統(`Embedded Linux`)中, 有時我們需要抓取某一個對外網口 (e.q `wan0`)來回的封包, 以便確認其封包內容是我們所期望的.
 - 通常我們會透過 `tcpdump`. 但透過 `tcpdump` 抓取的封包還需傳送至桌上型電腦端，再行解開，一來一回浪費掉許多時間.
 - `rpcapd` 是一個不錯的選擇，可以直接將網口的封包直接轉送到電腦的 [`Wireshark`](https://www.wireshark.org/download.html).
 

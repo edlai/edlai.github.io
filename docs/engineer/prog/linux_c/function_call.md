@@ -4,7 +4,7 @@
 
 ### Pass Value(s) to a function
 
-Sum two numbers.
+#### Sum two numbers.
 
 ``` c linenums="1"
 --8<--
@@ -16,7 +16,7 @@ docs/engineer/prog/linux_c/src/func_pass_value/main.c
 
 ### Pass Point(s) to a function
 
-Swap 2 numbers.
+#### Swap 2 numbers.
 
 ``` c linenums="1"
 --8<--
@@ -24,7 +24,7 @@ docs/engineer/prog/linux_c/src/func_pass_point_swap_num/main.c
 --8<--
 ```
 
-Swap 2 strings.
+#### Swap 2 strings.
 
 ``` c linenums="1"
 --8<--
@@ -60,36 +60,18 @@ docs/engineer/prog/linux_c/src/func_pass_struct/main.c
 --8<--
 ```
 
-### Pass a structure-in-structure to to a function
+### Pass a structure-in-structure to a function
 
 ``` c linenums="1"
 --8<--
-docs/engineer/prog/linux_c/src/func_pass_struct/main.c
+docs/engineer/prog/linux_c/src/func_pass_struct_in_struct/main.c
 --8<--
 ```
 
 ### Pass a function point to a function
 
-``` c linenums="1"
+``` c linenums="1" hl_lines="37-38"
 --8<--
-docs/engineer/prog/linux_c/src/func_pass_struct_point/main.c
---8<--
-```
-
-## D
-
-### 
-
-``` c linenums="1""
---8<--
-docs/engineer/prog/linux_c/src/func_enter_exit/main.c
---8<--
-```
-
-Code
-
-``` c linenums="1" hl_lines="13-19"
---8<--
-docs/engineer/prog/linux_c/src/func_pass_point/main.c
+docs/engineer/prog/linux_c/src/func_pass_func/main.c
 --8<--
 ```
