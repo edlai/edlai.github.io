@@ -2,13 +2,21 @@
 
 ## Trace Function Enter and Exit
 
+***Example:***
+
+=== "C"
+
 ``` c linenums="1""
 --8<--
 docs/engineer/prog/linux_c/src/func_enter_exit/main.c
 --8<--
 ```
 
-## Trace
+## Debug Macro
+
+***Example:***
+
+=== "C"
 
 ``` c linenums="1""
 --8<--

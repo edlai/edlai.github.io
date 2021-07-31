@@ -1,22 +1,30 @@
+// https://www.codenong.com/cs106497648/
+// https://stackoverflow.com/questions/1644868/define-macro-for-debug-printing-in-c
+
+// an example of using debug MACRO
+
 #include <stdio.h>
 #include <time.h>
 
-#define DEBUG (1)
+#define DEBUG        /* comment this to disable Debug Message */
+
+// #line 206         /* Uncomment this to redeinfe LINE number */
 
 #ifdef DEBUG
-#define BLURT(x) do { printf("%ld [%s:%s():%d] %s", time(0), __FILE__, __func__, __LINE__, x); } while(0)
+#define debug_print(fmt, ...) \
+        do { fprintf(stderr, "[%lu | %s:%d:%s()] " fmt, time(0), __FILE__, __LINE__, __func__, __VA_ARGS__); } while (0)
 #else
-#define BLURT(x)
+#define debug_print(fmt, ...)
 #endif
 
 void silly_function(void)
 {
-  BLURT("I am here\n");
+  debug_print("%s\n", "Here I am");
 }
 
 int main(void)
 {
-  BLURT("I am here\n");
+  debug_print("%s\n", "Here I am");
   silly_function();
 
   return 0;

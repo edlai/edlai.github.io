@@ -26,10 +26,18 @@ nav:
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
         - 'Programming Tips':
-          - 'C Programming Tips':
-            - 'C Compiler': 'engineer/prog/linux_c/env_toolchain.md'
-            - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
-            - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
+          - 'GCC Compiler History': 'engineer/prog/linux_c/env_toolchain.md'
+          - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
+          - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
+          - 'Event Loop': 'engineer/prog/linux_c/event_loop.md'
+          - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
+          - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
+          - 'System Time': 'engineer/prog/linux_c/system_time.md'
+          - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
+          - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
+          - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
+          - 'Inotify': 'engineer/prog/linux_c/inotify.md'
+          - 'Resources': 'engineer/prog/linux_c/resources.md'
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'
@@ -132,6 +140,10 @@ markdown_extensions:
   - attr_list
   - admonition
   - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

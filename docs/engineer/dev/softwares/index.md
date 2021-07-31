@@ -6,7 +6,7 @@ This article introduces some software development tools for firmware development
 
 ### Visual Studio Code
 
-Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development tool. First of all, just install
+Instead of `vi`, highly recommended to use Visual Studio Code(VSC) as a firmware development IDE. First of all, just install
 [Visual Studio Code](https://code.visualstudio.com/) as a foundation of code editor then don't forget to install its [Recommended extensions](https://code.visualstudio.com/docs/editor/extension-gallery) as following as well.
 
 ### VSC Extensions
@@ -55,6 +55,12 @@ Deleting tabs when using tabs as spaces    | <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</
 Switch to next Tab                         | <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
 BookMark                                   | <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd>
 Toggle BookMark                            | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd>
+
+Use below command to open a file from the terminal in Visual Studio Code
+
+``` sh
+$ code -r filename.c
+```
 
 ### Code Server
 

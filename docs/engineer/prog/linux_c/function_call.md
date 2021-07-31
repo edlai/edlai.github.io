@@ -6,6 +6,10 @@
 
 #### Sum two numbers.
 
+***Example:***
+
+=== "C"
+
 ``` c linenums="1"
 --8<--
 docs/engineer/prog/linux_c/src/func_pass_value/main.c
@@ -18,6 +22,10 @@ docs/engineer/prog/linux_c/src/func_pass_value/main.c
 
 #### Swap 2 numbers.
 
+***Example:***
+
+=== "C"
+
 ``` c linenums="1"
 --8<--
 docs/engineer/prog/linux_c/src/func_pass_point_swap_num/main.c
@@ -25,6 +33,11 @@ docs/engineer/prog/linux_c/src/func_pass_point_swap_num/main.c
 ```
 
 #### Swap 2 strings.
+
+
+***Example:***
+
+=== "C"
 
 ``` c linenums="1"
 --8<--
@@ -36,23 +49,33 @@ docs/engineer/prog/linux_c/src/func_pass_point_swap_str/main.c
 
 Copies the C string pointed by source into the pointed.
 
+***Example:***
+
+=== "C"
+
 ``` c linenums="1"
 --8<--
 docs/engineer/prog/linux_c/src/func_pass_pointer_double/main.c
 --8<--
 ```
 
+### Pass a Triple-pointer to a function
+
+***Example:***
+
+=== "C"
+
 ``` c linenums="1"
 --8<--
-docs/engineer/prog/linux_c/src/func_pass_pointer_double/swap_string.c
+docs/engineer/prog/linux_c/src/func_pass_pointer_triple/main.c
 --8<--
 ```
 
-### Pass a Triple-pointer to a function
-
-~~ TBD ~~
-
 ### Pass a structure to to a function
+
+***Example:***
+
+=== "C"
 
 ``` c linenums="1"
 --8<--
@@ -62,6 +85,10 @@ docs/engineer/prog/linux_c/src/func_pass_struct/main.c
 
 ### Pass a structure-in-structure to a function
 
+***Example:***
+
+=== "C"
+
 ``` c linenums="1"
 --8<--
 docs/engineer/prog/linux_c/src/func_pass_struct_in_struct/main.c
@@ -69,6 +96,11 @@ docs/engineer/prog/linux_c/src/func_pass_struct_in_struct/main.c
 ```
 
 ### Pass a function point to a function
+
+***Example:***
+
+=== "C"
+
 
 ``` c linenums="1" hl_lines="37-38"
 --8<--
