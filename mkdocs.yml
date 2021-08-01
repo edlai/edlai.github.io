@@ -38,6 +38,7 @@ nav:
 #          - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
 #          - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
 #          - 'Inotify': 'engineer/prog/linux_c/inotify.md'
+#          - 'Object-Oriented': 'engineer/prog/linux_c/oo.md'
           - 'Resources': 'engineer/prog/linux_c/resources.md'
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
@@ -110,15 +111,17 @@ nav:
         - 'Miscellaneous':
           - 'Misc': 'engineer/misc/index.md'
     - 'Education':
-        - 'Introduction': 'edu/index.md'
-        - 'Thesis': 'edu/thesis/index.md'
-        - 'English': 'edu/english/index.md'
-        - 'Information Education': 'education/information-edu/index.md'
-        - 'Qualitative Research': 'education/qualitative-research/index.md'
-        - 'Quantitative Research': 'education/quantitative-research/index.md'
+        - 'Master Thesis': 'education/thesis/index.md'
+#        - 'Introduction': 'education/index.md'
+#        - 'English': 'education/english/index.md'
+#        - 'Information Education': 'education/information-edu/index.md'
+#        - 'Qualitative Research': 'education/qualitative-research/index.md'
+#        - 'Quantitative Research': 'education/quantitative-research/index.md'
     - 'Collection':
-        - 'Collections': 'collections/index.md'
+        - 'Life': 'collections/life.md'
         - 'Kids': 'collections/kids.md'
+        - 'Programming': 'collections/programming.md'
+        - 'Misc': 'collections/misc.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
     - 'Traveling':

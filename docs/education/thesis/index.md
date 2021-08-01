@@ -1,4 +1,4 @@
-# Thesis
+# Master Thesis
 
 ## APA (American Psychological Association)
 
