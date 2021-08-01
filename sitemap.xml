@@ -26,12 +26,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/collections/</loc>
+         <loc>https://edlai.github.io/collections/kids/</loc>
          <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://edlai.github.io/collections/kids/</loc>
+         <loc>https://edlai.github.io/collections/life/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/collections/misc/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/collections/programming/</loc>
          <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -592,6 +602,11 @@
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/prog/linux_c/memory_layout/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/oo/</loc>
          <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
