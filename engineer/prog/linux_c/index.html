@@ -1,0 +1,1288 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://edlai.github.io/engineer/prog/linux_c/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.1" name="generator"/>
+<title>C Programming Tips - Ed's Wiki  🦉</title>
+<link href="../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#c-programming-tips">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Ed's Wiki  🦉" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Ed's Wiki  🦉
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              C Programming Tips
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../dev/softwares/">
+        Engineering
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../edu/index.md">
+        Education
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../collections/">
+        Collection
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../traveling/trip/">
+        Traveling
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../photos/">
+      Photos
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Ed's Wiki  🦉" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Ed's Wiki  🦉">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    Ed's Wiki  🦉
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Engineering" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        Development Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Development Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/softwares/">
+        Softwares Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/accessories/">
+        Accessories
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/auto/">
+        Automation and Crawler
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" id="__nav_2_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_4">
+        Diagnostic Tools
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Diagnostic Tools" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_4">
+<span class="md-nav__icon md-icon"></span>
+          Diagnostic Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/sniffer/">
+        Wireless Sniffer - Wireshark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/rpcapd/">
+        Remote Capturer - rpcapd
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/tcpdump/">
+        Networking Sniffer - tcpdump
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5" id="__nav_2_1_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_5">
+        Performance Measurement
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Performance Measurement" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_5">
+<span class="md-nav__icon md-icon"></span>
+          Performance Measurement
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/perf/">
+        Networking Performance
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Programming Tips
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Programming Tips" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Programming Tips
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="env_toolchain/">
+        GCC Compiler History
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="debug_skill/">
+        Debugging Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="function_call/">
+        Function Argument
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="system_time/">
+        System Time
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="system_timer/">
+        System Timer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="resources.md">
+        Resources
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Embedded Linux
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Embedded Linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/buildroot/">
+        Buildroot SDK Framework
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/openwrt/">
+        OpenWRT SDK Framework
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../embedded/camera/cloud/">
+        Surveillance Camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Linux Kernel
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Linux Kernel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kernel/rebuild/">
+        Rebuild Linux Kernel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+        Celluar Network
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cell/sdr/">
+        Amarisoft SDR LTE 100
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Scripting Language
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scripting Language" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Scripting Language
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
+        TCL
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TCL" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          TCL
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/contactManager/">
+        Contact Manager
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/executionLogger/">
+        Execution Logger
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/tcl/simpleCalculator/">
+        Simple Calculator
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+        Perl
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Perl" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Perl
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/pl/quiz/">
+        Quiz
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../script/pl/dictionary/">
+        Dictionary
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+        Computer Networks
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Computer Networks
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/hypertext-transfer-protocol/">
+        Hypertext Transfer Protocol(HTTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/file-transfer-protocol/">
+        File Transfer Protocol (FTP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../net/simple-mail-transfer-protocol-and-post-office-protocol/">
+        Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+        Digital Signal Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Digital Signal Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_1" id="__nav_2_8_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_1">
+        Voice Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_8_1">
+<span class="md-nav__icon md-icon"></span>
+          Voice Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/discrete-time-processing/">
+        Discrete-Time Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/moving-average-and-backward-system/">
+        Moving Average and Backward System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_2" id="__nav_2_8_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_2">
+        Spectrum Analysis
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_8_2">
+<span class="md-nav__icon md-icon"></span>
+          Spectrum Analysis
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dsp/window-size-and-the-spectrogram/">
+        Window Size and the Spectrogram
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
+        Image Processing
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Image Processing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Image Processing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/grayscale/">
+        Grayscale
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/monochrome/">
+        Monochrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/negative/">
+        Negative Film
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/colorbar/">
+        Colorbar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/text/">
+        Text Picture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/js/mirror/">
+        Mirror
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dip/py/resize/">
+        Image Resizer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
+        Operating Systems
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../os/assembler-compiler/">
+        An Assembler Compiler
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
+        Man-Machine Interfaces
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Man-Machine Interfaces
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/isa/">
+        Industry Standard Architecture (ISA)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/pci/">
+        Peripheral Component Interconnect (PCI)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/ldd/">
+        Parallel Port Device (LPT) and Linux Device Driver
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/gpio/">
+        General Purpose Input Output (GPIO)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../io/i2c/">
+        Inter-Integrated Circuit (I2C)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12">
+        Television Engineering
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_12">
+<span class="md-nav__icon md-icon"></span>
+          Television Engineering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/player/">
+        Multimedia Player
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tv/mpeg1/">
+        Digital Vedio Conversion - MPEG-1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_13">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/">
+        Misc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Education
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Education" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Education
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/index.md">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/thesis/index.md">
+        Thesis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../edu/english/index.md">
+        English
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/information-edu/">
+        Information Education
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/qualitative-research/">
+        Qualitative Research
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../education/quantitative-research/">
+        Quantitative Research
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Collection
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Collection" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Collection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/">
+        Collections
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/kids/">
+        Kids
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Traveling
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Traveling" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Traveling
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/trip/">
+        Trip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../traveling/tour/">
+        Tour
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../photos/">
+        Photos
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resource">
+    Resource
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#code-snippets">
+    Code Snippets
+  </a>
+<nav aria-label="Code Snippets" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gcc-version">
+    GCC version
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parsing-arguments">
+    Parsing Arguments
+  </a>
+<nav aria-label="Parsing Arguments" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parsing-arguments-with-getopt">
+    Parsing Arguments with getopt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#check-function-input">
+    Check function input
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-call">
+    Function Call
+  </a>
+<nav aria-label="Function Call" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-value-to-a-function-call-by-value-swap-two-numbers">
+    Pass a value to a function (call-by-value) (swap two numbers)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-address-to-a-function-call-by-address">
+    Pass a address to a function  (call-by-address)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-dobule-pointer-to-a-function">
+    Pass a dobule-pointer to a function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-triple-pointer-to-a-function">
+    Pass a triple-pointer to a function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-structure-to-to-a-function">
+    Pass a structure to to a function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-structure-in-structure-to-to-a-function">
+    Pass a structure-in-structure to to a function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pass-a-function-point-to-a-function">
+    Pass a function point to a function
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicitlyimplicitlytype-conversion">
+    Explicitly/ImplicitlyType Conversion
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-machine-and-function-point">
+    State Machine and Function Point
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#point">
+    Point
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagnostic">
+    Diagnostic
+  </a>
+<nav aria-label="Diagnostic" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trace-function-enter-exit">
+    Trace function enter /exit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endian">
+    Endian
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#string">
+    String
+  </a>
+<nav aria-label="String" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reverse-a-string">
+    reverse a string
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#append-a-new-string">
+    append a new string
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#insert-a-string">
+    insert a string
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time">
+    Time
+  </a>
+<nav aria-label="Time" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time0-get-current-time-stamp">
+    time(0): get current time stamp
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gettimeofday-thread-safe-calculate-time-consuming">
+    gettimeofday (thread safe): calculate time consuming
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timer">
+    Timer
+  </a>
+<nav aria-label="Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sleep-while1-with-sleepint">
+    sleep: while(1) with sleep(int)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alarm-alarm-and-signal">
+    alarm: alarm() and signal()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#select">
+    select:
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timer_settime">
+    timer_settime
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setitimer">
+    setitimer:
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timerfd">
+    timerfd
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#libevent">
+    LibEvent
+  </a>
+<nav aria-label="LibEvent" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#simple-server-and-client">
+    Simple Server and Client
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#libev">
+    Libev
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#libuv">
+    Libuv
+  </a>
+<nav aria-label="Libuv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time-server">
+    Time Server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#httpd-server">
+    Httpd server
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="c-programming-tips">C Programming Tips</h1>
+<h2 id="resource">Resource</h2>
+<ul>
+<li><a href="https://github.com/nicehorse06/data-structures-and-algorithms">Data structures and algorithms</a></li>
+<li><a href="https://www.log2base2.com/">log2base2</a>: World's First Visual Learning Platform</li>
+<li><a href="https://www.runoob.com/cprogramming/c-tutorial.html">C 語言教程</a></li>
+</ul>
+<h2 id="code-snippets">Code Snippets</h2>
+<h3 id="gcc-version">GCC version</h3>
+<p>Check GCC version</p>
+<ul>
+<li><strong>STDC_VERSION</strong></li>
+<li><strong>STRICT_ANSI</strong></li>
+</ul>
+<h3 id="parsing-arguments">Parsing Arguments</h3>
+<h4 id="parsing-arguments-with-getopt">Parsing Arguments with getopt</h4>
+<h4 id="check-function-input">Check function input</h4>
+<h3 id="function-call">Function Call</h3>
+<h4 id="pass-a-value-to-a-function-call-by-value-swap-two-numbers">Pass a value to a function (call-by-value) (swap two numbers)</h4>
+<h4 id="pass-a-address-to-a-function-call-by-address">Pass a address to a function  (call-by-address)</h4>
+<h4 id="pass-a-dobule-pointer-to-a-function">Pass a dobule-pointer to a function</h4>
+<h4 id="pass-a-triple-pointer-to-a-function">Pass a triple-pointer to a function</h4>
+<h4 id="pass-a-structure-to-to-a-function">Pass a structure to to a function</h4>
+<h4 id="pass-a-structure-in-structure-to-to-a-function">Pass a structure-in-structure to to a function</h4>
+<h4 id="pass-a-function-point-to-a-function">Pass a function point to a function</h4>
+<p>Usage of scanf:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">scanf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+</code></pre></div>
+<p>Example:</p>
+<p><code>&amp;</code> means <code>call by address</code> for interger.</p>
+<p>Implementation:</p>
+<ul>
+<li><a href="https://github.com/aligrudi/neatlibc/blob/master/scanf.c">Github</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="n">sscanf</span> <span class="p">(</span><span class="s">"hello/17"</span><span class="p">,</span> <span class="s">"%[^/]/%d"</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="explicitlyimplicitlytype-conversion">Explicitly/ImplicitlyType Conversion</h3>
+<p>http://ot-note.logdown.com/posts/173174/note-cpp-named-type-convertion</p>
+<h3 id="state-machine-and-function-point">State Machine and Function Point</h3>
+<h3 id="point">Point</h3>
+<p>the usages of pointer</p>
+<p><div class="highlight"><pre><span></span><code>$ sudo apt-get install cdecl
+$ explain char *(*fptab[])(int)
+</code></pre></div>
+- gcc and glibc versions</p>
+<!--
+- framebuffer
+- volu
+- opts
+- unset, autofree
+- revise process name
+
+- avoid to double free memory point
+- check for fuction input
+- atoi v.s. strtol
+- append log to a log file
+- hexdump
+- printk
+- scanf and ignore the remaining
+-->
+<ul>
+<li>Queue</li>
+</ul>
+<h3 id="diagnostic">Diagnostic</h3>
+<ul>
+<li>Trace function call and print function point</li>
+</ul>
+<h4 id="trace-function-enter-exit">Trace function enter /exit</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DUMP(func, call) \</span>
+<span class="cp">  printf("%s: func = %p, called by = %p\n", __FUNCTION__, func, call)</span>
+
+<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">no_instrument_function</span><span class="p">))</span>
+<span class="n">__cyg_profile_func_enter</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">this_func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">call_site</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">DUMP</span><span class="p">(</span><span class="n">this_func</span><span class="p">,</span> <span class="n">call_site</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">no_instrument_function</span><span class="p">))</span>
+<span class="n">__cyg_profile_func_exit</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">this_func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">call_site</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">DUMP</span><span class="p">(</span><span class="n">this_func</span><span class="p">,</span> <span class="n">call_site</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Print function point</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">do_calc</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">do_multi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">"The address of the do_calc  is = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">do_calc</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="endian">Endian</h4>
+<h3 id="string">String</h3>
+<h4 id="reverse-a-string">reverse a string</h4>
+<h4 id="append-a-new-string"><a href="asprintf">append a new string</a></h4>
+<h4 id="insert-a-string">insert a string</h4>
+<h3 id="time">Time</h3>
+<h4 id="time0-get-current-time-stamp">time(0): get current time stamp</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<span class="kt">time_t</span> <span class="n">time</span><span class="p">(</span><span class="kt">time_t</span><span class="o">*</span> <span class="n">timer</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="gettimeofday-thread-safe-calculate-time-consuming">gettimeofday (thread safe): calculate time consuming</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;sys/time.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">gettimeofday</span><span class="p">(</span><span class="k">struct</span> <span class="nc">timeval</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tv</span><span class="p">,</span>
+                 <span class="k">struct</span> <span class="nc">timezone</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tz</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">settimeofday</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="nc">timeval</span> <span class="o">*</span><span class="n">tv</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="k">struct</span> <span class="nc">timezone</span> <span class="o">*</span><span class="n">tz</span><span class="p">);</span>
+</code></pre></div>
+<!--
+- timespec_get (C11)
+- clock_gettime
+
+
+<div class="highlight"><pre><span></span><code>#include &lt;time.h&gt;
+
+int clock_getres(clockid_t clk_id, struct timespec *res);
+int clock_gettime(clockid_t clk_id, struct timespec *tp);
+int clock_settime(clockid_t clk_id, const struct timespec *tp);
+</code></pre></div>
+-->
+<h3 id="timer">Timer</h3>
+<h4 id="sleep-while1-with-sleepint">sleep: <code>while(1)</code> with <code>sleep(int)</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sleep</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">seconds</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="alarm-alarm-and-signal">alarm: <code>alarm()</code> and <code>signal()</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">alarm</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">seconds</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="kt">sighandler_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">sighandler_t</span> <span class="nf">signal</span><span class="p">(</span><span class="kt">int</span> <span class="n">signum</span><span class="p">,</span> <span class="kt">sighandler_t</span> <span class="n">handler</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="select">select:</h4>
+<h4 id="timer_settime">timer_settime</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="c1">           /* Definition of SIGEV_* constants */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">timer_create</span><span class="p">(</span><span class="kt">clockid_t</span> <span class="n">clockid</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">sigevent</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">sevp</span><span class="p">,</span>
+                 <span class="kt">timer_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">timerid</span><span class="p">);</span>
+
+
+<span class="kt">int</span> <span class="nf">timer_settime</span><span class="p">(</span><span class="kt">timer_t</span> <span class="n">timerid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">new_value</span><span class="p">,</span>
+                  <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">old_value</span><span class="p">);</span>
+
+<span class="n">Link</span> <span class="n">with</span> <span class="o">-</span><span class="n">lrt</span><span class="p">.</span>
+</code></pre></div>
+<h4 id="setitimer">setitimer:</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">setitimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">which</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">itimerval</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">itimerval</span> <span class="o">*</span><span class="n">ovalue</span><span class="p">));</span>
+  <span class="o">*</span> <span class="n">which</span>
+    <span class="o">-</span> <span class="nl">ITIMER_REAL</span> <span class="p">:</span> <span class="err">以系統真實的時間來計算，它送出</span><span class="n">SIGALRM信號</span><span class="err">。</span>
+    <span class="o">-</span> <span class="nl">ITIMER_VIRTUAL</span> <span class="p">:</span> <span class="err">以該進程在用戶態下花費的時間來計算，它送出</span><span class="n">SIGVTALRM信號</span><span class="err">。</span>
+    <span class="o">-</span> <span class="nl">ITIMER_PROF</span> <span class="p">:</span> <span class="err">以該進程在用戶態下和內核態下所費的時間來計算，它送出</span><span class="n">SIGPROF信號</span><span class="err">。</span>
+  <span class="o">*</span> <span class="n">itimerval</span>
+    <span class="o">-</span> <span class="n">itimerval的一個實例</span>
+</code></pre></div>
+<h4 id="timerfd">timerfd</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;sys/timerfd.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">timerfd_create</span><span class="p">(</span><span class="kt">int</span> <span class="n">clockid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">timerfd_settime</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">new_value</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">old_value</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">timerfd_gettime</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">curr_value</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="libevent">LibEvent</h3>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt install libevent-dev
+</code></pre></div>
+<h4 id="simple-server-and-client">Simple Server and Client</h4>
+<h3 id="libev">Libev</h3>
+<h3 id="libuv">Libuv</h3>
+<h4 id="time-server">Time Server</h4>
+<h4 id="httpd-server">Httpd server</h4>
+<p>Reference</p>
+<ul>
+<li><a href="https://hackmd.io/@sysprog/fast-web-server">高效 Web 伺服器開發</a></li>
+<li><a href="https://www.adamtornhill.com/Patterns%20in%20C%205,%20REACTOR.pdf">Patterns in C - Part 5: REACTOR</a></li>
+<li><a href="http://www.sunshine2k.de/c.html">C / C++</a></li>
+</ul>
+<!--
+### Keyword
+
+<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="k">break</span> <span class="k">case</span> <span class="kt">char</span> <span class="k">const</span> <span class="k">continue</span> <span class="k">default</span> <span class="k">do</span> <span class="kt">double</span> <span class="k">else</span> <span class="k">enum</span> <span class="k">extern</span> <span class="kt">float</span> <span class="k">for</span> <span class="k">goto</span> <span class="k">if</span> <span class="kt">int</span> <span class="kt">long</span> <span class="k">register</span> <span class="k">return</span> <span class="kt">short</span> <span class="kt">signed</span> <span class="k">sizeof</span> <span class="k">static</span> <span class="k">struct</span> <span class="nc">switch</span> <span class="k">typedef</span> <span class="k">union</span> <span class="nc">unsigned</span> <span class="kt">void</span> <span class="k">volatile</span> <span class="k">while</span>
+</code></pre></div>
+
+Notice:
+
+- sizeof is a MACRO, strlen is a function.
+
+### Variant
+
+- volatile, alignment
+
+### Goto
+
+- goto, setjump, longjump
+
+
+
+
+
+
+### Number
+
+- [strtol v.s. atoi](src/strtol_and_atoi/main.c)
+
+### File
+
+- read an entire file
+
+
+
+
+
+## Library
+
+- Zero MQ https://zh.wikipedia.org/wiki/%C3%98MQ
+- enable verbose for libcurl
+- evhttpd of libevent
+
+## Resource
+
+- [The Linux Programming Interface](https://man7.org/tlpi/code/online/index.html)
+- [軟件開發平台及語言筆記大全(超詳細)](https://www.cntofu.com/book/46/index.html)
+
+- [C 語言入門](https://www.youtube.com/playlist?list=PLY_qIufNHc293YnIjVeEwNDuqGo8y2Emx)
+  - [【C 語言入門】20.4 - 使用 scanf 讀入資料的問題](https://www.youtube.com/watch?v=my-0xCJNgoM&ab_channel=FeisStudio)
+
+-[你所不知道的 C 語言：技巧篇 (2017-03-20)](https://www.youtube.com/watch?v=H4Efd9zN00A&ab_channel=.GUTS)
+  - [你所不知道的 C 語言：技巧篇 (2019-07-11)](https://www.youtube.com/watch?v=lUFdjk8Nmbg&ab_channel=.GUTS)
+
+- Jserv Homework
+
+## Books
+
+- 
+
+-->
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.716f8af4.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

@@ -2,647 +2,732 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://edlai.github.io/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/about/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/license/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/linux-distribution/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/release-notes/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/collections/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/collections/kids/</loc>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/english/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/information-edu/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/qualitative-research/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/quantitative-research/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/education/thesis/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/apn/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/cmw500/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/earfcn/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/openairinterface/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/cell/sdr/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/cell/sim/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/courses/</loc>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/accessories/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/auto/</loc>
-         <lastmod>2021-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://edlai.github.io/engineer/dev/bss/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/diag/rpcapd/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/diag/sniffer/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/diag/tcpdump/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/doc/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/docker/compose/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/docker/file/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/docker/macvlan/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/dev/enb/</loc>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/git/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/perf/</loc>
-         <lastmod>2021-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://edlai.github.io/engineer/dev/prog/c_adv/</loc>
-         <lastmod>2021-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://edlai.github.io/engineer/dev/prog/linux_c/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/python/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/shell/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/softwares/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dev/wifi/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/cpp/displayimage/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/cpp/grayscale/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/cpp/monochrome/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/cpp/negative/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/html/grayscale/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/colorbar/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/grayscale/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/mirror/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/mirror/old_README/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/monochrome/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/negative/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/resize/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/js/text/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/node/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/php/colorbar/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/php/grayscale/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/php/monochrome/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/php/negative/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/php/text/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/age/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/cam/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/colorbar/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/eyes/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/face/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/gender/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/grayscale/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/ipp/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/mirror/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/monochrome/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/negative/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/object/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/plant/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/resize/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/py/text/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dip/ssd1306/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dsp/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dsp/discrete-time-processing/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dsp/discrete-time-processing/_index/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dsp/moving-average-and-backward-system/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/dsp/window-size-and-the-spectrogram/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/buildroot/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/cloud/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/face/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/html5/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/ipc/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/lpr/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/lpr/alpr/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/lpr/cht/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/lpr/iv/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/camera/lpr/tc/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/endurance/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/openwrt/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/embedded/rtl8197f/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/gpio/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/i2c/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/isa/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/ldd/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/pci/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/smbus/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/usb/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/io/wdm/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/kernel/rebuild/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/misc/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/net/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/net/file-transfer-protocol/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/net/hypertext-transfer-protocol/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/net/simple-mail-transfer-protocol-and-post-office-protocol/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/os/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/os/assembler-compiler/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/c_adv/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/c_resources/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/comm_mqtt/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/debug_skill/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/env_toolchain/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/event_loop/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/function_call/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/inotify/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/memory_layout/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/pointer/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/reactor_pattern/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/state_machine/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/string/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/system_time/</loc>
+         <lastmod>2021-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://edlai.github.io/engineer/prog/linux_c/system_timer/</loc>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/pl/dictionary/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/pl/quiz/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/py/aes/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/py/ctype/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/py/request/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/py/selenium/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/tcl/README.index/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/tcl/contactManager/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/tcl/executionLogger/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/tcl/simpleCalculator/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/script/tcl/wapPhoneEmulator/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/tv/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/tv/mpeg1/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/tv/mpeg2/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/engineer/tv/player/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/interview/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/motivation/painting/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/photos/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/traveling/tour/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://edlai.github.io/traveling/trip/</loc>
-         <lastmod>2021-07-18</lastmod>
+         <lastmod>2021-08-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

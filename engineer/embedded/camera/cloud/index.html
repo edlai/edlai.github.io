@@ -7,10 +7,10 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://edlai.github.io/engineer/embedded/camera/cloud/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.1" name="generator"/>
 <title>Surveillance Camera - Ed's Wiki  🦉</title>
-<link href="../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
-<link href="../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
@@ -58,14 +58,16 @@
 <label class="md-search__overlay" for="__search"></label>
 <div class="md-search__inner" role="search">
 <form class="md-search__form" name="search">
-<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
 <label class="md-search__icon md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </label>
+<nav aria-label="Search" class="md-search__options">
 <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
 </button>
+</nav>
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix="">
@@ -189,12 +191,17 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../dev/diag/sniffer/">
-        Wireless Sniffer
+        Wireless Sniffer - Wireshark
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../dev/diag/rpcapd/">
-        Remote Capture - rpcapd
+        Remote Capturer - rpcapd
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/diag/tcpdump/">
+        Networking Sniffer - tcpdump
       </a>
 </li>
 </ul>
@@ -223,14 +230,59 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
+        Programming Tips
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Programming Tips" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Programming Tips
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/env_toolchain/">
+        GCC Compiler History
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/debug_skill/">
+        Debugging Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/function_call/">
+        Function Argument
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/system_time/">
+        System Time
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/system_timer/">
+        System Timer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/resources.md">
+        Resources
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
+<label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
@@ -261,11 +313,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#concept">
-    Concept
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#requirements">
     Requirements
   </a>
@@ -280,6 +327,20 @@
 <a class="md-nav__link" href="#software">
     Software
   </a>
+<nav aria-label="Software" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-host">
+    Cloud Host
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#target-device">
+    Target Device
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -387,40 +448,20 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Linux Kernel
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
           Linux Kernel
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../kernel/rebuild/">
-        Rebuild Kernel
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4">
-        Celluar Network
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
-<span class="md-nav__icon md-icon"></span>
-          Celluar Network
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../cell/sdr/">
-        Amarisoft SDR
+        Rebuild Linux Kernel
       </a>
 </li>
 </ul>
@@ -429,23 +470,43 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_5">
-        Scripting language
+        Celluar Network
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Scripting language" class="md-nav" data-md-level="2">
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_5">
 <span class="md-nav__icon md-icon"></span>
-          Scripting language
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cell/sdr/">
+        Amarisoft SDR LTE 100
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Scripting Language
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scripting Language" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Scripting Language
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
         TCL
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="TCL" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_1">
+<label class="md-nav__title" for="__nav_2_6_1">
 <span class="md-nav__icon md-icon"></span>
           TCL
         </label>
@@ -465,22 +526,17 @@
         Simple Calculator
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../script/tcl/wapPhoneEmulator/">
-        Wap Phone Emulator
-      </a>
-</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
         Perl
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Perl" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_2">
+<label class="md-nav__title" for="__nav_2_6_2">
 <span class="md-nav__icon md-icon"></span>
           Perl
         </label>
@@ -502,13 +558,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Computer Networks
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
+<label class="md-nav__title" for="__nav_2_7">
 <span class="md-nav__icon md-icon"></span>
           Computer Networks
         </label>
@@ -532,25 +588,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
+<label class="md-nav__title" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_1" id="__nav_2_8_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_1">
+<label class="md-nav__title" for="__nav_2_8_1">
 <span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
@@ -569,13 +625,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_2" id="__nav_2_7_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_2" id="__nav_2_8_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_2">
+<label class="md-nav__title" for="__nav_2_8_2">
 <span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
@@ -592,13 +648,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Image Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Image Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
+<label class="md-nav__title" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
           Image Processing
         </label>
@@ -642,13 +698,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_9">
+<label class="md-nav__title" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
@@ -662,13 +718,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_10">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_10">
+<label class="md-nav__title" for="__nav_2_11">
 <span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
@@ -702,13 +758,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_11">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_11">
+<label class="md-nav__title" for="__nav_2_12">
 <span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
@@ -727,13 +783,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_12">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_12">
+<label class="md-nav__title" for="__nav_2_13">
 <span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
@@ -811,6 +867,11 @@
         Collections
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../collections/kids/">
+        Kids
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -859,11 +920,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#concept">
-    Concept
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#requirements">
     Requirements
   </a>
@@ -878,6 +934,20 @@
 <a class="md-nav__link" href="#software">
     Software
   </a>
+<nav aria-label="Software" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-host">
+    Cloud Host
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#target-device">
+    Target Device
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1005,39 +1075,45 @@ $keywords: personal, cloud, recording, mt7688, cellular, uav
 * [Advanced](#advanced)
 * [Troubleshooting](#troubleshooting)
 -->
-<h2 id="concept">Concept</h2>
-<ul>
-<li>Recording the streaming from Surveillance Camera via 4G LTE Cellular Network.</li>
-</ul>
+<!--
+## Concept
+
+- Recording the streaming from Surveillance Camera via 4G LTE Cellular Network.
+-->
 <h2 id="requirements">Requirements</h2>
 <h3 id="hardware">Hardware</h3>
 <ul>
 <li><strong>Platform:</strong> MT7688 Target Board</li>
 <li><strong>Webcam:</strong>   Logitech C270 UVC Webcam</li>
 <li><strong>Cellular:</strong> 4G LTE Modem</li>
-<li><strong>Finished Goods:</strong>
-<img alt="r" src="cpe.png"/></li>
+<li><strong>Target Device:</strong></li>
 </ul>
+<p><img alt="r" src="cpe.png"/></p>
 <h3 id="software">Software</h3>
+<h4 id="cloud-host">Cloud Host</h4>
 <ul>
-<li>OpenWRT Linux</li>
+<li><code>ffmpeg</code></li>
+</ul>
+<h4 id="target-device">Target Device</h4>
+<ul>
+<li><code>mjpg_streamer</code> in an OpenWRT Linux OS</li>
 </ul>
 <h2 id="background">Background</h2>
 <h3 id="topology">Topology</h3>
 <div class="highlight"><pre><span></span><code> ---------------------------------
 / Cloud Server (running ffmpeg)  /
 ---------------------------------
-          /   Cloud:   [2001:19f0:7001:111a:5400:1ff:fe5c:4f86]
-        ______
-             /
+       /  Cloud Host: [2001:19f0:7001:111a:5400:1ff:fe5c:4f86]
+      /_____
+           /
           .-~~~-.
   .- ~ ~-(       )_ _
  /                     ~ -.
 |         4G LTE NW         \
  \                         .'
    ~- . _____________ . -~
-              /
-             /  IPCam:   http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream
+      /
+    /  Target Device: http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream
  ----------------------------------
 / IP CAMs (running mjpg-streamer) /
 ----------------------------------
@@ -1067,42 +1143,37 @@ $keywords: personal, cloud, recording, mt7688, cellular, uav
 <span class="gp"># </span>apt-get install iftop    <span class="c1"># (Optional)</span>
 </code></pre></div>
 <ul>
-<li>Issue <code>ffmpeg</code> command and point out the IPcam address</li>
+<li>Issue <code>ffmpeg</code> command and point out the IPcam address, system will record the streaming.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>ffmpeg -f mjpeg -r <span class="m">5</span> -i <span class="s2">"http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream"</span> -r <span class="m">5</span> ./video.avi
+
+<span class="go">  ffmpeg version 3.2.10-1~deb9u1 Copyright (c) 2000-2018 the FFmpeg developers</span>
+<span class="go">    built with gcc 6.3.0 (Debian 6.3.0-18) 20170516</span>
+<span class="go">    configuration: --prefix=/usr --extra-version='1~deb9u1' --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libebur128 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared</span>
+<span class="go">    libavutil      55. 34.101 / 55. 34.101</span>
+<span class="go">    libavcodec     57. 64.101 / 57. 64.101</span>
+<span class="go">    libavformat    57. 56.101 / 57. 56.101</span>
+<span class="go">    libavdevice    57.  1.100 / 57.  1.100</span>
+<span class="go">    libavfilter     6. 65.100 /  6. 65.100</span>
+<span class="go">    libavresample   3.  1.  0 /  3.  1.  0</span>
+<span class="go">    libswscale      4.  2.100 /  4.  2.100</span>
+<span class="go">    libswresample   2.  3.100 /  2.  3.100</span>
+<span class="go">    libpostproc    54.  1.100 / 54.  1.100</span>
+<span class="go">  Input #0, mjpeg, from 'http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream':</span>
+<span class="go">    Duration: N/A, bitrate: N/A</span>
+<span class="go">      Stream #0:0: Video: mjpeg, yuvj422p(pc, bt470bg/unknown/unknown), 640x480, 5 tbr, 1200k tbn, 5 tbc</span>
+<span class="go">  [swscaler @ 0x5636a0d10480] deprecated pixel format used, make sure you did set range correctly</span>
+<span class="go">  Output #0, avi, to './video1.avi':</span>
 </code></pre></div>
 <ul>
-<li>To force the frame rate of the input file (valid for raw formats only) to 5 fps and the frame rate of the output file to 5 fps:
-  <a href="https://linux.die.net/man/1/ffmpeg">man</a></li>
+<li>To force the frame rate of the input file (valid for raw formats only) to 5 fps and the frame rate of the output file to 5 fps:</li>
 <li><strong>- i:</strong> filename, input file name</li>
 <li><strong>- b:</strong> bitrate, Set the video bitrate in bit/s (default = 200 kb/s).</li>
 <li><strong>- vcodec:</strong> codec, Force video codec to codec. Use the "copy" special value to tell that the raw codec data must be copied as is.</li>
 <li><strong>- r:</strong> fps, Set frame rate (Hz value, fraction or abbreviation), (default = 25).</li>
-<li>
-<p><strong>- y:</strong> Overwrite output files.</p>
-</li>
-<li>
-<p>System will record the streaming</p>
-</li>
+<li><strong>- y:</strong> Overwrite output files.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="go">ffmpeg version 3.2.10-1~deb9u1 Copyright (c) 2000-2018 the FFmpeg developers</span>
-<span class="go">  built with gcc 6.3.0 (Debian 6.3.0-18) 20170516</span>
-<span class="go">  configuration: --prefix=/usr --extra-version='1~deb9u1' --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libebur128 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared</span>
-<span class="go">  libavutil      55. 34.101 / 55. 34.101</span>
-<span class="go">  libavcodec     57. 64.101 / 57. 64.101</span>
-<span class="go">  libavformat    57. 56.101 / 57. 56.101</span>
-<span class="go">  libavdevice    57.  1.100 / 57.  1.100</span>
-<span class="go">  libavfilter     6. 65.100 /  6. 65.100</span>
-<span class="go">  libavresample   3.  1.  0 /  3.  1.  0</span>
-<span class="go">  libswscale      4.  2.100 /  4.  2.100</span>
-<span class="go">  libswresample   2.  3.100 /  2.  3.100</span>
-<span class="go">  libpostproc    54.  1.100 / 54.  1.100</span>
-<span class="go">Input #0, mjpeg, from 'http://[2001:b400:e25b:d8b6:26c:ac02:cccd:6e8f]:8080/?action=stream':</span>
-<span class="go">  Duration: N/A, bitrate: N/A</span>
-<span class="go">    Stream #0:0: Video: mjpeg, yuvj422p(pc, bt470bg/unknown/unknown), 640x480, 5 tbr, 1200k tbn, 5 tbc</span>
-<span class="go">[swscaler @ 0x5636a0d10480] deprecated pixel format used, make sure you did set range correctly</span>
-<span class="go">Output #0, avi, to './video1.avi':</span>
-</code></pre></div>
+<p>for more detail, please check the <a href="https://linux.die.net/man/1/ffmpeg">man page</a></p>
 <!--
 # ffmpeg -f mjpeg -r 5 -i "http://openwrt:openwrt@localhost:8080/?action=stream" -r 5 ./video.avi
 -->
@@ -1118,7 +1189,7 @@ $keywords: personal, cloud, recording, mt7688, cellular, uav
 <img alt="r" src="ffmpeg.png"/></p>
 </li>
 <li>
-<p>Observation of CPU Usage for VPS
+<p>Observation of CPU Usage for VPS, it's around 5% 
   <img alt="r" src="usage-cpu.png"/></p>
 </li>
 <li>
@@ -1302,13 +1373,13 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
             </div>
 </div>
 </a>
-<a aria-label="Next: Rebuild Kernel" class="md-footer__link md-footer__link--next" href="../../../kernel/rebuild/" rel="next">
+<a aria-label="Next: Rebuild Linux Kernel" class="md-footer__link md-footer__link--next" href="../../../kernel/rebuild/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Rebuild Kernel
+              Rebuild Linux Kernel
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -1332,8 +1403,8 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
-<script src="../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.716f8af4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
 </html>

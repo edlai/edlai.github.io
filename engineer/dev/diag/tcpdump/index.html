@@ -7,10 +7,10 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://edlai.github.io/engineer/dev/diag/tcpdump/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Tcpdump and Tshark - Ed's Wiki  🦉</title>
-<link href="../../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
-<link href="../../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.1" name="generator"/>
+<title>Networking Sniffer - tcpdump - Ed's Wiki  🦉</title>
+<link href="../../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#tcpdump-and-tshark">
+<a class="md-skip" href="#tcpdump">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Tcpdump and Tshark
+              Networking Sniffer - tcpdump
             
           </span>
 </div>
@@ -58,14 +58,16 @@
 <label class="md-search__overlay" for="__search"></label>
 <div class="md-search__inner" role="search">
 <form class="md-search__form" name="search">
-<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
 <label class="md-search__icon md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </label>
+<nav aria-label="Search" class="md-search__options">
 <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
 </button>
+</nav>
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix="">
@@ -91,7 +93,7 @@
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../softwares/">
+<a class="md-tabs__link md-tabs__link--active" href="../../softwares/">
         Engineering
       </a>
 </li>
@@ -136,8 +138,8 @@
         Home
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
@@ -148,8 +150,8 @@
           Engineering
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_1">
         Development Tools
         <span class="md-nav__icon md-icon"></span>
@@ -175,8 +177,8 @@
         Automation and Crawler
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" id="__nav_2_1_4" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" id="__nav_2_1_4" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_1_4">
         Diagnostic Tools
         <span class="md-nav__icon md-icon"></span>
@@ -189,13 +191,69 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../sniffer/">
-        Wireless Sniffer
+        Wireless Sniffer - Wireshark
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../rpcapd/">
-        Remote Capture - rpcapd
+        Remote Capturer - rpcapd
       </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Networking Sniffer - tcpdump
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Networking Sniffer - tcpdump
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-tcpdump">
+    Install tcpdump
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-cases">
+    User Cases
+  </a>
+<nav aria-label="User Cases" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dump-vlan-packets">
+    Dump VLAN packets
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dump-pppoe-packets">
+    Dump PPPoE packets
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#promiscuous-mode">
+    Promiscuous Mode
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -226,11 +284,56 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
+        Programming Tips
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Programming Tips" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Programming Tips
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/env_toolchain/">
+        GCC Compiler History
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/debug_skill/">
+        Debugging Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/function_call/">
+        Function Argument
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/system_time/">
+        System Time
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/system_timer/">
+        System Timer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../prog/linux_c/resources.md">
+        Resources
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
+<label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
@@ -254,40 +357,20 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Linux Kernel
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
           Linux Kernel
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../kernel/rebuild/">
-        Rebuild Kernel
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4">
-        Celluar Network
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
-<span class="md-nav__icon md-icon"></span>
-          Celluar Network
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../cell/sdr/">
-        Amarisoft SDR
+        Rebuild Linux Kernel
       </a>
 </li>
 </ul>
@@ -296,23 +379,43 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_5">
-        Scripting language
+        Celluar Network
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Scripting language" class="md-nav" data-md-level="2">
+<nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_5">
 <span class="md-nav__icon md-icon"></span>
-          Scripting language
+          Celluar Network
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cell/sdr/">
+        Amarisoft SDR LTE 100
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Scripting Language
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scripting Language" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Scripting Language
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
         TCL
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="TCL" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_1">
+<label class="md-nav__title" for="__nav_2_6_1">
 <span class="md-nav__icon md-icon"></span>
           TCL
         </label>
@@ -332,22 +435,17 @@
         Simple Calculator
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../script/tcl/wapPhoneEmulator/">
-        Wap Phone Emulator
-      </a>
-</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
         Perl
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Perl" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_2">
+<label class="md-nav__title" for="__nav_2_6_2">
 <span class="md-nav__icon md-icon"></span>
           Perl
         </label>
@@ -369,13 +467,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Computer Networks
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
+<label class="md-nav__title" for="__nav_2_7">
 <span class="md-nav__icon md-icon"></span>
           Computer Networks
         </label>
@@ -399,25 +497,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
+<label class="md-nav__title" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_1" id="__nav_2_8_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_1">
+<label class="md-nav__title" for="__nav_2_8_1">
 <span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
@@ -436,13 +534,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_2" id="__nav_2_7_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_2" id="__nav_2_8_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_2">
+<label class="md-nav__title" for="__nav_2_8_2">
 <span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
@@ -459,13 +557,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Image Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Image Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
+<label class="md-nav__title" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
           Image Processing
         </label>
@@ -509,13 +607,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_9">
+<label class="md-nav__title" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
@@ -529,13 +627,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_10">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_10">
+<label class="md-nav__title" for="__nav_2_11">
 <span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
@@ -569,13 +667,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_11">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_11">
+<label class="md-nav__title" for="__nav_2_12">
 <span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
@@ -594,13 +692,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_12">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_12">
+<label class="md-nav__title" for="__nav_2_13">
 <span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
@@ -678,6 +776,11 @@
         Collections
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../collections/kids/">
+        Kids
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -726,29 +829,38 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#promiscuous-mode">
-    Promiscuous Mode
+<a class="md-nav__link" href="#install-tcpdump">
+    Install tcpdump
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tshark">
-    tshark
+<a class="md-nav__link" href="#user-cases">
+    User Cases
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tcpdump">
-    tcpdump
-  </a>
-<nav aria-label="tcpdump" class="md-nav">
+<nav aria-label="User Cases" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#vlan-packets">
-    VLAN packets
+<a class="md-nav__link" href="#dump-vlan-packets">
+    Dump VLAN packets
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#pppoe-packets">
-    PPPoE packets
+<a class="md-nav__link" href="#dump-pppoe-packets">
+    Dump PPPoE packets
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix">
+    Appendix
+  </a>
+<nav aria-label="Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#promiscuous-mode">
+    Promiscuous Mode
   </a>
 </li>
 </ul>
@@ -761,69 +873,92 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="tcpdump-and-tshark">Tcpdump and Tshark</h1>
-<h2 id="promiscuous-mode">Promiscuous Mode</h2>
-<p>Enable Promiscuous Mode</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 promisc
-
-<span class="gp">$ </span>sudo ifconfig enp0s25
-<span class="go">enp0s25: flags=4419&lt;UP,BROADCAST,RUNNING,PROMISC,MULTICAST&gt;  mtu 1500           # &lt; = PROMISC</span>
-<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
-<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
-<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
-<span class="go">        RX packets 309505  bytes 241920726 (230.7 MiB)</span>
-<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
-<span class="go">        TX packets 279294  bytes 36722749 (35.0 MiB)</span>
-<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 264</span>
-<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+<h1 id="tcpdump">Tcpdump</h1>
+<p>Tcpdump can capture Network traffice in console mode.</p>
+<h2 id="install-tcpdump">Install tcpdump</h2>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install tcpdump
 </code></pre></div>
-<p>Disable Promiscuous Mode</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo ifconfig enp0s25 -promisc
-
-<span class="gp">$ </span>sudo ifconfig enp0s25
-<span class="go">enp0s25: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span>
-<span class="go">        inet 192.168.2.242  netmask 255.255.255.0  broadcast 192.168.2.255</span>
-<span class="go">        inet6 fe80::74fa:d87f:c697:6bff  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
-<span class="go">        ether 3c:97:0e:51:72:df  txqueuelen 1000  (Ethernet)</span>
-<span class="go">        RX packets 309890  bytes 241950545 (230.7 MiB)</span>
-<span class="go">        RX errors 0  dropped 1  overruns 0  frame 0</span>
-<span class="go">        TX packets 279816  bytes 36788444 (35.0 MiB)</span>
-<span class="go">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 266</span>
-<span class="go">        device interrupt 20  memory 0xf2600000-f2620000</span>
+<h2 id="user-cases">User Cases</h2>
+<h3 id="dump-vlan-packets">Dump VLAN packets</h3>
+<p>VLAN belongs to layer2, use below command to dump VLAN packets.</p>
+<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enp0s25 -en -XX
 </code></pre></div>
-<h2 id="tshark">tshark</h2>
-<p>Install</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tshark
-</code></pre></div>
-<p>Command to capture Beacon frame</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tshark -i wlx008e86000266 -f <span class="s2">"type mgt subtype beacon"</span>
-</code></pre></div>
-<h2 id="tcpdump">tcpdump</h2>
-<p>Install tcpdump</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get install tcpdump
-</code></pre></div>
-<h3 id="vlan-packets">VLAN packets</h3>
-<p>VLAN belongs to layer2, use below command to dump VLAN packets</p>
 <ul>
 <li><code>-e</code>: Prints the link-level header on each dump line.</li>
 <li><code>-n</code>: Blocks converting the host addresses, and the port numbers to names.</li>
 <li><code>-X</code>: Prints each packet (minus its link level header) in hexadecimal and ASCII. This is very handy for analyzing new protocols.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX
+<h3 id="dump-pppoe-packets">Dump PPPoE packets</h3>
+<p>VLAN belongs to layer3, use below command to dump PPPoE packets.</p>
+<div class="highlight"><pre><span></span><code>$ sudo tcpdump -i enp0s25 -en -XX ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8863 or ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8864
 </code></pre></div>
-<h3 id="pppoe-packets">PPPoE packets</h3>
 <ul>
 <li><code>0x8863</code>: PPPoE Discovery Stage</li>
 <li><code>0x8864</code>: PPPoE Session Stage</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo tcpdump -i enp0s25 -en -XX ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8863 or ether<span class="o">[</span>0x0c:2<span class="o">]==</span>0x8864
+<h2 id="appendix">Appendix</h2>
+<h3 id="promiscuous-mode">Promiscuous Mode</h3>
+<p>Enable Promiscuous Mode</p>
+<div class="highlight"><pre><span></span><code>$ sudo ifconfig enp0s25 promisc
+
+$ sudo ifconfig enp0s25
+enp0s25: <span class="nv">flags</span><span class="o">=</span><span class="m">4419</span>&lt;UP,BROADCAST,RUNNING,PROMISC,MULTICAST&gt;  mtu <span class="m">1500</span>           <span class="c1"># &lt; = PROMISC</span>
+        inet <span class="m">192</span>.168.2.242  netmask <span class="m">255</span>.255.255.0  broadcast <span class="m">192</span>.168.2.255
+        inet6 fe80::74fa:d87f:c697:6bff  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
+        ether 3c:97:0e:51:72:df  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
+        RX packets <span class="m">309505</span>  bytes <span class="m">241920726</span> <span class="o">(</span><span class="m">230</span>.7 MiB<span class="o">)</span>
+        RX errors <span class="m">0</span>  dropped <span class="m">1</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
+        TX packets <span class="m">279294</span>  bytes <span class="m">36722749</span> <span class="o">(</span><span class="m">35</span>.0 MiB<span class="o">)</span>
+        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">264</span>
+        device interrupt <span class="m">20</span>  memory 0xf2600000-f2620000
 </code></pre></div>
-<h1 id="_1"></h1>
+<p>Disable Promiscuous Mode</p>
+<div class="highlight"><pre><span></span><code>$ sudo ifconfig enp0s25 -promisc
+
+$ sudo ifconfig enp0s25
+enp0s25: <span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="m">1500</span>
+        inet <span class="m">192</span>.168.2.242  netmask <span class="m">255</span>.255.255.0  broadcast <span class="m">192</span>.168.2.255
+        inet6 fe80::74fa:d87f:c697:6bff  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
+        ether 3c:97:0e:51:72:df  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
+        RX packets <span class="m">309890</span>  bytes <span class="m">241950545</span> <span class="o">(</span><span class="m">230</span>.7 MiB<span class="o">)</span>
+        RX errors <span class="m">0</span>  dropped <span class="m">1</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
+        TX packets <span class="m">279816</span>  bytes <span class="m">36788444</span> <span class="o">(</span><span class="m">35</span>.0 MiB<span class="o">)</span>
+        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">266</span>
+        device interrupt <span class="m">20</span>  memory 0xf2600000-f2620000
+</code></pre></div>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Remote Capturer - rpcapd" class="md-footer__link md-footer__link--prev" href="../rpcapd/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Remote Capturer - rpcapd
+            </div>
+</div>
+</a>
+<a aria-label="Next: Networking Performance" class="md-footer__link md-footer__link--next" href="../../perf/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Networking Performance
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">
@@ -840,8 +975,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
-<script src="../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.716f8af4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
 </html>

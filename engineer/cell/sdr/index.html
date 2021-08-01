@@ -7,10 +7,10 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://edlai.github.io/engineer/cell/sdr/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.1, mkdocs-material-7.1.10" name="generator"/>
-<title>Amarisoft SDR - Ed's Wiki  🦉</title>
-<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.1" name="generator"/>
+<title>Amarisoft SDR LTE 100 - Ed's Wiki  🦉</title>
+<link href="../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Amarisoft SDR
+              Amarisoft SDR LTE 100
             
           </span>
 </div>
@@ -58,14 +58,16 @@
 <label class="md-search__overlay" for="__search"></label>
 <div class="md-search__inner" role="search">
 <form class="md-search__form" name="search">
-<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
 <label class="md-search__icon md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </label>
+<nav aria-label="Search" class="md-search__options">
 <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
 </button>
+</nav>
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix="">
@@ -189,12 +191,17 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../dev/diag/sniffer/">
-        Wireless Sniffer
+        Wireless Sniffer - Wireshark
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../dev/diag/rpcapd/">
-        Remote Capture - rpcapd
+        Remote Capturer - rpcapd
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev/diag/tcpdump/">
+        Networking Sniffer - tcpdump
       </a>
 </li>
 </ul>
@@ -226,11 +233,56 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
+        Programming Tips
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Programming Tips" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Programming Tips
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/env_toolchain/">
+        GCC Compiler History
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/debug_skill/">
+        Debugging Skills
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/function_call/">
+        Function Argument
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/system_time/">
+        System Time
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/system_timer/">
+        System Timer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog/linux_c/resources.md">
+        Resources
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Embedded Linux
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Embedded Linux" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
+<label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
           Embedded Linux
         </label>
@@ -254,33 +306,33 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Linux Kernel
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Linux Kernel" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
           Linux Kernel
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../kernel/rebuild/">
-        Rebuild Kernel
+        Rebuild Linux Kernel
       </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
         Celluar Network
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Celluar Network" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
+<label class="md-nav__title" for="__nav_2_5">
 <span class="md-nav__icon md-icon"></span>
           Celluar Network
         </label>
@@ -288,11 +340,11 @@
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Amarisoft SDR
+          Amarisoft SDR LTE 100
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Amarisoft SDR
+        Amarisoft SDR LTE 100
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -522,25 +574,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5">
-        Scripting language
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+        Scripting Language
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Scripting language" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_5">
+<nav aria-label="Scripting Language" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
 <span class="md-nav__icon md-icon"></span>
-          Scripting language
+          Scripting Language
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_1">
         TCL
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="TCL" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_1">
+<label class="md-nav__title" for="__nav_2_6_1">
 <span class="md-nav__icon md-icon"></span>
           TCL
         </label>
@@ -560,22 +612,17 @@
         Simple Calculator
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../script/tcl/wapPhoneEmulator/">
-        Wap Phone Emulator
-      </a>
-</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_2" id="__nav_2_5_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
         Perl
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Perl" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_2">
+<label class="md-nav__title" for="__nav_2_6_2">
 <span class="md-nav__icon md-icon"></span>
           Perl
         </label>
@@ -597,13 +644,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
         Computer Networks
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Computer Networks" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
+<label class="md-nav__title" for="__nav_2_7">
 <span class="md-nav__icon md-icon"></span>
           Computer Networks
         </label>
@@ -627,25 +674,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
         Digital Signal Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Digital Signal Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
+<label class="md-nav__title" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
           Digital Signal Processing
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_1" id="__nav_2_8_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_1">
         Voice Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Voice Processing" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_1">
+<label class="md-nav__title" for="__nav_2_8_1">
 <span class="md-nav__icon md-icon"></span>
           Voice Processing
         </label>
@@ -664,13 +711,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_2" id="__nav_2_7_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8_2" id="__nav_2_8_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8_2">
         Spectrum Analysis
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Spectrum Analysis" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_7_2">
+<label class="md-nav__title" for="__nav_2_8_2">
 <span class="md-nav__icon md-icon"></span>
           Spectrum Analysis
         </label>
@@ -687,13 +734,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
         Image Processing
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Image Processing" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
+<label class="md-nav__title" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
           Image Processing
         </label>
@@ -737,13 +784,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
         Operating Systems
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operating Systems" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_9">
+<label class="md-nav__title" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
           Operating Systems
         </label>
@@ -757,13 +804,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_10">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11">
         Man-Machine Interfaces
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Man-Machine Interfaces" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_10">
+<label class="md-nav__title" for="__nav_2_11">
 <span class="md-nav__icon md-icon"></span>
           Man-Machine Interfaces
         </label>
@@ -797,13 +844,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" id="__nav_2_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_11">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12">
         Television Engineering
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Television Engineering" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_11">
+<label class="md-nav__title" for="__nav_2_12">
 <span class="md-nav__icon md-icon"></span>
           Television Engineering
         </label>
@@ -822,13 +869,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" id="__nav_2_12" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_12">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Miscellaneous" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_12">
+<label class="md-nav__title" for="__nav_2_13">
 <span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
@@ -904,6 +951,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../collections/">
         Collections
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../collections/kids/">
+        Kids
       </a>
 </li>
 </ul>
@@ -1227,32 +1279,32 @@ $keywords: amarisoft, cellular
 <div class="highlight"><pre><span></span><code> -------------------------------------
 /             Internet               /
 -------------------------------------
-                   /                                                          * Outbound Interface of Router:                                       
-                  /                                             - IPv4: 61.228.45.217                              (for example)    
-                 /                                              - IPv6: 2001:b011:200b:1d1:1262:ebff:fe90:7320/64  (for example)    
-  ------------------------------------                                                                                          
- /             Router                /                                                                                              
-/                                   /                                                                                               
-------------------------------------                                                                                            
-                   /                                          * Inbound Interface of Router:                                        
-                  /                                             - IPv4: 192.168.167.1                                               
-                 /                                      - IPv6: 2001:b011:200b:129a:1262:ebff:fe90:7320/64  (for example)   
-   -----------------------------------                                                                                          
-  /    Amarisoft AMARI LTE 100       /                        * SDR                                                                 
- /                                  /                           - IPv4: 192.168.167.20                                              
-/  APN: {default | internet...}    /                            - IPv6: 2001:b011:200b:129a:6245:cbff:fe87:5612/64   (for example)  
------------------------------------                                                                                             
-         /\                     /\                            * UE: APN1 (Default APN)                                              
-        /  \       APN1        /  \        ... APN-2,APN-3 , APN-4           - IPv4:                      - IPv6:                                
-       /    \             /    \                               * tun0: 192.168.2.1      * tun0:                              
-   ---------------        ---------------                          * tun1: 192.168.3.1      * tun1:                              
-  /     UE 1     /       /     UE 2 ... /                          * tun2: 192.168.4.1      * tun2: 2001:468:3000:1::/48         
-  ---------------        ---------------                           * tun3: 192.168.5.1      * tun3: 2001:468:4000:1::/48         
-  IPv4: 192.168.2.x     IPv4: 192.168.3.x     
+                   /        * Outbound Interface of Router:
+                  /           - IPv4: 61.228.45.217
+                 /            - IPv6: 2001:b011:200b:1d1:1262:ebff:fe90:7320/64
+  ------------------------------------
+ /             Router                /
+/                                   /
+------------------------------------
+                   /        * Inbound Interface of Router:
+                  /           - IPv4: 192.168.167.1
+                 /            - IPv6: 2001:b011:200b:129a:1262:ebff:fe90:7320/64  (for example)
+   -----------------------------------
+  /    Amarisoft AMARI LTE 100       /   * SDR
+ /                                  /      - IPv4: 192.168.167.20
+/  APN: {default | internet...}    /       - IPv6: 2001:b011:200b:129a:6245:cbff:fe87:5612/64   (for example)
+-----------------------------------
+         /\                     /\       * UE: APN1 (Default APN) ... APN-2, APN-3, APN-4
+        /  \       APN1        /  \        - IPv4:                 - IPv6:
+       /    \                     /    \         * tun0: 192.168.2.1      * tun0:
+   ---------------        ---------------    * tun1: 192.168.3.1      * tun1:
+  /     UE 1     /       /     UE 2 ... /    * tun2: 192.168.4.1      * tun2: 2001:468:3000:1::/48
+  ---------------        ---------------     * tun3: 192.168.5.1      * tun3: 2001:468:4000:1::/48
+  IPv4: 192.168.2.x     IPv4: 192.168.3.x
 </code></pre></div>
 <h3 id="ubuntu-pc">Ubuntu PC</h3>
 <ul>
-<li>Download <code>Ubuntu Server ISO Image</code> and burn it into USB dongle by <a href="https://rufus.akeo.ie"><code>rufus</code></a> with below setting    </li>
+<li>Download <code>Ubuntu Server ISO Image</code> and burn it into USB dongle by <a href="https://rufus.akeo.ie"><code>rufus</code></a> with below setting.</li>
 </ul>
 <table>
 <thead>
@@ -1280,64 +1332,64 @@ $keywords: amarisoft, cellular
 <p>there will be some network interfaces</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># ifconfig</span>
-enp0s31f6 Link encap:Ethernet  HWaddr <span class="m">60</span>:45:cb:87:56:12
-          inet addr:192.168.0.12  Bcast:192.168.0.255  Mask:255.255.255.0
-          inet6 addr: fe80::6245:cbff:fe87:5612/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:144 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:140 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:22555 <span class="o">(</span><span class="m">22</span>.5 KB<span class="o">)</span>  TX bytes:23194 <span class="o">(</span><span class="m">23</span>.1 KB<span class="o">)</span>
-          Interrupt:16 Memory:f7700000-f7720000
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>ifconfig
+<span class="go">enp0s31f6 Link encap:Ethernet  HWaddr 60:45:cb:87:56:12</span>
+<span class="go">          inet addr:192.168.0.12  Bcast:192.168.0.255  Mask:255.255.255.0</span>
+<span class="go">          inet6 addr: fe80::6245:cbff:fe87:5612/64 Scope:Link</span>
+<span class="go">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:144 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:140 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:22555 (22.5 KB)  TX bytes:23194 (23.1 KB)</span>
+<span class="go">          Interrupt:16 Memory:f7700000-f7720000</span>
 
-enp5s0    Link encap:Ethernet  HWaddr <span class="m">00</span>:e0:4c:68:4e:c9                      <span class="c1">#&lt;= for KVM</span>
-          UP BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+<span class="go">enp5s0    Link encap:Ethernet  HWaddr 00:e0:4c:68:4e:c9                      #&lt;= for KVM</span>
+<span class="go">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
 
-enp6s0    Link encap:Ethernet  HWaddr <span class="m">00</span>:e0:4c:68:4e:ca
-          UP BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+<span class="go">enp6s0    Link encap:Ethernet  HWaddr 00:e0:4c:68:4e:ca</span>
+<span class="go">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
 
-enp7s0    Link encap:Ethernet  HWaddr <span class="m">00</span>:e0:4c:68:4e:cb
-          UP BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+<span class="go">enp7s0    Link encap:Ethernet  HWaddr 00:e0:4c:68:4e:cb</span>
+<span class="go">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
 
-enp8s0    Link encap:Ethernet  HWaddr <span class="m">00</span>:e0:4c:68:4e:cc
-          UP BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+<span class="go">enp8s0    Link encap:Ethernet  HWaddr 00:e0:4c:68:4e:cc</span>
+<span class="go">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
 
-lo        Link encap:Local Loopback
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:185 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:185 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1
-          RX bytes:13781 <span class="o">(</span><span class="m">13</span>.7 KB<span class="o">)</span>  TX bytes:13781 <span class="o">(</span><span class="m">13</span>.7 KB<span class="o">)</span>
+<span class="go">lo        Link encap:Local Loopback</span>
+<span class="go">          inet addr:127.0.0.1  Mask:255.0.0.0</span>
+<span class="go">          inet6 addr: ::1/128 Scope:Host</span>
+<span class="go">          UP LOOPBACK RUNNING  MTU:65536  Metric:1</span>
+<span class="go">          RX packets:185 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:185 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1</span>
+<span class="go">          RX bytes:13781 (13.7 KB)  TX bytes:13781 (13.7 KB)</span>
 
-virbr0    Link encap:Ethernet  HWaddr <span class="m">00</span>:00:00:00:00:00                      <span class="c1">#&lt;= KVM</span>
-          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0
-          UP BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+<span class="go">virbr0    Link encap:Ethernet  HWaddr 00:00:00:00:00:00                      #&lt;= KVM</span>
+<span class="go">          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0</span>
+<span class="go">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span>
+<span class="go">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span>
+<span class="go">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span>
+<span class="go">          collisions:0 txqueuelen:1000</span>
+<span class="go">          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</span>
 </code></pre></div>
 <ul>
-<li>Install <code>ubuntu-desktop</code> to PC    </li>
+<li>Install <code>ubuntu-desktop</code> to PC</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get update
 $ sudo apt-get install ubuntu-desktop
@@ -1345,13 +1397,13 @@ $ sudo apt-get install lxde           <span class="c1">#&lt;= (Optional)</span>
 $ sudo startx
 </code></pre></div>
 <ul>
-<li>Install below packages to Ubuntu PC     </li>
+<li>Install below packages to Ubuntu PC</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get install wireshark    <span class="c1">#&lt;= packet capturer</span>
 $ sudo apt-get install shutter      <span class="c1">#&lt;= Screenshot capturer (Optional)</span>
 </code></pre></div>
 <ul>
-<li>Use Fixed IP on SDR, put below setting to <code>/etc/network/interfaces</code> (Optional)     </li>
+<li>Use Fixed IP on SDR, put below setting to <code>/etc/network/interfaces</code> (Optional)</li>
 </ul>
 <div class="highlight"><pre><span></span><code>auto lo
 iface lo inet loopback
@@ -1368,19 +1420,20 @@ dns-nameserver <span class="m">8</span>.8.4.4
 iface enp0s31f6 inet6 auto
 </code></pre></div>
 <ul>
-<li>Issue below command to restart netwoek service   </li>
+<li>Issue below command to restart netwoek service</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ sudo /etc/init.d/networking restart
 </code></pre></div>
-<ul>
-<li>PS. Orginal   </li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># The primary network interface</span>
+<!--
+- PS. Orginal
+
+  <div class="highlight"><pre><span></span><code><span class="c1"># The primary network interface</span>
 auto enp0s31f6
 iface enp0s31f6 inet dhcp
 <span class="c1"># This is an autoconfigured IPv6 interface</span>
 iface enp0s31f6 inet6 auto
 </code></pre></div>
+-->
 <h3 id="amari-lte-100">AMARI LTE 100</h3>
 <ul>
 <li>Place key to <code>.amarisoft</code> folder    </li>
@@ -2364,7 +2417,7 @@ GPS not locked
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Rebuild Kernel" class="md-footer__link md-footer__link--prev" href="../../kernel/rebuild/" rel="prev">
+<a aria-label="Previous: Rebuild Linux Kernel" class="md-footer__link md-footer__link--prev" href="../../kernel/rebuild/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -2373,7 +2426,7 @@ GPS not locked
 <span class="md-footer__direction">
                 Previous
               </span>
-              Rebuild Kernel
+              Rebuild Linux Kernel
             </div>
 </div>
 </a>
@@ -2407,8 +2460,8 @@ GPS not locked
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
-<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.716f8af4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
 </html>
