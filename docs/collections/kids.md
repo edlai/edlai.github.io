@@ -1,12 +1,12 @@
 # Kids
 
-## All
+## All-in-One
 
-- (均一)[https://www.junyiacademy.org/]
+- [均一](https://www.junyiacademy.org/)
 
 ## 吳姐姐講歷史故事
 
-[1](https://www.youtube.com/watch?v=U2FFQiAGjW0) 
+[1](https://www.youtube.com/watch?v=U2FFQiAGjW0)
 - [2](https://www.youtube.com/watch?v=NX_waRGIPEk)
 - [3](https://www.youtube.com/watch?v=i1ksM2jKawM)
 - [4](https://www.youtube.com/watch?v=pzxsC-2eCVo)
