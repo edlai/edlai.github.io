@@ -26,6 +26,7 @@ nav:
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
         - 'Programming Tips':
+#         - 'Scaffolding'
           - 'GCC Compiler History': 'engineer/prog/linux_c/env_toolchain.md'
           - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
           - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
@@ -117,6 +118,7 @@ nav:
         - 'Quantitative Research': 'education/quantitative-research/index.md'
     - 'Collection':
         - 'Collections': 'collections/index.md'
+        - 'Kids': 'collections/kids.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
     - 'Traveling':
