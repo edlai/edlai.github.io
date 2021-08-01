@@ -56,3 +56,4 @@ site/
 ./src/
 .vscode/
 ./test
+src/
