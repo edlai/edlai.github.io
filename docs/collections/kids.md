@@ -8,8 +8,9 @@
 
 - [3 - 浴缸裡的秘密](https://www.youtube.com/watch?v=m2sUAObx8L0)
 - [6 - 達文西的微笑](https://www.youtube.com/watch?v=JzhrTagQaZg)
-- [科學奇人](https://www.youtube.com/watch?v=A87caHUMfQk)
+- [6 - 科學奇人](https://www.youtube.com/watch?v=A87caHUMfQk)
 - [7 - 贖罪券](https://www.youtube.com/watch?v=vzn9cX4lWX0)
+- [台灣牧童 黃土水](https://www.youtube.com/watch?v=PoTT_GHhKDo)
 
 ## 吳姐姐講歷史故事
 
