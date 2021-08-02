@@ -93,7 +93,7 @@
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../dev/softwares/">
+<a class="md-tabs__link md-tabs__link--active" href="../../../dev/softwares/">
         Engineering
       </a>
 </li>
@@ -138,8 +138,8 @@
         Home
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
         Engineering
         <span class="md-nav__icon md-icon"></span>
@@ -204,6 +204,11 @@
         Networking Sniffer - tcpdump
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../dev/diag/wireshark/">
+        Networking Sniffer - wireshark
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -230,8 +235,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_2">
         Programming Tips
         <span class="md-nav__icon md-icon"></span>
@@ -250,6 +255,12 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../debug_skill/">
         Debugging Skills
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        State Machine
       </a>
 </li>
 <li class="md-nav__item">
@@ -764,11 +775,352 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="state-machine">State Machine</h1>
+<p><strong><em>Example:</em></strong></p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">C</label><div class="tabbed-content"></div>
+</input></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// https://github.com/gbmhunter/FunctionPointerStateMachineExample</span>
+
+<span class="c1">// https://github.com/misje/stateMachine</span>
+<span class="c1">// http://misje.github.io/stateMachine/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp"></span>
+
+<span class="k">typedef</span> <span class="k">enum</span>
+<span class="p">{</span>
+  <span class="n">ST_IDLE</span><span class="p">,</span>
+  <span class="n">ST_LED_ON</span><span class="p">,</span>
+  <span class="n">ST_LED_OFF</span>
+<span class="p">}</span> <span class="n">state_t</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+  <span class="n">state_t</span> <span class="n">currState</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">stateMachine_t</span><span class="p">;</span>
+
+<span class="c1">/// \brief      All the possible events that can occur for this state machine.</span>
+<span class="c1">/// \details    Unlike states_t, these do not need to be kept in a special order.</span>
+<span class="k">typedef</span> <span class="k">enum</span>
+<span class="p">{</span>
+  <span class="n">EV_ANY</span><span class="p">,</span>
+  <span class="n">EV_NONE</span><span class="p">,</span>
+  <span class="n">EV_BUTTON_PUSHED</span><span class="p">,</span>
+  <span class="n">EV_TIME_OUT</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">event_t</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">stateFunctionRow_t</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">Led_Init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Led_Init() called.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Led_On</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"LED turned on.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Led_Off</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"LED turned off.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Led_Idle</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"LED in idle state.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">/// \brief  Maps a state to it's state transition function, which should be called</span>
+<span class="c1">///         when the state transitions into this state.</span>
+<span class="c1">/// \warning    This has to stay in sync with the state_t enum!</span>
+<span class="k">static</span> <span class="n">stateFunctionRow_t</span> <span class="n">stateFunctionA</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// NAME         // FUNC</span>
+    <span class="p">{</span><span class="s">"ST_IDLE"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Led_Idle</span><span class="p">},</span>   <span class="c1">// ST_IDLE</span>
+    <span class="p">{</span><span class="s">"ST_LED_ON"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Led_On</span><span class="p">},</span>   <span class="c1">// ST_LED_ON</span>
+    <span class="p">{</span><span class="s">"ST_LED_OFF"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Led_Off</span><span class="p">},</span> <span class="c1">// ST_LED_OFF</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+  <span class="n">state_t</span> <span class="n">currState</span><span class="p">;</span>
+  <span class="n">event_t</span> <span class="n">event</span><span class="p">;</span>
+  <span class="n">state_t</span> <span class="n">nextState</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">stateTransMatrixRow_t</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="n">stateTransMatrixRow_t</span> <span class="n">stateTransMatrix</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// CURR STATE  // EVENT              // NEXT STATE</span>
+    <span class="p">{</span><span class="n">ST_IDLE</span><span class="p">,</span> <span class="n">EV_BUTTON_PUSHED</span><span class="p">,</span> <span class="n">ST_LED_ON</span><span class="p">},</span>
+    <span class="p">{</span><span class="n">ST_LED_ON</span><span class="p">,</span> <span class="n">EV_TIME_OUT</span><span class="p">,</span> <span class="n">ST_LED_OFF</span><span class="p">},</span>
+    <span class="p">{</span><span class="n">ST_LED_ON</span><span class="p">,</span> <span class="n">EV_BUTTON_PUSHED</span><span class="p">,</span> <span class="n">ST_IDLE</span><span class="p">},</span>
+    <span class="p">{</span><span class="n">ST_LED_OFF</span><span class="p">,</span> <span class="n">EV_TIME_OUT</span><span class="p">,</span> <span class="n">ST_LED_ON</span><span class="p">},</span>
+    <span class="p">{</span><span class="n">ST_LED_OFF</span><span class="p">,</span> <span class="n">EV_BUTTON_PUSHED</span><span class="p">,</span> <span class="n">ST_IDLE</span><span class="p">}};</span>
+
+<span class="kt">void</span> <span class="nf">StateMachine_Init</span><span class="p">(</span><span class="n">stateMachine_t</span> <span class="o">*</span><span class="n">stateMachine</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Initialising state machine.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">stateMachine</span><span class="o">-&gt;</span><span class="n">currState</span> <span class="o">=</span> <span class="n">ST_IDLE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// TIP</span>
+<span class="kt">void</span> <span class="nf">StateMachine_RunIteration</span><span class="p">(</span><span class="n">stateMachine_t</span> <span class="o">*</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">event_t</span> <span class="n">event</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="c1">// Iterate through the state transition matrix, checking if there is both a match with the current state</span>
+  <span class="c1">// and the event</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">stateTransMatrix</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">stateTransMatrix</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stateTransMatrix</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">currState</span> <span class="o">==</span> <span class="n">stateMachine</span><span class="o">-&gt;</span><span class="n">currState</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">stateTransMatrix</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">event</span> <span class="o">==</span> <span class="n">event</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">stateTransMatrix</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">event</span> <span class="o">==</span> <span class="n">EV_ANY</span><span class="p">))</span>
+      <span class="p">{</span>
+
+        <span class="c1">// Transition to the next state</span>
+        <span class="n">stateMachine</span><span class="o">-&gt;</span><span class="n">currState</span> <span class="o">=</span> <span class="n">stateTransMatrix</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">nextState</span><span class="p">;</span>
+
+        <span class="c1">// Call the function associated with transition</span>
+        <span class="p">(</span><span class="n">stateFunctionA</span><span class="p">[</span><span class="n">stateMachine</span><span class="o">-&gt;</span><span class="n">currState</span><span class="p">].</span><span class="n">func</span><span class="p">)();</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">StateMachine_GetStateName</span><span class="p">(</span><span class="n">state_t</span> <span class="n">state</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">stateFunctionA</span><span class="p">[</span><span class="n">state</span><span class="p">].</span><span class="n">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"main() called.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+
+  <span class="c1">// Create new state machine object</span>
+  <span class="n">stateMachine_t</span> <span class="n">stateMachine</span><span class="p">;</span>
+
+  <span class="n">StateMachine_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="c1">// Push button to start flasher</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Button pushed.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">StateMachine_RunIteration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">EV_BUTTON_PUSHED</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="c1">// Timeout</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Timeout.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">StateMachine_RunIteration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">EV_TIME_OUT</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="c1">// Timeout</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Timeout.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">StateMachine_RunIteration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">EV_TIME_OUT</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="c1">// Timeout</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Timeout.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">StateMachine_RunIteration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">EV_TIME_OUT</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="c1">// Push button again to stop flasher</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"Button pushed.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">StateMachine_RunIteration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stateMachine</span><span class="p">,</span> <span class="n">EV_BUTTON_PUSHED</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"State is now %s.</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">StateMachine_GetStateName</span><span class="p">(</span><span class="n">stateMachine</span><span class="p">.</span><span class="n">currState</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong><em>Result:</em></strong></p>
+<div class="highlight"><pre><span></span><code>Current <span class="nv">Time</span> <span class="o">=</span> Mon Aug  <span class="m">2</span> <span class="m">16</span>:48:29 <span class="m">2021</span>
+</code></pre></div>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Debugging Skills" class="md-footer__link md-footer__link--prev" href="../debug_skill/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Debugging Skills
+            </div>
+</div>
+</a>
+<a aria-label="Next: Function Argument" class="md-footer__link md-footer__link--next" href="../function_call/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Function Argument
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">
