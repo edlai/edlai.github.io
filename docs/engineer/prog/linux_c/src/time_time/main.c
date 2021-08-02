@@ -7,7 +7,8 @@ int main ()
 {
    time_t curtime;
    time(&curtime);
-   printf("当前时间 = %s", ctime(&curtime));
+
+   printf("Current Time = %s", ctime(&curtime));
 
    return(0);
 }

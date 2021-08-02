@@ -323,21 +323,73 @@ $ ack eloop_register_read_sock
 - [clang-tidy](https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160): a clang-based C++ “linter” tool.
 - [CPPCheck](http://cppcheck.sourceforge.net/): A tool for static C/C++ code analysis
 
-``` console
+
+***Install***
+
+``` sh
 # - INSTALL -
 $ sudo apt-get update -y; sudo apt-get install cppcheck
-# - RUN -
+```
+
+***Running:***
+
+``` sh
 $ cppcheck -j 3 ~/Project         # < = open 3 threads to check source code from Project folder，--enable==error by default
-$ cppcheck -j 3 --enable=all ~/Project 
+$ cppcheck -j 3 --enable=all ~/Project
 $ cppcheck -j 3 --enable=all --xml 2>err.xml ./   # < = Get Report
 ```
 
 - [splint](https://splint.org/): a tool for statically checking C programs for security vulnerabilities and coding mistakes.
 
-``` console
-$ sudo apt-get update -y; sudo apt-get install -y splint
-$ splint test.c +bounds -varuse   # bounds: check memory leak
+***Install:***
+
+``` sh
+$ sudo apt-get update -y
+$ sudo apt-get install -y splint
 ```
+
+***Example:***
+
+bounds1.c
+
+``` c
+#include <stdio.h>
+int main(void)
+{
+ int a[10];
+ a[10] =0;
+ return 0;
+}
+```
+
+***Running:***
+
+``` sh
+$ splint bounds1.c +bounds -varuse   # bounds: check memory leak
+```
+
+***Result:***
+
+``` sh
+Splint 3.1.2 --- 20 Feb 2018
+
+bounds1.c: (in function main)
+bounds1.c:7:2: Likely out-of-bounds store: a[10]
+    Unable to resolve constraint:
+    requires 9 >= 10
+     needed to satisfy precondition:
+    requires maxSet(a @ bounds1.c:7:2) >= 10
+  A memory write may write to an address beyond the allocated buffer. (Use
+  -likelyboundswrite to inhibit warning)
+
+Finished checking --- 1 code warning
+```
+
+***Resource:***
+
+- [代碼靜態分析工具——splint的學習與使用](https://www.cnblogs.com/bangerlee/archive/2166593.html)
+- [GUI for splint (static c code checker)](http://crissi.linux-administrator.com/linux/splintgui/index_en.html)
+
 
 - [CodeQL](https://securitylab.github.com/tools/codeql/)
 
