@@ -44,16 +44,3 @@ int main(void)
 
   return 0;
 }
-
-/*
-__cyg_profile_func_enter: func = 0x563dc8e847b2, called by = 0x7f32fdfe2bf7
-__cyg_profile_func_enter: func = 0x563dc8e84763, called by = 0x563dc8e847eb
-__cyg_profile_func_enter: func = 0x563dc8e8471c, called by = 0x563dc8e84794
-__cyg_profile_func_exit: func = 0x563dc8e8471c, called by = 0x563dc8e84794
-__cyg_profile_func_exit: func = 0x563dc8e84763, called by = 0x563dc8e847eb
-result: 20
-The address of main:               0x563dc8e847b2 0x563dc8e847b2
-The address of do_calc  function:  0x563dc8e84763 0x563dc8e84763
-The address of do_multi function:  0x563dc8e8471c 0x563dc8e8471c
-__cyg_profile_func_exit: func = 0x563dc8e847b2, called by = 0x7f32fdfe2bf7
-*/

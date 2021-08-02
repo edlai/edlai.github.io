@@ -1271,21 +1271,58 @@ For more detail, please check <a href="https://blog.longwin.com.tw/2011/04/doxyg
 <li><a href="https://docs.microsoft.com/zh-tw/cpp/code-quality/clang-tidy?view=msvc-160">clang-tidy</a>: a clang-based C++ “linter” tool.</li>
 <li><a href="http://cppcheck.sourceforge.net/">CPPCheck</a>: A tool for static C/C++ code analysis</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>- INSTALL -
-<span class="gp">$ </span>sudo apt-get update -y<span class="p">;</span> sudo apt-get install cppcheck
-<span class="gp"># </span>- RUN -
-<span class="gp">$ </span>cppcheck -j <span class="m">3</span> ~/Project         <span class="c1"># &lt; = open 3 threads to check source code from Project folder，--enable==error by default</span>
-<span class="gp">$ </span>cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all ~/Project 
-<span class="gp">$ </span>cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all --xml <span class="m">2</span>&gt;err.xml ./   <span class="c1"># &lt; = Get Report</span>
+<p><strong><em>Install</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># - INSTALL -</span>
+$ sudo apt-get update -y<span class="p">;</span> sudo apt-get install cppcheck
+</code></pre></div>
+<p><strong><em>Running:</em></strong></p>
+<div class="highlight"><pre><span></span><code>$ cppcheck -j <span class="m">3</span> ~/Project         <span class="c1"># &lt; = open 3 threads to check source code from Project folder，--enable==error by default</span>
+$ cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all ~/Project
+$ cppcheck -j <span class="m">3</span> --enable<span class="o">=</span>all --xml <span class="m">2</span>&gt;err.xml ./   <span class="c1"># &lt; = Get Report</span>
 </code></pre></div>
 <ul>
 <li><a href="https://splint.org/">splint</a>: a tool for statically checking C programs for security vulnerabilities and coding mistakes.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt-get update -y<span class="p">;</span> sudo apt-get install -y splint
-<span class="gp">$ </span>splint test.c +bounds -varuse   <span class="c1"># bounds: check memory leak</span>
+<p><strong><em>Install:</em></strong></p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get update -y
+$ sudo apt-get install -y splint
 </code></pre></div>
+<p><strong><em>Example:</em></strong></p>
+<p>bounds1.c</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+ <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+ <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong><em>Running:</em></strong></p>
+<div class="highlight"><pre><span></span><code>$ splint bounds1.c +bounds -varuse   <span class="c1"># bounds: check memory leak</span>
+</code></pre></div>
+<p><strong><em>Result:</em></strong></p>
+<div class="highlight"><pre><span></span><code>Splint <span class="m">3</span>.1.2 --- <span class="m">20</span> Feb <span class="m">2018</span>
+
+bounds1.c: <span class="o">(</span><span class="k">in</span> <span class="k">function</span> main<span class="o">)</span>
+bounds1.c:7:2: Likely out-of-bounds store: a<span class="o">[</span><span class="m">10</span><span class="o">]</span>
+    Unable to resolve constraint:
+    requires <span class="m">9</span> &gt;<span class="o">=</span> <span class="m">10</span>
+     needed to satisfy precondition:
+    requires maxSet<span class="o">(</span>a @ bounds1.c:7:2<span class="o">)</span> &gt;<span class="o">=</span> <span class="m">10</span>
+  A memory write may write to an address beyond the allocated buffer. <span class="o">(</span>Use
+  -likelyboundswrite to inhibit warning<span class="o">)</span>
+
+Finished checking --- <span class="m">1</span> code warning
+</code></pre></div>
+<p><strong><em>Resource:</em></strong></p>
 <ul>
-<li><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></li>
+<li><a href="https://www.cnblogs.com/bangerlee/archive/2166593.html">代碼靜態分析工具——splint的學習與使用</a></li>
+<li>
+<p><a href="http://crissi.linux-administrator.com/linux/splintgui/index_en.html">GUI for splint (static c code checker)</a></p>
+</li>
+<li>
+<p><a href="https://securitylab.github.com/tools/codeql/">CodeQL</a></p>
+</li>
 </ul>
 <h3 id="dynamic-code-analysis-tools">Dynamic Code Analysis Tools</h3>
 <ul>

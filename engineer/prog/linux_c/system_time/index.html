@@ -765,6 +765,126 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="system-time">System Time</h1>
+<p><strong><em>Example:</em></strong></p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">C</label><div class="tabbed-content"></div>
+</input></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// https://www.runoob.com/w3cnote/c-time-func-summary.html</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span>
+   <span class="kt">time_t</span> <span class="n">curtime</span><span class="p">;</span>
+   <span class="n">time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">curtime</span><span class="p">);</span>
+
+   <span class="n">printf</span><span class="p">(</span><span class="s">"Current Time = %s"</span><span class="p">,</span> <span class="n">ctime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">curtime</span><span class="p">));</span>
+
+   <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong><em>Result:</em></strong></p>
+<div class="highlight"><pre><span></span><code>Current <span class="nv">Time</span> <span class="o">=</span> Mon Aug  <span class="m">2</span> <span class="m">16</span>:48:29 <span class="m">2021</span>
+</code></pre></div>
+<p><strong><em>Example:</em></strong></p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">C</label><div class="tabbed-content"></div>
+</input></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;inttypes.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="c1"> // sleep</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">timediff</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">struct</span> <span class="nc">timeval</span> <span class="n">record_stamp</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">timeval</span> <span class="n">curr_stamp</span><span class="p">;</span>
+
+  <span class="n">gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">curr_stamp</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">record_stamp</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">record_stamp</span><span class="p">.</span><span class="n">tv_usec</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt; record time stamp</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt; diff   time stamp</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">secs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">secs</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">curr_stamp</span><span class="p">.</span><span class="n">tv_usec</span> <span class="o">-</span> <span class="n">record_stamp</span><span class="p">.</span><span class="n">tv_usec</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000000</span> <span class="o">+</span> <span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">curr_stamp</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">-</span> <span class="n">record_stamp</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt; time   taken %16f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">secs</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">record_stamp</span> <span class="o">=</span> <span class="n">curr_stamp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">timediff</span><span class="p">();</span>
+  <span class="n">usleep</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+  <span class="n">timediff</span><span class="p">();</span>
+  <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">timediff</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong><em>Result:</em></strong></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 </article>
 </div>
 </div>
