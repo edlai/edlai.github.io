@@ -17,6 +17,7 @@ nav:
             - 'Wireless Sniffer - Wireshark': 'engineer/dev/diag/sniffer/index.md'
             - 'Remote Capturer - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
             - 'Networking Sniffer - tcpdump': 'engineer/dev/diag/tcpdump/index.md'
+            - 'Networking Sniffer - wireshark': 'engineer/dev/diag/wireshark/index.md'
           - 'Performance Measurement':
             - 'Networking Performance': 'engineer/dev/perf/index.md'
 #          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
@@ -31,7 +32,7 @@ nav:
           - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
 #          - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
 #          - 'Event Loop': 'engineer/prog/linux_c/event_loop.md'
-#          - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
+          - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
           - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
           - 'System Time': 'engineer/prog/linux_c/system_time.md'
           - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
