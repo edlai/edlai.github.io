@@ -36,6 +36,7 @@ nav:
           - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
           - 'System Time': 'engineer/prog/linux_c/system_time.md'
           - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
+          - 'String Manipulation': 'engineer/prog/linux_c/string_manipulation.md'
 #          - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
 #          - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
 #          - 'Inotify': 'engineer/prog/linux_c/inotify.md'
