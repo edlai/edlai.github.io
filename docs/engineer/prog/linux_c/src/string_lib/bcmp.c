@@ -1,27 +1,31 @@
 // bcmp.c
 
+/*
+ int bcmp(const void *s1, const void * s2, int n);
+int bcmp(const void *a, const void *b, size_t len)
+{
+  return memcmp(a, b, len);
+}
+*/
+
 #include <stdio.h>
 #include <string.h>
 
-main()
+int main(void)
 {
-  char *s1 = "Golden Global View";
-  char *s2 = "Golden global view";
-  ;
+  char *s1 = "Hello World!!";
+  char *s2 = "Hello world!!";
 
-  clrscr(); // clear screen
+
+  if (!bcmp(s1, s2, 5))
+    printf("s1 equals to s2 in first 7 bytes\n");
+  else
+    printf("s1 does not equal to s2 in first 7 bytes\n");
+
   if (!bcmp(s1, s2, 7))
-    printf("s1 equal to s2 in first 7 bytes");
+    printf("s1 equals to s2 in first 12 bytes\n");
   else
-    printf("s1 not equal to s2 in first 7 bytes");
+    printf("s1 does not equal to s2 in first 12 bytes\n");
 
-  getchar();
-  clrscr();
-  if (!bcmp(s1, s2, 12))
-    printf("s1 equal to s2 in first 12 bytes");
-  else
-    printf("s1 not equal to s2 in first 12 bytes");
-
-  getchar();
   return 0;
 }

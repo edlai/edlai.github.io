@@ -1,30 +1,29 @@
 // bcopy.c
 
+/*
+void bcopy( const void *src,
+            void *dst,
+            size_t n );
+*/
+
 // https://doc.bccnsoft.com/docs/cfuncs/string/bcopy.html
 
 #include <stdio.h>
-#include <string.h>
+#include <strings.h>
 
-#define clrscr() do { printf("\033[H\033[J"); } while(0)
 
 int main(void)
 {
-  char *s = "Golden Global View";
-  char d[20];
+  char *src = "Hello World!!!";
+  char dest[20] = {0};             // clean the dest
 
-  clrscr(); // clear screen
-  bcopy(s, d, 6);
-  printf("s: %s\n", s);
-  printf("d: %s\n", d);
+  bcopy(src, dest, 10);
+  printf("src:  %s\n", src);
+  printf("dest: %s\n", dest);
 
-  getchar();
-  clrscr();
-  s[13] = 0;
-  bcopy(s + 7, d, 11); // bcopy ignore null in string
-  printf("%s\n", s + 7);
-  for (int i = 0; i < 11; i++)
-    putchar(d[i]);
+  bzero(dest, 20);
+  bcopy(src + 6, dest, 5);
+  printf("New Dest: %s\n", dest);
 
-  getchar();
   return 0;
 }

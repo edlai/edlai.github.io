@@ -2,26 +2,30 @@
 
 // extern void bzero(void *s, int n);
 
-#include <syslib.h>
+#include <stdio.h>
 #include <string.h>
 
-main()
+int main(void)
 {
   struct
   {
-    int a;
-    char s[5];
-    float f;
+    int id;
+    char name[5];
+    float fee;
   } tt;
 
-  char s[20];
+  char src[20];
 
   bzero(&tt, sizeof(tt)); // struct initialization to zero
-  bzero(s, 20);
+  bzero(src, 20);
 
-  clrscr();
-  printf("Initail Success");
+  printf("id:   %d\n", tt.id);
+  printf("name: \"%s\"\n", tt.name);
+  printf("fee:  %f\n", tt.fee);
 
-  getchar();
+  printf("src:  %s\n", src);
+
+  printf("Initail Success\n");
+
   return 0;
 }

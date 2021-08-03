@@ -1,10 +1,8 @@
 #define _GNU_SOURCE
 
-/*
-int vasprintf(char **strp, const char *fmt, va_list ap);
-int asprintf(char **strp, const char *fmt, ...);
-int snprintf (char * s, size_t n, const char * format, ... );
-*/
+
+// int asprintf(char **strp, const char *fmt, ...);
+
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -14,31 +12,32 @@ int snprintf (char * s, size_t n, const char * format, ... );
 
 void asprintf_demo(char **dest, char const *src)
 {
-  char *str;
-  printf("[%d] [%p] src:  %s\n", __LINE__, src, src);
-  printf("[%d] [%p] dest: %s\n", __LINE__, *dest, *dest);
+  char *buf;
 
-  asprintf(&str, "strings %s", src);
+  printf("[%s:%d:%s()] [%p] src:  %s\n", __FILE__, __LINE__, __func__, src, src);
+  printf("[%s:%d:%s()] [%p] dest: %s\n", __FILE__, __LINE__, __func__, *dest, *dest);
 
-  printf("str  [%p] str:  %s\n", str, str);
-  *dest = str;
+  asprintf(&buf, "%s", src);
+
+  printf("[%s:%d:%s()] [%p] buf:  %s\n", __FILE__, __LINE__, __func__, buf, buf);
+  *dest = buf;
 }
 
 int main(void)
 {
 
-  char *asprintf_demo_dest;
+  char *dest = NULL;
 
-  char test[] = "test_1";
+  const char *src = "Hello World!!";
 
-  //snprintf_demo(asprintf_demo_dest, test);
-  printf("[%d] [%p] asprintf_demo_dest: %s\n", __LINE__, asprintf_demo_dest, asprintf_demo_dest);
-  printf("[%d] [%p] test: %s\n", __LINE__, test, test);
+  asprintf_demo(&dest, src);
 
-  if (asprintf_demo_dest)
+  printf("[%s:%d:%s()] [%p] dest:  %s\n", __FILE__, __LINE__, __func__, dest, dest);
+
+  if (dest)
   {
-    free(asprintf_demo_dest);
-    asprintf_demo_dest = NULL;
+    free(dest);
+    dest = NULL;
   }
 
   return 0;
