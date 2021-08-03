@@ -1,5 +1,7 @@
 // bcopy.c
 
+// https://doc.bccnsoft.com/docs/cfuncs/string/bcopy.html
+
 #include <stdio.h>
 #include <string.h>
 
