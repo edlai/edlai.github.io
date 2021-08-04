@@ -3,8 +3,8 @@
 
 int main()
 {
-  const char str1[] = "abcde2fghi3jk4l";
-  const char str2[] = "34";
+  const char str1[] = "Hello, World!!!";
+  const char str2[] = "W";
   char *ret;
 
   ret = strpbrk(str1, str2);
