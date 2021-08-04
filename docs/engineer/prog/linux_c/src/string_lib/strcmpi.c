@@ -9,6 +9,7 @@ int main(void)
   char *s2 = "Hello, programmers!";
   int r;
 
+#if (0)
   r = strnicmp(s1, s2, strlen(s1));
   if (!r)
     printf("s1 and s2 are identical");
@@ -16,7 +17,7 @@ int main(void)
     printf("s1 less than s2");
   else
     printf("s1 greater than s2");
-
+#endif
 
   return 0;
 }
