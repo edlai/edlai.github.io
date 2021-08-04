@@ -119,11 +119,12 @@ nav:
 #        - 'Information Education': 'education/information-edu/index.md'
 #        - 'Qualitative Research': 'education/qualitative-research/index.md'
 #        - 'Quantitative Research': 'education/quantitative-research/index.md'
-    - 'Collection':
-        - 'Life': 'collections/life.md'
-        - 'Kids': 'collections/kids.md'
-        - 'Programming': 'collections/programming.md'
-        - 'Misc': 'collections/misc.md'
+    - 'Bookmarks':
+        - 'Life': 'bookmarks/life.md'
+        - 'Course': 'bookmarks/course.md'
+        - 'Kids': 'bookmarks/kids.md'
+        - 'Programming': 'bookmarks/programming.md'
+        - 'Misc': 'bookmarks/misc.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
     - 'Traveling':
