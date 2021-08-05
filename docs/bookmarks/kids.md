@@ -2,7 +2,8 @@
 
 ## All-in-One
 
-- [均一](https://www.junyiacademy.org/)
+- [Khan Academy](https://www.khanacademy.org/)
+- [均一教育平台](https://www.junyiacademy.org/)
 - [109下南一書局-國小全科電子書路徑(僅供防疫期間使用)](https://drive.google.com/file/d/1yrK7h5UnBFGJiF2e-EjUgvnubDuklNel/view)
 
 ## 說給兒童的世界歷史
@@ -12,6 +13,12 @@
 - [6 - 科學奇人](https://www.youtube.com/watch?v=A87caHUMfQk)
 - [7 - 贖罪券](https://www.youtube.com/watch?v=vzn9cX4lWX0)
 - [台灣牧童 黃土水](https://www.youtube.com/watch?v=PoTT_GHhKDo)
+- [國中地理 觀念 基本的地理實用觀念](https://www.youtube.com/watch?v=SjF0TOrZ2lM)
+- [丟丟銅—火車快飛](https://www.youtube.com/watch?v=EKRNq8cT3lM)
+- [大家好，我是臺灣](https://www.youtube.com/watch?v=iJj8bUyLDNc)
+- [說給兒童的臺灣歷史＿走在臺灣的背脊上](https://www.youtube.com/watch?v=EptULRBfnyA)
+- [說給兒童的臺灣歷史＿「大家好，我是臺灣」](https://www.youtube.com/watch?v=SFcE0lBTh6w)
+- [拔牙牧師—馬偕](https://www.youtube.com/watch?v=Bte08zvy2JY)
 
 ## 吳姐姐講歷史故事
 
@@ -47,3 +54,7 @@
 - [30](https://www.youtube.com/watch?v=i7y4LjruxH4)
 
 
+## 中文童話
+
+- [翡翠之書](https://www.youtube.com/watch?v=myVLPndKjL0)
+- [牧鵝姑娘](https://www.youtube.com/watch?v=GRvJDg1NplU)
