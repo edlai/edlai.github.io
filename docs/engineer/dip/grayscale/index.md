@@ -20,13 +20,15 @@ An implementation of digital image processing to convert RGB image or colormap t
 
         _Example_:
 
+        Grayscale.cpp
+
         ``` c
         --8<--
         docs/engineer/dip/grayscale/cpp/Grayscale.cpp
         --8<--
         ```
 
-        _CMakeLists_:
+        CMakeLists
 
         ``` makefile
         --8<--
