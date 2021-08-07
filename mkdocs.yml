@@ -1,4 +1,4 @@
-site_name: Ed's Wiki  🦉
+site_name: Ed's Wiki
 site_url: https://edlai.github.io/
 nav:
     - Home: 'index.md'
@@ -139,6 +139,8 @@ theme:
     text: Roboto
   features:
     - navigation.tabs
+  logo: images/favicon.ico
+  favicon: images/favicon.ico
 #  custom_dir: mkdocs-rtd-lightbox
 
 markdown_extensions:
