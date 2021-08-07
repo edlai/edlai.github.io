@@ -91,13 +91,13 @@ nav:
           - 'Spectrum Analysis':
             - 'Window Size and the Spectrogram' : 'engineer/dsp/window-size-and-the-spectrogram/index.md'
         - 'Image Processing':
-            - 'Grayscale': 'engineer/dip/js/grayscale/index.md'
-            - 'Monochrome': 'engineer/dip/js/monochrome/index.md'
-            - 'Negative Film': 'engineer/dip/js/negative/index.md'
-            - 'Colorbar': 'engineer/dip/js/colorbar/index.md'
-            - 'Text Picture': 'engineer/dip/js/text/index.md'
-            - 'Mirror': 'engineer/dip/js/mirror/index.md'
-            - 'Image Resizer': 'engineer/dip/py/resize/index.md'
+            - 'Grayscale': 'engineer/dip/grayscale/index.md'
+            - 'Monochrome': 'engineer/dip/monochrome/index.md'
+            - 'Negative Film': 'engineer/dip/negative/index.md'
+            - 'Colorbar': 'engineer/dip/colorbar/index.md'
+            - 'Text Picture': 'engineer/dip/text/index.md'
+            - 'Mirror': 'engineer/dip/mirror/index.md'
+            - 'Image Resizer': 'engineer/dip/resize/index.md'
         - 'Operating Systems':
           - 'An Assembler Compiler': 'engineer/os/assembler-compiler/index.md'
         - 'Man-Machine Interfaces':
@@ -152,6 +152,7 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.mark
+  - pymdownx.keys
   - pymdownx.tilde
   - pymdownx.superfences:
       custom_fences:

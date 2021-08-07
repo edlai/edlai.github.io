@@ -50,16 +50,16 @@ There is [Visual Studio Code Keyboard shortcuts for Windows](https://code.visual
 
 Action                                     | Visual Studio Code Keymap                                 |
 -------------------------------------------|-----------------------------------------------------------|
-Go Back / Forward                          | <kbd>Alt</kbd>+ <kbd>←</kbd> / <kbd>→</kbd>               |
-Deleting tabs when using tabs as spaces    | <kbd>⇧ Shift</kbd>+<kbd>⇥ Tab</kbd>
-Switch to next Tab                         | <kbd>Ctrl</kbd>+<kbd>⇥ Tab</kbd>
-BookMark                                   | <kbd>CTRL</kbd>+<kbd>ALT</kbd> + <kbd>J</kbd>/<kbd>L</kbd>
-Toggle BookMark                            | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>K</kbd>
+Go Back / Forward                          | ++alt++ + <kbd>←</kbd> / <kbd>→</kbd>               |
+Deleting tabs when using tabs as spaces    | ++shift+tab++
+Switch to next Tab                         | ++ctrl+tab++
+BookMark                                   | ++ctrl+alt+j++ / ++ctrl+alt+l++
+Toggle BookMark                            | ++ctrl+alt+k++
 
-Use below command to open a file from the terminal in Visual Studio Code
+Use command `code` to open a file on the terminal console of Visual Studio Code
 
 ``` sh
-$ code -r filename.c
+$ code filename.c
 ```
 
 ### Code Server

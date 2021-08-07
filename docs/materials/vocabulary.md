@@ -1,5 +1,6 @@
 # Vocabulary
 
+https://www.docdroid.net/CqH0dKl/5000-toefl-words-pdf#page=7
 
 ## Chrome Store
 
