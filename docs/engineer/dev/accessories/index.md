@@ -7,7 +7,7 @@ This chapter introduces some accessories for firmware development.
 
 ### Prolific PL2303
 
-try to buy it from [Taobao](https://www.taobao.com/). It is not very expensive.
+Try to buy it from [Taobao](https://www.taobao.com/). It is not very expensive.
 
 - PID/VID: 2303/067B
 - Driver: [Windows]((http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41))
@@ -28,10 +28,13 @@ It is expensive than PL2303.
 If you don't to want to spend your time to set `Port Mirror` to Network Switch, please look for ancient Hub for packet sniffing.
 
 #### LINKSYS EW5HUB
-  ![EW5HUB](linksys_001.png) 
+
+![EW5HUB](linksys_001.png)
+
 #### D-Link DE-805TP
 
-  ![DE-805TP](dlink_001.png)
+![DE-805TP](dlink_001.png)
+
 ### Network Switch
 
 It's better to have `Port Mirroring` function to the Network Switch.
@@ -44,7 +47,7 @@ It's better to have `Port Mirroring` function to the Network Switch.
 
 - Default IP: 192.168.1.224
 - Default Password: admin
-- Website: [*](https://www.draytek.com/products/vigorswitch-g1080/#overview)
+- Website: [https://www.draytek.com/products/vigorswitch-g1080/#overview](https://www.draytek.com/products/vigorswitch-g1080/#overview)
 - Port Mirroring:
 
 ![DrayTek](draytek_001.png)
@@ -59,7 +62,7 @@ RouterOS is the nice operating system which has good cost performance ratio.
 -->
 
 - Default IP: 192.168.88.1
-- Website: [*](https://mikrotik.com/product/RB750Gr3)
+- Website: [https://mikrotik.com/product/RB750Gr3](https://mikrotik.com/product/RB750Gr3)
 
 - Config PPPoE server with VLAN support
 
@@ -86,7 +89,7 @@ Clear syslog using `dmesg -c` then plug the dongle and run `lsusb`, `dmesg` and 
 - PID/VID: 2717:4106
 - Firmware: mt7601u.bin
 
-```console
+``` sh
 $ sudo lsusb
 Bus 003 Device 025: ID 2717:4106
 
@@ -121,7 +124,7 @@ wlx8c00001900aa: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 - PID/VID: 0e8d:7610
 - Firmware: mediatek/mt7610e.bin
 
-```console
+```sh
 $ sudo lsusb
 Bus 003 Device 020: ID 0e8d:7610 MediaTek Inc.
 
@@ -157,7 +160,7 @@ wlx001122340147: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 - Eject command: `sudo eject /dev/sr0` (depend on stroage name of `sr0`)
 
 
-``` console
+``` sh
 $ sudo lsusb
 Bus 004 Device 004: ID 0e8d:7612 MediaTek Inc.
 
@@ -191,7 +194,7 @@ wlx008e86000266: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 <!--
 - With SD function (0e8d:2870)
 
-```console
+```sh
 $ lsusb
 Bus 003 Device 021: ID 0e8d:2870 MediaTek Inc.
 
@@ -251,7 +254,7 @@ wlx0013ef5f0f65: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 - PID/VID: 2001:3c20
 - Driver: [D-Link DWA-140 rev D1](https://deviwiki.com/wiki/D-Link_DWA-140_rev_D1) (rt2800usb)
 
-``` console
+``` sh
 $ dmesg
 [ 7355.421533] usb 2-2: new high-speed USB device number 11 using xhci_hcd
 [ 7355.586303] usb 2-2: New USB device found, idVendor=2001, idProduct=3c20, bcdDevice= 1.01
@@ -281,7 +284,7 @@ wlxd8fee3d7ae29: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 Install BLE tools
 
-```console
+```sh
 $ sudo apt-get update
 $ sudo apt-get install bluetooth bluez bluez-hcidump
 ```
@@ -290,7 +293,7 @@ $ sudo apt-get install bluetooth bluez bluez-hcidump
 
 - PID/VID: 10c4:ea60
 
-```console
+```sh
 $ lsusb
 Bus 003 Device 027: ID 10c4:ea60 Cygnal Integrated Products, Inc. CP2102/CP2109 UART Bridge Controller [CP210x family]
 
@@ -309,7 +312,7 @@ $ dmesg
 
 - PID/VID: 0a12:0001
 
-``` console
+``` sh
 $ lsusb
 Bus 003 Device 034: ID 0a12:0001 Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
 
