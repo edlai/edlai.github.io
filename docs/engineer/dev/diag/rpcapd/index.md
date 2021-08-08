@@ -27,18 +27,20 @@
 +-------------------+        +-----------------------------------+      +----------+
 ```
 
-## Installation (on BBB)
+## Installation
+
+Use Beaglebone Black (BBB) as an Embedded Devceis.
 
 - Install
 
   - Precondition (Optional)
-    ``` console
-    $ apt-get install build-essential libpcap-dev
-    $ apt-get install flex bison
+    ``` sh
+    $ sudo apt-get install build-essential libpcap-dev
+    $ sudo apt-get install flex bison
     ```
 
   - Build libpcap
-    ``` console
+    ``` sh
     $ wget http://www.tcpdump.org/release/libpcap-1.9.0.tar.gz
     $ tar xvf libpcap-1.9.0.tar.gz
     $ cd libpcap-1.9.0
@@ -47,8 +49,8 @@
     $ make install
     ```
  - Build rpcapd
-    ``` console
-    $ ldcondif
+    ``` sh
+    $ ldconfig
     $ cp
     $ make build-rpcapd   (Go next step if something wrong)
     $ cd rpcapd

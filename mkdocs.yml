@@ -146,11 +146,6 @@ theme:
 #  custom_dir: mkdocs-rtd-lightbox
 
 markdown_extensions:
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid-experimental
-          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: ⚓︎
   - pymdownx.snippets
@@ -163,7 +158,11 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.keys
   - pymdownx.tilde
-
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-experimental
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
     - search
