@@ -339,4 +339,5 @@ Devices:
 
 ### SPI flash Socket 8 Pin SO8W 207mil package
 
-![flash.png](socket_0001.png)
+![flash socket.png](socket_0001.png)
+
