@@ -24,6 +24,8 @@ void swap1(char **str1_ptr, char **str2_ptr)
 void swap2(char *str1, char *str2)
 {
   char *temp = (char *)malloc((strlen(str1) + 1) * sizeof(char));
+  
+  // TIP: use strcpy 
   strcpy(temp, str1);
   strcpy(str1, str2);
   strcpy(str2, temp);
