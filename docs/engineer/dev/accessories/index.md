@@ -280,7 +280,7 @@ wlxd8fee3d7ae29: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-## Bluetooth Adaptor
+## Bluetooth Adaptor (Optional)
 
 Install BLE tools
 
