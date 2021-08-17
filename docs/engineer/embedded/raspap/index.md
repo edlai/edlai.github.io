@@ -34,3 +34,11 @@ dtoverlay=pi3-miniuart-bt
 dtoverlay=disable-bt
 ```
 
+
+Hostapd 2.7/2.9 + wpa2/wpa3 mixed + ios13 == failure
+https://forum.openwrt.org/t/hostapd-2-7-2-9-wpa2-wpa3-mixed-ios13-failure/45225
+
+Open /etc/config/wireless
+Add option auth_cache '1' to your access point.
+
+
