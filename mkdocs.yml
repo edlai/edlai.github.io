@@ -1,47 +1,78 @@
 site_name: Ed's Wiki
 site_url: https://edlai.github.io/
 nav:
-    - Home: 'index.md'
- #      - 'About Me': 'index.md'
+    - Home:
+        - '🦉 About': 'index.md'
  #      - 'About Here': '/#about-here'
  #       - 'Academic Background': '/#academic-background'
  #       - 'Work Experience': '/#work-experience'
  #       - 'Technician Certificate': '/#technician-certificate'
  #       - 'Technician Training': '/#technician-training'
     - 'Engineering':
-        - 'Development Tools':
-          - 'Softwares Tools': 'engineer/dev/softwares/index.md'
-          - 'Accessories': 'engineer/dev/accessories/index.md'
-          - 'Automation and Crawler': 'engineer/dev/auto/index.md'
-          - 'Diagnostic Tools':
-            - 'Wireless Sniffer - Wireshark': 'engineer/dev/diag/sniffer/index.md'
-            - 'Remote Capturer - rpcapd': 'engineer/dev/diag/rpcapd/index.md'
-            - 'Networking Sniffer - tcpdump': 'engineer/dev/diag/tcpdump/index.md'
-            - 'Networking Sniffer - wireshark': 'engineer/dev/diag/wireshark/index.md'
+        - 'Intro.': 'engineer/index.md'
+        - 'Base':
+ #         - 'Courses':
+          - 'Computer Networks':
+            - 'Hypertext Transfer Protocol(HTTP)': 'engineer/base/net/hypertext-transfer-protocol/index.md'
+            - 'File Transfer Protocol (FTP)': 'engineer/base/net/file-transfer-protocol/index.md'
+            - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineer/base/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
+          - 'Digital Signal Processing':
+            - 'Voice Processing':
+              - 'Discrete-Time Processing' : 'engineer/base/dsp/discrete-time-processing/index.md'
+              - 'Moving Average and Backward System' : 'engineer/base/dsp/moving-average-and-backward-system/index.md'
+            - 'Spectrum Analysis':
+              - 'Window Size and the Spectrogram' : 'engineer/base/dsp/window-size-and-the-spectrogram/index.md'
+          - 'Image Processing':
+            - 'Grayscale': 'engineer/base/dip/grayscale/index.md'
+            - 'Monochrome': 'engineer/base/dip/monochrome/index.md'
+            - 'Negative Film': 'engineer/base/dip/negative/index.md'
+            - 'Colorbar': 'engineer/base/dip/colorbar/index.md'
+            - 'Text Picture': 'engineer/base/dip/text/index.md'
+            - 'Mirror': 'engineer/base/dip/mirror/index.md'
+            - 'Image Resizer': 'engineer/base/dip/resize/index.md'
+          - 'Operating Systems':
+            - 'An Assembler Compiler': 'engineer/foundation/courses/os/assembler-compiler/index.md'
+          - 'Man-Machine Interfaces':
+            - 'Industry Standard Architecture (ISA)': 'engineer/base/io/isa/index.md'
+            - 'Peripheral Component Interconnect (PCI)': 'engineer/base/io/pci/index.md'
+            - 'Parallel Port Device (LPT) and Linux Device Driver': 'engineer/base/io/ldd/index.md'
+            - 'General Purpose Input Output (GPIO)': 'engineer/base/io/gpio/index.md'
+            - 'Inter-Integrated Circuit (I2C)': 'engineer/base/io/i2c/index.md'
+          - 'Television Engineering':
+            - 'Multimedia Player': 'engineer/base/tv/player/index.md'
+            - 'Digital Vedio Conversion - MPEG-1': 'engineer/base/tv/mpeg1/index.md'
+#           - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
+        - 'Research':
+          - 'Reading Papers': 'engineer/research/papers/index.md'
+          - 'Specification': 'engineer/research/specification/index.md'
+        - 'Development':
+          - 'Softwares Tools': 'engineer/development/softwares/index.md'
+          - 'Accessories': 'engineer/development/accessories/index.md'
+          - 'Automation and Crawler': 'engineer/development/auto/index.md'
           - 'Performance Measurement':
-            - 'Networking Performance': 'engineer/dev/perf/index.md'
+            - 'Networking Performance': 'engineer/development/perf/index.md'
 #          - 'Git Repo and Build Machine': 'engineer/dev/git/index.md'
 #          - 'Docker and Macvlan':
 #            - 'DockerFile': 'engineer/dev/docker/file/index.md'
 #            - 'Docker Compose': 'engineer/dev/docker/compose/index.md'
 #            - 'Macvlan': 'engineer/dev/docker/macvlan/index.md'
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
-        - 'Programming Tips':
-#         - 'Scaffolding'
-          - 'GCC Compiler History': 'engineer/prog/linux_c/env_toolchain.md'
-          - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
-#          - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
-#          - 'Event Loop': 'engineer/prog/linux_c/event_loop.md'
-          - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
-          - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
-          - 'System Time': 'engineer/prog/linux_c/system_time.md'
-          - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
-          - 'String Manipulation': 'engineer/prog/linux_c/string_manipulation.md'
-#          - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
-#          - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
-#          - 'Inotify': 'engineer/prog/linux_c/inotify.md'
-#          - 'Object-Oriented': 'engineer/prog/linux_c/oo.md'
-          - 'Resources': 'engineer/prog/linux_c/resources.md'
+          - 'Programming Languages':
+            - 'Linux C':
+              - 'GCC Compiler History': 'engineer/prog/linux_c/env_toolchain.md'
+              - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
+#             - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
+#             - 'Event Loop': 'engineer/prog/linux_c/event_loop.md'
+              - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
+              - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
+              - 'System Time': 'engineer/prog/linux_c/system_time.md'
+              - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
+              - 'String Manipulation': 'engineer/prog/linux_c/string_manipulation.md'
+#             - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
+#             - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
+#             - 'Inotify': 'engineer/prog/linux_c/inotify.md'
+#             - 'Object-Oriented': 'engineer/prog/linux_c/oo.md'
+#         - 'Resources': 'engineer/prog/linux_c/resources.md'
 #            - 'C Version': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Memory Layout': 'engineer/dev/prog/linux_c/memory_layout.md'
 #            - 'Fixed Width of Integer': 'engineer/dev/prog/linux_c/memory_layout.md'
@@ -55,63 +86,51 @@ nav:
 #         - 'IxVeriWave and OctoBox': 'dev/wifi/index.md'
 #         - 'SDR and CMW500': 'dev/bss/index.md'
 #         - 'Testbed Setup': 'dev/testbed/index.md'
-#       - 'Leadership': 'leadership.md'
-        - 'Embedded Linux':
-          - 'Buildroot SDK Framework': 'engineer/embedded/buildroot/index.md'
-          - 'OpenWRT SDK Framework': 'engineer/embedded/openwrt/index.md'
-          - 'Surveillance Camera': 'engineer/embedded/camera/cloud/index.md'
-#          - 'Production':
-#            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
-        - 'Linux Kernel':
-          - 'Rebuild Linux Kernel': 'engineer/kernel/rebuild/index.md'
-        - 'Celluar Network':
-          - 'Amarisoft SDR LTE 100': 'engineer/cell/sdr/index.md'
-        - 'Scripting Language':
-          - 'TCL':
-            - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'
-            - 'Execution Logger': 'engineer/script/tcl/executionLogger/index.md'
-            - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
-#            - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
-          - 'Perl':
-            - 'Quiz': 'engineer/script/pl/quiz/index.md'
-            - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
-#          - 'Python':
+#         - 'Leadership': 'leadership.md'
+          - 'Scripting Language':
+            - 'TCL':
+              - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'
+              - 'Execution Logger': 'engineer/script/tcl/executionLogger/index.md'
+              - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
+#             - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
+            - 'Perl':
+              - 'Quiz': 'engineer/script/pl/quiz/index.md'
+              - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
+#           - 'Python':
 #            - 'AES': 'engineer/script/py/aes/index.md'
 #            - 'CTYPE': 'engineer/script/py/ctype/index.md'
 #            - 'Request': 'engineer/script/py/request/index.md'
 #            - 'Selenium': 'engineer/script/py/selenium/index.md'
-        - 'Computer Networks':
-          - 'Hypertext Transfer Protocol(HTTP)': 'engineer/net/hypertext-transfer-protocol/index.md'
-          - 'File Transfer Protocol (FTP)': 'engineer/net/file-transfer-protocol/index.md'
-          - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineer/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
-        - 'Digital Signal Processing':
-          - 'Voice Processing':
-            - 'Discrete-Time Processing' : 'engineer/dsp/discrete-time-processing/index.md'
-            - 'Moving Average and Backward System' : 'engineer/dsp/moving-average-and-backward-system/index.md'
-          - 'Spectrum Analysis':
-            - 'Window Size and the Spectrogram' : 'engineer/dsp/window-size-and-the-spectrogram/index.md'
-        - 'Image Processing':
-            - 'Grayscale': 'engineer/dip/grayscale/index.md'
-            - 'Monochrome': 'engineer/dip/monochrome/index.md'
-            - 'Negative Film': 'engineer/dip/negative/index.md'
-            - 'Colorbar': 'engineer/dip/colorbar/index.md'
-            - 'Text Picture': 'engineer/dip/text/index.md'
-            - 'Mirror': 'engineer/dip/mirror/index.md'
-            - 'Image Resizer': 'engineer/dip/resize/index.md'
-        - 'Operating Systems':
-          - 'An Assembler Compiler': 'engineer/os/assembler-compiler/index.md'
-        - 'Man-Machine Interfaces':
-          - 'Industry Standard Architecture (ISA)': 'engineer/io/isa/index.md'
-          - 'Peripheral Component Interconnect (PCI)': 'engineer/io/pci/index.md'
-          - 'Parallel Port Device (LPT) and Linux Device Driver': 'engineer/io/ldd/index.md'
-          - 'General Purpose Input Output (GPIO)': 'engineer/io/gpio/index.md'
-          - 'Inter-Integrated Circuit (I2C)': 'engineer/io/i2c/index.md'
-        - 'Television Engineering':
-          - 'Multimedia Player': 'engineer/tv/player/index.md'
-          - 'Digital Vedio Conversion - MPEG-1': 'engineer/tv/mpeg1/index.md'
-#         - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
-        - 'Miscellaneous':
-          - 'Misc': 'engineer/misc/index.md'
+          - 'Documentation':
+            - 'Latex': 'engineer/embedded/buildroot/index.md'
+            - 'Markdown': 'engineer/embedded/buildroot/index.md'
+            - 'reStructuredText': 'engineer/embedded/buildroot/index.md'
+          - 'Embedded Linux':
+            - 'Buildroot SDK Framework': 'engineer/development/embedded/buildroot/index.md'
+            - 'OpenWRT SDK Framework': 'engineer/development/embedded/openwrt/index.md'
+            - 'Surveillance Camera': 'engineer/development/embedded/camera/cloud/index.md'
+#           - 'Production':
+#            - 'Flash MTD Endurance': 'engineer/embedded/endurance/index.md'
+          - 'Linux Kernel':
+            - 'Rebuild Linux Kernel': 'engineer/development/kernel/rebuild/index.md'
+          - 'Celluar Network':
+            - 'Amarisoft SDR LTE 100': 'engineer/development/cell/sdr/index.md'
+        - 'Release':
+          - 'Git':
+            - 'Gitlab': 'engineer/development/release/gitlab/index.md'
+            - 'Azure': 'engineer/development/release/gitlab/index.md'
+          - 'DevOps':
+            - 'CI/CD': 'engineer/development/release/cicd/index.md'
+        - 'Debugging':
+          - 'Diagnostic Tools':
+            - 'Wireless Sniffer - Wireshark': 'engineer/development/diag/sniffer/index.md'
+            - 'Remote Capturer - rpcapd': 'engineer/development/diag/rpcapd/index.md'
+            - 'Networking Sniffer - tcpdump': 'engineer/development/diag/tcpdump/index.md'
+            - 'Networking Sniffer - wireshark': 'engineer/development/diag/wireshark/index.md'
+        - 'Motivation':
+          - 'Trip': 'engineer/motivation/trip/photo/index.md'
+#        - 'Miscellaneous':
+#          - 'Misc': 'engineer/misc/index.md'
     - 'Education':
         - 'Master Thesis': 'education/thesis/index.md'
 #        - 'Introduction': 'education/index.md'
@@ -119,19 +138,20 @@ nav:
 #        - 'Information Education': 'education/information-edu/index.md'
 #        - 'Qualitative Research': 'education/qualitative-research/index.md'
 #        - 'Quantitative Research': 'education/quantitative-research/index.md'
-    - 'Materials':
-        - 'Kids': 'materials/kids.md'
-        - 'Life': 'materials/life.md'
-        - 'Course': 'materials/course.md'
-        - 'Programming': 'materials/programming.md'
-        - 'Collection': 'materials/collection.md'
-        - 'Vocabulary': 'materials/vocabulary.md'
+    - 'Daily':
+      - 'Music': 'daily/music.md'
+      - 'Kids': 'daily/kids.md'
+      - 'Online Course': 'daily/course.md'
+      - 'Programming': 'daily/programming.md'
+      - 'Collection': 'daily/collection.md'
+      - 'Vocabulary': 'daily/vocabulary.md'
+      - 'Motivation': 'daily/motivation.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
-    - 'Traveling':
-        - 'Trip': 'traveling/trip.md'
-        - 'Tour': 'traveling/tour.md'
-    - 'Photos': 'photos/index.md'
+#    - 'Traveling':
+#        - 'Trip': 'traveling/trip.md'
+#        - 'Tour': 'traveling/tour.md'
+#    - 'Photos': 'photos/index.md'
 
 theme:
   name: material

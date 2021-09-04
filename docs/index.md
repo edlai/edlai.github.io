@@ -4,7 +4,7 @@
 
 ## About Me
 
-![Placeholder](photos/romania_0002.jpg){ align=right }
+![Placeholder](daily/romania_0002.jpg){ align=right }
 
 I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time (Updated: 2021/07/13).
 
