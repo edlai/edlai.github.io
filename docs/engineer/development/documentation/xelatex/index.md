@@ -2,7 +2,7 @@
 
 ## Demo
 
-###
+### Text
 
 ***Example:***
 
@@ -14,6 +14,10 @@ docs/engineer/development/documentation/xelatex/text.tex
 --8<--
 ```
 
+### Table
+
+### Figures
+
 ### Flow Chart
 
 
@@ -24,3 +28,15 @@ docs/engineer/development/documentation/xelatex/text.tex
 docs/engineer/development/documentation/xelatex/flow-chart.tex
 --8<--
 ```
+
+### Status Machine
+
+=== "LaTeX"
+
+``` tex linenums="1""
+--8<--
+docs/engineer/development/documentation/xelatex/statu-machine.tex
+--8<--
+```
+
+### References
