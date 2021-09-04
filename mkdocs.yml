@@ -43,7 +43,7 @@ nav:
             - 'Digital Vedio Conversion - MPEG-1': 'engineer/base/tv/mpeg1/index.md'
 #           - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
         - 'Research':
-          - 'Reading Papers': 'engineer/research/papers/index.md'
+          - 'Papers': 'engineer/research/papers/index.md'
           - 'Specification': 'engineer/research/specification/index.md'
         - 'Development':
           - 'Softwares Tools': 'engineer/development/softwares/index.md'
@@ -59,15 +59,15 @@ nav:
 #          - 'Documentation Skills': 'engineer/dev/doc/index.md'
           - 'Programming Languages':
             - 'Linux C':
-              - 'GCC Compiler History': 'engineer/prog/linux_c/env_toolchain.md'
-              - 'Debugging Skills': 'engineer/prog/linux_c/debug_skill.md'
-#             - 'Memory Layout': 'engineer/prog/linux_c/memory_layout.md'
-#             - 'Event Loop': 'engineer/prog/linux_c/event_loop.md'
-              - 'State Machine': 'engineer/prog/linux_c/state_machine.md'
-              - 'Function Argument': 'engineer/prog/linux_c/function_call.md'
-              - 'System Time': 'engineer/prog/linux_c/system_time.md'
-              - 'System Timer': 'engineer/prog/linux_c/system_timer.md'
-              - 'String Manipulation': 'engineer/prog/linux_c/string_manipulation.md'
+              - 'GCC Compiler History': 'engineer/development/programming/linux_c/env_toolchain.md'
+              - 'Debugging Skills': 'engineer/development/programming/linux_c/debug_skill.md'
+#             - 'Memory Layout': 'engineer/development/programming/linux_c/memory_layout.md'
+#             - 'Event Loop': 'engineer/development/programming/linux_c/event_loop.md'
+              - 'State Machine': 'engineer/development/programming/linux_c/state_machine.md'
+              - 'Function Argument': 'engineer/development/programming/linux_c/function_call.md'
+              - 'System Time': 'engineer/development/programming/linux_c/system_time.md'
+              - 'System Timer': 'engineer/development/programming/linux_c/system_timer.md'
+              - 'String Manipulation': 'engineer/development/programming/linux_c/string_manipulation.md'
 #             - 'Reactor pattern': 'engineer/prog/linux_c/reactor_pattern.md'
 #             - 'MQTT': 'engineer/prog/linux_c/comm_mqtt.md'
 #             - 'Inotify': 'engineer/prog/linux_c/inotify.md'
@@ -89,22 +89,22 @@ nav:
 #         - 'Leadership': 'leadership.md'
           - 'Scripting Language':
             - 'TCL':
-              - 'Contact Manager': 'engineer/script/tcl/contactManager/index.md'
-              - 'Execution Logger': 'engineer/script/tcl/executionLogger/index.md'
-              - 'Simple Calculator': 'engineer/script/tcl/simpleCalculator/index.md'
-#             - 'Wap Phone Emulator': 'engineer/script/tcl/wapPhoneEmulator/index.md'
+              - 'Contact Manager': 'engineer/development/scripting/tcl/contactManager/index.md'
+              - 'Execution Logger': 'engineer/development/scripting/tcl/executionLogger/index.md'
+              - 'Simple Calculator': 'engineer/development/scripting/tcl/simpleCalculator/index.md'
+#             - 'Wap Phone Emulator': 'engineer/development/scripting/tcl/wapPhoneEmulator/index.md'
             - 'Perl':
-              - 'Quiz': 'engineer/script/pl/quiz/index.md'
-              - 'Dictionary': 'engineer/script/pl/dictionary/index.md'
+              - 'Quiz': 'engineer/development/scripting/pl/quiz/index.md'
+              - 'Dictionary': 'engineer/development/scripting/pl/dictionary/index.md'
 #           - 'Python':
 #            - 'AES': 'engineer/script/py/aes/index.md'
 #            - 'CTYPE': 'engineer/script/py/ctype/index.md'
 #            - 'Request': 'engineer/script/py/request/index.md'
 #            - 'Selenium': 'engineer/script/py/selenium/index.md'
           - 'Documentation':
-            - 'Latex': 'engineer/embedded/buildroot/index.md'
-            - 'Markdown': 'engineer/embedded/buildroot/index.md'
-            - 'reStructuredText': 'engineer/embedded/buildroot/index.md'
+            - 'Latex': 'engineer/development/documentation/xelatex/index.md'
+#           - 'Markdown': 'engineer/development/documentation/markdown/index.md'
+#           - 'reStructuredText': 'engineer/development/documentation/rst/index.md'
           - 'Embedded Linux':
             - 'Buildroot SDK Framework': 'engineer/development/embedded/buildroot/index.md'
             - 'OpenWRT SDK Framework': 'engineer/development/embedded/openwrt/index.md'
@@ -138,14 +138,14 @@ nav:
 #        - 'Information Education': 'education/information-edu/index.md'
 #        - 'Qualitative Research': 'education/qualitative-research/index.md'
 #        - 'Quantitative Research': 'education/quantitative-research/index.md'
-    - 'Daily':
+    - 'General':
       - 'Music': 'daily/music.md'
       - 'Kids': 'daily/kids.md'
       - 'Online Course': 'daily/course.md'
       - 'Programming': 'daily/programming.md'
       - 'Collection': 'daily/collection.md'
       - 'Vocabulary': 'daily/vocabulary.md'
-      - 'Motivation': 'daily/motivation.md'
+#     - 'Motivation': 'daily/motivation.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
 #    - 'Traveling':
