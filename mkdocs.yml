@@ -45,6 +45,8 @@ nav:
         - 'Research':
           - 'Papers': 'engineer/research/papers/index.md'
           - 'Specification': 'engineer/research/specification/index.md'
+#            - 3GPP and IEEE
+#         - 'Master Thesis'
         - 'Development':
           - 'Softwares Tools': 'engineer/development/softwares/index.md'
           - 'Accessories': 'engineer/development/accessories/index.md'
@@ -127,6 +129,7 @@ nav:
             - 'Remote Capturer - rpcapd': 'engineer/development/diag/rpcapd/index.md'
             - 'Networking Sniffer - tcpdump': 'engineer/development/diag/tcpdump/index.md'
             - 'Networking Sniffer - wireshark': 'engineer/development/diag/wireshark/index.md'
+#         - 'Duplication'
         - 'Motivation':
           - 'Trip': 'engineer/motivation/trip/photo/index.md'
 #        - 'Miscellaneous':
