@@ -5,6 +5,7 @@
 - [Learn_LaTeX_in_30_minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
 - [Latex教學](http://www.cs.nthu.edu.tw/~cherung/teaching/2009cs5321/link/latex.pdf)
 - [Software Requirements Specification for Gephi](https://gephi.org/users/gephi_srs_document.pdf)
+- [SRS Example - MSU CSE](https://www.cse.msu.edu/~cse435/Handouts/SRSExample-webapp.doc)
 ## Resource
 
 - [大家來學 LaTeX（LaTeX123）](https://www.overleaf.com/articles/da-jia-lai-xue-latex-latex123/jypmqhfhfbyc)
@@ -27,7 +28,7 @@
 - [TexMaker](https://www.xm1math.net/texmaker/) with [MikTex](https://miktex.org/)
 - [TeXstudio](https://www.texstudio.org/) with [MikTex](https://miktex.org/)
 - [WinEdt](https://www.winedt.com/) with [MikTex](https://miktex.org/)
-
+- [ReqView](https://www.reqview.com/)
 ## Syntax
 
 ### Document class and Preamble
@@ -61,26 +62,16 @@ use [The IEEE standard for requirements documents](https://ifs.host.cs.st-andrew
 \maketitle
 
 \chapter{Introduction}
-
-\section{Purpose of the requirements document}
-
-This is the first section.
-
-\section{Scope of the product}
-
-This is the first section.
-
-\section{References}
-\section{Overview of the remainder of the document}
-
+  \section{Purpose of the requirements document}
+  \section{Scope of the product}
+  \section{References}
+  \section{Overview of the remainder of the document}
 \chapter{General description}
-\section{Product perspective}
-\section{Product functions}
-\section{User characteristics}
-\section{General constraints}
-\section{Assumptions and dependencies}
-
-
+  \section{Product perspective}
+  \section{Product functions}
+  \section{User characteristics}
+  \section{General constraints}
+  \section{Assumptions and dependencies}
 \chapter{Specific requirements}
 \chapter{Appendices}
 \chapter{Index}
