@@ -78,7 +78,7 @@ This is the first section.
 \section{Product functions}
 \section{User characteristics}
 \section{General constraints}
-\section{ Assumptions and dependencies}
+\section{Assumptions and dependencies}
 
 
 \chapter{Specific requirements}
@@ -212,3 +212,6 @@ https://ifs.host.cs.st-andrews.ac.uk/Books/SE9/Web/Requirements/IEEE-standard.ht
 
 - [How to write technical IT requirements to get what you need](
 https://www.udemy.com/course/how-to-write-technical-it-requirements-to-get-what-you-need/?utm_source=adwords&utm_medium=udemyads&utm_campaign=LongTail_la.EN_cc.ROW&utm_content=deal4584&utm_term=_._ag_77879424214_._ad_535397245866_._kw__._de_c_._dm__._pl__._ti_dsa-1007766171552_._li_9040379_._pd__._&matchtype=b&gclid=Cj0KCQjwssyJBhDXARIsAK98ITTai6Sn_CB8dkXjO-t9qV8NifuKh9vbq7IX1LdvJQskzOEN_grVjZoaAklZEALw_wcB)
+
+- [TeX Users Group](http://tug.org/)
+
