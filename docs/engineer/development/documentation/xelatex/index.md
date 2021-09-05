@@ -18,7 +18,8 @@
   - Easy-maintenance flowchart
   - [Filesystem tree](https://texample.net/tikz/examples/filesystem-tree/)
   - Scenario tree
-- [Drawing simple sequence diagram](https://tex.stackexchange.com/questions/207240/drawing-simple-sequence-diagram/209079)
+- Tex stackexcahge
+  - [Drawing simple sequence diagram](https://tex.stackexchange.com/questions/207240/drawing-simple-sequence-diagram/209079)
 ## Editor
 
 - Visual Studio Code with [LaTeX Workshop Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and XeLaTeX
