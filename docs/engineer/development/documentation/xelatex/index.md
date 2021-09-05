@@ -4,7 +4,7 @@
 
 - [Learn_LaTeX_in_30_minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
 - [Latex教學](http://www.cs.nthu.edu.tw/~cherung/teaching/2009cs5321/link/latex.pdf)
-
+- [Software Requirements Specification for Gephi](https://gephi.org/users/gephi_srs_document.pdf)
 ## Resource
 
 - [大家來學 LaTeX（LaTeX123）](https://www.overleaf.com/articles/da-jia-lai-xue-latex-latex123/jypmqhfhfbyc)
