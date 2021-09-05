@@ -57,3 +57,13 @@ site/
 .vscode/
 ./test
 #src/
+
+
+# Latex
+
+*.fdb_latexmk
+*.aux
+*.fls
+*.log
+#*.pdf
+*.synctex.gz
