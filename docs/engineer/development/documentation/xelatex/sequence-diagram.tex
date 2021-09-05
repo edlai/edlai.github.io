@@ -1,0 +1,16 @@
+% arara: pdflatex
+
+\documentclass{article}
+\usepackage{pgf-umlsd}
+
+\begin{document}
+\begin{figure}
+  \centering
+  \begin{sequencediagram}
+    \newthread{A}{Client}{}
+    \newinst[1]{B}{Server}{}
+    \begin{call}{A}{Call()}{B}{}
+    \end{call}
+  \end{sequencediagram}
+\end{figure}
+\end{document}

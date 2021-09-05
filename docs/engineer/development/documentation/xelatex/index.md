@@ -2,10 +2,24 @@
 
 ## Prior knowledge
 
-[Learn_LaTeX_in_30_minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
-[Latex教學](http://www.cs.nthu.edu.tw/~cherung/teaching/2009cs5321/link/latex.pdf)
+- [Learn_LaTeX_in_30_minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+- [Latex教學](http://www.cs.nthu.edu.tw/~cherung/teaching/2009cs5321/link/latex.pdf)
 
-## Friendly Editor
+## Resource
+
+- [大家來學 LaTeX（LaTeX123）](https://www.overleaf.com/articles/da-jia-lai-xue-latex-latex123/jypmqhfhfbyc)
+- [TeXample](https://texample.net/)
+  - [A family tree](https://texample.net/tikz/examples/family-tree/)
+  - [Sequence diagram](https://texample.net/tikz/examples/sequence-diagram/)
+  - A simple Tree
+  - Diagram of Android activity life cycle
+  - Direction-of-arrival diagram
+  - EPC flow charts
+  - Easy-maintenance flowchart
+  - [Filesystem tree](https://texample.net/tikz/examples/filesystem-tree/)
+  - Scenario tree
+- [Drawing simple sequence diagram](https://tex.stackexchange.com/questions/207240/drawing-simple-sequence-diagram/209079)
+## Editor
 
 - Visual Studio Code with [LaTeX Workshop Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and XeLaTeX
 - [Overleaf, Online LaTeX Editor](https://www.overleaf.com/)
@@ -13,8 +27,21 @@
 - [TeXstudio](https://www.texstudio.org/) with [MikTex](https://miktex.org/)
 - [WinEdt](https://www.winedt.com/) with [MikTex](https://miktex.org/)
 
+## Syntax
 
-## Writing
+### Document class and Preamble
+
+```
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\title{Software Requirements Specifications}
+\author{<Writer>\footnote{Software Requirements Specifications}}
+\date{\today}
+
+\begin{document}
+This IEEE standard suggests the following structure for requirements documents.
+\end{document}
+```
 
 ### Document class and Preamble
 
@@ -26,8 +53,8 @@ use [The IEEE standard for requirements documents](https://ifs.host.cs.st-andrew
 ```
 \documentclass[12pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
-\title{My first work of \LaTeX}
-\author{Someone\footnote{this is footnote}}
+\title{Software Requirements Specifications}
+\author{Someone\footnote{Software Requirements Specifications}}
 \date{\today}
 \begin{document}
 \maketitle
