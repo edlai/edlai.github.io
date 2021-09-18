@@ -1,8 +1,4 @@
-# Home
-
-
-
-## About Me
+# About Me
 
 ![Placeholder](daily/romania_0002.jpg){ align=right }
 

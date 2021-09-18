@@ -2,8 +2,8 @@ site_name: Ed's Wiki
 site_url: https://edlai.github.io/
 nav:
     - Home:
-        - '🦉 About': 'index.md'
- #      - 'About Here': '/#about-here'
+ #      - 'About Me': 'home/me.md'
+ #      - 'About Here': 'home/here.md'
  #       - 'Academic Background': '/#academic-background'
  #       - 'Work Experience': '/#work-experience'
  #       - 'Technician Certificate': '/#technician-certificate'
@@ -141,7 +141,7 @@ nav:
 #        - 'Information Education': 'education/information-edu/index.md'
 #        - 'Qualitative Research': 'education/qualitative-research/index.md'
 #        - 'Quantitative Research': 'education/quantitative-research/index.md'
-    - 'General':
+    - 'Living':
       - 'Music': 'daily/music.md'
       - 'Kids': 'daily/kids.md'
       - 'Online Course': 'daily/course.md'
