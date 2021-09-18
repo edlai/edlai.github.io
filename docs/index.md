@@ -4,9 +4,9 @@
 
 ## About Me
 
-![Placeholder](daily/romania_0002.jpg){ align=right }
+![Placeholder](living/romania_0002.jpg){ align=right }
 
-I always like to see how it works on my hands after I studied some knowledge from books or from Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time (Updated: 2021/07/13).
+I always like to see how it works on my hands after I studied for something from books or Internet. On the other hand, I was not an outstanding student who excelled academically at school. This is why I have to write some codes or solder circuit to do something to make sure that it happens like what I thought. Some of them are my homeworks when I was a student at school and some of them are my studies in my spare time (Updated: 2021/07/13).
 
 ----
 
@@ -26,7 +26,7 @@ I always like to see how it works on my hands after I studied some knowledge fro
 
 ## Work Experience
 
-*** » Firmware Developer « ***
+### Firmware Development
 
 The products (Wireless Mesh and Cellular Routers) I developed with my colleagues before.
 
@@ -36,7 +36,7 @@ The products (Wireless Mesh and Cellular Routers) I developed with my colleagues
    <!--- D-Link DIR-451 HSPA Router ODM (with 2 colleagues in 2006 B.C.) `x86` [`emulator`](http://www.support.dlink.com/emulators/dir451/103NA/login.htm)-->
 - D-Link COVR-1100 Wi-Fi Mesh Router(with 2 colleagues in 2020 B.C., handover from HsinChu RD team)`mips` [`RTL8197F`](https://www.realtek.com/en/products/communications-network-ics/item/rtl8197f)
 
-*** » Web Developer « ***
+### GUI and Web Programming
 
 Enhanced [`MIT Scratch 3.0`](https://scratch.mit.edu/) (block-based programming language) and [`Dr.Scratch`](http://drscratch.org/). Communication by using Restful API.
 
