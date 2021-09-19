@@ -155,8 +155,8 @@ nav:
       - 'Books': 'living/books.md'
       - 'Music': 'living/music.md'
       - 'Kids': 'living/kids.md'
-      - 'Collection': 'daily/collection.md'
-      - 'Vocabulary': 'daily/vocabulary.md'
+#      - 'Collection': 'daily/collection.md'
+#      - 'Vocabulary': 'daily/vocabulary.md'
 #     - 'Motivation': 'daily/motivation.md'
 #    - 'Motivation':
 #        - 'Painting': 'motivation/painting.md'
