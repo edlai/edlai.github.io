@@ -3,14 +3,14 @@
 There are several sections of this Wiki.
 
 - [Engineering](dev/softwares/index.md)
-There are some of my reports and homeworks when I was a BSEE undergraduate student in university or in my career.
+There are some of my reports and homeworks when I was a BSEE undergraduate student at university or in my career.
 
 - [Education](edu/qualitative-research/index.md)
-There are some of the reports and homeworks when I was a MSMIE graduate student. But it's still under construction now. 
+There are some of the reports and homeworks when I was a MSMIE postgraduate student. But it's still under construction now.
 
 
 - [Living](collections/index.md)
-My collection from Internet.
+Anything about living.
 
 <!--
 

@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>BPN</title>
+             
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+  <body>
+  <b>Artificial Neural Network &nbsp;</b>      
+<h3><b>Back-propagation Network&nbsp;</b> &#65123; XOR </h3>
+ 
+<h3><b> </b></h3>
+   - written by <b>Jing-Wen.Lai</b> &nbsp;  '02/ 12/ 27 <br>
+         <br>
+         
+<table border="1" cols="1" width="50%" bgcolor="#99ffff">
+     <tbody>
+        <tr>
+     <td bgcolor="#ffff99">                      
+      <ul>
+          <li>Purpose</li>
+          <li>Tools&nbsp;</li>
+          <li>&#31243;&#24335;&#30908;</li>
+          <li>&#22519;&#34892;&#32080;&#26524;</li>
+                   <li>&#27604;&#36611;.&nbsp;</li>
+          <li>&#32080;&#35542;<br>
+         </li>
+          <li>Reference</li>
+                        
+      </ul>
+         </td>
+     </tr>
+                 
+  </tbody>    
+</table>
+    <br>
+         - Keywords :: &nbsp;&#39006;&#31070;&#32147;&#32178;&#36335;&#65292;&#20154;&#24037;&#31070;&#32147;&#32178;&#36335; &#65292;PHP &#12290;<br>
+  <br>
+  &#12304; Purpose &#12305; <br>
+  <br>
+  &#39511;&#35388; BPN&#32178;&#36335;, &#20351;&#29992;&#31684;&#20363;:&nbsp; XOR&#12290;<br>
+  <br>
+  &#12304; Tools &#12305;<br>
+  <br>
+  1.) PHP/GTK <br>
+  2.) Editplus<br>
+  <br>
+  &#12304; &nbsp;&#31243;&#24335;&#30908; &#12305;( &#23416;&#32722;&#27425;&#25976; = 20 &#27425; ) :<br>
+  <br>
+   
+<table cellpadding="2" cellspacing="2" border="1" width="80%"
+ bgcolor="#99ff99">
+    <tbody>
+      <tr>
+        <td valign="top" bgcolor="#ffffff">&lt;?<br>
+   # 12&#31278;&#21443;&#25976;&#20540;&#23450;&#32681;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $inputNode = 2;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+# * %inputNode=input('1.&#36664;&#20837;&#23652;&#31680;&#40670;&#25976;&#65306;');<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $hiddenNode= 2;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;# * %hiddenNode=input('2.&#38577;&#34255;&#23652;&#31680;&#40670;&#25976;&#65306;');<br>
+  &nbsp; &nbsp; &nbsp; $outputNode= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;# * %outputNode=input('3.&#36664;&#20986;&#23652;&#31680;&#40670;&#25976;&#65306;');<br>
+  &nbsp; &nbsp; &nbsp; $learn= 10;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; # * %learn=input('4.&#23416;&#32722;&#36895;&#29575;&#65306;');<br>
+   <br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$learnTime= 20;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ # * %learnTime=input('5.&#32317;&#20849;&#23416;&#32722;&#27425;&#25976;&#65306;');<br>
+   <br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$count= 4;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp; &nbsp; # * %count=input('6.&#27171;&#26412;&#32317;&#25976;&#65306;');<br>
+   <br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$t_hy[0]= 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; # %t_hy=input('7.&#36664;&#20986;&#23652;&#33256;&#30028;&#20540;(&#19968;&#32173;&#38499;&#21015;)&#65306;');<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; # %thh=input('8.&#38577;&#34255;&#23652;&#33256;&#30028;&#20540;(&#19968;&#32173;&#38499;&#21015;)&#65306;');<br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$t_hh[0] = 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$t_hh[1] = 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; # * %why=input('9.&#38577;&#34255;&#23652;&#33287;&#36664;&#20986;&#23652;&#37832;&#32080;&#20540;(&#20108;&#32173;&#38499;&#21015;)&#65306;');<br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$w_hy[0][0]= 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp; &nbsp;# * W35<br>
+   &nbsp;&nbsp; &nbsp; &nbsp;$w_hy[1][0]= 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp; # * W45&nbsp;&nbsp; &nbsp;<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;# * %wxh=input('10.&#36664;&#20837;&#23652;&#33287;&#38577;&#34255;&#23652;&#37832;&#32080;&#20540;(&#20108;&#32173;&#38499;&#21015;)&#65306;');<br>
+   &nbsp;&nbsp; &nbsp;$w_xh[0][0]=&nbsp; 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;# * W13<br>
+   &nbsp;&nbsp; &nbsp;$w_xh[0][1]= -1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;# * W23<br>
+   &nbsp;&nbsp; &nbsp;$w_xh[1][0]= -1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;# * W14<br>
+   &nbsp;&nbsp; &nbsp;$w_xh[1][1]=&nbsp; 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;# * W24<br>
+   &nbsp;&nbsp; &nbsp;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # * 
+%inputx=input('11.&#27171;&#26412;&#36664;&#20837;&#20540;(&#38499;&#20363;&#22823;&#23567;&#65306;&#31684;&#20363;&#25976;&times;&#36664;&#20837;&#23652;&#31680;&#40670;&#25976;)&#65306;');<br>
+   &nbsp;&nbsp; &nbsp;<br>
+   $input_x[0][0] = -1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+# * &#31684;&#20363;&#19968;<br>
+   $input_x[0][1] = -1;<br>
+   $input_x[1][0] = -1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+# * &#31684;&#20363;&#20108;<br>
+   $input_x[1][1] =&nbsp; 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   $input_x[2][0] =&nbsp; 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+# * &#31684;&#20363;&#19977;<br>
+   $input_x[2][1] = -1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   $input_x[3][0] =&nbsp; 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+# * &#31684;&#20363;&#22235;<br>
+   $input_x[3][1] =&nbsp; 1;<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<br>
+   <br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; # * %outt=input('12.&#27171;&#26412;&#36664;&#20986;&#20540;(&#38499;&#20363;&#22823;&#23567;&#65306;&#31684;&#20363;&#25976;&times;&#36664;&#20986;&#23652;&#31680;&#40670;&#25976;)&#65306;');<br>
+   &nbsp;&nbsp;&nbsp; $out_t[0][0]= 0;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # * &#36664;&#20986; PE<br>
+   &nbsp;&nbsp; &nbsp;$out_t[1][0]= 1;<br>
+   &nbsp;&nbsp; &nbsp;$out_t[2][0]= 1;<br>
+   &nbsp;&nbsp; &nbsp;$out_t[3][0]= 0;<br>
+   <br>
+   <br>
+       <font color="#009900">  # ...............</font><font
+ color="#009900">.............. </font><font color="#009900">. Start ..............</font><font
+ color="#009900">.............. </font><font color="#009900"> </font><br>
+   <br>
+   for($t=0; $t&lt;$learnTime; $t++) {<br>
+   <br>
+ &nbsp; &nbsp; $sum_w_hy[0][0]=0;<br>
+ &nbsp; &nbsp; $sum_w_hy[1][0]=0;<br>
+   <br>
+ &nbsp; &nbsp; $sum_w_xh[0][0]=0;<br>
+ &nbsp; &nbsp; $sum_w_xh[0][1]=0;<br>
+ &nbsp; &nbsp; $sum_w_xh[1][0]=0;<br>
+ &nbsp; &nbsp; $sum_w_xh[1][1]=0;<br>
+   <br>
+ &nbsp; &nbsp; $sum_t_hy[0]=0;<br>
+   <br>
+ &nbsp; &nbsp; $sum_t_hh[0]=0;<br>
+ &nbsp; &nbsp; $sum_t_hh[1]=0;<br>
+   <br>
+ &nbsp; &nbsp; $aeer=0;<br>
+   &nbsp;&nbsp; &nbsp;<br>
+ &nbsp; &nbsp; for($k=0; $k&lt;$count; $k++) {&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# % &#31684;&#20363;&#25976; count&nbsp; = 4<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<font color="#009900"> &nbsp;<b><font
+ color="#006600">/*...................(&#19968;) &#35336;&#31639;&#38577;&#34255;&#23652;&#36664;&#20986;&#20540;&nbsp; .........................*/</font></b></font><br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$hiddenNode; $i++)
+ {&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# % hiddenNode = 2<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $node_h[$i]
+ = 0;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$inputNode;
+ $j++) {&nbsp;&nbsp; &nbsp;# &#35336;&#31639; net3 &#33287; net4 , % inputNode = 2<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;$node_h[$i]=$w_xh[$j][$i]*$input_x[$k][$j]+$node_h[$i];<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$node_h[$i]=$node_h[$i]-$t_hh[$i]
+ ;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$net[$i]=$node_h[$i];
+ # net3 &#33287; net4<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$node_h[$i]=1/(1+exp(-1*$node_h[$i]));&nbsp;&nbsp;
+ &nbsp;# &#35336;&#31639; H1 &#33287; H2 <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font color="#006600">&nbsp;<b>/*....................(&#20108;)&#35336;&#31639;&#36664;&#20986;&#23652; 
+&#36664;&#20986;&#20540; ..........................*/</b></font><br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$outputNode;
+ $i++) { # % output=1<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $out_y[$k][$i]=0;<br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($j=0;
+ $j&lt;$hiddenNode; $j++) { # % hidden = 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ $out_y[$k][$i]=$node_h[$j]*$w_hy[$j][$i]+$out_y[$k][$i];<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $out_y[$k][$i]=$out_y[$k][$i]-$t_hy[$i];<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$out_y[$k][$i]=1/(1+exp(-1*$out_y[$k][$i]));&nbsp;&nbsp;
+ &nbsp;# &#35336;&#31639; Y<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp; &nbsp; <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<font color="#006600"><b>/*...................(&#19977;) 
+&#35336;&#31639;&#36664;&#20986;&#23652;&#24046;&#36317;&#37327; delta .........................*/</b></font><br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$outputNode; $i++)
+ {#%output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$delta_y[$i]=$out_y[$k][$i]*(1-$out_y[$k][$i])*($out_t[$k][$i]-$out_y[$k][$i]);<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   <br>
+   <br>
+ &nbsp; &nbsp; &nbsp; &nbsp; <font color="#006600"><b>/*...................(&#22235;) 
+&#35336;&#31639;&#38577;&#34255;&#23652;&#24046;&#36317;&#37327; delta&nbsp; ........................*/</b></font><br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$hiddenNode; $i++)
+ { #%hidden<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $temp=0;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$outputNode;
+ $j++) { #%output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ $temp=$temp+$delta_y[$j]*$w_hy[$i][$j];<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$delta_h[$i]=$node_h[$i]*(1-$node_h[$i])*$temp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b><font color="#006600">&nbsp;/* ..........(&#20116;) 
+&#35336;&#31639;&#36664;&#20986;&#23652;&#21152;&#27402;&#20540;&#30697;&#38499;&#20462;&#27491;&#37327; &#21450;&#20559;&#27402;&#20540;&#21521;&#37327;&#20462;&#27491;&#20540;............*/</font></b><br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$outputNode;
+ $i++) {# % output = 1&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$hiddenNode;
+ $j++) { # % hidden = 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ $tri_w_hy[$j][$i]=$learn*$delta_y[$i]*$node_h[$j]; # &#22823; delta W35,W45&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$tri_t_hy[$i]=(-1)*$learn*$delta_y[$i];<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#006600"><b>/*...................(&#20845;)&nbsp;
+ &#35336;&#31639;&#38577;&#34255;&#23652; &#20559;&#27402;&#20540;&#21521;&#37327;&#20462;&#27491;&#20540;.................*/</b></font><br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$hiddenNode; $i++)
+ {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($j=0;
+ $j&lt;$inputNode; $j++) {&nbsp; #%input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ $triwxh[$j][$i]=$learn*$delta_h[$i]*$input_x[$k][$j];<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $tri_t_hh[$i]=(-1)*$learn*$delta_h[$i];
+ &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<b><font color="#006600"><br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;/*......................&nbsp;&nbsp;
+ &#35336;&#31639;&#35492;&#24046; &#22343;&#26041;&#26681;............................*/</font></b><br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$outputNode; $i++)
+ {&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$aeer=$aeer+
+pow($out_t[$k][$i]  - $out_y[$k][$i], 2) ;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<b><font color="#006600">/*................(&#19971;.&#19968;)&#35336;&#31639;&#26032;&#30340;&#21152;&#27402;&#20540; 
+&#33287; &#38309;&#20540; step.1....................*/</font></b><br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$hiddenNode; $i++)
+ {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$sum_w_hy[$i][0]=$tri_w_hy[$i][0]+$sum_w_hy[$i][0];&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$hiddenNode;
+ $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$inputNode;
+ $j++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;$sum_w_xh[$i][$j]=$triwxh[$i][$j]+$sum_w_xh[$i][$j];&nbsp;&nbsp;  &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$outputNode;
+ $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$sum_t_hy[$i]=$sum_t_hy[$i]+$tri_t_hy[$i];<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$inputNode; $i++)
+ {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$sum_t_hh[$i]=$sum_t_hh[$i]+$tri_t_hh[$i];&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp; }<br>
+   <br>
+   &nbsp;&nbsp; &nbsp;<br>
+   <br>
+       <font color="#006600"><b>  /*...................(&#19971;.&#19968;)&#35336;&#31639;&#26032;&#30340;&#21152;&#27402;&#20540; &#33287; &#38309;&#20540;&nbsp; 
+step.2....................*/</b></font><br>
+   <br>
+   &nbsp;&nbsp;&nbsp; $errorvalue[$t]=pow($aeer/($count*$outputNode),1/2);<br>
+   &nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$hiddenNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$w_hy[$i][0]=$w_hy[$i][0]+$sum_w_hy[$i][0];<br>
+   &nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$hiddenNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$inputNode; $j++)
+ {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$w_xh[$i][$j]=$w_xh[$i][$j]+$sum_w_xh[$i][$j];&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp;&nbsp; for($i=0; $i&lt;$outputNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$t_hy[$i]=$t_hy[$i]+$sum_t_hy[$i];<br>
+   &nbsp;&nbsp; &nbsp;}<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;for($i=0; $i&lt;$inputNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;$t_hh[$i]=$t_hh[$i]+$sum_t_hh[$i];&nbsp;&nbsp;
+ &nbsp;<br>
+   &nbsp;&nbsp;&nbsp; }<br>
+   <br>
+   }<br>
+   <br>
+   <font color="#006600"><b>  /*................... &#36664;&#20986;&#32080;&#26524; ....................*/</b></font><br>
+       <br>
+   echo("&#20462;&#27491;&#24460;&#36664;&#20986;&#23652;&#37832;&#32080;&#20540;&#65306;\n");<br>
+   <br>
+   for($i=0; $i&lt;$hiddenNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;echo($w_hy[$i][0]."\t");&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   }echo("\n");<br>
+   <br>
+   echo("&#20462;&#27491;&#24460;&#36664;&#20986;&#23652;&#33256;&#30028;&#20540;&#65306;\n");<br>
+   <br>
+   for($i=0; $i&lt;$outputNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;echo($t_hy[$i]."\t");&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ &nbsp;<br>
+   }echo("\n");<br>
+   <br>
+   echo("&#20462;&#27491;&#24460;&#38577;&#34255;&#23652;&#37832;&#32080;&#20540;&#65306;\n");<br>
+   <br>
+   for($i=0; $i&lt;$hiddenNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;for($j=0; $j&lt;$inputNode; $j++) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo($w_hy[$i][$j]."\t");<br>
+   &nbsp;&nbsp; &nbsp;}echo("\n");<br>
+   }echo("\n");<br>
+   <br>
+   echo("&#20462;&#27491;&#24460;&#38577;&#34255;&#23652;&#33256;&#30028;&#20540;&#65306;\n");<br>
+   <br>
+   for($i=0; $i&lt;$inputNode; $i++) {<br>
+   &nbsp;&nbsp; &nbsp;echo($t_hh[$i]."\t");&nbsp;&nbsp; &nbsp;<br>
+   }echo("\n");<br>
+   <br>
+   echo("&#26368;&#24460;&#35492;&#24046;&#22343;&#26041;&#26681;&#65306;\n");<br>
+   echo($errorvalue[$learnTime-1]."\n");<br>
+   echo("\n");<br>
+   <br>
+   echo("&#27599;&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681;&#65306;\n");<br>
+   for($x=0; $x&lt;$learnTime; $x++) {&nbsp;&nbsp; &nbsp;<br>
+   &nbsp;&nbsp; &nbsp;echo('&#31532;'.$x. "&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: \t\t".$errorvalue[$x]."\n");<br>
+   }&nbsp;&nbsp; &nbsp;<br>
+   <br>
+   # ................ End .............. <br>
+   <br>
+   ?&gt;<br>
+        </td>
+      </tr>
+       
+  </tbody>  
+</table>
+  <br>
+  <br>
+  &#12304;&nbsp;&#22519;&#34892;&#32080;&#26524; &#12305;( &#23416;&#32722;&#27425;&#25976; = 20 &#27425; )<br>
+  <br>
+   
+<table cellpadding="2" cellspacing="2" border="1" width="50%">
+    <tbody>
+      <tr>
+        <td valign="top"><b>&#20462;&#27491;&#24460;&#36664;&#20986;&#23652;&#37832;&#32080;&#20540;&#65306;</b><br>
+   5.30826704257&nbsp;&nbsp; &nbsp;5.30826704257&nbsp;&nbsp; &nbsp;<br>
+      <b>   &#20462;&#27491;&#24460;&#36664;&#20986;&#23652;&#33256;&#30028;&#20540;&#65306;</b><br>
+   2.65442460853&nbsp;&nbsp; &nbsp;<br>
+      <b>   &#20462;&#27491;&#24460;&#38577;&#34255;&#23652;&#37832;&#32080;&#20540;&#65306;</b><br>
+   5.30826704257&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   5.30826704257&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+   <br>
+      <b>   &#20462;&#27491;&#24460;&#38577;&#34255;&#23652;&#33256;&#30028;&#20540;&#65306;</b><br>
+   3.44461351124&nbsp;&nbsp; &nbsp;3.44461351124&nbsp;&nbsp; &nbsp;<br>
+      <b>   &#26368;&#24460;&#35492;&#24046;&#22343;&#26041;&#26681;&#65306;</b><br>
+   0.0868101496131<br>
+   <br>
+   &#27599;&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681;&#65306;<br>
+   &#31532;1&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.478312190692<br>
+   &#31532;2&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.504960939172<br>
+   &#31532;3&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.580996038044<br>
+   &#31532;4&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.479101221766<br>
+   &#31532;5&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.566574441937<br>
+   &#31532;6&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.453303940654<br>
+   &#31532;7&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.527754117859<br>
+   &#31532;8&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.446298229069<br>
+   &#31532;9&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.402032829666<br>
+   &#31532;10&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.397852477978<br>
+   &#31532;11&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.220603875397<br>
+   &#31532;12&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.139004869443<br>
+   &#31532;13&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.10831326194<br>
+   &#31532;14&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.10412075591<br>
+   &#31532;15&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.100575006292<br>
+   &#31532;16&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.0973480738758<br>
+   &#31532;17&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.0943896156837<br>
+   &#31532;18&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.0916652801196<br>
+   &#31532;19&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.0891467357734<br>
+   &#31532;20&#27425;&#30340;&#35492;&#24046;&#22343;&#26041;&#26681; :: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;0.0868101496131<br>
+        </td>
+      </tr>
+       
+  </tbody>  
+</table>
+  <br>
+  &#30001;&#26044;&#30446;&#21069; PHP/GTK &#23565;&#26044; GtkCurve ( Widget that allows editing of a curve ) &#30340;&#25903;&#25588;<br>
+  &#23578;&#26410;&#23436;&#25972;, &#28961;&#27861;&#30059;&#20986;&#26354;&#32218;, &#25925;&#23559; &#35492;&#24046;&#22343;&#26041;&#26681; &#32080;&#26524; &#25918;&#20837; MS Excel &#23559;&#26354;&#32218;&#32362;&#20986;. <br>
+  &#35264;&#23519;&#26354;&#32218;&#22294;&#21487;&#30332;&#29694;&#35442;&#20540;&#36264;&#36817;&#26044;&#25910;&#25986;<br>
+  <br>
+  <img src="train20.jpg" alt="" width="524" height="270">
+   <br>
+  <br>
+  &#12304; &#27604;&#36611; &#12305;<br>
+  <br>
+  1.)&nbsp;&nbsp; &nbsp;&#23416;&#32722;&#27425;&#25976; = 10 &#27425;<br>
+  <br>
+  &nbsp;<img src="train10.jpg" alt="" width="492" height="274">
+  <br>
+  <br>
+  2.)&nbsp;&nbsp; &nbsp;&#23416;&#32722;&#27425;&#25976; = 100 &#27425;<br>
+  <br>
+  <img src="train100.jpg" alt="" width="492" height="274">
+  <br>
+  <br>
+  <br>
+  &#12304; &#32080;&#35542; &#12305;<br>
+  <br>
+   
+<ul>
+    <li>&#22312;&#23416;&#32722;&#27425;&#25976;&#28858;10&#27425;&#26178;,&#26371;&#30332;&#29694;&#25910;&#25986;&#19981;&#22816;,&#20294;&#22312;&#23416;&#32722;&#27425;&#25976;&#28858;100&#27425;&#26178;,&#38614;&#28982;&#26371;&#36264;&#26044;&#25910;&#25986;<br>
+  &#21371;&#21448;&#33457;&#36027;&#22826;&#22810;&#30340;&#26178;&#38291;&#20102;&#12290;&#22914;&#20309;&#22312;&#20043;&#38291;&#21462;&#24471;&#24179;&#34913;,&#26159;&#19968;&#20491;&#20540;&#24471;&#30740;&#31350;&#30340;&#35506;&#38988;&#12290;<br>
+    </li>
+   
+</ul>
+   
+<ul>
+    <li>&#26412;&#27425;&#30340;&#35486;&#35328;&#20351;&#29992;PHP, &#36889;&#26159;&#19968;&#20491;&#36328;&#24179;&#21488;&#33287;&#20351;&#29992;&#24291;&#27867;&#30340;&#32178;&#36335;&#24460;&#31471;&#35486;&#35328;.&#37969;&#26044;&#30446;&#21069;&#20351;&#29992;&#32773;&#23565;&#26044;&#32178;&#36335;&#30340;&#20351;&#29992;&#38971;&#32321;, <br>
+  &#22914;&#20309;&#22312;&#32178;&#38913;&#19978;&#33287;&#20351;&#29992;&#32773;&#21363;&#26178;&#20114;&#21205;,&#32929;&#31080;&#20998;&#26512;,&#26399;&#36008;&#20132;&#26131;&#25033;&#29992;, &#20445;&#38570;&#25215;&#20445;&#35413;&#20272;&#8230; , &#30342;&#21487;&#20197;&#20043;&#20358;&#25299;&#23637;&#20854;&#25033;&#29992;&#12290;<br>
+    </li>
+   
+</ul>
+   
+<ul>
+    <li>&#22312;&#32178;&#36335;&#19978;&#30340;&#32362;&#22294;&#21151;&#33021;&#21487;&#20197;&#20197;GD&#20989;&#25976;&#20358;&#23436;&#25104;, &#27492;&#31243;&#24335;&#30446;&#30340;&#21482;&#28858;&#23436;&#25104; BP&#30340;&#26680;&#24515;, <br>
+  &#22312;&#32178;&#38913;&#19978;,&#33509;&#26377;&#30059;&#22294;&#38656;&#27714;&#21487;&#20197;&#20197; GD&#20989;&#25976; &#20358;&#23436;&#25104;.&#12290;<br>
+    </li>
+   
+</ul>
+   
+<ul>
+    <li>Client&#31471;&#30340;&#32362;&#22294;&#21487;&#20197;&#20197;GTK &#20358;&#23436;&#25104;,&#20294;&#30446;&#21069; GTK &#25903;&#25588;PHP &#37096;&#20998;&#23578;&#19981;&#23436;&#25972;,&#23436;&#25972;&#21518;&#20134;&#21487;&#29986;&#25104;&#26356;&#20339;&#20154;&#27231;&#20171;&#38754;&#38291;&#30340;&#20114;&#21205;&#12290;<br>
+    </li>
+   
+</ul>
+  &#12304; Reference &#12305;<br>
+   
+<ul>
+     
+</ul>
+ 
+<ul>
+   <li>&#39006;&#31070;&#32147;&#32178;&#36335;&#27169;&#24335;&#25033;&#29992;&#33287;&#23526;&#20316;&nbsp; &#35613;&#24609;&#25104;&#32232;&#33879;&#12288;&#20754;&#26519;  (isbn::957-499-313-2 )&nbsp;</li>
+   
+</ul>
+    <br>
+ <br>
+</body>
+</html>

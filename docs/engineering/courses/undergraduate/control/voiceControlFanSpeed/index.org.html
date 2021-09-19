@@ -1,0 +1,1247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>&#35486;&#38899;&#36776;&#35672;</title>
+                                                                        
+                       
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+  <body>
+         <b><br>
+   Fuzzy Control</b><b> &amp; Artificial Neural Network&nbsp;</b>       
+              
+<h3><b>Fuzzy </b>Electric Fan -- &#38899;&#25511;&#24335; Fuzzy &#38651;&#39080;&#25159;<br>
+       </h3>
+        - written by<b> Jing-Wen.Lai</b> &nbsp;  1/ 7&nbsp; &nbsp;'03<br>
+       <br>
+                         
+<table border="1" cols="1" width="70%" bgcolor="#99ffff">
+        <tbody>
+        <tr>
+        <td bgcolor="#ffff99">                                          
+                                                                        
+           Menu<br>
+      <ul>
+                           <li>Purpose</li>
+                           <li>Tools&nbsp;</li>
+                           <li>&#26550;&#27083;&#33287;&#27969;&#31243;</li>
+                           <li>&#25511;&#21046;&#30693;&#35672;&#24235;<br>
+           </li>
+                           <li>&#25511;&#21046;&#35215;&#21063;&#24235;</li>
+                                                   <li>Extra.</li>
+                           <li>Reference</li>
+                                                                        
+                                                                        
+     
+      </ul>
+Ref. to
+      <ul>
+        <li><a href="../neural2/index.html">&#35486;&#38899;&#36776;&#35672;&#8212; &#20351;&#29992; Back-propagation Network
+[ Artificial Neural Network ]</a><br>
+                                                                        
+                                                                         </li>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <br>
+       - Keywords :: &nbsp;&#39006;&#31070;&#32147;&#32178;&#36335;&#65292;&#20154;&#24037;&#31070;&#32147;&#32178;&#36335; &#65292;DSP&#65292;Speech Recognition&#65292;Matlab&#12290;<br>
+                    
+<h3>&#12304; Purpose &#12305;</h3>
+     &#38568;&#33879;&#20351;&#29992;&#32773;&#30340;&#21453;&#25033;(&#35486;&#38899;)&#20358;&#35519;&#31680;&#39080;&#25159;&#36681;&#21205;&#30340;&#24375;&#24230; &#12290;<br>
+                   
+<h3>&#12304; Tools &#12305;</h3>
+                   
+<ul>
+        <li>Matlab 6.5</li>
+        <li>CoolEdit2000</li>
+                                   
+</ul>
+                    
+<h3>&#12304; &#26550;&#27083;&#33287;&#27969;&#31243; &#12305;</h3>
+                           
+<ul>
+       <li>&#35486;&#38899;&#36776;&#35672; -- <b> Neural Network </b>&#12290;</li>
+      <li>&#35519;&#25972;&#39080;&#36895; -- <b>Fuzzy Control</b> &#12290;</li>
+                        
+</ul>
+                   
+<h3>&#12304; &#26550;&#27083;&#33287;&#27969;&#31243; &#12305;</h3>
+&#22312; matlab &#19978;&#30340;&#26550;&#27083;&#33287;&#27969;&#31243;, &#23559;&#31243;&#24335;&#20998;&#38283;&#25776;&#23531;&#26041;&#20415;&#28204;&#35430;&#33287;&#27169;&#25836;&#12290;<br>
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <td valign="top" rowspan="2" colspan="1" align="center"
+ bgcolor="#ffcc33">Filename<br>
+      </td>
+      <td valign="top" rowspan="2" colspan="1" align="center"
+ bgcolor="#ffcc33">&#21151;&#33021;<br>
+      </td>
+      <td valign="top" rowspan="1" colspan="3" align="center"
+ bgcolor="#ffcc33">&#21103;&#31243;&#24335;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec<br>
+      </td>
+      <td valign="top" align="center">get_lpc<br>
+      </td>
+      <td valign="top" align="center">fanState<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec_speech<br>
+      </td>
+      <td valign="top">&#37636;&#35069;&#35486;&#38899;&#35347;&#32244;&#29992;&#27171;&#26412;&#31243;&#24335;<br>
+      </td>
+      <td valign="top" align="center">y<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">train_speech<br>
+      </td>
+      <td valign="top">&#35486;&#38899;&#30340; &#38899;&#26694;&#12289;&#28450;&#26126;&#35222;&#31383;&#12289;&#39640;&#38971;&#8230;LPC&#34389;&#29702;<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center">y<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">nntool<br>
+      </td>
+      <td valign="top">&#20351;&#29992;Matlab&#30340;nntool&#20316;&#35486;&#38899;&#35347;&#32244;&#33287;&#27169;&#25836;<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">sin_speech<br>
+      </td>
+      <td valign="top">&#35486;&#38899;&#36776;&#35672; &#33287; &#35519;&#31680; &#38651;&#39080;&#25159;&#36895;&#24230; &#29992;<br>
+      </td>
+      <td valign="top" align="center">y<br>
+      </td>
+      <td valign="top" align="center">y<br>
+      </td>
+      <td valign="top" align="center">y<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center" bgcolor="#ffffff"><br>
+      </td>
+      <td valign="top" bgcolor="#ffffff"><br>
+      </td>
+      <td valign="top" rowspan="1" colspan="3" align="center">y: &#38656;&#35201;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+  <tbody>
+    <tr align="center">
+      <td valign="top" rowspan="1" colspan="2" bgcolor="#ffcc66"><font
+ color="#000000">&#21103;&#31243;&#24335;&#35500;&#26126;<br>
+      </font></td>
+    </tr>
+    <tr>
+      <td valign="top" align="center" bgcolor="#ffff99">&#21103;&#31243;&#24335;<br>
+      </td>
+      <td valign="top" align="center" bgcolor="#ffff99">&#35498;&#26126;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec<br>
+      </td>
+      <td valign="top">&#37636;&#38899;&#29992;&#21103;&#31243;&#24335;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">get_lpc<br>
+      </td>
+      <td valign="top">&#35486;&#38899;&#30340; &#38899;&#26694;&#12289;&#28450;&#26126;&#35222;&#31383;&#12289;&#39640;&#38971;&#8230;LPC&#34389;&#29702;&#21103;&#31243;&#24335;<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">fanState<br>
+      </td>
+      <td valign="top">&#35498;&#26126; &#38651;&#39080;&#25159;&#30340;&#29376;&#24907;(&#26997;&#20302;&#36895;&#12289;&#20302;&#36895;&#12289;&#20013;&#36895;&#12289;&#39640;&#36895;&#12289;&#26997;&#39640;&#36895;) &#21103;&#31243;&#24335;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>
+<h3>&#12304; &#27171;&#26412;&#29983;&#25104;&nbsp; rec_speech.m&nbsp; &#12305;</h3>
+                     </h3>
+<ul>
+  <li>&#31243;&#24335;&#30908;<br>
+                                                       
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+     <tbody>
+     <tr>
+     <td valign="top"><font color="#006600">         % .............................................................................................<br>
+             % &#9632; Filenmae &nbsp; &nbsp;: rec_speech.m<br>
+             % &#9632; Auother&nbsp; &nbsp; &nbsp;:&nbsp;Jing-Wen.Lai <br>
+             % &#9632;&nbsp; &#25805;&#20316;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; : &#22312;Matlab&#19979;, &#37197;&#21512;&#35486;&#38899;&#36776;&#35672;&#31243;&#24335;&#20351;&#29992;<br>
+             % &#9632; &#31243;&#24335;&#25551;&#36848; : Neural &#35486;&#38899;&#36776;&#35672; :: &#37636;&#38899;&#29992; <br>
+             % &#9632; &#28310;&#20633;&#27284;&#26696; : rec.m<br>
+             %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&#9581;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9582;<br>
+             % &#9632; &#27880;&#24847; ::&nbsp; &nbsp;&nbsp;&nbsp; &#9474;&#35201;&#20316;&#23436;&#20840;&#37096;&#25976;&#23383;&#27171;&#26412;&#37636;&#38899;&#65292;&#35201;&#20316;&#20116;&#27425;&nbsp;&nbsp; 
+  &#9474;<br>
+             %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&#9584;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9583;<br>
+             % .............................................................................................&nbsp; 
+           </font><br>
+                 <br>
+                   close all;<br>
+       clear all;<br>
+                 <br>
+                 <b><font color="#006600">      %..................&#12288;&#37636;&#38899; Function&#12288;.............................
+             </font></b><br>
+                 close all;<br>
+clear all;<br>
+rec(30); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font
+ color="#009900"> &nbsp; &nbsp;% &#21628;&#21483; rec function (&#37636;&#38899;&#29992;&#21103;&#31243;&#24335;) &#37636;&#38899;</font><br>
+k=input(' &#27171;&#26412;&#32882;&#38899; &#37636;&#38899;&#32080;&#26463;');<br>
+                 <br>
+                    </td>
+                  </tr>
+                                                                         
+     
+      </tbody>                                                  
+    </table>
+              <br>
+            </li>
+  <li>&#22519;&#34892;&#38542;&#27573; &nbsp;<br>
+&#20381;&#24207;&#37636;&#35069; &#24456;&#20919;&#65288;&#20195;&#34399;:1&#65289;, &#20919;&#65288;&#20195;&#34399;:2&#65289;, &#36996;&#22909;&#65288;&#20195;&#34399;:3&#65289;, &#29105;&#65288;&#20195;&#34399;:4&#65289;, &#24456;&#29105;&#65288;&#20195;&#34399;:5&#65289;<br>
+&#20849;&#20116;&#31558;&#35486;&#38899;&#12290;&#27599;&#31558;&#35486;&#38899;&#26377;&#19977;&#21313;&#20491;&#27171;&#26412;,&#20849;&#37636;&#35069; 150 &#20491;&#27171;&#26412;&#12290;<br>
+              <img
+ src="rec.jpg"
+ alt="" width="536" height="288">
+  &nbsp;<br>
+      <br>
+    </li>
+  <li>&#27171;&#26412;&#35486;&#38899;<br>
+           
+    <table cellpadding="2" cellspacing="2" border="1" width="15%">
+        <tbody>
+          <tr>
+            <td valign="top">&#24456;&#20919;<br>
+            </td>
+            <td valign="top"><a href="veryCool.wav">[ &#25773;&#25918; ]</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">&#20919;<br>
+            </td>
+            <td valign="top"><a href="cool.wav">[ &#25773;&#25918; ]</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">&#36996;&#22909;<br>
+            </td>
+            <td valign="top"><a href="medium.wav">[ &#25773;&#25918; ]</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">&#29105;<br>
+            </td>
+            <td valign="top"><a href="hot.wav">[ &#25773;&#25918; ]</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">&#24456;&#29105;<br>
+            </td>
+            <td valign="top"><a href="veryHot.wav">[ &#25773;&#25918; ]</a><br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+    </li>
+</ul>
+              
+<h3>&#12304; &#27171;&#26412;&#25847;&#21462;&nbsp; train_speech.m&nbsp; &#12305;</h3>
+                     
+<ul>
+  <li>&#31243;&#24335;&#30908;<br>
+                         
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+     <tbody>
+     <tr>
+     <td valign="top"><font color="#009900">       %.....................................................................<br>
+           % filenmae : train_speech.m.<br>
+           % auother&nbsp; :&nbsp;Jing-Wen.Lai <br>
+           % &#25805;&#20316;&nbsp;&nbsp;&nbsp;&nbsp; : &#22312; Matlab &#24213;&#19979;&#22519;&#34892;&#26412; .m &#27284;<br>
+           % &#31243;&#24335;&#25551;&#36848; : Neural &#35486;&#38899;&#36776;&#35672; :: &#23559;&#35338;&#32244;&#27171;&#26412;&#36681;&#25104; lpc &#26684;&#24335;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+           <br>
+           % date&nbsp;&nbsp;&nbsp;&nbsp; : 12/16 2002 ver1.0&nbsp;&nbsp; 
+          <br>
+           % &#28310;&#20633;&#27284;&#26696; : get_lpc.m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+           <br>
+           %.......................................................................</font><br>
+           close all;<br>
+           clear all;<br>
+           fs = 8000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     % set sampling rate<br>
+                 <br>
+                 <b><font color="#006600">    %.....................&nbsp;
+ &#24314;&#27083;  Function&nbsp;  ...............................         </font></b><br>
+           fprintf('&#38283;&#22987;&#34389;&#29702;,&#35531;&#31245;&#20505;...\n');<br>
+           % &#35712;&#20837;&#32882;&#38899;<br>
+           dir1='n_speech/';<br>
+           subfilename='.wav';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     % PCM &#26684;&#24335; &#21103;&#27284;&#21517;<br>
+                 <br>
+           for w=1:5,<br>
+           &nbsp;&nbsp;&nbsp; wordTitle=char(w+96); <br>
+           &nbsp;&nbsp;&nbsp; for n=1:30,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; word = [ wordTitle
+'_'];<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dir2 = [ wordTitle
+'/'];&nbsp;&nbsp;&nbsp;            <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fn=[ dir1 dir2 word 
+int2str(n)      subfilename];&nbsp;&nbsp; % ex:: neu_speech/a/a_1.wav<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ x,fs ] = wavread(fn);&nbsp; 
+     % &#35712;&#21462;&#32882;&#38899;&#27284;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=get_lpc(x);&nbsp;&nbsp;&nbsp; 
+     %&#12288;&#21462;&#20986;&#12288;LPC<br>
+                 <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font
+ color="#006600"><b>%   ......&nbsp;&nbsp; &#23450;&#32681; &#39006;&#31070;&#32147;&#20013;&#30340;&nbsp;   t &#20540; [start]&nbsp;
+ &#8600;&#8600;&#8600; &#27492;&#34389;&#23531;&#30340;&#19981;&#22909; &#8601;&#8601;&#8601;..</b></font><br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; switch w<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  case   1,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     t_temp = [ 1 0 0 0 0];&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; % &#26684;&#24335; 
+::   a b c d e (&#30446;&#21069;&#28858; a &#20778;&#21213; )&nbsp;&nbsp;&nbsp;         <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  case   2,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     t_temp = [ 0 1 0 0 0];&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% 
+  &#26684;&#24335; :: a b c d e (&#30446;&#21069;&#28858; b &#20778;&#21213; ) <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  case   3,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     t_temp = [ 0 0 1 0 0];&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+ %  &#26684;&#24335; :: a b c d e (&#30446;&#21069;&#28858; c &#20778;&#21213; ) <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  case   4,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     t_temp = [ 0 0 0 1 0];&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% 
+   &#26684;&#24335; :: a b c d e (&#30446;&#21069;&#28858; d &#20778;&#21213; ) <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  case   5,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     t_temp = [ 0 0 0 0 1];&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 
+ %  &#26684;&#24335; :: a b c d e (&#30446;&#21069;&#28858; e &#20778;&#21213; ) <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  otherwise,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     disp('temp error');<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+                 <b><font color="#006600">    % ......&nbsp;&nbsp; &#24314;&#27083; &#39006;&#31070;&#32147;&#20013;&#30340; 
+ p  ,  t &#20540;&nbsp; ..........</font></b><br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if w==1 &amp; n ==1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+           <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  p  =  a  ;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  t  =  t_temp  ;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  p  =  [  p; a];<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  t  =  [  t; t_temp ];<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+           <br>
+           &nbsp;&nbsp;&nbsp; end&nbsp;&nbsp; <br>
+           End<br>
+                 <br>
+                 <font color="#006600"><b>           % .........................................................................................<br>
+           %&nbsp; &#9632;&nbsp; &#36681;&#33267;&#30697;&#38499;&#25104; &#31526;&#21512; &#39006;&#31070;&#32147;&#34389;&#29702; &#30340;&#26684;&#24335; &#9632; <br>
+           %&nbsp;&nbsp; &#12300;&nbsp; &#8595;&nbsp;&nbsp;&nbsp; &#12304; &#8594; &#36664;&#20837;&#20803;(&#31070;&#32147;&#20803;&#25976;&#30446;)&nbsp; 
+&#12305;<br>
+           %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#27171;<br>
+           %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#26412;<br>
+           %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#25976;&nbsp;&nbsp; &#12301;<br>
+           % .........................................................................................</b></font><br>
+           p=p';<br>
+           t=t'; <br>
+           p=real(p);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;   &nbsp;  % &#21482;&#21462;&#20986;&#12288;&#23526;&#25976;&#37096;&#20221;<br>
+           fprintf('&#34389;&#29702;&#23436;&#25104;\n');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+           <br>
+                    </td>
+                  </tr>
+                                                                         
+     
+      </tbody>                                                  
+    </table>
+            </li>
+</ul>
+                     
+<ul>
+  <li>&#22519;&#34892;&#38542;&#27573;<br>
+&#32147;&#36942;&#27492;&#27493;&#39519;, &#35722;&#25976; P &#21363;&#28858; Input(&#35486;&#38899;&#27171;&#26412;)&#65292;&#35722;&#25976; T &#21363;&#28858; Target(&#20778;&#21213;&#32080;&#26524;)&#12290;<br>
+&#20043;&#24460;&#21363;&#21487;&#36617;&#20837; Matlab &#30340; nntool &#20316;&#34389;&#29702;. <br>
+               <img src="train.jpg" alt="" width="488" height="240">
+               <br>
+             </li>
+</ul>
+           <br>
+             
+<h3>&#12304;&#27171;&#26412;&#35347;&#32244;&#33287;&#27169;&#25836; &#8212; Nntool &#27969;&#31243;&#33287;&#26550;&#27083; &#12305;</h3>
+                     
+<ul>
+  <li>&#20351;&#29992; Matlab &#20839;&#38468;&#30340; nntool &#36914;&#34892;Neural&#35347;&#32244;&#12290;<br>
+&#22312; Matlab &#19979; nntool &#30340;&#25351;&#20196;&#23559;&nbsp; Network/Data Manager &#21483;&#20986;&#20358;&#12290;&#12298;Import&#12299; the <u>Input(p)</u>
+&amp; <u>Target</u>(t) &#12290;<br>
+           &nbsp;&#20006;&#21109;&#24314;&#12298; New Network... &#12299;&#19968;&#20491;&#26032;&#30340; Neural Network (network1)&#12290;<br>
+           <img
+ src="nntool_arch.jpg"
+ alt="" width="440" height="440">
+           &nbsp;</li>
+</ul>
+                                          
+<ul>
+  <li>&#32178;&#36335;&#26550;&#27083;&#65292;&#31532;&#19968;&#23652;&#38577;&#34255;&#23652;&#26377; 35 &#40670;&#31070;&#32147;&#20803;&#65292;&#20006;&#20351;&#29992; <u>LOGSIG</u> (log function)&#12290;<br>
+               <img
+ src="train-l1.jpg"
+ alt="" width="400" height="397">
+               <br>
+               <br>
+            </li>
+</ul>
+                     
+<ul>
+  <li>&#32178;&#36335;&#26550;&#27083;&#65292;&#31532;&#20108;&#23652;&#38577;&#34255;&#23652;&#26377; 5 &#40670;&#31070;&#32147;&#20803;( &#38920;&#33287;&#36664;&#20986;&#40670;&#25976;&#30456;&#21516; )&#65292;&#20063;&#20351;&#29992; <u>LOGSIG</u> (log function)&#12290;<br>
+               <img
+ src="train-l2.jpg"
+ alt="" width="400" height="397">
+               <br>
+               <br>
+             </li>
+  <li>&#32178;&#36335;&#21109;&#24314;&#21518;&#22312; Network/Data Manager &#20197;&#12298; View &#12299;&#35264;&#30475;&#32080;&#26524;&#12290;<br>
+&#36664;&#20837;&#26377;120 &#20491;&#40670;&#65288;&#21462;LPC&#21518;&#65289;,&#36664;&#20986;&#26377;5&#40670;&#12290;<br>
+&#20854;&#20013;&#26377;&#20841;&#23652;&#38577;&#34255;&#23652;,&#31532;&#19968;&#20491;&#38577;&#34255;&#23652;&#26377;35&#40670;,&#31532;&#20108;&#20491;&#38577;&#34255;&#23652;&#26377;5&#20491;&#40670;&#12290;<br>
+               <img
+ src="nntool_arch1.jpg"
+ alt="" width="449" height="276">
+               <br>
+             </li>
+</ul>
+          
+<h3>&#12304; &#32178;&#36335;&#35347;&#32244;&#33287;&#27169;&#25836; &#9472; Nntool &#12305;</h3>
+                       
+<ul>
+  <li>&#25351;&#23450; &nbsp;Training Info &#65292;Inputs &#33287; Targets &#12290;<br>
+               <img
+ src="nntool_arch2.jpg"
+ alt="" width="492" height="285">
+               <br>
+               <br>
+               <br>
+            </li>
+  <li>&#25351;&#23450; Training Parameters &#12290;<br>
+       &#35347;&#32244;&#27425;&#25976;(ecochs)&#65292;&#35347;&#32244;&#30446;&#27161;(goal) &#33287; &#21487;&#23481;&#24525;&#35492;&#24046;...<br>
+               <img
+ src="nntool_arch3.jpg"
+ alt="" width="492" height="306">
+               <br>
+               <br>
+             </li>
+  <li>&#35347;&#32244;&#23436;&#24460;&#65292;&#21487;&#20197;&#20877;&#20197;&#21407;&#26412;&#25976;&#25818;&#36914;&#34892;&#27169;&#25836;&#12290;<br>
+               <img
+ src="nntool_arch4.jpg"
+ alt="" width="492" height="306">
+               <br>
+               <br>
+             </li>
+  <li>&#27169;&#25836;&#23436;&#30050;&#24460;, &#23559;&#32178;&#36335;&#33287;&#20840;&#37096;&#32080;&#26524;&#23384;&#12298; Save &#12299;&#26044; <u>nn.mat</u> &#27284;&#26696;&#20839;&#12290;<br>
+               <img
+ src="nntool_arch5.jpg"
+ alt="" width="423" height="372">
+               <br>
+            </li>
+</ul>
+              
+<h3>&#12304; Fuzzy Control &#65123;&#25511;&#21046;&#30693;&#35672;&#24235; &#12305;<br>
+   </h3>
+     
+<ul>
+     <li>&#36664;&#20837;&#19968;&#65072;&#20154;&#39006;&#35486;&#38899;&#27171;&#26412;<br>
+       <b>feeling</b>&nbsp; = { vc, c, m, h, vh}<br>
+                 
+    <table cellpadding="2" cellspacing="2" border="1" width="25%">
+         <tbody>
+           <tr>
+             <td valign="top">vc<br>
+             </td>
+             <td valign="top">very Cool<br>
+             </td>
+             <td valign="top">&#24456;&#20919;<br>
+             </td>
+             <td valign="top"><a href="veryCool.wav">[ &#25773;&#25918; ]</a><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">c<br>
+             </td>
+             <td valign="top">Cool<br>
+             </td>
+             <td valign="top">&#20919;<br>
+             </td>
+             <td valign="top"><a href="cool.wav">[ &#25773;&#25918; ]</a><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">m<br>
+             </td>
+             <td valign="top">just O.K<br>
+             </td>
+             <td valign="top">&#36996;&#22909;<br>
+             </td>
+             <td valign="top"><a href="medium.wav">[ &#25773;&#25918; ]</a><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">h<br>
+             </td>
+             <td valign="top">Hot<br>
+             </td>
+             <td valign="top">&#29105;<br>
+             </td>
+             <td valign="top"><a href="hot.wav">[ &#25773;&#25918; ]</a><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">vh<br>
+             </td>
+             <td valign="top">vey Hot<br>
+             </td>
+             <td valign="top">&#24456;&#29105;<br>
+             </td>
+             <td valign="top"><a href="veryHot.wav">[ &#25773;&#25918; ]</a><br>
+             </td>
+           </tr>
+                       
+      </tbody>               
+    </table>
+       <br>
+     </li>
+     <li>&#36664;&#20837;&#20108;&#65072;&#30446;&#21069;&#39080;&#25159;&#36895;&#24230;<br>
+       <b>fanSpeed</b> = { vl, l, m, h, vh}<br>
+           
+    <table cellpadding="2" cellspacing="2" border="1" width="30%">
+        <tbody>
+          <tr>
+            <td valign="top">vl<br>
+            </td>
+            <td valign="top">very low<br>
+            </td>
+            <td valign="top">&#26997;&#20302;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">l<br>
+            </td>
+            <td valign="top">low<br>
+            </td>
+            <td valign="top">&#20302;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">m<br>
+            </td>
+            <td valign="top">medium<br>
+            </td>
+            <td valign="top">&#20013;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">h<br>
+            </td>
+            <td valign="top">high<br>
+            </td>
+            <td valign="top">&#39640;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">vh<br>
+            </td>
+            <td valign="top">very high<br>
+            </td>
+            <td valign="top">&#26997;&#39640;&#36895;<br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+       <br>
+     </li>
+     <li>&#36664;&#20986;&#65072;&#26032;&#30340;&#39080;&#25159;&#36895;&#24230;<br>
+      <b>duty</b>&nbsp; = { vl, l, m, h, vh}<br>
+           
+    <table cellpadding="2" cellspacing="2" border="1" width="30%">
+        <tbody>
+          <tr>
+            <td valign="top">vl<br>
+            </td>
+            <td valign="top">very low<br>
+            </td>
+            <td valign="top">&#26997;&#20302;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">l<br>
+            </td>
+            <td valign="top">low<br>
+            </td>
+            <td valign="top">&#20302;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">m<br>
+            </td>
+            <td valign="top">medium<br>
+            </td>
+            <td valign="top">&#20013;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">h<br>
+            </td>
+            <td valign="top">high<br>
+            </td>
+            <td valign="top">&#39640;&#36895;<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">vh<br>
+            </td>
+            <td valign="top">very high<br>
+            </td>
+            <td valign="top">&#26997;&#39640;&#36895;<br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+&#22240;&#28858;&#39080;&#25159;&#20006;&#28961;&#22238;&#25480;,&#25152;&#20197;&#21482;&#33021;&#30001;&#20043;&#21069;&#36664;&#20986;&#29376;&#24907;&#20358;&#35519;&#25972;&#39080;&#36895;&#22823;&#23567;,<br>
+&#30446;&#21069;&#30340; duty &#21644; fanSpeed &#26159;&#19968;&#27171;&#30340;,&#21482;&#26159;&#22312;&#35498;&#26126;&#25991;&#20214;&#19978;&#20998;&#21029;&#21629;&#21517;,&#36991;&#20813;&#28151;&#28102;.<br>
+  </li>
+     
+</ul>
+<h3>&#12304; &#25511;&#21046;&#35215;&#21063;&#24235;&#12305;</h3>
+       
+<ul>
+      <li>&nbsp;Look-up Table &#23565;&#29031;&#34920;&#26684;<br>
+        <img src="fam.jpg" alt="" width="640" height="222">
+        <br>
+      </li>
+       
+</ul>
+       
+<ul>
+      <li>&#23565;&#29031;&#34920;&#26684; ( &#31777;&#34920; )<br>
+        <img src="famMean.jpg" alt="" width="640" height="201">
+        <br>
+      </li>
+       
+</ul>
+       
+<ul>
+     <li>&#25511;&#21046;&#35215;&#21063;&#24235;<br>
+                 
+    <table cellpadding="2" cellspacing="2" border="1" width="50%">
+         <tbody>
+           <tr>
+             <td valign="top"><i><b>IF</b></i> feeling&nbsp; is vc <i><b>AND</b></i> 
+ fanSpeed is vl <b><i>THEN</i></b> duty is vl<br>
+             <i><b>IF</b></i> feeling &nbsp;is c&nbsp; <i><b>AND</b></i>
+fanSpeed  is vl <b><i>THEN</i></b> duty is &nbsp;vl<br>
+             <i><b>IF</b></i> feeling &nbsp;is m <i><b>AND</b></i> fanSpeed 
+ is vl <b><i>THEN</i></b> duty is &nbsp;vl<br>
+             <i><b>IF</b></i> feeling &nbsp;is h <i><b>&nbsp;AND</b></i>
+fanSpeed  is vl <b><i>THEN</i></b> duty is &nbsp; l<br>
+             <i><b>IF</b></i> feeling &nbsp;is vh <i><b>AND</b></i> fanSpeed 
+ is vl <b><i>THEN</i></b> duty is &nbsp;m<br>
+             <br>
+             <i><b>IF</b></i> feeling &nbsp;is vc <i><b>AND</b></i> fanSpeed 
+ is l <b><i>&nbsp;THEN</i></b> duty is vl<br>
+    <i><b>IF</b></i> feeling &nbsp;is c&nbsp; <i><b>AND</b></i> fanSpeed
+is  &nbsp;l&nbsp; <b><i>THEN</i></b> duty is vl<br>
+    <i><b>IF</b></i> feeling &nbsp;is m <i><b>AND</b></i> fanSpeed is&nbsp; 
+ l&nbsp; <b><i>THEN</i></b> duty is &nbsp;l<br>
+    <i><b>IF</b></i> feeling &nbsp;is h <i><b>&nbsp;AND</b></i> fanSpeed
+is  &nbsp;l <b><i>&nbsp;THEN</i></b> duty is m<br>
+    <i><b>IF</b></i> feeling &nbsp;is vh <i><b>AND</b></i> fanSpeed is l
+          <b><i>THEN</i></b>  duty is &nbsp; h<br>
+             <br>
+             <i><b>IF</b></i> feeling &nbsp;is vc <i><b>AND</b></i> fanSpeed 
+ is m <b><i>THEN</i></b> duty is vl<br>
+    <i><b>IF</b></i> feeling &nbsp;is c&nbsp; <i><b>AND</b></i> fanSpeed
+is  m <b><i>THEN</i></b> duty is &nbsp;l<br>
+    <i><b>IF</b></i> feeling &nbsp;is m <i><b>AND</b></i> fanSpeed is m <b><i>THEN</i></b> 
+ duty is m<br>
+    <i><b>IF</b></i> feeling &nbsp;is h <i><b>&nbsp;AND</b></i> fanSpeed
+is  m <b><i>THEN</i></b> duty is h<br>
+    <i><b>IF</b></i> feeling &nbsp;is vh <i><b>AND</b></i> fanSpeed is m
+          <b><i>THEN</i></b>  duty is vh<br>
+             <br>
+    <i><b>IF</b></i> feeling &nbsp;is vc <i><b>AND</b></i> fanSpeed is h
+          <b><i>THEN</i></b>  duty is l<br>
+     <i><b>IF</b></i> feeling &nbsp;is c&nbsp; <i><b>AND</b></i> fanSpeed 
+is  h <b><i>THEN</i></b> duty is m<br>
+     <i><b>IF</b></i> feeling &nbsp;is m <i><b>AND</b></i> fanSpeed is h
+          <b><i>THEN</i></b>  duty is h<br>
+     <i><b>IF</b></i> feeling &nbsp;is h <i><b>&nbsp;AND</b></i> fanSpeed 
+is  h <b><i>THEN</i></b> duty is vh<br>
+     <i><b>IF</b></i> feeling &nbsp;is vh <i><b>AND</b></i> fanSpeed is h 
+          <b><i>THEN</i></b>  duty is vh<br>
+             <br>
+             <i><b>IF</b></i> feeling &nbsp;is vc <i><b>AND</b></i> fanSpeed 
+ is vh <b><i>THEN</i></b> duty is m<br>
+    <i><b>IF</b></i> feeling &nbsp;is c&nbsp; <i><b>AND</b></i> fanSpeed
+is  vh <b><i>THEN</i></b> duty is h<br>
+    <i><b>IF</b></i> feeling &nbsp;is m <i><b>AND</b></i> fanSpeed is vh
+          <b><i>THEN</i></b>  duty is vh<br>
+    <i><b>IF</b></i> feeling &nbsp;is h <i><b>&nbsp;AND</b></i> fanSpeed
+is  vh <b><i>THEN</i></b> duty is vh<br>
+    <i><b>IF</b></i> feeling &nbsp;is vh <i><b>AND</b></i> fanSpeed is vh<b><i>THEN</i></b> 
+ duty is vh<br>
+             </td>
+           </tr>
+                       
+      </tbody>               
+    </table>
+       <br>
+     </li>
+     
+</ul>
+       
+<h3>
+<h3>&#12304; &#35486;&#38899;&#36776;&#35672;&nbsp; sim_speech.m &#12305;</h3>
+                    </h3>
+<ul>
+  <li><u>&#31243;&#24335;&#30908;</u><br>
+       <br>
+                                                           
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+                <tbody>
+                  <tr>
+                    <td valign="top"><font color="#009900">% .................................................................................................</font><font
+ color="#009900">....................................</font><br>
+          <font color="#009900">% &#9632; Filenmae : sim_speech.m<br>
+% &#9632; Auother&nbsp; : Jing-Wen.Lai<br>
+% &#9632;&nbsp; &#25805;&#20316;&nbsp;&nbsp;&nbsp; : &#22312;Matlab&#19979;, &#37197;&#21512;&#35486;&#38899;&#36776;&#35672;&#31243;&#24335;&#20351;&#29992;<br>
+% &#9632; &#31243;&#24335;&#25551;&#36848; : Neural + Fuzzy :: Fuzzy Electric Fan &#38899;&#25511;&#24335; Fuzzy &#38651;&#39080;&#25159;&#12288;&#20027;&#31243;&#24335;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <br>
+% .................................................................................................</font><font
+ color="#009900">....................................</font><font
+ color="#009900">&nbsp; <br>
+          </font><br>
+close all;<br>
+clear all;<br>
+          <font color="#009900"><b>% ............... Lookup Tabbe ......................</b></font><br>
+adjustValue=[1 1 1 2 3 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font
+ color="#009900">% Look-up Table</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 1 2 3 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 2 3 4 5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2 3 4 5 5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 4 5 5 5];<br>
+fs = 8000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <font color="#009900">% set sampling rate</font><br>
+          <b><font color="#009900">% ............... &#36617;&#20837;&#35338;&#32244;&#36039;&#26009; ......................</font></b><br>
+load nn.mat<br>
+          <br>
+          <font color="#009900"><b>% ............... &#30446;&#21069;&#39080;&#36895;&#35373;&#23450; ......................</b></font><br>
+fanSpeed = input('&#30446;&#21069;&#39080;&#36895; [ 1-very Low; 2-Low; 3-Medium; 4-High; 5-very High
+]::');<br>
+% fprintf('&#30446;&#21069;&#39080;&#36895;::%d \n',fanSpeed );<br>
+          <br>
+          <b><font color="#009900">% ................... Decord ...................</font></b><br>
+fanSpeedMean=fanState(fanSpeed);<br>
+fprintf('&#30446;&#21069;&#21021;&#22987;&#39080;&#36895;::%d - %s \n',fanSpeed,fanSpeedMean);<br>
+          <br>
+for count=1:100,<br>
+&nbsp;&nbsp;&nbsp; <font color="#009900"><b>% ............... &#35486;&#38899;&#36664;&#20837; ......................</b></font><br>
+&nbsp;&nbsp;&nbsp; rec(1);<br>
+&nbsp;&nbsp;&nbsp; [ x,fs ] = wavread('n_speech\test\test_1.wav');&nbsp;
+% &#35712;&#21462;&#32882;&#38899;&#27284;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; p=get_lpc(x);&nbsp;&nbsp;&nbsp; %&#12288;&#21462;&#20986;&#12288;LPC<br>
+&nbsp;&nbsp;&nbsp; p=p';<br>
+&nbsp;&nbsp;&nbsp; p=real(p);<br>
+          <br>
+&nbsp;&nbsp;&nbsp; <b><font color="#009900">% ............... &#35486;&#38899;&#20998;&#26512;, &#21462;&#20986;&#20778;&#21213;&#32773;
+......................</font></b><br>
+&nbsp;&nbsp;&nbsp; t = sim(network1,p);<br>
+&nbsp;&nbsp;&nbsp; maxT=max(t);<br>
+&nbsp;&nbsp;&nbsp; for feeling=1:5,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if maxT == t(feeling)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+&nbsp;&nbsp;&nbsp; end<br>
+&nbsp;&nbsp;&nbsp; % fprintf('&#30332;&#38899;&#36776;&#35672;::%s \n',feeling(w));<br>
+          <br>
+&nbsp;&nbsp;&nbsp; <font color="#006600"><b>% ................... &#20154;&#39006;&#24863;&#35258; &#35498;&#26126;
+...................</b></font><br>
+&nbsp;&nbsp;&nbsp; switch feeling<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+feelingMean = 'Very Cool - &#24456;&#20919;';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+feelingMean = 'Cool - &#20919;';&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 3,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+feelingMean = 'just O.K - &#36996;&#22909;';&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 4,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+feelingMean = 'Hot - &#29105;';&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 5,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+feelingMean = 'Very Hot&#12288;- &#24456;&#29105;';&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; otherwise,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+disp('error');<br>
+&nbsp;&nbsp;&nbsp; end<br>
+&nbsp;&nbsp;&nbsp; fprintf('&#30332;&#38899;&#36776;&#35672;::%s \t',feelingMean);<br>
+          <br>
+&nbsp;&nbsp;&nbsp; <font color="#006600"><b>% ...................&nbsp; &#39080;&#25159;&#36895;&#24230;
+&#35498;&#26126; ...................</b></font><br>
+&nbsp;&nbsp;&nbsp; fanSpeedMean=fanState(fanSpeed);<br>
+&nbsp;&nbsp;&nbsp; fprintf('&#30446;&#21069;&#39080;&#36895;::%d - %s \t',fanSpeed,fanSpeedMean);<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <b><font color="#006600">% ...................&nbsp; &#35519;&#25972;&#39080;&#25159;&#36895;&#24230;&nbsp;
+...................</font></b><br>
+&nbsp;&nbsp;&nbsp; fanSpeed=adjustValue(feeling,fanSpeed); <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <font color="#006600"><b>% ................... &#39080;&#25159;&#36895;&#24230; &#35498;&#26126;
+...................</b></font><br>
+&nbsp;&nbsp;&nbsp; fanSpeedMean=fanState(fanSpeed);<br>
+&nbsp;&nbsp;&nbsp; fprintf('&#35519;&#25972;&#21518;&#39080;&#36895;::%d - %s \n\n',fanSpeed,fanSpeedMean);<br>
+end<br>
+                    </td>
+                  </tr>
+                                                                         
+     
+      </tbody>                                                  
+    </table>
+              <br>
+            </li>
+</ul>
+                    
+<ul>
+  <li><u>&#22519;&#34892;</u><br>
+       <br>
+&#21021;&#22987;&#39080;&#36895;&#35373;&#23450;&#28858; &#20013;&#36895;(3)&#65292;&#20043;&#24460;&#30001;&#20351;&#29992;&#32773;&#25152;&#36664;&#20837;&#30340;&#35486;&#38899;&#20358;&#32147; Fuzzy &#31995;&#32113;&#21518;&#35519;&#25972;&#39080;&#25159;&#36895;&#24230;&#12290;<br>
+              <img src="run.jpg" alt="" >
+&nbsp;              <br>
+            </li>
+</ul>
+                 <br>
+              
+<h3>&#12304; &#31243;&#24335;&#30908; &#8211; &#21103;&#31243;&#24335; &#12305;</h3>
+           &nbsp;&nbsp;&nbsp; &nbsp; &#23559;&#24120;&#29992;&#30340;&#21151;&#33021;&#23531;&#25104;&#21103;&#31243;&#24335;&#12290;<br>
+                    
+<ul>
+  <li>&#37636;&#38899;&#21151;&#33021; &nbsp;&#9472;&#9472; rec.m &#12290;<br>
+                                                           
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+                <tbody>
+                  <tr>
+                    <td valign="top"><font color="#009900">% .................................................................................................<br>
+% &#9632; Filenmae : rec.m<br>
+% &#9632; Auother&nbsp; : Jing-Wen.Lai <br>
+% &#9632;&nbsp; &#25805;&#20316;&nbsp;&nbsp;&nbsp; : &#22312;Matlab&#19979;, &#37197;&#21512;&#35486;&#38899;&#36776;&#35672;&#31243;&#24335;&#20351;&#29992;<br>
+% &#9632; &#31243;&#24335;&#25551;&#36848; : Neural &#35486;&#38899;&#36776;&#35672; :: &#37636;&#38899;&#29992;Function <br>
+% &#9660; &#20659;&#20837;&#21443;&#25976; = 30 ::&#35347;&#32244;&#27171;&#26412;&#37636;&#35069;&#27169;&#24335;<br>
+%&nbsp;&nbsp;&nbsp; &#36984;&#23450;&#20320;&#35201;&#37636;&#35069;&#30340;&#32882;&#38899;, &#19968;&#27425;&#21934;&#19968;&#25976;&#23383;,&nbsp; &#21508; 30 &#20491; &#32882;&#38899;&#27171;&#26412;,&#23384;&#25918;&#26044; $matlab/work/n_speech/..
+&#30446;&#37636;&#19979;, <br>
+%&nbsp;&nbsp;&nbsp; &#25976;&#23383; 1 &#30340;&#32882;&#38899;&#25918;&#26044; a/ &#30446;&#37636;&#19979;, &#20381;&#27425;&#28858;&#12288;a_1.wav...a_30.wav &#23384;&#25918;30 &#31558;,&nbsp;
+&#25976;&#23383;&#32882;&#38899;&#23384;&#25918;&#23565;&#25033;&#22914;&#19979; <br>
+%&nbsp;&nbsp;&nbsp; 1 -&gt; a&#12288;; 2 -&gt; b ; 3 -&gt; c ; 4 -&gt; d ; 5 -&gt;
+e<br>
+% &#9660; &#20854;&#23427;&#20659;&#20837;&#21443;&#25976;&nbsp; :: &#21028;&#26039;&#37636;&#35069;&#27169;&#24335;<br>
+%&nbsp;&nbsp;&nbsp; &#23384;&#25918;&#26044; $matlab/work/n_speech/test/test_1.wav, &#29992;&#20197;&#28204;&#35430;&#20006;&#21028;&#26039;&#25152;&#36664;&#20837;&#30340;&#32882;&#38899;<br>
+%<br>
+%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&#9581;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9582;<br>
+% &#9632; &#27880;&#24847; ::&nbsp; &#9474;&#35201;&#20316;&#23436;&#20840;&#37096;&#25976;&#23383;&#27171;&#26412;&#37636;&#38899;&#65292;&#35201;&#20316;&#20116;&#27425;&nbsp; &nbsp;&#9474;<br>
+%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&#9584;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9583;<br>
+% .................................................................................................&nbsp;&nbsp;
+          </font><br>
+          <br>
+          <br>
+% .....................&nbsp; FUNCTION rec start&nbsp; ...................<br>
+          <br>
+function output=rec(count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+ color="#009900"> % count = 30 :: &#37636; 30 &#20491;&#12288;&#27171;&#26412;&#32882;&#38899; / else&nbsp; :: &#21482;&#37636; &#21934;&#31558;&#32882;&#38899;</font>&#12288;
+          <br>
+clear wordTitle;<br>
+fs = 8000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <font color="#009900">&nbsp; &nbsp; % set sampling rate</font><br>
+          <br>
+          <font color="#006600"><b>% ........................... &#21443;&#25976; &#23450;&#32681; ...........................</b></font><br>
+          <br>
+if count == 30<br>
+&nbsp;&nbsp;&nbsp; wordTitle = input('&#30001; 1,2,3,4,5 &#20013;&#36984;&#25799;&#20320;&#35201;&#36664;&#20837;&#20320;&#35201;&#37636;&#35069;&#30340;&#35486;&#38899;&#27284;::');<br>
+&nbsp;&nbsp;&nbsp; wordTitle=char(wordTitle+96);<br>
+&nbsp;&nbsp;&nbsp; word = [ wordTitle '_'];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% &#23450;&#32681;&#23384;&#25918; &#36335;&#24465; &#33287;&#30446;&#37636;, &#20006;&#23559;&#20043; &#32068;&#21512;&#25104;&#27284;&#21517;<br>
+&nbsp;&nbsp;&nbsp; fprintf('&#38283;&#22987;&#37636;&#35069; 30 &#20491; &#28204;&#35430;&#27171;&#26412;');<br>
+else&nbsp; <br>
+&nbsp;&nbsp;&nbsp; wordTitle = 'test';<br>
+&nbsp;&nbsp;&nbsp; word = [ wordTitle '_'];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% &#23450;&#32681;&#23384;&#25918; &#36335;&#24465; &#33287;&#30446;&#37636;, &#20006;&#23559;&#20043; &#32068;&#21512;&#25104;&#27284;&#21517;<br>
+&nbsp;&nbsp;&nbsp; % fprintf('&#38283;&#22987;&#37636;&#35069; &#21028;&#26039;&#32882;&#38899;&#27171;&#26412;');<br>
+end<br>
+&nbsp;&nbsp;&nbsp; <br>
+dir1='n_speech/';<br>
+dir2 = [ wordTitle '/'];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br>
+subfilename='.wav';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% PCM &#26684;&#24335; &#21103;&#27284;&#21517;<br>
+          <br>
+          <font color="#006600"><b>% ............................. &#37636;&#38899;&nbsp;
+.............................</b></font><br>
+          <br>
+for n=1:count,<br>
+&nbsp;&nbsp;&nbsp; % str1= ['&#31532; ' int2str(n) ' &#27425;&#37636;&#38899;,&#35531;&#25353;&#19979; &#20219;&#19968;&#37749; &#37636;&#38899;'];<br>
+&nbsp;&nbsp;&nbsp; str1= ['&#35486;&#38899;&#36664;&#20837;&#24863;&#35258;[&#24456;&#20919;, &#20919;, &#36996;&#22909;, ,&#29105;, &#24456;&#29105;]'];<br>
+&nbsp;&nbsp;&nbsp; k=input(str1);&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; x = wavrecord(fs+4, fs);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; % k=input('&#35531;&#25353;&#19979; &#20219;&#19968;&#37749; &#25918;&#38899;'); <br>
+&nbsp;&nbsp;&nbsp; wavplay(x,fs);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; fn=[ dir1 dir2 word int2str(n) subfilename];&nbsp;&nbsp;&nbsp;&nbsp;
+% ex:: n_speech/a/a_1.wav :: &#35347;&#32244;&#29992;&#27171;&#26412;<br>
+&nbsp;&nbsp;&nbsp; wavwrite(x,fs,16,fn);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% ex:: n_speech/test/test_1.wav :: &#21028;&#26039;&#29992;&#27171;&#26412;<br>
+end<br>
+          <br>
+          <b><font color="#006600">% ............................. ending&nbsp;
+............................</font></b><br>
+                    </td>
+                  </tr>
+                                                                         
+     
+      </tbody>                                                  
+    </table>
+              <br>
+           </li>
+</ul>
+                    
+<ul>
+  <li>&#21462;&#35486;&#38899;&#30340; LPC &#20540; &#9472;&#9472; get_lpc.m<br>
+                                                           
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+                <tbody>
+                  <tr>
+                    <td valign="top"><font color="#009900">      % .................................................................................................<br>
+          % &#9632; Filenmae &nbsp; &nbsp;&nbsp; : &nbsp;get_lpc.m<br>
+          % &#9632; Auother&nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;Jing-Wen.Lai   <br>
+          % &#9632;&nbsp; &#25805;&#20316;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; : &nbsp;&#22312;Matlab&#19979;,
+  &#37197;&#21512;&#35486;&#38899;&#36776;&#35672;&#31243;&#24335;&#20351;&#29992;<br>
+          % &#9632; &#31243;&#24335;&#25551;&#36848; &nbsp; : &nbsp;Neural &#35486;&#38899;&#36776;&#35672; :: LPC Function <br>
+          % <br>
+          % &#9632; &#27880;&#24847; ::&nbsp;&nbsp; <br>
+           % &#9632; &#20633;&#35387; ::&nbsp; &nbsp; &#31243;&#24335;&#30908;&#20197;&#26041;&#20415;&#38321;&#35712;&#28858;&#20027;,&#20006;&#28961;&#37341;&#23565;&#28436;&#31639;&#27861;&#21435;&#25913;&#33391;      % .................................................................................................
+                </font><br>
+                    <br>
+          function a=get_lpc(x) <br>
+                    <br>
+                  <font color="#006600"><b>  % .</b></font><font
+ color="#006600"><b>................</b></font><font color="#006600"><b>...... 
+   End point Detection - &#25214; &#21407;&#40670; ....................................</b></font><br>
+          len=length(x);<br>
+          count=1;<br>
+          % &#30001; &#21069; &#24448; &#24460; &#25214; <br>
+          for j=1:len,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <font color="#006600">% ............................................................</font><br>
+          &nbsp;&nbsp;&nbsp; if x(j) &gt;= 0.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp;<font color="#009900"><font
+ color="#006600">%&nbsp;&nbsp;&nbsp;  &#9632;&nbsp;&nbsp;&nbsp;&nbsp; &#20597;&#28204;&#26041;&#24335;&nbsp;&nbsp;&nbsp;
+  &#9632;&nbsp;</font>&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for jj=1+j:300+j,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp;  <font color="#006600">%&nbsp;&nbsp; &#8757;&#35338;&#34399; &gt;= &#33256;&#30028;&#20540;</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  if  x(jj)  &gt;= 0.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp;<font color="#006600">%&nbsp;&nbsp; &#19988;&#35442;&#40670;&#20043;&#24460;(&#21547;&#35442;&#40670;)&#30340;&#35338;&#34399;&nbsp;&nbsp; 
+             </font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     count=count+1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+ &nbsp;&nbsp;            <font color="#006600">%&nbsp;&nbsp;  300 &#40670;&#26377; 100
+&#40670;&#20197;&#19978;&#22823;&#26044;&#33256;&#38480;&#20540;</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <font
+ color="#006600">%</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font color="#006600">%&nbsp;&nbsp; 
+   &#8756;&#35442;&#40670;&#28858;&#20154;&#39006;&#32882;&#38899;&#35338;&#34399;&#36215;&#22987;&#40670;&nbsp;</font> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if&nbsp; count 
+&gt;=    100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp;<font color="#006600">%</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font color="#006600">%&nbsp;&nbsp; 
+   &#9651;&#21487;&#25913;&#33391;&#25104; &#22823;&#26044; 100 &#21363;&#38626;&#38283;loop</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color="#006600">% ............................................................</font><br>
+          &nbsp;&nbsp;&nbsp; end<br>
+          end<br>
+                    <br>
+                  <font color="#006600"><b>  % ....................... End
+ point    Detection - &#25214; &#32066;&#40670;&#12288; ....................................</b></font><br>
+          count=1;&nbsp; <br>
+          for je=1:len,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     % &#30001; &#24460; &#24448; &#21069; &#25214;<br>
+          &nbsp;&nbsp;&nbsp; if x(len-je+1) &gt;= 0.01<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for jje=1+je:300+je,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  if  x(len-jje+1)  &gt;= 0.01 <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     count=count+1;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  end<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if&nbsp; count&gt;=
+100<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  break;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+          &nbsp;&nbsp;&nbsp; end&nbsp;&nbsp;&nbsp; <br>
+          end<br>
+                    <font color="#006600"><b><br>
+          % ...................</b></font><font color="#006600"><b>........</b></font><font
+ color="#006600"><b>........ &#21462;&#20986; &#38656;&#35201;&#30340;&#35338;&#34399;&#12288; ...................................</b></font>.<br>
+          x=x';<br>
+          x = x(1,j:len-je+1);<br>
+                 <br>
+                 <b><font color="#006600">   % ....&nbsp;&nbsp; &#21462;&#38899;&#26694; FRAME 
+(  &#26377;  Overlap  )&nbsp; ....................................</font></b><br>
+          overlap=10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font
+ color="#009900">% &#21069;&#24460;&#37325;&#30090; 1/10</font><br>
+          count=floor(length(x) / 9.1)-1;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 
+&nbsp;    &nbsp; &nbsp; &nbsp; <font color="#009900">% &#38899;&#26694;&#22823;&#23567;&#12288;&#12308;&#28187; 1,&#36991;&#20813;&#22235;&#25448;&#20116;&#20837;&#30340;&#21839;&#38988;&#12309;</font><br>
+          countShift=floor( count/ overlap);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   &nbsp;<font color="#009900">% &#20559;&#31227;&#37327;</font><br>
+          %fprintf( '&#38899;&#26694;&#22823;&#23567; :: %d\t &#20559;&#31227;&#37327;:: &nbsp; &nbsp; <font
+ color="#009900">%d\n',count,countShift);&nbsp;   % Testing&nbsp;</font>&nbsp;
+            <br>
+                    <br>
+          for xCut=1:10,<br>
+          &nbsp;&nbsp;&nbsp; if xCut == 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+     % &#31532;&#19968;&#20491;&#38899;&#26694;&#30340;&#21462;&#27171;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_temp=0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_temp = x(1,1:count);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %fprintf( '&#36215;&#22987;&#40670; :: %d\t 
+ &#32066;&#40670;::   &nbsp; &nbsp; &nbsp;%d\t  Range:: %d\n',1,count,count); <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; countStart=count-countShift+1;<br>
+          &nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp;  &nbsp; &nbsp;% &#20854;&#23427;&#38899;&#26694;&#30340;&#21462;&#27171;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_temp_temp=x(1, countStart: 
+    countStart+count-1) ;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_temp = [ x_temp x_temp_temp]
+     ;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %fprintf( '&#36215;&#22987;&#40670; :: %d\t 
+ &#32066;&#40670;::   %d\t  Range:: %d\n',countStart,&nbsp; countStart+count-1, count); 
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; countStart=countStart+count-1-countShift
+     +1 ;<br>
+          &nbsp;&nbsp;&nbsp; end<br>
+          end<br>
+          x=x_temp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     % &#26368;&#24460;&#32080;&#26524;&#33021;&#23384;&#22238;&#21407;&#20358;&#35722;&#25976;<br>
+                    <br>
+                  <font color="#006600"><b>  % ...</b></font><font
+ color="#006600"><b>..</b></font><font color="#006600"><b>...............</b></font><font
+ color="#006600"><b>.............</b></font><font color="#006600"><b>...&nbsp;
+    &#21152;&#24375; &#39640;&#38971;&#37096;&#20998; ....................................</b></font><br>
+          for xCut=1:10,&nbsp;&nbsp;&nbsp; <br>
+          &nbsp;&nbsp;&nbsp; len=length(x)/10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp; for j=1:len,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=j+(xCut-1)*len;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if&nbsp; j == 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  y(count)    = x(count) ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+  &nbsp; %  &#31532;&#19968;&#20491;&#38899;&#26694;&#19981;&#29992;&#21152;&#24375;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  y(count)    = x(count)-(0.95*x(count-1));&nbsp;&nbsp; % &#20854;&#23427;&#30340;&#38899;&#26694;&#21152;&#24375;&#39640;&#38971;&#35338;&#34399;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % ... Testing .................................<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %fprintf( '&#21407;&#26412;&#35338;&#34399;:: %d&#12288;&#39640;&#38971;&#21152;&#24375;&#24460;:: 
+    %d\n', x(count),y(count)); <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % k=input('press any 
+key   \n'   );&nbsp;&nbsp;&nbsp;&nbsp;           <br>
+          &nbsp;&nbsp;&nbsp; end&nbsp; <br>
+          end&nbsp; <br>
+          x=y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp;  &nbsp;% &#26368;&#24460;&#32080;&#26524;&#33021;&#23384;&#22238;&#21407;&#20358;&#35722;&#25976;<br>
+                    <br>
+                  <font color="#006600"><b>  % ......&nbsp; &#38899;&#26694;&#20056;&#19978;&#28450;&#26126;&#35222;&#31383;&nbsp;
+ (  &#33287;&#21462;  LPC &#21512;&#20341; ).....................................&nbsp;</b></font>&nbsp;&nbsp; 
+              <br>
+          for xCut=1:10,&nbsp;&nbsp;&nbsp; <br>
+          &nbsp;&nbsp;&nbsp; len=length(x)/10; <br>
+          &nbsp;&nbsp;&nbsp; x_hamming=x( 1,(xCut-1)*len+1: len* xCut);<br>
+          &nbsp;&nbsp;&nbsp; for j=0:len-1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h_hamming=0.54 - 0.46
+ *  cos   (2*3.14*j  / len-1);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y_hamming_temp(j+1)
+=&nbsp;     x_hamming(j+1)  * h_hamming; <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % ... Testing .................................<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %fprintf( '&#31532; %d &#20491;&#38899;&#26694;&#20839;&#30340;
+ &#31532;  %d  &#20491;&#35338;&#34399;\n',  xCut,j); <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %fprintf( '&#21407;&#26412;&#35338;&#34399;:: %d&#12288;&#20056;&#19978;&#28450;&#26126;&#35222;&#31383;&#24460;::
+     %d\n', x_hamming(j+1),y_hamming_temp(j+1)); <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %k=input('press \n'
+);&nbsp;&nbsp;&nbsp;&nbsp;                <br>
+          &nbsp;&nbsp;&nbsp; end<br>
+          &nbsp;&nbsp;&nbsp; <br>
+          &nbsp;&nbsp;&nbsp; <b><font color="#009900">% ......&nbsp; LPC
+&#36681;&#25563;,   &#21462;&#29305;&#24501;&#20540;&nbsp;   120 &#40670; [start] ..........</font></b><br>
+          &nbsp;&nbsp;&nbsp; a_temp = lpc(y_hamming_temp,11);<br>
+          &nbsp;&nbsp;&nbsp; if xCut == 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % y_hamming=y_hamming_temp;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=a_temp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     % &#23559;&#21462; LPC&#21518;&#20043;&#20540;&#23384;&#26044; &#35722;&#25976;&#12288;a<br>
+          &nbsp;&nbsp;&nbsp; else<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % y_hamming=[y_hamming 
+ y_hamming_temp];<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=[a a_temp];<br>
+          &nbsp;&nbsp;&nbsp; end<br>
+          end <br>
+                    </td>
+                  </tr>
+                                                                         
+     
+      </tbody>                                                  
+    </table>
+    <br>
+  </li>
+  <li>&#38651;&#39080;&#25159;&#29376;&#24907;&#35299;&#30908; &#9472;&#9472; fanState.m<br>
+    <table cellpadding="2" cellspacing="2" border="1" width="80%">
+      <tbody>
+        <tr>
+          <td valign="top"><font color="#009900">% .................................................................................................<br>
+% &#9632; Filenmae : fanState.m<br>
+% &#9632; Auother&nbsp; : Jing-Wen.Lai<br>
+% &#9632; &#31243;&#24335;&#25551;&#36848; :&nbsp; &#25551;&#36848;&#38651;&#39080;&#25159;&#30340;&#29376;&#24907;<br>
+% .................................................................................................&nbsp;&nbsp;
+          </font><br>
+          <br>
+          <font color="#006600"><b>% .....................&nbsp; FUNCTION
+fanState&nbsp; ...................</b></font><br>
+          <br>
+function fanSpeedMean=fanState(fanSpeed)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#12288;
+          <br>
+switch fanSpeed <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fanSpeedMean = 'very Low';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fanSpeedMean = 'Low';&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 3,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fanSpeedMean = 'Medium';&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 4,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fanSpeedMean = 'High';&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 5,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fanSpeedMean = 'very High';&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; otherwise,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+disp('error');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+          <font color="#009900">% ............................. ending&nbsp;
+.............................</font><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </li>
+</ul>
+              
+<h3>&#12304; Extra. &#12305; </h3>
+              
+<ul>
+  <li>&#21487;&#20197;&#20597;&#28204;&#21040;&#39080;&#25159;&#30340;&#30446;&#21069;&#29376;&#24907;(&#26377;&#22238;&#25480;)&#12290;</li>
+  <li>&#21152;&#20837;neruo &#23416;&#32722;&#65292;&#35519;&#25972;&#30446;&#21069;&#29376;&#24907;&#12290;<br>
+  </li>
+</ul>
+         
+<h3>&#12304; Reference &#12305;</h3>
+                       
+<ul>
+  <li>&#39006;&#31070;&#32147;&#32178;&#36335; &#9472; &nbsp;Matlab &#30340;&#25033;&#29992; &#32645;&#33775;&#24375;&#32232;&#33879; &#28165;&#34074;&#31185;&#25216; &nbsp; (isbn::957-97544-7-0)</li>
+  <li>&#39006;&#31070;&#32147;&#32178;&#36335;&#27169;&#24335;&#25033;&#29992;&#33287;&#23526;&#20316;&nbsp; &#35613;&#24609;&#25104;&#32232;&#33879;&#12288;&#20754;&#26519;  (isbn::957-499-313-2 )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+      </li>
+  <li>&#32882;&#38712;&#21345;&#20043;&#25033;&#29992;&#33287;&#35486;&#38899;&#36776;&#35672; &nbsp; &nbsp; &nbsp;&#35377;&#24535;&#33288;&#12288;&#26071;&#27161; &nbsp;(isbn::957-717-096-X)</li>
+</ul>
+<h3><br>
+</h3>
+<h3>&#12304; Extra. &#12305;</h3>
+                   
+<ul>
+               <li>Implement &#21040;&#30495;&#23526;&#30340;&#38651;&#39080;&#25159;&#12290;</li>
+                                   
+</ul>
+              
+<h3>&#12304; Reference &#12305;</h3>
+                            
+<ul>
+        <li>Fuzzy &#25511;&#21046; &#29702;&#35542;&#12289;&#23526;&#20316;&#33287;&#25033;&#29992; &#23403;&#23447;&#28699;&#65294;&#26954;&#33521;&#39745;&#12288;&#32232;&#33879;&#12288;&#20840;&#33775;&#22294;&#26360; &nbsp; (isbn::957-21-0733-X)<br>
+   p.158 Look-up Table ; p339 &#30452;&#27969;&#39340;&#36948;&#36681;&#36895; Fuzzy &#25511;&#21046;&#31995;&#32113;<br>
+     </li>
+     <li>&#39006;&#31070;&#32147;&#32178;&#36335; &#9472; &nbsp;Matlab &#30340;&#25033;&#29992; &#32645;&#33775;&#24375;&#32232;&#33879; &#28165;&#34074;&#31185;&#25216; &nbsp; (isbn::957-97544-7-0)</li>
+        <li>&#39006;&#31070;&#32147;&#32178;&#36335;&#27169;&#24335;&#25033;&#29992;&#33287;&#23526;&#20316;&nbsp; &#35613;&#24609;&#25104;&#32232;&#33879;&#12288;&#20754;&#26519;  (isbn::957-499-313-2 )</li>
+        <li>&#32882;&#38712;&#21345;&#20043;&#25033;&#29992;&#33287;&#35486;&#38899;&#36776;&#35672; &nbsp; &nbsp; &nbsp;&#35377;&#24535;&#33288;&#12288;&#26071;&#27161; &nbsp;(isbn::957-717-096-X)<br>
+       </li>
+                         
+</ul>
+                 <br>
+     <br>
+  <br>
+ <br>
+</body>
+</html>

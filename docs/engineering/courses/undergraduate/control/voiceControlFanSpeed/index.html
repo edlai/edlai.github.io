@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
+  <!-- Code -->
+    <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <style type="text/css">
+        xmp {
+            background: #F6F8FA;
+            font-size: 0.3em;
+            white-space: pre-wrap
+        }
+
+        pre {
+            background: #FFFFFF;
+            font-size: 0.3em;
+        }
+
+        code {
+            background: #FFC0C0;
+            font-size: 0.3em;
+        }
+    </style>
+  <title> </title>
+ </head>
+ <body>
+
+<h1>Voice Control on Fan Speed</h1>
+
+Voice Control on Fan Speed using Fuzzy Control and Artificial Neural Network<p>
+
+<ul>
+	<li>Ching-Wen, Lai</li>
+	<li>Jan. 2003</li>
+	<li>Keywords: fuzzy, control, artificial, neural, network, matlab</li>
+</ul>
+
+<h2>Purposal</h2>
+
+隨著使用者的反應(語音)來調節風扇轉動的強度 <p><p>
+
+PRM = 60 X (N/16)
+
+<ul>
+	<li>輸出語言變數為 PWM 的工作週期(Duty)</li>
+	<li>輸入語言變數為轉數誤差(dspeed)與目前轉速(sspeed)</li>
+</ul>
+
+<h2>Requirements</h2>
+
+<ul>
+	<li>Matlab 6.5</li>
+    <li>CoolEdit2000</li>
+</ul>
+
+<h2>Functionality</h2>
+
+<ul>
+	<li>Speech Recognition: Artificial Neural Network</li>
+    <li>Control Fan Speeds: Fuzzy Control</li>
+</ul>
+
+
+<h2>程式架構</h2>
+
+在 matlab 上的架構與流程, 將程式分開撰寫方便測試與模擬。
+
+<h3>Filename</h3>
+
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+  <tbody>
+    <tr>
+      <th valign="top" rowspan="2" colspan="1" align="center" bgcolor="#ffcc33">Filename<br>
+      </th>
+      <th valign="top" rowspan="2" colspan="1" align="center" bgcolor="#ffcc33">功能<br>
+      </th>
+      <th valign="top" rowspan="1" colspan="3" align="center" bgcolor="#ffcc33">副程式<br>
+      </th>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec<br>
+      </td>
+      <td valign="top" align="center">get_lpc<br>
+      </td>
+      <td valign="top" align="center">fanState<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec_speech<br>
+      </td>
+      <td valign="top">錄製語音訓練用樣本程式<br>
+      </td>
+      <td valign="top" align="center">Y<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">train_speech<br>
+      </td>
+      <td valign="top">語音的 音框、漢明視窗、高頻…LPC處理<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center">Y<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">nntool<br>
+      </td>
+      <td valign="top">使用Matlab的nntool作語音訓練與模擬<br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+      <td valign="top" align="center"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">sin_speech<br>
+      </td>
+      <td valign="top">語音辨識 與 調節 電風扇速度 用<br>
+      </td>
+      <td valign="top" align="center">Y<br>
+      </td>
+      <td valign="top" align="center">Y<br>
+      </td>
+      <td valign="top" align="center">Y<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center" bgcolor="#ffffff"><br>
+      </td>
+      <td valign="top" bgcolor="#ffffff"><br>
+      </td>
+      <td valign="top" rowspan="1" colspan="3" align="center">Y: mandatory<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><p>
+
+<h3>Sub Function</h3>
+<table cellpadding="2" cellspacing="2" border="1" width="60%">
+  <tbody>
+    <tr align="center">
+      <td valign="top" rowspan="1" colspan="2" bgcolor="#ffcc66"><font color="#000000">副程式説明<br>
+      </font></td>
+    </tr>
+    <tr>
+      <td valign="top" align="center" bgcolor="#ffff99">副程式<br>
+      </td>
+      <td valign="top" align="center" bgcolor="#ffff99">說明<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">rec<br>
+      </td>
+      <td valign="top">錄音用副程式<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">get_lpc<br>
+      </td>
+      <td valign="top">語音的 音框、漢明視窗、高頻…LPC處理副程式<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="center">fanState<br>
+      </td>
+      <td valign="top">說明 電風扇的狀態(極低速、低速、中速、高速、極高速) 副程式<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Input data</h2>
+<h3>my sample code (rec_speech.m)</h3>
+
+<xmp>
+% .............................................................................
+% ■ Filenmae : rec_speech.m
+% ■ Auother  : Jing-Wen.Lai 
+% ■  操作    : 在Matlab下, 配合語音辨識程式使用
+% ■ 程式描述 : Neural 語音辨識 :: 錄音用 
+% ■ 準備檔案 : rec.m
+%
+% ■ 注意     : 要作完全部數字樣本錄音，要作五次
+%
+% .............................................................................  
+
+close all;
+clear all;
+
+%..................　錄音 Function　............................. 
+close all;
+clear all;
+rec(30);                    % 呼叫 rec function (錄音用副程式) 錄音
+k=input(' 樣本聲音 錄音結束');
+</xmp>
+
+
+<h3>Running the program </h3>
+
+以台語 [Taiwanese Hokkien](https://en.wikipedia.org/wiki/Taiwanese_Hokkien) 依序錄製 <br>
+很冷（代號:1）, 冷（代號:2）, 還好（代號:3）, 熱（代號:4）, 很熱（代號:5） <br>
+共五筆語音。每筆語音有三十個樣本,共錄製 150 個樣本。以下右邊每個編號樣本中之其一代表樣本。 <br>
+
+      <div class="row row-border">
+
+        <div class="col-sm-6">
+		  <h4> ■ Running on Matlab </h4>
+          <img src="rec.jpg" alt="" width="536" height="288">
+        </div>
+        <div class="col-sm-6">
+          <h4> ■ The Results </h4>
+		  <p>
+<table cellpadding="2" cellspacing="2" border="1" width="15%">
+        <tbody>
+          <tr>
+		    <th valign="top">Index</th>
+            <th valign="top">Speech</th>
+            <th valign="top">Audio</th>
+		  </tr>
+          <tr>
+		    <td valign="top">1<br>
+            <td valign="top">很冷</td>
+            <td valign="top"><audio controls><source src="veryCool.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </td>
+          </tr>
+          <tr>
+		    <td valign="top">2</td>
+            <td valign="top">冷</td>
+            <td valign="top"><audio controls><source src="cool.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+          </tr>
+          <tr>
+		    <td valign="top">3</td>
+            <td valign="top">還好</td>
+            <td valign="top"><audio controls><source src="medium.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+          </tr>
+          <tr>
+		    <td valign="top">4</td>
+            <td valign="top">熱</td>
+            <td valign="top"><audio controls><source src="hot.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+          </tr>
+          <tr>
+		    <td valign="top">5</td>
+            <td valign="top">很熱<br>
+            </td>
+            <td valign="top"><audio controls><source src="veryHot.wav" type="audio/wav">Your browser does not support the audio element.</audio></td><br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+        </div>
+      </div>
+
+
+ <h2>Sampling</h2>
+
+<h3>my sample code (train_speech.m)<h3>
+<xmp>
+%.....................................................................
+% filenmae : train_speech.m.
+% auother  : Jing-Wen.Lai 
+% 操作     : 在 Matlab 底下執行本 .m 檔
+% 程式描述 : Neural 語音辨識 :: 將訊練樣本轉成 lpc 格式           
+% date     : 12/16 2002 ver1.0   
+% 準備檔案 : get_lpc.m               
+%.......................................................................
+close all;
+clear all;
+fs = 8000;                                  % set sampling rate
+
+%.....................  建構 Function  ............................... 
+fprintf('開始處理,請稍候...\n');
+% 讀入聲音
+dir1='n_speech/';
+subfilename='.wav';                 % PCM 格式 副檔名
+
+for w=1:5,
+    wordTitle=char(w+96); 
+    for n=1:30,
+        word = [ wordTitle '_'];
+        dir2 = [ wordTitle '/'];    
+        fn=[ dir1 dir2 word int2str(n) subfilename];   % ex:: neu_speech/a/a_1.wav
+        [ x,fs ] = wavread(fn);  % 讀取聲音檔
+        a=get_lpc(x);    %　取出　LPC
+
+        % ......   定義 類神經中的  t 值 [start]  ↘↘↘ 此處寫的不好 ↙↙↙..
+        switch w
+            case 1,
+                t_temp = [ 1 0 0 0 0];            % 格式 :: a b c d e (目前為 a 優勝 )    
+            case 2,
+                t_temp = [ 0 1 0 0 0];            % 格式 :: a b c d e (目前為 b 優勝 ) 
+            case 3,
+                t_temp = [ 0 0 1 0 0];             % 格式 :: a b c d e (目前為 c 優勝 ) 
+            case 4,
+                t_temp = [ 0 0 0 1 0];             % 格式 :: a b c d e (目前為 d 優勝 ) 
+            case 5,
+                t_temp = [ 0 0 0 0 1];             % 格式 :: a b c d e (目前為 e 優勝 ) 
+            otherwise,
+                disp('temp error');
+        end
+% ......   建構 類神經中的 p , t 值  ..........
+        if w==1 & n ==1            
+            p = a ;
+            t = t_temp ;
+        else
+            p = [ p; a];
+            t = [ t; t_temp ];
+        end       
+    end   
+End
+
+% .........................................................................................
+%  ■  轉至矩陣成 符合 類神經處理 的格式 ■ 
+%   「  ↓    【 → 輸入元(神經元數目)  】
+%       樣
+%       本
+%       數   」
+% .........................................................................................
+p=p';
+t=t'; 
+p=real(p);                                        % 只取出　實數部份
+fprintf('處理完成\n');                
+</xmp>
+
+<h3>Running the program </h3>
+
+經過此步驟, 變數 P 即為 Input(語音樣本)，變數 T 即為 Target(優勝結果)。之後即可載入 Matlab 的 nntool 作處理.
+<p><p>
+
+<img src="train.jpg" alt="" width="488" height="240">
+
+<h2>樣本訓練與模擬 — Nntool 流程與架構</h2>
+
+<h3>使用 Matlab 內附的 nntool 進行Neural訓練</h3>
+
+在 Matlab 下 nntool 的指令將  Network/Data Manager 叫出來。《Import》 the Input(p) & Target(t) 。並創建《 New Network... 》一個新的 Neural Network (network1)。
+
+<img src="nntool_arch.jpg" alt="" width="440" height="440">
+
+<h3>網路架構，第一層隱藏層有 35 點神經元，並使用 LOGSIG (log function)。</h3>
+
+<img src="train-l1.jpg" alt="" width="400" height="397">
+
+<h3>網路架構，第二層隱藏層有 5 點神經元( 須與輸出點數相同 )，也使用 LOGSIG (log function)。</h3>
+
+<img src="train-l2.jpg" alt="" width="400" height="397">
+
+<h3>網路創建後在 Network/Data Manager 以《 View 》觀看結果。</h3>
+
+輸入有120 個點（取LPC後）,輸出有5點。
+其中有兩層隱藏層,第一個隱藏層有35點,第二個隱藏層有5個點。
+
+<p><p>
+
+<img src="nntool_arch1.jpg" alt="" width="449" height="276">
+
+<h2>網路訓練與模擬 ─ Nntool</h2>
+
+<h3>指定  Training Info ，Inputs 與 Targets</h3>
+
+<img src="nntool_arch2.jpg" alt="" width="492" height="285">
+
+<h3>指定 Training Parameters </h3>
+
+訓練次數(ecochs)，訓練目標(goal) 與 可容忍誤差...
+
+<p><p>
+
+<img src="nntool_arch3.jpg" alt="" width="492" height="306">
+
+<h3>訓練完後，可以再以原本數據進行模擬</h3>
+
+<img src="nntool_arch4.jpg" alt="" width="492" height="306">
+
+<h3>模擬完畢後, 將網路與全部結果存《 Save 》於 nn.mat 檔案內</h3>
+
+<img src="nntool_arch5.jpg" alt="" width="423" height="372">
+
+<h2>Fuzzy Control ﹣控制知識庫</h2>
+
+<h3>輸入一︰人類語音樣本</h3>
+
+feeling  = { vc, c, m, h, vh}
+<table cellpadding="2" cellspacing="2" border="1" width="50%">
+         <tbody>
+           <tr>
+             <td valign="top">vc<br>
+             </td>
+             <td valign="top">very Cool<br>
+             </td>
+             <td valign="top">很冷<br>
+             </td>
+             <td valign="top"><audio controls><source src="veryCool.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">c<br>
+             </td>
+             <td valign="top">Cool<br>
+             </td>
+             <td valign="top">冷<br>
+             </td>
+             <td valign="top"><audio controls><source src="cool.wav" type="audio/wav">Your browser does not support the audio element.</audio><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">m<br>
+             </td>
+             <td valign="top">just O.K<br>
+             </td>
+             <td valign="top">還好<br>
+             </td>
+             <td valign="top"><audio controls><source src="medium.wav" type="audio/wav">Your browser does not support the audio element.</audio><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">h<br>
+             </td>
+             <td valign="top">Hot<br>
+             </td>
+             <td valign="top">熱<br>
+             </td>
+             <td valign="top"><audio controls><source src="hot.wav" type="audio/wav">Your browser does not support the audio element.</audio><br>
+             </td>
+           </tr>
+           <tr>
+             <td valign="top">vh<br>
+             </td>
+             <td valign="top">vey Hot<br>
+             </td>
+             <td valign="top">很熱<br>
+             </td>
+             <td valign="top"><audio controls><source src="veryHot.wav" type="audio/wav">Your browser does not support the audio element.</audio><br>
+             </td>
+           </tr>
+                       
+      </tbody>               
+    </table>
+
+<h3>輸入二︰目前風扇速度</h3>
+
+anSpeed = { vl, l, m, h, vh}
+
+<table cellpadding="2" cellspacing="2" border="1" width="30%">
+        <tbody>
+          <tr>
+            <td valign="top">vl<br>
+            </td>
+            <td valign="top">very low<br>
+            </td>
+            <td valign="top">極低速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">l<br>
+            </td>
+            <td valign="top">low<br>
+            </td>
+            <td valign="top">低速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">m<br>
+            </td>
+            <td valign="top">medium<br>
+            </td>
+            <td valign="top">中速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">h<br>
+            </td>
+            <td valign="top">high<br>
+            </td>
+            <td valign="top">高速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">vh<br>
+            </td>
+            <td valign="top">very high<br>
+            </td>
+            <td valign="top">極高速<br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+
+<h3>輸出︰新的風扇速度</h3>
+
+duty  = { vl, l, m, h, vh}
+
+<table cellpadding="2" cellspacing="2" border="1" width="30%">
+        <tbody>
+          <tr>
+            <td valign="top">vl<br>
+            </td>
+            <td valign="top">very low<br>
+            </td>
+            <td valign="top">極低速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">l<br>
+            </td>
+            <td valign="top">low<br>
+            </td>
+            <td valign="top">低速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">m<br>
+            </td>
+            <td valign="top">medium<br>
+            </td>
+            <td valign="top">中速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">h<br>
+            </td>
+            <td valign="top">high<br>
+            </td>
+            <td valign="top">高速<br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">vh<br>
+            </td>
+            <td valign="top">very high<br>
+            </td>
+            <td valign="top">極高速<br>
+            </td>
+          </tr>
+               
+      </tbody>          
+    </table>
+
+因為風扇並無回授,所以只能由之前輸出狀態來調整風速大小,目前的 duty 和 fanSpeed 是一樣的,只是在說明文件上分別命名,避免混淆.
+
+<h2>控制規則庫</h2>
+
+<h3>Look-up Table 對照表格</h3>
+
+<img src="fam.jpg" alt="" width="640" height="222">
+
+<h3>對照表格 ( 簡表 )</h3>
+
+<img src="famMean.jpg" alt="" width="640" height="201">
+
+<h3>控制規則庫</h3>
+
+<xmp>
+IF feeling  is vc AND fanSpeed is vl THEN duty is vl
+IF feeling  is c  AND fanSpeed is vl THEN duty is  vl
+IF feeling  is m AND fanSpeed is vl THEN duty is  vl
+IF feeling  is h  AND fanSpeed is vl THEN duty is   l
+IF feeling  is vh AND fanSpeed is vl THEN duty is  m
+
+IF feeling  is vc AND fanSpeed is l  THEN duty is vl
+IF feeling  is c  AND fanSpeed is  l  THEN duty is vl
+IF feeling  is m AND fanSpeed is  l  THEN duty is  l
+IF feeling  is h  AND fanSpeed is  l  THEN duty is m
+IF feeling  is vh AND fanSpeed is l THEN duty is   h
+
+IF feeling  is vc AND fanSpeed is m THEN duty is vl
+IF feeling  is c  AND fanSpeed is m THEN duty is  l
+IF feeling  is m AND fanSpeed is m THEN duty is m
+IF feeling  is h  AND fanSpeed is m THEN duty is h
+IF feeling  is vh AND fanSpeed is m THEN duty is vh
+
+IF feeling  is vc AND fanSpeed is h THEN duty is l
+IF feeling  is c  AND fanSpeed is h THEN duty is m
+IF feeling  is m AND fanSpeed is h THEN duty is h
+IF feeling  is h  AND fanSpeed is h THEN duty is vh
+IF feeling  is vh AND fanSpeed is h THEN duty is vh
+
+IF feeling  is vc AND fanSpeed is vh THEN duty is m
+IF feeling  is c  AND fanSpeed is vh THEN duty is h
+IF feeling  is m AND fanSpeed is vh THEN duty is vh
+IF feeling  is h  AND fanSpeed is vh THEN duty is vh
+IF feeling  is vh AND fanSpeed is vhTHEN duty is vh
+</xmp>
+
+
+<h2>語音辨識</h2>
+
+<h3> my sample code (sim_speech.m) </h3>
+
+<xmp>
+% .............................................................................
+% ■ Filenmae : sim_speech.m
+% ■ Auother  : Jing-Wen.Lai
+% ■  操作    : 在Matlab下, 配合語音辨識程式使用
+% ■ 程式描述 : Neural + Fuzzy :: Fuzzy Electric Fan 音控式 Fuzzy 電風扇　主程式         
+% ............................................................................. 
+
+close all;
+clear all;
+% ............... Lookup Tabbe ......................
+adjustValue=[1 1 1 2 3            % Look-up Table
+                 1 1 2 3 4
+                 1 2 3 4 5
+                 2 3 4 5 5
+                 3 4 5 5 5];
+fs = 8000;                                % set sampling rate
+% ............... 載入訊練資料 ......................
+load nn.mat
+
+% ............... 目前風速設定 ......................
+fanSpeed = input('目前風速 [ 1-very Low; 2-Low; 3-Medium; 4-High; 5-very High ]::');
+% fprintf('目前風速::%d \n',fanSpeed );
+
+% ................... Decord ...................
+fanSpeedMean=fanState(fanSpeed);
+fprintf('目前初始風速::%d - %s \n',fanSpeed,fanSpeedMean);
+
+for count=1:100,
+    % ............... 語音輸入 ......................
+    rec(1);
+    [ x,fs ] = wavread('n_speech\test\test_1.wav');  % 讀取聲音檔        
+    p=get_lpc(x);    %　取出　LPC
+    p=p';
+    p=real(p);
+
+    % ............... 語音分析, 取出優勝者 ......................
+    t = sim(network1,p);
+    maxT=max(t);
+    for feeling=1:5,
+        if maxT == t(feeling)
+            break;
+        end
+    end
+    % fprintf('發音辨識::%s \n',feeling(w));
+
+    % ................... 人類感覺 說明 ...................
+    switch feeling
+            case 1,
+                feelingMean = 'Very Cool - 很冷';      
+            case 2,
+                feelingMean = 'Cool - 冷';  
+            case 3,
+                feelingMean = 'just O.K - 還好';    
+            case 4,
+                feelingMean = 'Hot - 熱';   
+            case 5,
+                feelingMean = 'Very Hot　- 很熱';    
+            otherwise,
+                disp('error');
+    end
+    fprintf('發音辨識::%s \t',feelingMean);
+
+    % ...................  風扇速度 說明 ...................
+    fanSpeedMean=fanState(fanSpeed);
+    fprintf('目前風速::%d - %s \t',fanSpeed,fanSpeedMean);
+    
+    % ...................  調整風扇速度  ...................
+    fanSpeed=adjustValue(feeling,fanSpeed); 
+    
+    % ................... 風扇速度 說明 ...................
+    fanSpeedMean=fanState(fanSpeed);
+    fprintf('調整後風速::%d - %s \n\n',fanSpeed,fanSpeedMean);
+end
+</xmp>
+
+<h3>Running the program</h3>
+
+初始風速設定為 中速(3)，之後由使用者所輸入的語音來經 Fuzzy 系統後調整風扇速度。<p><p>
+
+<img src="run.jpg" alt="">
+
+<h2>程式碼 – 副程式</h2>
+
+將常用的功能寫成副程式。
+
+<h3>錄音功能(rec.m)<h3>
+
+<xmp>
+% .................................................................................................
+% ■ Filenmae : rec.m
+% ■ Auother  : Jing-Wen.Lai 
+% ■  操作    : 在Matlab下, 配合語音辨識程式使用
+% ■ 程式描述 : Neural 語音辨識 :: 錄音用Function 
+% ▼ 傳入參數 = 30 ::訓練樣本錄製模式
+%    選定你要錄製的聲音, 一次單一數字,  各 30 個 聲音樣本,存放於 $matlab/work/n_speech/.. 目錄下, 
+%    數字 1 的聲音放於 a/ 目錄下, 依次為　a_1.wav...a_30.wav 存放30 筆,  數字聲音存放對應如下 
+%    1 -> a　; 2 -> b ; 3 -> c ; 4 -> d ; 5 -> e
+% ▼ 其它傳入參數  :: 判斷錄製模式
+%    存放於 $matlab/work/n_speech/test/test_1.wav, 用以測試並判斷所輸入的聲音
+%
+%                ╭────────────────────────╮
+% ■ 注意 ::  │要作完全部數字樣本錄音，要作五次   │
+%                ╰────────────────────────╯
+% .................................................................................................   
+
+
+% .....................  FUNCTION rec start  ...................
+
+function output=rec(count)      % count = 30 :: 錄 30 個　樣本聲音 / else  :: 只錄 單筆聲音　 
+clear wordTitle;
+fs = 8000;                              % set sampling rate
+
+% ........................... 參數 定義 ...........................
+
+if count == 30
+    wordTitle = input('由 1,2,3,4,5 中選擇你要輸入你要錄製的語音檔::');
+    wordTitle=char(wordTitle+96);
+    word = [ wordTitle '_'];        % 定義存放 路徑 與目錄, 並將之 組合成檔名
+    fprintf('開始錄製 30 個 測試樣本');
+else  
+    wordTitle = 'test';
+    word = [ wordTitle '_'];        % 定義存放 路徑 與目錄, 並將之 組合成檔名
+    % fprintf('開始錄製 判斷聲音樣本');
+end
+    
+dir1='n_speech/';
+dir2 = [ wordTitle '/'];              
+subfilename='.wav';                 % PCM 格式 副檔名
+
+% ............................. 錄音  .............................
+
+for n=1:count,
+    % str1= ['第 ' int2str(n) ' 次錄音,請按下 任一鍵 錄音'];
+    str1= ['語音輸入感覺[很冷, 冷, 還好, ,熱, 很熱]'];
+    k=input(str1);     
+    x = wavrecord(fs+4, fs);   
+    % k=input('請按下 任一鍵 放音'); 
+    wavplay(x,fs);   
+    fn=[ dir1 dir2 word int2str(n) subfilename];     % ex:: n_speech/a/a_1.wav :: 訓練用樣本
+    wavwrite(x,fs,16,fn);                            % ex:: n_speech/test/test_1.wav :: 判斷用樣本
+end
+
+% ............................. ending  ............................
+</xmp>
+
+<h3>取語音的 LPC 值 (get_lpc.m)</h3>
+
+<xmp>
+% .................................................................................................
+% ■ Filenmae      :  get_lpc.m
+% ■ Auother       :  Jing-Wen.Lai 
+% ■  操作          :  在Matlab下, 配合語音辨識程式使用
+% ■ 程式描述   :  Neural 語音辨識 :: LPC Function 
+% 
+% ■ 注意 ::   
+% ■ 備註 ::    程式碼以方便閱讀為主,並無針對演算法去改良 % ................................................................................................. 
+
+function a=get_lpc(x) 
+
+% ....................... End point Detection - 找 原點 ....................................
+len=length(x);
+count=1;
+% 由 前 往 後 找 
+for j=1:len,                                     % ............................................................
+    if x(j) >= 0.01                            %    ■     偵測方式    ■                        
+         for jj=1+j:300+j,                   %   ∵訊號 >= 臨界值
+            if x(jj) >= 0.01                   %   且該點之後(含該點)的訊號   
+                count=count+1;              %   300 點有 100 點以上大於臨限值
+            end                                     %
+         end                                        %   ∴該點為人類聲音訊號起始點  
+         if  count >= 100                     %
+            break;                                 %   △可改良成 大於 100 即離開loop
+        end                                         % ............................................................
+    end
+end
+
+% ....................... End point Detection - 找 終點　 ....................................
+count=1;  
+for je=1:len,                           % 由 後 往 前 找
+    if x(len-je+1) >= 0.01
+        for jje=1+je:300+je,
+            if x(len-jje+1) >= 0.01 
+                count=count+1;
+            end
+        end 
+        if  count>= 100
+            break;
+        end
+    end    
+end
+
+% ................................... 取出 需要的訊號　 ....................................
+x=x';
+x = x(1,j:len-je+1);
+
+% ....   取音框 FRAME ( 有 Overlap )  ....................................
+overlap=10;                                           % 前後重疊 1/10
+count=floor(length(x) / 9.1)-1;                % 音框大小　〔減 1,避免四捨五入的問題〕
+countShift=floor( count/ overlap);           % 偏移量
+%fprintf( '音框大小 :: %d\t 偏移量::     %d\n',count,countShift);  % Testing   
+
+for xCut=1:10,
+    if xCut == 1                                        % 第一個音框的取樣
+        x_temp=0;
+        x_temp = x(1,1:count);
+        %fprintf( '起始點 :: %d\t 終點::      %d\t Range:: %d\n',1,count,count); 
+        countStart=count-countShift+1;
+    else                                                     % 其它音框的取樣
+        x_temp_temp=x(1, countStart: countStart+count-1) ;
+        x_temp = [ x_temp x_temp_temp] ;
+        %fprintf( '起始點 :: %d\t 終點:: %d\t Range:: %d\n',countStart,  countStart+count-1, count); 
+        countStart=countStart+count-1-countShift +1 ;
+    end
+end
+x=x_temp;                           % 最後結果能存回原來變數
+
+% ....................................  加強 高頻部分 ....................................
+for xCut=1:10,    
+    len=length(x)/10;                      
+    for j=1:len,                                        
+        count=j+(xCut-1)*len;
+        if  j == 1                                      
+            y(count) = x(count) ;             % 第一個音框不用加強                
+        else                                                
+            y(count) = x(count)-(0.95*x(count-1));   % 其它的音框加強高頻訊號
+        end
+        % ... Testing .................................
+        %fprintf( '原本訊號:: %d　高頻加強後:: %d\n', x(count),y(count)); 
+        % k=input('press any key \n' );     
+    end  
+end  
+x=y;                                                   % 最後結果能存回原來變數
+
+% ......  音框乘上漢明視窗  ( 與取 LPC 合併 ).....................................    
+for xCut=1:10,    
+    len=length(x)/10; 
+    x_hamming=x( 1,(xCut-1)*len+1: len* xCut);
+    for j=0:len-1,                                        
+        h_hamming=0.54 - 0.46 * cos (2*3.14*j / len-1);
+        y_hamming_temp(j+1) =  x_hamming(j+1) * h_hamming; 
+        % ... Testing .................................
+        %fprintf( '第 %d 個音框內的 第 %d 個訊號\n', xCut,j); 
+        %fprintf( '原本訊號:: %d　乘上漢明視窗後:: %d\n', x_hamming(j+1),y_hamming_temp(j+1)); 
+        %k=input('press \n' );     
+    end
+    
+    % ......  LPC 轉換, 取特徵值  120 點 [start] ..........
+    a_temp = lpc(y_hamming_temp,11);
+    if xCut == 1                
+        % y_hamming=y_hamming_temp;
+        a=a_temp;               % 將取 LPC後之值存於 變數　a
+    else
+        % y_hamming=[y_hamming y_hamming_temp];
+        a=[a a_temp];
+    end
+end 
+</xmp>
+
+<h3>取語音的 LPC 值 (get_lpc.m)</h3>
+
+<xmp>
+% .............................................................................
+% ■ Filenmae      :  get_lpc.m
+% ■ Auother       :  Jing-Wen.Lai 
+% ■  操作          :  在Matlab下, 配合語音辨識程式使用
+% ■ 程式描述   :  Neural 語音辨識 :: LPC Function 
+% 
+% ■ 注意 ::   
+% ■ 備註 ::    程式碼以方便閱讀為主,並無針對演算法去改良
+% .............................................................................
+
+function a=get_lpc(x) 
+
+% ....................... End point Detection - 找 原點 ..........................
+len=length(x);
+count=1;
+% 由 前 往 後 找 
+for j=1:len,                                     % ............................
+    if x(j) >= 0.01                            %    ■     偵測方式    ■        
+         for jj=1+j:300+j,                   %   ∵訊號 >= 臨界值
+            if x(jj) >= 0.01                   %   且該點之後(含該點)的訊號   
+                count=count+1;              %   300 點有 100 點以上大於臨限值
+            end                                     %
+         end                                        %   ∴該點為人類聲音訊號起始點  
+         if  count >= 100                     %
+            break;                                 %   △可改良成 大於 100 即離開loop
+        end                                         % .........................
+    end
+end
+
+% ....................... End point Detection - 找 終點　 .........................
+count=1;  
+for je=1:len,                           % 由 後 往 前 找
+    if x(len-je+1) >= 0.01
+        for jje=1+je:300+je,
+            if x(len-jje+1) >= 0.01 
+                count=count+1;
+            end
+        end 
+        if  count>= 100
+            break;
+        end
+    end    
+end
+
+% ................................... 取出 需要的訊號　 ...............................
+x=x';
+x = x(1,j:len-je+1);
+
+% ....   取音框 FRAME ( 有 Overlap )  ....................................
+overlap=10;                                           % 前後重疊 1/10
+count=floor(length(x) / 9.1)-1;                % 音框大小　〔減 1,避免四捨五入的問題〕
+countShift=floor( count/ overlap);           % 偏移量
+%fprintf( '音框大小 :: %d\t 偏移量::     %d\n',count,countShift);  % Testing   
+
+for xCut=1:10,
+    if xCut == 1                                        % 第一個音框的取樣
+        x_temp=0;
+        x_temp = x(1,1:count);
+        %fprintf( '起始點 :: %d\t 終點::      %d\t Range:: %d\n',1,count,count); 
+        countStart=count-countShift+1;
+    else                                                     % 其它音框的取樣
+        x_temp_temp=x(1, countStart: countStart+count-1) ;
+        x_temp = [ x_temp x_temp_temp] ;
+        %fprintf( '起始點 :: %d\t 終點:: %d\t Range:: %d\n',countStart,  countStart+count-1, count); 
+        countStart=countStart+count-1-countShift +1 ;
+    end
+end
+x=x_temp;                           % 最後結果能存回原來變數
+
+% ....................................  加強 高頻部分 ...............................
+for xCut=1:10,    
+    len=length(x)/10;                      
+    for j=1:len,                                        
+        count=j+(xCut-1)*len;
+        if  j == 1                                      
+            y(count) = x(count) ;             % 第一個音框不用加強                
+        else                                                
+            y(count) = x(count)-(0.95*x(count-1));   % 其它的音框加強高頻訊號
+        end
+        % ... Testing .................................
+        %fprintf( '原本訊號:: %d　高頻加強後:: %d\n', x(count),y(count)); 
+        % k=input('press any key \n' );     
+    end  
+end  
+x=y;                                                   % 最後結果能存回原來變數
+
+% ......  音框乘上漢明視窗  ( 與取 LPC 合併 ).....................................    
+for xCut=1:10,    
+    len=length(x)/10; 
+    x_hamming=x( 1,(xCut-1)*len+1: len* xCut);
+    for j=0:len-1,                                        
+        h_hamming=0.54 - 0.46 * cos (2*3.14*j / len-1);
+        y_hamming_temp(j+1) =  x_hamming(j+1) * h_hamming; 
+        % ... Testing .................................
+        %fprintf( '第 %d 個音框內的 第 %d 個訊號\n', xCut,j); 
+        %fprintf( '原本訊號:: %d　乘上漢明視窗後:: %d\n', x_hamming(j+1),y_hamming_temp(j+1)); 
+        %k=input('press \n' );     
+    end
+    
+    % ......  LPC 轉換, 取特徵值  120 點 [start] ..........
+    a_temp = lpc(y_hamming_temp,11);
+    if xCut == 1                
+        % y_hamming=y_hamming_temp;
+        a=a_temp;               % 將取 LPC後之值存於 變數　a
+    else
+        % y_hamming=[y_hamming y_hamming_temp];
+        a=[a a_temp];
+    end
+end 
+</xmp>
+
+<h3>電風扇狀態解碼 (fanState.m)</h3>
+
+<xmp>
+% .............................................................................
+% ■ Filenmae : fanState.m
+% ■ Auother  : Jing-Wen.Lai
+% ■ 程式描述 :  描述電風扇的狀態
+% .............................................................................  
+
+% .....................  FUNCTION fanState  ...................
+
+function fanSpeedMean=fanState(fanSpeed)      　 
+switch fanSpeed 
+            case 1,
+                fanSpeedMean = 'very Low';      
+            case 2,
+                fanSpeedMean = 'Low';  
+            case 3,
+                fanSpeedMean = 'Medium';    
+            case 4,
+                fanSpeedMean = 'High';   
+            case 5,
+                fanSpeedMean = 'very High';    
+            otherwise,
+                disp('error');
+        end
+% ............................. ending  .............................
+</xmp>
+
+
+<h2>Advanced</h2>
+
+<ul>
+	<li>可以偵測到風扇的目前狀態(有回授)</li>
+	<li>加入neruo 學習，調整目前狀態</li>
+	<li>到真實的電風扇。</li>
+</ul>
+
+
+<h2>References</h2>
+<ul>
+	<li>Fuzzy 控制 理論、實作與應用 孫宗瀛．楊英魁　編著　全華圖書(ISBN::957-21-0733-X) P.158 Look-up Table ; p339 直流馬達轉速 Fuzzy 控制系統</li>
+	<li>類神經網路 ─  Matlab 的應用 羅華強編著 清蔚科技   (isbn::957-97544-7-0)</li>
+	<li>類神經網路模式應用與實作  謝怡成編著　儒林 (isbn::957-499-313-2 )</li>
+	<li>聲霸卡之應用與語音辨識      許志興　旗標  (isbn::957-717-096-X)</li>
+</ul>
+ </body>
+</html>

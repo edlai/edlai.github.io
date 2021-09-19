@@ -11,38 +11,39 @@ nav:
     - 'Engineering':
         - 'Intro.': 'engineering/index.md'
         - 'Courses':
-          - 'Undergraduate':
-            - 'Computer Networks':
-              - 'Hypertext Transfer Protocol(HTTP)': 'engineering/courses/undergraduate/net/hypertext-transfer-protocol/index.md'
-              - 'File Transfer Protocol (FTP)': 'engineering/courses/undergraduate/net/file-transfer-protocol/index.md'
-              - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineering/courses/undergraduate/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
-            - 'Digital Signal Processing':
-              - 'Voice Processing':
-                - 'Discrete-Time Processing' : 'engineering/courses/undergraduate/dsp/discrete-time-processing/index.md'
-                - 'Moving Average and Backward System' : 'engineering/courses/undergraduate/dsp/moving-average-and-backward-system/index.md'
-              - 'Spectrum Analysis':
-                - 'Window Size and the Spectrogram' : 'engineering/courses/undergraduate/dsp/window-size-and-the-spectrogram/index.md'
-            - 'Image Processing':
-              - 'Grayscale': 'engineering/courses/undergraduate/dip/grayscale/index.md'
-              - 'Monochrome': 'engineering/courses/undergraduate/dip/monochrome/index.md'
-              - 'Negative Film': 'engineering/courses/undergraduate/dip/negative/index.md'
-              - 'Colorbar': 'engineering/courses/undergraduate/dip/colorbar/index.md'
-              - 'Text Picture': 'engineering/courses/undergraduate/dip/text/index.md'
-              - 'Mirror': 'engineering/courses/undergraduate/dip/mirror/index.md'
-              - 'Image Resizer': 'engineering/courses/undergraduate/dip/resize/index.md'
-            - 'Operating Systems':
-              - 'An Assembler Compiler': 'engineering/courses/undergraduate/os/assembler-compiler/index.md'
-            - 'Man-Machine Interfaces':
-              - 'Industry Standard Architecture (ISA)': 'engineering/courses/undergraduate/io/isa/index.md'
-              - 'Peripheral Component Interconnect (PCI)': 'engineering/courses/undergraduate/io/pci/index.md'
-              - 'Parallel Port Device (LPT) and Linux Device Driver': 'engineering/courses/undergraduate/io/ldd/index.md'
-              - 'General Purpose Input Output (GPIO)': 'engineering/courses/undergraduate/io/gpio/index.md'
-              - 'Inter-Integrated Circuit (I2C)': 'engineering/courses/undergraduate/io/i2c/index.md'
-            - 'Television engineeringing':
-              - 'Multimedia Player': 'engineering/courses/undergraduate/tv/player/index.md'
-              - 'Digital Vedio Conversion - MPEG-1': 'engineering/courses/undergraduate/tv/mpeg1/index.md'
+          - 'Undergraduate': 'engineering/courses/undergraduate/index.md'
+#          - 'Autodidacticism': 'engineering/courses/autodidacticism/index.md'
+#          - 'Image Processing':
+#              - 'Grayscale': 'engineering/courses/undergraduate/dip/grayscale/index.md'
+#              - 'Monochrome': 'engineering/courses/undergraduate/dip/monochrome/index.md'
+#              - 'Negative Film': 'engineering/courses/undergraduate/dip/negative/index.md'
+#              - 'Colorbar': 'engineering/courses/undergraduate/dip/colorbar/index.md'
+#              - 'Text Picture': 'engineering/courses/undergraduate/dip/text/index.md'
+#              - 'Mirror': 'engineering/courses/undergraduate/dip/mirror/index.md'
+#              - 'Image Resizer': 'engineering/courses/undergraduate/dip/resize/index.md'
+#          - 'Reports':
+#            - 'Computer Networks':
+#              - 'Hypertext Transfer Protocol(HTTP)': 'engineering/courses/undergraduate/net/hypertext-transfer-protocol/index.md'
+#              - 'File Transfer Protocol (FTP)': 'engineering/courses/undergraduate/net/file-transfer-protocol/index.md'
+#              - 'Simple Mail Transfer Protocol and Post Office Protocol - Version 3 (IMAP/POP3)': 'engineering/courses/undergraduate/net/simple-mail-transfer-protocol-and-post-office-protocol/index.md'
+#            - 'Digital Signal Processing':
+#              - 'Voice Processing':
+#                - 'Discrete-Time Processing' : 'engineering/courses/undergraduate/dsp/discrete-time-processing/index.md'
+#                - 'Moving Average and Backward System' : 'engineering/courses/undergraduate/dsp/moving-average-and-backward-system/index.md'
+#              - 'Spectrum Analysis':
+#                - 'Window Size and the Spectrogram' : 'engineering/courses/undergraduate/dsp/window-size-and-the-spectrogram/index.md'
+#            - 'Operating Systems':
+#              - 'An Assembler Compiler': 'engineering/courses/undergraduate/os/assembler-compiler/index.md'
+#            - 'Man-Machine Interfaces':
+#              - 'Industry Standard Architecture (ISA)': 'engineering/courses/undergraduate/io/isa/index.md'
+#              - 'Peripheral Component Interconnect (PCI)': 'engineering/courses/undergraduate/io/pci/index.md'
+#              - 'Parallel Port Device (LPT) and Linux Device Driver': 'engineering/courses/undergraduate/io/ldd/index.md'
+#              - 'General Purpose Input Output (GPIO)': 'engineering/courses/undergraduate/io/gpio/index.md'
+#              - 'Inter-Integrated Circuit (I2C)': 'engineering/courses/undergraduate/io/i2c/index.md'
+#            - 'Television engineeringing':
+#              - 'Multimedia Player': 'engineering/courses/undergraduate/tv/player/index.md'
+#              - 'Digital Vedio Conversion - MPEG-1': 'engineering/courses/undergraduate/tv/mpeg1/index.md'
 #              - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
-#            - 'Self-Education':
 #              - ''
         - 'Research':
           - 'Reading Papers': 'engineering/research/papers/index.md'

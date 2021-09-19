@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Fuzzy Control</title>
+                                                   
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+  <body>
+                           
+<div align="right"><br>
+             </div>
+                <b>Fuzzy Control&nbsp;</b>                           
+<h3><b>Fuzzy Control&#8212;&#30452;&#27969;&#39340;&#36948;&#36681;&#36895;</b><u><b>Fuzzy Control</b></u><br>
+    </h3>
+                - written by<b> Jing-Wen.Lai</b> &nbsp;  1/ 7&nbsp; &nbsp;'03<br>
+                <br>
+             
+<table border="1" cols="1" width="50%" bgcolor="#99ffff">
+       <tbody>
+       <tr>
+       <td bgcolor="#ffff99">                                           
+                                            
+      <ul>
+                     <li>Purpose</li>
+                     <li>Tools&nbsp;</li>
+                     <li>&#25511;&#21046;&#30693;&#35672;&#24235;</li>
+                     <li>&#25511;&#21046;&#35215;&#21063;&#24235;</li>
+                     <li>speedControl.fis &#20839;&#23481;</li>
+                     <li>Viewer</li>
+                     <li>Extra.</li>
+                     <li>Reference</li>
+                     
+      </ul>
+       </td>
+       </tr>
+                                                         
+  </tbody>              
+</table>
+  <br>
+ - Keywords :: &nbsp;Fuzzy Control&#65292;Matlab&#12290;<br>
+                 
+<h3>&#12304; Purpose &#12305; </h3>
+     
+<h3> </h3>
+    &#20351;&#29992;&#38013;&#23380;&#22291;&#30436;&#37197;&#21512;&#20809;&#34261;&#21512;&#22120;&#28204;&#20986;&#39340;&#36948;&#30340;&#27599;&#20998;&#37912;&#36681;&#25976;&#20540;(RPM),<br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; PRM=60 X (N/16)<br>
+    <br>
+    &#36664;&#20986;&#35486;&#35328;&#35722;&#25976;&#28858; PWM&#30340;&#24037;&#20316;&#36913;&#26399;(Duty)<br>
+    &#36664;&#20837;&#35486;&#35328;&#35722;&#25976;&#28858;&#36681;&#25976;&#35492;&#24046;(dspeed)&#33287;&#30446;&#21069;&#36681;&#36895;(sspeed).<br>
+              &nbsp; <br>
+     
+<h3>&#12304;&nbsp;Tools &#12305;</h3>
+     
+<ul>
+  <li>Matlab 6.5</li>
+                                    
+</ul>
+                
+<h3>&#12304; &#25511;&#21046;&#30693;&#35672;&#24235; &#12305;</h3>
+       
+<ul>
+      <li>&#26550;&#27083;<br>
+    &#20841;&#20491;&#36664;&#20837;&#65292;&#19968;&#20491;&#36664;&#20986;&#12290;<br>
+        <img src="arch.jpg" alt="" width="568" height="474">
+        <br>
+        <br>
+    &#32048;&#37096;&#23450;&#32681;&#22914;&#19979;&#12290;<br>
+        <br>
+      </li>
+      <li>dspeed<br>
+    &#20839;&#37096;&#30340;&#35215;&#21123;<br>
+        <img src="dspeed.jpg" alt="" width="570" height="370">
+        <br>
+        <br>
+    &#20381;&#24207;&#23450;&#32681;&#22914;&#19979;&#65292;<br>
+        <img src="dspeed1.jpg" alt="" width="611" height="166">
+        <br>
+        <br>
+      </li>
+      <li>sspeed<br>
+    &#20839;&#37096;&#30340;&#35215;&#21123;<br>
+        <img src="sspeed.jpg" alt="" width="570" height="370">
+        <br>
+        <br>
+    &#20381;&#24207;&#23450;&#32681;&#22914;&#19979;&#65292;<br>
+        <img src="sspeed1.jpg" alt="" width="612" height="123">
+        <br>
+        <br>
+      </li>
+      <li>duty<br>
+    &#20839;&#37096;&#30340;&#35215;&#21123;<br>
+        <img src="duty.jpg" alt="" width="570" height="370">
+        <br>
+        <br>
+    &#20381;&#24207;&#23450;&#32681;&#22914;&#19979;&#65292;<br>
+        <img src="duty1.jpg" alt="" width="612" height="167">
+        <br>
+        <br>
+      </li>
+       
+</ul>
+     
+<h3>&#12304;&nbsp;&#25511;&#21046;&#35215;&#21063;&#24235; &#12305;</h3>
+       
+<ul>
+      <li>&#35215;&#21063;&#24235;&#23450;&#32681;<br>
+        <img src="rule.jpg" alt="" width="461" height="628">
+        <br>
+        <br>
+      </li>
+      <li>FAM &#22294;<br>
+        <img src="ruleFAM.jpg" alt="" width="506" height="129">
+        <br>
+      </li>
+       
+</ul>
+     
+<h3><br>
+   </h3>
+     
+<h3>&#12304; speedControl.fis &#20839;&#23481; &#12305;</h3>
+   &#23559;&#19978;&#36848;&#23450;&#32681;&#23384;&#26044; speedControl.fis &#27284;&#26696;&#20839;, &#20786;&#23384;&#20839;&#23481;&#22914;&#19979;&#12290;<br>
+       
+<table cellpadding="2" cellspacing="2" border="1" width="80%">
+ <tbody>
+ <tr>
+ <td valign="top"><b><font color="#006600">[System]</font></b><br>
+    Name='speedControl'<br>
+    Type='mamdani'<br>
+    Version=2.0<br>
+    NumInputs=2<br>
+    NumOutputs=1<br>
+    NumRules=15<br>
+    AndMethod='min'<br>
+    OrMethod='max'<br>
+    ImpMethod='min'<br>
+    AggMethod='max'<br>
+    DefuzzMethod='centroid'<br>
+    <br>
+    <b><font color="#006600">[Input1]</font></b><br>
+    Name='dspeed'<br>
+    Range=[0 4096]<br>
+    NumMFs=5<br>
+    MF1='vl':'trimf',[0 0 1024]<br>
+    MF2='m':'trimf',[1024 2048 3072]<br>
+    MF3='l':'trimf',[0 1024 2048]<br>
+    MF4='h':'trimf',[2048 3072 4096]<br>
+    MF5='vh':'trimf',[3072 4096 4096]<br>
+    <br>
+    <font color="#006600"><b>[Input2]</b></font><br>
+    Name='sspeed'<br>
+    Range=[0 4096]<br>
+    NumMFs=3<br>
+    MF1='l':'trapmf',[0 0 600 2000]<br>
+    MF2='m':'trimf',[600 2000 3000]<br>
+    MF3='h':'trapmf',[2000 3000 4096 4096]<br>
+    <br>
+    <b><font color="#006600">[Output1]</font></b><br>
+    Name='duty'<br>
+    Range=[0 4096]<br>
+    NumMFs=5<br>
+    MF1='vl':'trapmf',[0 0 512 1000]<br>
+    MF2='l':'trimf',[512 1000 1600]<br>
+    MF3='m':'trimf',[1000 1600 2400]<br>
+    MF4='h':'trimf',[1600 2400 3200]<br>
+    MF5='vh':'trapmf',[2400 3200 4096 4096]<br>
+    <br>
+    <b><font color="#006600">[Rules]</font></b><br>
+    1 1, 4 (1) : 1<br>
+    3 1, 3 (1) : 1<br>
+    2 1, 2 (1) : 1<br>
+    4 1, 1 (1) : 1<br>
+    5 1, 1 (1) : 1<br>
+    1 2, 5 (1) : 1<br>
+    3 2, 4 (1) : 1<br>
+    2 2, 3 (1) : 1<br>
+    4 2, 2 (1) : 1<br>
+    5 2, 1 (1) : 1<br>
+    1 3, 5 (1) : 1<br>
+    3 3, 5 (1) : 1<br>
+    2 3, 4 (1) : 1<br>
+    4 3, 3 (1) : 1<br>
+    5 3, 2 (1) : 1<br>
+    <br>
+    </td>
+    </tr>
+ 
+  </tbody>    
+</table>
+    <br>
+     
+<h3>&#12304; Viewer &#12305;</h3>
+       
+<ul>
+      <li><u>Rule Viewer </u><br>
+       <br>
+    &#35519;&#25972;&#32005;&#33394;&#32218;&#27573;&#30340;&#20301;&#32622;&#21363;&#21487;&#35264;&#30475; duty &#30456;&#23565;&#30340;&#36664;&#20986;&#12290;<br>
+        <img src="ruleViewer.jpg" alt="" width="568" height="725">
+        <br>
+        <br>
+      </li>
+      <li><u>Surface Viewer</u><br>
+       <br>
+    &#30452;&#27969;&#39340;&#36948;&#36681;&#36895;&#25511;&#21046;&#30340;&#25511;&#21046;&#26354;&#38754;&#22294;&#12290;<br>
+        <img src="surfaceViewer.jpg" alt="" width="550" height="345">
+        <br>
+      </li>
+   
+</ul>
+     
+<h3>&#12304; Extra. &#12305;</h3>
+     
+<ul>
+      <li>&#20197; SIMULINK &#23559;&#27492; Fuzzy Control &#31995;&#32113;&#27169;&#25836;&#20986;&#20358;&#12290;<br>
+    <br>
+  </li>
+     
+</ul>
+     
+<h3>&#12304; Reference &#12305;</h3>
+                
+<ul>
+ <li>&#21443;&#32771;&#26360;&#31821; Fuzzy &#25511;&#21046; &#29702;&#35542;&#12289;&#23526;&#20316;&#33287;&#25033;&#29992; &#23403;&#23447;&#28699;&#65294;&#26954;&#33521;&#39745;&#12288;&#32232;&#33879;&#12288;&#20840;&#33775;&#22294;&#26360; &nbsp; (isbn::957-21-0733-X)<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</li>
+ <li>Matlab 5 &#23560;&#26989;&#35373;&#35336;&#25216;&#24039;&#12288;&#33945;&#20197;&#27491;&#12288;&#30849;&#23792;&#36039;&#35338; (isbn::957-21-0733-X )<br>
+    <br>
+  </li>
+      
+</ul>
+     
+</body>
+</html>
