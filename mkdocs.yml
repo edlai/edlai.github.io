@@ -12,6 +12,7 @@ nav:
         - 'Intro.': 'engineering/index.md'
         - 'Courses':
           - 'Undergraduate': 'engineering/courses/undergraduate/index.md'
+          - 'Moocs': 'engineering/courses/moocs/index.md'
 #          - 'Autodidacticism': 'engineering/courses/autodidacticism/index.md'
 #          - 'Image Processing':
 #              - 'Grayscale': 'engineering/courses/undergraduate/dip/grayscale/index.md'
@@ -151,10 +152,9 @@ nav:
 #        - 'Qualitative Research': 'education/qualitative-research/index.md'
 #        - 'Quantitative Research': 'education/quantitative-research/index.md'
     - 'Living':
-      - 'Music': 'daily/music.md'
-      - 'Kids': 'daily/kids.md'
-      - 'Online Course': 'daily/course.md'
-      - 'Programming': 'daily/programming.md'
+      - 'Books': 'living/books.md'
+      - 'Music': 'living/music.md'
+      - 'Kids': 'living/kids.md'
       - 'Collection': 'daily/collection.md'
       - 'Vocabulary': 'daily/vocabulary.md'
 #     - 'Motivation': 'daily/motivation.md'

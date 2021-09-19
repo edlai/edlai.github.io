@@ -6,6 +6,8 @@
 - [Data structures and algorithms](https://github.com/nicehorse06/data-structures-and-algorithms)
 - [log2base2](https://www.log2base2.com/): World's First Visual Learning Platform
 - [C 語言教程](https://www.runoob.com/cprogramming/c-tutorial.html)
+- [Object-Oriented Programming With ANSI-C](https://www.cs.rit.edu/~ats/books/ooc.pdf)
+- [Patterns in C](https://www.adamtornhill.com/Patterns%20in%20C%201.pdf)
 
 ## Code Snippets
 
