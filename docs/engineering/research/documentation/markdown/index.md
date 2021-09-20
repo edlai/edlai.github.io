@@ -64,7 +64,7 @@ $ sudo apt install pandoc texlive-latex-extra
 ```
 
 Conversion
-:
+
 ```
 $ pandoc --from markdown -o index.pdf index.md
 ```
