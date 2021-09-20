@@ -63,7 +63,6 @@ nav:
 #            - 'DockerFile': 'engineering/dev/docker/file/index.md'
 #            - 'Docker Compose': 'engineering/dev/docker/compose/index.md'
 #            - 'Macvlan': 'engineering/dev/docker/macvlan/index.md'
-#          - 'Documentation Skills': 'engineering/dev/doc/index.md'
           - 'Programming Languages':
             - 'Linux C':
               - 'GCC Compiler History': 'engineering/development/programming/linux_c/env_toolchain.md'
@@ -108,10 +107,6 @@ nav:
 #            - 'CTYPE': 'engineering/script/py/ctype/index.md'
 #            - 'Request': 'engineering/script/py/request/index.md'
 #            - 'Selenium': 'engineering/script/py/selenium/index.md'
-          - 'Documentation':
-            - 'Latex': 'engineering/development/documentation/xelatex/index.md'
-#           - 'Markdown': 'engineering/development/documentation/markdown/index.md'
-#           - 'reStructuredText': 'engineering/development/documentation/rst/index.md'
           - 'Embedded Linux':
             - 'Buildroot SDK Framework': 'engineering/development/embedded/buildroot/index.md'
             - 'OpenWRT SDK Framework': 'engineering/development/embedded/openwrt/index.md'
@@ -120,12 +115,11 @@ nav:
 #            - 'Flash MTD Endurance': 'engineering/embedded/endurance/index.md'
           - 'Linux Kernel':
             - 'Rebuild Linux Kernel': 'engineering/development/kernel/rebuild/index.md'
-          - 'Celluar Network':
-            - 'Amarisoft SDR LTE 100': 'engineering/development/cell/sdr/index.md'
         - 'Verification':
           - 'Performance Measurement':
             - 'Networking Performance': 'engineering/verification/perf/index.md'
-        - 'Release':
+        - 'Software Release':
+#         - 'Redmine'
           - 'Git':
             - 'Gitlab': 'engineering/development/release/gitlab/index.md'
             - 'Azure': 'engineering/development/release/gitlab/index.md'
@@ -138,6 +132,12 @@ nav:
             - 'Networking Sniffer - tcpdump': 'engineering/debugging/diagnostic//tcpdump/index.md'
             - 'Networking Sniffer - wireshark': 'engineering/debugging/diagnostic//wireshark/index.md'
 #         - 'Duplication'
+        - 'Instrument':
+          - 'Cellular Network':
+            - 'Software Defined Network': 'engineering/instrument/cellular/sdr/index.md'
+#           - 'R&S CMW500':
+#         - 'Wi-Fi Network':
+#           - 'IxVeriWave':
         - 'Teamwork':
           - 'Character': 'engineering/teamwork/character/index.md'
         - 'Motivation':
