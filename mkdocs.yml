@@ -51,8 +51,8 @@ nav:
           - 'Documentation':
              - 'Markdown': 'engineering/research/documentation/markdown/index.md'
              - 'reStructuredText': 'engineering/research/documentation/restructuredtext/index.md'
-             - 'Latex': 'engineering/research/documentation/documentation/xelatex/index.md'
-             - 'UML': 'engineering/research/documentation/documentation/uml/index.md'
+             - 'Latex': 'engineering/research/documentation/xelatex/index.md'
+             - 'UML': 'engineering/research/documentation/uml/index.md'
 #         - 'Master Thesis'
         - 'Development':
           - 'Softwares Tools': 'engineering/development/softwares/index.md'
