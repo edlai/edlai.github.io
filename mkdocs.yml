@@ -58,8 +58,6 @@ nav:
           - 'Softwares Tools': 'engineering/development/softwares/index.md'
           - 'Accessories': 'engineering/development/accessories/index.md'
           - 'Automation and Crawler': 'engineering/development/auto/index.md'
-          - 'Performance Measurement':
-            - 'Networking Performance': 'engineering/development/perf/index.md'
 #          - 'Git Repo and Build Machine': 'engineering/dev/git/index.md'
 #          - 'Docker and Macvlan':
 #            - 'DockerFile': 'engineering/dev/docker/file/index.md'
@@ -124,6 +122,9 @@ nav:
             - 'Rebuild Linux Kernel': 'engineering/development/kernel/rebuild/index.md'
           - 'Celluar Network':
             - 'Amarisoft SDR LTE 100': 'engineering/development/cell/sdr/index.md'
+        - 'Verification':
+          - 'Performance Measurement':
+            - 'Networking Performance': 'engineering/verification/perf/index.md'
         - 'Release':
           - 'Git':
             - 'Gitlab': 'engineering/development/release/gitlab/index.md'
@@ -132,11 +133,13 @@ nav:
             - 'CI/CD': 'engineering/development/release/cicd/index.md'
         - 'Debugging':
           - 'Diagnostic Tools':
-            - 'Wireless Sniffer - Wireshark': 'engineering/development/diag/sniffer/index.md'
-            - 'Remote Capturer - rpcapd': 'engineering/development/diag/rpcapd/index.md'
-            - 'Networking Sniffer - tcpdump': 'engineering/development/diag/tcpdump/index.md'
-            - 'Networking Sniffer - wireshark': 'engineering/development/diag/wireshark/index.md'
+            - 'Wireless Sniffer - Wireshark': 'engineering/debugging/diagnostic//sniffer/index.md'
+            - 'Remote Capturer - rpcapd': 'engineering/debugging/diagnostic//rpcapd/index.md'
+            - 'Networking Sniffer - tcpdump': 'engineering/debugging/diagnostic//tcpdump/index.md'
+            - 'Networking Sniffer - wireshark': 'engineering/debugging/diagnostic//wireshark/index.md'
 #         - 'Duplication'
+        - 'Teamwork':
+          - 'Character': 'engineering/teamwork/character/index.md'
         - 'Motivation':
           - 'Trip': 'engineering/motivation/trip/photo/index.md'
 #        - 'Miscellaneous':
