@@ -1,13 +1,9 @@
-site_name: Ed's Wiki
+site_name: Ed's Learning Portfolios
 site_url: https://edlai.github.io/
 nav:
     - Home:
        - 'About Me': 'index.md'
        - 'About Here': 'home/here.md'
- #       - 'Academic Background': '/#academic-background'
- #       - 'Work Experience': '/#work-experience'
- #       - 'Technician Certificate': '/#technician-certificate'
- #       - 'Technician Training': '/#technician-training'
     - 'Engineering':
         - 'Intro.': 'engineering/index.md'
         - 'Courses':
@@ -51,7 +47,13 @@ nav:
           - 'Specification': 'engineering/research/specification/index.md'
 #            - '3GPP': ''
 #            - 'IEEE': ''
-#         - 'My Master Thesis'
+#            - 'RFC': ''
+          - 'Documentation':
+             - 'Markdown': 'engineering/research/documentation/markdown/index.md'
+             - 'reStructuredText': 'engineering/research/documentation/restructuredtext/index.md'
+             - 'Latex': 'engineering/research/documentation/documentation/xelatex/index.md'
+             - 'UML': 'engineering/research/documentation/documentation/uml/index.md'
+#         - 'Master Thesis'
         - 'Development':
           - 'Softwares Tools': 'engineering/development/softwares/index.md'
           - 'Accessories': 'engineering/development/accessories/index.md'

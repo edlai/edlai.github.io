@@ -14,7 +14,7 @@ https://www.ntut.edu.tw/p/404-1007-85228.php
 
 Course Code   | Course Name                                                                      | Credits | Hours
 --------------|----------------------------------------------------------------------------------| --------|-------
-***2000/01*** | | |
+***89/01*** | | |
 1003001       | Physical Education (體育) | 0 | 2
 1419997       | The Science of Earth (地球科學) | 2 | 2
 3603006       | Application Software Design Lab. (應用軟體設計實習) |1 | 3
@@ -22,7 +22,7 @@ Course Code   | Course Name                                                     
 3603063       | Electromagnetics (電磁學) | 3 | 3
 3603078       | Object-oriented Programming (物件導向程式設計) | 3 | 3
 3603054       | Linear Algebra (線性代數) | 3 | 3
-***2000/02*** | | |
+***89/02*** | | |
 1003001       | Physical Education (體育) | 0 | 2
 1419997       | Selected Readings on Contemporary Tang-Poetry (唐近體詩選讀) | 2| 2
 3603056       | [Systems Programming (系統程式)](#operating-systems) | 3| 3
@@ -30,22 +30,22 @@ Course Code   | Course Name                                                     
 3603068       | Electromagnetic Waves (電磁波) | 3| 3
 3603071       | Microcomputer System Design (微算機系統設計) | 3 | 3
               | Microcomputer System Design Lab.(微算機系統設計實習) | 1 | 3
-[***2001/01***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=90&sem=1&code=330) | | |
+[***90/01***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=90&sem=1&code=330) | | |
 1419997       | Journalistic English (新聞英文(一))  | 2 | 2
 3603051       | Discrete Mathematics (離散數學)      | 3  | 3
 3603059       | [Operating Systems (作業系統)](#operating-systems)  | 3 | 3
 3604052       | [Computer Networks(計算機網路)](#computer-networks) | 3 | 3
-[***2001/02***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=90&sem=2&code=330) | | |
+[***90/02***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=90&sem=2&code=330) | | |
 3603050       | Probability and Statistic (機率與統計) | 3       | 3
 3603067       | Introduction to Optical Fiber Communications (光纖通訊概論) | 3       | 3
 3603076       | Network Analysis (網路分析) | 3       | 3
 3604054       | Introduction to VLSI Design (超大型積体電路導論) | 3       | 3
 3604057       | Database Systems (資料庫系統) | 3       | 3
-[***2002/01***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=91&sem=1&code=330) | | |
+[***91/01***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=91&sem=1&code=330) | | |
 3604060       | [Neural and Fuzzy Control 類神經與模糊控制](#neural-and-fuzzy-control) | 3       | 3
 3604075       | Introduction Wireless Communications (無線通訊概論)    | 3 | 3
 3604079       | [Digital Signal Processing(DSP) 數位信號處理](#digital-signal-processing) | 3| 3
-[***2002/02***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=91&sem=2&code=330) | | |
+[***91/02***](https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=91&sem=2&code=330) | | |
 3604056       | Artificial Intelligence (人工智慧)                    | 3       | 3
 3604059       | [Man-Machine Interfaces (人機介面)](#man-machine-interfaces)    | 3       | 3
 3604068       | [Television Engineering (電視工程)](#television-engineeringing)      | 3       | 3
