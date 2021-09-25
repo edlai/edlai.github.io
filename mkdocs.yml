@@ -5,10 +5,10 @@ nav:
        - 'About Me': 'index.md'
        - 'About Here': 'home/here.md'
     - 'Engineering':
-        - 'Intro.': 'engineering/index.md'
-        - 'Courses':
+        - 'Introduction': 'engineering/index.md'
+        - 'Prior Knowledge (Courses)':
           - 'Undergraduate': 'engineering/courses/undergraduate/index.md'
-          - 'Moocs': 'engineering/courses/moocs/index.md'
+          - 'Moocs (Autodidacticism)': 'engineering/courses/moocs/index.md'
 #          - 'Autodidacticism': 'engineering/courses/autodidacticism/index.md'
 #          - 'Image Processing':
 #              - 'Grayscale': 'engineering/courses/undergraduate/dip/grayscale/index.md'
@@ -42,12 +42,16 @@ nav:
 #              - 'Digital Vedio Conversion - MPEG-1': 'engineering/courses/undergraduate/tv/mpeg1/index.md'
 #              - 'Digital Vedio Conversion - MPEG2, MPEG3, MPEG4(DivX)': 'tv/mpeg2/index.md'
 #              - ''
-        - 'Research':
+        - 'Researching':
           - 'Reading Papers': 'engineering/research/papers/index.md'
-          - 'Specification': 'engineering/research/specification/index.md'
+          - 'Specification': 'engineering/rese
+          arch/specification/index.md'
 #            - '3GPP': ''
 #            - 'IEEE': ''
 #            - 'RFC': ''
+#            - 'Broadband Forum': ''
+#            - 'Wi-Fi Alliance': ''
+#            - 'Connectivity Standards Alliance': ''
           - 'Documentation':
              - 'Markdown': 'engineering/research/documentation/markdown/index.md'
              - 'reStructuredText': 'engineering/research/documentation/restructuredtext/index.md'
